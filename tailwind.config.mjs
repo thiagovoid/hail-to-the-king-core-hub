@@ -26,7 +26,8 @@ export default {
         'class-warrior': '#c69b3a',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['Palatino Linotype', 'Palatino', 'Book Antiqua', 'Georgia', 'serif'],
       },
       backgroundColor: {
         dark: '#0d1117',
