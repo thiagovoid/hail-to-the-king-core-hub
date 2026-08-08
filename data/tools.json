@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Raider.IO",
+    "description": "Ranking e perfis de Mythic+, histórico de dungeons e pontuação IO por personagem e guilda.",
+    "url": "https://raider.io",
+    "category": "mythic-plus"
+  },
+  {
+    "name": "Subcreation",
+    "description": "Estatísticas e análises de runs de Mythic+ baseadas em dados do Raider.IO, com distribuição de specs e itens.",
+    "url": "https://subcreation.net",
+    "category": "mythic-plus"
+  },
+  {
+    "name": "Keystone.guru",
+    "description": "Ferramenta de planejamento de rotas para Mythic+, com editor visual de mapas e pulls.",
+    "url": "https://keystone.guru",
+    "category": "mythic-plus"
+  },
+  {
+    "name": "Raidbots",
+    "description": "Simulação de DPS e comparação de equipamentos para otimizar o seu personagem sem esforço.",
+    "url": "https://raidbots.com",
+    "category": "simulation"
+  },
+  {
+    "name": "SimulationCraft",
+    "description": "Ferramenta open-source para simulação detalhada de personagens WoW com suporte a todos os specs.",
+    "url": "https://simulationcraft.org",
+    "category": "simulation"
+  },
+  {
+    "name": "Archon.gg",
+    "description": "Builds, talentos e estatísticas de personagens baseados em dados reais dos melhores jogadores do mundo.",
+    "url": "https://www.archon.gg",
+    "category": "builds"
+  },
+  {
+    "name": "Icy Veins",
+    "description": "Guias detalhados de classe, spec, rotações e builds para todos os conteúdos do WoW.",
+    "url": "https://www.icy-veins.com",
+    "category": "builds"
+  },
+  {
+    "name": "Wowhead",
+    "description": "Base de dados completa de items, spells, quests e guias de classe com estratégias de boss.",
+    "url": "https://www.wowhead.com",
+    "category": "builds"
+  },
+  {
+    "name": "Warcraft Logs",
+    "description": "Plataforma de logs de raid com análise detalhada de performance, parses e rankings de guilds.",
+    "url": "https://www.warcraftlogs.com",
+    "category": "raid"
+  },
+  {
+    "name": "Wipefest",
+    "description": "Análise avançada de mecânicas de raid a partir dos logs do Warcraft Logs, identificando erros de execução.",
+    "url": "https://www.wipefest.gg",
+    "category": "raid"
+  },
+  {
+    "name": "The Undermine Journal",
+    "description": "Monitoramento de preços da Casa de Leilões com histórico, alertas e análise de mercado.",
+    "url": "https://theunderminejournal.com",
+    "category": "economy"
+  },
+  {
+    "name": "TradeSkillMaster",
+    "description": "Addon e web app para automatizar compra, venda e craft de itens na Casa de Leilões.",
+    "url": "https://www.tradeskillmaster.com",
+    "category": "economy"
+  },
+  {
+    "name": "WoW Progress",
+    "description": "Rankings de guilds por progressão em raids, perfis de personagem e recrutamento.",
+    "url": "https://www.wowprogress.com",
+    "category": "utilities"
+  },
+  {
+    "name": "Check PvP",
+    "description": "Verificação rápida de dados de personagens WoW como conquistas, equipamentos e rankings.",
+    "url": "https://checkpvp.fr",
+    "category": "utilities"
+  }
+]

@@ -1,0 +1,80 @@
+---
+/**
+ * SummaryCard.astro — Card de resumo navegável para a página inicial
+ * Estilo Raider.IO: fundo escuro, accent colorido, link para página interna.
+ */
+
+import { formatValue } from '@/utils/format';
+
+interface Props {
+  title: string;
+  value: string | number | null | undefined;
+  subtitle?: string;
+  icon?: string;
+  href?: string;
+  accent?: 'gold' | 'green' | 'red' | 'blue' | 'purple' | 'default';
+}
+
+const { title, value, subtitle, icon, href, accent = 'default' } = Astro.props;
+
+const displayValue = formatValue(value);
+
+const accentColors: Record<string, { border: string; icon: string; value: string }> = {
+  gold:    { border: 'border-[#f0a500]/30 hover:border-[#f0a500]/60',   icon: 'text-[#f0a500]',  value: 'text-[#f0a500]' },
+  green:   { border: 'border-[#22c55e]/30 hover:border-[#22c55e]/60',   icon: 'text-[#22c55e]',  value: 'text-[#22c55e]' },
+  red:     { border: 'border-[#ef4444]/30 hover:border-[#ef4444]/60',   icon: 'text-[#ef4444]',  value: 'text-[#ef4444]' },
+  blue:    { border: 'border-[#3b82f6]/30 hover:border-[#3b82f6]/60',   icon: 'text-[#3b82f6]',  value: 'text-[#3b82f6]' },
+  purple:  { border: 'border-[#a855f7]/30 hover:border-[#a855f7]/60',   icon: 'text-[#a855f7]',  value: 'text-[#a855f7]' },
+  default: { border: 'border-white/7 hover:border-white/14',            icon: 'text-slate-400',  value: 'text-slate-100' },
+};
+
+const colors = accentColors[accent];
+
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  aria-label={href ? `${title}: ${displayValue} — ir para página` : title}
+  class={[
+    'card group block bg-[#141b2d] border rounded-xl p-5 transition-all duration-200',
+    colors.border,
+    href ? 'cursor-pointer' : '',
+  ].join(' ')}
+>
+  <!-- Title row -->
+  <div class="flex items-center justify-between mb-3">
+    <div class="flex items-center gap-2">
+      {icon && (
+        <span class={`text-lg leading-none ${colors.icon}`} aria-hidden="true">{icon}</span>
+      )}
+      <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-wider">
+        {title}
+      </h2>
+    </div>
+    {href && (
+      <svg
+        class="w-3.5 h-3.5 text-slate-600 group-hover:text-slate-400 transition-colors"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    )}
+  </div>
+
+  <!-- Main value -->
+  <p class={`text-2xl sm:text-3xl font-bold leading-tight break-words tabular-nums ${colors.value}`}>
+    {displayValue}
+  </p>
+
+  <!-- Subtitle -->
+  {subtitle && (
+    <p class="text-slate-500 text-xs mt-2 leading-snug">
+      {subtitle}
+    </p>
+  )}
+</Tag>

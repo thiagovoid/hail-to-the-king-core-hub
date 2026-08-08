@@ -1,0 +1,57 @@
+[
+  {
+    "category": "behavior",
+    "label": "Comportamento",
+    "rules": [
+      "Trate todos os membros com respeito. Comentários depreciativos, xingamentos e atitudes tóxicas não serão tolerados, independentemente do contexto.",
+      "Críticas ao desempenho de outros membros devem ser construtivas e feitas em privado. Feedback negativo em público durante a raid é proibido.",
+      "O chat de voz durante a raid é restrito a comunicações de jogo. Conversas paralelas que atrapalhem o foco da liderança devem ser evitadas.",
+      "Conflitos entre membros devem ser resolvidos diretamente ou levados à liderança. Drama público no Discord ou no jogo prejudica o grupo e será investigado.",
+      "A inclusão é um valor do core. Nenhum membro será discriminado por raça, gênero, orientação sexual, religião ou qualquer outra característica pessoal."
+    ]
+  },
+  {
+    "category": "raid",
+    "label": "Raid",
+    "rules": [
+      "Todos os membros devem chegar ao lobby da raid com pelo menos 10 minutos de antecedência em relação ao horário de início oficial.",
+      "É obrigatório o uso de consumíveis de alto nível (pré-pots, flasks de raid e comida de 100 stats) em todos os bosses de progressão.",
+      "Leia e assista as estratégias de cada boss antes da raid. Não é responsabilidade da liderança explicar mecânicas básicas durante a progressão.",
+      "Durante os pulls, apenas a liderança pode falar no canal de voz principal. Exceções são permitidas para alertas críticos de mecânica.",
+      "O afk durante os pulls é proibido. Notifique a liderança antes da raid caso precise de uma pausa planejada.",
+      "Todos os personagens devem estar com o item level mínimo exigido para o nível de dificuldade da raid antes de participar."
+    ]
+  },
+  {
+    "category": "attendance",
+    "label": "Presença",
+    "rules": [
+      "A presença mínima esperada é de 80% das raids mensais. Membros abaixo desse limite por dois meses consecutivos podem ser removidos do roster.",
+      "Ausências devem ser comunicadas com no mínimo 24 horas de antecedência no canal de ausências do Discord. Ausências sem aviso prévio são contabilizadas como faltas injustificadas.",
+      "Em caso de emergência, comunique a ausência assim que possível no Discord. Situações imprevistas são compreendidas, mas o aviso é sempre necessário.",
+      "Membros que acumularem 3 faltas injustificadas consecutivas serão colocados em status de ausente temporário e sua vaga poderá ser ocupada por um trial."
+    ]
+  },
+  {
+    "category": "loot",
+    "label": "Loot",
+    "rules": [
+      "A distribuição de loot segue o sistema de prioridade Main Spec > Alt Spec, com critério de desempenho e presença como desempate.",
+      "Itens considerados BIS (melhor em slot) para um papel específico são priorizados para o main spec. Upgrades laterais de item level têm prioridade menor.",
+      "Não é permitido pedir loot publicamente durante a raid. O sistema de distribuição é gerenciado pela liderança em canal privado.",
+      "Loot de alts só é distribuído quando nenhum main presente precisa ou se beneficia do item. Alts sem presença regular têm última prioridade.",
+      "Reclamações sobre distribuição de loot devem ser feitas em privado para a liderança após a raid, nunca durante a sessão."
+    ]
+  },
+  {
+    "category": "recruitment",
+    "label": "Recrutamento",
+    "rules": [
+      "Novos membros passam por um período de trial de 4 semanas. Durante o trial, o jogador é avaliado em desempenho, presença e comportamento.",
+      "O trial pode ser encerrado antecipadamente (positivamente ou negativamente) por decisão da liderança mediante consenso.",
+      "Para ser considerado no recrutamento, o candidato deve atender ao item level mínimo e apresentar logs de raids anteriores ou de Mythic+.",
+      "Indicações de membros existentes são bem-vindas, mas não garantem aprovação automática. O processo de avaliação se aplica a todos igualmente.",
+      "Ao final do trial, o candidato é comunicado da decisão. Em caso de aprovação, recebe acesso completo ao Discord e é adicionado ao roster oficial."
+    ]
+  }
+]

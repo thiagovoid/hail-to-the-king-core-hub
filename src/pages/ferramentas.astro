@@ -1,0 +1,119 @@
+---
+/**
+ * ferramentas.astro — Página de Ferramentas do Core Hub
+ * Lista ferramentas externas da comunidade WoW agrupadas por categoria.
+ * Categorias sem ferramentas são ocultadas automaticamente.
+ *
+ * Requirements: 9.1, 9.2, 9.3
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ToolCard from '@/components/ToolCard.astro';
+import type { Tool, ToolCategory } from '@/types/index';
+import toolsData from '../../data/tools.json';
+
+const tools = toolsData as Tool[];
+
+// Category display order, labels and icons — Req 9.1
+const categoryMeta: Record<ToolCategory, { label: string; icon: string }> = {
+  'mythic-plus': { label: 'Mythic+',    icon: '🗝' },
+  'simulation':  { label: 'Simulações', icon: '🧪' },
+  'builds':      { label: 'Builds',     icon: '📐' },
+  'raid':        { label: 'Raid',       icon: '⚔' },
+  'economy':     { label: 'Economia',   icon: '💰' },
+  'utilities':   { label: 'Utilitários', icon: '🛠' },
+};
+
+const categoryOrder: ToolCategory[] = [
+  'mythic-plus',
+  'simulation',
+  'builds',
+  'raid',
+  'economy',
+  'utilities',
+];
+
+// Group tools by category
+const grouped = categoryOrder
+  .map((cat) => ({
+    category: cat,
+    meta: categoryMeta[cat],
+    tools: tools.filter((t) => t.category === cat),
+  }))
+  // Req 9.3 — hide empty categories
+  .filter((group) => group.tools.length > 0);
+
+const totalTools = tools.length;
+---
+
+<BaseLayout
+  title="Ferramentas"
+  description="Lista centralizada de ferramentas externas da comunidade WoW organizadas por categoria."
+>
+
+  <!-- Page header -->
+  <section
+    aria-label="Cabeçalho das ferramentas"
+    class="bg-[#0a0d14] border-b border-white/5"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
+            Comunidade · WoW
+          </p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-3">
+            Ferramentas
+          </h1>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] text-sm font-medium">
+              🛠 {totalTools} ferramenta{totalTools !== 1 ? 's' : ''}
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700/50 text-slate-400 text-sm font-medium">
+              {grouped.length} categoria{grouped.length !== 1 ? 's' : ''}
+            </span>
+          </div>
+        </div>
+        <p class="text-slate-400 text-sm max-w-sm">
+          Ferramentas externas da comunidade para Mythic+, simulações, builds, raid e mais.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool categories — Req 9.1, 9.3 -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+    {grouped.map(({ category, meta, tools: categoryTools }) => (
+      <section aria-labelledby={`cat-${category}`}>
+
+        <!-- Category heading -->
+        <div class="pb-3 mb-6 border-b border-slate-700/50">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl" aria-hidden="true">{meta.icon}</span>
+            <h2 id={`cat-${category}`} class="text-xl font-bold text-[#f0a500]">
+              {meta.label}
+            </h2>
+            <span class="ml-auto text-xs text-slate-500 font-medium tabular-nums">
+              {categoryTools.length} {categoryTools.length !== 1 ? 'ferramentas' : 'ferramenta'}
+            </span>
+          </div>
+        </div>
+
+        <!-- Tool cards grid — Req 9.2 -->
+        <ul
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          role="list"
+          aria-label={`Ferramentas de ${meta.label}`}
+        >
+          {categoryTools.map((tool) => (
+            <li role="listitem">
+              <ToolCard tool={tool} />
+            </li>
+          ))}
+        </ul>
+
+      </section>
+    ))}
+  </div>
+
+</BaseLayout>

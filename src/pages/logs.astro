@@ -1,0 +1,63 @@
+---
+/**
+ * logs.astro — Página de Logs Semanais do Core Hub
+ * Carrega todos os arquivos data/weekly/week-*.json, ordena por weekNumber
+ * decrescente e renderiza um WeeklyLogCard para cada entrada.
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import WeeklyLogCard from '@/components/WeeklyLogCard.astro';
+import type { WeeklyLog } from '@/types/index';
+
+// Load all weekly JSON files eagerly
+const weekFiles = import.meta.glob('../../data/weekly/week-*.json', { eager: true });
+
+// Extract default exports and cast to WeeklyLog
+const logs: WeeklyLog[] = Object.values(weekFiles).map(
+  (mod) => (mod as { default: WeeklyLog }).default
+);
+
+// Sort by weekNumber descending (newest first)
+const sortedLogs = [...logs].sort((a, b) => b.weekNumber - a.weekNumber);
+---
+
+<BaseLayout
+  title="Logs"
+  description="Logs de raid semanais do core Hail to the King — histórico de sessões, destaques e análises."
+>
+  <!-- Page header -->
+  <section
+    aria-label="Cabeçalho dos logs"
+    class="bg-[#0a0d14] border-b border-white/5"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
+        Histórico
+      </p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-2">
+        Logs de Raid
+      </h1>
+      <p class="text-slate-400 text-sm">
+        Resumo semanal das sessões com destaques, duração e links para análises externas.
+      </p>
+    </div>
+  </section>
+
+  <!-- Logs list -->
+  <section
+    aria-label="Lista de logs semanais"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
+  >
+    {sortedLogs.length === 0 ? (
+      <p class="text-slate-500 text-center py-16 text-base">
+        Nenhum log disponível ainda.
+      </p>
+    ) : (
+      <div class="flex flex-col gap-4">
+        {sortedLogs.map((log) => (
+          <WeeklyLogCard log={log} />
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

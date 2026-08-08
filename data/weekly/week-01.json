@@ -1,0 +1,32 @@
+{
+  "weekNumber": 1,
+  "date": "2025-06-25T20:00:00.000Z",
+  "durationMinutes": 180,
+  "bossesKilled": 6,
+  "highlights": {
+    "bestDps": {
+      "playerName": "Zynthara",
+      "class": "mage",
+      "value": "198.7k DPS"
+    },
+    "bestHps": {
+      "playerName": "Seraphis",
+      "class": "paladin",
+      "value": "118.4k HPS"
+    },
+    "bestTank": {
+      "playerName": "Voidwar",
+      "class": "warrior",
+      "value": "94% damage reduction uptime"
+    },
+    "playerOfTheWeek": {
+      "playerName": "Ashbringer",
+      "class": "demon-hunter",
+      "value": "Consistência em mecânicas"
+    }
+  },
+  "links": {
+    "warcraftLogs": "https://www.warcraftlogs.com/reports/example-week01-hailtotheking",
+    "wipefest": "https://www.wipefest.gg/report/example-week01-hailtotheking"
+  }
+}

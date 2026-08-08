@@ -1,0 +1,49 @@
+---
+/**
+ * BaseLayout.astro — Layout base do Core Hub
+ * Fornece <head>, NavBar, slot principal e Footer para todas as páginas.
+ */
+
+import '../styles/global.css';
+import NavBar from '@/components/NavBar.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content={description ?? 'Portal do core de raid Hail to the King.'}
+    />
+    <title>{title} | Hail to the King</title>
+
+    <!-- Fonts loaded via global.css -->
+  </head>
+
+  <body class="bg-[#0a0d14] text-slate-200 min-h-screen flex flex-col">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#f0a500] focus:text-[#0d1117] focus:font-bold focus:rounded focus:outline-none"
+    >
+      Ir para o conteúdo principal
+    </a>
+
+    <NavBar />
+
+    <main id="main-content" aria-label="Conteúdo principal" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

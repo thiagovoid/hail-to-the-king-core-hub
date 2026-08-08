@@ -1,0 +1,107 @@
+---
+/**
+ * regras.astro — Página de Regras do Core Hub
+ * Lista as regras da guilda agrupadas por categoria.
+ * Categorias sem regras são ocultadas automaticamente.
+ *
+ * Requirements: 10.1, 10.2, 10.3
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import type { RuleCategory } from '@/types/index';
+import rulesData from '../../data/rules.json';
+
+const allCategories = rulesData as RuleCategory[];
+
+// Req 10.3 — hide categories with no rules
+const categories = allCategories.filter((cat) => cat.rules.length > 0);
+
+const totalRules = categories.reduce((sum, cat) => sum + cat.rules.length, 0);
+
+// Icon map per category id
+const categoryIcons: Record<string, string> = {
+  behavior:    '🤝',
+  raid:        '⚔',
+  attendance:  '📅',
+  loot:        '🏆',
+  recruitment: '📋',
+};
+---
+
+<BaseLayout
+  title="Regras"
+  description="Regras da guilda Hail to the King organizadas por categoria."
+>
+
+  <!-- Page header — Req 10.1 -->
+  <section
+    aria-label="Cabeçalho das regras"
+    class="bg-[#0a0d14] border-b border-white/5"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
+            Guilda · Regulamento
+          </p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-3">
+            Regras
+          </h1>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] text-sm font-medium">
+              📋 {totalRules} regra{totalRules !== 1 ? 's' : ''}
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700/50 text-slate-400 text-sm font-medium">
+              {categories.length} categoria{categories.length !== 1 ? 's' : ''}
+            </span>
+          </div>
+        </div>
+        <p class="text-slate-400 text-sm max-w-sm">
+          Regras de comportamento, raid, presença, loot e recrutamento do core.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rule categories — Req 10.1, 10.2, 10.3 -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    {categories.map((cat) => (
+      <section aria-labelledby={`cat-${cat.category}`}>
+
+        <!-- Category heading — Req 10.1 -->
+        <div class="pb-3 mb-6 border-b border-slate-700/50">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl" aria-hidden="true">
+              {categoryIcons[cat.category] ?? '📌'}
+            </span>
+            <h2 id={`cat-${cat.category}`} class="text-xl font-bold text-[#f0a500]">
+              {cat.label}
+            </h2>
+            <span class="ml-auto text-xs text-slate-500 font-medium tabular-nums">
+              {cat.rules.length} {cat.rules.length !== 1 ? 'regras' : 'regra'}
+            </span>
+          </div>
+        </div>
+
+        <!-- Rules list — Req 10.2 -->
+        <ul
+          class="space-y-3"
+          role="list"
+          aria-label={`Regras de ${cat.label}`}
+        >
+          {cat.rules.map((rule) => (
+            <li
+              role="listitem"
+              class="flex items-start gap-3 bg-slate-800/40 border border-slate-700/40 rounded-lg px-4 py-3 text-slate-300 text-sm leading-relaxed hover:border-slate-600/60 transition-colors"
+            >
+              <span class="mt-0.5 text-[#f0a500] shrink-0" aria-hidden="true">▸</span>
+              <span>{rule}</span>
+            </li>
+          ))}
+        </ul>
+
+      </section>
+    ))}
+  </div>
+
+</BaseLayout>

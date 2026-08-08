@@ -1,0 +1,291 @@
+---
+/**
+ * PlayerCard.astro — Card de jogador para a seção Roster
+ * Estilo Raider.IO + Warcraft Logs: parse colorido por tier, IO com faixa de cor,
+ * avatar prominente, identity clara, botões de link discretos.
+ */
+
+import type { Player } from '@/types/index';
+import { getClassColor } from '@/utils/roster';
+import { formatValue, formatPercent } from '@/utils/format';
+import { safeUrl } from '@/utils/progression';
+
+interface Props {
+  player: Player;
+}
+
+const { player } = Astro.props;
+
+function capitalize(s: string): string {
+  return s.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+const raceName = capitalize(player.race);
+const className = capitalize(player.class);
+const classColor = getClassColor(player.class);
+
+const roleBadge = {
+  tank:   { label: 'Tank',   cls: 'bg-blue-500/15 border-blue-500/30 text-blue-400' },
+  healer: { label: 'Healer', cls: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400' },
+  dps:    { label: 'DPS',    cls: 'bg-rose-500/15 border-rose-500/30 text-rose-400' },
+};
+const role = roleBadge[player.role];
+
+// IO tier colors — Raider.IO style
+function ioColor(io: number | null): string {
+  if (io === null) return 'text-slate-500';
+  if (io >= 4000) return 'text-[#f0a500]';      // legend
+  if (io >= 3500) return 'text-[#c084fc]';      // mythic elite
+  if (io >= 3000) return 'text-[#60a5fa]';      // mythic
+  if (io >= 2500) return 'text-[#22c55e]';      // heroic+
+  return 'text-slate-300';
+}
+
+// Parse tier colors — WCL style
+function parseColor(parse: number | null): string {
+  if (parse === null) return 'text-slate-500';
+  if (parse === 100)  return 'text-[#f0a500]';
+  if (parse >= 95)    return 'text-[#f97316]';
+  if (parse >= 75)    return 'text-[#c084fc]';
+  if (parse >= 50)    return 'text-[#60a5fa]';
+  if (parse >= 25)    return 'text-[#22c55e]';
+  return 'text-slate-400';
+}
+
+const io = player.raiderIo.io;
+const highestKey = player.raiderIo.highestKey;
+const bestDungeon = formatValue(player.raiderIo.bestDungeon);
+
+const avgParse = player.warcraftLogs.avgParse;
+const bestParse = player.warcraftLogs.bestParse;
+const attendance = player.warcraftLogs.attendance;
+
+const discord = formatValue(player.discord);
+const initials = player.name.slice(0, 2).toUpperCase();
+const isMain = player.type === 'main';
+
+const linkRaiderIo   = safeUrl(player.externalLinks.raiderIo);
+const linkRaidbots   = safeUrl(player.externalLinks.raidbots);
+const linkArchon     = safeUrl(player.externalLinks.archon);
+const linkWcl        = safeUrl(player.externalLinks.warcraftLogs);
+const linkWipefest   = safeUrl(player.externalLinks.wipefest);
+---
+
+<article
+  class="bg-[#141b2d] border border-white/7 rounded-xl overflow-hidden hover:border-white/14 hover:shadow-[0_0_0_1px_rgba(240,165,0,0.08),0_4px_24px_rgba(0,0,0,0.4)] transition-all duration-200 flex flex-col"
+  aria-label={`Card do jogador ${player.name}`}
+>
+  <!-- Avatar strip — full-width crop à la Raider.IO profile header -->
+  <div class="relative h-16 bg-gradient-to-r from-[#0a0d14] to-[#1a2235] overflow-hidden">
+    <!-- Class color accent bar -->
+    <div class={`absolute inset-y-0 left-0 w-1 ${classColor.replace('text-', 'bg-')}`} aria-hidden="true" style={`background-color: currentColor;`} />
+
+    <!-- Avatar image (positioned right side, faded) -->
+    {player.avatar !== null ? (
+      <img
+        src={player.avatar}
+        alt=""
+        width="64"
+        height="64"
+        loading="lazy"
+        aria-hidden="true"
+        class="absolute right-0 top-0 h-full w-auto object-cover opacity-30 scale-110 object-top"
+        style="mask-image: linear-gradient(to left, rgba(0,0,0,0.8), transparent);"
+      />
+    ) : null}
+
+    <!-- Player name overlay -->
+    <div class="absolute inset-0 px-4 flex items-center gap-3">
+      <!-- Avatar thumb -->
+      <div class="shrink-0 z-10">
+        {player.avatar !== null ? (
+          <img
+            src={player.avatar}
+            alt={`Avatar de ${player.name}`}
+            width="40"
+            height="40"
+            loading="lazy"
+            class="rounded-lg object-cover w-10 h-10 border border-white/10 ring-1 ring-white/5"
+          />
+        ) : (
+          <div
+            class="w-10 h-10 rounded-lg bg-slate-700 border border-white/10 flex items-center justify-center text-slate-400 text-sm font-bold"
+            aria-label={`Placeholder de avatar para ${player.name}`}
+          >
+            {initials}
+          </div>
+        )}
+      </div>
+
+      <!-- Name + badge -->
+      <div class="flex-1 min-w-0 z-10">
+        <div class="flex items-center gap-2">
+          <h3 class={`font-bold text-sm truncate ${classColor}`}>{player.name}</h3>
+          <span class={`shrink-0 inline-flex items-center px-1.5 py-px rounded text-[9px] font-bold border ${
+            isMain
+              ? 'bg-[#f0a500]/10 border-[#f0a500]/30 text-[#f0a500]'
+              : 'bg-white/5 border-white/10 text-slate-500'
+          }`}>
+            {isMain ? 'MAIN' : 'ALT'}
+          </span>
+        </div>
+        <p class="text-slate-500 text-[10px] truncate">
+          {raceName} · {className} · {player.spec}
+        </p>
+      </div>
+
+      <!-- Role badge -->
+      <span class={`shrink-0 z-10 inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold border ${role.cls}`}>
+        {role.label}
+      </span>
+    </div>
+  </div>
+
+  <!-- Hero Spec badge -->
+  {player.heroSpec !== null && (
+    <div class="px-4 pt-2 pb-0">
+      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10px] font-semibold">
+        ✦ {player.heroSpec}
+      </span>
+    </div>
+  )}
+
+  <!-- Stats body -->
+  <div class="flex-1 px-4 py-3 space-y-3">
+
+    <!-- Raider.IO block -->
+    <div>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Raider.IO</p>
+      <div class="flex items-end justify-between gap-2 mb-1.5">
+        <div>
+          <p class="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">IO Score</p>
+          <p class={`text-xl font-bold tabular-nums leading-none ${ioColor(io)}`}>
+            {io !== null ? io.toLocaleString() : '—'}
+          </p>
+        </div>
+        <div class="text-right">
+          <p class="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Maior Key</p>
+          <p class="text-sm font-bold text-slate-200">
+            {highestKey !== null ? `+${highestKey}` : '—'}
+          </p>
+        </div>
+      </div>
+      {bestDungeon !== '—' && (
+        <p class="text-[10px] text-slate-500 truncate">
+          <span class="text-slate-600">Melhor Dungeon:</span>
+          <span class="text-slate-400 ml-1">{bestDungeon}</span>
+        </p>
+      )}
+    </div>
+
+    <!-- Warcraft Logs block -->
+    <div>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Warcraft Logs</p>
+      <div class="grid grid-cols-3 gap-2">
+        <div>
+          <p class="text-[9px] text-slate-600 uppercase tracking-wider mb-0.5">Avg Parse</p>
+          <p class={`text-sm font-bold tabular-nums ${parseColor(avgParse)}`}>
+            {avgParse !== null ? `${avgParse}%` : '—'}
+          </p>
+        </div>
+        <div>
+          <p class="text-[9px] text-slate-600 uppercase tracking-wider mb-0.5">Best Parse</p>
+          <p class={`text-sm font-bold tabular-nums ${parseColor(bestParse)}`}>
+            {bestParse !== null ? `${bestParse}%` : '—'}
+          </p>
+        </div>
+        <div>
+          <p class="text-[9px] text-slate-600 uppercase tracking-wider mb-0.5">Presença</p>
+          <p class="text-sm font-bold text-slate-200 tabular-nums">
+            {attendance !== null ? `${attendance}%` : '—'}
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Quick links footer -->
+  {(linkRaiderIo || linkRaidbots || linkArchon || linkWcl || linkWipefest || discord !== '—') && (
+    <div class="px-4 pb-3 pt-2 border-t border-white/5">
+      <div class="flex flex-wrap gap-1.5" role="list" aria-label="Links rápidos">
+
+        {linkRaiderIo && (
+          <a
+            href={linkRaiderIo}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/7 text-slate-400 text-[10px] font-medium hover:border-[#f0a500]/40 hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Raider.IO de ${player.name} (nova aba)`}
+          >
+            RIO
+          </a>
+        )}
+
+        {linkWcl && (
+          <a
+            href={linkWcl}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/7 text-slate-400 text-[10px] font-medium hover:border-[#e84040]/40 hover:text-[#e84040] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Warcraft Logs de ${player.name} (nova aba)`}
+          >
+            WCL
+          </a>
+        )}
+
+        {linkRaidbots && (
+          <a
+            href={linkRaidbots}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/7 text-slate-400 text-[10px] font-medium hover:border-slate-400/40 hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Raidbots de ${player.name} (nova aba)`}
+          >
+            Bots
+          </a>
+        )}
+
+        {linkArchon && (
+          <a
+            href={linkArchon}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/7 text-slate-400 text-[10px] font-medium hover:border-slate-400/40 hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Archon de ${player.name} (nova aba)`}
+          >
+            Archon
+          </a>
+        )}
+
+        {linkWipefest && (
+          <a
+            href={linkWipefest}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/7 text-slate-400 text-[10px] font-medium hover:border-slate-400/40 hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Wipefest de ${player.name} (nova aba)`}
+          >
+            Wipe
+          </a>
+        )}
+
+        {discord !== '—' && (
+          <span
+            role="listitem"
+            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/7 text-slate-500 text-[10px] font-medium"
+            title={`Discord: ${discord}`}
+          >
+            DC: {discord}
+          </span>
+        )}
+
+      </div>
+    </div>
+  )}
+</article>

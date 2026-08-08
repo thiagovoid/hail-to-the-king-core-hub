@@ -1,0 +1,55 @@
+---
+/**
+ * ToolCard.astro — Card de ferramenta externa para a seção Ferramentas
+ * Exibe nome, descrição e link externo abrindo em nova aba.
+ *
+ * Requirements: 9.2
+ */
+
+import type { Tool } from '@/types/index';
+
+interface Props {
+  tool: Tool;
+}
+
+const { tool } = Astro.props;
+---
+
+<article
+  class="bg-[#1a2030] border border-slate-700/50 rounded-xl p-5 flex flex-col gap-3 hover:border-slate-600/70 transition-colors"
+>
+  <!-- Tool name -->
+  <h3 class="text-slate-100 font-semibold text-base leading-snug">
+    {tool.name}
+  </h3>
+
+  <!-- Description -->
+  <p class="text-slate-400 text-sm leading-relaxed flex-1">
+    {tool.description}
+  </p>
+
+  <!-- External link -->
+  <a
+    href={tool.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700/50 text-slate-300 text-xs font-medium hover:border-[#f0a500]/50 hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]"
+    aria-label={`Acessar ${tool.name} (abre em nova aba)`}
+  >
+    <svg
+      class="w-3.5 h-3.5 shrink-0"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+      />
+    </svg>
+    Acessar ferramenta
+  </a>
+</article>

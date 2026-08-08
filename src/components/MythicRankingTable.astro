@@ -1,0 +1,109 @@
+---
+/**
+ * MythicRankingTable.astro — Tabela de ranking Mythic+
+ * Estilo Raider.IO: IO com cor por faixa, rank com medalhas, classe colorida.
+ */
+
+import type { Player } from '@/types/index';
+import { sortPlayersByIo, getClassColor } from '@/utils/roster';
+import { formatValue } from '@/utils/format';
+
+interface Props {
+  players: Player[];
+}
+
+const { players } = Astro.props;
+const sorted = sortPlayersByIo(players);
+
+// IO tier color — same logic as PlayerCard
+function ioColor(io: number | null): string {
+  if (io === null) return 'text-slate-600';
+  if (io >= 4000) return 'text-[#f0a500]';
+  if (io >= 3500) return 'text-[#c084fc]';
+  if (io >= 3000) return 'text-[#60a5fa]';
+  if (io >= 2500) return 'text-[#22c55e]';
+  return 'text-slate-300';
+}
+
+interface RankedPlayer {
+  rank: number;
+  player: Player;
+  ioDisplay: string;
+  colorClass: string;
+  ioColorClass: string;
+  ioNull: boolean;
+}
+
+const ranked: RankedPlayer[] = [];
+let currentRank = 1;
+
+for (let i = 0; i < sorted.length; i++) {
+  const io = sorted[i].raiderIo.io;
+  const prevIo = i > 0 ? sorted[i - 1].raiderIo.io : undefined;
+
+  if (i === 0) {
+    currentRank = 1;
+  } else if (io === null || io !== prevIo) {
+    currentRank = i + 1;
+  }
+
+  ranked.push({
+    rank: currentRank,
+    player: sorted[i],
+    ioDisplay: formatValue(io),
+    colorClass: getClassColor(sorted[i].class),
+    ioColorClass: ioColor(io),
+    ioNull: io === null,
+  });
+}
+---
+
+<div class="overflow-x-auto rounded-xl border border-white/7">
+  <table class="w-full text-sm" aria-label="Ranking Mythic+ dos jogadores">
+    <thead>
+      <tr class="bg-[#0d1120] border-b border-white/5">
+        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500 w-14">#</th>
+        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500">Jogador</th>
+        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500">Spec</th>
+        <th scope="col" class="px-4 py-3 text-right text-[10px] font-bold uppercase tracking-wider text-slate-500 w-28">IO Score</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-white/4">
+      {ranked.map(({ rank, player, ioDisplay, colorClass, ioColorClass, ioNull }) => (
+        <tr class="hover:bg-white/3 transition-colors group">
+
+          <!-- Rank -->
+          <td class="px-4 py-3 tabular-nums">
+            {rank === 1 && !ioNull ? (
+              <span class="text-[#f0a500] font-black text-base" aria-label="1º lugar">🥇</span>
+            ) : rank === 2 && !ioNull ? (
+              <span class="text-slate-300 font-black" aria-label="2º lugar">🥈</span>
+            ) : rank === 3 && !ioNull ? (
+              <span class="text-slate-400 font-black" aria-label="3º lugar">🥉</span>
+            ) : ioNull ? (
+              <span class="text-slate-700 text-xs">—</span>
+            ) : (
+              <span class="text-slate-500 font-medium text-xs" aria-label={`${rank}º lugar`}>{rank}</span>
+            )}
+          </td>
+
+          <!-- Jogador -->
+          <td class="px-4 py-3">
+            <span class={`font-semibold ${colorClass}`}>{player.name}</span>
+          </td>
+
+          <!-- Spec + Role -->
+          <td class="px-4 py-3">
+            <span class="text-slate-400 text-xs">{player.spec}</span>
+          </td>
+
+          <!-- IO -->
+          <td class="px-4 py-3 text-right tabular-nums">
+            <span class={`font-black text-base ${ioColorClass}`}>{ioDisplay}</span>
+          </td>
+
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

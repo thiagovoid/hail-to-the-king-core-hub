@@ -1,0 +1,104 @@
+---
+/**
+ * MythicStatsBar.astro — Barra de estatísticas agregadas de Mythic+
+ * Exibe: média de IO do grupo, maior IO individual e distribuição por faixa.
+ *
+ * Requirements: 5.2
+ */
+
+import type { MythicStats } from '@/types/index';
+
+interface Props {
+  stats: MythicStats;
+}
+
+const { stats } = Astro.props;
+
+const { avgIo, maxIo, distribution } = stats;
+
+interface Tier {
+  label: string;
+  count: number;
+  color: string;
+  bg: string;
+  border: string;
+}
+
+const tiers: Tier[] = [
+  {
+    label: '2500+',
+    count: distribution.tier2500,
+    color: 'text-slate-300',
+    bg: 'bg-slate-700/30',
+    border: 'border-slate-600/40',
+  },
+  {
+    label: '3000+',
+    count: distribution.tier3000,
+    color: 'text-[#3fc7eb]',
+    bg: 'bg-[#3fc7eb]/10',
+    border: 'border-[#3fc7eb]/30',
+  },
+  {
+    label: '3500+',
+    count: distribution.tier3500,
+    color: 'text-[#f0a500]',
+    bg: 'bg-[#f0a500]/10',
+    border: 'border-[#f0a500]/30',
+  },
+  {
+    label: '4000+',
+    count: distribution.tier4000,
+    color: 'text-[#00c48c]',
+    bg: 'bg-[#00c48c]/10',
+    border: 'border-[#00c48c]/30',
+  },
+];
+---
+
+<div
+  class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3"
+  aria-label="Estatísticas de Mythic+"
+>
+  <!-- Média de IO -->
+  <div class="col-span-1 sm:col-span-1 lg:col-span-1 flex flex-col items-center justify-center
+              bg-[#1a2030] rounded-lg border border-slate-700/50 px-4 py-4 text-center">
+    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+      Média IO
+    </span>
+    <span class="text-2xl font-bold text-[#f0a500] tabular-nums" aria-label={`Média de IO: ${avgIo}`}>
+      {avgIo}
+    </span>
+    <span class="text-xs text-slate-500 mt-0.5">grupo</span>
+  </div>
+
+  <!-- Maior IO -->
+  <div class="col-span-1 sm:col-span-1 lg:col-span-1 flex flex-col items-center justify-center
+              bg-[#1a2030] rounded-lg border border-[#00c48c]/30 px-4 py-4 text-center">
+    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+      Maior IO
+    </span>
+    <span class="text-2xl font-bold text-[#00c48c] tabular-nums" aria-label={`Maior IO: ${maxIo}`}>
+      {maxIo}
+    </span>
+    <span class="text-xs text-slate-500 mt-0.5">individual</span>
+  </div>
+
+  <!-- Distribuição por faixa -->
+  {tiers.map((tier) => (
+    <div
+      class={`flex flex-col items-center justify-center rounded-lg border px-4 py-4 text-center ${tier.bg} ${tier.border}`}
+      aria-label={`Jogadores com IO ${tier.label}: ${tier.count}`}
+    >
+      <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+        {tier.label}
+      </span>
+      <span class={`text-2xl font-bold tabular-nums ${tier.color}`}>
+        {tier.count}
+      </span>
+      <span class="text-xs text-slate-500 mt-0.5">
+        {tier.count === 1 ? 'jogador' : 'jogadores'}
+      </span>
+    </div>
+  ))}
+</div>

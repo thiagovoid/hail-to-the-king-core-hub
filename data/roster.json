@@ -1,0 +1,386 @@
+[
+  {
+    "id": "voidwar",
+    "name": "Voidwar",
+    "class": "warrior",
+    "race": "dwarf",
+    "spec": "Protection",
+    "heroSpec": "Mountain Thane",
+    "role": "tank",
+    "type": "main",
+    "discord": "voidwar#0001",
+    "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/94/91119198-avatar.jpg",
+    "raiderIo": {
+      "io": 3477,
+      "bestDungeon": "Pit of Saron",
+      "highestKey": 17,
+      "realmRank": 142,
+      "profileUrl": "https://raider.io/characters/us/nemesis/Voidwar"
+    },
+    "warcraftLogs": {
+      "avgParse": 78,
+      "bestParse": 95,
+      "attendance": 100,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Voidwar"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/nemesis/Voidwar",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-voidwar",
+      "archon": "https://www.archon.gg/wow/characters/us/nemesis/Voidwar",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/nemesis/Voidwar",
+      "wipefest": "https://www.wipefest.gg/character/Voidwar/us/nemesis"
+    }
+  },
+  {
+    "id": "drakmaw",
+    "name": "Drakmaw",
+    "class": "death-knight",
+    "race": "orc",
+    "spec": "Blood",
+    "heroSpec": "Rider of the Apocalypse",
+    "role": "tank",
+    "type": "main",
+    "discord": "drakmaw#0002",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/120/example-drakmaw-avatar.jpg",
+    "raiderIo": {
+      "io": 3210,
+      "bestDungeon": "Darkflame Cleft",
+      "highestKey": 15,
+      "realmRank": 289,
+      "profileUrl": "https://raider.io/characters/us/azralon/Drakmaw"
+    },
+    "warcraftLogs": {
+      "avgParse": 72,
+      "bestParse": 88,
+      "attendance": 95,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Drakmaw"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Drakmaw",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-drakmaw",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Drakmaw",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Drakmaw",
+      "wipefest": null
+    }
+  },
+  {
+    "id": "seraphis",
+    "name": "Seraphis",
+    "class": "paladin",
+    "race": "blood-elf",
+    "spec": "Holy",
+    "heroSpec": "Herald of the Sun",
+    "role": "healer",
+    "type": "main",
+    "discord": "seraphis#0003",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/80/example-seraphis-avatar.jpg",
+    "raiderIo": {
+      "io": 2980,
+      "bestDungeon": "Priory of the Sacred Flame",
+      "highestKey": 14,
+      "realmRank": 412,
+      "profileUrl": "https://raider.io/characters/us/azralon/Seraphis"
+    },
+    "warcraftLogs": {
+      "avgParse": 85,
+      "bestParse": 97,
+      "attendance": 92,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Seraphis"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Seraphis",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-seraphis",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Seraphis",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Seraphis",
+      "wipefest": "https://www.wipefest.gg/character/Seraphis/us/azralon"
+    }
+  },
+  {
+    "id": "lunaris",
+    "name": "Lunaris",
+    "class": "druid",
+    "race": "night-elf",
+    "spec": "Restoration",
+    "heroSpec": "Keeper of the Grove",
+    "role": "healer",
+    "type": "main",
+    "discord": "lunaris#0004",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/55/example-lunaris-avatar.jpg",
+    "raiderIo": {
+      "io": 3150,
+      "bestDungeon": "The Stonevault",
+      "highestKey": 15,
+      "realmRank": 321,
+      "profileUrl": "https://raider.io/characters/us/azralon/Lunaris"
+    },
+    "warcraftLogs": {
+      "avgParse": 79,
+      "bestParse": 93,
+      "attendance": 88,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Lunaris"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Lunaris",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-lunaris",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Lunaris",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Lunaris",
+      "wipefest": null
+    }
+  },
+  {
+    "id": "mistweave",
+    "name": "Mistweave",
+    "class": "monk",
+    "race": "pandaren",
+    "spec": "Mistweaver",
+    "heroSpec": "Master of Harmony",
+    "role": "healer",
+    "type": "alt",
+    "discord": "mistweave#0005",
+    "avatar": null,
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": null
+    },
+    "warcraftLogs": {
+      "avgParse": 61,
+      "bestParse": 74,
+      "attendance": 75,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Mistweave"
+    },
+    "externalLinks": {
+      "raiderIo": null,
+      "raidbots": "https://www.raidbots.com/simbot/report/example-mistweave",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Mistweave",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Mistweave",
+      "wipefest": null
+    }
+  },
+  {
+    "id": "zynthara",
+    "name": "Zynthara",
+    "class": "mage",
+    "race": "void-elf",
+    "spec": "Frost",
+    "heroSpec": "Frostfire",
+    "role": "dps",
+    "type": "main",
+    "discord": "zynthara#0006",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/65/example-zynthara-avatar.jpg",
+    "raiderIo": {
+      "io": 3680,
+      "bestDungeon": "Cinderbrew Meadery",
+      "highestKey": 16,
+      "realmRank": 98,
+      "profileUrl": "https://raider.io/characters/us/azralon/Zynthara"
+    },
+    "warcraftLogs": {
+      "avgParse": 91,
+      "bestParse": 99,
+      "attendance": 100,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Zynthara"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Zynthara",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-zynthara",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Zynthara",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Zynthara",
+      "wipefest": "https://www.wipefest.gg/character/Zynthara/us/azralon"
+    }
+  },
+  {
+    "id": "shadowbolt",
+    "name": "Shadowbolt",
+    "class": "warlock",
+    "race": "undead",
+    "spec": "Destruction",
+    "heroSpec": "Hellcaller",
+    "role": "dps",
+    "type": "main",
+    "discord": "shadowbolt#0007",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/45/example-shadowbolt-avatar.jpg",
+    "raiderIo": {
+      "io": 2870,
+      "bestDungeon": "The Dawnbreaker",
+      "highestKey": 13,
+      "realmRank": 534,
+      "profileUrl": "https://raider.io/characters/us/azralon/Shadowbolt"
+    },
+    "warcraftLogs": {
+      "avgParse": 74,
+      "bestParse": 89,
+      "attendance": 83,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Shadowbolt"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Shadowbolt",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-shadowbolt",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Shadowbolt",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Shadowbolt",
+      "wipefest": null
+    }
+  },
+  {
+    "id": "specter",
+    "name": "Specter",
+    "class": "rogue",
+    "race": "human",
+    "spec": "Subtlety",
+    "heroSpec": "Deathstalker",
+    "role": "dps",
+    "type": "main",
+    "discord": "specter#0008",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/22/example-specter-avatar.jpg",
+    "raiderIo": {
+      "io": 3320,
+      "bestDungeon": "Ara-Kara, City of Echoes",
+      "highestKey": 16,
+      "realmRank": 198,
+      "profileUrl": "https://raider.io/characters/us/azralon/Specter"
+    },
+    "warcraftLogs": {
+      "avgParse": 82,
+      "bestParse": 96,
+      "attendance": 91,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Specter"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Specter",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-specter",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Specter",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Specter",
+      "wipefest": null
+    }
+  },
+  {
+    "id": "thunderpeak",
+    "name": "Thunderpeak",
+    "class": "shaman",
+    "race": "tauren",
+    "spec": "Enhancement",
+    "heroSpec": "Totemic",
+    "role": "dps",
+    "type": "main",
+    "discord": "thunderpeak#0009",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/33/example-thunderpeak-avatar.jpg",
+    "raiderIo": {
+      "io": 3055,
+      "bestDungeon": "City of Threads",
+      "highestKey": 14,
+      "realmRank": 367,
+      "profileUrl": "https://raider.io/characters/us/azralon/Thunderpeak"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": null
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Thunderpeak",
+      "raidbots": null,
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Thunderpeak",
+      "warcraftLogs": null,
+      "wipefest": null
+    }
+  },
+  {
+    "id": "ashbringer",
+    "name": "Ashbringer",
+    "class": "demon-hunter",
+    "race": "night-elf",
+    "spec": "Havoc",
+    "heroSpec": "Fel-Scarred",
+    "role": "dps",
+    "type": "main",
+    "discord": "ashbringer#0010",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/77/example-ashbringer-avatar.jpg",
+    "raiderIo": {
+      "io": 3490,
+      "bestDungeon": "Grim Batol",
+      "highestKey": 17,
+      "realmRank": 135,
+      "profileUrl": "https://raider.io/characters/us/azralon/Ashbringer"
+    },
+    "warcraftLogs": {
+      "avgParse": 88,
+      "bestParse": 98,
+      "attendance": 96,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Ashbringer"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Ashbringer",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-ashbringer",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Ashbringer",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Ashbringer",
+      "wipefest": "https://www.wipefest.gg/character/Ashbringer/us/azralon"
+    }
+  },
+  {
+    "id": "feralwind",
+    "name": "Feralwind",
+    "class": "hunter",
+    "race": "zandalari-troll",
+    "spec": "Beast Mastery",
+    "heroSpec": "Pack Leader",
+    "role": "dps",
+    "type": "alt",
+    "discord": "feralwind#0011",
+    "avatar": null,
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": null
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": null
+    },
+    "externalLinks": {
+      "raiderIo": null,
+      "raidbots": null,
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Feralwind",
+      "warcraftLogs": null,
+      "wipefest": null
+    }
+  },
+  {
+    "id": "veilmancer",
+    "name": "Veilmancer",
+    "class": "priest",
+    "race": "draenei",
+    "spec": "Shadow",
+    "heroSpec": "Voidweaver",
+    "role": "dps",
+    "type": "main",
+    "discord": "veilmancer#0012",
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/88/example-veilmancer-avatar.jpg",
+    "raiderIo": {
+      "io": 2740,
+      "bestDungeon": "Mechagon Workshop",
+      "highestKey": 12,
+      "realmRank": 621,
+      "profileUrl": "https://raider.io/characters/us/azralon/Veilmancer"
+    },
+    "warcraftLogs": {
+      "avgParse": 67,
+      "bestParse": 84,
+      "attendance": 79,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Veilmancer"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/azralon/Veilmancer",
+      "raidbots": "https://www.raidbots.com/simbot/report/example-veilmancer",
+      "archon": "https://www.archon.gg/wow/characters/us/azralon/Veilmancer",
+      "warcraftLogs": "https://www.warcraftlogs.com/character/us/azralon/Veilmancer",
+      "wipefest": null
+    }
+  }
+]

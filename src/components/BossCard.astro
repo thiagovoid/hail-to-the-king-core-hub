@@ -1,0 +1,201 @@
+---
+/**
+ * BossCard.astro — Acordeão de boss para a seção Progressão
+ * Estilo Raider.IO: faixa de cor por status, barra de pull, kill date destacada.
+ */
+
+import type { Boss } from '@/types/index';
+import { safeUrl } from '@/utils/progression';
+import { formatDate, formatPercent } from '@/utils/format';
+
+interface Props {
+  boss: Boss;
+  index?: number;
+}
+
+const { boss, index = 0 } = Astro.props;
+
+const isKilled = boss.status === 'killed';
+const isProgress = boss.status === 'progress';
+
+const killDateFormatted = isKilled ? formatDate(boss.killDate) : null;
+const bestPullFormatted = formatPercent(boss.bestPullPercent);
+
+const warcraftLogsUrl = safeUrl(boss.links.warcraftLogs);
+const wipefestUrl = safeUrl(boss.links.wipefest);
+const videoUrl = safeUrl(boss.links.video);
+
+// Visual config per status
+const statusConfig = {
+  killed: {
+    borderClass: 'border-[#22c55e]/20',
+    headerBg: 'bg-[#22c55e]/5',
+    icon: '✓',
+    iconClass: 'text-[#22c55e]',
+    badge: null,
+  },
+  progress: {
+    borderClass: 'border-[#f0a500]/25',
+    headerBg: 'bg-[#f0a500]/5',
+    icon: '▶',
+    iconClass: 'text-[#f0a500]',
+    badge: 'Em Progressão',
+  },
+  not_started: {
+    borderClass: 'border-white/5',
+    headerBg: '',
+    icon: '✗',
+    iconClass: 'text-slate-600',
+    badge: null,
+  },
+};
+
+const sc = statusConfig[boss.status];
+
+// Pull progress bar (0-100 mapped to percent)
+const pullBarWidth = boss.bestPullPercent !== null ? `${boss.bestPullPercent}%` : '0%';
+const pullBarColor = isKilled ? '#22c55e' : isProgress ? '#f0a500' : '#374151';
+---
+
+<details
+  class={`group bg-[#141b2d] border rounded-xl overflow-hidden transition-all duration-200 hover:border-white/14 ${sc.borderClass}`}
+>
+  <!-- Summary row -->
+  <summary
+    class={`flex items-center gap-3 px-4 py-3.5 cursor-pointer list-none select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] ${sc.headerBg} rounded-xl group-open:rounded-b-none transition-colors`}
+    aria-label={`${boss.name} — ${isKilled ? 'morto' : isProgress ? 'em progressão' : 'não iniciado'}`}
+  >
+    <!-- Boss number -->
+    <span class="text-slate-600 text-xs font-mono w-5 text-center shrink-0">
+      {String(index + 1).padStart(2, '0')}
+    </span>
+
+    <!-- Status icon -->
+    <span class={`text-lg font-bold w-5 text-center shrink-0 ${sc.iconClass}`} aria-hidden="true">
+      {sc.icon}
+    </span>
+
+    <!-- Boss name -->
+    <span class={`flex-1 font-semibold text-sm truncate ${isKilled ? 'text-slate-200' : isProgress ? 'text-slate-100' : 'text-slate-500'}`}>
+      {boss.name}
+    </span>
+
+    <!-- Pulls badge -->
+    {boss.pulls > 0 && (
+      <span class="text-slate-500 text-xs font-medium shrink-0 tabular-nums">
+        {boss.pulls} pull{boss.pulls !== 1 ? 's' : ''}
+      </span>
+    )}
+
+    <!-- "Em Progressão" badge -->
+    {isProgress && (
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#f0a500]/15 border border-[#f0a500]/30 text-[#f0a500] shrink-0">
+        EM PROG
+      </span>
+    )}
+
+    <!-- Kill date -->
+    {isKilled && killDateFormatted && (
+      <time datetime={boss.killDate ?? undefined} class="text-[#22c55e]/70 text-xs shrink-0 tabular-nums">
+        {killDateFormatted}
+      </time>
+    )}
+
+    <!-- Chevron -->
+    <svg class="w-3.5 h-3.5 text-slate-600 shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </summary>
+
+  <!-- Expanded body -->
+  <div class="px-4 pb-4 pt-3 border-t border-white/5 bg-[#0d1120]/50">
+
+    <!-- Pull progress bar (only if has data) -->
+    {boss.bestPullPercent !== null && (
+      <div class="mb-4">
+        <div class="flex items-center justify-between text-xs mb-1.5">
+          <span class="text-slate-500 font-medium">Melhor Pull</span>
+          <span class={`font-bold tabular-nums ${isKilled ? 'text-[#22c55e]' : 'text-[#f0a500]'}`}>
+            {bestPullFormatted}
+          </span>
+        </div>
+        <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all"
+            style={`width: ${pullBarWidth}; background-color: ${pullBarColor};`}
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+    )}
+
+    <!-- Stats grid -->
+    <dl class="grid grid-cols-3 gap-3 mb-4">
+      <div>
+        <dt class="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Pulls</dt>
+        <dd class="text-slate-200 text-sm font-bold tabular-nums">{boss.pulls}</dd>
+      </div>
+
+      {isKilled && killDateFormatted && (
+        <div>
+          <dt class="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Kill Date</dt>
+          <dd class="text-[#22c55e] text-sm font-bold">
+            <time datetime={boss.killDate ?? undefined}>{killDateFormatted}</time>
+          </dd>
+        </div>
+      )}
+
+      {!isKilled && boss.bestPullPercent !== null && (
+        <div>
+          <dt class="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Melhor %</dt>
+          <dd class="text-[#f0a500] text-sm font-bold">{bestPullFormatted}</dd>
+        </div>
+      )}
+    </dl>
+
+    <!-- External links -->
+    {(warcraftLogsUrl || wipefestUrl || videoUrl) && (
+      <div class="flex flex-wrap gap-2" role="list" aria-label="Links externos">
+
+        {warcraftLogsUrl && (
+          <a
+            href={warcraftLogsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/7 text-slate-400 text-xs font-medium hover:border-[#f0a500]/30 hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Warcraft Logs — ${boss.name} (nova aba)`}
+          >
+            📊 WCL
+          </a>
+        )}
+
+        {wipefestUrl && (
+          <a
+            href={wipefestUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/7 text-slate-400 text-xs font-medium hover:border-slate-400/30 hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Wipefest — ${boss.name} (nova aba)`}
+          >
+            🔍 Wipefest
+          </a>
+        )}
+
+        {videoUrl && (
+          <a
+            href={videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+            class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/7 text-slate-400 text-xs font-medium hover:border-rose-400/30 hover:text-rose-300 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+            aria-label={`Vídeo da Kill — ${boss.name} (nova aba)`}
+          >
+            🎬 Vídeo
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</details>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1786167342002" clover="3.2.0">
+  <project timestamp="1786167342003" name="All files">
+    <metrics statements="161" coveredstatements="159" conditionals="90" coveredconditionals="87" methods="11" coveredmethods="11" elements="262" coveredelements="257" complexity="0" loc="161" ncloc="161" packages="1" files="4" classes="4"/>
+    <file name="format.ts" path="C:\Coding\Projetos\kiro-projects\hail-to-the-king-core-hub\src\utils\format.ts">
+      <metrics statements="45" coveredstatements="43" conditionals="32" coveredconditionals="31" methods="3" coveredmethods="3"/>
+      <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="13" count="214" type="cond" truecount="3" falsecount="0"/>
+      <line num="14" count="32" type="stmt"/>
+      <line num="15" count="32" type="cond" truecount="1" falsecount="0"/>
+      <line num="17" count="214" type="cond" truecount="2" falsecount="0"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="20" count="181" type="stmt"/>
+      <line num="21" count="181" type="stmt"/>
+      <line num="22" count="181" type="stmt"/>
+      <line num="23" count="214" type="cond" truecount="0" falsecount="1"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="26" count="0" type="cond" truecount="1" falsecount="0"/>
+      <line num="27" count="214" type="cond" truecount="4" falsecount="0"/>
+      <line num="28" count="2" type="stmt"/>
+      <line num="29" count="2" type="cond" truecount="1" falsecount="0"/>
+      <line num="30" count="179" type="stmt"/>
+      <line num="31" count="179" type="stmt"/>
+      <line num="37" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="38" count="110" type="cond" truecount="2" falsecount="0"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="40" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="43" count="109" type="stmt"/>
+      <line num="44" count="110" type="cond" truecount="1" falsecount="0"/>
+      <line num="45" count="2" type="stmt"/>
+      <line num="46" count="2" type="cond" truecount="1" falsecount="0"/>
+      <line num="48" count="107" type="stmt"/>
+      <line num="49" count="107" type="stmt"/>
+      <line num="50" count="107" type="stmt"/>
+      <line num="51" count="107" type="stmt"/>
+      <line num="53" count="107" type="stmt"/>
+      <line num="54" count="110" type="cond" truecount="2" falsecount="0"/>
+      <line num="55" count="110" type="cond" truecount="2" falsecount="0"/>
+      <line num="56" count="110" type="cond" truecount="1" falsecount="0"/>
+      <line num="57" count="110" type="cond" truecount="1" falsecount="0"/>
+      <line num="58" count="4" type="stmt"/>
+      <line num="59" count="4" type="cond" truecount="1" falsecount="0"/>
+      <line num="61" count="103" type="stmt"/>
+      <line num="62" count="103" type="stmt"/>
+      <line num="68" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="69" count="104" type="cond" truecount="2" falsecount="0"/>
+      <line num="70" count="1" type="stmt"/>
+      <line num="71" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="72" count="103" type="stmt"/>
+      <line num="73" count="103" type="stmt"/>
+    </file>
+    <file name="loot.ts" path="C:\Coding\Projetos\kiro-projects\hail-to-the-king-core-hub\src\utils\loot.ts">
+      <metrics statements="51" coveredstatements="51" conditionals="23" coveredconditionals="22" methods="3" coveredmethods="3"/>
+      <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="13" count="300" type="cond" truecount="1" falsecount="0"/>
+      <line num="14" count="1365" type="cond" truecount="2" falsecount="0"/>
+      <line num="15" count="569" type="cond" truecount="1" falsecount="0"/>
+      <line num="16" count="569" type="cond" truecount="1" falsecount="0"/>
+      <line num="17" count="1365" type="cond" truecount="3" falsecount="0"/>
+      <line num="18" count="238" type="stmt"/>
+      <line num="19" count="238" type="cond" truecount="1" falsecount="0"/>
+      <line num="20" count="1365" type="cond" truecount="3" falsecount="0"/>
+      <line num="21" count="71" type="stmt"/>
+      <line num="22" count="71" type="cond" truecount="1" falsecount="0"/>
+      <line num="23" count="500" type="stmt"/>
+      <line num="24" count="300" type="stmt"/>
+      <line num="25" count="300" type="stmt"/>
+      <line num="35" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="37" count="204" type="stmt"/>
+      <line num="38" count="204" type="cond" truecount="1" falsecount="0"/>
+      <line num="39" count="862" type="stmt"/>
+      <line num="40" count="862" type="cond" truecount="1" falsecount="0"/>
+      <line num="41" count="5" type="stmt"/>
+      <line num="42" count="862" type="cond" truecount="1" falsecount="0"/>
+      <line num="43" count="857" type="stmt"/>
+      <line num="44" count="857" type="stmt"/>
+      <line num="45" count="862" type="stmt"/>
+      <line num="47" count="204" type="stmt"/>
+      <line num="49" count="204" type="cond" truecount="1" falsecount="0"/>
+      <line num="50" count="857" type="stmt"/>
+      <line num="53" count="857" type="stmt"/>
+      <line num="54" count="857" type="cond" truecount="1" falsecount="0"/>
+      <line num="55" count="857" type="cond" truecount="1" falsecount="0"/>
+      <line num="57" count="857" type="stmt"/>
+      <line num="58" count="857" type="stmt"/>
+      <line num="61" count="857" type="stmt"/>
+      <line num="62" count="857" type="stmt"/>
+      <line num="64" count="857" type="stmt"/>
+      <line num="65" count="857" type="stmt"/>
+      <line num="66" count="857" type="stmt"/>
+      <line num="67" count="857" type="stmt"/>
+      <line num="68" count="857" type="cond" truecount="0" falsecount="1"/>
+      <line num="69" count="857" type="stmt"/>
+      <line num="70" count="857" type="stmt"/>
+      <line num="71" count="857" type="stmt"/>
+      <line num="73" count="204" type="stmt"/>
+      <line num="74" count="204" type="stmt"/>
+      <line num="80" count="857" type="cond" truecount="1" falsecount="0"/>
+      <line num="81" count="857" type="stmt"/>
+      <line num="82" count="857" type="stmt"/>
+      <line num="84" count="857" type="stmt"/>
+      <line num="85" count="857" type="stmt"/>
+      <line num="87" count="857" type="stmt"/>
+      <line num="88" count="857" type="stmt"/>
+    </file>
+    <file name="progression.ts" path="C:\Coding\Projetos\kiro-projects\hail-to-the-king-core-hub\src\utils\progression.ts">
+      <metrics statements="17" coveredstatements="17" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
+      <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="13" count="101" type="stmt"/>
+      <line num="14" count="101" type="stmt"/>
+      <line num="15" count="101" type="cond" truecount="1" falsecount="0"/>
+      <line num="16" count="8" type="stmt"/>
+      <line num="17" count="8" type="cond" truecount="1" falsecount="0"/>
+      <line num="19" count="93" type="stmt"/>
+      <line num="20" count="93" type="cond" truecount="1" falsecount="0"/>
+      <line num="21" count="93" type="stmt"/>
+      <line num="23" count="93" type="stmt"/>
+      <line num="24" count="93" type="stmt"/>
+      <line num="29" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="30" count="104" type="cond" truecount="3" falsecount="0"/>
+      <line num="31" count="3" type="stmt"/>
+      <line num="32" count="3" type="cond" truecount="1" falsecount="0"/>
+      <line num="33" count="101" type="stmt"/>
+      <line num="34" count="101" type="stmt"/>
+    </file>
+    <file name="roster.ts" path="C:\Coding\Projetos\kiro-projects\hail-to-the-king-core-hub\src\utils\roster.ts">
+      <metrics statements="48" coveredstatements="48" conditionals="26" coveredconditionals="25" methods="3" coveredmethods="3"/>
+      <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="14" count="101" type="cond" truecount="1" falsecount="0"/>
+      <line num="15" count="915" type="stmt"/>
+      <line num="16" count="915" type="stmt"/>
+      <line num="18" count="915" type="cond" truecount="3" falsecount="0"/>
+      <line num="19" count="915" type="cond" truecount="2" falsecount="0"/>
+      <line num="20" count="915" type="cond" truecount="2" falsecount="0"/>
+      <line num="22" count="646" type="stmt"/>
+      <line num="23" count="101" type="stmt"/>
+      <line num="24" count="101" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="30" count="1" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="36" count="1" type="stmt"/>
+      <line num="37" count="1" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="40" count="1" type="stmt"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="42" count="1" type="stmt"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="49" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="50" count="115" type="cond" truecount="2" falsecount="0"/>
+      <line num="51" count="2" type="stmt"/>
+      <line num="52" count="2" type="cond" truecount="1" falsecount="0"/>
+      <line num="53" count="115" type="cond" truecount="0" falsecount="1"/>
+      <line num="54" count="115" type="stmt"/>
+      <line num="62" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="63" count="106" type="stmt"/>
+      <line num="64" count="106" type="cond" truecount="1" falsecount="0"/>
+      <line num="65" count="106" type="cond" truecount="1" falsecount="0"/>
+      <line num="67" count="106" type="stmt"/>
+      <line num="68" count="106" type="cond" truecount="1" falsecount="0"/>
+      <line num="69" count="93" type="cond" truecount="2" falsecount="0"/>
+      <line num="70" count="13" type="stmt"/>
+      <line num="72" count="106" type="cond" truecount="2" falsecount="0"/>
+      <line num="74" count="106" type="stmt"/>
+      <line num="75" count="106" type="cond" truecount="1" falsecount="0"/>
+      <line num="76" count="106" type="cond" truecount="1" falsecount="0"/>
+      <line num="77" count="106" type="cond" truecount="1" falsecount="0"/>
+      <line num="78" count="106" type="cond" truecount="1" falsecount="0"/>
+      <line num="79" count="106" type="stmt"/>
+      <line num="81" count="106" type="stmt"/>
+      <line num="82" count="106" type="stmt"/>
+    </file>
+  </project>
+</coverage>

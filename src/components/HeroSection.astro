@@ -1,0 +1,139 @@
+---
+/**
+ * HeroSection.astro — Seção hero da página inicial
+ * Estilo Raider.IO: barra de progressão visual, badges de temporada, overlay gradient.
+ */
+
+import type { SiteConfig, Boss } from '@/types/index';
+import { formatDate } from '@/utils/format';
+import { computeProgression } from '@/utils/progression';
+
+interface Props {
+  config: SiteConfig;
+  bosses: Boss[];
+}
+
+const { config, bosses } = Astro.props;
+
+const lastUpdated = formatDate(config.lastUpdated);
+const progression = computeProgression(bosses);
+const progressPercent = progression.total > 0 ? progression.percent : 0;
+const progressLabel =
+  progression.total > 0
+    ? `${progression.killed}/${progression.total} Mythic`
+    : '—';
+---
+
+<section
+  aria-label="Informações do core de raid"
+  class="relative overflow-hidden bg-[#0a0d14]"
+>
+  <!-- Background layered gradient — evoca a arte das raids WoW -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <!-- Base dark gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0d14] via-[#0d1420] to-[#0a0d14]" />
+    <!-- Gold glow top-left (ponto de luz de raid) -->
+    <div class="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full bg-[#f0a500]/6 blur-[80px]" />
+    <!-- Cyan/teal glow bottom-right -->
+    <div class="absolute -bottom-20 right-0 w-[400px] h-[400px] rounded-full bg-[#22c55e]/5 blur-[80px]" />
+    <!-- Subtle grid pattern overlay -->
+    <div
+      class="absolute inset-0 opacity-[0.03]"
+      style="background-image: linear-gradient(rgba(240,165,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(240,165,0,0.5) 1px, transparent 1px); background-size: 40px 40px;"
+    />
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+
+    <!-- Top badge row -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0a500]/10 border border-[#f0a500]/25 text-[#f0a500] text-xs font-semibold uppercase tracking-wider">
+        🌙 {config.currentSeason}
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold uppercase tracking-wider">
+        🏰 {config.currentRaid}
+      </span>
+    </div>
+
+    <!-- Core name & guild -->
+    <div class="text-center mb-10">
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-wide drop-shadow-[0_0_30px_rgba(240,165,0,0.3)]">
+        <span class="text-[#f0a500]">Hail to the King</span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base font-medium">
+        <span class="text-slate-500">Guild</span>
+        <span class="text-slate-300 mx-1">{config.guild}</span>
+        <span class="text-slate-600 mx-2">·</span>
+        <span class="text-slate-500">Realm</span>
+        <span class="text-slate-300 mx-1">{config.realm}</span>
+      </p>
+    </div>
+
+    <!-- Progression block — estilo Raider.IO -->
+    <div class="max-w-lg mx-auto mb-10">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-slate-300 text-sm font-semibold">Progressão Mythic</span>
+        <span class="text-[#f0a500] text-sm font-bold tabular-nums">{progressLabel}</span>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-bar" role="progressbar" aria-valuenow={progressPercent} aria-valuemin={0} aria-valuemax={100} aria-label={`${progressLabel} — ${progressPercent}%`}>
+        <div class="progress-bar-fill" style={`width: ${progressPercent}%`} />
+      </div>
+
+      <!-- Boss dots -->
+      {bosses.length > 0 && (
+        <div class="flex items-center gap-1.5 mt-3" aria-hidden="true">
+          {bosses.map((boss) => (
+            <div
+              class={[
+                'flex-1 h-1.5 rounded-full',
+                boss.status === 'killed'
+                  ? 'bg-[#22c55e]'
+                  : boss.status === 'progress'
+                  ? 'bg-[#f0a500]'
+                  : 'bg-white/10',
+              ].join(' ')}
+              title={boss.name}
+            />
+          ))}
+        </div>
+      )}
+
+      <!-- Boss names row (small) -->
+      {bosses.length > 0 && bosses.length <= 8 && (
+        <div class="flex items-center gap-1.5 mt-1.5" aria-hidden="true">
+          {bosses.map((boss) => (
+            <p class={[
+              'flex-1 text-center text-[9px] font-medium truncate',
+              boss.status === 'killed' ? 'text-[#22c55e]/70' : 'text-slate-600',
+            ].join(' ')}>
+              {boss.name.split(' ')[0]}
+            </p>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- Next raid + last updated -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+      {config.nextRaid && (
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-slate-500">Próxima Raid:</span>
+          <span class="text-slate-200 font-semibold">{formatDate(config.nextRaid.date)}</span>
+          <span class="text-slate-600">·</span>
+          <span class="text-slate-400">{config.nextRaid.time}</span>
+        </div>
+      )}
+      <p class="text-slate-600 text-xs">
+        Atualizado em
+        <time datetime={config.lastUpdated} class="text-slate-500 font-medium ml-1">
+          {lastUpdated}
+        </time>
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0a0d14] to-transparent pointer-events-none" aria-hidden="true" />
+</section>

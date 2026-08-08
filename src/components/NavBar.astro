@@ -1,0 +1,142 @@
+---
+/**
+ * NavBar.astro — Barra de navegação principal do Core Hub
+ * Estilo Raider.IO: sticky, fundo escuro com blur, logo dourado, indicador de ativo.
+ */
+
+const currentPath = Astro.url.pathname;
+
+interface NavItem {
+  label: string;
+  href: string;
+  icon: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Home',          href: '/hail-to-the-king-core-hub/',             icon: '🏠' },
+  { label: 'Progressão',    href: '/hail-to-the-king-core-hub/progressao/',  icon: '⚔' },
+  { label: 'Roster',        href: '/hail-to-the-king-core-hub/roster/',      icon: '👥' },
+  { label: 'Mythic+',       href: '/hail-to-the-king-core-hub/mythic/',      icon: '🗝' },
+  { label: 'Logs',          href: '/hail-to-the-king-core-hub/logs/',        icon: '📜' },
+  { label: 'Loots',         href: '/hail-to-the-king-core-hub/loots/',       icon: '💎' },
+  { label: 'Planejamento',  href: '/hail-to-the-king-core-hub/planejamento/', icon: '🎯' },
+  { label: 'Ferramentas',   href: '/hail-to-the-king-core-hub/ferramentas/', icon: '🛠' },
+  { label: 'Regras',        href: '/hail-to-the-king-core-hub/regras/',      icon: '📋' },
+];
+
+function isActive(href: string): boolean {
+  return currentPath === href;
+}
+---
+
+<nav role="navigation" aria-label="Menu principal">
+  <div class="sticky top-0 z-50 bg-[#0a0d14]/95 backdrop-blur-md border-b border-white/5">
+
+    <!-- Top accent line -->
+    <div class="h-[2px] bg-gradient-to-r from-transparent via-[#f0a500] to-transparent opacity-60" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14">
+
+        <!-- Branding -->
+        <a
+          href="/hail-to-the-king-core-hub/"
+          class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] rounded"
+          aria-label="Hail to the King — página inicial"
+        >
+          <span class="text-xl" aria-hidden="true">⚔</span>
+          <span class="font-display text-[#f0a500] font-bold text-base tracking-wide group-hover:text-[#fbbf24] transition-colors">
+            Hail to the King
+          </span>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden lg:flex items-center">
+          {navItems.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <a
+                href={item.href}
+                class={[
+                  'relative px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] rounded',
+                  active
+                    ? 'text-[#f0a500]'
+                    : 'text-slate-400 hover:text-slate-100',
+                ].join(' ')}
+                aria-current={active ? 'page' : undefined}
+              >
+                {item.label}
+                {active && (
+                  <span
+                    class="absolute inset-x-2 -bottom-[1px] h-[2px] bg-[#f0a500] rounded-full"
+                    aria-hidden="true"
+                  />
+                )}
+              </a>
+            );
+          })}
+        </div>
+
+        <!-- Mobile hamburger button -->
+        <button
+          id="hamburger-btn"
+          type="button"
+          class="lg:hidden inline-flex items-center justify-center p-2 rounded text-slate-400 hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Abrir menu"
+        >
+          <svg id="hamburger-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/5 bg-[#0a0d14]">
+      <div class="px-4 py-3 space-y-0.5">
+        {navItems.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={item.href}
+              class={[
+                'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]',
+                active
+                  ? 'bg-[#f0a500]/10 text-[#f0a500]'
+                  : 'text-slate-400 hover:text-slate-100 hover:bg-white/5',
+              ].join(' ')}
+              aria-current={active ? 'page' : undefined}
+            >
+              <span aria-hidden="true">{item.icon}</span>
+              {item.label}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('hamburger-btn') as HTMLButtonElement | null;
+  const menu = document.getElementById('mobile-menu') as HTMLElement | null;
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      btn.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
+      hamburgerIcon?.classList.toggle('hidden', !isOpen);
+      closeIcon?.classList.toggle('hidden', isOpen);
+    });
+  }
+</script>

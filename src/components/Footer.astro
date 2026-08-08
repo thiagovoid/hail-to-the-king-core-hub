@@ -1,0 +1,47 @@
+---
+/**
+ * Footer.astro — Rodapé global do Core Hub
+ */
+
+import seasonData from '../../data/seasons/midnight-s2.json';
+import { formatDate } from '@/utils/format';
+
+const lastUpdated = formatDate(seasonData.config.lastUpdated);
+---
+
+<footer role="contentinfo" class="bg-[#0a0d14] border-t border-white/5 mt-auto">
+  <!-- Top accent line -->
+  <div class="h-px bg-gradient-to-r from-transparent via-[#f0a500]/20 to-transparent" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+
+      <!-- Brand -->
+      <div class="flex items-center gap-2.5">
+        <span class="text-[#f0a500] text-lg" aria-hidden="true">⚔</span>
+        <div>
+          <p class="font-display font-bold text-[#f0a500] text-sm tracking-wide">Hail to the King</p>
+          <p class="text-slate-600 text-xs mt-0.5">Core Hub · {seasonData.config.currentSeason}</p>
+        </div>
+      </div>
+
+      <!-- Center — last updated -->
+      <p class="text-slate-600 text-xs text-center">
+        Última atualização:
+        <span class="text-slate-500 font-medium ml-1">{lastUpdated}</span>
+      </p>
+
+      <!-- GitHub link -->
+      <a
+        href="https://github.com/hail-to-the-king/hail-to-the-king-core-hub"
+        aria-label="Repositório no GitHub (nova aba)"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-slate-600 hover:text-[#f0a500] text-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] rounded"
+      >
+        GitHub ↗
+      </a>
+
+    </div>
+  </div>
+</footer>
