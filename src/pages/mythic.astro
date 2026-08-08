@@ -61,7 +61,7 @@ const weekDate = formatDate((weekData as any).date ?? null);
           </div>
         </div>
 
-        <p class="text-slate-500 text-sm shrink-0">
+        <p class="text-slate-400 text-sm shrink-0">
           Semana {(weekData as any).weekNumber} ·{' '}
           <time datetime={(weekData as any).date} class="text-slate-400 font-medium">
             {weekDate}
@@ -140,7 +140,7 @@ const weekDate = formatDate((weekData as any).date ?? null);
             <tbody class="divide-y divide-slate-700/30">
               {topKeys.map((key, index) => (
                 <tr class="hover:bg-[#1a2030]/60 transition-colors">
-                  <td class="px-4 py-3 text-slate-500 tabular-nums font-medium">
+                  <td class="px-4 py-3 text-slate-400 tabular-nums font-medium">
                     {index + 1}
                   </td>
                   <td class="px-4 py-3 text-slate-200 font-medium">
@@ -157,7 +157,7 @@ const weekDate = formatDate((weekData as any).date ?? null);
           </table>
         </div>
       ) : (
-        <p class="text-slate-500 text-center py-10">
+        <p class="text-slate-400 text-center py-10">
           Nenhuma top key registrada para esta semana.
         </p>
       )}

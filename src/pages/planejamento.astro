@@ -78,7 +78,7 @@ const totalInComposition =
   <!-- Empty state — Req 8.5 -->
   {!hasData ? (
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      <p class="text-slate-500 text-center text-base">
+      <p class="text-slate-400 text-center text-base">
         Planejamento da semana ainda não publicado.
       </p>
     </div>
@@ -153,7 +153,7 @@ const totalInComposition =
                 <h3 class="text-sm font-semibold text-[#f0a500] uppercase tracking-wide">
                   Tanks
                 </h3>
-                <span class="ml-auto text-xs text-slate-500 font-medium">
+                <span class="ml-auto text-xs text-slate-400 font-medium">
                   {schedule.composition.tanks.length}
                 </span>
               </div>
@@ -166,7 +166,7 @@ const totalInComposition =
                   ))}
                 </ul>
               ) : (
-                <p class="px-5 py-4 text-slate-500 text-sm italic">Nenhum tank confirmado.</p>
+                <p class="px-5 py-4 text-slate-400 text-sm italic">Nenhum tank confirmado.</p>
               )}
             </div>
 
@@ -177,7 +177,7 @@ const totalInComposition =
                 <h3 class="text-sm font-semibold text-[#00c48c] uppercase tracking-wide">
                   Healers
                 </h3>
-                <span class="ml-auto text-xs text-slate-500 font-medium">
+                <span class="ml-auto text-xs text-slate-400 font-medium">
                   {schedule.composition.healers.length}
                 </span>
               </div>
@@ -190,7 +190,7 @@ const totalInComposition =
                   ))}
                 </ul>
               ) : (
-                <p class="px-5 py-4 text-slate-500 text-sm italic">Nenhum healer confirmado.</p>
+                <p class="px-5 py-4 text-slate-400 text-sm italic">Nenhum healer confirmado.</p>
               )}
             </div>
 
@@ -201,7 +201,7 @@ const totalInComposition =
                 <h3 class="text-sm font-semibold text-[#e84040] uppercase tracking-wide">
                   DPS
                 </h3>
-                <span class="ml-auto text-xs text-slate-500 font-medium">
+                <span class="ml-auto text-xs text-slate-400 font-medium">
                   {schedule.composition.dps.length}
                 </span>
               </div>
@@ -214,7 +214,7 @@ const totalInComposition =
                   ))}
                 </ul>
               ) : (
-                <p class="px-5 py-4 text-slate-500 text-sm italic">Nenhum DPS confirmado.</p>
+                <p class="px-5 py-4 text-slate-400 text-sm italic">Nenhum DPS confirmado.</p>
               )}
             </div>
 
@@ -245,7 +245,7 @@ const totalInComposition =
             ))}
           </ul>
         ) : (
-          <p class="text-slate-500 text-sm">Nenhuma ausência confirmada para esta semana.</p>
+          <p class="text-slate-400 text-sm">Nenhuma ausência confirmada para esta semana.</p>
         )}
       </section>
 

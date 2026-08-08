@@ -17,7 +17,7 @@ const sorted = sortPlayersByIo(players);
 
 // IO tier color — same logic as PlayerCard
 function ioColor(io: number | null): string {
-  if (io === null) return 'text-slate-600';
+  if (io === null) return 'text-slate-400';
   if (io >= 4000) return 'text-[#f0a500]';
   if (io >= 3500) return 'text-[#c084fc]';
   if (io >= 3000) return 'text-[#60a5fa]';
@@ -62,10 +62,10 @@ for (let i = 0; i < sorted.length; i++) {
   <table class="w-full text-sm" aria-label="Ranking Mythic+ dos jogadores">
     <thead>
       <tr class="bg-[#0d1120] border-b border-white/5">
-        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500 w-14">#</th>
-        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500">Jogador</th>
-        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500">Spec</th>
-        <th scope="col" class="px-4 py-3 text-right text-[10px] font-bold uppercase tracking-wider text-slate-500 w-28">IO Score</th>
+        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-400 w-14">#</th>
+        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-400">Jogador</th>
+        <th scope="col" class="px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-400">Spec</th>
+        <th scope="col" class="px-4 py-3 text-right text-[10px] font-bold uppercase tracking-wider text-slate-400 w-28">IO Score</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-white/4">
@@ -83,7 +83,7 @@ for (let i = 0; i < sorted.length; i++) {
             ) : ioNull ? (
               <span class="text-slate-700 text-xs">—</span>
             ) : (
-              <span class="text-slate-500 font-medium text-xs" aria-label={`${rank}º lugar`}>{rank}</span>
+              <span class="text-slate-400 font-medium text-xs" aria-label={`${rank}º lugar`}>{rank}</span>
             )}
           </td>
 

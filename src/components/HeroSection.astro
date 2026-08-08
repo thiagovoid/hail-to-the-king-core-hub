@@ -60,12 +60,12 @@ const progressLabel =
       <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-wide drop-shadow-[0_0_30px_rgba(240,165,0,0.3)]">
         <span class="text-[#f0a500]">Hail to the King</span>
       </h1>
-      <p class="text-slate-400 text-sm sm:text-base font-medium">
-        <span class="text-slate-500">Guild</span>
-        <span class="text-slate-300 mx-1">{config.guild}</span>
-        <span class="text-slate-600 mx-2">·</span>
-        <span class="text-slate-500">Realm</span>
-        <span class="text-slate-300 mx-1">{config.realm}</span>
+      <p class="text-slate-300 text-sm sm:text-base font-medium">
+        <span class="text-slate-400">Guild</span>
+        <span class="text-slate-200 mx-1">{config.guild}</span>
+        <span class="text-slate-400 mx-2" aria-hidden="true">·</span>
+        <span class="text-slate-400">Realm</span>
+        <span class="text-slate-200 mx-1">{config.realm}</span>
       </p>
     </div>
 
@@ -106,7 +106,7 @@ const progressLabel =
           {bosses.map((boss) => (
             <p class={[
               'flex-1 text-center text-[9px] font-medium truncate',
-              boss.status === 'killed' ? 'text-[#22c55e]/70' : 'text-slate-600',
+              boss.status === 'killed' ? 'text-[#22c55e]/70' : 'text-slate-400',
             ].join(' ')}>
               {boss.name.split(' ')[0]}
             </p>
@@ -119,15 +119,15 @@ const progressLabel =
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
       {config.nextRaid && (
         <div class="flex items-center gap-2 text-sm">
-          <span class="text-slate-500">Próxima Raid:</span>
+          <span class="text-slate-400">Próxima Raid:</span>
           <span class="text-slate-200 font-semibold">{formatDate(config.nextRaid.date)}</span>
-          <span class="text-slate-600">·</span>
-          <span class="text-slate-400">{config.nextRaid.time}</span>
+          <span class="text-slate-400 mx-1" aria-hidden="true">·</span>
+          <span class="text-slate-300">{config.nextRaid.time}</span>
         </div>
       )}
-      <p class="text-slate-600 text-xs">
+      <p class="text-slate-400 text-xs">
         Atualizado em
-        <time datetime={config.lastUpdated} class="text-slate-500 font-medium ml-1">
+        <time datetime={config.lastUpdated} class="text-slate-300 font-medium ml-1">
           {lastUpdated}
         </time>
       </p>

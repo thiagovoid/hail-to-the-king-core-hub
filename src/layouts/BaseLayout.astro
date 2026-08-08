@@ -1,7 +1,6 @@
 ---
 /**
  * BaseLayout.astro — Layout base do Core Hub
- * Fornece <head>, NavBar, slot principal e Footer para todas as páginas.
  */
 
 import '../styles/global.css';
@@ -27,13 +26,22 @@ const { title, description } = Astro.props;
     />
     <title>{title} | Hail to the King</title>
 
-    <!-- Fonts loaded via global.css -->
+    <!--
+      Fix: uses-rel-preconnect — preconnect para origens externas críticas.
+      Fix: network-dependency-tree-insight — font display=swap evita bloqueio de render.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body class="bg-[#0a0d14] text-slate-200 min-h-screen flex flex-col">
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#f0a500] focus:text-[#0d1117] focus:font-bold focus:rounded focus:outline-none"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#f0a500] focus:text-[#0a0d14] focus:font-bold focus:rounded focus:outline-none"
     >
       Ir para o conteúdo principal
     </a>
