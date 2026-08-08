@@ -38,16 +38,16 @@ function isActive(href: string): boolean {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-14">
 
-        <!-- Branding -->
+        <!-- Branding — Fix label-content-name-mismatch: remove aria-label, use aria-label only when no visible text -->
         <a
           href="/hail-to-the-king-core-hub/"
           class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] rounded"
-          aria-label="Hail to the King — página inicial"
         >
           <span class="text-xl" aria-hidden="true">⚔</span>
           <span class="font-display text-[#f0a500] font-bold text-base tracking-wide group-hover:text-[#fbbf24] transition-colors">
             Hail to the King
           </span>
+          <span class="sr-only">— página inicial</span>
         </a>
 
         <!-- Desktop links -->

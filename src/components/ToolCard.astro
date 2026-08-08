@@ -28,13 +28,12 @@ const { tool } = Astro.props;
     {tool.description}
   </p>
 
-  <!-- External link -->
+  <!-- External link — Fix label-content-name-mismatch: aria-label must match visible text -->
   <a
     href={tool.url}
     target="_blank"
     rel="noopener noreferrer"
     class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700/50 text-slate-300 text-xs font-medium hover:border-[#f0a500]/50 hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]"
-    aria-label={`Acessar ${tool.name} (abre em nova aba)`}
   >
     <svg
       class="w-3.5 h-3.5 shrink-0"
@@ -51,5 +50,6 @@ const { tool } = Astro.props;
       />
     </svg>
     Acessar ferramenta
+    <span class="sr-only">(abre em nova aba)</span>
   </a>
 </article>

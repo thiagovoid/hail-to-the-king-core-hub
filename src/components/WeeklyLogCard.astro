@@ -64,17 +64,18 @@ const highlightItems = [
         <!-- Duration -->
         <span
           class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 border border-slate-700/50 text-slate-300 text-sm font-medium"
-          aria-label={`Duração: ${durationFormatted}`}
         >
-          ⏱ {durationFormatted}
+          <span aria-hidden="true">⏱</span>
+          <span>{durationFormatted}</span>
+          <span class="sr-only">duração</span>
         </span>
 
         <!-- Bosses killed -->
         <span
           class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00c48c]/10 border border-[#00c48c]/30 text-[#00c48c] text-sm font-semibold"
-          aria-label={`${log.bossesKilled} bosses mortos`}
         >
-          ⚔ {log.bossesKilled} boss{log.bossesKilled !== 1 ? 'es' : ''}
+          <span aria-hidden="true">⚔</span>
+          <span>{log.bossesKilled} boss{log.bossesKilled !== 1 ? 'es' : ''} mortos</span>
         </span>
 
       </div>
@@ -124,6 +125,7 @@ const highlightItems = [
     >
       <div class="flex flex-wrap gap-2" role="list">
 
+        <!-- Fix label-content-name-mismatch: accessible name must include visible text -->
         {warcraftLogsUrl && (
           <a
             href={warcraftLogsUrl}
@@ -131,9 +133,9 @@ const highlightItems = [
             rel="noopener noreferrer"
             role="listitem"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700/50 text-slate-300 text-xs font-medium hover:border-[#f0a500]/50 hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]"
-            aria-label={`Warcraft Logs — Semana ${log.weekNumber} (abre em nova aba)`}
           >
-            📊 Warcraft Logs
+            <span aria-hidden="true">📊</span> Warcraft Logs
+            <span class="sr-only">(abre em nova aba)</span>
           </a>
         )}
 
@@ -144,9 +146,9 @@ const highlightItems = [
             rel="noopener noreferrer"
             role="listitem"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700/50 text-slate-300 text-xs font-medium hover:border-[#f0a500]/50 hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]"
-            aria-label={`Wipefest — Semana ${log.weekNumber} (abre em nova aba)`}
           >
-            🔍 Wipefest
+            <span aria-hidden="true">🔍</span> Wipefest
+            <span class="sr-only">(abre em nova aba)</span>
           </a>
         )}
 

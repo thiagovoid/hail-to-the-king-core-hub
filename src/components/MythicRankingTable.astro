@@ -75,15 +75,15 @@ for (let i = 0; i < sorted.length; i++) {
           <!-- Rank -->
           <td class="px-4 py-3 tabular-nums">
             {rank === 1 && !ioNull ? (
-              <span class="text-[#f0a500] font-black text-base" aria-label="1º lugar">🥇</span>
+              <span class="text-[#f0a500] font-black text-base"><span aria-hidden="true">🥇</span><span class="sr-only">1º lugar</span></span>
             ) : rank === 2 && !ioNull ? (
-              <span class="text-slate-300 font-black" aria-label="2º lugar">🥈</span>
+              <span class="text-slate-300 font-black"><span aria-hidden="true">🥈</span><span class="sr-only">2º lugar</span></span>
             ) : rank === 3 && !ioNull ? (
-              <span class="text-slate-400 font-black" aria-label="3º lugar">🥉</span>
+              <span class="text-slate-400 font-black"><span aria-hidden="true">🥉</span><span class="sr-only">3º lugar</span></span>
             ) : ioNull ? (
-              <span class="text-slate-700 text-xs">—</span>
+              <span class="text-slate-700 text-xs" aria-label="sem ranking">—</span>
             ) : (
-              <span class="text-slate-400 font-medium text-xs" aria-label={`${rank}º lugar`}>{rank}</span>
+              <span class="text-slate-400 font-medium text-xs">{rank}</span>
             )}
           </td>
 

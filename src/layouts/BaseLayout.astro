@@ -27,15 +27,23 @@ const { title, description } = Astro.props;
     <title>{title} | Hail to the King</title>
 
     <!--
-      Fix: uses-rel-preconnect — preconnect para origens externas críticas.
-      Fix: network-dependency-tree-insight — font display=swap evita bloqueio de render.
+      Fix network-dependency-tree: preload the font stylesheet to break the chain.
+      Fix uses-rel-preconnect: preconnect to font origins.
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=optional"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=optional"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
 
   <body class="bg-[#0a0d14] text-slate-200 min-h-screen flex flex-col">
