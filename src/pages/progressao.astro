@@ -1,7 +1,7 @@
 ---
 /**
  * progressao.astro — Página de Progressão do Core Hub
- * Exibe o status detalhado de cada boss da raid atual com acordeão expansível.
+ * Exibe o status detalhado de cada boss da raid atual com barras Normal e Heroica.
  */
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -13,15 +13,18 @@ import { formatDate } from '@/utils/format';
 import seasonJson from '../../data/seasons/midnight-s2.json';
 
 const config = seasonJson.config as SiteConfig;
-const bosses = seasonJson.bosses as Boss[];
+const bossesNormal = seasonJson.bossesNormal as Boss[];
+const bossesHeroic = seasonJson.bossesHeroic as Boss[];
 
-const progression = computeProgression(bosses);
+const progressionNormal = computeProgression(bossesNormal);
+const progressionHeroic = computeProgression(bossesHeroic);
 
-// Build progression summary: "7/8 Mythic" or "7/8 (87%)"
-const progressionSummary = progression.total > 0
-  ? progression.killed < progression.total
-    ? `${progression.killed}/${progression.total} (${progression.percent}%)`
-    : `${progression.killed}/${progression.total} Mythic`
+const normalSummary = progressionNormal.total > 0
+  ? `${progressionNormal.killed}/${progressionNormal.total} Normal`
+  : '—';
+
+const heroicSummary = progressionHeroic.total > 0
+  ? `${progressionHeroic.killed}/${progressionHeroic.total} Heroica`
   : '—';
 
 const lastUpdated = formatDate(config.lastUpdated);
@@ -29,7 +32,7 @@ const lastUpdated = formatDate(config.lastUpdated);
 
 <BaseLayout
   title="Progressão"
-  description={`Progressão Mythic do core Hail to the King — ${config.currentRaid}. ${progressionSummary}.`}
+  description={`Progressão do Core Nemesis — ${config.currentRaid}. ${normalSummary} | ${heroicSummary}.`}
 >
   <!-- Page header -->
   <section
@@ -42,17 +45,22 @@ const lastUpdated = formatDate(config.lastUpdated);
         <div>
           <!-- Raid name -->
           <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
-            Progressão Mythic
+            Progressão — {config.currentRaid}
           </p>
           <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-3">
             {config.currentRaid}
           </h1>
-          <!-- Progression summary badge -->
+          <!-- Progression summary badges -->
           <div class="flex flex-wrap items-center gap-3">
             <span
-              class="inline-flex items-center px-3 py-1 rounded-full bg-[#00c48c]/10 border border-[#00c48c]/30 text-[#00c48c] text-sm font-semibold"
+              class="inline-flex items-center px-3 py-1 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e] text-sm font-semibold"
             >
-              ⚔ {progressionSummary}
+              ⚔ {normalSummary}
+            </span>
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/30 text-[#a855f7] text-sm font-semibold"
+            >
+              ⚔ {heroicSummary}
             </span>
             <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] text-sm font-medium">
               🌙 {config.currentSeason}
@@ -72,17 +80,33 @@ const lastUpdated = formatDate(config.lastUpdated);
     </div>
   </section>
 
-  <!-- Boss list -->
+  <!-- Normal Boss list -->
   <section
-    aria-label="Lista de bosses"
+    aria-label="Bosses em dificuldade Normal"
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
   >
-    <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-6">
-      Encontros
+    <h2 class="text-[#22c55e] text-xs font-semibold uppercase tracking-widest mb-6">
+      Normal — {normalSummary}
     </h2>
 
     <div class="flex flex-col gap-2">
-      {bosses.map((boss, i) => (
+      {bossesNormal.map((boss, i) => (
+        <BossCard boss={boss} index={i} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Heroic Boss list -->
+  <section
+    aria-label="Bosses em dificuldade Heroica"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
+  >
+    <h2 class="text-[#a855f7] text-xs font-semibold uppercase tracking-widest mb-6">
+      Heroica — {heroicSummary}
+    </h2>
+
+    <div class="flex flex-col gap-2">
+      {bossesHeroic.map((boss, i) => (
         <BossCard boss={boss} index={i} />
       ))}
     </div>

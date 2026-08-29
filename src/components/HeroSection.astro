@@ -1,27 +1,48 @@
 ---
 /**
  * HeroSection.astro — Seção hero da página inicial
- * Estilo Raider.IO: barra de progressão visual, badges de temporada, overlay gradient.
+ * Estilo Raider.IO: barras de progressão Normal e Heroica, badges de temporada, overlay gradient.
  */
 
 import type { SiteConfig, Boss } from '@/types/index';
 import { formatDate } from '@/utils/format';
 import { computeProgression } from '@/utils/progression';
 
-interface Props {
-  config: SiteConfig;
-  bosses: Boss[];
+interface RecentLog {
+  date: string;
+  url: string;
+  title: string;
 }
 
-const { config, bosses } = Astro.props;
+interface Props {
+  config: SiteConfig;
+  bossesNormal: Boss[];
+  bossesHeroic: Boss[];
+  recentLogs?: RecentLog[];
+}
+
+const { config, bossesNormal, bossesHeroic, recentLogs = [] } = Astro.props;
 
 const lastUpdated = formatDate(config.lastUpdated);
-const progression = computeProgression(bosses);
-const progressPercent = progression.total > 0 ? progression.percent : 0;
-const progressLabel =
-  progression.total > 0
-    ? `${progression.killed}/${progression.total} Mythic`
+
+const progressionNormal = computeProgression(bossesNormal);
+const progressPercentNormal = progressionNormal.total > 0 ? progressionNormal.percent : 0;
+const progressLabelNormal =
+  progressionNormal.total > 0
+    ? `${progressionNormal.killed}/${progressionNormal.total} Normal`
     : '—';
+
+const progressionHeroic = computeProgression(bossesHeroic);
+const progressPercentHeroic = progressionHeroic.total > 0 ? progressionHeroic.percent : 0;
+const progressLabelHeroic =
+  progressionHeroic.total > 0
+    ? `${progressionHeroic.killed}/${progressionHeroic.total} Heroica`
+    : '—';
+
+function formatLogDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
 ---
 
 <section
@@ -58,62 +79,74 @@ const progressLabel =
     <!-- Core name & guild -->
     <div class="text-center mb-10">
       <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-wide drop-shadow-[0_0_30px_rgba(240,165,0,0.3)]">
-        <span class="text-[#f0a500]">Hail to the King</span>
+        <span class="text-[#f0a500]">Core Nemesis</span>
       </h1>
       <p class="text-slate-300 text-sm sm:text-base font-medium">
         <span class="text-slate-400">Guild</span>
         <span class="text-slate-200 mx-1">{config.guild}</span>
         <span class="text-slate-400 mx-2" aria-hidden="true">·</span>
-        <span class="text-slate-400">Realm</span>
+        <span class="text-slate-400">Reino</span>
         <span class="text-slate-200 mx-1">{config.realm}</span>
       </p>
     </div>
 
-    <!-- Progression block — estilo Raider.IO -->
-    <div class="max-w-lg mx-auto mb-10">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-slate-300 text-sm font-semibold">Progressão Mythic</span>
-        <span class="text-[#f0a500] text-sm font-bold tabular-nums">{progressLabel}</span>
-      </div>
+    <!-- Progression — barras compactas com label ao lado + nomes dos bosses abaixo -->
+    <div class="max-w-2xl mx-auto mb-10">
 
-      <!-- Progress bar -->
-      <div class="progress-bar" role="progressbar" aria-valuenow={progressPercent} aria-valuemin={0} aria-valuemax={100} aria-label={`${progressLabel} — ${progressPercent}%`}>
-        <div class="progress-bar-fill" style={`width: ${progressPercent}%`} />
-      </div>
-
-      <!-- Boss dots -->
-      {bosses.length > 0 && (
-        <div class="flex items-center gap-1.5 mt-3" aria-hidden="true">
-          {bosses.map((boss) => (
-            <div
-              class={[
-                'flex-1 h-1.5 rounded-full',
-                boss.status === 'killed'
-                  ? 'bg-[#22c55e]'
-                  : boss.status === 'progress'
-                  ? 'bg-[#f0a500]'
-                  : 'bg-white/10',
-              ].join(' ')}
-              title={boss.name}
-            />
-          ))}
+      <!-- Normal: barra + label inline -->
+      <div class="flex items-center gap-3 mb-3">
+        <div class="flex-1 progress-bar" role="progressbar" aria-valuenow={progressPercentNormal} aria-valuemin={0} aria-valuemax={100} aria-label={`${progressLabelNormal} — ${progressPercentNormal}%`}>
+          <div class="progress-bar-fill bg-[#22c55e]" style={`width: ${progressPercentNormal}%`} />
         </div>
-      )}
+        <span class="text-[#22c55e] text-xs font-bold tabular-nums whitespace-nowrap">{progressLabelNormal}</span>
+      </div>
 
-      <!-- Boss names row (small) -->
-      {bosses.length > 0 && bosses.length <= 8 && (
-        <div class="flex items-center gap-1.5 mt-1.5" aria-hidden="true">
-          {bosses.map((boss) => (
-            <p class={[
-              'flex-1 text-center text-[9px] font-medium truncate',
-              boss.status === 'killed' ? 'text-[#22c55e]/70' : 'text-slate-400',
-            ].join(' ')}>
-              {boss.name.split(' ')[0]}
+      <!-- Heroica: barra + label inline -->
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex-1 progress-bar" role="progressbar" aria-valuenow={progressPercentHeroic} aria-valuemin={0} aria-valuemax={100} aria-label={`${progressLabelHeroic} — ${progressPercentHeroic}%`}>
+          <div class="progress-bar-fill bg-[#a855f7]" style={`width: ${progressPercentHeroic}%`} />
+        </div>
+        <span class="text-[#a855f7] text-xs font-bold tabular-nums whitespace-nowrap">{progressLabelHeroic}</span>
+      </div>
+
+      <!-- Boss names — exibidos uma única vez abaixo das barras -->
+      {bossesNormal.length > 0 && bossesNormal.length <= 8 && (
+        <div class="flex items-center gap-1.5" aria-hidden="true">
+          {bossesNormal.map((boss) => (
+            <p class="flex-1 text-center text-[9px] font-medium truncate text-slate-400">
+              {boss.name.split(',')[0].split(' ').slice(0, 2).join(' ')}
             </p>
           ))}
         </div>
       )}
+
     </div>
+
+    <!-- Recent Logs Quick Access -->
+    {recentLogs.length > 0 && (
+      <div class="max-w-2xl mx-auto mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+          <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
+            Últimos Logs
+          </h2>
+          <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {recentLogs.slice(0, 4).map((log) => (
+            <a
+              href={log.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center gap-1.5 py-3 px-3 rounded-xl bg-[#141b2d] border border-white/7 hover:border-[#f0a500]/30 hover:bg-[#1a2235] text-slate-400 hover:text-[#f0a500] transition-all text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]"
+            >
+              <span class="text-lg group-hover:scale-110 transition-transform" aria-hidden="true">📜</span>
+              <span class="text-[10px] font-semibold uppercase tracking-wide">{formatLogDate(log.date)}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
 
     <!-- Next raid + last updated -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
@@ -121,11 +154,11 @@ const progressLabel =
         <div class="flex items-center gap-2 text-sm">
           <span class="text-slate-400">Próxima Raid:</span>
           <span class="text-slate-200 font-semibold">{formatDate(config.nextRaid.date)}</span>
-          <span class="text-slate-400 mx-1" aria-hidden="true">·</span>
-          <span class="text-slate-300">{config.nextRaid.time}</span>
+          <span class="text-slate-200 mx-1" aria-hidden="true">·</span>
+          <span class="text-slate-200 font-semibold">{config.nextRaid.time}</span>
         </div>
       )}
-      <p class="text-slate-400 text-xs">
+      <p class="text-slate-400 text-sm">
         Atualizado em
         <time datetime={config.lastUpdated} class="text-slate-300 font-medium ml-1">
           {lastUpdated}

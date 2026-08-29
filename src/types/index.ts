@@ -1,5 +1,5 @@
 /**
- * Tipos TypeScript centrais do Core Hub — Hail to the King
+ * Tipos TypeScript centrais do Core Hub — Core Nemesis
  * Todas as interfaces e tipos usados nas páginas, componentes e utilitários.
  */
 
@@ -102,7 +102,7 @@ export interface PlayerHighlight {
  * Contém dados de identidade do core, raid atual e destaques da semana.
  */
 export interface SiteConfig {
-  /** Nome do core de raid, ex: "Hail to the King". */
+  /** Nome do core de raid, ex: "Core Nemesis". */
   coreName: string;
   /** Nome da guilda no jogo. */
   guild: string;

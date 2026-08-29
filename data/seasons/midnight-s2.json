@@ -1,15 +1,15 @@
 {
   "config": {
-    "coreName": "Hail to the King",
+    "coreName": "Core Nemesis",
     "guild": "Hail to the King",
-    "realm": "Azralon",
-    "currentSeason": "The War Within Season 2",
-    "currentRaid": "Nerub-ar Palace",
-    "lastUpdated": "2025-07-09T20:00:00.000Z",
+    "realm": "Nemesis",
+    "currentSeason": "Midnight Season 2",
+    "currentRaid": "Abismo Venenoso",
+    "lastUpdated": "2026-08-08T20:00:00.000Z",
     "nextRaid": {
-      "date": "2025-07-16",
+      "date": "2026-08-12",
       "time": "20:00",
-      "objective": "Progressão no último boss"
+      "objective": "Início da progressão Normal e Heroica"
     },
     "weeklyHighlights": {
       "bestDps": {
@@ -29,120 +29,180 @@
       },
       "bestKey": {
         "player": "Zynthara",
-        "dungeon": "Cinderbrew Meadery",
+        "dungeon": "Altar das Presas",
         "level": 16
       },
-      "playerOfTheWeek": {
-        "playerName": "Voidwar",
-        "class": "warrior",
-        "value": "MVP da progressão"
-      }
+      "playerOfTheWeek": null
     }
   },
-  "bosses": [
+  "bossesNormal": [
     {
-      "id": "ulgrax-the-devourer",
-      "name": "Ulgrax the Devourer",
+      "id": "nekzali-a-espiral-de-almas",
+      "name": "Nek'zali, a Espiral de Almas",
+      "status": "killed",
+      "pulls": 8,
+      "bestPullPercent": null,
+      "killDate": "2026-08-19T20:30:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "sentinelas-sepultados",
+      "name": "Sentinelas Sepultados",
+      "status": "killed",
+      "pulls": 5,
+      "bestPullPercent": null,
+      "killDate": "2026-08-19T21:00:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "vashnik-o-maligno",
+      "name": "Vashnik, o Maligno",
       "status": "killed",
       "pulls": 12,
       "bestPullPercent": null,
-      "killDate": "2025-04-02T20:00:00.000Z",
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-ulgrax",
-        "wipefest": "https://www.wipefest.gg/report/example-ulgrax",
-        "video": "https://www.youtube.com/watch?v=example-ulgrax"
-      }
+      "killDate": "2026-08-20T20:45:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
     },
     {
-      "id": "the-bloodbound-horror",
-      "name": "The Bloodbound Horror",
+      "id": "os-exploradores-perdidos",
+      "name": "Os Exploradores Perdidos",
+      "status": "killed",
+      "pulls": 7,
+      "bestPullPercent": null,
+      "killDate": "2026-08-20T21:30:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "sszorak",
+      "name": "Sszorak",
+      "status": "killed",
+      "pulls": 15,
+      "bestPullPercent": null,
+      "killDate": "2026-08-22T20:30:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "as-presas-gemeas",
+      "name": "As Presas Gêmeas",
       "status": "killed",
       "pulls": 18,
       "bestPullPercent": null,
-      "killDate": "2025-04-02T21:30:00.000Z",
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-bloodbound",
-        "wipefest": null,
-        "video": null
-      }
+      "killDate": "2026-08-22T21:15:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
     },
     {
-      "id": "sikran-captain-of-the-sureki",
-      "name": "Sikran, Captain of the Sureki",
+      "id": "o-altar-espiralado",
+      "name": "O Altar Espiralado",
       "status": "killed",
-      "pulls": 24,
+      "pulls": 22,
       "bestPullPercent": null,
-      "killDate": "2025-04-09T20:45:00.000Z",
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-sikran",
-        "wipefest": "https://www.wipefest.gg/report/example-sikran",
-        "video": null
-      }
+      "killDate": "2026-08-26T21:00:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
     },
     {
-      "id": "rashanan",
-      "name": "Rasha'nan",
+      "id": "ulatek",
+      "name": "Ula'tek",
       "status": "killed",
-      "pulls": 31,
+      "pulls": 35,
       "bestPullPercent": null,
-      "killDate": "2025-04-16T21:00:00.000Z",
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-rashanan",
-        "wipefest": null,
-        "video": "https://www.youtube.com/watch?v=example-rashanan"
-      }
-    },
+      "killDate": "2026-08-28T22:00:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    }
+  ],
+  "bossesHeroic": [
     {
-      "id": "eggtender-ovinax",
-      "name": "Eggtender Ovi'nax",
+      "id": "nekzali-a-espiral-de-almas",
+      "name": "Nek'zali, a Espiral de Almas",
       "status": "killed",
-      "pulls": 45,
+      "pulls": 10,
       "bestPullPercent": null,
-      "killDate": "2025-04-23T20:30:00.000Z",
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-ovinax",
-        "wipefest": "https://www.wipefest.gg/report/example-ovinax",
-        "video": "https://www.youtube.com/watch?v=example-ovinax"
-      }
+      "killDate": "2026-08-29T20:30:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
     },
     {
-      "id": "nexus-princess-kyveza",
-      "name": "Nexus-Princess Ky'veza",
+      "id": "sentinelas-sepultados",
+      "name": "Sentinelas Sepultados",
       "status": "killed",
-      "pulls": 58,
+      "pulls": 14,
       "bestPullPercent": null,
-      "killDate": "2025-05-07T21:15:00.000Z",
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-kyveza",
-        "wipefest": null,
-        "video": null
-      }
+      "killDate": "2026-08-29T21:30:00.000Z",
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
     },
     {
-      "id": "the-silken-court",
-      "name": "The Silken Court",
-      "status": "killed",
-      "pulls": 72,
-      "bestPullPercent": null,
-      "killDate": "2025-05-21T22:00:00.000Z",
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-silken-court",
-        "wipefest": "https://www.wipefest.gg/report/example-silken-court",
-        "video": "https://www.youtube.com/watch?v=example-silken-court"
-      }
-    },
-    {
-      "id": "queen-ansurek",
-      "name": "Queen Ansurek",
+      "id": "vashnik-o-maligno",
+      "name": "Vashnik, o Maligno",
       "status": "progress",
-      "pulls": 47,
-      "bestPullPercent": 34,
+      "pulls": 8,
+      "bestPullPercent": 42,
       "killDate": null,
-      "links": {
-        "warcraftLogs": "https://www.warcraftlogs.com/reports/example-ansurek",
-        "wipefest": null,
-        "video": null
-      }
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "os-exploradores-perdidos",
+      "name": "Os Exploradores Perdidos",
+      "status": "not_started",
+      "pulls": 0,
+      "bestPullPercent": null,
+      "killDate": null,
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "sszorak",
+      "name": "Sszorak",
+      "status": "not_started",
+      "pulls": 0,
+      "bestPullPercent": null,
+      "killDate": null,
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "as-presas-gemeas",
+      "name": "As Presas Gêmeas",
+      "status": "not_started",
+      "pulls": 0,
+      "bestPullPercent": null,
+      "killDate": null,
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "o-altar-espiralado",
+      "name": "O Altar Espiralado",
+      "status": "not_started",
+      "pulls": 0,
+      "bestPullPercent": null,
+      "killDate": null,
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    },
+    {
+      "id": "ulatek",
+      "name": "Ula'tek",
+      "status": "not_started",
+      "pulls": 0,
+      "bestPullPercent": null,
+      "killDate": null,
+      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+    }
+  ],
+  "recentLogs": [
+    {
+      "date": "2026-08-06",
+      "url": "https://www.warcraftlogs.com/reports/example-log-4",
+      "title": "Sessão de Raid - 06/08"
+    },
+    {
+      "date": "2026-08-02",
+      "url": "https://www.warcraftlogs.com/reports/example-log-3",
+      "title": "Sessão de Raid - 02/08"
+    },
+    {
+      "date": "2026-07-30",
+      "url": "https://www.warcraftlogs.com/reports/example-log-2",
+      "title": "Sessão de Raid - 30/07"
+    },
+    {
+      "date": "2026-07-27",
+      "url": "https://www.warcraftlogs.com/reports/example-log-1",
+      "title": "Sessão de Raid - 27/07"
     }
   ]
 }

@@ -1,7 +1,7 @@
 ---
 /**
  * index.astro — Página inicial do Core Hub
- * Exibe HeroSection com barra de progressão e SummaryCards navegáveis.
+ * Exibe HeroSection com barras de progressão Normal/Heroica e SummaryCards navegáveis.
  */
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -17,26 +17,32 @@ import rosterJson from '../../data/roster.json';
 import lootJson from '../../data/loot.json';
 
 const config = seasonJson.config as SiteConfig;
-const bosses = seasonJson.bosses as Boss[];
+const bossesNormal = seasonJson.bossesNormal as Boss[];
+const bossesHeroic = seasonJson.bossesHeroic as Boss[];
+const recentLogs = seasonJson.recentLogs ?? [];
 const players = rosterJson as Player[];
 const lootData = lootJson as Loot[];
 
 // Base path
 const base = '/hail-to-the-king-core-hub';
 
-// 1 — Progressão
-const progression = computeProgression(bosses);
-const progressionValue = progression.total > 0 ? `${progression.killed}/${progression.total}` : null;
-const progressionSubtitle = progression.total > 0 ? `${progression.percent}% Mythic concluído` : undefined;
+// 1 — Progressão Normal
+const progressionNormal = computeProgression(bossesNormal);
+const progressionNormalValue = progressionNormal.total > 0 ? `${progressionNormal.killed}/${progressionNormal.total}` : null;
+const progressionNormalSubtitle = progressionNormal.total > 0 ? `${progressionNormal.percent}% Normal concluído` : undefined;
 
-// 2 — Média Raider.IO
+// 2 — Progressão Heroica
+const progressionHeroic = computeProgression(bossesHeroic);
+const progressionHeroicValue = progressionHeroic.total > 0 ? `${progressionHeroic.killed}/${progressionHeroic.total}` : null;
+const progressionHeroicSubtitle = progressionHeroic.total > 0 ? `${progressionHeroic.percent}% Heroica concluído` : undefined;
+
+// 3 — Média Raider.IO + Melhor Key da Semana
 const mythicStats = computeMythicStats(players);
 const avgIoValue = mythicStats.avgIo > 0 ? mythicStats.avgIo : null;
-
-// 3 — Melhor Key da Semana
 const bestKey = config.weeklyHighlights.bestKey;
-const bestKeyValue = bestKey ? bestKey.dungeon : null;
-const bestKeySubtitle = bestKey ? `+${bestKey.level}` : undefined;
+const avgIoSubtitle = bestKey
+  ? `Média do grupo · Melhor key: ${bestKey.dungeon} +${bestKey.level}`
+  : 'Média do grupo';
 
 // 4 — Participação na Raid
 const playersWithAttendance = players.filter((p) => p.warcraftLogs.attendance !== null);
@@ -56,19 +62,14 @@ const lootCount = lootData.length;
 const nextRaid = config.nextRaid;
 const nextRaidValue = nextRaid ? formatDate(nextRaid.date) : null;
 const nextRaidSubtitle = nextRaid ? `${nextRaid.time} — ${nextRaid.objective}` : undefined;
-
-// 7 — Jogador da Semana
-const potw = config.weeklyHighlights.playerOfTheWeek;
-const potwValue = potw ? potw.playerName : null;
-const potwSubtitle = potw ? potw.class : undefined;
 ---
 
 <BaseLayout
   title="Home"
-  description="Página inicial do core Hail to the King — progressão, roster e destaques da semana."
+  description="Página inicial do Core Nemesis — progressão, membros e destaques da semana."
 >
 
-  <HeroSection config={config} bosses={bosses} />
+  <HeroSection config={config} bossesNormal={bossesNormal} bossesHeroic={bossesHeroic} recentLogs={recentLogs} />
 
   <section
     aria-label="Resumo da temporada"
@@ -86,30 +87,39 @@ const potwSubtitle = potw ? potw.class : undefined;
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
       <SummaryCard
-        title="Progressão"
-        value={progressionValue}
-        subtitle={progressionSubtitle}
+        title="Regras"
+        value="Confira"
+        subtitle="Regras e diretrizes do core"
+        icon="📋"
+        href={`${base}/regras/`}
+        accent="red"
+      />
+
+      <SummaryCard
+        title="Progressão Normal"
+        value={progressionNormalValue}
+        subtitle={progressionNormalSubtitle}
         icon="⚔"
         href={`${base}/progressao/`}
-        accent="gold"
+        accent="green"
+      />
+
+      <SummaryCard
+        title="Progressão Heroica"
+        value={progressionHeroicValue}
+        subtitle={progressionHeroicSubtitle}
+        icon="⚔"
+        href={`${base}/progressao/`}
+        accent="purple"
       />
 
       <SummaryCard
         title="Média Raider.IO"
         value={avgIoValue}
-        subtitle="Média do grupo"
+        subtitle={avgIoSubtitle}
         icon="🗝"
         href={`${base}/mythic/`}
         accent="blue"
-      />
-
-      <SummaryCard
-        title="Melhor Key da Semana"
-        value={bestKeyValue}
-        subtitle={bestKeySubtitle}
-        icon="🏆"
-        href={`${base}/mythic/`}
-        accent="purple"
       />
 
       <SummaryCard
@@ -140,20 +150,11 @@ const potwSubtitle = potw ? potw.class : undefined;
       />
 
       <SummaryCard
-        title="Jogador da Semana"
-        value={potwValue}
-        subtitle={potwSubtitle}
-        icon="⭐"
-        href={`${base}/roster/`}
-        accent="gold"
-      />
-
-      <SummaryCard
-        title="Membros no Roster"
+        title="Membros"
         value={players.filter((p) => p.type === 'main').length}
         subtitle={`${players.length} total com alts`}
         icon="👥"
-        href={`${base}/roster/`}
+        href={`${base}/membros/`}
         accent="default"
       />
 
@@ -176,7 +177,7 @@ const potwSubtitle = potw ? potw.class : undefined;
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
       {[
         { label: 'Progressão', icon: '⚔', href: `${base}/progressao/` },
-        { label: 'Roster',     icon: '👥', href: `${base}/roster/` },
+        { label: 'Membros',    icon: '👥', href: `${base}/membros/` },
         { label: 'Mythic+',   icon: '🗝', href: `${base}/mythic/` },
         { label: 'Logs',       icon: '📜', href: `${base}/logs/` },
         { label: 'Loots',      icon: '💎', href: `${base}/loots/` },
