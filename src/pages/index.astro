@@ -28,13 +28,14 @@ const base = '/hail-to-the-king-core-hub';
 
 // 1 — Progressão Normal
 const progressionNormal = computeProgression(bossesNormal);
-const progressionNormalValue = progressionNormal.total > 0 ? `${progressionNormal.killed}/${progressionNormal.total}` : null;
+const progressionNormalValue = progressionNormal.total > 0 ? `${progressionNormal.killed}/${progressionNormal.total} N` : null;
 const progressionNormalSubtitle = progressionNormal.total > 0 ? `${progressionNormal.percent}% Normal concluído` : undefined;
 
 // 2 — Progressão Heroica
 const progressionHeroic = computeProgression(bossesHeroic);
-const progressionHeroicValue = progressionHeroic.total > 0 ? `${progressionHeroic.killed}/${progressionHeroic.total}` : null;
-const progressionHeroicSubtitle = progressionHeroic.total > 0 ? `${progressionHeroic.percent}% Heroica concluído` : undefined;
+const progressionHeroicValue = progressionHeroic.total > 0 ? `${progressionHeroic.killed}/${progressionHeroic.total} H` : null;
+const progressionHeroicSubtitle = progressionHeroic.total > 0 ? `${progressionHeroic.percent}% Heróico concluído` : undefined;
+
 
 // 3 — Média Raider.IO + Melhor Key da Semana
 const mythicStats = computeMythicStats(players);
@@ -96,21 +97,15 @@ const nextRaidSubtitle = nextRaid ? `${nextRaid.time} — ${nextRaid.objective}`
       />
 
       <SummaryCard
-        title="Progressão Normal"
+        title="Progressão"
         value={progressionNormalValue}
+        altValue={progressionHeroicValue}
         subtitle={progressionNormalSubtitle}
+        altsubtitle={progressionHeroicSubtitle}
         icon="⚔"
         href={`${base}/progressao/`}
         accent="green"
-      />
-
-      <SummaryCard
-        title="Progressão Heroica"
-        value={progressionHeroicValue}
-        subtitle={progressionHeroicSubtitle}
-        icon="⚔"
-        href={`${base}/progressao/`}
-        accent="purple"
+        altAccent="purple"
       />
 
       <SummaryCard
@@ -123,46 +118,46 @@ const nextRaidSubtitle = nextRaid ? `${nextRaid.time} — ${nextRaid.objective}`
       />
 
       <SummaryCard
+          title="Membros"
+          value={players.filter((p) => p.type === 'main').length}
+          subtitle={`${players.length} total com alts`}
+          icon="👥"
+          href={`${base}/membros/`}
+          accent="default"
+        />
+
+      <!--SummaryCard
         title="Participação na Raid"
         value={attendanceValue}
         subtitle="Presença média"
         icon="📅"
         href={`${base}/logs/`}
         accent="green"
-      />
+      /-->
 
-      <SummaryCard
+      <!--SummaryCard
         title="Loots Distribuídos"
         value={lootCount}
         subtitle="na temporada"
         icon="💎"
         href={`${base}/loots/`}
         accent="gold"
-      />
+      /-->
 
-      <SummaryCard
+      <!--SummaryCard
         title="Próxima Raid"
         value={nextRaidValue}
         subtitle={nextRaidSubtitle}
         icon="📆"
         href={`${base}/planejamento/`}
         accent="green"
-      />
-
-      <SummaryCard
-        title="Membros"
-        value={players.filter((p) => p.type === 'main').length}
-        subtitle={`${players.length} total com alts`}
-        icon="👥"
-        href={`${base}/membros/`}
-        accent="default"
-      />
+      /-->
 
     </div>
   </section>
 
   <!-- Quick links section -->
-  <section
+  <!-- section
     aria-label="Navegação rápida"
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14"
   >
@@ -192,6 +187,6 @@ const nextRaidSubtitle = nextRaid ? `${nextRaid.time} — ${nextRaid.objective}`
         </a>
       ))}
     </div>
-  </section>
+  </section-->
 
 </BaseLayout>

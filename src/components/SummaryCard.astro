@@ -9,13 +9,16 @@ import { formatValue } from '@/utils/format';
 interface Props {
   title: string;
   value: string | number | null | undefined;
+  altValue?: string | number | null | undefined;
   subtitle?: string;
+  altsubtitle?: string;
   icon?: string;
   href?: string;
   accent?: 'gold' | 'green' | 'red' | 'blue' | 'purple' | 'default';
+  altAccent?: 'gold' | 'green' | 'red' | 'blue' | 'purple' | 'default';
 }
 
-const { title, value, subtitle, icon, href, accent = 'default' } = Astro.props;
+const { title, value, altValue, subtitle, altsubtitle, icon, href, accent = 'default', altAccent = 'default'} = Astro.props;
 
 const displayValue = formatValue(value);
 
@@ -29,6 +32,7 @@ const accentColors: Record<string, { border: string; icon: string; value: string
 };
 
 const colors = accentColors[accent];
+const altColors = accentColors[altAccent];
 
 const Tag = href ? 'a' : 'div';
 ---
@@ -67,13 +71,15 @@ const Tag = href ? 'a' : 'div';
 
   <!-- Main value -->
   <p class={`text-2xl sm:text-3xl font-bold leading-tight break-words tabular-nums ${colors.value}`}>
-    {displayValue}
+    {displayValue} <span class={altColors.value}>{altValue}</span>
   </p>
 
   <!-- Subtitle -->
   {subtitle && (
     <p class="text-slate-400 text-xs mt-2 leading-snug">
       {subtitle}
+      <br/>
+      {altsubtitle}
     </p>
   )}
 </Tag>
