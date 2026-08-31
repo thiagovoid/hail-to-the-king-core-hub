@@ -1,0 +1,136 @@
+{
+  "week": 1,
+  "date": "2026-08-20",
+  "players": [
+    {
+      "playerId": "voidwar",
+      "dps": 42000,
+      "parse": 58,
+      "itemLevel": 645,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 2
+      }
+    },
+    {
+      "playerId": "blackwatch",
+      "dps": 39000,
+      "parse": 51,
+      "itemLevel": 644,
+      "deaths": 1,
+      "mechanics": {
+        "errors": 3
+      }
+    },
+    {
+      "playerId": "apocalipse",
+      "dps": 45000,
+      "parse": 63,
+      "itemLevel": 646,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 1
+      }
+    },
+    {
+      "playerId": "voidsurge",
+      "hps": 68000,
+      "parse": 61,
+      "itemLevel": 645,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 2
+      }
+    },
+    {
+      "playerId": "kams",
+      "hps": 72000,
+      "parse": 67,
+      "itemLevel": 646,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 1
+      }
+    },
+    {
+      "playerId": "cowsadeer",
+      "hps": 61000,
+      "parse": 55,
+      "itemLevel": 644,
+      "deaths": 1,
+      "mechanics": {
+        "errors": 3
+      }
+    },
+    {
+      "playerId": "bustgril",
+      "dps": 78000,
+      "parse": 64,
+      "itemLevel": 646,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 2
+      }
+    },
+    {
+      "playerId": "hysillens",
+      "dps": 71000,
+      "parse": 59,
+      "itemLevel": 645,
+      "deaths": 1,
+      "mechanics": {
+        "errors": 3
+      }
+    },
+    {
+      "playerId": "kroline",
+      "dps": 76000,
+      "parse": 66,
+      "itemLevel": 646,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 2
+      }
+    },
+    {
+      "playerId": "jrxamã",
+      "dps": 69000,
+      "parse": 57,
+      "itemLevel": 644,
+      "deaths": 1,
+      "mechanics": {
+        "errors": 4
+      }
+    },
+    {
+      "playerId": "heracranosx",
+      "dps": 83000,
+      "parse": 71,
+      "itemLevel": 647,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 1
+      }
+    },
+    {
+      "playerId": "gunst",
+      "dps": 74000,
+      "parse": 62,
+      "itemLevel": 645,
+      "deaths": 0,
+      "mechanics": {
+        "errors": 2
+      }
+    },
+    {
+      "playerId": "nerlock",
+      "dps": 50000,
+      "parse": 52,
+      "itemLevel": 645,
+      "deaths": 1,
+      "mechanics": {
+        "errors": 5
+      }
+    }
+  ]
+}

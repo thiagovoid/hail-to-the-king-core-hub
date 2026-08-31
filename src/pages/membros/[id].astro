@@ -1,0 +1,253 @@
+
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+import roster from '../../../data/roster.json';
+import { performanceWeeks } from '../../../data/performance';
+import PerformanceSummary from '@/components/PerformanceSummary.astro';
+import PerformanceGoals from '@/components/PerformanceGoals.astro';
+import PerformanceChart from '@/components/PerformanceChart.astro';
+
+import {
+  formatPerformanceValue,
+  getLatestPerformance,
+  getPlayerHistory,
+} from '@/utils/performance';
+
+export function getStaticPaths() {
+  return roster.map((player) => ({
+    params: {
+      id: player.id,
+    },
+    props: {
+      player,
+    },
+  }));
+}
+
+const { player } = Astro.props;
+
+const weeks = performanceWeeks;
+
+const history = getPlayerHistory(
+  weeks,
+  player.id
+);
+
+const latest = getLatestPerformance(
+  weeks,
+  player.id
+);
+
+const previous = history.length >= 2
+  ? history[history.length - 2]
+  : undefined;
+
+const dpsHistory = history
+  .filter((performance) => performance.dps !== undefined)
+  .map((performance, index) => ({
+    week: index + 1,
+    value: performance.dps!,
+  }));
+
+const parseHistory = history
+  .filter((performance) => performance.parse !== undefined)
+  .map((performance, index) => ({
+    week: index + 1,
+    value: performance.parse!,
+  }));
+
+const mechanicsHistory = history
+  .map((performance, index) => ({
+    week: index + 1,
+    value: performance.mechanics.errors,
+  }));
+
+const deathsHistory = history
+  .map((performance, index) => ({
+    week: index + 1,
+    value: performance.deaths,
+  }));
+
+const hpsHistory = history
+  .filter((performance) => performance.hps !== undefined)
+  .map((performance, index) => ({
+    week: weeks[index]?.week ?? index + 1,
+    value: performance.hps!,
+  }));
+
+---
+
+<BaseLayout
+  title={`${player.name} — Performance`}
+  description={`Evolução de performance de ${player.name} no Core Nemesis.`}
+>
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <a
+      href="/membros/"
+      class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-8"
+    >
+      ← Voltar para membros
+    </a>
+
+    <header class="flex items-center gap-5 mb-8">
+      <img
+        src={player.avatar}
+        alt={player.name}
+        width="96"
+        height="96"
+        class="w-24 h-24 rounded-lg border border-slate-700"
+      />
+
+      <div>
+        <h1 class="text-3xl font-bold text-white">
+          {player.name}
+        </h1>
+
+        <p class="text-slate-400 mt-1">
+          {player.class} · {player.spec}
+        </p>
+
+        <p class="text-sm text-slate-500 mt-1 capitalize">
+          {player.role}
+        </p>
+      </div>
+    </header>
+
+    {
+      latest ? (
+        <PerformanceSummary
+          current={latest}
+          previous={previous}
+        />
+      ) : (
+        <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
+          <h2 class="text-xl font-bold text-white">
+            Sem dados de performance
+          </h2>
+
+          <p class="text-slate-400 mt-2">
+            Ainda não existem dados registrados para este jogador.
+          </p>
+        </section>
+      )
+    }
+
+    {
+      latest && player.performanceGoals && (
+        <PerformanceGoals
+          goals={player.performanceGoals}
+          current={latest}
+        />
+      )
+    }
+
+    {
+      dpsHistory.length > 0 && (
+        <PerformanceChart
+          series={[
+            {
+              id: 'dps',
+              label: 'DPS',
+              data: dpsHistory,
+              target: player.performanceGoals?.dps?.target,
+              direction: 'higher',
+            },
+            {
+              id: 'parse',
+              label: 'Parse',
+              data: parseHistory,
+              target: player.performanceGoals?.parse?.target,
+              direction: 'higher',
+            },
+            {
+              id: 'mechanics',
+              label: 'Mecânicas',
+              data: mechanicsHistory,
+              target: player.performanceGoals?.mechanics?.target,
+              direction: 'lower',
+            },
+            {
+              id: 'deaths',
+              label: 'Mortes',
+              data: deathsHistory,
+              target: player.performanceGoals?.deaths?.target,
+              direction: 'lower',
+            },
+          ]}
+        />
+      )
+    }
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-4">
+        Histórico
+      </h2>
+
+      <div class="overflow-x-auto bg-slate-900/60 border border-slate-800 rounded-xl">
+        <table class="w-full text-sm">
+          <thead class="border-b border-slate-800">
+            <tr class="text-left text-slate-500">
+              <th class="px-4 py-3">Semana</th>
+              <th class="px-4 py-3">Data</th>
+              <th class="px-4 py-3">DPS</th>
+              <th class="px-4 py-3">HPS</th>
+              <th class="px-4 py-3">Parse</th>
+              <th class="px-4 py-3">Mortes</th>
+              <th class="px-4 py-3">Erros</th>
+              <th class="px-4 py-3">Item Level</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {
+              history.map((performance, index) => {
+                const week = weeks.find(
+                  (item) => item.players.some(
+                    (player) => player.playerId === performance.playerId
+                  ) && item.week === index + 1
+                );
+
+                return (
+                  <tr class="border-b border-slate-800/50 last:border-0">
+                    <td class="px-4 py-3 text-white">
+                      {week?.week ?? index + 1}
+                    </td>
+
+                    <td class="px-4 py-3 text-slate-400">
+                      {week?.date ?? '-'}
+                    </td>
+
+                    <td class="px-4 py-3 text-slate-300">
+                      {formatPerformanceValue(performance.dps)}
+                    </td>
+
+                    <td class="px-4 py-3 text-slate-300">
+                      {formatPerformanceValue(performance.hps)}
+                    </td>
+
+                    <td class="px-4 py-3 text-slate-300">
+                      {performance.parse ?? '-'}
+                    </td>
+
+                    <td class="px-4 py-3 text-slate-300">
+                      {performance.deaths}
+                    </td>
+
+                    <td class="px-4 py-3 text-slate-300">
+                      {performance.mechanics.errors}
+                    </td>
+
+                    <td class="px-4 py-3 text-slate-300">
+                      {performance.itemLevel ?? '-'}
+                    </td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

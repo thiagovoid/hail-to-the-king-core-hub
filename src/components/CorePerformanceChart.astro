@@ -1,0 +1,523 @@
+
+---
+
+import { getClassColor } from '@/utils/roster';
+
+interface DataPoint {
+  week: number;
+  value: number;
+}
+
+interface PlayerSeries {
+  playerId: string;
+  playerName: string;
+  playerClass?: string | null;
+  playerSlug?: string;
+  data: DataPoint[];
+}
+
+interface Metric {
+  id: string;
+  label: string;
+  direction: 'higher' | 'lower';
+  series: PlayerSeries[];
+}
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+
+const width = 800;
+const height = 320;
+const paddingLeft = 55;
+const paddingRight = 30;
+const paddingTop = 25;
+const paddingBottom = 35;
+
+function formatValue(value: number): string {
+  if (value >= 1000) {
+    return `${(value / 1000).toFixed(1)}k`;
+  }
+
+  return value.toString();
+}
+
+function getScale(series: PlayerSeries[]) {
+  const values = series.flatMap((item) =>
+    item.data.map((point) => point.value)
+  );
+
+  if (values.length === 0) {
+    return {
+      min: 0,
+      max: 100,
+      range: 100,
+    };
+  }
+
+  let min = Math.min(...values);
+  let max = Math.max(...values);
+
+  if (min === max) {
+    min = Math.max(0, min - 1);
+    max = max + 1;
+  }
+
+  const padding = (max - min) * 0.15;
+
+  min = Math.max(0, min - padding);
+  max = max + padding;
+
+  return {
+    min,
+    max,
+    range: max - min || 1,
+  };
+}
+
+function getX(
+  week: number,
+  weeks: number[]
+): number {
+  const chartWidth =
+    width - paddingLeft - paddingRight;
+
+  if (weeks.length <= 1) {
+    return paddingLeft + chartWidth / 2;
+  }
+
+  const index = weeks.indexOf(week);
+
+  if (index === -1) {
+    return paddingLeft;
+  }
+
+  return (
+    paddingLeft +
+    (index / (weeks.length - 1)) * chartWidth
+  );
+}
+
+function getY(
+  value: number,
+  scale: ReturnType<typeof getScale>
+): number {
+  const chartHeight =
+    height - paddingTop - paddingBottom;
+
+  return (
+    paddingTop +
+    (1 - (value - scale.min) / scale.range) *
+      chartHeight
+  );
+}
+
+function createPoints(
+  data: DataPoint[],
+  scale: ReturnType<typeof getScale>,
+  weeks: number[]
+): string {
+  return data
+    .map(
+      (point) =>
+        `${getX(point.week, weeks)},${getY(point.value, scale)}`
+    )
+    .join(' ');
+}
+
+function getWeeks(series: PlayerSeries[]): number[] {
+  return [
+    ...new Set(
+      series.flatMap((item) =>
+        item.data.map((point) => point.week)
+      )
+    ),
+  ].sort((a, b) => a - b);
+}
+
+function getLastWeek(weeks: number[]): number | null {
+  if (weeks.length === 0) {
+    return null;
+  }
+
+  return weeks[weeks.length - 1];
+}
+
+function getTrend(
+  data: DataPoint[],
+  direction: 'higher' | 'lower'
+) {
+  if (data.length < 2) {
+    return null;
+  }
+
+  const previous = data[data.length - 2].value;
+  const current = data[data.length - 1].value;
+
+  if (previous === 0) {
+    return null;
+  }
+
+  const change = Math.round(
+    ((current - previous) / Math.abs(previous)) * 100
+  );
+
+  if (change === 0) {
+    return {
+      symbol: '→',
+      value: '0%',
+      positive: null,
+    };
+  }
+
+  const improved =
+    direction === 'higher'
+      ? change > 0
+      : change < 0;
+
+  return {
+    symbol: change > 0 ? '↑' : '↓',
+    value: `${Math.abs(change)}%`,
+    positive: improved,
+  };
+}
+---
+
+<section
+  class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 mt-8"
+>
+  <div
+    class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6"
+  >
+    <div>
+      <h2 class="text-xl font-bold text-white">
+        Performance do Core
+      </h2>
+
+      <p class="text-sm text-slate-500 mt-1">
+        Evolução dos jogadores ao longo das semanas.
+      </p>
+    </div>
+
+    <div
+      id="core-performance-tabs"
+      class="flex flex-wrap gap-2"
+    >
+      {
+        metrics.map((metric, index) => (
+          <button
+            type="button"
+            data-metric={metric.id}
+            class={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
+              index === 0
+                ? 'bg-slate-700 text-white'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            {metric.label}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    metrics.map((metric, metricIndex) => {
+      const scale = getScale(metric.series);
+      const weeks = getWeeks(metric.series);
+      const lastWeek = getLastWeek(weeks);
+
+      return (
+        <div
+          data-metric-chart={metric.id}
+          class={metricIndex === 0 ? '' : 'hidden'}
+        >
+          <div class="overflow-x-auto">
+            <svg
+              viewBox={`0 0 ${width} ${height}`}
+              class="w-full min-w-[600px]"
+              role="img"
+              aria-label={`Evolução de ${metric.label} do core`}
+            >
+              {
+                Array.from({ length: 5 }).map((_, gridIndex) => {
+                  const value =
+                    scale.max -
+                    (gridIndex / 4) * scale.range;
+
+                  const yPosition =
+                    paddingTop +
+                    (gridIndex / 4) *
+                      (height - paddingTop - paddingBottom);
+
+                  return (
+                    <g>
+                      <line
+                        x1={paddingLeft}
+                        y1={yPosition}
+                        x2={width - paddingRight}
+                        y2={yPosition}
+                        stroke="currentColor"
+                        class="text-slate-800"
+                        stroke-width="1"
+                      />
+
+                      <text
+                        x={paddingLeft - 8}
+                        y={yPosition + 4}
+                        text-anchor="end"
+                        class="fill-slate-500 text-[11px]"
+                      >
+                        {formatValue(value)}
+                      </text>
+                    </g>
+                  );
+                })
+              }
+
+              {
+                lastWeek !== null && (
+                  <g>
+                    <line
+                      x1={getX(lastWeek, weeks)}
+                      y1={paddingTop}
+                      x2={getX(lastWeek, weeks)}
+                      y2={height - paddingBottom}
+                      stroke="currentColor"
+                      class="text-slate-700"
+                      stroke-width="1"
+                      stroke-dasharray="4 4"
+                    />
+
+                    <text
+                      x={getX(lastWeek, weeks)}
+                      y={paddingTop - 8}
+                      text-anchor="middle"
+                      class="fill-slate-400 text-[10px]"
+                    >
+                      Atual
+                    </text>
+                  </g>
+                )
+              }
+
+              {
+                metric.series.map((playerSeries) => {
+                  if (playerSeries.data.length === 0) {
+                    return null;
+                  }
+
+                  const playerColor = getClassColor(
+                    playerSeries.playerClass as any
+                  );
+
+                  const trend = getTrend(
+                    playerSeries.data,
+                    metric.direction
+                  );
+
+                  const labelY =
+                    getY(
+                      playerSeries.data[
+                        playerSeries.data.length - 1
+                      ].value,
+                      scale
+                    );
+
+                  return (
+                    <g>
+                      <polyline
+                        points={createPoints(
+                          playerSeries.data,
+                          scale,
+                          weeks
+                        )}
+                        fill="none"
+                        stroke="currentColor"
+                        class={playerColor}
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+
+                      {
+                        playerSeries.data.map(
+                          (point, pointIndex) => {
+                            const isLastPoint =
+                              pointIndex === playerSeries.data.length - 1;
+
+                            return (
+                              <g>
+                                <circle
+                                  cx={getX(point.week, weeks)}
+                                  cy={getY(point.value, scale)}
+                                  r={isLastPoint ? 6 : 5}
+                                  class={`${playerColor} stroke-slate-950`}
+                                  fill="currentColor"
+                                  stroke-width={isLastPoint ? "2.5" : "2"}
+                                />
+
+                                <text
+                                  x={getX(point.week, weeks)}
+                                  y={getY(point.value, scale) - 11}
+                                  text-anchor="middle"
+                                  class="fill-slate-400 text-[10px]"
+                                >
+                                  {formatValue(point.value)}
+                                </text>
+                              </g>
+                            );
+                          }
+                        )
+                      }
+
+                      <text
+                        x={width - paddingRight + 5}
+                        y={labelY + 4}
+                        class="fill-slate-200 text-[10px]"
+                      >
+                        {playerSeries.playerName}
+                      </text>
+                    </g>
+                  );
+                })
+              }
+
+              {
+                metric.series.some(
+                  (item) => item.data.length > 0
+                ) && (
+                  <g>
+                    {
+                      getWeeks(metric.series).map((week, index, weeks) => (
+                        <text
+                          x={getX(week, weeks)}
+                          y={height - 8}
+                          text-anchor="middle"
+                          class="fill-slate-500 text-[11px]"
+                        >
+                          Semana {week}
+                        </text>
+                      ))
+                    }
+                  </g>
+                )
+              }
+            </svg>
+          </div>
+
+          <div class="flex flex-wrap gap-x-5 gap-y-2 mt-4 pt-4 border-t border-slate-800">
+            {
+              metric.series
+                .filter((item) => item.data.length > 0)
+                .map((playerSeries) => {
+                  const playerColor = getClassColor(
+                    playerSeries.playerClass as any
+                  );
+
+                  const trend = getTrend(
+                    playerSeries.data,
+                    metric.direction
+                  );
+
+                  return (
+                    <div class="flex items-center gap-2 text-xs">
+                      <span
+                        class={`w-2 h-2 rounded-full ${playerColor}`}
+                        style="background-color: currentColor;"
+                      />
+
+                      {
+                        playerSeries.playerSlug ? (
+                          <a
+                            href={`/hail-to-the-king-core-hub/membros/${playerSeries.playerSlug}/`}
+                            class="text-slate-300 hover:text-white hover:underline transition-colors"
+                          >
+                            {playerSeries.playerName}
+                          </a>
+                        ) : (
+                          <span class="text-slate-300">
+                            {playerSeries.playerName}
+                          </span>
+                        )
+                      }
+
+                      {
+                        trend && (
+                          <span
+                            class={
+                              trend.positive === true
+                                ? 'text-emerald-400'
+                                : trend.positive === false
+                                  ? 'text-red-400'
+                                  : 'text-slate-500'
+                            }
+                          >
+                            {trend.symbol} {trend.value}
+                          </span>
+                        )
+                      }
+                    </div>
+                  );
+                })
+            }
+          </div>
+        </div>
+      );
+    })
+  }
+</section>
+
+<script>
+  const container = document.querySelector(
+    '#core-performance-tabs'
+  );
+
+  if (container) {
+    const buttons =
+      container.querySelectorAll(
+        '[data-metric]'
+      );
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const metricId =
+          button.getAttribute('data-metric');
+
+        if (!metricId) return;
+
+        document
+          .querySelectorAll('[data-metric-chart]')
+          .forEach((chart) => {
+            chart.classList.toggle(
+              'hidden',
+              chart.getAttribute(
+                'data-metric-chart'
+              ) !== metricId
+            );
+          });
+
+        buttons.forEach((item) => {
+          const active = item === button;
+
+          item.classList.toggle(
+            'bg-slate-700',
+            active
+          );
+
+          item.classList.toggle(
+            'text-white',
+            active
+          );
+
+          item.classList.toggle(
+            'text-slate-400',
+            !active
+          );
+        });
+      });
+    });
+  }
+</script>

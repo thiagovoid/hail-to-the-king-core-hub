@@ -1,0 +1,186 @@
+---
+import {
+  calculateDpsEvolution,
+  calculateHpsEvolution,
+  calculateMechanicEvolution,
+  calculateParseEvolution,
+  formatPerformanceValue,
+} from '@/utils/performance';
+
+import type {
+  PlayerPerformance,
+} from '@/types/performance';
+
+interface Props {
+  current: PlayerPerformance;
+  previous?: PlayerPerformance;
+}
+
+const { current, previous } = Astro.props;
+
+const dpsEvolution = calculateDpsEvolution(
+  current,
+  previous
+);
+
+const hpsEvolution = calculateHpsEvolution(
+  current,
+  previous
+);
+
+const parseEvolution = calculateParseEvolution(
+  current,
+  previous
+);
+
+const mechanicEvolution = calculateMechanicEvolution(
+  current,
+  previous
+);
+---
+
+<section class="mb-10">
+  <h2 class="text-xl font-bold text-white mb-4">
+    Performance atual
+  </h2>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+
+    {
+      current.dps !== undefined && (
+        <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-500">
+            DPS
+          </p>
+
+          <strong class="block text-2xl font-bold text-white mt-1">
+            {formatPerformanceValue(current.dps)}
+          </strong>
+
+          {
+            dpsEvolution !== null && (
+              <p
+                class={`text-sm mt-1 ${
+                  dpsEvolution >= 0
+                    ? 'text-emerald-400'
+                    : 'text-red-400'
+                }`}
+              >
+                {dpsEvolution > 0 ? '+' : ''}
+                {dpsEvolution}%
+              </p>
+            )
+          }
+        </article>
+      )
+    }
+
+    {
+      current.hps !== undefined && (
+        <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-500">
+            HPS
+          </p>
+
+          <strong class="block text-2xl font-bold text-white mt-1">
+            {formatPerformanceValue(current.hps)}
+          </strong>
+
+          {
+            hpsEvolution !== null && (
+              <p
+                class={`text-sm mt-1 ${
+                  hpsEvolution >= 0
+                    ? 'text-emerald-400'
+                    : 'text-red-400'
+                }`}
+              >
+                {hpsEvolution > 0 ? '+' : ''}
+                {hpsEvolution}%
+              </p>
+            )
+          }
+        </article>
+      )
+    }
+
+    {
+      current.parse !== undefined && (
+        <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-500">
+            Parse
+          </p>
+
+          <strong class="block text-2xl font-bold text-white mt-1">
+            {current.parse}
+          </strong>
+
+          {
+            parseEvolution !== null && (
+              <p
+                class={`text-sm mt-1 ${
+                  parseEvolution >= 0
+                    ? 'text-emerald-400'
+                    : 'text-red-400'
+                }`}
+              >
+                {parseEvolution > 0 ? '+' : ''}
+                {parseEvolution} pontos
+              </p>
+            )
+          }
+        </article>
+      )
+    }
+
+    <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+      <p class="text-xs uppercase tracking-wide text-slate-500">
+        Mortes
+      </p>
+
+      <strong class="block text-2xl font-bold text-white mt-1">
+        {current.deaths}
+      </strong>
+    </article>
+
+    <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+      <p class="text-xs uppercase tracking-wide text-slate-500">
+        Erros mecânicos
+      </p>
+
+      <strong class="block text-2xl font-bold text-white mt-1">
+        {current.mechanics.errors}
+      </strong>
+
+      {
+        mechanicEvolution !== null && (
+          <p
+            class={`text-sm mt-1 ${
+              mechanicEvolution <= 0
+                ? 'text-emerald-400'
+                : 'text-red-400'
+            }`}
+          >
+            {mechanicEvolution > 0 ? '+' : ''}
+            {mechanicEvolution}
+          </p>
+        )
+      }
+    </article>
+
+    {
+      current.itemLevel !== undefined && (
+        <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-500">
+            Item Level
+          </p>
+
+          <strong class="block text-2xl font-bold text-white mt-1">
+            {current.itemLevel}
+          </strong>
+        </article>
+      )
+    }
+
+  </div>
+</section>

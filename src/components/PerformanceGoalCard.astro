@@ -1,0 +1,89 @@
+
+---
+import type { PerformanceGoal } from '@/types/goals';
+import { calculateGoalProgress } from '@/utils/performance';
+import { formatPerformanceValue } from '@/utils/performance';
+
+interface Props {
+  label: string;
+  goal: PerformanceGoal;
+  actual: number;
+  format?: 'performance' | 'number';
+}
+
+const { label, goal, actual, format = 'number' } = Astro.props;
+
+const progress = calculateGoalProgress(
+  actual,
+  goal.target,
+  goal.direction
+);
+
+const achieved =
+  goal.direction === 'higher'
+    ? actual >= goal.target
+    : actual <= goal.target;
+
+const formatValue = (value: number) => {
+  if (format === 'performance') {
+    return formatPerformanceValue(value);
+  }
+
+  return String(value);
+};
+---
+
+<article class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold text-slate-300">
+        {label}
+      </p>
+
+      <p class="text-xs text-slate-500 mt-1">
+        {goal.description ?? 'Meta individual'}
+      </p>
+    </div>
+
+    <span
+      class={`text-sm font-bold ${
+        achieved
+          ? 'text-emerald-400'
+          : 'text-amber-400'
+      }`}
+    >
+      {progress}%
+    </span>
+  </div>
+
+  <div class="mt-4">
+    <div class="flex justify-between text-sm mb-2">
+      <span class="text-white font-semibold">
+        {formatValue(actual)}
+      </span>
+
+      <span class="text-slate-500">
+        Meta: {formatValue(goal.target)}
+      </span>
+    </div>
+
+    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+      <div
+        class={`h-full rounded-full ${
+          achieved
+            ? 'bg-emerald-500'
+            : 'bg-amber-500'
+        }`}
+        style={`width: ${progress}%`}
+      />
+    </div>
+  </div>
+
+  {
+    goal.source && (
+      <p class="text-xs text-slate-600 mt-3">
+        Fonte: {goal.source}
+      </p>
+    )
+  }
+</article>

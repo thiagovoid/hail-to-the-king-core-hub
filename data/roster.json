@@ -365,6 +365,34 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/nemesis/nerlock"
+    },
+    "performanceGoals": {
+      "dps": {
+        "metric": "dps",
+        "target": 105000,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots"
+      },
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      }
     }
   }
 ]

@@ -7,9 +7,10 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeroSection from '@/components/HeroSection.astro';
 import SummaryCard from '@/components/SummaryCard.astro';
+import CorePerformanceChart from '@/components/CorePerformanceChart.astro';
 import type { SiteConfig, Boss, Player, Loot } from '@/types/index';
 import { computeProgression } from '@/utils/progression';
-import { computeMythicStats, getClassColor } from '@/utils/roster';
+import { computeMythicStats } from '@/utils/roster';
 import { formatDate, formatValue } from '@/utils/format';
 
 import seasonJson from '../../data/seasons/midnight-s2.json';
@@ -22,6 +23,88 @@ const bossesHeroic = seasonJson.bossesHeroic as Boss[];
 const recentLogs = seasonJson.recentLogs ?? [];
 const players = rosterJson as Player[];
 const lootData = lootJson as Loot[];
+const performanceWeeks = getPerformanceWeeks();
+
+import {
+  getCorePerformanceSeries,
+  getPerformanceWeeks,
+} from '@/utils/performance';
+
+const dpsSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'dps'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
+
+const parseSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'parse'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
+
+const deathsSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'deaths'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
+
+const mechanicsSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'mechanics'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
 
 // Base path
 const base = '/hail-to-the-king-core-hub';
@@ -154,6 +237,44 @@ const nextRaidSubtitle = nextRaid ? `${nextRaid.time} — ${nextRaid.objective}`
       /-->
 
     </div>
+
+    <!-- Section header -->
+    <div class="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-10">
+      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+      <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
+        Performance do core
+      </h2>
+      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+    </div>
+
+    <CorePerformanceChart
+      metrics={[
+        {
+          id: 'dps',
+          label: 'DPS',
+          direction: 'higher',
+          series: dpsSeries,
+        },
+        {
+          id: 'parse',
+          label: 'Parse',
+          direction: 'higher',
+          series: parseSeries,
+        },
+        {
+          id: 'deaths',
+          label: 'Mortes',
+          direction: 'lower',
+          series: deathsSeries,
+        },
+        {
+          id: 'mechanics',
+          label: 'Mecânicas',
+          direction: 'lower',
+          series: mechanicsSeries,
+        },
+      ]}
+    />
   </section>
 
   <!-- Quick links section -->

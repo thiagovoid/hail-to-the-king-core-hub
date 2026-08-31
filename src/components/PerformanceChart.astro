@@ -1,0 +1,402 @@
+---
+interface DataPoint {
+  week: number;
+  value: number;
+}
+
+interface Series {
+  id: string;
+  label: string;
+  data: DataPoint[];
+  target?: number;
+  direction?: 'higher' | 'lower';
+}
+
+interface Props {
+  series: Series[];
+}
+
+const { series } = Astro.props;
+
+const width = 800;
+const height = 320;
+
+const paddingLeft = 55;
+const paddingRight = 30;
+const paddingTop = 25;
+const paddingBottom = 35;
+
+function formatValue(value: number): string {
+  if (value >= 1000) {
+    return `${(value / 1000).toFixed(1)}k`;
+  }
+
+  return value.toString();
+}
+
+function getScale(item: Series) {
+  const values = item.data.map((point) => point.value);
+
+  if (item.target !== undefined) {
+    values.push(item.target);
+  }
+
+  let min = Math.min(...values);
+  let max = Math.max(...values);
+
+  if (min === max) {
+    min = Math.max(0, min - 1);
+    max = max + 1;
+  }
+
+  const padding = (max - min) * 0.15;
+
+  min = Math.max(0, min - padding);
+  max = max + padding;
+
+  return {
+    min,
+    max,
+    range: max - min || 1,
+  };
+}
+
+function getX(index: number, length: number): number {
+  const chartWidth =
+    width - paddingLeft - paddingRight;
+
+  if (length <= 1) {
+    return paddingLeft + chartWidth / 2;
+  }
+
+  return (
+    paddingLeft +
+    (index / (length - 1)) * chartWidth
+  );
+}
+
+function getY(
+  value: number,
+  scale: ReturnType<typeof getScale>
+): number {
+  const chartHeight =
+    height - paddingTop - paddingBottom;
+
+  return (
+    paddingTop +
+    (1 - (value - scale.min) / scale.range) *
+      chartHeight
+  );
+}
+
+function createPoints(
+  data: DataPoint[],
+  scale: ReturnType<typeof getScale>
+): string {
+  return data
+    .map((point, index) => {
+      return `${getX(index, data.length)},${getY(point.value, scale)}`;
+    })
+    .join(' ');
+}
+
+function isGoalReached(item: Series): boolean {
+  if (
+    item.target === undefined ||
+    item.data.length === 0
+  ) {
+    return false;
+  }
+
+  const current =
+    item.data[item.data.length - 1].value;
+
+  if (item.direction === 'lower') {
+    return current <= item.target;
+  }
+
+  return current >= item.target;
+}
+
+const charts = series.map((item) => {
+  const scale = getScale(item);
+
+  return {
+    item,
+    scale,
+    goalReached: isGoalReached(item),
+  };
+});
+---
+
+<section
+  class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 mt-8"
+>
+  <div
+    class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6"
+  >
+    <div>
+      <h2 class="text-xl font-bold text-white">
+        Evolução de Performance
+      </h2>
+
+      <p class="text-sm text-slate-500 mt-1">
+        Acompanhe sua evolução ao longo das semanas.
+      </p>
+    </div>
+
+    <div
+      id="performance-chart-tabs"
+      class="flex flex-wrap gap-2"
+    >
+      {
+        charts.map((chart, index) => {
+          const item = chart.item;
+
+          return (
+            <button
+              type="button"
+              data-series={item.id}
+              class={
+                index === 0
+                  ? 'px-3 py-1.5 rounded-lg text-sm bg-slate-700 text-white'
+                  : 'px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800'
+              }
+            >
+              {item.label}
+            </button>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  {
+    charts.map((chart, index) => {
+      const item = chart.item;
+      const scale = chart.scale;
+
+      const current =
+        item.data.length > 0
+          ? item.data[item.data.length - 1].value
+          : undefined;
+
+      return (
+        <div
+          data-chart={item.id}
+          class={index === 0 ? '' : 'hidden'}
+        >
+          {
+            item.target !== undefined && current !== undefined && (
+              <div class="flex justify-end mb-4">
+                <div class="text-right">
+                  <div class="text-xs text-slate-500 uppercase">
+                    Meta
+                  </div>
+
+                  <div class="text-lg font-bold text-amber-400">
+                    {formatValue(item.target)}
+                  </div>
+
+                  <div
+                    class={
+                      chart.goalReached
+                        ? 'text-xs mt-1 text-emerald-400'
+                        : 'text-xs mt-1 text-slate-500'
+                    }
+                  >
+                    {
+                      chart.goalReached
+                        ? 'Meta atingida'
+                        : 'Meta ainda não atingida'
+                    }
+                  </div>
+                </div>
+              </div>
+            )
+          }
+
+          <div class="overflow-x-auto">
+            <svg
+              viewBox={`0 0 ${width} ${height}`}
+              class="w-full min-w-[600px]"
+              role="img"
+              aria-label={`Evolução de ${item.label}`}
+            >
+              {
+                Array.from({ length: 5 }).map((_, gridIndex) => {
+                  const value =
+                    scale.max -
+                    (gridIndex / 4) * scale.range;
+
+                  const yPosition =
+                    paddingTop +
+                    (gridIndex / 4) *
+                      (height -
+                        paddingTop -
+                        paddingBottom);
+
+                  return (
+                    <g>
+                      <line
+                        x1={paddingLeft}
+                        y1={yPosition}
+                        x2={width - paddingRight}
+                        y2={yPosition}
+                        stroke="currentColor"
+                        class="text-slate-800"
+                        stroke-width="1"
+                      />
+
+                      <text
+                        x={paddingLeft - 8}
+                        y={yPosition + 4}
+                        text-anchor="end"
+                        class="fill-slate-500 text-[11px]"
+                      >
+                        {formatValue(value)}
+                      </text>
+                    </g>
+                  );
+                })
+              }
+
+              {
+                item.target !== undefined && (
+                  <g>
+                    <line
+                      x1={paddingLeft}
+                      y1={getY(item.target, scale)}
+                      x2={width - paddingRight}
+                      y2={getY(item.target, scale)}
+                      stroke="currentColor"
+                      class="text-amber-500"
+                      stroke-width="2"
+                      stroke-dasharray="6 6"
+                    />
+
+                    <text
+                      x={width - paddingRight}
+                      y={getY(item.target, scale) - 6}
+                      text-anchor="end"
+                      class="fill-amber-400 text-[11px]"
+                    >
+                      META
+                    </text>
+                  </g>
+                )
+              }
+
+              <polyline
+                points={createPoints(item.data, scale)}
+                fill="none"
+                stroke="currentColor"
+                class="text-cyan-400"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              {
+                item.data.map((point, pointIndex) => {
+                  const x = getX(
+                    pointIndex,
+                    item.data.length
+                  );
+
+                  const y = getY(
+                    point.value,
+                    scale
+                  );
+
+                  return (
+                    <g>
+                      <circle
+                        cx={x}
+                        cy={y}
+                        r="6"
+                        class="fill-cyan-400 stroke-slate-950"
+                        stroke-width="3"
+                      />
+
+                      <text
+                        x={x}
+                        y={y - 14}
+                        text-anchor="middle"
+                        class="fill-slate-300 text-[11px]"
+                      >
+                        {formatValue(point.value)}
+                      </text>
+
+                      <text
+                        x={x}
+                        y={height - 8}
+                        text-anchor="middle"
+                        class="fill-slate-500 text-[11px]"
+                      >
+                        Semana {point.week}
+                      </text>
+                    </g>
+                  );
+                })
+              }
+            </svg>
+          </div>
+        </div>
+      );
+    })
+  }
+</section>
+
+<script>
+  const container = document.querySelector(
+    '#performance-chart-tabs'
+  );
+
+  if (container) {
+    const buttons =
+      container.querySelectorAll(
+        '[data-series]'
+      );
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const seriesId =
+          button.getAttribute('data-series');
+
+        if (!seriesId) {
+          return;
+        }
+
+        document
+          .querySelectorAll('[data-chart]')
+          .forEach((chart) => {
+            chart.classList.toggle(
+              'hidden',
+              chart.getAttribute('data-chart') !==
+                seriesId
+            );
+          });
+
+        buttons.forEach((item) => {
+          const active = item === button;
+
+          item.classList.toggle(
+            'bg-slate-700',
+            active
+          );
+
+          item.classList.toggle(
+            'text-white',
+            active
+          );
+
+          item.classList.toggle(
+            'text-slate-400',
+            !active
+          );
+        });
+      });
+    });
+  }
+</script>

@@ -1,3 +1,6 @@
+
+import type { PlayerPerformanceGoals } from "./goals";
+
 /**
  * Tipos TypeScript centrais do Core Hub — Core Nemesis
  * Todas as interfaces e tipos usados nas páginas, componentes e utilitários.
@@ -209,6 +212,11 @@ export interface Player {
    * Null quando não disponível — o componente exibe um placeholder genérico.
    */
   avatar: string | null;
+  /**
+     * Metas individuais de performance do personagem.
+     * Calculadas a partir de simulações, Warcraft Logs ou definidas manualmente.
+     */
+  performanceGoals?: PlayerPerformanceGoals;
   /** Estatísticas e perfil do Raider.IO. */
   raiderIo: {
     /** Pontuação IO atual, ou null se não disponível. */
