@@ -1,5 +1,6 @@
 import type {
   PlayerPerformance,
+  PlayerRunPerformance,
   WeeklyPerformance,
 } from "../types/performance";
 
@@ -9,17 +10,37 @@ const weekModules = import.meta.glob<{ default: WeeklyPerformance }>(
 );
 
 /**
- * Returns all performance records for a player across the available weeks.
+ * Returns all runs across all weeks, in chronological order
+ * (sorted by week, then by date within the week).
+ */
+function getAllRuns(weeks: WeeklyPerformance[]) {
+  return [...weeks]
+    .sort((a, b) => a.week - b.week)
+    .flatMap((week) =>
+      [...week.runs]
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .map((run) => ({ week: week.week, run }))
+    );
+}
+
+/**
+ * Returns all performance records for a player across every run,
+ * across every week, in chronological order.
  */
 export function getPlayerHistory(
   weeks: WeeklyPerformance[],
   playerId: string
-): PlayerPerformance[] {
-  return [...weeks]
-    .sort((a, b) => a.week - b.week)
-    .flatMap((week) =>
-      week.players.filter((player) => player.playerId === playerId)
-    );
+): PlayerRunPerformance[] {
+  return getAllRuns(weeks).flatMap(({ week, run }) =>
+    run.players
+      .filter((player) => player.playerId === playerId)
+      .map((player) => ({
+        ...player,
+        week,
+        date: run.date,
+        reportCode: run.reportCode,
+      }))
+  );
 }
 
 /**
@@ -28,7 +49,7 @@ export function getPlayerHistory(
 export function getLatestPerformance(
   weeks: WeeklyPerformance[],
   playerId: string
-): PlayerPerformance | undefined {
+): PlayerRunPerformance | undefined {
   const history = getPlayerHistory(weeks, playerId);
 
   return history.at(-1);
@@ -73,7 +94,7 @@ export function calculateEvolution(
 }
 
 /**
- * Calculates the evolution of a player's DPS between two weeks.
+ * Calculates the evolution of a player's DPS between two runs.
  */
 export function calculateDpsEvolution(
   current: PlayerPerformance,
@@ -87,7 +108,7 @@ export function calculateDpsEvolution(
 }
 
 /**
- * Calculates the evolution of a player's HPS between two weeks.
+ * Calculates the evolution of a player's HPS between two runs.
  */
 export function calculateHpsEvolution(
   current: PlayerPerformance,
@@ -203,64 +224,63 @@ export function calculateGoalProgress(
 }
 
 /**
- * Builds a performance series for a specific metric
- * across all players in the core.
+ * Builds a performance series for a specific metric across all
+ * players in the core, one data point per raid run (not per week).
  *
- * Players without data for a given week simply do not
- * receive a data point for that week.
+ * Players without data for a given run simply do not receive a
+ * data point for that run.
  */
 export function getCorePerformanceSeries(
   weeks: WeeklyPerformance[],
   players: { id: string; name: string }[],
   metric: 'dps' | 'parse' | 'deaths' | 'mechanics'
 ) {
+  const runs = getAllRuns(weeks);
+
   return players
     .map((player) => {
       const playerId = player.id;
 
-      const data = weeks
-        .slice()
-        .sort((a, b) => a.week - b.week)
-        .flatMap((week) => {
-          const performance = week.players.find(
-            (item) => item.playerId === playerId
-          );
+      const data = runs.flatMap(({ run }) => {
+        const performance = run.players.find(
+          (item) => item.playerId === playerId
+        );
 
-          if (!performance) {
-            return [];
-          }
+        if (!performance) {
+          return [];
+        }
 
-          let value: number | undefined;
+        let value: number | undefined;
 
-          switch (metric) {
-            case 'dps':
-              value = performance.dps;
-              break;
+        switch (metric) {
+          case 'dps':
+            value = performance.dps;
+            break;
 
-            case 'parse':
-              value = performance.parse;
-              break;
+          case 'parse':
+            value = performance.parse;
+            break;
 
-            case 'deaths':
-              value = performance.deaths;
-              break;
+          case 'deaths':
+            value = performance.deaths;
+            break;
 
-            case 'mechanics':
-              value = performance.mechanics?.errors;
-              break;
-          }
+          case 'mechanics':
+            value = performance.mechanics?.errors;
+            break;
+        }
 
-          if (value === undefined) {
-            return [];
-          }
+        if (value === undefined) {
+          return [];
+        }
 
-          return [
-            {
-              week: week.week,
-              value,
-            },
-          ];
-        });
+        return [
+          {
+            date: run.date,
+            value,
+          },
+        ];
+      });
 
       return {
         playerId,
@@ -279,36 +299,3 @@ export function getPerformanceWeeks(): WeeklyPerformance[] {
     .map((mod) => mod.default)
     .sort((a, b) => a.week - b.week);
 }
-
-export interface PerformanceTargets {
-  dps?: number;
-  hps?: number;
-  parse?: number;
-  deaths?: number;
-  mechanics?: number;
-}
-
-export interface PlayerPerformance {
-  playerId: string;
-  dps?: number;
-  hps?: number;
-  parse?: number;
-  deaths?: number;
-  mechanics?: {
-    errors: number;
-  };
-}
-
-export interface WeeklyPerformance {
-  week: number;
-  players: PlayerPerformance[];
-}
-
-export interface PerformanceTargets {
-  dps?: number;
-  hps?: number;
-  parse?: number;
-  deaths?: number;
-  mechanics?: number;
-}
-

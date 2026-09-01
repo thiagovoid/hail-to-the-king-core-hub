@@ -1,54 +1,168 @@
 {
   "week": 2,
-  "date": "2026-08-28",
-  "players": [
+  "runs": [
     {
-      "playerId": "apocalipse",
-      "dps": 43163,
-      "itemLevel": 288,
-      "deaths": 19
+      "date": "2026-08-25",
+      "reportCode": "WYzBZmRpcVbMHAQT",
+      "players": [
+        {
+          "playerId": "blackwatch",
+          "dps": 42971,
+          "deaths": 4
+        },
+        {
+          "playerId": "apocalipse",
+          "dps": 32082,
+          "itemLevel": 288,
+          "deaths": 4
+        },
+        {
+          "playerId": "voidsurge",
+          "hps": 124186,
+          "itemLevel": 287,
+          "deaths": 5
+        },
+        {
+          "playerId": "kams",
+          "hps": 154338,
+          "itemLevel": 294,
+          "deaths": 5
+        },
+        {
+          "playerId": "bustgril",
+          "dps": 69484,
+          "itemLevel": 290,
+          "deaths": 7
+        },
+        {
+          "playerId": "hysillens",
+          "dps": 95577,
+          "itemLevel": 300,
+          "deaths": 6
+        },
+        {
+          "playerId": "kroline",
+          "dps": 92976,
+          "itemLevel": 302,
+          "deaths": 6
+        },
+        {
+          "playerId": "jrxamã",
+          "dps": 130420,
+          "itemLevel": 308,
+          "deaths": 5
+        },
+        {
+          "playerId": "heracranosx",
+          "dps": 88856,
+          "itemLevel": 305,
+          "deaths": 4
+        },
+        {
+          "playerId": "gunst",
+          "dps": 103362,
+          "deaths": 5
+        },
+        {
+          "playerId": "nerlock",
+          "dps": 40676,
+          "itemLevel": 279,
+          "deaths": 8
+        },
+        {
+          "playerId": "xúliodk",
+          "dps": 80651,
+          "itemLevel": 295,
+          "deaths": 6
+        }
+      ]
     },
     {
-      "playerId": "kams",
-      "hps": 196215,
-      "itemLevel": 294,
-      "deaths": 19
-    },
-    {
-      "playerId": "bustgril",
-      "dps": 124820,
-      "itemLevel": 290,
-      "deaths": 22
-    },
-    {
-      "playerId": "hysillens",
-      "dps": 118450,
-      "itemLevel": 300,
-      "deaths": 20
-    },
-    {
-      "playerId": "kroline",
-      "dps": 146549,
-      "itemLevel": 302,
-      "deaths": 20
-    },
-    {
-      "playerId": "jrxamã",
-      "dps": 162291,
-      "itemLevel": 308,
-      "deaths": 21
-    },
-    {
-      "playerId": "heracranosx",
-      "dps": 99131,
-      "itemLevel": 305,
-      "deaths": 17
-    },
-    {
-      "playerId": "cowsadeer",
-      "hps": 227911,
-      "itemLevel": 305,
-      "deaths": 12
+      "date": "2026-08-27",
+      "reportCode": "kKw3DbzqYhRGLdMa",
+      "players": [
+        {
+          "playerId": "blackwatch",
+          "dps": 3994,
+          "itemLevel": 303,
+          "deaths": 6
+        },
+        {
+          "playerId": "apocalipse",
+          "dps": 20536,
+          "itemLevel": 292,
+          "deaths": 16
+        },
+        {
+          "playerId": "voidsurge",
+          "hps": 61682,
+          "itemLevel": 287,
+          "deaths": 18
+        },
+        {
+          "playerId": "kams",
+          "hps": 83773,
+          "deaths": 14
+        },
+        {
+          "playerId": "cowsadeer",
+          "hps": 173200,
+          "itemLevel": 305,
+          "deaths": 12
+        },
+        {
+          "playerId": "bustgril",
+          "dps": 56132,
+          "itemLevel": 296,
+          "deaths": 16
+        },
+        {
+          "playerId": "hysillens",
+          "dps": 46410,
+          "itemLevel": 300,
+          "deaths": 15
+        },
+        {
+          "playerId": "kroline",
+          "dps": 80755,
+          "itemLevel": 306,
+          "deaths": 15
+        },
+        {
+          "playerId": "jrxamã",
+          "dps": 89154,
+          "itemLevel": 310,
+          "deaths": 17
+        },
+        {
+          "playerId": "heracranosx",
+          "dps": 58545,
+          "itemLevel": 305,
+          "deaths": 14
+        },
+        {
+          "playerId": "gunst",
+          "dps": 63774,
+          "deaths": 15
+        },
+        {
+          "playerId": "nerlock",
+          "dps": 22825,
+          "itemLevel": 286,
+          "deaths": 15
+        },
+        {
+          "playerId": "xúlio",
+          "dps": 29977,
+          "deaths": 12
+        },
+        {
+          "playerId": "dagom",
+          "dps": 17460,
+          "itemLevel": 300,
+          "deaths": 8
+        }
+      ]
     }
   ]
 }

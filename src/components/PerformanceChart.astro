@@ -1,7 +1,13 @@
 ---
+import { formatDate } from '@/utils/format';
+
 interface DataPoint {
-  week: number;
+  date: string;
   value: number;
+}
+
+function formatShortDate(iso: string): string {
+  return formatDate(iso).slice(0, 5);
 }
 
 interface Series {
@@ -141,7 +147,7 @@ const charts = series.map((item) => {
       </h2>
 
       <p class="text-sm text-slate-500 mt-1">
-        Acompanhe sua evolução ao longo das semanas.
+        Acompanhe sua evolução run a run.
       </p>
     </div>
 
@@ -334,7 +340,7 @@ const charts = series.map((item) => {
                         text-anchor="middle"
                         class="fill-slate-500 text-[11px]"
                       >
-                        Semana {point.week}
+                        {formatShortDate(point.date)}
                       </text>
                     </g>
                   );

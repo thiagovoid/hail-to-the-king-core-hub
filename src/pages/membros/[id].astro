@@ -13,6 +13,7 @@ import {
   getLatestPerformance,
   getPlayerHistory,
 } from '@/utils/performance';
+import { formatDate } from '@/utils/format';
 
 export function getStaticPaths() {
   return roster.map((player) => ({
@@ -45,35 +46,35 @@ const previous = history.length >= 2
 
 const dpsHistory = history
   .filter((performance) => performance.dps !== undefined)
-  .map((performance, index) => ({
-    week: index + 1,
+  .map((performance) => ({
+    date: performance.date,
     value: performance.dps!,
   }));
 
 const parseHistory = history
   .filter((performance) => performance.parse !== undefined)
-  .map((performance, index) => ({
-    week: index + 1,
+  .map((performance) => ({
+    date: performance.date,
     value: performance.parse!,
   }));
 
 const mechanicsHistory = history
   .filter((performance) => performance.mechanics?.errors !== undefined)
-  .map((performance, index) => ({
-    week: index + 1,
+  .map((performance) => ({
+    date: performance.date,
     value: performance.mechanics!.errors,
   }));
 
 const deathsHistory = history
-  .map((performance, index) => ({
-    week: index + 1,
+  .map((performance) => ({
+    date: performance.date,
     value: performance.deaths,
   }));
 
 const hpsHistory = history
   .filter((performance) => performance.hps !== undefined)
-  .map((performance, index) => ({
-    week: weeks[index]?.week ?? index + 1,
+  .map((performance) => ({
+    date: performance.date,
     value: performance.hps!,
   }));
 
@@ -202,21 +203,15 @@ const hpsHistory = history
 
           <tbody>
             {
-              history.map((performance, index) => {
-                const week = weeks.find(
-                  (item) => item.players.some(
-                    (player) => player.playerId === performance.playerId
-                  ) && item.week === index + 1
-                );
-
+              history.map((performance) => {
                 return (
                   <tr class="border-b border-slate-800/50 last:border-0">
                     <td class="px-4 py-3 text-white">
-                      {week?.week ?? index + 1}
+                      {performance.week}
                     </td>
 
                     <td class="px-4 py-3 text-slate-400">
-                      {week?.date ?? '-'}
+                      {formatDate(performance.date)}
                     </td>
 
                     <td class="px-4 py-3 text-slate-300">

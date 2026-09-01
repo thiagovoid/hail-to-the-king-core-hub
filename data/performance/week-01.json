@@ -1,42 +1,94 @@
 {
   "week": 1,
-  "date": "2026-08-19",
-  "players": [
+  "runs": [
     {
-      "playerId": "voidwar",
-      "dps": 51971,
-      "itemLevel": 290,
-      "deaths": 9
-    },
-    {
-      "playerId": "kams",
-      "hps": 130864,
-      "itemLevel": 273,
-      "deaths": 6
-    },
-    {
-      "playerId": "bustgril",
-      "dps": 76773,
-      "itemLevel": 286,
-      "deaths": 6
-    },
-    {
-      "playerId": "kroline",
-      "dps": 17687,
-      "itemLevel": 291,
-      "deaths": 6
-    },
-    {
-      "playerId": "jrxamã",
-      "dps": 111746,
-      "itemLevel": 290,
-      "deaths": 7
-    },
-    {
-      "playerId": "heracranosx",
-      "dps": 95312,
-      "itemLevel": 293,
-      "deaths": 6
+      "date": "2026-08-18",
+      "reportCode": "PvxcbTGDVjMgzqLX",
+      "players": [
+        {
+          "playerId": "voidwar",
+          "dps": 48020,
+          "itemLevel": 290,
+          "deaths": 9
+        },
+        {
+          "playerId": "blackwatch",
+          "dps": 37606,
+          "itemLevel": 292,
+          "deaths": 6
+        },
+        {
+          "playerId": "kams",
+          "hps": 107887,
+          "deaths": 6
+        },
+        {
+          "playerId": "bustgril",
+          "dps": 67209,
+          "itemLevel": 286,
+          "deaths": 6
+        },
+        {
+          "playerId": "kroline",
+          "dps": 17352,
+          "itemLevel": 291,
+          "deaths": 6
+        },
+        {
+          "playerId": "jrxamã",
+          "dps": 99309,
+          "itemLevel": 290,
+          "deaths": 7
+        },
+        {
+          "playerId": "heracranosx",
+          "dps": 85671,
+          "itemLevel": 293,
+          "deaths": 6
+        },
+        {
+          "playerId": "nerlock",
+          "dps": 35285,
+          "itemLevel": 258,
+          "deaths": 6
+        },
+        {
+          "playerId": "metallicä",
+          "dps": 45084,
+          "itemLevel": 290,
+          "deaths": 5
+        },
+        {
+          "playerId": "panicdeath",
+          "dps": 60175,
+          "itemLevel": 289,
+          "deaths": 7
+        },
+        {
+          "playerId": "xúliodk",
+          "dps": 59531,
+          "itemLevel": 293,
+          "deaths": 5
+        },
+        {
+          "playerId": "orthín",
+          "dps": 64305,
+          "itemLevel": 287,
+          "deaths": 5
+        },
+        {
+          "playerId": "youkaiqqz",
+          "dps": 90494,
+          "itemLevel": 293,
+          "deaths": 8
+        },
+        {
+          "playerId": "soju",
+          "hps": 44996,
+          "itemLevel": 255,
+          "deaths": 9
+        }
+      ]
     }
   ]
 }

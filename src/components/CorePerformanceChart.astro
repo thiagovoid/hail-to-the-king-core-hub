@@ -2,10 +2,15 @@
 ---
 
 import { getClassColor } from '@/utils/roster';
+import { formatDate } from '@/utils/format';
 
 interface DataPoint {
-  week: number;
+  date: string;
   value: number;
+}
+
+function formatShortDate(iso: string): string {
+  return formatDate(iso).slice(0, 5);
 }
 
 interface PlayerSeries {
@@ -78,17 +83,17 @@ function getScale(series: PlayerSeries[]) {
 }
 
 function getX(
-  week: number,
-  weeks: number[]
+  date: string,
+  dates: string[]
 ): number {
   const chartWidth =
     width - paddingLeft - paddingRight;
 
-  if (weeks.length <= 1) {
+  if (dates.length <= 1) {
     return paddingLeft + chartWidth / 2;
   }
 
-  const index = weeks.indexOf(week);
+  const index = dates.indexOf(date);
 
   if (index === -1) {
     return paddingLeft;
@@ -96,7 +101,7 @@ function getX(
 
   return (
     paddingLeft +
-    (index / (weeks.length - 1)) * chartWidth
+    (index / (dates.length - 1)) * chartWidth
   );
 }
 
@@ -117,32 +122,32 @@ function getY(
 function createPoints(
   data: DataPoint[],
   scale: ReturnType<typeof getScale>,
-  weeks: number[]
+  dates: string[]
 ): string {
   return data
     .map(
       (point) =>
-        `${getX(point.week, weeks)},${getY(point.value, scale)}`
+        `${getX(point.date, dates)},${getY(point.value, scale)}`
     )
     .join(' ');
 }
 
-function getWeeks(series: PlayerSeries[]): number[] {
+function getDates(series: PlayerSeries[]): string[] {
   return [
     ...new Set(
       series.flatMap((item) =>
-        item.data.map((point) => point.week)
+        item.data.map((point) => point.date)
       )
     ),
-  ].sort((a, b) => a - b);
+  ].sort((a, b) => a.localeCompare(b));
 }
 
-function getLastWeek(weeks: number[]): number | null {
-  if (weeks.length === 0) {
+function getLastDate(dates: string[]): string | null {
+  if (dates.length === 0) {
     return null;
   }
 
-  return weeks[weeks.length - 1];
+  return dates[dates.length - 1];
 }
 
 function getTrend(
@@ -197,7 +202,7 @@ function getTrend(
       </h2>
 
       <p class="text-sm text-slate-500 mt-1">
-        Evolução dos jogadores ao longo das semanas.
+        Evolução dos jogadores run a run.
       </p>
     </div>
 
@@ -226,8 +231,8 @@ function getTrend(
   {
     metrics.map((metric, metricIndex) => {
       const scale = getScale(metric.series);
-      const weeks = getWeeks(metric.series);
-      const lastWeek = getLastWeek(weeks);
+      const dates = getDates(metric.series);
+      const lastDate = getLastDate(dates);
 
       return (
         <div
@@ -278,12 +283,12 @@ function getTrend(
               }
 
               {
-                lastWeek !== null && (
+                lastDate !== null && (
                   <g>
                     <line
-                      x1={getX(lastWeek, weeks)}
+                      x1={getX(lastDate, dates)}
                       y1={paddingTop}
-                      x2={getX(lastWeek, weeks)}
+                      x2={getX(lastDate, dates)}
                       y2={height - paddingBottom}
                       stroke="currentColor"
                       class="text-slate-700"
@@ -292,7 +297,7 @@ function getTrend(
                     />
 
                     <text
-                      x={getX(lastWeek, weeks)}
+                      x={getX(lastDate, dates)}
                       y={paddingTop - 8}
                       text-anchor="middle"
                       class="fill-slate-400 text-[10px]"
@@ -332,7 +337,7 @@ function getTrend(
                         points={createPoints(
                           playerSeries.data,
                           scale,
-                          weeks
+                          dates
                         )}
                         fill="none"
                         stroke="currentColor"
@@ -351,7 +356,7 @@ function getTrend(
                             return (
                               <g>
                                 <circle
-                                  cx={getX(point.week, weeks)}
+                                  cx={getX(point.date, dates)}
                                   cy={getY(point.value, scale)}
                                   r={isLastPoint ? 6 : 5}
                                   class={`${playerColor} stroke-slate-950`}
@@ -360,7 +365,7 @@ function getTrend(
                                 />
 
                                 <text
-                                  x={getX(point.week, weeks)}
+                                  x={getX(point.date, dates)}
                                   y={getY(point.value, scale) - 11}
                                   text-anchor="middle"
                                   class="fill-slate-400 text-[10px]"
@@ -391,14 +396,14 @@ function getTrend(
                 ) && (
                   <g>
                     {
-                      getWeeks(metric.series).map((week, index, weeks) => (
+                      getDates(metric.series).map((date, index, dates) => (
                         <text
-                          x={getX(week, weeks)}
+                          x={getX(date, dates)}
                           y={height - 8}
                           text-anchor="middle"
                           class="fill-slate-500 text-[11px]"
                         >
-                          Semana {week}
+                          {formatShortDate(date)}
                         </text>
                       ))
                     }
