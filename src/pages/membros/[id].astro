@@ -78,6 +78,24 @@ const hpsHistory = history
     value: performance.hps!,
   }));
 
+// Healers têm hps, o resto tem dps — nunca os dois juntos, então só um
+// dos dois entra no gráfico principal (o outro ficaria sempre vazio).
+const primaryMetricSeries = player.role === 'healer'
+  ? {
+      id: 'hps',
+      label: 'HPS',
+      data: hpsHistory,
+      target: player.performanceGoals?.hps?.target,
+      direction: 'higher' as const,
+    }
+  : {
+      id: 'dps',
+      label: 'DPS',
+      data: dpsHistory,
+      target: player.performanceGoals?.dps?.target,
+      direction: 'higher' as const,
+    };
+
 ---
 
 <BaseLayout
@@ -145,16 +163,10 @@ const hpsHistory = history
     }
 
     {
-      dpsHistory.length > 0 && (
+      history.length > 0 && (
         <PerformanceChart
           series={[
-            {
-              id: 'dps',
-              label: 'DPS',
-              data: dpsHistory,
-              target: player.performanceGoals?.dps?.target,
-              direction: 'higher',
-            },
+            primaryMetricSeries,
             {
               id: 'parse',
               label: 'Parse',
