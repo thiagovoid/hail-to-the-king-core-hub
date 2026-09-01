@@ -9,7 +9,8 @@
     "test": "vitest run --passWithNoTests",
     "test:coverage": "vitest run --coverage",
     "wcl:test": "node scripts/warcraftlogs/test-connection.mjs",
-    "wcl:fetch-performance": "node scripts/warcraftlogs/fetch-performance.mjs"
+    "wcl:fetch-performance": "node scripts/warcraftlogs/fetch-performance.mjs",
+    "wcl:sync-roster-stats": "node scripts/warcraftlogs/sync-roster-stats.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

@@ -92,6 +92,10 @@ const linkWipefest = safeUrl(player.externalLinks.wipefest);
   class="bg-[#141b2d] border border-white/7 rounded-xl overflow-hidden hover:border-white/14 transition-all duration-200 flex flex-col"
   aria-label={`Card do jogador ${player.name}`}
 >
+  <a
+    href={`/hail-to-the-king-core-hub/membros/${player.id}/`}
+    class="flex flex-col flex-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] focus-visible:ring-inset"
+  >
   <!-- Header strip with class color accent -->
   <div class="relative h-16 bg-gradient-to-r from-[#0a0d14] to-[#1a2235] overflow-hidden">
 
@@ -230,6 +234,7 @@ const linkWipefest = safeUrl(player.externalLinks.wipefest);
     </section>
 
   </div>
+  </a>
 
   <!-- Quick links footer -->
   {(linkRaiderIo || linkRaidbots || linkArchon || linkWcl || linkWipefest) && (
