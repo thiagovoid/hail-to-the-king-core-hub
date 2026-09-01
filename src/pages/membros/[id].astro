@@ -58,9 +58,10 @@ const parseHistory = history
   }));
 
 const mechanicsHistory = history
+  .filter((performance) => performance.mechanics?.errors !== undefined)
   .map((performance, index) => ({
     week: index + 1,
-    value: performance.mechanics.errors,
+    value: performance.mechanics!.errors,
   }));
 
 const deathsHistory = history
@@ -235,7 +236,7 @@ const hpsHistory = history
                     </td>
 
                     <td class="px-4 py-3 text-slate-300">
-                      {performance.mechanics.errors}
+                      {performance.mechanics?.errors ?? '-'}
                     </td>
 
                     <td class="px-4 py-3 text-slate-300">

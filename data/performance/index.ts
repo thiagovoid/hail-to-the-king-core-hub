@@ -1,7 +1,7 @@
-import week01 from './week-01.json';
-import week02 from './week-02.json';
+const modules = import.meta.glob<{ default: { week: number } }>('./week-*.json', {
+  eager: true,
+});
 
-export const performanceWeeks = [
-  week01,
-  week02,
-];
+export const performanceWeeks = Object.values(modules)
+  .map((mod) => mod.default)
+  .sort((a, b) => a.week - b.week);

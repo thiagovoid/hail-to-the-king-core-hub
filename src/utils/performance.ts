@@ -1,10 +1,12 @@
-import week01 from "../../data/performance/week-01.json";
-import week02 from "../../data/performance/week-02.json";
-
 import type {
   PlayerPerformance,
   WeeklyPerformance,
 } from "../types/performance";
+
+const weekModules = import.meta.glob<{ default: WeeklyPerformance }>(
+  "../../data/performance/week-*.json",
+  { eager: true }
+);
 
 /**
  * Returns all performance records for a player across the available weeks.
@@ -271,14 +273,11 @@ export function getCorePerformanceSeries(
 
 /**
  * Returns all available weekly performance datasets.
- *
- * New weeks should be added here as they become available.
  */
 export function getPerformanceWeeks(): WeeklyPerformance[] {
-  return [
-    week01 as WeeklyPerformance,
-    week02 as WeeklyPerformance,
-  ];
+  return Object.values(weekModules)
+    .map((mod) => mod.default)
+    .sort((a, b) => a.week - b.week);
 }
 
 export interface PerformanceTargets {

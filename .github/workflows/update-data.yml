@@ -1,0 +1,97 @@
+name: Update Performance Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Número da semana (ex: 3)"
+        required: true
+        type: string
+      start:
+        description: "Data de início da janela (YYYY-MM-DD). Deixe em branco para usar 'days' a partir de agora."
+        required: false
+        type: string
+      end:
+        description: "Data de fim da janela (YYYY-MM-DD). Só é usada junto com 'start'."
+        required: false
+        type: string
+      days:
+        description: "Janela em dias a partir de agora (usada quando 'start' não é informado)"
+        required: false
+        type: string
+        default: "7"
+      reports:
+        description: "Códigos de report manuais, separados por vírgula (reforço para logs unlisted/pessoais)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+# Fase de teste: dispara só manualmente (workflow_dispatch). Vira cron
+# (terça/quinta) quando o pipeline estiver validado em produção.
+jobs:
+  update-data:
+    name: Fetch & Commit
+    runs-on: ubuntu-latest
+    env:
+      # ID de conta WCL de quem sobe os logs de raid (não é dado sensível,
+      # é só um ID numérico de conta). Ver scripts/warcraftlogs/fetch-performance.mjs.
+      WCL_UPLOADER_USER_IDS: "922357"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch performance data from WarcraftLogs
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          INPUT_WEEK: ${{ inputs.week }}
+          INPUT_START: ${{ inputs.start }}
+          INPUT_END: ${{ inputs.end }}
+          INPUT_DAYS: ${{ inputs.days }}
+          INPUT_REPORTS: ${{ inputs.reports }}
+        run: |
+          ARGS=(--week="$INPUT_WEEK")
+
+          if [ -n "$INPUT_START" ]; then
+            ARGS+=(--start="$INPUT_START" --end="$INPUT_END")
+          else
+            ARGS+=(--days="$INPUT_DAYS")
+          fi
+
+          if [ -n "$INPUT_REPORTS" ]; then
+            ARGS+=(--reports="$INPUT_REPORTS")
+          fi
+
+          node scripts/warcraftlogs/fetch-performance.mjs "${ARGS[@]}"
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build site (valida que os dados gerados não quebram o build)
+        run: npm run build
+
+      - name: Commit generated data
+        env:
+          INPUT_WEEK: ${{ inputs.week }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/performance/week-*.json
+
+          if git diff --cached --quiet; then
+            echo "Nada para commitar."
+          else
+            git commit -m "chore(data): atualiza performance da semana $INPUT_WEEK"
+            git push
+          fi

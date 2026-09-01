@@ -143,30 +143,34 @@ const mechanicEvolution = calculateMechanicEvolution(
       </strong>
     </article>
 
-    <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-      <p class="text-xs uppercase tracking-wide text-slate-500">
-        Erros mecânicos
-      </p>
-
-      <strong class="block text-2xl font-bold text-white mt-1">
-        {current.mechanics.errors}
-      </strong>
-
-      {
-        mechanicEvolution !== null && (
-          <p
-            class={`text-sm mt-1 ${
-              mechanicEvolution <= 0
-                ? 'text-emerald-400'
-                : 'text-red-400'
-            }`}
-          >
-            {mechanicEvolution > 0 ? '+' : ''}
-            {mechanicEvolution}
+    {
+      current.mechanics !== undefined && (
+        <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-500">
+            Erros mecânicos
           </p>
-        )
-      }
-    </article>
+
+          <strong class="block text-2xl font-bold text-white mt-1">
+            {current.mechanics.errors}
+          </strong>
+
+          {
+            mechanicEvolution !== null && (
+              <p
+                class={`text-sm mt-1 ${
+                  mechanicEvolution <= 0
+                    ? 'text-emerald-400'
+                    : 'text-red-400'
+                }`}
+              >
+                {mechanicEvolution > 0 ? '+' : ''}
+                {mechanicEvolution}
+              </p>
+            )
+          }
+        </article>
+      )
+    }
 
     {
       current.itemLevel !== undefined && (

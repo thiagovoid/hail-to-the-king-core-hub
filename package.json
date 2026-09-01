@@ -7,18 +7,21 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run --passWithNoTests",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "wcl:test": "node scripts/warcraftlogs/test-connection.mjs",
+    "wcl:fetch-performance": "node scripts/warcraftlogs/fetch-performance.mjs"
   },
   "dependencies": {
-    "astro": "^4.16.18",
     "@astrojs/tailwind": "^5.1.4",
+    "astro": "^4.16.18",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "typescript": "^5.7.3",
-    "vitest": "^2.1.8",
     "@vitest/coverage-v8": "^2.1.8",
-    "fast-check": "^3.23.2"
+    "dotenv": "^17.4.2",
+    "fast-check": "^3.23.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
   }
 }
