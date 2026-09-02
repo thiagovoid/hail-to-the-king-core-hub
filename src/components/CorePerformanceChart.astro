@@ -458,7 +458,7 @@ const serializedMetrics = metrics.map((metric) => ({
                       {
                         playerSeries.playerSlug ? (
                           <a
-                            href={`/hail-to-the-king-core-hub/membros/${playerSeries.playerSlug}/`}
+                            href={`/membros/${playerSeries.playerSlug}/`}
                             class="text-slate-300 hover:text-white hover:underline transition-colors"
                           >
                             {playerSeries.playerName}
@@ -655,7 +655,7 @@ const serializedMetrics = metrics.map((metric) => ({
         : '';
 
       const nameHtml = playerSeries.playerSlug
-        ? `<a href="/hail-to-the-king-core-hub/membros/${playerSeries.playerSlug}/" class="text-slate-300 hover:text-white hover:underline transition-colors">${nameEscaped}</a>`
+        ? `<a href="/membros/${playerSeries.playerSlug}/" class="text-slate-300 hover:text-white hover:underline transition-colors">${nameEscaped}</a>`
         : `<span class="text-slate-300">${nameEscaped}</span>`;
 
       legendHtml += `<div class="flex items-center gap-2 text-xs"><span class="w-2 h-2 rounded-full ${playerSeries.playerColor}" style="background-color: currentColor;"></span>${nameHtml}${trendHtml}</div>`;

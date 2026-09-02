@@ -13,24 +13,22 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Home',          href: '/hail-to-the-king-core-hub/',             icon: '🏠' },
-  { label: 'Progressão',    href: '/hail-to-the-king-core-hub/progressao/',  icon: '⚔' },
-  { label: 'Membros',       href: '/hail-to-the-king-core-hub/membros/',     icon: '👥' },
-  { label: 'Mythic+',       href: '/hail-to-the-king-core-hub/mythic/',      icon: '🗝' },
-  { label: 'Ferramentas',   href: '/hail-to-the-king-core-hub/ferramentas/', icon: '🛠' },
-  { label: 'Regras',        href: '/hail-to-the-king-core-hub/regras/',      icon: '📋' },
+  { label: 'Home',          href: '/',             icon: '🏠' },
+  { label: 'Progressão',    href: '/progressao/',  icon: '⚔' },
+  { label: 'Membros',       href: '/membros/',     icon: '👥' },
+  { label: 'Mythic+',       href: '/mythic/',      icon: '🗝' },
+  { label: 'Ferramentas',   href: '/ferramentas/', icon: '🛠' },
+  { label: 'Regras',        href: '/regras/',      icon: '📋' },
 ];
 
 const navItemsOLD: NavItem[] = [
-  { label: 'Home',          href: '/hail-to-the-king-core-hub/',             icon: '🏠' },
-  { label: 'Progressão',    href: '/hail-to-the-king-core-hub/progressao/',  icon: '⚔' },
-  { label: 'Membros',       href: '/hail-to-the-king-core-hub/membros/',     icon: '👥' },
-  { label: 'Mythic+',       href: '/hail-to-the-king-core-hub/mythic/',      icon: '🗝' },
-  { label: 'Logs',          href: '/hail-to-the-king-core-hub/logs/',        icon: '📜' },
-  { label: 'Loots',         href: '/hail-to-the-king-core-hub/loots/',       icon: '💎' },
-  { label: 'Planejamento',  href: '/hail-to-the-king-core-hub/planejamento/', icon: '🎯' },
-  { label: 'Ferramentas',   href: '/hail-to-the-king-core-hub/ferramentas/', icon: '🛠' },
-  { label: 'Regras',        href: '/hail-to-the-king-core-hub/regras/',      icon: '📋' },
+  { label: 'Home',          href: '/',             icon: '🏠' },
+  { label: 'Progressão',    href: '/progressao/',  icon: '⚔' },
+  { label: 'Membros',       href: '/membros/',     icon: '👥' },
+  { label: 'Mythic+',       href: '/mythic/',      icon: '🗝' },
+
+  { label: 'Ferramentas',   href: '/ferramentas/', icon: '🛠' },
+  { label: 'Regras',        href: '/regras/',      icon: '📋' },
 ];
 
 function isActive(href: string): boolean {
@@ -49,7 +47,7 @@ function isActive(href: string): boolean {
 
         <!-- Branding — Fix label-content-name-mismatch: remove aria-label, use aria-label only when no visible text -->
         <a
-          href="/hail-to-the-king-core-hub/"
+          href="/"
           class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] rounded"
         >
           <span class="text-xl" aria-hidden="true">⚔</span>
