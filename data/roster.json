@@ -29,6 +29,35 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 69738,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T00:59:54.309Z"
+      }
     }
   },
   {
@@ -57,6 +86,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/characters/us/nemesis/blackwatch"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 53921,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:06:20.129Z"
+      }
     }
   },
   {
@@ -74,7 +132,7 @@
       "io": 2525,
       "bestDungeon": "Ruby Life Pools",
       "highestKey": 11,
-      "realmRank": 12107,
+      "realmRank": 12160,
       "profileUrl": "https://raider.io/characters/us/stormrage/Apocalïpse"
     },
     "warcraftLogs": {
@@ -85,6 +143,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/characters/us/stormrage/Apocalïpse"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 52426,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:00:21.016Z"
+      }
     }
   },
   {
@@ -102,7 +189,7 @@
       "io": 1657,
       "bestDungeon": "Kings' Rest",
       "highestKey": 11,
-      "realmRank": 607,
+      "realmRank": 611,
       "profileUrl": "https://raider.io/characters/us/nemesis/voidsurge"
     },
     "warcraftLogs": {
@@ -113,6 +200,27 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/characters/us/nemesis/voidsurge"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      }
     }
   },
   {
@@ -130,7 +238,7 @@
       "io": 2175,
       "bestDungeon": "Murder Row",
       "highestKey": 10,
-      "realmRank": 475,
+      "realmRank": 479,
       "profileUrl": "https://raider.io/characters/us/tol-barad/Kams"
     },
     "warcraftLogs": {
@@ -141,6 +249,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/characters/us/tol-barad/Kams"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 107954,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:13:25.971Z"
+      }
     }
   },
   {
@@ -155,20 +292,41 @@
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/tichondrius/193/247098561-avatar.jpg?alt=/wow/static/images/2d/avatar/6-0.jpg",
     "raiderIo": {
-      "io": null,
-      "bestDungeon": null,
-      "highestKey": null,
-      "realmRank": null,
+      "io": 2505,
+      "bestDungeon": "The Blinding Vale",
+      "highestKey": 10,
+      "realmRank": 7709,
       "profileUrl": "https://raider.io/br/characters/us/tichondrius/Cowsadeer"
     },
     "warcraftLogs": {
-      "avgParse": null,
-      "bestParse": null,
+      "avgParse": 34,
+      "bestParse": 34,
       "attendance": 33,
-      "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Cowsadeer"
+      "profileUrl": "https://www.warcraftlogs.com/character/us/tichondrius/Cowsadeer"
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/tichondrius/Cowsadeer"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      }
     }
   },
   {
@@ -186,7 +344,7 @@
       "io": 2317,
       "bestDungeon": "Kings' Rest",
       "highestKey": 11,
-      "realmRank": 424,
+      "realmRank": 426,
       "profileUrl": "https://raider.io/br/characters/us/nemesis/Bustgril"
     },
     "warcraftLogs": {
@@ -197,6 +355,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/nemesis/Bustgril"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 126592,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:07:32.892Z"
+      }
     }
   },
   {
@@ -225,6 +412,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/nemesis/Hysillens"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 108920,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:01:44.689Z"
+      }
     }
   },
   {
@@ -242,7 +458,7 @@
       "io": 3026,
       "bestDungeon": "Ruby Life Pools",
       "highestKey": 13,
-      "realmRank": 2462,
+      "realmRank": 2501,
       "profileUrl": "https://raider.io/br/characters/us/stormrage/Kroline"
     },
     "warcraftLogs": {
@@ -253,6 +469,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/stormrage/Kroline"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 149339,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:07:42.537Z"
+      }
     }
   },
   {
@@ -281,6 +526,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/nemesis/Jrxamã"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 140864,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:02:11.911Z"
+      }
     }
   },
   {
@@ -298,7 +572,7 @@
       "io": 2607,
       "bestDungeon": "The Blinding Vale",
       "highestKey": 10,
-      "realmRank": 273,
+      "realmRank": 274,
       "profileUrl": "https://raider.io/br/characters/us/nemesis/Heracranosx"
     },
     "warcraftLogs": {
@@ -309,6 +583,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/nemesis/Heracranosx"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 113890,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:07:54.074Z"
+      }
     }
   },
   {
@@ -326,7 +629,7 @@
       "io": 2272,
       "bestDungeon": "Voidscar Arena",
       "highestKey": 10,
-      "realmRank": 14787,
+      "realmRank": 14845,
       "profileUrl": "https://raider.io/br/characters/us/stormrage/gunst"
     },
     "warcraftLogs": {
@@ -337,6 +640,35 @@
     },
     "externalLinks": {
       "raiderIo": "https://raider.io/br/characters/us/stormrage/gunst"
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 116539,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:02:45.726Z"
+      }
     }
   },
   {
@@ -369,10 +701,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 105000,
+        "target": 98520,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
-        "source": "Raidbots"
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:08:02.770Z"
       },
       "parse": {
         "metric": "parse",
@@ -410,7 +743,7 @@
       "io": 863,
       "bestDungeon": "Den of Nalorakk",
       "highestKey": 7,
-      "realmRank": 824,
+      "realmRank": 830,
       "profileUrl": "https://raider.io/characters/us/nemesis/Metallic%C3%A4"
     },
     "warcraftLogs": {
@@ -425,6 +758,35 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 93061,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:03:12.184Z"
+      }
     }
   },
   {
@@ -457,6 +819,35 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 142371,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:08:11.432Z"
+      }
     }
   },
   {
@@ -474,7 +865,7 @@
       "io": 795,
       "bestDungeon": "Ruby Life Pools",
       "highestKey": 10,
-      "realmRank": 6740,
+      "realmRank": 6758,
       "profileUrl": "https://raider.io/characters/us/azralon/X%C3%BAliodk"
     },
     "warcraftLogs": {
@@ -489,6 +880,35 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 51208,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:03:38.612Z"
+      }
     }
   },
   {
@@ -521,6 +941,27 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      }
     }
   },
   {
@@ -538,7 +979,7 @@
       "io": 2814,
       "bestDungeon": "Temple of Sethraliss",
       "highestKey": 13,
-      "realmRank": 1339,
+      "realmRank": 1362,
       "profileUrl": "https://raider.io/characters/us/azralon/Youkaiqqz"
     },
     "warcraftLogs": {
@@ -553,6 +994,35 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 130612,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:08:50.456Z"
+      }
     }
   },
   {
@@ -585,6 +1055,27 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      }
     }
   },
   {
@@ -602,7 +1093,7 @@
       "io": 2596,
       "bestDungeon": "Kings' Rest",
       "highestKey": 12,
-      "realmRank": 2782,
+      "realmRank": 2804,
       "profileUrl": "https://raider.io/characters/us/azralon/X%C3%BAlio"
     },
     "warcraftLogs": {
@@ -617,6 +1108,35 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 149023,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:09:31.850Z"
+      }
     }
   },
   {
@@ -634,7 +1154,7 @@
       "io": 1951,
       "bestDungeon": "Den of Nalorakk",
       "highestKey": 10,
-      "realmRank": 17564,
+      "realmRank": 17622,
       "profileUrl": "https://raider.io/characters/us/stormrage/Dagom"
     },
     "warcraftLogs": {
@@ -649,6 +1169,35 @@
       "archon": "",
       "warcraftLogs": "",
       "wipefest": ""
+    },
+    "performanceGoals": {
+      "parse": {
+        "metric": "parse",
+        "target": 75,
+        "direction": "higher",
+        "description": "Parse alvo para o nível atual",
+        "source": "Warcraft Logs"
+      },
+      "mechanics": {
+        "metric": "mechanics",
+        "target": 1,
+        "direction": "lower",
+        "description": "Máximo de erros mecânicos desejado"
+      },
+      "deaths": {
+        "metric": "deaths",
+        "target": 0,
+        "direction": "lower",
+        "description": "Evitar mortes durante o encontro"
+      },
+      "dps": {
+        "metric": "dps",
+        "target": 104636,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-09-02T01:05:25.507Z"
+      }
     }
   }
 ]

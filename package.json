@@ -2,6 +2,7 @@
   "name": "hail-to-the-king-core-hub",
   "type": "module",
   "scripts": {
+    "postinstall": "playwright install chromium",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -10,7 +11,8 @@
     "test:coverage": "vitest run --coverage",
     "wcl:test": "node scripts/warcraftlogs/test-connection.mjs",
     "wcl:fetch-performance": "node scripts/warcraftlogs/fetch-performance.mjs",
-    "wcl:sync-roster-stats": "node scripts/warcraftlogs/sync-roster-stats.mjs"
+    "wcl:sync-roster-stats": "node scripts/warcraftlogs/sync-roster-stats.mjs",
+    "raidbots:update-goals": "node scripts/raidbots/update-performance-goals.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
@@ -22,6 +24,7 @@
     "@vitest/coverage-v8": "^2.1.8",
     "dotenv": "^17.4.2",
     "fast-check": "^3.23.2",
+    "playwright": "^1.61.1",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8"
   }
