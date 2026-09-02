@@ -1199,5 +1199,69 @@
         "calculatedAt": "2026-09-02T01:05:25.507Z"
       }
     }
+  },
+  {
+    "id": "ligiaf",
+    "name": "Ligiaf",
+    "class": "priest",
+    "race": "Elfo Vazio",
+    "spec": "Shadow",
+    "heroSpec": "",
+    "role": "dps",
+    "type": "",
+    "discord": "",
+    "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/182/91118518-avatar.jpg?alt=/wow/static/images/2d/avatar/29-1.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/nemesis/Ligiaf"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Ligiaf"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/nemesis/Ligiaf",
+      "raidbots": "",
+      "archon": "",
+      "warcraftLogs": "",
+      "wipefest": ""
+    }
+  },
+  {
+    "id": "minort",
+    "name": "Minort",
+    "class": "demon-hunter",
+    "race": "Elfo da Noite",
+    "spec": "Havoc",
+    "heroSpec": "",
+    "role": "dps",
+    "type": "",
+    "discord": "",
+    "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/83/181207891-avatar.jpg?alt=/wow/static/images/2d/avatar/4-0.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/nemesis/Minort"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Minort"
+    },
+    "externalLinks": {
+      "raiderIo": "https://raider.io/characters/us/nemesis/Minort",
+      "raidbots": "",
+      "archon": "",
+      "warcraftLogs": "",
+      "wipefest": ""
+    }
   }
 ]

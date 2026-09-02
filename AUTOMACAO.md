@@ -60,6 +60,20 @@ npm run wcl:sync-roster-stats
 
 Roda pra todo o roster de uma vez. Não precisa de nenhum argumento.
 
+**Método do Raider.IO usado:** API pública `GET https://raider.io/api/v1/characters/profile`, sem autenticação/API key nenhuma (documentação: https://raider.io/api). Chamada com os parâmetros:
+
+```
+?region={region}&realm={realm}&name={name}&fields=mythic_plus_scores_by_season:current,mythic_plus_best_runs,mythic_plus_ranks
+```
+
+- `mythic_plus_scores_by_season:current` → `raiderIo.io` (campo `scores.all` da season atual).
+- `mythic_plus_best_runs` → `raiderIo.bestDungeon` e `raiderIo.highestKey` (maior `mythic_level` entre as runs retornadas).
+- `mythic_plus_ranks` → `raiderIo.realmRank` (campo `overall.realm`).
+
+Esse mesmo endpoint (sem os parâmetros extra de `fields`) também é usado no item 1, dentro de `fetch-performance.mjs`, só pra pegar `race` (traduzido pro português, ver `RACE_TRANSLATIONS` no script) e `thumbnail_url` (vira o `avatar`) ao criar rascunho de jogador novo — ver `scripts/warcraftlogs/sync-roster-stats.mjs` e `scripts/warcraftlogs/fetch-performance.mjs` pra implementação exata.
+
+Se o personagem não for encontrado (character nunca crawleado pelo Raider.IO, comum em quem não roda M+), os campos ficam sem atualizar — o script não sobrescreve com vazio, só atualiza o que conseguiu.
+
 ---
 
 ## 3. Atualizar objetivos de performance (Raidbots — dps/hps alvo)
