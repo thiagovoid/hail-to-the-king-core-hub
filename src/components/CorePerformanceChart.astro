@@ -188,6 +188,23 @@ function getTrend(
     positive: improved,
   };
 }
+
+// Só a primeira métrica é renderizada no servidor (é a única visível ao
+// carregar a página). As outras 3 abas são construídas no navegador, sob
+// demanda, no primeiro clique — renderizar as 4 de uma vez (só escondendo
+// 3 via CSS) inflava o DOM da home pra ~950 elementos com o roster atual,
+// o suficiente pra reprovar o orçamento de performance do Lighthouse CI.
+const serializedMetrics = metrics.map((metric) => ({
+  id: metric.id,
+  label: metric.label,
+  direction: metric.direction,
+  series: metric.series.map((series) => ({
+    playerName: series.playerName,
+    playerSlug: series.playerSlug ?? null,
+    playerColor: getClassColor(series.playerClass as any),
+    data: series.data,
+  })),
+}));
 ---
 
 <section
@@ -230,6 +247,15 @@ function getTrend(
 
   {
     metrics.map((metric, metricIndex) => {
+      if (metricIndex !== 0) {
+        return (
+          <div
+            data-metric-chart={metric.id}
+            class="hidden"
+          />
+        );
+      }
+
       const scale = getScale(metric.series);
       const dates = getDates(metric.series);
       const lastDate = getLastDate(dates);
@@ -237,7 +263,7 @@ function getTrend(
       return (
         <div
           data-metric-chart={metric.id}
-          class={metricIndex === 0 ? '' : 'hidden'}
+          data-rendered="true"
         >
           <div class="overflow-x-auto">
             <svg
@@ -316,11 +342,6 @@ function getTrend(
 
                   const playerColor = getClassColor(
                     playerSeries.playerClass as any
-                  );
-
-                  const trend = getTrend(
-                    playerSeries.data,
-                    metric.direction
                   );
 
                   const labelY =
@@ -473,54 +494,223 @@ function getTrend(
       );
     })
   }
+
+  <script type="application/json" id="core-performance-data" set:html={JSON.stringify(serializedMetrics)} />
 </section>
 
 <script>
-  const container = document.querySelector(
-    '#core-performance-tabs'
-  );
+  interface DataPoint {
+    date: string;
+    value: number;
+  }
+
+  interface SerializedPlayerSeries {
+    playerName: string;
+    playerSlug: string | null;
+    playerColor: string;
+    data: DataPoint[];
+  }
+
+  interface SerializedMetric {
+    id: string;
+    label: string;
+    direction: 'higher' | 'lower';
+    series: SerializedPlayerSeries[];
+  }
+
+  const width = 800;
+  const height = 320;
+  const paddingLeft = 55;
+  const paddingRight = 30;
+  const paddingTop = 25;
+  const paddingBottom = 35;
+
+  function escapeHtml(value: string): string {
+    return value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function formatValue(value: number): string {
+    if (value >= 1000) {
+      return `${(value / 1000).toFixed(1)}k`;
+    }
+    return value.toString();
+  }
+
+  function formatShortDate(iso: string): string {
+    const match = iso.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) return '—';
+    return `${match[3]}/${match[2]}`;
+  }
+
+  function getScale(series: SerializedPlayerSeries[]) {
+    const values = series.flatMap((item) => item.data.map((point) => point.value));
+
+    if (values.length === 0) {
+      return { min: 0, max: 100, range: 100 };
+    }
+
+    let min = Math.min(...values);
+    let max = Math.max(...values);
+
+    if (min === max) {
+      min = Math.max(0, min - 1);
+      max = max + 1;
+    }
+
+    const padding = (max - min) * 0.15;
+    min = Math.max(0, min - padding);
+    max = max + padding;
+
+    return { min, max, range: max - min || 1 };
+  }
+
+  function getX(date: string, dates: string[]): number {
+    const chartWidth = width - paddingLeft - paddingRight;
+    if (dates.length <= 1) return paddingLeft + chartWidth / 2;
+    const index = dates.indexOf(date);
+    if (index === -1) return paddingLeft;
+    return paddingLeft + (index / (dates.length - 1)) * chartWidth;
+  }
+
+  function getY(value: number, scale: ReturnType<typeof getScale>): number {
+    const chartHeight = height - paddingTop - paddingBottom;
+    return paddingTop + (1 - (value - scale.min) / scale.range) * chartHeight;
+  }
+
+  function createPoints(data: DataPoint[], scale: ReturnType<typeof getScale>, dates: string[]): string {
+    return data.map((point) => `${getX(point.date, dates)},${getY(point.value, scale)}`).join(' ');
+  }
+
+  function getDates(series: SerializedPlayerSeries[]): string[] {
+    return [...new Set(series.flatMap((item) => item.data.map((point) => point.date)))].sort((a, b) =>
+      a.localeCompare(b)
+    );
+  }
+
+  function getLastDate(dates: string[]): string | null {
+    return dates.length === 0 ? null : dates[dates.length - 1];
+  }
+
+  function getTrend(data: DataPoint[], direction: 'higher' | 'lower') {
+    if (data.length < 2) return null;
+
+    const previous = data[data.length - 2].value;
+    const current = data[data.length - 1].value;
+    if (previous === 0) return null;
+
+    const change = Math.round(((current - previous) / Math.abs(previous)) * 100);
+    if (change === 0) return { symbol: '→', value: '0%', positive: null as boolean | null };
+
+    const improved = direction === 'higher' ? change > 0 : change < 0;
+    return { symbol: change > 0 ? '↑' : '↓', value: `${Math.abs(change)}%`, positive: improved };
+  }
+
+  function buildMetricMarkup(metric: SerializedMetric): string {
+    const scale = getScale(metric.series);
+    const dates = getDates(metric.series);
+    const lastDate = getLastDate(dates);
+
+    let gridSvg = '';
+    for (let gridIndex = 0; gridIndex < 5; gridIndex += 1) {
+      const value = scale.max - (gridIndex / 4) * scale.range;
+      const yPosition = paddingTop + (gridIndex / 4) * (height - paddingTop - paddingBottom);
+      gridSvg += `<g><line x1="${paddingLeft}" y1="${yPosition}" x2="${width - paddingRight}" y2="${yPosition}" stroke="currentColor" class="text-slate-800" stroke-width="1"/><text x="${paddingLeft - 8}" y="${yPosition + 4}" text-anchor="end" class="fill-slate-500 text-[11px]">${formatValue(value)}</text></g>`;
+    }
+
+    let currentSvg = '';
+    if (lastDate !== null) {
+      const x = getX(lastDate, dates);
+      currentSvg = `<g><line x1="${x}" y1="${paddingTop}" x2="${x}" y2="${height - paddingBottom}" stroke="currentColor" class="text-slate-700" stroke-width="1" stroke-dasharray="4 4"/><text x="${x}" y="${paddingTop - 8}" text-anchor="middle" class="fill-slate-400 text-[10px]">Atual</text></g>`;
+    }
+
+    let seriesSvg = '';
+    let legendHtml = '';
+
+    for (const playerSeries of metric.series) {
+      if (playerSeries.data.length === 0) continue;
+
+      const trend = getTrend(playerSeries.data, metric.direction);
+      const lastPoint = playerSeries.data[playerSeries.data.length - 1];
+      const labelY = getY(lastPoint.value, scale);
+      const points = createPoints(playerSeries.data, scale, dates);
+
+      let pointsSvg = '';
+      playerSeries.data.forEach((point, pointIndex) => {
+        const isLast = pointIndex === playerSeries.data.length - 1;
+        const x = getX(point.date, dates);
+        const y = getY(point.value, scale);
+        pointsSvg += `<g><circle cx="${x}" cy="${y}" r="${isLast ? 6 : 5}" class="${playerSeries.playerColor} stroke-slate-950" fill="currentColor" stroke-width="${isLast ? '2.5' : '2'}"/><text x="${x}" y="${y - 11}" text-anchor="middle" class="fill-slate-400 text-[10px]">${formatValue(point.value)}</text></g>`;
+      });
+
+      const nameEscaped = escapeHtml(playerSeries.playerName);
+
+      seriesSvg += `<g><polyline points="${points}" fill="none" stroke="currentColor" class="${playerSeries.playerColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${pointsSvg}<text x="${width - paddingRight + 5}" y="${labelY + 4}" class="fill-slate-200 text-[10px]">${nameEscaped}</text></g>`;
+
+      const trendHtml = trend
+        ? `<span class="${trend.positive === true ? 'text-emerald-400' : trend.positive === false ? 'text-red-400' : 'text-slate-500'}">${trend.symbol} ${trend.value}</span>`
+        : '';
+
+      const nameHtml = playerSeries.playerSlug
+        ? `<a href="/hail-to-the-king-core-hub/membros/${playerSeries.playerSlug}/" class="text-slate-300 hover:text-white hover:underline transition-colors">${nameEscaped}</a>`
+        : `<span class="text-slate-300">${nameEscaped}</span>`;
+
+      legendHtml += `<div class="flex items-center gap-2 text-xs"><span class="w-2 h-2 rounded-full ${playerSeries.playerColor}" style="background-color: currentColor;"></span>${nameHtml}${trendHtml}</div>`;
+    }
+
+    let axisSvg = '';
+    if (metric.series.some((item) => item.data.length > 0)) {
+      let labelsSvg = '';
+      dates.forEach((date) => {
+        const x = getX(date, dates);
+        labelsSvg += `<text x="${x}" y="${height - 8}" text-anchor="middle" class="fill-slate-500 text-[11px]">${formatShortDate(date)}</text>`;
+      });
+      axisSvg = `<g>${labelsSvg}</g>`;
+    }
+
+    const svg = `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Evolução de ${escapeHtml(metric.label)} do core">${gridSvg}${currentSvg}${seriesSvg}${axisSvg}</svg>`;
+
+    return `<div class="overflow-x-auto">${svg}</div><div class="flex flex-wrap gap-x-5 gap-y-2 mt-4 pt-4 border-t border-slate-800">${legendHtml}</div>`;
+  }
+
+  const dataScript = document.querySelector('#core-performance-data');
+  const metricsData: SerializedMetric[] = dataScript?.textContent
+    ? JSON.parse(dataScript.textContent)
+    : [];
+
+  const container = document.querySelector('#core-performance-tabs');
 
   if (container) {
-    const buttons =
-      container.querySelectorAll(
-        '[data-metric]'
-      );
+    const buttons = container.querySelectorAll('[data-metric]');
 
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
-        const metricId =
-          button.getAttribute('data-metric');
-
+        const metricId = button.getAttribute('data-metric');
         if (!metricId) return;
 
-        document
-          .querySelectorAll('[data-metric-chart]')
-          .forEach((chart) => {
-            chart.classList.toggle(
-              'hidden',
-              chart.getAttribute(
-                'data-metric-chart'
-              ) !== metricId
-            );
-          });
+        const chart = document.querySelector(`[data-metric-chart="${metricId}"]`);
+
+        if (chart && chart.getAttribute('data-rendered') !== 'true') {
+          const metric = metricsData.find((item) => item.id === metricId);
+
+          if (metric) {
+            chart.innerHTML = buildMetricMarkup(metric);
+            chart.setAttribute('data-rendered', 'true');
+          }
+        }
+
+        document.querySelectorAll('[data-metric-chart]').forEach((el) => {
+          el.classList.toggle('hidden', el.getAttribute('data-metric-chart') !== metricId);
+        });
 
         buttons.forEach((item) => {
           const active = item === button;
-
-          item.classList.toggle(
-            'bg-slate-700',
-            active
-          );
-
-          item.classList.toggle(
-            'text-white',
-            active
-          );
-
-          item.classList.toggle(
-            'text-slate-400',
-            !active
-          );
+          item.classList.toggle('bg-slate-700', active);
+          item.classList.toggle('text-white', active);
+          item.classList.toggle('text-slate-400', !active);
         });
       });
     });
