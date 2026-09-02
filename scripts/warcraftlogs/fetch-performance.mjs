@@ -296,10 +296,12 @@ async function fetchRaiderIoProfile(region, realm, name) {
 }
 
 // Monta um rascunho de entrada pro roster.json com o que a WCL e o Raider.io
-// sabem (nome, classe, spec, role, servidor, raça, avatar). Campos que
-// nenhuma API tem (discord, heroSpec, type main/alt) ficam vazios pra
-// alguém completar depois. "spec" fica em inglês (como a WCL retorna) —
-// precisa traduzir pro português ao revisar.
+// sabem (nome, classe, spec, role, servidor, raça, avatar). "type" entra
+// como "alt" por padrão — precisa de algum valor pra aparecer em
+// /membros/ (a página só lista "main"/"alt", ignora vazio), e um
+// personagem desconhecido é mais provável ser alt de alguém do que um
+// main novo. Discord/heroSpec ficam vazios pra alguém completar depois.
+// "spec" fica em inglês (como a WCL retorna) — precisa traduzir ao revisar.
 async function buildRosterDraft(character, existingIds) {
   const region = character.region.toLowerCase();
   const realm = character.server.toLowerCase().replace(/\s+/g, '-');
@@ -317,7 +319,7 @@ async function buildRosterDraft(character, existingIds) {
     spec: character.spec,
     heroSpec: '',
     role: character.role,
-    type: '',
+    type: 'alt',
     discord: '',
     avatar,
     raiderIo: {
@@ -425,7 +427,14 @@ async function main() {
 
   // Um report = uma run (uma noite de raid). A semana pode ter várias runs
   // (terça, quinta, ...); cada uma fica isolada, sem misturar dados entre si.
-  const runsByReportCode = new Map();
+  //
+  // Duas passadas de propósito: a 1ª só busca as tabelas de cada report e
+  // descobre quem apareceu nelas (seenCharacters). Só depois de saber quem
+  // é novo (e criar o rascunho no roster) é que a 2ª passada calcula
+  // dps/hps/deaths/parse — usando o roster JÁ COM os jogadores novos. Isso
+  // evita o problema de alguém aparecer pela primeira vez numa run e só
+  // ganhar dados a partir da PRÓXIMA execução do script.
+  const reportContexts = [];
   const seenCharacters = new Map(); // nome WCL -> { name, class, spec, role, server, region }
 
   for (const report of reports) {
@@ -488,19 +497,71 @@ async function main() {
       }
     }
 
-    const runPlayers = [];
-    const killedEncounterIds = [...new Set(killedFights.map((fight) => fight.encounterID))];
+    reportContexts.push({
+      report,
+      killedFights,
+      aggregateFightIds,
+      aggregateDurationMs,
+      deathEvents,
+      damageEntries,
+      healingEntries,
+    });
+  }
 
-    for (const player of roster) {
+  // Jogadores que apareceram numa run mas não estão no roster.json ainda:
+  // cria um rascunho de cadastro pra cada um (class/spec/role/links já
+  // preenchidos com o que a WCL sabe; avatar/raça vêm do Raider.io; type
+  // entra como "alt" por padrão, senão fica sem aparecer em /membros/;
+  // discord/heroSpec ficam vazios pra alguém completar depois).
+  const knownWclNames = new Set(
+    roster.map((player) => parseWclProfile(player.warcraftLogs.profileUrl).name.toLowerCase())
+  );
+  const newCharacters = [...seenCharacters.values()].filter(
+    (character) => !knownWclNames.has(character.name.toLowerCase())
+  );
+
+  let effectiveRoster = roster;
+
+  if (newCharacters.length > 0) {
+    const existingIds = new Set(roster.map((player) => player.id));
+    const drafts = [];
+    for (const character of newCharacters) {
+      const draft = await buildRosterDraft(character, existingIds);
+      existingIds.add(draft.id);
+      drafts.push(draft);
+    }
+
+    effectiveRoster = [...roster, ...drafts];
+    await writeFile(
+      path.join(ROOT, 'data/roster.json'),
+      `${JSON.stringify(effectiveRoster, null, 2)}\n`
+    );
+
+    console.log(
+      `${drafts.length} jogador(es) novo(s) encontrado(s) no log, adicionados como rascunho em data/roster.json: ${drafts.map((d) => `${d.name} (${d.id})`).join(', ')}.`
+    );
+    console.log('Revise esses rascunhos: spec está em inglês, e faltam discord/heroSpec/type (assumido "alt").');
+  }
+
+  // 2ª passada: agora com effectiveRoster (roster original + rascunhos
+  // novos), calcula dps/hps/deaths/parse de cada run usando as tabelas já
+  // buscadas na 1ª passada — sem precisar consultar a WCL de novo.
+  const runsByReportCode = new Map();
+
+  for (const ctx of reportContexts) {
+    const runPlayers = [];
+    const killedEncounterIds = [...new Set(ctx.killedFights.map((fight) => fight.encounterID))];
+
+    for (const player of effectiveRoster) {
       const profile = parseWclProfile(player.warcraftLogs.profileUrl);
       const metricKey = player.role === 'healer' ? 'hps' : 'dps';
-      const entries = metricKey === 'hps' ? healingEntries : damageEntries;
+      const entries = metricKey === 'hps' ? ctx.healingEntries : ctx.damageEntries;
 
       const entry = entries.find((item) => sameCharacterName(item.name, profile.name));
-      if (!entry || !entry.activeTime || aggregateDurationMs <= 0) continue;
+      if (!entry || !entry.activeTime || ctx.aggregateDurationMs <= 0) continue;
 
-      const value = entry.total / (aggregateDurationMs / 1000);
-      const deaths = countDeaths(deathEvents, profile.name);
+      const value = entry.total / (ctx.aggregateDurationMs / 1000);
+      const deaths = countDeaths(ctx.deathEvents, profile.name);
 
       // parse: melhor percentil entre os bosses que a run matou (não dá
       // pra ter um percentil único quando a run mata vários bosses
@@ -509,8 +570,8 @@ async function main() {
       for (const encounterID of killedEncounterIds) {
         const rankings = await fetchEncounterRankings(profile, encounterID, metricKey);
         for (const rank of rankings?.ranks ?? []) {
-          if (rank.report.code !== report.code) continue;
-          if (!aggregateFightIds.includes(rank.report.fightID)) continue;
+          if (rank.report.code !== ctx.report.code) continue;
+          if (!ctx.aggregateFightIds.includes(rank.report.fightID)) continue;
           if (bestRankPercent === undefined || rank.rankPercent > bestRankPercent) {
             bestRankPercent = rank.rankPercent;
           }
@@ -528,43 +589,11 @@ async function main() {
       });
     }
 
-    runsByReportCode.set(report.code, {
-      date: toBrazilDateString(report.startTime),
-      reportCode: report.code,
+    runsByReportCode.set(ctx.report.code, {
+      date: toBrazilDateString(ctx.report.startTime),
+      reportCode: ctx.report.code,
       players: runPlayers,
     });
-  }
-
-  // Jogadores que apareceram no log mas não estão no roster.json ainda:
-  // cria um rascunho de cadastro pra cada um (class/spec/role/links já
-  // preenchidos com o que a WCL sabe; avatar/discord/race/type ficam
-  // vazios pra alguém completar depois).
-  const knownWclNames = new Set(
-    roster.map((player) => parseWclProfile(player.warcraftLogs.profileUrl).name.toLowerCase())
-  );
-  const newCharacters = [...seenCharacters.values()].filter(
-    (character) => !knownWclNames.has(character.name.toLowerCase())
-  );
-
-  if (newCharacters.length > 0) {
-    const existingIds = new Set(roster.map((player) => player.id));
-    const drafts = [];
-    for (const character of newCharacters) {
-      const draft = await buildRosterDraft(character, existingIds);
-      existingIds.add(draft.id);
-      drafts.push(draft);
-    }
-
-    const updatedRoster = [...roster, ...drafts];
-    await writeFile(
-      path.join(ROOT, 'data/roster.json'),
-      `${JSON.stringify(updatedRoster, null, 2)}\n`
-    );
-
-    console.log(
-      `${drafts.length} jogador(es) novo(s) encontrado(s) no log, adicionados como rascunho em data/roster.json: ${drafts.map((d) => `${d.name} (${d.id})`).join(', ')}.`
-    );
-    console.log('Revise esses rascunhos: spec está em inglês, e faltam avatar/discord/race/type/heroSpec.');
   }
 
   const fileName = `week-${String(week).padStart(2, '0')}.json`;
