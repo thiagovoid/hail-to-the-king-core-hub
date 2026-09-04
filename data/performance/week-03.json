@@ -15,13 +15,13 @@
         {
           "playerId": "apocalipse",
           "dps": 37808,
-          "parse": 43,
+          "parse": 41,
           "deaths": 3
         },
         {
           "playerId": "voidsurge",
           "hps": 84248,
-          "parse": 31,
+          "parse": 30,
           "itemLevel": 288,
           "deaths": 6
         },
@@ -41,20 +41,20 @@
         {
           "playerId": "bustgril",
           "dps": 106754,
-          "parse": 70,
+          "parse": 69,
           "itemLevel": 305,
           "deaths": 6
         },
         {
           "playerId": "hysillens",
           "dps": 114692,
-          "parse": 78,
+          "parse": 76,
           "deaths": 3
         },
         {
           "playerId": "kroline",
           "dps": 124326,
-          "parse": 65,
+          "parse": 64,
           "itemLevel": 311,
           "deaths": 5
         },
@@ -68,14 +68,14 @@
         {
           "playerId": "heracranosx",
           "dps": 86369,
-          "parse": 28,
+          "parse": 27,
           "itemLevel": 313,
           "deaths": 4
         },
         {
           "playerId": "gunst",
           "dps": 75821,
-          "parse": 39,
+          "parse": 37,
           "itemLevel": 307,
           "deaths": 4
         },
@@ -88,14 +88,14 @@
         {
           "playerId": "xúlio",
           "dps": 121755,
-          "parse": 73,
+          "parse": 72,
           "itemLevel": 312,
           "deaths": 2
         },
         {
           "playerId": "dagom",
           "dps": 51679,
-          "parse": 11,
+          "parse": 10,
           "itemLevel": 307,
           "deaths": 3
         },
@@ -110,6 +110,103 @@
           "dps": 43162,
           "parse": 6,
           "deaths": 4
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "reportCode": "6BcGTrAN7HaPx431",
+      "players": [
+        {
+          "playerId": "blackwatch",
+          "dps": 42548,
+          "parse": 15,
+          "itemLevel": 308,
+          "deaths": 16
+        },
+        {
+          "playerId": "apocalipse",
+          "dps": 46559,
+          "parse": 28,
+          "itemLevel": 306,
+          "deaths": 17
+        },
+        {
+          "playerId": "voidsurge",
+          "hps": 85310,
+          "parse": 7,
+          "itemLevel": 300,
+          "deaths": 15
+        },
+        {
+          "playerId": "kams",
+          "hps": 150798,
+          "parse": 48,
+          "itemLevel": 305,
+          "deaths": 15
+        },
+        {
+          "playerId": "cowsadeer",
+          "hps": 169821,
+          "parse": 68,
+          "itemLevel": 314,
+          "deaths": 15
+        },
+        {
+          "playerId": "bustgril",
+          "dps": 106917,
+          "parse": 40,
+          "itemLevel": 307,
+          "deaths": 16
+        },
+        {
+          "playerId": "hysillens",
+          "dps": 109387,
+          "parse": 37,
+          "itemLevel": 310,
+          "deaths": 16
+        },
+        {
+          "playerId": "kroline",
+          "dps": 129991,
+          "parse": 61,
+          "itemLevel": 312,
+          "deaths": 15
+        },
+        {
+          "playerId": "heracranosx",
+          "dps": 94574,
+          "parse": 31,
+          "itemLevel": 315,
+          "deaths": 15
+        },
+        {
+          "playerId": "gunst",
+          "dps": 117112,
+          "parse": 38,
+          "itemLevel": 315,
+          "deaths": 17
+        },
+        {
+          "playerId": "xúlio",
+          "dps": 109946,
+          "parse": 38,
+          "itemLevel": 313,
+          "deaths": 17
+        },
+        {
+          "playerId": "ligiaf",
+          "dps": 84033,
+          "parse": 18,
+          "itemLevel": 290,
+          "deaths": 16
+        },
+        {
+          "playerId": "minort",
+          "dps": 41542,
+          "parse": 7,
+          "itemLevel": 288,
+          "deaths": 17
         }
       ]
     }
