@@ -205,6 +205,56 @@ export class WarcraftLogsProvider
   }
 
   /**
+   * Zone-wide (whole raid tier, not one encounter) average/best performance —
+   * used for the roster's avgParse/bestParse, not the per-run parse field.
+   * Swallows errors (returns null) like the original script did: it's an
+   * optional stat, not worth failing the whole sync for one player.
+   */
+  async fetchZoneRankings(
+    profile: WclProfile,
+    zoneID: number,
+    metric: "dps" | "hps"
+  ): Promise<{ medianPerformanceAverage?: number; bestPerformanceAverage?: number } | null> {
+    try {
+      const data = await wclGraphql<{
+        characterData: {
+          character: {
+            zoneRankings?: { medianPerformanceAverage?: number; bestPerformanceAverage?: number };
+          } | null;
+        };
+      }>(
+        `query($name: String!, $serverSlug: String!, $serverRegion: String!, $zoneID: Int!, $metric: CharacterPageRankingMetricType) {
+          characterData {
+            character(name: $name, serverSlug: $serverSlug, serverRegion: $serverRegion) {
+              zoneRankings(zoneID: $zoneID, metric: $metric)
+            }
+          }
+        }`,
+        { name: profile.name, serverSlug: profile.realm, serverRegion: profile.region, zoneID, metric }
+      );
+      return data.characterData.character?.zoneRankings ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  /** Points-based rate limit status — see AUTOMACAO.md / DataCollector's minDelayMs for why this matters. */
+  async fetchRateLimitData(): Promise<{ limitPerHour: number; pointsSpentThisHour: number; pointsResetIn: number }> {
+    const data = await wclGraphql<{
+      rateLimitData: { limitPerHour: number; pointsSpentThisHour: number; pointsResetIn: number };
+    }>(
+      `query {
+        rateLimitData {
+          limitPerHour
+          pointsSpentThisHour
+          pointsResetIn
+        }
+      }`
+    );
+    return data.rateLimitData;
+  }
+
+  /**
    * DataProvider entrypoint — pass 1: everything WCL knows about a report's
    * fights/tables. Does not include rankings (see `fetchRankings`), because
    * who to fetch rankings for isn't known until this pass runs across every

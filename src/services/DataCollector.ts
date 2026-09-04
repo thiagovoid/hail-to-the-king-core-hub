@@ -28,10 +28,14 @@ export interface DataCollectorOptions {
 export class DataCollector {
   constructor(private readonly options: DataCollectorOptions = {}) {}
 
-  async run<TContext, TRaw>(
-    tasks: Array<CollectorTask<TContext, TRaw>>
-  ): Promise<Array<CollectorOutcome<TRaw>>> {
-    const outcomes: Array<CollectorOutcome<TRaw>> = [];
+  // Rest parameter (not a single array param) so a mixed-type batch — e.g.
+  // one Raider.IO task + one WCL task in the same run() call — keeps each
+  // task's own TRaw in the returned tuple, instead of collapsing them into
+  // a shared union. Homogeneous batches still work fine via `run(...tasks)`.
+  async run<T extends ReadonlyArray<CollectorTask<any, any>>>(
+    ...tasks: T
+  ): Promise<{ [K in keyof T]: T[K] extends CollectorTask<any, infer TRaw> ? CollectorOutcome<TRaw> : never }> {
+    const outcomes: Array<CollectorOutcome<unknown>> = [];
 
     for (const [index, task] of tasks.entries()) {
       if (index > 0 && this.options.minDelayMs) {
@@ -57,7 +61,7 @@ export class DataCollector {
       }
     }
 
-    return outcomes;
+    return outcomes as { [K in keyof T]: T[K] extends CollectorTask<any, infer TRaw> ? CollectorOutcome<TRaw> : never };
   }
 }
 

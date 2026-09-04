@@ -9,9 +9,9 @@
     "check": "astro check",
     "test": "vitest run --passWithNoTests",
     "test:coverage": "vitest run --coverage",
-    "wcl:test": "node scripts/warcraftlogs/test-connection.mjs",
+    "wcl:test": "vite-node -c vitest.config.ts scripts/warcraftlogs/test-connection.ts",
     "wcl:fetch-performance": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts",
-    "wcl:sync-roster-stats": "node scripts/warcraftlogs/sync-roster-stats.mjs",
+    "wcl:sync-roster-stats": "vite-node -c vitest.config.ts scripts/warcraftlogs/sync-roster-stats.ts",
     "raidbots:update-goals": "node scripts/raidbots/update-performance-goals.mjs"
   },
   "dependencies": {

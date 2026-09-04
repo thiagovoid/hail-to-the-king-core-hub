@@ -126,13 +126,11 @@ async function buildRosterDraft(
   const realm = character.server.toLowerCase().replace(/\s+/g, "-");
   const profileSlug = encodeURIComponent(character.name);
 
-  const raiderIoResult = await collector.run([
-    {
-      provider: raiderIo,
-      context: { region, realm, name: character.name },
-      rawKey: `roster-draft/${slugifyId(character.name, new Set())}`,
-    },
-  ]);
+  const raiderIoResult = await collector.run({
+    provider: raiderIo,
+    context: { region, realm, name: character.name },
+    rawKey: `roster-draft/${slugifyId(character.name, new Set())}`,
+  });
   const raiderIoProfile = raiderIoResult[0].status === "ok" ? raiderIoResult[0].result.raw : null;
 
   const race = translateRace(raiderIoProfile?.race);
@@ -262,7 +260,7 @@ async function main() {
   // Pass 1: fights + tables de cada report, via DataCollector (arquiva em
   // data/raw/warcraftlogs/<code>.json). Falha num report não derruba o resto.
   const tablesOutcomes = await collector.run(
-    reports.map((report) => ({
+    ...reports.map((report) => ({
       provider: wcl,
       context: { reportCode: report.code, validEncounterIds },
       rawKey: report.code,
@@ -365,7 +363,7 @@ async function main() {
 
   // Pass 2: rankings (parse), agora com effectiveRoster já completo.
   const rankingOutcomes = await collector.run(
-    reportContexts.map((ctx) => ({
+    ...reportContexts.map((ctx) => ({
       provider: wclRankings,
       context: {
         reportCode: ctx.report.code,
