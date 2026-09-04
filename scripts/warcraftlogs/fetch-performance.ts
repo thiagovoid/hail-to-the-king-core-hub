@@ -6,6 +6,8 @@ import { DataCollector } from "../../src/services/DataCollector";
 import { saveRaw } from "../../src/services/RawStorage";
 import type { DataProvider } from "../../src/providers/types";
 import { RaiderIoProvider } from "../../src/providers/raiderio/RaiderIoProvider";
+import { buildPlayerPerformance } from "../../src/normalization/buildPlayerPerformance";
+import type { PlayerPerformance } from "../../src/types/performance";
 import {
   WarcraftLogsProvider,
   type WarcraftLogsRankingContext,
@@ -378,7 +380,7 @@ async function main() {
     }))
   );
 
-  const runsByReportCode = new Map<string, { date: string; reportCode: string; players: ReturnType<typeof buildRunPlayers> }>();
+  const runsByReportCode = new Map<string, { date: string; reportCode: string; players: PlayerPerformance[] }>();
 
   for (const [index, ctx] of reportContexts.entries()) {
     const rankingOutcome = rankingOutcomes[index];
@@ -397,10 +399,17 @@ async function main() {
       players: rosterProfiles,
     });
 
+    // Passa pela Normalization Layer explícita mesmo só com a WCL contribuindo
+    // hoje — é o ponto único onde Wipefest/WoW Analyzer vão entrar depois,
+    // sem precisar mexer de novo na montagem do week-NN.json.
+    const players = runPlayers.map(({ playerId, deaths, ...warcraftLogs }) =>
+      buildPlayerPerformance({ playerId, deaths, warcraftLogs })
+    );
+
     runsByReportCode.set(ctx.report.code, {
       date: toBrazilDateString(ctx.report.startTime),
       reportCode: ctx.report.code,
-      players: runPlayers,
+      players,
     });
   }
 
