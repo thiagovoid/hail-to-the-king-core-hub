@@ -15,6 +15,12 @@ node_modules/
 # Vite
 .vite/
 
+# Raw provider snapshots (data/raw/) — regenerável a partir dos mesmos
+# reportCodes/perfis; não versionado por enquanto pra não inchar o repo com
+# tabelas de dano/cura completas a cada semana. Revisitar se precisarmos de
+# histórico raw entre execuções do CI.
+data/raw/
+
 # OS
 .DS_Store
 Thumbs.db
