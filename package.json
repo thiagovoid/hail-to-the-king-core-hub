@@ -12,7 +12,7 @@
     "wcl:test": "vite-node -c vitest.config.ts scripts/warcraftlogs/test-connection.ts",
     "wcl:fetch-performance": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts",
     "wcl:sync-roster-stats": "vite-node -c vitest.config.ts scripts/warcraftlogs/sync-roster-stats.ts",
-    "raidbots:update-goals": "node scripts/raidbots/update-performance-goals.mjs"
+    "raidbots:update-goals": "vite-node -c vitest.config.ts scripts/raidbots/update-performance-goals.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

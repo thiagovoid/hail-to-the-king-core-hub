@@ -1,7 +1,17 @@
-# Raidbots Provider — pendente
+# Raidbots Provider
 
-Hoje a automação vive em `scripts/raidbots/update-performance-goals.mjs` (Playwright,
-roda o Quick Sim no navegador, grava `performanceGoals.dps` em `data/roster.json`).
+O Raidbots não tem API pra rodar simulação sob demanda, então `RaidbotsProvider`
+automatiza o próprio Quick Sim do site (`raidbots.com/simbot/quick`) via Playwright:
+abre a página real, espera renderizar, roda a simulação e lê o `data.json` do
+report gerado — sem reimplementar nenhuma lógica de simulação.
 
-Ainda não migrado pra este padrão de `DataProvider`. Fica pra uma próxima fatia da
-Fase 0 — o script atual continua funcionando como está enquanto isso.
+Consumido por `scripts/raidbots/update-performance-goals.ts`, que grava
+`performanceGoals.dps` em `data/roster.json`, um personagem de cada vez (é um
+serviço gratuito mantido por terceiros — evitar qualquer coisa parecida com abuso).
+
+Specs de healer não são suportadas pelo Quick Sim; isso vem como raw
+`{ status: "unsupported-spec" }`, não como erro, porque é a resposta real da
+ferramenta.
+
+Mesmo padrão de automação de navegador que Wipefest e WoW Analyzer vão usar
+(ambos SPAs client-side, sem API viável).
