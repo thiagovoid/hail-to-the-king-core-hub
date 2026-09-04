@@ -12,7 +12,8 @@
     "wcl:test": "vite-node -c vitest.config.ts scripts/warcraftlogs/test-connection.ts",
     "wcl:fetch-performance": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts",
     "wcl:sync-roster-stats": "vite-node -c vitest.config.ts scripts/warcraftlogs/sync-roster-stats.ts",
-    "raidbots:update-goals": "vite-node -c vitest.config.ts scripts/raidbots/update-performance-goals.ts"
+    "raidbots:update-goals": "vite-node -c vitest.config.ts scripts/raidbots/update-performance-goals.ts",
+    "wipefest:fetch-scores": "vite-node -c vitest.config.ts scripts/wipefest/fetch-scores.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
