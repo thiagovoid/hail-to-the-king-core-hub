@@ -5,7 +5,8 @@ import { chromium, type Page } from "playwright";
 
 import { DataCollector } from "../../src/services/DataCollector";
 import { sameCharacterName } from "../../src/providers/warcraftlogs/normalize";
-import { WipefestProvider } from "../../src/providers/wipefest/WipefestProvider";
+import { WipefestProvider, type WipefestFightContext, type WipefestRawMechanicBreakdown } from "../../src/providers/wipefest/WipefestProvider";
+import type { DataProvider } from "../../src/providers/types";
 import type { BossInsights, BossInsightsByDifficulty, BossPlayerScore } from "../../src/types/bossInsights";
 import type { Boss } from "../../src/types/index";
 
@@ -45,6 +46,17 @@ function parseWclReportLink(url: string | null): { reportCode: string; fightId: 
   return { reportCode: match[1], fightId: Number(match[2]) };
 }
 
+// DataCollector só chama provider.fetch() (o contrato DataProvider) — esse
+// adaptador deixa o fetchMechanicBreakdown (um segundo tipo de busca que a
+// classe expõe além da interface) passar pela mesma máquina de
+// collector/raw-storage, mesmo padrão já usado pro fetchZoneRankings da WCL.
+function asMechanicBreakdownProvider(wipefest: WipefestProvider): DataProvider<WipefestFightContext, WipefestRawMechanicBreakdown> {
+  return {
+    name: wipefest.name,
+    fetch: (context) => wipefest.fetchMechanicBreakdown(context),
+  };
+}
+
 async function fetchBossScores(
   wipefest: WipefestProvider,
   collector: DataCollector,
@@ -53,6 +65,7 @@ async function fetchBossScores(
   players: RosterPlayer[],
   rawKeyPrefix: string
 ): Promise<BossInsightsByDifficulty> {
+  const wipefestMechanics = asMechanicBreakdownProvider(wipefest);
   const result: BossInsightsByDifficulty = {};
 
   for (const boss of bosses) {
@@ -77,15 +90,39 @@ async function fetchBossScores(
       continue;
     }
 
+    // Passe separado: clica em cada player-card pra ler o breakdown por
+    // mecânica (não dá pra ler isso sem clicar, é estado interno da página,
+    // não reflete na URL) — bem mais lento que o passe de score.
+    const [mechanicsOutcome] = await collector.run({
+      provider: wipefestMechanics,
+      context: { page, reportCode: ref.reportCode, fightId: ref.fightId },
+      rawKey: `${rawKeyPrefix}/${boss.id}-mechanics`,
+    });
+
+    if (mechanicsOutcome.status === "error") {
+      console.warn(`  falhou o breakdown de mecânicas: ${mechanicsOutcome.error}`);
+    }
+    const mechanicsByName = mechanicsOutcome.status === "ok" ? mechanicsOutcome.result.raw : {};
+
     const scores: BossPlayerScore[] = [];
     for (const player of players) {
       const entry = outcome.result.raw.find((p) => sameCharacterName(p.name, player.name));
       if (!entry) continue;
-      scores.push({ playerId: player.id, score: entry.score, bonus: entry.bonus, itemLevel: entry.itemLevel });
+
+      const mechanicsKey = Object.keys(mechanicsByName).find((name) => sameCharacterName(name, player.name));
+      const mechanics = mechanicsKey ? mechanicsByName[mechanicsKey] : undefined;
+
+      scores.push({
+        playerId: player.id,
+        score: entry.score,
+        bonus: entry.bonus,
+        itemLevel: entry.itemLevel,
+        ...(mechanics ? { mechanics } : {}),
+      });
     }
 
     result[boss.id] = scores;
-    console.log(`  ${scores.length} jogador(es).`);
+    console.log(`  ${scores.length} jogador(es) (${Object.keys(mechanicsByName).length} com breakdown de mecânicas).`);
   }
 
   return result;

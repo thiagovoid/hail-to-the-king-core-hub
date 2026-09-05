@@ -5,85 +5,561 @@
         "playerId": "voidwar",
         "score": 90,
         "bonus": 52,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 72
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "blackwatch",
         "score": 100,
         "bonus": 20,
-        "itemLevel": 292
+        "itemLevel": 292,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 34
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 100
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kams",
         "score": 74,
         "bonus": 9,
-        "itemLevel": 273
+        "itemLevel": 273,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 30
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "bustgril",
         "score": 85,
         "bonus": 52,
-        "itemLevel": 286
+        "itemLevel": 286,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 34
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 60
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kroline",
         "score": 100,
         "bonus": 100,
-        "itemLevel": 291
+        "itemLevel": 291,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 100
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "jrxamã",
         "score": 84,
         "bonus": 52,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 99
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 58
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "heracranosx",
         "score": 68,
         "bonus": 83,
-        "itemLevel": 293
+        "itemLevel": 293,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 78
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 55
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 59
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "nerlock",
         "score": 68,
         "bonus": 9,
-        "itemLevel": 258
+        "itemLevel": 258,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 100
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "metallicä",
         "score": 100,
         "bonus": 68,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 65
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 100
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 89
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "panicdeath",
         "score": 78,
         "bonus": 9,
-        "itemLevel": 289
+        "itemLevel": 289,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 41
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "xúliodk",
         "score": 32,
         "bonus": 85,
-        "itemLevel": 293
+        "itemLevel": 293,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 88
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 37
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 18
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 89
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 22
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "orthín",
         "score": 87,
         "bonus": 10,
-        "itemLevel": 287
+        "itemLevel": 287,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 3
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 66
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "youkaiqqz",
         "score": 55,
         "bonus": 33,
-        "itemLevel": 293
+        "itemLevel": 293,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 57
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "soju",
         "score": 99,
         "bonus": 9,
-        "itemLevel": 255
+        "itemLevel": 255,
+        "mechanics": [
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Anguished Echoes",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Latent Cultist",
+            "value": 95
+          },
+          {
+            "mechanic": "Hungering Pyre soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Soul Transfer",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       }
     ],
     "sentinelas-sepultados": [
@@ -91,85 +567,561 @@
         "playerId": "voidwar",
         "score": 24,
         "bonus": 80,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 67
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 78
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 5
+          }
+        ]
       },
       {
         "playerId": "blackwatch",
         "score": 100,
         "bonus": 18,
-        "itemLevel": 292
+        "itemLevel": 292,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 6
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kams",
         "score": 100,
         "bonus": 38,
-        "itemLevel": 273
+        "itemLevel": 273,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "bustgril",
         "score": 17,
         "bonus": 13,
-        "itemLevel": 286
+        "itemLevel": 286,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 65
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 44
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kroline",
         "score": 48,
         "bonus": 100,
-        "itemLevel": 291
+        "itemLevel": 291,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 97
+          }
+        ]
       },
       {
         "playerId": "jrxamã",
         "score": 100,
         "bonus": 65,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 98
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "heracranosx",
         "score": 24,
         "bonus": 57,
-        "itemLevel": 293
+        "itemLevel": 293,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 84
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 5
+          }
+        ]
       },
       {
         "playerId": "nerlock",
         "score": 100,
         "bonus": 38,
-        "itemLevel": 258
+        "itemLevel": 258,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "metallicä",
         "score": 100,
         "bonus": 82,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 49
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "panicdeath",
         "score": 24,
         "bonus": 26,
-        "itemLevel": 289
+        "itemLevel": 289,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 48
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 5
+          }
+        ]
       },
       {
         "playerId": "xúliodk",
         "score": 100,
         "bonus": 18,
-        "itemLevel": 293
+        "itemLevel": 293,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 2
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 15
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "orthín",
         "score": 100,
         "bonus": 16,
-        "itemLevel": 287
+        "itemLevel": 287,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 98
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 2
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "youkaiqqz",
         "score": 47,
         "bonus": 26,
-        "itemLevel": 293
+        "itemLevel": 293,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 58
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 96
+          }
+        ]
       },
       {
         "playerId": "soju",
         "score": 100,
         "bonus": 38,
-        "itemLevel": 255
+        "itemLevel": 255,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Living Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Blighted Blood dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Droplets",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 0
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Unstable Miasma soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       }
     ],
     "vashnik-o-maligno": [],
@@ -178,73 +1130,1009 @@
         "playerId": "blackwatch",
         "score": 90,
         "bonus": 35,
-        "itemLevel": 300
+        "itemLevel": 300,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 24
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 9
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 98
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 83
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "apocalipse",
         "score": 65,
         "bonus": 60,
-        "itemLevel": 288
+        "itemLevel": 288,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 0
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 6
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 93
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 91
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "voidsurge",
         "score": 79,
         "bonus": 9,
-        "itemLevel": 287
+        "itemLevel": 287,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 3
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 21
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 98
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kams",
         "score": 16,
         "bonus": 1,
-        "itemLevel": 294
+        "itemLevel": 294,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 38
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 99
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 62
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 15
+          }
+        ]
       },
       {
         "playerId": "bustgril",
         "score": 90,
         "bonus": 36,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 100
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 69
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 98
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "hysillens",
         "score": 97,
         "bonus": 92,
-        "itemLevel": 300
+        "itemLevel": 300,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 100
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 72
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 88
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 98
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 93
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kroline",
         "score": 87,
         "bonus": 100,
-        "itemLevel": 302
+        "itemLevel": 302,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 16
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 99
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 62
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "jrxamã",
         "score": 83,
         "bonus": 87,
-        "itemLevel": 308
+        "itemLevel": 308,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 3
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 75
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 98
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 93
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 36
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "heracranosx",
         "score": 76,
         "bonus": 35,
-        "itemLevel": 305
+        "itemLevel": 305,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 0
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 100
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 65
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 11
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "gunst",
         "score": 89,
         "bonus": 38,
-        "itemLevel": 302
+        "itemLevel": 302,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 2
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 99
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 77
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "nerlock",
         "score": 18,
         "bonus": 0,
-        "itemLevel": 279
+        "itemLevel": 279,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 100
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 0
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 15
+          }
+        ]
       },
       {
         "playerId": "xúliodk",
         "score": 22,
         "bonus": 6,
-        "itemLevel": 295
+        "itemLevel": 295,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Blast Wave",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Spreading Flames",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Aftershock",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Shredding Shards",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Fungal Burst",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Icebound Flames interrupts",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Frostfire Volley",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Explosive Surprise",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Elemental Patches",
+            "value": 100
+          },
+          {
+            "mechanic": "Mighty Thud soaks",
+            "value": 0
+          },
+          {
+            "mechanic": "Debuffs of Splinters",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 99
+          },
+          {
+            "mechanic": "Debuffs of Shell Spin",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Evil Eyes",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Throw Junk",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 15
+          }
+        ]
       }
     ],
     "sszorak": [
@@ -252,73 +2140,577 @@
         "playerId": "blackwatch",
         "score": 100,
         "bonus": 25,
-        "itemLevel": 300
+        "itemLevel": 300,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 6
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "apocalipse",
         "score": 76,
         "bonus": 47,
-        "itemLevel": 288
+        "itemLevel": 288,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 7
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 73
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "voidsurge",
         "score": 73,
         "bonus": 28,
-        "itemLevel": 287
+        "itemLevel": 287,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 16
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kams",
         "score": 56,
         "bonus": 24,
-        "itemLevel": 294
+        "itemLevel": 294,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 18
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 7
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "bustgril",
         "score": 9,
         "bonus": 11,
-        "itemLevel": 290
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 93
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Potions",
+            "value": 73
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 65
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 3
+          }
+        ]
       },
       {
         "playerId": "hysillens",
         "score": 93,
         "bonus": 82,
-        "itemLevel": 300
+        "itemLevel": 300,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 73
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 73
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 90
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "kroline",
         "score": 18,
         "bonus": 35,
-        "itemLevel": 302
+        "itemLevel": 302,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 94
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 3
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 1
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "jrxamã",
         "score": 74,
         "bonus": 75,
-        "itemLevel": 308
+        "itemLevel": 308,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 1
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 73
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 73
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "heracranosx",
         "score": 73,
         "bonus": 82,
-        "itemLevel": 305
+        "itemLevel": 305,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 61
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "gunst",
         "score": 8,
         "bonus": 14,
-        "itemLevel": 303
+        "itemLevel": 303,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 2
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 1
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 68
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 90
+          }
+        ]
       },
       {
         "playerId": "nerlock",
         "score": 53,
         "bonus": 24,
-        "itemLevel": 279
+        "itemLevel": 279,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 11
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 2
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "xúliodk",
         "score": 99,
         "bonus": 100,
-        "itemLevel": 295
+        "itemLevel": 295,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Ravage",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Mutilate soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Debuffs of Tempest",
+            "value": 94
+          },
+          {
+            "mechanic": "Damage from Raging Crosswinds",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          }
+        ]
       }
     ],
     "as-presas-gemeas": [
@@ -326,97 +2718,1089 @@
         "playerId": "blackwatch",
         "score": 47,
         "bonus": 15,
-        "itemLevel": 307
+        "itemLevel": 307,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 0
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 3
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 4
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 40
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 57
+          }
+        ]
       },
       {
         "playerId": "apocalipse",
         "score": 46,
         "bonus": 14,
-        "itemLevel": 300
+        "itemLevel": 300,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 0
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 58
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 2
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 44
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "voidsurge",
         "score": 23,
         "bonus": 10,
-        "itemLevel": 288
+        "itemLevel": 288,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 3
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 18
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 7
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 5
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 0
+          }
+        ]
       },
       {
         "playerId": "kams",
         "score": 36,
         "bonus": 18,
-        "itemLevel": 305
+        "itemLevel": 305,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 90
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 2
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 29
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 11
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 84
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "cowsadeer",
         "score": 57,
         "bonus": 28,
-        "itemLevel": 310
+        "itemLevel": 310,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 12
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 16
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 29
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 46
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 19
+          }
+        ]
       },
       {
         "playerId": "bustgril",
         "score": 48,
         "bonus": 98,
-        "itemLevel": 305
+        "itemLevel": 305,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 13
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 96
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 2
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "hysillens",
         "score": 56,
         "bonus": 67,
-        "itemLevel": 309
+        "itemLevel": 309,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 14
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 45
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 3
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 53
+          }
+        ]
       },
       {
         "playerId": "kroline",
         "score": 9,
         "bonus": 34,
-        "itemLevel": 311
+        "itemLevel": 311,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 2
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 40
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 5
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 2
+          }
+        ]
       },
       {
         "playerId": "jrxamã",
         "score": 52,
         "bonus": 86,
-        "itemLevel": 313
+        "itemLevel": 313,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 6
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 2
+          },
+          {
+            "mechanic": "Potions",
+            "value": 74
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 18
+          }
+        ]
       },
       {
         "playerId": "heracranosx",
         "score": 68,
         "bonus": 46,
-        "itemLevel": 313
+        "itemLevel": 313,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 58
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 3
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 19
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 99
+          }
+        ]
       },
       {
         "playerId": "gunst",
         "score": 10,
         "bonus": 19,
-        "itemLevel": 307
+        "itemLevel": 307,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 32
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 31
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 11
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 44
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 2
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 34
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 88
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 0
+          }
+        ]
       },
       {
         "playerId": "nerlock",
         "score": 14,
         "bonus": 5,
-        "itemLevel": 297
+        "itemLevel": 297,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 12
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 99
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 14
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 6
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 5
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "xúlio",
         "score": 54,
         "bonus": 100,
-        "itemLevel": 312
+        "itemLevel": 312,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 34
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 92
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 8
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 0
+          }
+        ]
       },
       {
         "playerId": "dagom",
         "score": 57,
         "bonus": 14,
-        "itemLevel": 307
+        "itemLevel": 307,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 80
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 9
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 98
+          }
+        ]
       },
       {
         "playerId": "ligiaf",
         "score": 18,
         "bonus": 5,
-        "itemLevel": 283
+        "itemLevel": 283,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 50
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 5
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 5
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 100
+          }
+        ]
       },
       {
         "playerId": "minort",
         "score": 56,
         "bonus": 14,
-        "itemLevel": 275
+        "itemLevel": 275,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Eternal Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+            "value": 100
+          },
+          {
+            "mechanic": "Ravenous Feast soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Stir the Depths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Deadly Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Coiling Ichor",
+            "value": 66
+          },
+          {
+            "mechanic": "Damage from Corrosive Spit",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Vile Flood",
+            "value": 3
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Damage from Caustic Deluge",
+            "value": 4
+          },
+          {
+            "mechanic": "Damage from Congelead Gore",
+            "value": 71
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Caustic Globule",
+            "value": 13
+          }
+        ]
       }
     ]
   },

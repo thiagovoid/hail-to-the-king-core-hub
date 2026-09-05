@@ -49,12 +49,10 @@ function scoreColor(score: number): { text: string; border: string } {
       {rows.map(({ entry, player }) => {
         const colors = scoreColor(entry.score);
         const initials = player.name.slice(0, 2).toUpperCase();
+        const hasMechanics = entry.mechanics !== undefined && entry.mechanics.length > 0;
 
-        return (
-          <div
-            role="listitem"
-            class="flex flex-col items-center gap-1.5 p-2.5 rounded-lg bg-[#0d1120]/60 border border-white/5"
-          >
+        const cardBody = (
+          <>
             {player.avatar !== null ? (
               <img
                 src={player.avatar}
@@ -95,6 +93,27 @@ function scoreColor(score: number): { text: string; border: string } {
             {entry.itemLevel !== null && (
               <span class="text-[9px] text-slate-500 tabular-nums">ilvl {entry.itemLevel}</span>
             )}
+          </>
+        );
+
+        return hasMechanics ? (
+          <details role="listitem" class="rounded-lg bg-[#0d1120]/60 border border-white/5 overflow-hidden">
+            <summary class="flex flex-col items-center gap-1.5 p-2.5 cursor-pointer list-none select-none focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]">
+              {cardBody}
+              <span class="text-[8px] text-slate-500">mecânicas ▾</span>
+            </summary>
+            <ul class="max-h-48 overflow-y-auto px-2.5 pb-2.5 flex flex-col gap-1 border-t border-white/5 pt-2">
+              {entry.mechanics!.map((stat) => (
+                <li class="flex items-center justify-between gap-2 text-[10px]">
+                  <span class="text-slate-400 truncate">{stat.mechanic}</span>
+                  <span class={`font-bold tabular-nums shrink-0 ${scoreColor(stat.value).text}`}>{stat.value}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ) : (
+          <div role="listitem" class="flex flex-col items-center gap-1.5 p-2.5 rounded-lg bg-[#0d1120]/60 border border-white/5">
+            {cardBody}
           </div>
         );
       })}
