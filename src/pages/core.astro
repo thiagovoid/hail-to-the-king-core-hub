@@ -1,0 +1,259 @@
+---
+/**
+ * core.astro — Dashboard do Core Nemesis
+ * Era a home (/) até a reorganização institucional: Core Nemesis agora é
+ * uma área dentro do site da Hail to the King, não a porta de entrada.
+ * Exibe HeroSection com barras de progressão Normal/Heroica e SummaryCards navegáveis.
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroSection from '@/components/HeroSection.astro';
+import SummaryCard from '@/components/SummaryCard.astro';
+import CorePerformanceChart from '@/components/CorePerformanceChart.astro';
+import CoreRankingTable from '@/components/CoreRankingTable.astro';
+import CoreHealthPanel from '@/components/CoreHealthPanel.astro';
+import type { SiteConfig, Boss, Player } from '@/types/index';
+import { computeProgression } from '@/utils/progression';
+import { computeMythicStats } from '@/utils/roster';
+
+import seasonJson from '../../data/seasons/midnight-s2/config.json';
+import rosterJson from '../../data/guild/roster.json';
+import { getLatestWeeklyHighlights } from '../../data/weekly/highlights/index';
+import { performanceWeeks } from '../../data/weekly/performance/index';
+
+const config = seasonJson.config as SiteConfig;
+const bossesNormal = seasonJson.bossesNormal as Boss[];
+const bossesHeroic = seasonJson.bossesHeroic as Boss[];
+const recentLogs = seasonJson.recentLogs ?? [];
+const players = rosterJson as Player[];
+const weeklyHighlights = getLatestWeeklyHighlights();
+
+import { getCorePerformanceSeries } from '@/engine/metrics';
+import { buildCoreRanking, calculateCoreAverages } from '@/engine/team';
+import { calculateCoreHealth } from '@/engine/guild/coreHealth';
+
+const coreAverages = calculateCoreAverages(performanceWeeks);
+const goalsByPlayerId = Object.fromEntries(
+  players.map((player) => [player.id, player.performanceGoals])
+);
+const coreRanking = buildCoreRanking(performanceWeeks, players, goalsByPlayerId);
+const coreHealth = calculateCoreHealth(performanceWeeks, players, goalsByPlayerId, bossesNormal, bossesHeroic);
+
+const dpsSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'dps'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
+
+const parseSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'parse'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
+
+const deathsSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'deaths'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
+
+const mechanicsSeries = getCorePerformanceSeries(
+  performanceWeeks,
+  players,
+  'mechanics'
+).map((series) => {
+  const player = players.find(
+    (item) => item.id === series.playerId
+  );
+
+  return {
+    ...series,
+    playerName: player?.name ?? series.playerId,
+    playerClass: player?.class,
+    playerSlug: player?.name
+        ? encodeURIComponent(player.name.toLowerCase())
+        : undefined
+  };
+});
+
+// Base path
+const base = '';
+
+// 1 — Progressão Normal
+const progressionNormal = computeProgression(bossesNormal);
+const progressionNormalValue = progressionNormal.total > 0 ? `${progressionNormal.killed}/${progressionNormal.total} N` : null;
+const progressionNormalSubtitle = progressionNormal.total > 0 ? `${progressionNormal.percent}% Normal concluído` : undefined;
+
+// 2 — Progressão Heroica
+const progressionHeroic = computeProgression(bossesHeroic);
+const progressionHeroicValue = progressionHeroic.total > 0 ? `${progressionHeroic.killed}/${progressionHeroic.total} H` : null;
+const progressionHeroicSubtitle = progressionHeroic.total > 0 ? `${progressionHeroic.percent}% Heróico concluído` : undefined;
+
+
+// 3 — Média Raider.IO + Melhor Key da Semana
+const mythicStats = computeMythicStats(players);
+const avgIoValue = mythicStats.avgIo > 0 ? mythicStats.avgIo : null;
+const bestKey = weeklyHighlights?.bestKey ?? null;
+const avgIoSubtitle = bestKey
+  ? `Média do grupo · Melhor key: ${bestKey.dungeon} +${bestKey.level}`
+  : 'Média do grupo';
+---
+
+<BaseLayout
+  title="Core Nemesis"
+  description="Dashboard do Core Nemesis — progressão, membros e destaques da semana."
+>
+
+  <HeroSection config={config} bossesNormal={bossesNormal} bossesHeroic={bossesHeroic} recentLogs={recentLogs} />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
+    <CoreHealthPanel health={coreHealth} />
+  </div>
+
+  <section
+    aria-label="Resumo da temporada"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
+  >
+    <!-- Section header -->
+    <div class="flex items-center gap-3 mb-6">
+      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+      <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
+        Destaques da Semana
+      </h2>
+      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+
+      <SummaryCard
+        title="Regras"
+        value="Confira"
+        subtitle="Regras e diretrizes do core"
+        icon="📋"
+        href={`${base}/regras/`}
+        accent="red"
+      />
+
+      <SummaryCard
+        title="Progressão"
+        value={progressionNormalValue}
+        altValue={progressionHeroicValue}
+        subtitle={progressionNormalSubtitle}
+        altsubtitle={progressionHeroicSubtitle}
+        icon="⚔"
+        href={`${base}/core/progressao/`}
+        accent="green"
+        altAccent="purple"
+      />
+
+      <SummaryCard
+        title="Média Raider.IO"
+        value={avgIoValue}
+        subtitle={avgIoSubtitle}
+        icon="🗝"
+        href={`${base}/core/mythic/`}
+        accent="blue"
+      />
+
+      <SummaryCard
+          title="Membros"
+          value={players.filter((p) => p.type === 'main').length}
+          subtitle={`${players.length} total com alts`}
+          icon="👥"
+          href={`${base}/core/membros/`}
+          accent="default"
+        />
+
+    </div>
+
+    <!-- Section header -->
+    <div class="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-10">
+      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+      <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
+        Performance do core
+      </h2>
+      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+    </div>
+
+    <!-- Médias do core na run mais recente (Team Analytics Engine) -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+      <SummaryCard title="DPS Médio" value={coreAverages.dps} subtitle="Última run" icon="⚔" accent="red" />
+      <SummaryCard title="Parse Médio" value={coreAverages.parse} subtitle="Última run" icon="📊" accent="purple" />
+      <SummaryCard title="Mortes Médias" value={coreAverages.deaths} subtitle="Última run" icon="💀" accent="default" />
+      <SummaryCard title="Erros Mecânicos" value={coreAverages.mechanicErrors} subtitle="Média · última run" icon="⚠" accent="gold" />
+    </div>
+
+    <CorePerformanceChart
+      metrics={[
+        {
+          id: 'dps',
+          label: 'DPS',
+          direction: 'higher',
+          series: dpsSeries,
+        },
+        {
+          id: 'parse',
+          label: 'Parse',
+          direction: 'higher',
+          series: parseSeries,
+        },
+        {
+          id: 'deaths',
+          label: 'Mortes',
+          direction: 'lower',
+          series: deathsSeries,
+        },
+        {
+          id: 'mechanics',
+          label: 'Mecânicas',
+          direction: 'lower',
+          series: mechanicsSeries,
+        },
+      ]}
+    />
+
+    <div class="mt-14">
+      <CoreRankingTable ranking={coreRanking} />
+    </div>
+  </section>
+
+</BaseLayout>

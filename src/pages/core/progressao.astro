@@ -1,0 +1,119 @@
+---
+/**
+ * progressao.astro — Página de Progressão do Core Hub
+ * Exibe o status detalhado de cada boss da raid atual com barras Normal e Heroica.
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BossCard from '@/components/BossCard.astro';
+import type { SiteConfig, Boss, Player } from '@/types/index';
+import { computeProgression } from '@/utils/progression';
+import { formatDate } from '@/utils/format';
+import { getBossScores } from '@/utils/bossInsights';
+
+import seasonJson from '../../../data/seasons/midnight-s2/config.json';
+import rosterJson from '../../../data/guild/roster.json';
+
+const SEASON_SLUG = 'midnight-s2';
+
+const config = seasonJson.config as SiteConfig;
+const bossesNormal = seasonJson.bossesNormal as Boss[];
+const bossesHeroic = seasonJson.bossesHeroic as Boss[];
+const roster = rosterJson as Player[];
+
+const progressionNormal = computeProgression(bossesNormal);
+const progressionHeroic = computeProgression(bossesHeroic);
+
+const normalSummary = progressionNormal.total > 0
+  ? `${progressionNormal.killed}/${progressionNormal.total} Normal`
+  : '—';
+
+const heroicSummary = progressionHeroic.total > 0
+  ? `${progressionHeroic.killed}/${progressionHeroic.total} Heroica`
+  : '—';
+
+const lastUpdated = formatDate(config.lastUpdated);
+---
+
+<BaseLayout
+  title="Progressão"
+  description={`Progressão do Core Nemesis — ${config.currentRaid}. ${normalSummary} | ${heroicSummary}.`}
+>
+  <!-- Page header -->
+  <section
+    aria-label="Cabeçalho da progressão"
+    class="bg-[#0a0d14] border-b border-white/5"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+
+        <div>
+          <!-- Raid name -->
+          <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
+            Progressão — {config.currentRaid}
+          </p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-3">
+            {config.currentRaid}
+          </h1>
+          <!-- Progression summary badges -->
+          <div class="flex flex-wrap items-center gap-3">
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e] text-sm font-semibold"
+            >
+              ⚔ {normalSummary}
+            </span>
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/30 text-[#a855f7] text-sm font-semibold"
+            >
+              ⚔ {heroicSummary}
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] text-sm font-medium">
+              🌙 {config.currentSeason}
+            </span>
+          </div>
+        </div>
+
+        <!-- Last updated -->
+        <p class="text-slate-400 text-sm shrink-0">
+          Atualizado em{' '}
+          <time datetime={config.lastUpdated} class="text-slate-400 font-medium">
+            {lastUpdated}
+          </time>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Normal Boss list -->
+  <section
+    aria-label="Bosses em dificuldade Normal"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
+  >
+    <h2 class="text-[#22c55e] text-xs font-semibold uppercase tracking-widest mb-6">
+      Normal — {normalSummary}
+    </h2>
+
+    <div class="flex flex-col gap-2">
+      {bossesNormal.map((boss, i) => (
+        <BossCard boss={boss} index={i} scores={getBossScores(SEASON_SLUG, 'normal', boss.id)} roster={roster} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Heroic Boss list -->
+  <section
+    aria-label="Bosses em dificuldade Heroica"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
+  >
+    <h2 class="text-[#a855f7] text-xs font-semibold uppercase tracking-widest mb-6">
+      Heroica — {heroicSummary}
+    </h2>
+
+    <div class="flex flex-col gap-2">
+      {bossesHeroic.map((boss, i) => (
+        <BossCard boss={boss} index={i} scores={getBossScores(SEASON_SLUG, 'heroic', boss.id)} roster={roster} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

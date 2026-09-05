@@ -9,10 +9,13 @@
     "check": "astro check",
     "test": "vitest run --passWithNoTests",
     "test:coverage": "vitest run --coverage",
-    "wcl:test": "node scripts/warcraftlogs/test-connection.mjs",
-    "wcl:fetch-performance": "node scripts/warcraftlogs/fetch-performance.mjs",
-    "wcl:sync-roster-stats": "node scripts/warcraftlogs/sync-roster-stats.mjs",
-    "raidbots:update-goals": "node scripts/raidbots/update-performance-goals.mjs"
+    "wcl:test": "vite-node -c vitest.config.ts scripts/warcraftlogs/test-connection.ts",
+    "wcl:fetch-performance": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts",
+    "wcl:sync-roster-stats": "vite-node -c vitest.config.ts scripts/warcraftlogs/sync-roster-stats.ts",
+    "raidbots:update-goals": "vite-node -c vitest.config.ts scripts/raidbots/update-performance-goals.ts",
+    "wipefest:fetch-scores": "vite-node -c vitest.config.ts scripts/wipefest/fetch-scores.ts",
+    "wipefest:fetch-boss-insights": "vite-node -c vitest.config.ts scripts/wipefest/fetch-boss-insights.ts",
+    "wowanalyzer:fetch-scores": "vite-node -c vitest.config.ts scripts/wowanalyzer/fetch-scores.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
@@ -21,11 +24,13 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@types/node": "^20.19.43",
     "@vitest/coverage-v8": "^2.1.8",
     "dotenv": "^17.4.2",
     "fast-check": "^3.23.2",
     "playwright": "^1.61.1",
     "typescript": "^5.7.3",
+    "vite-node": "^2.1.9",
     "vitest": "^2.1.8"
   }
 }

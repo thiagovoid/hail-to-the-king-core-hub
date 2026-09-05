@@ -1,0 +1,72 @@
+---
+/**
+ * historia.astro — Página institucional completa da Hail to the King
+ * Doc "4. Hall da Guild": história, propósito, pilares e timeline.
+ * Hall da Fama e Museu (§4.3/4.4) ficam pra uma rodada futura — dependem
+ * de decisões de produto (critérios, upload de mídia) que ainda não foram
+ * tomadas.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PillarsGrid from '@/components/PillarsGrid.astro';
+import Timeline from '@/components/Timeline.astro';
+import type { GuildAbout, TimelineEntry } from '@/types/index';
+
+import aboutJson from '../../data/guild/about.json';
+import timelineJson from '../../data/guild/timeline.json';
+
+const about = aboutJson as GuildAbout;
+const timeline = timelineJson as TimelineEntry[];
+---
+
+<BaseLayout
+  title="História"
+  description="A história da Hail to the King — fundação, pilares e a linha do tempo da guild."
+>
+  <section class="bg-[#0a0d14] border-b border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+      <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
+        Desde {about.founding.year}
+      </p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-4">
+        Nossa História
+      </h1>
+      <p class="text-slate-300 leading-relaxed">
+        {about.founding.text}
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-16">
+
+    <section aria-labelledby="purpose-heading">
+      <h2 id="purpose-heading" class="text-xl font-bold text-white mb-3">Quem somos</h2>
+      <p class="text-slate-300 leading-relaxed">{about.purpose}</p>
+    </section>
+
+    <section aria-labelledby="pillars-heading">
+      <h2 id="pillars-heading" class="text-xl font-bold text-white mb-6">Nossos pilares</h2>
+      <PillarsGrid pillars={about.pillars} />
+    </section>
+
+    <section aria-labelledby="timeline-heading">
+      <h2 id="timeline-heading" class="text-xl font-bold text-white mb-8">Linha do tempo</h2>
+      <Timeline entries={timeline} />
+
+      <div class="flex flex-wrap gap-4 mt-4">
+        <a
+          href="/chronicle/"
+          class="inline-flex items-center gap-2 text-sm text-[#f0a500] hover:text-[#fbbf24] transition-colors font-semibold"
+        >
+          📖 Ver o capítulo da temporada atual no Chronicle →
+        </a>
+        <a
+          href="/hall-da-fama/"
+          class="inline-flex items-center gap-2 text-sm text-[#f0a500] hover:text-[#fbbf24] transition-colors font-semibold"
+        >
+          🏆 Ver o Hall da Fama →
+        </a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

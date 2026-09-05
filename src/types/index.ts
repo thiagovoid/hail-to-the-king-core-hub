@@ -59,6 +59,15 @@ export type WowRace =
   | "earthen";
 
 /**
+ * Vínculo do jogador com a guilda (doc: "5.4 Definir status").
+ * Reduzido do vocabulário original do doc — "prospect"/"mentor"/"retired"
+ * pertencem a Recrutamento e Badges, domínios que ainda não existem no
+ * Core Hub; adicionar esses valores agora criaria um campo sem consumidor,
+ * o mesmo problema que a limpeza de dados desta sessão já resolveu uma vez.
+ */
+export type PlayerStatus = "trial" | "member" | "veteran" | "inactive";
+
+/**
  * Categorias de ferramentas externas exibidas na seção Ferramentas.
  */
 export type ToolCategory =
@@ -85,7 +94,7 @@ export type RuleCategoryId =
 
 /**
  * Destaque de um jogador em uma sessão de raid ou na semana.
- * Usado em `WeeklyLog` e `SiteConfig`.
+ * Usado em `WeeklyHighlights`.
  */
 export interface PlayerHighlight {
   /** Nome do personagem em destaque. */
@@ -97,12 +106,51 @@ export interface PlayerHighlight {
 }
 
 // ---------------------------------------------------------------------------
+// Identidade da Guild (institucional)
+// ---------------------------------------------------------------------------
+
+/** Um dos valores centrais da guild, com uma frase curta explicando o que significa na prática. */
+export interface GuildPillar {
+  name: string;
+  description: string;
+}
+
+/**
+ * Conteúdo institucional da guild — quem somos, não como o core está
+ * performando. Lido de `data/guild/about.json`, editado à mão pela
+ * liderança (não é gerado por nenhum provider).
+ */
+export interface GuildAbout {
+  founding: {
+    year: number;
+    text: string;
+  };
+  purpose: string;
+  /** Frase de identidade usada como destaque na página institucional. */
+  message: string;
+  pillars: GuildPillar[];
+}
+
+/**
+ * Um marco na história da guild. Lista curada à mão em
+ * `data/guild/timeline.json` — cresce por edição direta quando algo
+ * relevante acontece, não é um snapshot automático como as séries semanais.
+ */
+export interface TimelineEntry {
+  year: number;
+  title: string;
+  description?: string;
+}
+
+// ---------------------------------------------------------------------------
 // Configuração do Site
 // ---------------------------------------------------------------------------
 
 /**
  * Configuração de nível superior do site, lida do JSON da temporada ativa.
- * Contém dados de identidade do core, raid atual e destaques da semana.
+ * Contém apenas dados de identidade do core e da raid atual — quase
+ * estáticos, mudam a cada temporada, não a cada semana. Destaques semanais
+ * vivem à parte em `WeeklyHighlights` (`data/weekly/highlights/week-NN.json`).
  */
 export interface SiteConfig {
   /** Nome do core de raid, ex: "Core Nemesis". */
@@ -126,19 +174,35 @@ export interface SiteConfig {
     /** Objetivo principal da sessão, ex: "Progressão no último boss". */
     objective: string;
   };
-  /** Destaques da semana corrente lidos do JSON_Store. */
-  weeklyHighlights: {
-    /** Melhor DPS da semana, ou null se não disponível. */
-    bestDps: PlayerHighlight | null;
-    /** Melhor HPS (heal) da semana, ou null se não disponível. */
-    bestHps: PlayerHighlight | null;
-    /** Melhor tank da semana, ou null se não disponível. */
-    bestTank: PlayerHighlight | null;
-    /** Melhor chave mítica da semana, ou null se não disponível. */
-    bestKey: { player: string; dungeon: string; level: number } | null;
-    /** Jogador da semana, ou null se não disponível. */
-    playerOfTheWeek: PlayerHighlight | null;
-  };
+}
+
+// ---------------------------------------------------------------------------
+// Destaques da Semana
+// ---------------------------------------------------------------------------
+
+/**
+ * Destaques de uma semana de raid — melhor DPS/HPS/tank, melhor key e
+ * jogador da semana. Um arquivo por semana em `data/weekly/highlights/`
+ * (mesmo padrão de snapshot do `data/weekly/performance/week-NN.json`): nunca
+ * sobrescrito, cada semana é seu próprio registro histórico.
+ */
+export interface WeeklyHighlights {
+  /** Número sequencial da semana, mesma numeração de `data/weekly/performance/week-NN.json`. */
+  week: number;
+  /** Data de referência da semana (última sessão), formato ISO 8601. */
+  date: string;
+  /** Melhor DPS da semana, ou null se não disponível. */
+  bestDps: PlayerHighlight | null;
+  /** Melhor HPS (heal) da semana, ou null se não disponível. */
+  bestHps: PlayerHighlight | null;
+  /** Melhor tank da semana, ou null se não disponível. */
+  bestTank: PlayerHighlight | null;
+  /** Melhor chave mítica da semana, ou null se não disponível. */
+  bestKey: { player: string; dungeon: string; level: number } | null;
+  /** Jogador da semana, ou null se não disponível. */
+  playerOfTheWeek: PlayerHighlight | null;
+  /** Melhores chaves Mythic+ completadas na semana, ordenadas. */
+  topKeys: Array<{ dungeon: string; keyLevel: number }>;
 }
 
 // ---------------------------------------------------------------------------
@@ -205,6 +269,8 @@ export interface Player {
   role: "tank" | "healer" | "dps";
   /** Indica se é o personagem principal ou alternativo do jogador. */
   type: "main" | "alt";
+  /** Vínculo atual do jogador com a guilda. */
+  status: PlayerStatus;
   /** Nick do Discord do jogador, ou null se não cadastrado. */
   discord: string | null;
   /**
@@ -241,104 +307,6 @@ export interface Player {
     /** URL do perfil no Warcraft Logs, ou null. */
     profileUrl: string | null;
   };
-  /** Links externos rápidos exibidos nos botões do card. */
-  externalLinks: {
-    /** URL do perfil no Raider.IO, ou null. */
-    raiderIo: string | null;
-    /** URL do personagem no Raidbots, ou null. */
-    raidbots: string | null;
-    /** URL do personagem no Archon.gg, ou null. */
-    archon: string | null;
-    /** URL do perfil no Warcraft Logs, ou null. */
-    warcraftLogs: string | null;
-    /** URL da análise no Wipefest, ou null. */
-    wipefest: string | null;
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Loot
-// ---------------------------------------------------------------------------
-
-/**
- * Registro de um item de loot distribuído durante uma sessão de raid.
- */
-export interface Loot {
-  /** Identificador único do registro de loot, ex: "loot-001". */
-  id: string;
-  /** Data da distribuição do loot, formato ISO 8601. */
-  date: string;
-  /** Referência ao `id` do jogador que recebeu o item. */
-  player: string;
-  /** Nome do item obtido, ex: "Mantle of the Silken Court". */
-  itemName: string;
-  /** Item level do item, ex: 626, 639. */
-  itemLevel: number;
-  /** Referência ao `id` do boss de onde o item dropou. */
-  boss: string;
-  /** Número da semana de raid em que o loot foi distribuído. */
-  week: number;
-}
-
-// ---------------------------------------------------------------------------
-// Logs Semanais
-// ---------------------------------------------------------------------------
-
-/**
- * Registro de uma sessão de raid semanal com destaques e links.
- */
-export interface WeeklyLog {
-  /** Número sequencial da semana, ex: 1, 2, 3. */
-  weekNumber: number;
-  /** Data da sessão de raid, formato ISO 8601. */
-  date: string;
-  /** Duração total da sessão em minutos. */
-  durationMinutes: number;
-  /** Quantidade de bosses mortos na sessão. */
-  bossesKilled: number;
-  /** Destaques individuais da sessão. */
-  highlights: {
-    /** Melhor DPS da sessão, ou null. */
-    bestDps: PlayerHighlight | null;
-    /** Melhor HPS (heal) da sessão, ou null. */
-    bestHps: PlayerHighlight | null;
-    /** Melhor tank da sessão, ou null. */
-    bestTank: PlayerHighlight | null;
-    /** Jogador da semana eleito pela liderança, ou null. */
-    playerOfTheWeek: PlayerHighlight | null;
-  };
-  /** Links para análises externas da sessão. */
-  links: {
-    /** URL do relatório no Warcraft Logs, ou null. */
-    warcraftLogs: string | null;
-    /** URL da análise no Wipefest, ou null. */
-    wipefest: string | null;
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Planejamento Semanal
-// ---------------------------------------------------------------------------
-
-/**
- * Dados de planejamento da semana atual: objetivos, composição e avisos.
- */
-export interface Schedule {
-  /** Lista de objetivos da semana, ex: "Matar Queen Ansurek em Mítico". */
-  weekObjectives: string[];
-  /** Composição planejada por role para a próxima sessão. */
-  composition: {
-    /** Nomes dos tanks confirmados. */
-    tanks: string[];
-    /** Nomes dos healers confirmados. */
-    healers: string[];
-    /** Nomes dos DPS confirmados. */
-    dps: string[];
-  };
-  /** Lista de jogadores com ausência confirmada na semana. */
-  absences: string[];
-  /** Notas e avisos publicados pela liderança do core. */
-  leadershipNotes: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -400,34 +368,3 @@ export interface MythicStats {
   };
 }
 
-/**
- * Filtros aplicáveis à tabela de loots na seção Loots.
- * Campos undefined ou null indicam filtro inativo.
- */
-export interface LootFilters {
-  /** Filtrar por número de semana, ou null/undefined para ignorar. */
-  week?: number | null;
-  /** Filtrar por id do jogador, ou null/undefined para ignorar. */
-  player?: string | null;
-  /** Filtrar por id do boss, ou null/undefined para ignorar. */
-  boss?: string | null;
-}
-
-/**
- * Estatísticas de loot por jogador calculadas por `computeLootStats`.
- */
-export interface LootStats {
-  /** Referência ao `id` do jogador. */
-  playerId: string;
-  /** Nome do jogador para exibição. */
-  playerName: string;
-  /** Total de itens recebidos pelo jogador. */
-  totalLoots: number;
-  /**
-   * Data do loot mais recente do jogador, formato ISO 8601.
-   * Null quando o jogador nunca recebeu loot.
-   */
-  lastLootDate: string | null;
-  /** Média de loots recebidos por mês. */
-  avgPerMonth: number;
-}

@@ -46,6 +46,7 @@ const playerArb: fc.Arbitrary<Player> = fc.record({
     fc.constant('dps' as const),
   ),
   type: fc.oneof(fc.constant('main' as const), fc.constant('alt' as const)),
+  status: fc.constantFrom('trial' as const, 'member' as const, 'veteran' as const, 'inactive' as const),
   discord: fc.option(fc.string(), { nil: null }),
   avatar: fc.option(fc.string(), { nil: null }),
   raiderIo: fc.record({
@@ -60,13 +61,6 @@ const playerArb: fc.Arbitrary<Player> = fc.record({
     bestParse: fc.option(fc.integer({ min: 0, max: 100 }), { nil: null }),
     attendance: fc.option(fc.integer({ min: 0, max: 100 }), { nil: null }),
     profileUrl: fc.option(fc.string(), { nil: null }),
-  }),
-  externalLinks: fc.record({
-    raiderIo: fc.option(fc.string(), { nil: null }),
-    raidbots: fc.option(fc.string(), { nil: null }),
-    archon: fc.option(fc.string(), { nil: null }),
-    warcraftLogs: fc.option(fc.string(), { nil: null }),
-    wipefest: fc.option(fc.string(), { nil: null }),
   }),
 });
 
@@ -167,11 +161,11 @@ function makePlayer(io: number | null): Player {
     heroSpec: null,
     role: 'dps',
     type: 'main',
+    status: 'member',
     discord: null,
     avatar: null,
     raiderIo: { io, bestDungeon: null, highestKey: null, realmRank: null, profileUrl: null },
     warcraftLogs: { avgParse: null, bestParse: null, attendance: null, profileUrl: null },
-    externalLinks: { raiderIo: null, raidbots: null, archon: null, warcraftLogs: null, wipefest: null },
   };
 }
 

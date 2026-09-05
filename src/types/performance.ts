@@ -42,6 +42,24 @@ export interface PlayerPerformance {
   mechanics?: {
     errors: number;
   };
+
+  /**
+   * Wipefest's overall mechanics score (0-100) for the run.
+   * Not populated yet — reserved for the Wipefest provider (browser
+   * automation, planned separately). Additive: absent for every run until then.
+   */
+  wipefestScore?: number;
+
+  /**
+   * WoW Analyzer's "Always Be Casting" percentage for the run (0-100) —
+   * Active Time for a DPS spec, Ability/Healing Uptime for a healer. There
+   * is no single 0-100 score like Wipefest's on WoW Analyzer (confirmed
+   * inspecting real specs: every spec has its own checklist with different
+   * metrics and labels) — this is the one number close enough to universal
+   * across specs to fit here; everything else stays a native per-provider
+   * feature instead (see wowanalyzer-findings memory).
+   */
+  uptime?: number;
 }
 
 /**
