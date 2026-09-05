@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium, type Page } from "playwright";
@@ -63,10 +63,16 @@ async function fetchBossScores(
   page: Page,
   bosses: Boss[],
   players: RosterPlayer[],
-  rawKeyPrefix: string
+  rawKeyPrefix: string,
+  previous: BossInsightsByDifficulty
 ): Promise<BossInsightsByDifficulty> {
   const wipefestMechanics = asMechanicBreakdownProvider(wipefest);
-  const result: BossInsightsByDifficulty = {};
+  // Começa a partir do placar já salvo (não de {}): um boss cujo re-scrape
+  // falhar nesta rodada mantém o placar anterior em vez de sumir do arquivo
+  // final — mesmo princípio de "nunca sobrescrever dados antigos" que o
+  // Snapshot System já documenta, aplicado aqui como merge incremental
+  // (mesmo padrão de fallback que sync-roster-stats.ts usa pro roster).
+  const result: BossInsightsByDifficulty = { ...previous };
 
   for (const boss of bosses) {
     if (boss.status !== "killed") continue;
@@ -86,7 +92,7 @@ async function fetchBossScores(
     });
 
     if (outcome.status === "error") {
-      console.warn(`  falhou: ${outcome.error}`);
+      console.warn(`  falhou: ${outcome.error} — mantendo o placar salvo anteriormente para ${boss.name}.`);
       continue;
     }
 
@@ -100,9 +106,14 @@ async function fetchBossScores(
     });
 
     if (mechanicsOutcome.status === "error") {
-      console.warn(`  falhou o breakdown de mecânicas: ${mechanicsOutcome.error}`);
+      console.warn(`  falhou o breakdown de mecânicas: ${mechanicsOutcome.error} — mantendo o breakdown salvo anteriormente.`);
     }
     const mechanicsByName = mechanicsOutcome.status === "ok" ? mechanicsOutcome.result.raw : {};
+    // Placar anterior deste boss (se houver), pra recuperar o breakdown de
+    // mecânica de um jogador quando o passe de mecânicas desta rodada falhou
+    // ou não achou o card dele — mesmo princípio de merge do placar como um
+    // todo, aplicado por jogador.
+    const previousScores = previous[boss.id] ?? [];
 
     const scores: BossPlayerScore[] = [];
     for (const player of players) {
@@ -110,7 +121,9 @@ async function fetchBossScores(
       if (!entry) continue;
 
       const mechanicsKey = Object.keys(mechanicsByName).find((name) => sameCharacterName(name, player.name));
-      const mechanics = mechanicsKey ? mechanicsByName[mechanicsKey] : undefined;
+      const mechanics = mechanicsKey
+        ? mechanicsByName[mechanicsKey]
+        : previousScores.find((previousEntry) => previousEntry.playerId === player.id)?.mechanics;
 
       scores.push({
         playerId: player.id,
@@ -128,11 +141,24 @@ async function fetchBossScores(
   return result;
 }
 
+async function loadExistingOutput(outPath: string): Promise<BossInsights> {
+  try {
+    await access(outPath);
+  } catch {
+    return { bossesNormal: {}, bossesHeroic: {} };
+  }
+  return JSON.parse(await readFile(outPath, "utf-8")) as BossInsights;
+}
+
 async function main() {
   const { season, headed } = parseArgs();
 
-  const seasonData: SeasonFile = JSON.parse(await readFile(path.join(ROOT, "data/seasons", `${season}.json`), "utf-8"));
-  const roster: RosterPlayer[] = JSON.parse(await readFile(path.join(ROOT, "data/roster.json"), "utf-8"));
+  const seasonDir = path.join(ROOT, "data/seasons", season);
+  const seasonData: SeasonFile = JSON.parse(await readFile(path.join(seasonDir, "config.json"), "utf-8"));
+  const roster: RosterPlayer[] = JSON.parse(await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8"));
+
+  const outPath = path.join(seasonDir, "boss-insights.json");
+  const existing = await loadExistingOutput(outPath);
 
   const wipefest = new WipefestProvider();
   const collector = new DataCollector();
@@ -147,7 +173,8 @@ async function main() {
     page,
     seasonData.bossesNormal ?? [],
     roster,
-    `boss-insights/${season}/normal`
+    `boss-insights/${season}/normal`,
+    existing.bossesNormal ?? {}
   );
 
   console.log("\nHeroica:");
@@ -157,16 +184,15 @@ async function main() {
     page,
     seasonData.bossesHeroic ?? [],
     roster,
-    `boss-insights/${season}/heroic`
+    `boss-insights/${season}/heroic`,
+    existing.bossesHeroic ?? {}
   );
 
   await browser.close();
 
   const output: BossInsights = { bossesNormal, bossesHeroic };
 
-  const outDir = path.join(ROOT, "data/boss-insights");
-  await mkdir(outDir, { recursive: true });
-  const outPath = path.join(outDir, `${season}.json`);
+  await mkdir(seasonDir, { recursive: true });
   await writeFile(outPath, `${JSON.stringify(output, null, 2)}\n`);
 
   console.log(`\n${path.relative(ROOT, outPath)} atualizado.`);

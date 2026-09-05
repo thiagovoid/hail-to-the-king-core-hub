@@ -47,12 +47,12 @@ interface PerformanceRun {
 }
 
 async function loadRoster(): Promise<RosterPlayer[]> {
-  const raw = await readFile(path.join(ROOT, "data/roster.json"), "utf-8");
+  const raw = await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8");
   return JSON.parse(raw);
 }
 
 async function loadAllRuns(): Promise<PerformanceRun[]> {
-  const dir = path.join(ROOT, "data/performance");
+  const dir = path.join(ROOT, "data/weekly/performance");
   const files = (await readdir(dir)).filter((file) => /^week-\d+\.json$/.test(file));
 
   const runs: PerformanceRun[] = [];
@@ -151,9 +151,9 @@ async function main() {
     );
   }
 
-  await writeFile(path.join(ROOT, "data/roster.json"), `${JSON.stringify(updatedRoster, null, 2)}\n`);
+  await writeFile(path.join(ROOT, "data/guild/roster.json"), `${JSON.stringify(updatedRoster, null, 2)}\n`);
 
-  console.log("data/roster.json atualizado.");
+  console.log("data/guild/roster.json atualizado.");
 }
 
 main().catch((error) => {

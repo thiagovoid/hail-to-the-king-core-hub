@@ -3,7 +3,7 @@
  * Footer.astro — Rodapé global do Core Hub
  */
 
-import seasonData from '../../data/seasons/midnight-s2.json';
+import seasonData from '../../data/seasons/midnight-s2/config.json';
 import { formatDate } from '@/utils/format';
 
 const lastUpdated = formatDate(seasonData.config.lastUpdated);
@@ -20,8 +20,8 @@ const lastUpdated = formatDate(seasonData.config.lastUpdated);
       <div class="flex items-center gap-2.5">
         <span class="text-[#f0a500] text-lg" aria-hidden="true">⚔</span>
         <div>
-          <p class="font-display font-bold text-[#f0a500] text-sm tracking-wide">Core Nemesis</p>
-          <p class="text-slate-400 text-xs mt-0.5">Core Hub · {seasonData.config.currentSeason}</p>
+          <p class="font-display font-bold text-[#f0a500] text-sm tracking-wide">Hail to the King</p>
+          <p class="text-slate-400 text-xs mt-0.5">Core Nemesis · {seasonData.config.currentSeason}</p>
         </div>
       </div>
 

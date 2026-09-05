@@ -1,0 +1,152 @@
+---
+/**
+ * membros.astro — Página de Membros
+ * Lista o roster agrupado por role (Tank/Healer/DPS — doc "8.2 Roster"),
+ * com filtros client-side por status, classe e main/alt.
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PlayerCard from '@/components/PlayerCard.astro';
+import type { Player, WowClass } from '@/types/index';
+import rosterData from '../../../../data/guild/roster.json';
+
+const players = rosterData as Player[];
+
+const ROLE_ORDER = ['tank', 'healer', 'dps'] as const;
+const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
+  tank: 'Tanks',
+  healer: 'Healers',
+  dps: 'DPS',
+};
+
+const groups = ROLE_ORDER.map((role) => ({
+  role,
+  label: ROLE_LABEL[role],
+  players: players.filter((p) => p.role === role),
+}));
+
+const classesInRoster = [...new Set(players.map((p) => p.class))].sort() as WowClass[];
+
+function capitalize(s: string): string {
+  return s.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+---
+
+<BaseLayout
+  title="Membros"
+  description="Conheça o roster do Core Nemesis: tanks, healers, DPS, status e estatísticas."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Page header -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-slate-100 mb-2">Membros</h1>
+      <p class="text-slate-400 text-sm">
+        {players.length} membros · {groups.find((g) => g.role === 'tank')?.players.length ?? 0} tanks ·{' '}
+        {groups.find((g) => g.role === 'healer')?.players.length ?? 0} healers ·{' '}
+        {groups.find((g) => g.role === 'dps')?.players.length ?? 0} DPS
+      </p>
+    </header>
+
+    <!-- Filtros -->
+    {players.length > 0 && (
+      <div class="flex flex-wrap gap-3 mb-10 pb-6 border-b border-slate-700/50">
+        <label class="flex items-center gap-2 text-sm text-slate-400">
+          Status
+          <select id="filter-status" class="bg-[#141b2d] border border-white/10 rounded-lg px-3 py-1.5 text-slate-200 text-sm">
+            <option value="">Todos</option>
+            <option value="trial">Trial</option>
+            <option value="member">Member</option>
+            <option value="veteran">Veteran</option>
+            <option value="inactive">Inativo</option>
+          </select>
+        </label>
+
+        <label class="flex items-center gap-2 text-sm text-slate-400">
+          Classe
+          <select id="filter-class" class="bg-[#141b2d] border border-white/10 rounded-lg px-3 py-1.5 text-slate-200 text-sm">
+            <option value="">Todas</option>
+            {classesInRoster.map((wowClass) => (
+              <option value={wowClass}>{capitalize(wowClass)}</option>
+            ))}
+          </select>
+        </label>
+
+        <label class="flex items-center gap-2 text-sm text-slate-400">
+          Tipo
+          <select id="filter-type" class="bg-[#141b2d] border border-white/10 rounded-lg px-3 py-1.5 text-slate-200 text-sm">
+            <option value="">Todos</option>
+            <option value="main">Main</option>
+            <option value="alt">Alt</option>
+          </select>
+        </label>
+
+        <p id="filter-empty-hint" class="hidden text-slate-500 text-sm self-center">
+          Nenhum membro corresponde aos filtros selecionados.
+        </p>
+      </div>
+    )}
+
+    <!-- Grupos por role -->
+    {groups.map((group) => group.players.length > 0 && (
+      <section aria-labelledby={`${group.role}-heading`} class="mb-12" data-role-section={group.role}>
+        <div class="pb-3 mb-6 border-b border-slate-700/50">
+          <h2 id={`${group.role}-heading`} class="text-2xl font-bold text-[#f0a500] mb-1">
+            {group.label}
+          </h2>
+          <p class="text-slate-400 text-sm">{group.players.length} personagem(ns)</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {group.players.map((player) => (
+            <PlayerCard player={player} />
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Empty state -->
+    {players.length === 0 && (
+      <p class="text-slate-400 text-center py-16">Nenhum membro cadastrado ainda.</p>
+    )}
+
+  </div>
+</BaseLayout>
+
+<script>
+  const statusSelect = document.getElementById('filter-status') as HTMLSelectElement | null;
+  const classSelect = document.getElementById('filter-class') as HTMLSelectElement | null;
+  const typeSelect = document.getElementById('filter-type') as HTMLSelectElement | null;
+  const emptyHint = document.getElementById('filter-empty-hint');
+
+  function applyFilters() {
+    const status = statusSelect?.value ?? '';
+    const wowClass = classSelect?.value ?? '';
+    const type = typeSelect?.value ?? '';
+
+    let visibleCount = 0;
+
+    document.querySelectorAll<HTMLElement>('article[data-role]').forEach((card) => {
+      const matches =
+        (!status || card.dataset.status === status) &&
+        (!wowClass || card.dataset.class === wowClass) &&
+        (!type || card.dataset.type === type);
+
+      card.hidden = !matches;
+      if (matches) visibleCount++;
+    });
+
+    // Esconde o cabeçalho de uma seção de role inteira quando o filtro zera
+    // todos os cards dela, em vez de deixar um título "Tanks" sobre nada.
+    document.querySelectorAll<HTMLElement>('[data-role-section]').forEach((section) => {
+      const hasVisibleCard = section.querySelector('article[data-role]:not([hidden])');
+      section.hidden = !hasVisibleCard;
+    });
+
+    emptyHint?.classList.toggle('hidden', visibleCount > 0);
+  }
+
+  statusSelect?.addEventListener('change', applyFilters);
+  classSelect?.addEventListener('change', applyFilters);
+  typeSelect?.addEventListener('change', applyFilters);
+</script>

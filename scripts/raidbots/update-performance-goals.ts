@@ -20,7 +20,7 @@ interface RosterPlayer {
 }
 
 async function loadRoster(): Promise<RosterPlayer[]> {
-  const raw = await readFile(path.join(ROOT, "data/roster.json"), "utf-8");
+  const raw = await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8");
   return JSON.parse(raw);
 }
 
@@ -129,9 +129,9 @@ async function main() {
 
   await browser.close();
 
-  await writeFile(path.join(ROOT, "data/roster.json"), `${JSON.stringify(roster, null, 2)}\n`);
+  await writeFile(path.join(ROOT, "data/guild/roster.json"), `${JSON.stringify(roster, null, 2)}\n`);
 
-  console.log(`\ndata/roster.json atualizado: ${updated}/${targets.length} jogador(es) com meta nova.`);
+  console.log(`\ndata/guild/roster.json atualizado: ${updated}/${targets.length} jogador(es) com meta nova.`);
   console.log(
     "Revise o class/spec impresso pra cada um antes de confiar no alvo — a simulação usa a spec atual do personagem no jogo, não a cadastrada no roster."
   );

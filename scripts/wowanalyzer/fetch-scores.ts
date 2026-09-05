@@ -26,7 +26,7 @@ interface WeeklyPerformanceFile {
 }
 
 async function loadRoster(): Promise<RosterPlayer[]> {
-  const raw = await readFile(path.join(ROOT, "data/roster.json"), "utf-8");
+  const raw = await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8");
   return JSON.parse(raw);
 }
 
@@ -48,7 +48,7 @@ function parseArgs() {
 async function main() {
   const { week, headed } = parseArgs();
   const weekPadded = String(week).padStart(2, "0");
-  const filePath = path.join(ROOT, "data/performance", `week-${weekPadded}.json`);
+  const filePath = path.join(ROOT, "data/weekly/performance", `week-${weekPadded}.json`);
 
   const weekData: WeeklyPerformanceFile = JSON.parse(await readFile(filePath, "utf-8"));
   const roster = await loadRoster();

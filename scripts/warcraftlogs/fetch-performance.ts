@@ -97,15 +97,15 @@ interface RosterPlayer {
   heroSpec: string | null;
   role: "tank" | "healer" | "dps";
   type: "main" | "alt";
+  status: "trial" | "member" | "veteran" | "inactive";
   discord: string | null;
   avatar: string | null;
   raiderIo: { io: null; bestDungeon: null; highestKey: null; realmRank: null; profileUrl: string };
   warcraftLogs: { avgParse: null; bestParse: null; attendance: null; profileUrl: string };
-  externalLinks: { raiderIo: string; raidbots: string; archon: string; warcraftLogs: string; wipefest: string };
 }
 
 async function loadRoster(): Promise<RosterPlayer[]> {
-  const raw = await readFile(path.join(ROOT, "data/roster.json"), "utf-8");
+  const raw = await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8");
   return JSON.parse(raw);
 }
 
@@ -147,6 +147,10 @@ async function buildRosterDraft(
     heroSpec: null,
     role: character.role,
     type: "alt",
+    // Um rascunho de roster criado por esse script é, por definição, um
+    // personagem novo aparecendo nos logs — trial é o status correto até
+    // alguém da liderança revisar.
+    status: "trial",
     discord: null,
     avatar: avatar || null,
     raiderIo: {
@@ -161,13 +165,6 @@ async function buildRosterDraft(
       bestParse: null,
       attendance: null,
       profileUrl: `https://www.warcraftlogs.com/character/${region}/${realm}/${profileSlug}`,
-    },
-    externalLinks: {
-      raiderIo: `https://raider.io/characters/${region}/${realm}/${profileSlug}`,
-      raidbots: "",
-      archon: "",
-      warcraftLogs: "",
-      wipefest: "",
     },
   };
 }
@@ -347,10 +344,10 @@ async function main() {
     }
 
     effectiveRoster = [...roster, ...drafts];
-    await writeFile(path.join(ROOT, "data/roster.json"), `${JSON.stringify(effectiveRoster, null, 2)}\n`);
+    await writeFile(path.join(ROOT, "data/guild/roster.json"), `${JSON.stringify(effectiveRoster, null, 2)}\n`);
 
     console.log(
-      `${drafts.length} jogador(es) novo(s) encontrado(s) no log, adicionados como rascunho em data/roster.json: ${drafts
+      `${drafts.length} jogador(es) novo(s) encontrado(s) no log, adicionados como rascunho em data/guild/roster.json: ${drafts
         .map((d) => `${d.name} (${d.id})`)
         .join(", ")}.`
     );
@@ -414,7 +411,7 @@ async function main() {
   }
 
   const fileName = `week-${weekPadded}.json`;
-  const outPath = path.join(ROOT, "data/performance", fileName);
+  const outPath = path.join(ROOT, "data/weekly/performance", fileName);
 
   // Mescla com o arquivo existente: uma run nova soma às que já tinha.
   let existingRuns: Array<{ date: string; reportCode?: string; players: unknown[] }> = [];

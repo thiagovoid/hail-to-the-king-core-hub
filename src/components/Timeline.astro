@@ -1,0 +1,30 @@
+---
+/**
+ * Timeline.astro — Linha do tempo da guild, usada em /historia.
+ * Lista curada à mão em data/guild/timeline.json — cresce por edição
+ * direta, não é gerada automaticamente.
+ */
+import type { TimelineEntry } from '@/types/index';
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+const sorted = [...entries].sort((a, b) => a.year - b.year);
+---
+
+<ol class="relative border-s border-white/10 ms-3">
+  {sorted.map((entry) => (
+    <li class="mb-10 ms-6">
+      <span class="absolute flex items-center justify-center w-6 h-6 rounded-full bg-[#f0a500]/15 border border-[#f0a500]/40 -start-3">
+        <span class="w-2 h-2 rounded-full bg-[#f0a500]" aria-hidden="true" />
+      </span>
+      <p class="text-[#f0a500] font-bold text-sm tracking-wide">{entry.year}</p>
+      <h3 class="text-slate-100 font-semibold mt-1">{entry.title}</h3>
+      {entry.description && (
+        <p class="text-slate-400 text-sm mt-1 leading-relaxed">{entry.description}</p>
+      )}
+    </li>
+  ))}
+</ol>

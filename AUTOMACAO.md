@@ -28,7 +28,7 @@ Isso baixa ~180MB na primeira vez. Só precisa rodar de novo se trocar de máqui
 
 ## 1. Atualizar performance da semana (WarcraftLogs)
 
-**O que faz:** busca os reports de raid do WarcraftLogs e gera/atualiza `data/performance/week-NN.json` com dps, hps, item level, mortes e parse de cada jogador, por run (noite de raid).
+**O que faz:** busca os reports de raid do WarcraftLogs e gera/atualiza `data/weekly/performance/week-NN.json` com dps, hps, item level, mortes e parse de cada jogador, por run (noite de raid).
 
 **Quando rodar:** depois de cada noite de raid (terça e quinta), assim que o log daquela noite estiver disponível no WCL.
 
@@ -40,15 +40,15 @@ npm run wcl:fetch-performance -- --week=<numero> --reports=<codigo-do-report>
 
 - `--week`: número da semana (1, 2, 3...). Se a semana já tiver um arquivo, a run nova é **somada** às que já existem — não sobrescreve.
 - `--reports`: código do report do WarcraftLogs (o final da URL, ex: `https://www.warcraftlogs.com/reports/AbCdEfGh123` → código `AbCdEfGh123`). Pode passar mais de um separado por vírgula.
-- Se o log for público e marcado pra guild, o script também acha sozinho via `--start`/`--end`/`--days` — mas hoje os logs são pessoais (unlisted), então `--reports` é obrigatório na prática (ver `scripts/warcraftlogs/fetch-performance.mjs` pra detalhes de por quê).
+- Se o log for público e marcado pra guild, o script também acha sozinho via `--start`/`--end`/`--days` — mas hoje os logs são pessoais (unlisted), então `--reports` é obrigatório na prática (ver `scripts/warcraftlogs/fetch-performance.ts` pra detalhes de por quê).
 
-Esse comando também detecta jogadores que aparecem no log mas não estão em `data/roster.json` e cria um rascunho de cadastro automaticamente (class/spec/role da WCL, raça/avatar do Raider.io). **Revise esses rascunhos** — falta discord, hero spec, se é main/alt, e a spec vem em inglês.
+Esse comando também detecta jogadores que aparecem no log mas não estão em `data/guild/roster.json` e cria um rascunho de cadastro automaticamente (class/spec/role da WCL, raça/avatar do Raider.io). **Revise esses rascunhos** — falta discord, hero spec, se é main/alt, e a spec vem em inglês.
 
 ---
 
 ## 2. Atualizar estatísticas de perfil (Raider.IO + WCL)
 
-**O que faz:** preenche em `data/roster.json`, pra cada jogador: IO score, melhor key, rank no reino (Raider.IO), avg/best parse (WarcraftLogs), e presença na temporada (calculada localmente a partir de `data/performance/*.json`).
+**O que faz:** preenche em `data/guild/roster.json`, pra cada jogador: IO score, melhor key, rank no reino (Raider.IO), avg/best parse (WarcraftLogs), e presença na temporada (calculada localmente a partir de `data/weekly/performance/*.json`).
 
 **Quando rodar:** periodicamente (ex: uma vez por semana, ou depois de uma noite de M+ pesada), pra manter os cards de `/membros/` atualizados.
 
@@ -70,7 +70,7 @@ Roda pra todo o roster de uma vez. Não precisa de nenhum argumento.
 - `mythic_plus_best_runs` → `raiderIo.bestDungeon` e `raiderIo.highestKey` (maior `mythic_level` entre as runs retornadas).
 - `mythic_plus_ranks` → `raiderIo.realmRank` (campo `overall.realm`).
 
-Esse mesmo endpoint (sem os parâmetros extra de `fields`) também é usado no item 1, dentro de `fetch-performance.mjs`, só pra pegar `race` (traduzido pro português, ver `RACE_TRANSLATIONS` no script) e `thumbnail_url` (vira o `avatar`) ao criar rascunho de jogador novo — ver `scripts/warcraftlogs/sync-roster-stats.mjs` e `scripts/warcraftlogs/fetch-performance.mjs` pra implementação exata.
+Esse mesmo endpoint (sem os parâmetros extra de `fields`) também é usado no item 1, dentro de `fetch-performance.ts`, só pra pegar `race` (traduzido pro português, ver `RACE_TRANSLATIONS` no script) e `thumbnail_url` (vira o `avatar`) ao criar rascunho de jogador novo — ver `scripts/warcraftlogs/sync-roster-stats.ts` e `scripts/warcraftlogs/fetch-performance.ts` pra implementação exata.
 
 Se o personagem não for encontrado (character nunca crawleado pelo Raider.IO, comum em quem não roda M+), os campos ficam sem atualizar — o script não sobrescreve com vazio, só atualiza o que conseguiu.
 
@@ -78,7 +78,7 @@ Se o personagem não for encontrado (character nunca crawleado pelo Raider.IO, c
 
 ## 3. Atualizar objetivos de performance (Raidbots — dps/hps alvo)
 
-**O que faz:** roda o "Quick Sim" do Raidbots (via navegador automatizado, já que o Raidbots não tem API) pra cada jogador do roster, e usa o resultado como meta de **dps** em `data/roster.json` → `performanceGoals.dps`. O fight style usado é **Heavy Movement** (não o padrão "Patchwerk") — dá um dps mais baixo que o parado-sem-mover-se do Patchwerk, mais parecido com o que a galera realmente bate em boss, então a meta fica mais realista/alcançável. Isso está fixo em `FIGHT_STYLE` no topo de `scripts/raidbots/update-performance-goals.mjs`, caso queiram trocar no futuro.
+**O que faz:** roda o "Quick Sim" do Raidbots (via navegador automatizado, já que o Raidbots não tem API) pra cada jogador do roster, e usa o resultado como meta de **dps** em `data/guild/roster.json` → `performanceGoals.dps`. O fight style usado é **Heavy Movement** (não o padrão "Patchwerk") — dá um dps mais baixo que o parado-sem-mover-se do Patchwerk, mais parecido com o que a galera realmente bate em boss, então a meta fica mais realista/alcançável. Isso está fixo em `FIGHT_STYLE` no topo de `scripts/raidbots/update-performance-goals.ts`, caso queiram trocar no futuro.
 
 **⚠️ Limitação real do Quick Sim: não simula healers.** Se o personagem estiver numa spec de cura no momento (Restoration, Holy, Discipline, Mistweaver, Preservation), o Raidbots mostra "Unsupported Spec" e não roda nada — o script detecta isso e **pula o jogador automaticamente** (aparece "pulado" no terminal, não conta como falha). Isso não é bug nosso, é o Quick Sim que não tem suporte a throughput de cura. Não existe hoje um jeito automatizado de gerar meta de hps pro roster — teria que ser uma simulação Advanced configurada na mão, boss a boss, o que foge do escopo desse script.
 

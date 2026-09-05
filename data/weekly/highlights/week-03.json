@@ -1,0 +1,28 @@
+{
+  "week": 3,
+  "date": "2026-09-03T00:00:00.000Z",
+  "bestDps": {
+    "playerName": "Voidwar",
+    "class": "warrior",
+    "value": "187.3k DPS"
+  },
+  "bestHps": {
+    "playerName": "Seraphis",
+    "class": "paladin",
+    "value": "124.6k HPS"
+  },
+  "bestTank": {
+    "playerName": "Drakmaw",
+    "class": "death-knight",
+    "value": "98% uptime"
+  },
+  "bestKey": {
+    "player": "Zynthara",
+    "dungeon": "Altar das Presas",
+    "level": 16
+  },
+  "playerOfTheWeek": null,
+  "topKeys": [
+    { "dungeon": "Altar das Presas", "keyLevel": 16 }
+  ]
+}

@@ -6,7 +6,7 @@ abre a página real, espera renderizar, roda a simulação e lê o `data.json` d
 report gerado — sem reimplementar nenhuma lógica de simulação.
 
 Consumido por `scripts/raidbots/update-performance-goals.ts`, que grava
-`performanceGoals.dps` em `data/roster.json`, um personagem de cada vez (é um
+`performanceGoals.dps` em `data/guild/roster.json`, um personagem de cada vez (é um
 serviço gratuito mantido por terceiros — evitar qualquer coisa parecida com abuso).
 
 Specs de healer não são suportadas pelo Quick Sim; isso vem como raw

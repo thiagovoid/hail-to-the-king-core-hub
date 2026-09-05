@@ -1,10 +1,12 @@
 import type { BossInsights, BossPlayerScore } from "../types/bossInsights";
 
-const modules = import.meta.glob<{ default: BossInsights }>("../../data/boss-insights/*.json", { eager: true });
+const modules = import.meta.glob<{ default: BossInsights }>("../../data/seasons/*/boss-insights.json", { eager: true });
 
 const insightsBySeasonSlug = new Map<string, BossInsights>();
 for (const [filePath, module] of Object.entries(modules)) {
-  const slug = filePath.split("/").pop()?.replace(/\.json$/, "") ?? filePath;
+  // .../data/seasons/<slug>/boss-insights.json — o slug é o nome da pasta,
+  // não mais o nome do arquivo (cada season agora tem sua própria pasta).
+  const slug = filePath.split("/").at(-2) ?? filePath;
   insightsBySeasonSlug.set(slug, module.default);
 }
 

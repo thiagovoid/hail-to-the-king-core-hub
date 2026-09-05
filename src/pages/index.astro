@@ -1,313 +1,86 @@
 ---
 /**
- * index.astro — Página inicial do Core Hub
- * Exibe HeroSection com barras de progressão Normal/Heroica e SummaryCards navegáveis.
+ * index.astro — Home institucional da Hail to the King
+ * Porta de entrada do site: quem somos, pilares, e a partir daqui o
+ * visitante escolhe pra onde ir (história completa, ou o dashboard de
+ * performance do Core Nemesis). Core Nemesis deixou de ser a home — agora
+ * é uma área dentro do site, não o site inteiro.
  */
-
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeroSection from '@/components/HeroSection.astro';
-import SummaryCard from '@/components/SummaryCard.astro';
-import CorePerformanceChart from '@/components/CorePerformanceChart.astro';
-import type { SiteConfig, Boss, Player, Loot } from '@/types/index';
-import { computeProgression } from '@/utils/progression';
-import { computeMythicStats } from '@/utils/roster';
-import { formatDate, formatValue } from '@/utils/format';
+import PillarsGrid from '@/components/PillarsGrid.astro';
+import type { GuildAbout } from '@/types/index';
 
-import seasonJson from '../../data/seasons/midnight-s2.json';
-import rosterJson from '../../data/roster.json';
-import lootJson from '../../data/loot.json';
+import aboutJson from '../../data/guild/about.json';
 
-const config = seasonJson.config as SiteConfig;
-const bossesNormal = seasonJson.bossesNormal as Boss[];
-const bossesHeroic = seasonJson.bossesHeroic as Boss[];
-const recentLogs = seasonJson.recentLogs ?? [];
-const players = rosterJson as Player[];
-const lootData = lootJson as Loot[];
-const performanceWeeks = getPerformanceWeeks();
-
-import {
-  getCorePerformanceSeries,
-  getPerformanceWeeks,
-} from '@/engine/metrics';
-
-const dpsSeries = getCorePerformanceSeries(
-  performanceWeeks,
-  players,
-  'dps'
-).map((series) => {
-  const player = players.find(
-    (item) => item.id === series.playerId
-  );
-
-  return {
-    ...series,
-    playerName: player?.name ?? series.playerId,
-    playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
-  };
-});
-
-const parseSeries = getCorePerformanceSeries(
-  performanceWeeks,
-  players,
-  'parse'
-).map((series) => {
-  const player = players.find(
-    (item) => item.id === series.playerId
-  );
-
-  return {
-    ...series,
-    playerName: player?.name ?? series.playerId,
-    playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
-  };
-});
-
-const deathsSeries = getCorePerformanceSeries(
-  performanceWeeks,
-  players,
-  'deaths'
-).map((series) => {
-  const player = players.find(
-    (item) => item.id === series.playerId
-  );
-
-  return {
-    ...series,
-    playerName: player?.name ?? series.playerId,
-    playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
-  };
-});
-
-const mechanicsSeries = getCorePerformanceSeries(
-  performanceWeeks,
-  players,
-  'mechanics'
-).map((series) => {
-  const player = players.find(
-    (item) => item.id === series.playerId
-  );
-
-  return {
-    ...series,
-    playerName: player?.name ?? series.playerId,
-    playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
-  };
-});
-
-// Base path
-const base = '';
-
-// 1 — Progressão Normal
-const progressionNormal = computeProgression(bossesNormal);
-const progressionNormalValue = progressionNormal.total > 0 ? `${progressionNormal.killed}/${progressionNormal.total} N` : null;
-const progressionNormalSubtitle = progressionNormal.total > 0 ? `${progressionNormal.percent}% Normal concluído` : undefined;
-
-// 2 — Progressão Heroica
-const progressionHeroic = computeProgression(bossesHeroic);
-const progressionHeroicValue = progressionHeroic.total > 0 ? `${progressionHeroic.killed}/${progressionHeroic.total} H` : null;
-const progressionHeroicSubtitle = progressionHeroic.total > 0 ? `${progressionHeroic.percent}% Heróico concluído` : undefined;
-
-
-// 3 — Média Raider.IO + Melhor Key da Semana
-const mythicStats = computeMythicStats(players);
-const avgIoValue = mythicStats.avgIo > 0 ? mythicStats.avgIo : null;
-const bestKey = config.weeklyHighlights.bestKey;
-const avgIoSubtitle = bestKey
-  ? `Média do grupo · Melhor key: ${bestKey.dungeon} +${bestKey.level}`
-  : 'Média do grupo';
-
-// 4 — Participação na Raid
-const playersWithAttendance = players.filter((p) => p.warcraftLogs.attendance !== null);
-const avgAttendance =
-  playersWithAttendance.length > 0
-    ? Math.round(
-        playersWithAttendance.reduce((sum, p) => sum + (p.warcraftLogs.attendance as number), 0) /
-          playersWithAttendance.length
-      )
-    : null;
-const attendanceValue = avgAttendance !== null ? `${avgAttendance}%` : null;
-
-// 5 — Loots Distribuídos
-const lootCount = lootData.length;
-
-// 6 — Próxima Raid
-const nextRaid = config.nextRaid;
-const nextRaidValue = nextRaid ? formatDate(nextRaid.date) : null;
-const nextRaidSubtitle = nextRaid ? `${nextRaid.time} — ${nextRaid.objective}` : undefined;
+const about = aboutJson as GuildAbout;
 ---
 
 <BaseLayout
-  title="Home"
-  description="Página inicial do Core Nemesis — progressão, membros e destaques da semana."
+  title="Início"
+  description="Hail to the King — uma guild de World of Warcraft criada por amigos em 2012, baseada em respeito, humildade, empatia, companheirismo e amizade."
 >
-
-  <HeroSection config={config} bossesNormal={bossesNormal} bossesHeroic={bossesHeroic} recentLogs={recentLogs} />
-
-  <section
-    aria-label="Resumo da temporada"
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
-  >
-    <!-- Section header -->
-    <div class="flex items-center gap-3 mb-6">
-      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
-      <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
-        Destaques da Semana
-      </h2>
-      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+  <section aria-label="Apresentação da guild" class="relative overflow-hidden bg-[#0a0d14]">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0a0d14] via-[#0d1420] to-[#0a0d14]" />
+      <div class="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full bg-[#f0a500]/6 blur-[80px]" />
+      <div class="absolute -bottom-20 right-0 w-[400px] h-[400px] rounded-full bg-[#22c55e]/5 blur-[80px]" />
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
+      <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] text-xs font-semibold uppercase tracking-widest mb-6">
+        Guild de World of Warcraft · desde {about.founding.year}
+      </span>
 
-      <SummaryCard
-        title="Regras"
-        value="Confira"
-        subtitle="Regras e diretrizes do core"
-        icon="📋"
-        href={`${base}/regras/`}
-        accent="red"
-      />
+      <h1 class="text-4xl sm:text-6xl font-bold text-white tracking-tight mb-6">
+        Hail to the King
+      </h1>
 
-      <SummaryCard
-        title="Progressão"
-        value={progressionNormalValue}
-        altValue={progressionHeroicValue}
-        subtitle={progressionNormalSubtitle}
-        altsubtitle={progressionHeroicSubtitle}
-        icon="⚔"
-        href={`${base}/progressao/`}
-        accent="green"
-        altAccent="purple"
-      />
+      <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10">
+        {about.message}
+      </p>
 
-      <SummaryCard
-        title="Média Raider.IO"
-        value={avgIoValue}
-        subtitle={avgIoSubtitle}
-        icon="🗝"
-        href={`${base}/mythic/`}
-        accent="blue"
-      />
-
-      <SummaryCard
-          title="Membros"
-          value={players.filter((p) => p.type === 'main').length}
-          subtitle={`${players.length} total com alts`}
-          icon="👥"
-          href={`${base}/membros/`}
-          accent="default"
-        />
-
-      <!--SummaryCard
-        title="Participação na Raid"
-        value={attendanceValue}
-        subtitle="Presença média"
-        icon="📅"
-        href={`${base}/logs/`}
-        accent="green"
-      /-->
-
-      <!--SummaryCard
-        title="Loots Distribuídos"
-        value={lootCount}
-        subtitle="na temporada"
-        icon="💎"
-        href={`${base}/loots/`}
-        accent="gold"
-      /-->
-
-      <!--SummaryCard
-        title="Próxima Raid"
-        value={nextRaidValue}
-        subtitle={nextRaidSubtitle}
-        icon="📆"
-        href={`${base}/planejamento/`}
-        accent="green"
-      /-->
-
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/core/"
+          class="inline-flex items-center px-5 py-2.5 rounded-lg bg-[#f0a500] text-[#0a0d14] font-bold text-sm hover:bg-[#fbbf24] transition-colors"
+        >
+          ⚔ Ver o Core Nemesis
+        </a>
+        <a
+          href="/historia/"
+          class="inline-flex items-center px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-200 font-bold text-sm hover:border-[#f0a500]/40 hover:text-[#f0a500] transition-colors"
+        >
+          📜 Nossa história
+        </a>
+      </div>
     </div>
-
-    <!-- Section header -->
-    <div class="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-10">
-      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
-      <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
-        Performance do core
-      </h2>
-      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
-    </div>
-
-    <CorePerformanceChart
-      metrics={[
-        {
-          id: 'dps',
-          label: 'DPS',
-          direction: 'higher',
-          series: dpsSeries,
-        },
-        {
-          id: 'parse',
-          label: 'Parse',
-          direction: 'higher',
-          series: parseSeries,
-        },
-        {
-          id: 'deaths',
-          label: 'Mortes',
-          direction: 'lower',
-          series: deathsSeries,
-        },
-        {
-          id: 'mechanics',
-          label: 'Mecânicas',
-          direction: 'lower',
-          series: mechanicsSeries,
-        },
-      ]}
-    />
   </section>
 
-  <!-- Quick links section -->
-  <!-- section
-    aria-label="Navegação rápida"
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14"
-  >
-    <div class="flex items-center gap-3 mb-6">
-      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
-      <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
-        Acesso Rápido
-      </h2>
-      <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+  <section aria-labelledby="pillars-heading" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <div class="text-center mb-10">
+      <h2 id="pillars-heading" class="text-2xl font-bold text-white mb-2">Nossos pilares</h2>
+      <p class="text-slate-400 text-sm max-w-2xl mx-auto">{about.purpose}</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-      {[
-        { label: 'Progressão', icon: '⚔', href: `${base}/progressao/` },
-        { label: 'Membros',    icon: '👥', href: `${base}/membros/` },
-        { label: 'Mythic+',   icon: '🗝', href: `${base}/mythic/` },
-        { label: 'Logs',       icon: '📜', href: `${base}/logs/` },
-        { label: 'Loots',      icon: '💎', href: `${base}/loots/` },
-        { label: 'Regras',     icon: '📋', href: `${base}/regras/` },
-      ].map((link) => (
-        <a
-          href={link.href}
-          class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#141b2d] border border-white/7 hover:border-[#f0a500]/30 hover:bg-[#1a2235] text-slate-400 hover:text-[#f0a500] transition-all text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500]"
-        >
-          <span class="text-2xl group-hover:scale-110 transition-transform" aria-hidden="true">{link.icon}</span>
-          <span class="text-xs font-semibold uppercase tracking-wide">{link.label}</span>
-        </a>
-      ))}
-    </div>
-  </section-->
+    <PillarsGrid pillars={about.pillars} />
+  </section>
 
+  <section aria-labelledby="core-heading" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="bg-[#141b2d] border border-white/7 rounded-xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <h2 id="core-heading" class="text-xl font-bold text-white mb-2">
+          Core Nemesis
+        </h2>
+        <p class="text-slate-400 text-sm max-w-xl">
+          O core de raid da Hail to the King — progressão, roster, performance e metas de cada jogador, tudo em tempo real.
+        </p>
+      </div>
+      <a
+        href="/core/"
+        class="shrink-0 inline-flex items-center px-5 py-2.5 rounded-lg bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] font-bold text-sm hover:bg-[#f0a500]/20 transition-colors"
+      >
+        Ver dashboard →
+      </a>
+    </div>
+  </section>
 </BaseLayout>

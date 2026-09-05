@@ -4,11 +4,6 @@ import type {
   WeeklyPerformance,
 } from "../../types/performance";
 
-const weekModules = import.meta.glob<{ default: WeeklyPerformance }>(
-  "../../../data/performance/week-*.json",
-  { eager: true }
-);
-
 /**
  * Returns all runs across all weeks, in chronological order
  * (sorted by week, then by date within the week).
@@ -343,11 +338,3 @@ export function calculateAttendance(
   return Math.round((attended / runs.length) * 100);
 }
 
-/**
- * Returns all available weekly performance datasets.
- */
-export function getPerformanceWeeks(): WeeklyPerformance[] {
-  return Object.values(weekModules)
-    .map((mod) => mod.default)
-    .sort((a, b) => a.week - b.week);
-}

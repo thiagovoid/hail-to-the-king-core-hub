@@ -1,0 +1,38 @@
+---
+/**
+ * CoachCard.astro — Coach Virtual (doc "6.6 Coach Virtual")
+ * Recomendação de desenvolvimento gerada a partir da dimensão mais fraca
+ * do Score Geral do jogador. Ver engine/scores/coach.ts.
+ */
+import type { CoachRecommendation } from '@/engine/scores/coach';
+
+interface Props {
+  recommendation: CoachRecommendation;
+}
+
+const { recommendation } = Astro.props;
+const isRecognition = recommendation.focusKey !== null && recommendation.message.startsWith('Performance sólida');
+---
+
+<section class="mb-10">
+  <div class="mb-4">
+    <h2 class="text-xl font-bold text-white">Coach Virtual</h2>
+    <p class="text-sm text-slate-400 mt-1">
+      Recomendação de desenvolvimento baseada no seu Score Geral.
+    </p>
+  </div>
+
+  <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex items-start gap-4">
+    <span class="text-2xl shrink-0" aria-hidden="true">{isRecognition ? '✅' : '🎯'}</span>
+    <div>
+      {recommendation.focusLabel && (
+        <p class="text-xs uppercase tracking-wide text-slate-500 font-semibold mb-1">
+          {isRecognition ? 'Reconhecimento' : `Principal foco: ${recommendation.focusLabel}`}
+        </p>
+      )}
+      <p class="text-slate-200 leading-relaxed">
+        {recommendation.message}
+      </p>
+    </div>
+  </div>
+</section>

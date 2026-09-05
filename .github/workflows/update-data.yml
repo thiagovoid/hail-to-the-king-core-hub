@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # ID de conta WCL de quem sobe os logs de raid (não é dado sensível,
-      # é só um ID numérico de conta). Ver scripts/warcraftlogs/fetch-performance.mjs.
+      # é só um ID numérico de conta). Ver scripts/warcraftlogs/fetch-performance.ts.
       WCL_UPLOADER_USER_IDS: "922357"
     steps:
       - name: Checkout
@@ -73,7 +73,7 @@ jobs:
             ARGS+=(--reports="$INPUT_REPORTS")
           fi
 
-          node scripts/warcraftlogs/fetch-performance.mjs "${ARGS[@]}"
+          npx vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts "${ARGS[@]}"
 
       - name: Run tests
         run: npm test
@@ -87,7 +87,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/performance/week-*.json data/roster.json
+          git add data/weekly/performance/week-*.json data/guild/roster.json
 
           if git diff --cached --quiet; then
             echo "Nada para commitar."

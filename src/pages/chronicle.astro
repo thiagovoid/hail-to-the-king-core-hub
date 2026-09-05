@@ -1,0 +1,91 @@
+---
+/**
+ * chronicle.astro — Chronicle da guild (doc "5. Chronicle")
+ * Um capítulo por temporada, montado a partir de dado que já coletamos —
+ * sem coleta nova. Crônicas individuais por jogador (§5.2) e o registro de
+ * eventos automáticos (§5.1: first kills, recordes) ficam pra depois: hoje
+ * não temos data de entrada por jogador nem um sistema de eventos/achievements
+ * pra alimentar isso.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import type { Boss, Player, SiteConfig } from '@/types/index';
+import { buildSeasonChronicle } from '@/engine/guild/chronicle';
+
+import seasonJson from '../../data/seasons/midnight-s2/config.json';
+import rosterJson from '../../data/guild/roster.json';
+import { performanceWeeks } from '../../data/weekly/performance/index';
+
+const config = seasonJson.config as SiteConfig;
+const bossesNormal = seasonJson.bossesNormal as Boss[];
+const bossesHeroic = seasonJson.bossesHeroic as Boss[];
+const players = rosterJson as Player[];
+
+const goalsByPlayerId = Object.fromEntries(
+  players.map((player) => [player.id, player.performanceGoals])
+);
+
+const chronicle = buildSeasonChronicle(
+  config.currentSeason,
+  performanceWeeks,
+  bossesNormal,
+  bossesHeroic,
+  players,
+  goalsByPlayerId
+);
+---
+
+<BaseLayout
+  title="Chronicle"
+  description={`O capítulo da ${config.currentSeason} na história da Hail to the King.`}
+>
+  <section class="bg-[#0a0d14] border-b border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+      <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
+        Chronicle
+      </p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight">
+        {chronicle.seasonName}
+      </h1>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="bg-[#141b2d] border border-white/7 rounded-xl p-8">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mb-8">
+        <div>
+          <p class="text-3xl font-bold text-white tabular-nums">{chronicle.raids}</p>
+          <p class="text-slate-400 text-xs uppercase tracking-wide mt-1">Raids</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-white tabular-nums">{chronicle.totalPulls}</p>
+          <p class="text-slate-400 text-xs uppercase tracking-wide mt-1">Pulls</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-white tabular-nums">
+            {chronicle.bossesKilled}<span class="text-slate-500">/{chronicle.totalBosses}</span>
+          </p>
+          <p class="text-slate-400 text-xs uppercase tracking-wide mt-1">Bosses mortos</p>
+        </div>
+        <div>
+          {chronicle.mvp ? (
+            <>
+              <p class="text-3xl font-bold text-[#f0a500]">{chronicle.mvp.playerName}</p>
+              <p class="text-slate-400 text-xs uppercase tracking-wide mt-1">
+                MVP · Score {chronicle.mvp.avgScore}
+              </p>
+            </>
+          ) : (
+            <>
+              <p class="text-3xl font-bold text-slate-600">—</p>
+              <p class="text-slate-400 text-xs uppercase tracking-wide mt-1">MVP</p>
+            </>
+          )}
+        </div>
+      </div>
+
+      <p class="text-slate-500 text-xs text-center border-t border-white/5 pt-6">
+        MVP calculado pela média do Score Geral em todas as runs da temporada.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
