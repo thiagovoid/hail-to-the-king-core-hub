@@ -1,0 +1,51 @@
+---
+/**
+ * BossScoreboard.astro — Placar de score do Wipefest por boss
+ * Feature nativa do Wipefest (não faz parte do modelo unificado de
+ * performance): score de mecânicas por jogador naquele kill específico.
+ */
+
+import type { BossPlayerScore } from '@/types/bossInsights';
+import type { Player } from '@/types/index';
+import { getClassColor } from '@/utils/roster';
+
+interface Props {
+  scores: BossPlayerScore[];
+  roster: Player[];
+}
+
+const { scores, roster } = Astro.props;
+
+const rosterById = new Map(roster.map((player) => [player.id, player]));
+
+const rows = scores
+  .map((entry) => ({ entry, player: rosterById.get(entry.playerId) }))
+  .filter((row): row is { entry: BossPlayerScore; player: Player } => row.player !== undefined)
+  .sort((a, b) => b.entry.score - a.entry.score);
+
+// Mesma faixa de cor por tier já usada pro parse da WCL (0-100 nos dois casos).
+function scoreColor(score: number): string {
+  if (score === 100) return 'text-[#f0a500]';
+  if (score >= 95) return 'text-[#f97316]';
+  if (score >= 75) return 'text-[#c084fc]';
+  if (score >= 50) return 'text-[#60a5fa]';
+  if (score >= 25) return 'text-[#22c55e]';
+  return 'text-slate-300';
+}
+---
+
+{rows.length > 0 && (
+  <div class="mt-4 pt-4 border-t border-white/5">
+    <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-2.5">
+      Score Wipefest — {rows.length} jogador{rows.length !== 1 ? 'es' : ''}
+    </p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1.5" role="list" aria-label="Score dos jogadores no Wipefest">
+      {rows.map(({ entry, player }) => (
+        <div class="flex items-center justify-between gap-2 text-xs" role="listitem">
+          <span class={`truncate font-medium ${getClassColor(player.class)}`}>{player.name}</span>
+          <span class={`font-bold tabular-nums shrink-0 ${scoreColor(entry.score)}`}>{entry.score}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+)}

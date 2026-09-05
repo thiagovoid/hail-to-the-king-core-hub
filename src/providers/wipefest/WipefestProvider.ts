@@ -49,7 +49,18 @@ async function readFightPlayerCards(page: Page, reportCode: string, fightId: num
   const url = `https://www.wipefest.gg/report/${reportCode}/fight/${fightId}?fightSummaryTab=players&gameVersion=warcraft-live`;
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
-  await page.waitForSelector(".player-card", { timeout: 30_000 });
+  // Bosses recém-lançados ou pouco mortos numa dificuldade não têm amostra
+  // suficiente pro Wipefest calcular score — a própria página avisa isso em
+  // vez de mostrar cards. É uma resposta real da ferramenta, não falha
+  // nossa, então vira lista vazia em vez de estourar no waitForSelector.
+  const outcome = await Promise.race([
+    page.waitForSelector(".player-card", { timeout: 30_000 }).then(() => "cards" as const),
+    page
+      .waitForSelector("text=Not enough data has been collected", { timeout: 30_000 })
+      .then(() => "no-data" as const),
+  ]);
+
+  if (outcome === "no-data") return [];
 
   // SPA: os cards de jogador aparecem antes do score terminar de calcular no
   // cliente — espera todo score principal ter texto não vazio antes de ler.

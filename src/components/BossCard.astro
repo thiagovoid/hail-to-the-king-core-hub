@@ -4,16 +4,20 @@
  * Estilo Raider.IO: faixa de cor por status, barra de pull, kill date destacada.
  */
 
-import type { Boss } from '@/types/index';
+import type { Boss, Player } from '@/types/index';
+import type { BossPlayerScore } from '@/types/bossInsights';
 import { safeUrl } from '@/utils/progression';
 import { formatDate, formatPercent } from '@/utils/format';
+import BossScoreboard from './BossScoreboard.astro';
 
 interface Props {
   boss: Boss;
   index?: number;
+  scores?: BossPlayerScore[];
+  roster?: Player[];
 }
 
-const { boss, index = 0 } = Astro.props;
+const { boss, index = 0, scores = [], roster = [] } = Astro.props;
 
 const isKilled = boss.status === 'killed';
 const isProgress = boss.status === 'progress';
@@ -197,5 +201,7 @@ const pullBarColor = isKilled ? '#22c55e' : isProgress ? '#f0a500' : '#374151';
         )}
       </div>
     )}
+
+    <BossScoreboard scores={scores} roster={roster} />
   </div>
 </details>

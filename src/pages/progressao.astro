@@ -6,15 +6,20 @@
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BossCard from '@/components/BossCard.astro';
-import type { SiteConfig, Boss } from '@/types/index';
+import type { SiteConfig, Boss, Player } from '@/types/index';
 import { computeProgression } from '@/utils/progression';
 import { formatDate } from '@/utils/format';
+import { getBossScores } from '@/utils/bossInsights';
 
 import seasonJson from '../../data/seasons/midnight-s2.json';
+import rosterJson from '../../data/roster.json';
+
+const SEASON_SLUG = 'midnight-s2';
 
 const config = seasonJson.config as SiteConfig;
 const bossesNormal = seasonJson.bossesNormal as Boss[];
 const bossesHeroic = seasonJson.bossesHeroic as Boss[];
+const roster = rosterJson as Player[];
 
 const progressionNormal = computeProgression(bossesNormal);
 const progressionHeroic = computeProgression(bossesHeroic);
@@ -91,7 +96,7 @@ const lastUpdated = formatDate(config.lastUpdated);
 
     <div class="flex flex-col gap-2">
       {bossesNormal.map((boss, i) => (
-        <BossCard boss={boss} index={i} />
+        <BossCard boss={boss} index={i} scores={getBossScores(SEASON_SLUG, 'normal', boss.id)} roster={roster} />
       ))}
     </div>
   </section>
@@ -107,7 +112,7 @@ const lastUpdated = formatDate(config.lastUpdated);
 
     <div class="flex flex-col gap-2">
       {bossesHeroic.map((boss, i) => (
-        <BossCard boss={boss} index={i} />
+        <BossCard boss={boss} index={i} scores={getBossScores(SEASON_SLUG, 'heroic', boss.id)} roster={roster} />
       ))}
     </div>
   </section>
