@@ -51,22 +51,13 @@ export interface PlayerPerformance {
   wipefestScore?: number;
 
   /**
-   * WoW Analyzer's overall performance score (0-100) for the run.
-   * Not populated yet — reserved for the WoW Analyzer provider (browser
-   * automation, planned separately). Additive: absent for every run until then.
-   */
-  analyzerScore?: number;
-
-  /**
-   * Percentage of available cooldown windows actually used during the run (0-100).
-   * Not populated yet — reserved for the WoW Analyzer provider, which is the
-   * only one of the current tools that tracks this per spec.
-   */
-  cooldownUsage?: number;
-
-  /**
-   * Percentage uptime of the player's core buff/debuff during the run (0-100).
-   * Not populated yet — reserved for the WoW Analyzer provider.
+   * WoW Analyzer's "Always Be Casting" percentage for the run (0-100) —
+   * Active Time for a DPS spec, Ability/Healing Uptime for a healer. There
+   * is no single 0-100 score like Wipefest's on WoW Analyzer (confirmed
+   * inspecting real specs: every spec has its own checklist with different
+   * metrics and labels) — this is the one number close enough to universal
+   * across specs to fit here; everything else stays a native per-provider
+   * feature instead (see wowanalyzer-findings memory).
    */
   uptime?: number;
 }

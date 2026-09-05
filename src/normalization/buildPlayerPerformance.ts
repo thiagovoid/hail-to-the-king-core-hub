@@ -16,7 +16,7 @@ export interface PlayerPerformanceContributions {
 
   warcraftLogs?: Pick<PlayerPerformance, "dps" | "hps" | "parse" | "itemLevel">;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
-  wowAnalyzer?: Pick<PlayerPerformance, "analyzerScore" | "cooldownUsage" | "uptime">;
+  wowAnalyzer?: Pick<PlayerPerformance, "uptime">;
 }
 
 export function buildPlayerPerformance(contributions: PlayerPerformanceContributions): PlayerPerformance {

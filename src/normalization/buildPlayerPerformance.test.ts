@@ -31,7 +31,7 @@ describe("buildPlayerPerformance", () => {
       deaths: 1,
       warcraftLogs: { dps: 69768 },
       wipefest: { wipefestScore: 92, mechanics: { errors: 1 } },
-      wowAnalyzer: { analyzerScore: 88, cooldownUsage: 95, uptime: 97 },
+      wowAnalyzer: { uptime: 97 },
     });
 
     expect(result).toEqual({
@@ -40,8 +40,6 @@ describe("buildPlayerPerformance", () => {
       dps: 69768,
       wipefestScore: 92,
       mechanics: { errors: 1 },
-      analyzerScore: 88,
-      cooldownUsage: 95,
       uptime: 97,
     });
   });
