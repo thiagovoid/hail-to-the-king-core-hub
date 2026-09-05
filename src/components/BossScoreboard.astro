@@ -3,6 +3,8 @@
  * BossScoreboard.astro — Placar de score do Wipefest por boss
  * Feature nativa do Wipefest (não faz parte do modelo unificado de
  * performance): score de mecânicas por jogador naquele kill específico.
+ * Layout de card com avatar + bolinhas de score/bônus, no estilo do
+ * próprio player-card do Wipefest.
  */
 
 import type { BossPlayerScore } from '@/types/bossInsights';
@@ -24,31 +26,78 @@ const rows = scores
   .sort((a, b) => b.entry.score - a.entry.score);
 
 // Mesma faixa de cor por tier já usada pro parse da WCL (0-100 nos dois casos).
-function scoreColor(score: number): string {
-  if (score === 100) return 'text-[#f0a500]';
-  if (score >= 95) return 'text-[#f97316]';
-  if (score >= 75) return 'text-[#c084fc]';
-  if (score >= 50) return 'text-[#60a5fa]';
-  if (score >= 25) return 'text-[#22c55e]';
-  return 'text-slate-300';
+function scoreColor(score: number): { text: string; border: string } {
+  if (score === 100) return { text: 'text-[#f0a500]', border: 'border-[#f0a500]/50' };
+  if (score >= 95) return { text: 'text-[#f97316]', border: 'border-[#f97316]/50' };
+  if (score >= 75) return { text: 'text-[#c084fc]', border: 'border-[#c084fc]/50' };
+  if (score >= 50) return { text: 'text-[#60a5fa]', border: 'border-[#60a5fa]/50' };
+  if (score >= 25) return { text: 'text-[#22c55e]', border: 'border-[#22c55e]/50' };
+  return { text: 'text-slate-300', border: 'border-white/15' };
 }
 ---
 
 {rows.length > 0 && (
   <div class="mt-4 pt-4 border-t border-white/5">
-    <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-2.5">
-      Score Wipefest (score / bônus) — {rows.length} jogador{rows.length !== 1 ? 'es' : ''}
+    <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-3">
+      Score Wipefest — {rows.length} jogador{rows.length !== 1 ? 'es' : ''}
     </p>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1.5" role="list" aria-label="Score dos jogadores no Wipefest">
-      {rows.map(({ entry, player }) => (
-        <div class="flex items-center justify-between gap-2 text-xs" role="listitem">
-          <span class={`truncate font-medium ${getClassColor(player.class)}`}>{player.name}</span>
-          <span class="flex items-baseline gap-1 shrink-0 tabular-nums">
-            <span class={`font-bold ${scoreColor(entry.score)}`}>{entry.score}</span>
-            <span class="text-slate-400 text-[10px]">{entry.bonus}</span>
-          </span>
-        </div>
-      ))}
+    <div
+      class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2"
+      role="list"
+      aria-label="Score dos jogadores no Wipefest"
+    >
+      {rows.map(({ entry, player }) => {
+        const colors = scoreColor(entry.score);
+        const initials = player.name.slice(0, 2).toUpperCase();
+
+        return (
+          <div
+            role="listitem"
+            class="flex flex-col items-center gap-1.5 p-2.5 rounded-lg bg-[#0d1120]/60 border border-white/5"
+          >
+            {player.avatar !== null ? (
+              <img
+                src={player.avatar}
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                class={`w-12 h-12 rounded-full object-cover border-2 ${colors.border}`}
+              />
+            ) : (
+              <div
+                class={`w-12 h-12 rounded-full bg-[#1a2235] border-2 ${colors.border} flex items-center justify-center text-slate-300 text-xs font-bold select-none`}
+                aria-hidden="true"
+              >
+                {initials}
+              </div>
+            )}
+
+            <span class={`text-[11px] font-semibold truncate max-w-full ${getClassColor(player.class)}`}>
+              {player.name}
+            </span>
+
+            <div class="flex items-center gap-1">
+              <span
+                class={`w-7 h-7 rounded-full border-2 flex items-center justify-center text-[11px] font-bold tabular-nums ${colors.border} ${colors.text}`}
+                title="Score"
+              >
+                {entry.score}
+              </span>
+              <span
+                class="w-6 h-6 rounded-full border-2 border-white/10 flex items-center justify-center text-[9px] font-semibold text-slate-400 tabular-nums"
+                title="Bônus"
+              >
+                {entry.bonus}
+              </span>
+            </div>
+
+            {entry.itemLevel !== null && (
+              <span class="text-[9px] text-slate-500 tabular-nums">ilvl {entry.itemLevel}</span>
+            )}
+          </div>
+        );
+      })}
     </div>
   </div>
 )}
