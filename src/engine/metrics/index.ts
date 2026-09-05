@@ -2,10 +2,10 @@ import type {
   PlayerPerformance,
   PlayerRunPerformance,
   WeeklyPerformance,
-} from "../types/performance";
+} from "../../types/performance";
 
 const weekModules = import.meta.glob<{ default: WeeklyPerformance }>(
-  "../../data/performance/week-*.json",
+  "../../../data/performance/week-*.json",
   { eager: true }
 );
 
@@ -289,6 +289,58 @@ export function getCorePerformanceSeries(
       };
     })
     .filter((series) => series.data.length > 0);
+}
+
+/**
+ * Measures how stable a set of values has been (e.g. a player's dps across
+ * their last few runs), as a 0-100 score — 100 means no variation at all,
+ * lower means more erratic. Based on the coefficient of variation
+ * (standard deviation / mean), which is scale-independent so the same
+ * function works for dps, parse, wipefestScore, etc. without normalizing
+ * units first.
+ *
+ * Needs at least 2 values to mean anything; null otherwise (including when
+ * the mean is 0, where "% variation" isn't a meaningful number).
+ */
+export function calculateConsistency(values: number[]): number | null {
+  if (values.length < 2) {
+    return null;
+  }
+
+  const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  if (mean === 0) {
+    return null;
+  }
+
+  const variance =
+    values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length;
+  const coefficientOfVariation = Math.sqrt(variance) / Math.abs(mean);
+
+  return Math.max(0, Math.round(100 - coefficientOfVariation * 100));
+}
+
+/**
+ * Percentage of recorded raid runs a player appears in, across every week.
+ * Based on actual performance data (who WCL saw in each run), the same
+ * source scripts/warcraftlogs/sync-roster-stats.ts already computes inline
+ * to fill roster.json's static `warcraftLogs.attendance` field — this is
+ * the same calculation, available for the engine to call directly instead
+ * of only living in that one script.
+ */
+export function calculateAttendance(
+  weeks: WeeklyPerformance[],
+  playerId: string
+): number {
+  const runs = getAllRuns(weeks);
+  if (runs.length === 0) {
+    return 0;
+  }
+
+  const attended = runs.filter(({ run }) =>
+    run.players.some((player) => player.playerId === playerId)
+  ).length;
+
+  return Math.round((attended / runs.length) * 100);
 }
 
 /**
