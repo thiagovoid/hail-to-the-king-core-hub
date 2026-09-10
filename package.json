@@ -16,7 +16,8 @@
     "wipefest:fetch-scores": "vite-node -c vitest.config.ts scripts/wipefest/fetch-scores.ts",
     "wipefest:fetch-boss-insights": "vite-node -c vitest.config.ts scripts/wipefest/fetch-boss-insights.ts",
     "wowanalyzer:fetch-scores": "vite-node -c vitest.config.ts scripts/wowanalyzer/fetch-scores.ts",
-  "raiderio:check-guild-membership": "vite-node -c vitest.config.ts scripts/raiderio/check-guild-membership.ts"
+  "raiderio:check-guild-membership": "vite-node -c vitest.config.ts scripts/raiderio/check-guild-membership.ts",
+  "raiderio:update-weekly-mythic": "vite-node -c vitest.config.ts scripts/raiderio/update-weekly-mythic-highlights.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

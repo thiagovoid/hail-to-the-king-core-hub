@@ -118,6 +118,24 @@ npm run raiderio:check-guild-membership -- --season=midnight-s2
 
 ---
 
+## 5. Atualizar a melhor key da semana (Mythic+ — Raider.IO)
+
+**O que faz:** busca, pra cada jogador de `data/guild/roster.json`, a melhor key Mythic+ dele no reset semanal atual (campo `mythic_plus_weekly_highest_level_runs` do Raider.IO — calculado pelo próprio Raider.IO a partir do reset do jogo, não é uma janela de data que a gente inventa). Gera/atualiza `data/weekly/highlights/week-NN.json` com `bestKey` (melhor key do core) e `topKeys` (top 5). Como só usa o roster, é automaticamente só de gente da guild — não depende de log de raid pra isso, Mythic+ não é raid.
+
+**Quando rodar:** periodicamente durante a semana (ex: perto do reset, ou quando quiser atualizar o card "Melhor Key da Semana" da home).
+
+**Como rodar:**
+
+```bash
+npm run raiderio:update-weekly-mythic -- --week=<numero>
+```
+
+- `--week`: número da semana (mesma numeração de `data/weekly/performance/week-NN.json`), define o nome do arquivo gerado.
+- Não mexe em `bestDps`/`bestHps`/`bestTank`/`playerOfTheWeek` (esses vêm de log de raid, fora do escopo deste script) — preserva o que já estiver salvo no arquivo da semana, se houver.
+- Se ninguém do roster tiver key registrada nesse reset ainda, o script avisa e não escreve nada.
+
+---
+
 ## Ordem recomendada
 
 Se for atualizar tudo de uma vez (ex: início de uma nova season): **1 → 2 → 3**, nessa ordem — a etapa 3 usa a spec/gear atual do personagem, então faz mais sentido depois que os dados de performance/equipamento já estiverem frescos.
