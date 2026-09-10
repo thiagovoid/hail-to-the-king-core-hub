@@ -3802,6 +3802,944 @@
           }
         ]
       }
+    ],
+    "o-altar-espiralado": [
+      {
+        "playerId": "blackwatch",
+        "score": 78,
+        "bonus": 8,
+        "itemLevel": 308,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 2
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 16
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "playerId": "apocalipse",
+        "score": 42,
+        "bonus": 8,
+        "itemLevel": 306,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 0
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 49
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 4
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 4
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 16
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "playerId": "voidsurge",
+        "score": 86,
+        "bonus": 13,
+        "itemLevel": 300,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 29
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "playerId": "kams",
+        "score": 100,
+        "bonus": 32,
+        "itemLevel": 305,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 15
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "playerId": "cowsadeer",
+        "score": 100,
+        "bonus": 63,
+        "itemLevel": 314,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "playerId": "bustgril",
+        "score": 86,
+        "bonus": 56,
+        "itemLevel": 307,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 0
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 96
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "playerId": "hysillens",
+        "score": 79,
+        "bonus": 29,
+        "itemLevel": 310,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 11
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 41
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 28
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 86
+          }
+        ]
+      },
+      {
+        "playerId": "kroline",
+        "score": 100,
+        "bonus": 100,
+        "itemLevel": 312,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "playerId": "heracranosx",
+        "score": 100,
+        "bonus": 24,
+        "itemLevel": 315,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "playerId": "gunst",
+        "score": 100,
+        "bonus": 42,
+        "itemLevel": 315,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 69
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 86
+          }
+        ]
+      },
+      {
+        "playerId": "xúlio",
+        "score": 74,
+        "bonus": 63,
+        "itemLevel": 313,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 0
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 16
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 100
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "playerId": "ligiaf",
+        "score": 100,
+        "bonus": 56,
+        "itemLevel": 290,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 7
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 100
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 100
+          },
+          {
+            "mechanic": "Potions",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "playerId": "minort",
+        "score": 56,
+        "bonus": 6,
+        "itemLevel": 288,
+        "mechanics": [
+          {
+            "mechanic": "Damage from Mutagenic Venom",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Blighted Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Soul Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Widow's Kiss",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Sever",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Gravebound",
+            "value": 100
+          },
+          {
+            "mechanic": "Damage from Noxious Ground",
+            "value": 100
+          },
+          {
+            "mechanic": "Deaths",
+            "value": 2
+          },
+          {
+            "mechanic": "Damage from Axegrinder",
+            "value": 77
+          },
+          {
+            "mechanic": "Damage from Toxic Deluge",
+            "value": 100
+          },
+          {
+            "mechanic": "Ready Check (Flask, Gear, etc.)",
+            "value": 1
+          },
+          {
+            "mechanic": "Guillotine soaks",
+            "value": 100
+          },
+          {
+            "mechanic": "Venomfang dispels",
+            "value": 5
+          },
+          {
+            "mechanic": "Healthstone / Healing Potion",
+            "value": 16
+          },
+          {
+            "mechanic": "Potions",
+            "value": 0
+          }
+        ]
+      }
     ]
   },
   "bossesHeroic": {}
