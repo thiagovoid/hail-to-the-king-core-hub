@@ -102,6 +102,22 @@ Esse é um script mais pesado que os outros dois (abre um navegador Chromium de 
 
 ---
 
+## 4. Checar quem não é mais da guild (Raider.IO)
+
+**O que faz:** compara, personagem por personagem, a guild atual de cada jogador de `data/guild/roster.json` (via API pública do Raider.IO) contra a guild da season em `data/seasons/<season>/config.json`. Não altera nada — só imprime um relatório com quem diverge.
+
+**Quando rodar:** periodicamente (ex: depois de cada log novo, ou antes de limpar o roster), pra pegar gente que saiu da guild mas ainda aparece nos dados por ter raidado antes.
+
+**Como rodar:**
+
+```bash
+npm run raiderio:check-guild-membership -- --season=midnight-s2
+```
+
+**Cuidado antes de remover alguém:** o relatório aponta o personagem, não a pessoa. Se o jogador for do tipo `alt` no roster, pode ser um alt sem guild de alguém que já é membro por outro personagem (o main) — confira isso com o pessoal do core antes de tirar do roster. Um `guild=—` (nulo) também pode ser só o Raider.IO não ter re-crawleado o personagem recentemente, não necessariamente "saiu da guild".
+
+---
+
 ## Ordem recomendada
 
 Se for atualizar tudo de uma vez (ex: início de uma nova season): **1 → 2 → 3**, nessa ordem — a etapa 3 usa a spec/gear atual do personagem, então faz mais sentido depois que os dados de performance/equipamento já estiverem frescos.
