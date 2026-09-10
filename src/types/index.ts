@@ -165,6 +165,13 @@ export interface SiteConfig {
   currentRaid: string;
   /** Data da última atualização manual dos dados, formato ISO 8601. */
   lastUpdated: string;
+  /**
+   * Data (YYYY-MM-DD) da primeira noite de raid da temporada — terça-feira
+   * de reset. Base pra calcular automaticamente o número da semana
+   * (`data/weekly/performance/week-NN.json`) a partir da data de hoje, sem
+   * precisar de input manual. Ver scripts/warcraftlogs/fetch-performance.ts.
+   */
+  raidWeekAnchor: string;
   /** Informações sobre a próxima sessão de raid agendada. */
   nextRaid: {
     /** Data da próxima raid, formato ISO 8601 (ex: "2025-07-16"). */
@@ -217,6 +224,11 @@ export interface Boss {
   id: string;
   /** Nome completo do boss exibido na interface. */
   name: string;
+  /**
+   * ID do encontro na WarcraftLogs (`fight.encounterID`) — usado pra casar
+   * kills encontrados num report com este boss, sem depender de nome.
+   */
+  encounterID: number;
   /** Status atual do encontro: morto, em progressão ou não iniciado. */
   status: "killed" | "progress" | "not_started";
   /** Quantidade total de pulls (tentativas) no boss. */

@@ -1,6 +1,6 @@
 # Automação de dados — Core Hub
 
-Este projeto tem 3 procedimentos de atualização de dados. **Nenhum deles roda sozinho** — todos são disparados manualmente, quando alguém do core decide que é hora de atualizar. Este documento explica o quê cada um faz, quando rodar, e como rodar.
+Este projeto tem 5 procedimentos de atualização de dados. **O item 1 (performance + progressão) roda sozinho todo dia via GitHub Actions** (`.github/workflows/update-data.yml`, cron) — só commita quando acha log novo do Thiago. Os outros 4 são disparados manualmente, quando alguém do core decide que é hora de atualizar. Este documento explica o quê cada um faz, quando rodar, e como rodar.
 
 Pré-requisito comum: `.env` na raiz do projeto preenchido (veja `.env.example`) com `WCL_CLIENT_ID` e `WCL_CLIENT_SECRET` (criados em warcraftlogs.com → Settings → API Clients).
 
@@ -28,21 +28,32 @@ Isso baixa ~180MB na primeira vez. Só precisa rodar de novo se trocar de máqui
 
 ## 1. Atualizar performance da semana (WarcraftLogs)
 
-**O que faz:** busca os reports de raid do WarcraftLogs e gera/atualiza `data/weekly/performance/week-NN.json` com dps, hps, item level, mortes e parse de cada jogador, por run (noite de raid).
+**O que faz:** busca os reports de raid do WarcraftLogs (do upload pessoal do Thiago, `WCL_UPLOADER_USER_IDS`) e:
 
-**Quando rodar:** depois de cada noite de raid (terça e quinta), assim que o log daquela noite estiver disponível no WCL.
+1. gera/atualiza `data/weekly/performance/week-NN.json` com dps, hps, item level, mortes e parse de cada jogador, por run (noite de raid);
+2. detecta boss morto novo comparando os encontros do log com `data/seasons/<season>/config.json` (por `encounterID` + dificuldade) — marca `status: "killed"`, soma `pulls`, preenche `killDate` e `links.warcraftLogs`. Nunca reverte um boss já marcado como morto;
+3. adiciona o report ao "menu" de últimos logs da home (`recentLogs` em `config.json`).
 
-**Como rodar:**
+**Não precisa mais colar o código do report na mão** — os logs do Thiago são unlisted (pessoais), mas o script acha eles sozinho via `WCL_UPLOADER_USER_IDS` (ID da conta dele, já configurado no `.env` e no workflow). `--reports=<codigo>` continua existindo como reforço manual (ex: log de alguém sem conta configurada), mas não é mais obrigatório no dia a dia.
+
+**Roda automaticamente**, também: `.github/workflows/update-data.yml` dispara todo dia via `schedule` (cron), busca o que o Thiago subiu nas últimas ~7 dias, e só commita na `main` se achar algo novo (report novo, kill novo, ou os dois). Sem log novo, o workflow roda e não muda nada — sem barulho.
+
+**Como rodar na mão** (pra forçar fora do horário do cron, ou revisar antes):
 
 ```bash
-npm run wcl:fetch-performance -- --week=<numero> --reports=<codigo-do-report>
+npm run wcl:fetch-performance
 ```
 
-- `--week`: número da semana (1, 2, 3...). Se a semana já tiver um arquivo, a run nova é **somada** às que já existem — não sobrescreve.
-- `--reports`: código do report do WarcraftLogs (o final da URL, ex: `https://www.warcraftlogs.com/reports/AbCdEfGh123` → código `AbCdEfGh123`). Pode passar mais de um separado por vírgula.
-- Se o log for público e marcado pra guild, o script também acha sozinho via `--start`/`--end`/`--days` — mas hoje os logs são pessoais (unlisted), então `--reports` é obrigatório na prática (ver `scripts/warcraftlogs/fetch-performance.ts` pra detalhes de por quê).
+Sem nenhum argumento já funciona: usa os últimos 7 dias e calcula a semana sozinho a partir de `config.raidWeekAnchor` (a terça-feira da primeira raid da season — ver `computeWeekNumber` em `src/normalization/buildSeasonProgression.ts`). Argumentos opcionais:
 
-Esse comando também detecta jogadores que aparecem no log mas não estão em `data/guild/roster.json` e cria um rascunho de cadastro automaticamente (class/spec/role da WCL, raça/avatar do Raider.io). **Revise esses rascunhos** — falta discord, hero spec, se é main/alt, e a spec vem em inglês.
+- `--week=<numero>`: força o número da semana em vez de calcular. Precisa quando o cálculo automático não bate (ex: log de reposição fora do padrão terça/quinta).
+- `--days=<N>` (padrão 7) / `--start=YYYY-MM-DD --end=YYYY-MM-DD`: janela de busca. **Evite janelas muito largas** — um report que já está registrado em outra `week-NN.json` é automaticamente ignorado (não conta dobrado), mas ainda assim não vale a pena buscar mais do que o necessário.
+- `--reports=codigo1,codigo2`: reforço manual, força a inclusão de reports específicos.
+- `--include-guild-reports`: **desligado por padrão de propósito.** Liga a busca por reports marcados com a guild "Hail to the King" no WCL — mas isso pega qualquer report marcado, mesmo de gente que não é do core (pug, grupo social). Decisão do projeto é confiar só no upload pessoal do Thiago; só ligar essa flag em modo investigação, revisando o resultado antes de aceitar.
+
+Esse comando também detecta jogadores que aparecem no log mas não estão em `data/guild/roster.json` e cria um rascunho de cadastro automaticamente (class/spec/role da WCL, raça/avatar do Raider.io). **Revise esses rascunhos** — falta discord, hero spec, se é main/alt, e a spec vem em inglês. Isso vale tanto pra quando roda na mão quanto pro cron — o workflow commita o rascunho junto, então dá uma olhada em `data/guild/roster.json` depois de um run automático que trouxe gente nova.
+
+**Mapeamento de dificuldade (`fight.difficulty` da WCL):** `3` = Normal, `4` = Heroica — confirmado batendo com dado real desta season, não é um enum "oficial" universal da Blizzard/WCL. Se aparecer uma dificuldade nova nos logs (ex: Mítico), `DIFFICULTY_TO_BUCKET` em `src/normalization/buildSeasonProgression.ts` precisa de um valor novo.
 
 ---
 

@@ -18,6 +18,7 @@ function boss(overrides: Partial<Boss>): Boss {
   return {
     id: "boss",
     name: "Boss",
+    encounterID: 1,
     status: "not_started",
     pulls: 0,
     bestPullPercent: null,

@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       week:
-        description: "Número da semana (ex: 3)"
-        required: true
+        description: "Número da semana (ex: 3). Deixe em branco pra calcular sozinho a partir de raidWeekAnchor."
+        required: false
         type: string
       start:
         description: "Data de início da janela (YYYY-MM-DD). Deixe em branco para usar 'days' a partir de agora."
@@ -24,12 +24,21 @@ on:
         description: "Códigos de report manuais, separados por vírgula (reforço para logs unlisted/pessoais)"
         required: false
         type: string
+      include_guild_reports:
+        description: "Também buscar reports marcados com a guild (não só o upload pessoal do Thiago). Modo investigação — pode trazer log de gente que não é do core."
+        required: false
+        type: boolean
+        default: false
+  schedule:
+    # Checa todo dia se o Thiago subiu log novo — se não tiver nada de novo,
+    # o script não escreve nada e o passo de commit não faz nada (ver
+    # "Nada para commitar" abaixo). Cedo o bastante em UTC pra já ter passado
+    # de qualquer raid que tenha ido até a virada da noite no horário do Brasil.
+    - cron: "0 10 * * *"
 
 permissions:
   contents: write
 
-# Fase de teste: dispara só manualmente (workflow_dispatch). Vira cron
-# (terça/quinta) quando o pipeline estiver validado em produção.
 jobs:
   update-data:
     name: Fetch & Commit
@@ -60,17 +69,26 @@ jobs:
           INPUT_END: ${{ inputs.end }}
           INPUT_DAYS: ${{ inputs.days }}
           INPUT_REPORTS: ${{ inputs.reports }}
+          INPUT_INCLUDE_GUILD_REPORTS: ${{ inputs.include_guild_reports }}
         run: |
-          ARGS=(--week="$INPUT_WEEK")
+          ARGS=()
+
+          if [ -n "$INPUT_WEEK" ]; then
+            ARGS+=(--week="$INPUT_WEEK")
+          fi
 
           if [ -n "$INPUT_START" ]; then
             ARGS+=(--start="$INPUT_START" --end="$INPUT_END")
           else
-            ARGS+=(--days="$INPUT_DAYS")
+            ARGS+=(--days="${INPUT_DAYS:-7}")
           fi
 
           if [ -n "$INPUT_REPORTS" ]; then
             ARGS+=(--reports="$INPUT_REPORTS")
+          fi
+
+          if [ "$INPUT_INCLUDE_GUILD_REPORTS" = "true" ]; then
+            ARGS+=(--include-guild-reports)
           fi
 
           npx vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts "${ARGS[@]}"
@@ -82,16 +100,14 @@ jobs:
         run: npm run build
 
       - name: Commit generated data
-        env:
-          INPUT_WEEK: ${{ inputs.week }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/weekly/performance/week-*.json data/guild/roster.json
+          git add data/weekly/performance/week-*.json data/guild/roster.json "data/seasons/*/config.json"
 
           if git diff --cached --quiet; then
             echo "Nada para commitar."
           else
-            git commit -m "chore(data): atualiza performance da semana $INPUT_WEEK"
+            git commit -m "chore(data): atualização automática de log de raid (WarcraftLogs)"
             git push
           fi

@@ -6,6 +6,7 @@
     "currentSeason": "Midnight Season 2",
     "currentRaid": "Abismo Venenoso",
     "lastUpdated": "2026-09-10T19:15:00.000Z",
+    "raidWeekAnchor": "2026-08-18",
     "nextRaid": {
       "date": "2026-09-01",
       "time": "21:30",
@@ -16,6 +17,7 @@
     {
       "id": "nekzali-a-espiral-de-almas",
       "name": "Nek'zali, a Espiral de Almas",
+      "encounterID": 3470,
       "status": "killed",
       "pulls": 3,
       "bestPullPercent": null,
@@ -25,6 +27,7 @@
     {
       "id": "sentinelas-sepultados",
       "name": "Sentinelas Sepultados",
+      "encounterID": 3445,
       "status": "killed",
       "pulls": 3,
       "bestPullPercent": null,
@@ -34,6 +37,7 @@
     {
       "id": "vashnik-o-maligno",
       "name": "Vashnik, o Maligno",
+      "encounterID": 3455,
       "status": "killed",
       "pulls": 2,
       "bestPullPercent": null,
@@ -43,6 +47,7 @@
     {
       "id": "os-exploradores-perdidos",
       "name": "Os Exploradores Perdidos",
+      "encounterID": 3497,
       "status": "killed",
       "pulls": 2,
       "bestPullPercent": null,
@@ -52,6 +57,7 @@
     {
       "id": "sszorak",
       "name": "Sszorak",
+      "encounterID": 3420,
       "status": "killed",
       "pulls": 2,
       "bestPullPercent": null,
@@ -61,6 +67,7 @@
     {
       "id": "as-presas-gemeas",
       "name": "As Presas Gêmeas",
+      "encounterID": 3421,
       "status": "killed",
       "pulls": 3,
       "bestPullPercent": null,
@@ -70,6 +77,7 @@
     {
       "id": "o-altar-espiralado",
       "name": "O Altar Espiralado",
+      "encounterID": 3429,
       "status": "killed",
       "pulls": 16,
       "bestPullPercent": null,
@@ -79,6 +87,7 @@
     {
       "id": "ulatek",
       "name": "Ula'tek",
+      "encounterID": 3492,
       "status": "progress",
       "pulls": 6,
       "bestPullPercent": null,
@@ -90,6 +99,7 @@
     {
       "id": "nekzali-a-espiral-de-almas",
       "name": "Nek'zali, a Espiral de Almas",
+      "encounterID": 3470,
       "status": "progress",
       "pulls": 8,
       "bestPullPercent": null,
@@ -99,6 +109,7 @@
     {
       "id": "sentinelas-sepultados",
       "name": "Sentinelas Sepultados",
+      "encounterID": 3445,
       "status": "not_started",
       "pulls": 0,
       "bestPullPercent": null,
@@ -108,6 +119,7 @@
     {
       "id": "vashnik-o-maligno",
       "name": "Vashnik, o Maligno",
+      "encounterID": 3455,
       "status": "not_started",
       "pulls": 0,
       "bestPullPercent": 42,
@@ -117,6 +129,7 @@
     {
       "id": "os-exploradores-perdidos",
       "name": "Os Exploradores Perdidos",
+      "encounterID": 3497,
       "status": "not_started",
       "pulls": 0,
       "bestPullPercent": null,
@@ -126,6 +139,7 @@
     {
       "id": "sszorak",
       "name": "Sszorak",
+      "encounterID": 3420,
       "status": "not_started",
       "pulls": 0,
       "bestPullPercent": null,
@@ -135,6 +149,7 @@
     {
       "id": "as-presas-gemeas",
       "name": "As Presas Gêmeas",
+      "encounterID": 3421,
       "status": "not_started",
       "pulls": 0,
       "bestPullPercent": null,
@@ -144,6 +159,7 @@
     {
       "id": "o-altar-espiralado",
       "name": "O Altar Espiralado",
+      "encounterID": 3429,
       "status": "not_started",
       "pulls": 0,
       "bestPullPercent": null,
@@ -153,6 +169,7 @@
     {
       "id": "ulatek",
       "name": "Ula'tek",
+      "encounterID": 3492,
       "status": "not_started",
       "pulls": 0,
       "bestPullPercent": null,
