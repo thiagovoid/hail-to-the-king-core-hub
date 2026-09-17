@@ -151,9 +151,9 @@ const avgIoSubtitle = bestKey
 
   <HeroSection config={config} bossesNormal={bossesNormal} bossesHeroic={bossesHeroic} recentLogs={recentLogs} />
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
+  {/* <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
     <CoreHealthPanel health={coreHealth} />
-  </div>
+  </div> */}
 
   <section
     aria-label="Resumo da temporada"
@@ -221,10 +221,8 @@ const avgIoSubtitle = bestKey
     </div>
 
     <!-- Médias do core na run mais recente (Team Analytics Engine) -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+    <div class="grid grid-cols-2 gap-4 mb-10">
       <SummaryCard title="DPS Médio" value={formatDpsAverage(coreAverages.dps)} subtitle="Última run" icon="⚔" accent="red" />
-      <SummaryCard title="Parse Médio" value={coreAverages.parse} subtitle="Última run" icon="📊" accent="purple" />
-      <SummaryCard title="Mortes Médias" value={coreAverages.deaths} subtitle="Última run" icon="💀" accent="default" />
       <SummaryCard title="Erros Mecânicos" value={coreAverages.mechanicErrors} subtitle="Média · última run" icon="⚠" accent="gold" />
     </div>
 

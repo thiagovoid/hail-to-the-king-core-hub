@@ -193,17 +193,12 @@ export interface SiteConfig {
   /** Data da última atualização manual dos dados, formato ISO 8601. */
   lastUpdated: string;
   /**
-   * Primeira terça de raid da temporada (YYYY-MM-DD). Define a numeração
-   * das semanas de `data/weekly/performance/week-NN.json`: semana 1 começa
-   * aqui e cada semana seguinte vira na terça (reset do WoW nas Américas).
+   * Data (YYYY-MM-DD) da primeira noite de raid da temporada — terça-feira
+   * de reset. Base pra calcular automaticamente o número da semana
+   * (`data/weekly/performance/week-NN.json`) a partir da data de hoje, sem
+   * precisar de input manual. Ver scripts/warcraftlogs/fetch-performance.ts.
    */
-  seasonStart: string;
-  /**
-   * A partir de que data (YYYY-MM-DD) a contagem de pulls/kills passa a ser
-   * automática via WarcraftLogs. Reports anteriores já foram somados à mão
-   * em `pulls` e são ignorados pelo atualizador pra não contar em dobro.
-   */
-  progressionAutoSince: string;
+  raidWeekAnchor: string;
   /**
    * Metas do core, iguais pra todo mundo — o Score Geral compara cada
    * dimensão contra elas. Diferente de `Player.performanceGoals`, que é
@@ -273,11 +268,10 @@ export interface Boss {
   /** Nome completo do boss exibido na interface. */
   name: string;
   /**
-   * `encounterID` desse boss na WarcraftLogs — é o que liga um fight de um
-   * report a este boss. Null enquanto não preenchido; o atualizador de
-   * progressão avisa quais encontros ficaram sem mapeamento.
+   * ID do encontro na WarcraftLogs (`fight.encounterID`) — usado pra casar
+   * kills encontrados num report com este boss, sem depender de nome.
    */
-  encounterId?: number | null;
+  encounterID: number;
   /** Status atual do encontro: morto, em progressão ou não iniciado. */
   status: "killed" | "progress" | "not_started";
   /**

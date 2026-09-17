@@ -1,15 +1,10 @@
 name: Update Performance Data
 
 on:
-  # Raids são terça e quinta à noite (BRT). Roda quarta e sexta de manhã
-  # (09:00 UTC = 06:00 BRT), com folga pros logs terem sido subidos.
-  schedule:
-    - cron: "0 9 * * 3,5"
-
   workflow_dispatch:
     inputs:
       week:
-        description: "Forçar número da semana (ex: 3). Em branco = derivado da data de cada report."
+        description: "Número da semana (ex: 3). Deixe em branco pra calcular sozinho a partir de raidWeekAnchor."
         required: false
         type: string
       start:
@@ -29,10 +24,23 @@ on:
         description: "Códigos de report manuais, separados por vírgula (reforço para logs unlisted/pessoais)"
         required: false
         type: string
+      include_guild_reports:
+        description: "Também buscar reports marcados com a guild (não só o upload pessoal do Thiago). Modo investigação — pode trazer log de gente que não é do core."
+        required: false
+        type: boolean
+        default: false
+  schedule:
+    # Checa todo dia se o Thiago subiu log novo — se não tiver nada de novo,
+    # o script não escreve nada e o passo de commit não faz nada (ver
+    # "Nada para commitar" abaixo). Cedo o bastante em UTC pra já ter passado
+    # de qualquer raid que tenha ido até a virada da noite no horário do Brasil.
+    - cron: "0 10 * * *"
 
 permissions:
   contents: write
 
+# Duas execuções ao mesmo tempo commitariam em cima uma da outra. Não
+# cancela a que já está rodando: ela pode estar no meio de um push.
 concurrency:
   group: update-data
   cancel-in-progress: false
@@ -43,16 +51,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # ID de conta WCL de quem sobe os logs de raid (não é dado sensível,
-      # é só um ID numérico de conta). Ver scripts/warcraftlogs/discover-reports.ts.
+      # é só um ID numérico de conta). Ver scripts/warcraftlogs/fetch-performance.ts.
       WCL_UPLOADER_USER_IDS: "922357"
-      WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
-      WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
-      # No cron não há inputs: janela curta (3 dias) cobre a última raid.
-      INPUT_WEEK: ${{ inputs.week }}
-      INPUT_START: ${{ inputs.start }}
-      INPUT_END: ${{ inputs.end }}
-      INPUT_DAYS: ${{ inputs.days || '3' }}
-      INPUT_REPORTS: ${{ inputs.reports }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,32 +66,38 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build script args
-        id: args
+      - name: Fetch performance data from WarcraftLogs
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          INPUT_WEEK: ${{ inputs.week }}
+          INPUT_START: ${{ inputs.start }}
+          INPUT_END: ${{ inputs.end }}
+          INPUT_DAYS: ${{ inputs.days }}
+          INPUT_REPORTS: ${{ inputs.reports }}
+          INPUT_INCLUDE_GUILD_REPORTS: ${{ inputs.include_guild_reports }}
         run: |
           ARGS=()
-          if [ -n "$INPUT_START" ]; then
-            ARGS+=(--start="$INPUT_START" --end="$INPUT_END")
-          else
-            ARGS+=(--days="$INPUT_DAYS")
-          fi
-          if [ -n "$INPUT_REPORTS" ]; then
-            ARGS+=(--reports="$INPUT_REPORTS")
-          fi
-          echo "common=${ARGS[*]}" >> "$GITHUB_OUTPUT"
 
-      - name: Fetch performance data from WarcraftLogs (dps/parse por run)
-        run: |
-          ARGS=(${{ steps.args.outputs.common }})
           if [ -n "$INPUT_WEEK" ]; then
             ARGS+=(--week="$INPUT_WEEK")
           fi
-          npx vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts "${ARGS[@]}"
 
-      - name: Update season (pulls/kills por boss + últimos logs)
-        run: |
-          ARGS=(${{ steps.args.outputs.common }})
-          npx vite-node -c vitest.config.ts scripts/warcraftlogs/update-season.ts "${ARGS[@]}"
+          if [ -n "$INPUT_START" ]; then
+            ARGS+=(--start="$INPUT_START" --end="$INPUT_END")
+          else
+            ARGS+=(--days="${INPUT_DAYS:-7}")
+          fi
+
+          if [ -n "$INPUT_REPORTS" ]; then
+            ARGS+=(--reports="$INPUT_REPORTS")
+          fi
+
+          if [ "$INPUT_INCLUDE_GUILD_REPORTS" = "true" ]; then
+            ARGS+=(--include-guild-reports)
+          fi
+
+          npx vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts "${ARGS[@]}"
 
       - name: Run tests
         run: npm test
@@ -103,11 +109,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/weekly/performance/week-*.json data/guild/roster.json data/seasons/*/config.json
+          git add data/weekly/performance/week-*.json data/guild/roster.json "data/seasons/*/config.json"
 
           if git diff --cached --quiet; then
             echo "Nada para commitar."
           else
-            git commit -m "chore(data): atualiza performance e progressão via WarcraftLogs"
+            git commit -m "chore(data): atualização automática de log de raid (WarcraftLogs)"
             git push
           fi

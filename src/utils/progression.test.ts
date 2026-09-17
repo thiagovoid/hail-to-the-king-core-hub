@@ -22,6 +22,7 @@ const bossStatusArb = fc.oneof(
 const bossArb: fc.Arbitrary<Boss> = fc.record({
   id: fc.string({ minLength: 1, maxLength: 20 }),
   name: fc.string({ minLength: 1, maxLength: 40 }),
+  encounterID: fc.nat(),
   status: bossStatusArb,
   pulls: fc.nat(),
   bestPullPercent: fc.option(fc.integer({ min: 0, max: 100 }), { nil: null }),

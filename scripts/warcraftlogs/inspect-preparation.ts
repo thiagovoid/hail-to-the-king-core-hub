@@ -5,7 +5,9 @@ import { fileURLToPath } from "node:url";
 import { WarcraftLogsProvider } from "../../src/providers/warcraftlogs/WarcraftLogsProvider";
 import { parseWclProfile } from "../../src/providers/warcraftlogs/normalize";
 import type { WclPlayerDetail } from "../../src/providers/warcraftlogs/normalize";
-import { RAID_ZONE_ID } from "./discover-reports";
+
+// Raid da season atual (Midnight S2). Mesmo valor de fetch-performance.ts.
+const RAID_ZONE_ID = 53; // The Venomous Abyss / Abismo Venenoso
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
