@@ -60,8 +60,8 @@ const DIMENSION_META: Record<ScoreDimensionKey, { label: string; weight: number;
     label: "Preparação",
     weight: 10,
     description:
-      "Percentual dos itens de preparação prontos: gemas, encantos, flask, comida, poções, runa e óleo.",
-    source: "Warcraft Logs (gear e buffs de consumível). Coleta ainda não implementada.",
+      "Quanto do equipamento está encantado e gemado, comparado ao que o guia da sua spec recomenda. Vale a presença, não o item exato: encanto ou gema fora do BIS conta igual. Consumíveis ainda não entram na conta.",
+    source: "Warcraft Logs (gear do log) + Wowhead (quantos encantos e gemas se espera na sua spec).",
   },
 };
 

@@ -21,9 +21,14 @@ permissions:
   pages: write
   id-token: write
 
+# Dois deploys sobrepostos publicam por ordem de TÉRMINO, não de commit. Com
+# cancel-in-progress: false o build antigo continuava e vencia: o push e o
+# workflow_run do cron de dados chegaram com 1 minuto de diferença e o site
+# ficou com o dado velho, mesmo os dois tendo passado. O mais novo agora
+# cancela o que estiver em voo.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
