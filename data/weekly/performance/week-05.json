@@ -103,103 +103,119 @@
       "players": [
         {
           "playerId": "voidwar",
-          "dps": 23294,
+          "dps": 34466,
           "itemLevel": 290,
+          "preparation": 50,
           "deaths": 9
         },
         {
           "playerId": "blackwatch",
-          "dps": 17778,
+          "dps": 6412,
           "itemLevel": 317,
+          "preparation": 50,
           "deaths": 3
         },
         {
           "playerId": "apocalipse",
-          "dps": 49533,
+          "dps": 47057,
           "itemLevel": 316,
+          "preparation": 0,
           "deaths": 11
         },
         {
           "playerId": "voidsurge",
-          "hps": 81106,
+          "hps": 31074,
           "itemLevel": 314,
+          "preparation": 50,
           "deaths": 2
         },
         {
           "playerId": "kams",
-          "hps": 199170,
+          "hps": 175882,
           "itemLevel": 316,
+          "preparation": 50,
           "deaths": 11
         },
         {
           "playerId": "cowsadeer",
-          "hps": 223671,
+          "hps": 210628,
           "itemLevel": 320,
+          "preparation": 0,
           "deaths": 9
         },
         {
           "playerId": "bustgril",
-          "dps": 119040,
+          "dps": 96868,
           "itemLevel": 316,
+          "preparation": 0,
           "deaths": 10
         },
         {
           "playerId": "hysillens",
-          "dps": 106668,
+          "dps": 90323,
           "itemLevel": 316,
+          "preparation": 0,
           "deaths": 11
         },
         {
           "playerId": "kroline",
-          "dps": 120611,
+          "dps": 106288,
           "itemLevel": 319,
+          "preparation": 50,
           "deaths": 9
         },
         {
           "playerId": "jrxamã",
-          "dps": 143091,
+          "dps": 129010,
           "itemLevel": 322,
+          "preparation": 50,
           "deaths": 10
         },
         {
           "playerId": "heracranosx",
-          "dps": 111969,
+          "dps": 109362,
           "itemLevel": 320,
+          "preparation": 0,
           "deaths": 10
         },
         {
           "playerId": "gunst",
-          "dps": 104818,
+          "dps": 106196,
           "itemLevel": 321,
+          "preparation": 0,
           "deaths": 11
         },
         {
           "playerId": "nerlock",
-          "dps": 66224,
+          "dps": 55444,
           "itemLevel": 304,
+          "preparation": 50,
           "deaths": 10
         },
         {
           "playerId": "xúlio",
-          "dps": 114672,
+          "dps": 105695,
           "itemLevel": 321,
+          "preparation": 0,
           "deaths": 10
         },
         {
           "playerId": "dagom",
-          "dps": 80909,
+          "dps": 76783,
           "itemLevel": 315,
+          "preparation": 50,
           "deaths": 12
         },
         {
           "playerId": "ligiaf",
-          "dps": 61209,
+          "preparation": 0,
           "deaths": 8
         },
         {
           "playerId": "minort",
-          "dps": 70367,
+          "dps": 66751,
           "itemLevel": 303,
+          "preparation": 0,
           "deaths": 10
         }
       ]
