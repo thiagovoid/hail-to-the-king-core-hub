@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
 
   # O commit automático do update-data.yml usa o GITHUB_TOKEN padrão pra dar
   # push — e por design do GitHub Actions, push feito com esse token não
