@@ -1,0 +1,208 @@
+/**
+ * Interpretação da resposta da API do Wipefest para um fight.
+ *
+ * `api.wipefest.gg/report/<code>/fight/<id>` devolve, em JSON, a curadoria de
+ * mecânicas daquele encontro — a mesma que a página renderiza. Não precisa de
+ * navegador: a versão anterior disso clicava insight por insight com
+ * Playwright pra ler o DOM.
+ *
+ * O que a API declara e evita heurística nossa:
+ *
+ *   insightConfigs[].statistics[].higherIsBetter → se a contagem é falha ou acerto
+ *   playerValues[].values[].isBonus             → se entra no score principal
+ *   playerValues[].values[].value               → a nota 0-100 por mecânica
+ *   insights[].details                          → tabela com a contagem por jogador
+ *
+ * Isso importa porque o número por jogador não significa a mesma coisa em toda
+ * mecânica: em "Stood in X" 5 é dano tomado 5 vezes (ruim); em "Soaked Y" é
+ * ter ajudado 5 vezes (bom). Quem diz qual é qual é o `higherIsBetter`, não a
+ * frase.
+ *
+ * Tudo puro: recebe o JSON, devolve estrutura. Sem rede.
+ */
+
+export interface WipefestApiStatistic {
+  name: string;
+  higherIsBetter: boolean;
+}
+
+export interface WipefestApiInsightConfig {
+  id: string;
+  group: string;
+  /** Nome canônico em inglês — não muda com o idioma do log. */
+  name: string;
+  statistics?: WipefestApiStatistic[];
+}
+
+export interface WipefestApiInsight {
+  id: string;
+  group: string;
+  /** Título com o nome da habilidade no idioma do log e markup do Wipefest. */
+  title: string;
+  /** HTML com a tabela por jogador, quando existe. */
+  details?: string;
+}
+
+export interface WipefestApiPlayerValue {
+  insightId: string;
+  insightGroup: string;
+  /** 0-100, já normalizado: 100 = fez certo, independente da direção da contagem. */
+  value: number;
+  isBonus: boolean;
+  statisticName?: string;
+  statisticUnscaledValue?: number;
+}
+
+export interface WipefestApiPlayer {
+  /**
+   * A API repete cada jogador em três recortes: o fight inteiro e os cortes
+   * "até a primeira morte" / "até o wipe ser chamado" (o seletor "Ignore
+   * events after N Deaths" da página). Só o primeiro corresponde ao card.
+   */
+  interval?: { unit?: string };
+  playerId: number;
+  totalValue: number;
+  totalBonus: number;
+  values: WipefestApiPlayerValue[];
+}
+
+export interface WipefestApiFight {
+  insights?: WipefestApiInsight[];
+  insightConfigs?: WipefestApiInsightConfig[];
+  playerValues?: WipefestApiPlayer[];
+  report?: { friendlies?: Array<{ id: number; name: string }> };
+}
+
+/**
+ * Colunas que servem de contagem, em ordem de preferência. `damage` e
+ * `healing` ficam de fora de propósito: total não é quantidade — dois
+ * jogadores com o mesmo dano podem ter tomado 1 e 10 hits.
+ */
+const COUNT_COLUMNS = ["hits", "casts", "frequency"];
+
+export function parseComponentData(componentData: string): {
+  columns: string[];
+  rows: Array<Record<string, unknown>>;
+} {
+  const json = JSON.parse(componentData.split("@@@").join("{").split("|||").join("}"));
+  return {
+    columns: (json.columnDatas ?? []).map((coluna: { id: string }) => coluna.id),
+    rows: json.rowDatas ?? [],
+  };
+}
+
+/** `{[style="shaman"] Gunst}` → `Gunst` */
+export function limparMarkup(valor: unknown): string {
+  if (typeof valor !== "string") return "";
+  return valor
+    .replace(/\[[^\]]*\]/g, "")
+    .replace(/[{}]/g, "")
+    .trim();
+}
+
+function paraNumero(valor: unknown): number | undefined {
+  const texto = limparMarkup(
+    typeof valor === "object" && valor !== null ? (valor as { text?: string }).text : valor
+  );
+  if (!texto) return undefined;
+  const numero = Number(texto.replace(/,/g, ""));
+  return Number.isFinite(numero) ? numero : undefined;
+}
+
+/** Extrai a contagem por jogador do `details` de um insight. */
+export function extractCounts(details: string | undefined): {
+  countColumn?: string;
+  byPlayer: Record<string, number>;
+} {
+  if (!details) return { byPlayer: {} };
+
+  const match = details.match(/data-component-data='([^']+)'/);
+  if (!match) return { byPlayer: {} };
+
+  let parsed: ReturnType<typeof parseComponentData>;
+  try {
+    parsed = parseComponentData(match[1]);
+  } catch {
+    return { byPlayer: {} };
+  }
+
+  const countColumn = COUNT_COLUMNS.find((coluna) => parsed.columns.includes(coluna));
+  if (!countColumn) return { byPlayer: {} };
+
+  const byPlayer: Record<string, number> = {};
+  for (const row of parsed.rows) {
+    const player = limparMarkup((row.player as { markup?: string } | undefined)?.markup);
+    const count = paraNumero(row[countColumn]);
+    if (player && count !== undefined) byPlayer[player] = count;
+  }
+
+  return { countColumn, byPlayer };
+}
+
+export interface PlayerMechanicError {
+  /** Nome canônico da mecânica (inglês, estável entre idiomas). */
+  mechanic: string;
+  /** Nota 0-100 do Wipefest. Menor que 100 = algo saiu errado. */
+  value: number;
+  /** Quantas vezes, quando a tabela do insight informa. */
+  count?: number;
+  /** De qual coluna a contagem saiu — mantém o número rastreável. */
+  countColumn?: string;
+}
+
+export interface PlayerFightMechanics {
+  player: string;
+  /** Nota geral do fight (o círculo verde no card). */
+  score: number;
+  /** Só mecânicas principais: bônus (flask, poção, soak) fica de fora. */
+  errors: PlayerMechanicError[];
+}
+
+/**
+ * Consolida o fight: por jogador, quais mecânicas principais não fecharam 100
+ * e quantas vezes.
+ *
+ * Bônus fica de fora do erro mecânico de propósito — é o que impede alguém de
+ * levar falta por não usar poção. Esses itens pertencem à Preparação.
+ */
+export function buildFightMechanics(api: WipefestApiFight): PlayerFightMechanics[] {
+  const configs = new Map((api.insightConfigs ?? []).map((config) => [config.id, config]));
+  const nomes = new Map((api.report?.friendlies ?? []).map((amigo) => [amigo.id, amigo.name]));
+
+  const contagens = new Map<string, ReturnType<typeof extractCounts>>();
+  for (const insight of api.insights ?? []) {
+    contagens.set(insight.id, extractCounts(insight.details));
+  }
+
+  const resultado: PlayerFightMechanics[] = [];
+
+  for (const jogador of api.playerValues ?? []) {
+    // Sem isto o mesmo jogador aparece três vezes, e os recortes parciais
+    // trazem score fracionário que não corresponde a nada na tela.
+    if (jogador.interval?.unit && jogador.interval.unit !== "EntireFight") continue;
+
+    const nome = nomes.get(jogador.playerId);
+    if (!nome) continue;
+
+    const errors: PlayerMechanicError[] = [];
+
+    for (const valor of jogador.values) {
+      if (valor.isBonus) continue;
+      if (valor.value >= 100) continue;
+
+      const config = configs.get(valor.insightId);
+      const contagem = contagens.get(valor.insightId);
+
+      errors.push({
+        mechanic: config?.name ?? valor.insightId,
+        value: valor.value,
+        ...(contagem?.byPlayer[nome] !== undefined ? { count: contagem.byPlayer[nome] } : {}),
+        ...(contagem?.countColumn ? { countColumn: contagem.countColumn } : {}),
+      });
+    }
+
+    resultado.push({ player: nome, score: jogador.totalValue, errors });
+  }
+
+  return resultado;
+}
