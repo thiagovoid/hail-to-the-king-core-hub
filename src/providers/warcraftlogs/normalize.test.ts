@@ -118,6 +118,61 @@ describe("translateRace", () => {
   });
 });
 
+describe("buildRunPlayers — troca de função entre as trys", () => {
+  // Caso real: no log de 15/09 a Ligiaf jogou 3 trys de dano e 9 de cura.
+  // A WCL a lista nos dois baldes de papel; o campo `specs` vem vazio.
+  const detalhes = (baldes: Record<string, string[]>) => ({
+    damage: { data: { entries: [{ name: "Ligiaf", total: 480_200, activeTime: 10_000, itemLevel: 290 }] } },
+    healing: { data: { entries: [] } },
+    summary: {
+      data: {
+        deathEvents: [{ name: "Ligiaf" }],
+        playerDetails: Object.fromEntries(
+          Object.entries(baldes).map(([papel, nomes]) => [
+            papel,
+            nomes.map((name) => ({ name, type: "Priest", server: "nemesis", region: "US" })),
+          ])
+        ),
+      },
+    },
+  }) as unknown as WclFightTables;
+
+  const entrada = (tabelas: WclFightTables) => ({
+    reportCode: "JCvk27bDL6Zdm18j",
+    aggregateFightIds: [1],
+    aggregateDurationMs: 600_000,
+    aggregateTables: tabelas,
+    fullTables: tabelas,
+    rankings: [] as WclRankingEntry[],
+    players: [{ id: "ligiaf", role: "dps" as const, profile: { region: "US", realm: "nemesis", name: "Ligiaf" } }],
+  });
+
+  it("não publica dps de quem alternou entre dano e cura na mesma noite", () => {
+    const tabelas = detalhes({ dps: ["Ligiaf"], healers: ["Ligiaf"] });
+
+    const [jogador] = buildRunPlayers(entrada(tabelas));
+
+    expect(jogador.dps).toBeUndefined();
+  });
+
+  it("mantém mortes e item level de quem trocou — só a métrica sai", () => {
+    const tabelas = detalhes({ dps: ["Ligiaf"], healers: ["Ligiaf"] });
+
+    const [jogador] = buildRunPlayers(entrada(tabelas));
+
+    expect(jogador.deaths).toBe(1);
+    expect(jogador.itemLevel).toBe(290);
+  });
+
+  it("quem ficou num papel só segue com dps normalmente", () => {
+    const tabelas = detalhes({ dps: ["Ligiaf"], healers: ["Outra"] });
+
+    const [jogador] = buildRunPlayers(entrada(tabelas));
+
+    expect(jogador.dps).toBe(800);
+  });
+});
+
 describe("buildRunPlayers", () => {
   const tables = (entries: { name: string; total: number; activeTime: number; itemLevel: number }[]): WclFightTables => ({
     damage: { data: { entries } },

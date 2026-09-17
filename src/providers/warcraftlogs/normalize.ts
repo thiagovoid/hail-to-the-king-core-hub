@@ -195,6 +195,29 @@ export interface BuildRunPlayersInput {
   resolvePreparationChecklist?: (playerId: string) => PreparationChecklist | undefined;
 }
 
+/**
+ * Papéis que a WCL atribuiu ao jogador no conjunto de fights — os baldes do
+ * playerDetails ("dps", "healers", "tanks").
+ *
+ * Mais de um papel significa que a pessoa trocou de função entre as trys.
+ * O balde é o único sinal confiável disso: o campo `specs` do playerDetails
+ * vem vazio nos reports reais (conferido no log de 15/09, em que a Ligiaf
+ * alternou entre dano e cura).
+ */
+export function findPlayerRoles(
+  playerDetails: Record<string, WclPlayerDetail[]> | undefined,
+  characterName: string
+): string[] {
+  const roles: string[] = [];
+
+  for (const [role, bucket] of Object.entries(playerDetails ?? {})) {
+    const presente = bucket?.some((member) => sameCharacterName(member.name, characterName));
+    if (presente && !roles.includes(role)) roles.push(role);
+  }
+
+  return roles;
+}
+
 /** Acha o combatantInfo de um personagem entre tanks/dps/healers do Summary. */
 export function findCombatantInfo(
   playerDetails: Record<string, WclPlayerDetail[]> | undefined,
@@ -233,6 +256,13 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     const entry = entries.find((item) => sameCharacterName(item.name, player.profile.name));
     if (!entry || !entry.activeTime || aggregateDurationMs <= 0) continue;
 
+    // Quem trocou de função entre as trys não tem dps/hps que signifique
+    // nada: o dano das trys de dano acaba dividido pela duração da noite
+    // inteira, incluindo as trys em que a pessoa estava curando. Some com
+    // a métrica em vez de publicar um número deprimido.
+    const roles = findPlayerRoles(playerDetails, player.profile.name);
+    const trocouDeFuncao = roles.length > 1;
+
     const value = calculateMetricValue(entry.total, aggregateDurationMs);
     const deaths = countDeaths(deathEvents, player.profile.name);
 
@@ -260,7 +290,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
 
     result.push({
       playerId: player.id,
-      [metricKey]: Math.round(value),
+      ...(trocouDeFuncao ? {} : { [metricKey]: Math.round(value) }),
       parse: bestRankPercent !== undefined ? Math.round(bestRankPercent) : undefined,
       itemLevel: entry.itemLevel,
       deaths,
