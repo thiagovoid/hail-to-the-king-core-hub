@@ -42,30 +42,24 @@ const history = getPlayerHistory(
   player.id
 );
 
-// Média da temporada: mesma base pro resumo, pras metas e pro Score Geral.
+// Média da temporada: base do resumo e das metas individuais (a meta de dps
+// compara contra a média de todos os registros — decisão registrada).
 const seasonAverage = buildPlayerSeasonAverage(player.id, history);
 
-// Mesma noite que define a nota de Preparação (a última com dado), pra a lista
-// e o número nunca discordarem.
-// Onde os erros mecânicos aconteceram na temporada, somando todas as noites.
-// Soma, e não média, porque o número da dimensão já é a média — aqui interessa
-// "Blood Venom x105 no total", que é o que diz o que treinar.
-const mechanicsDetail = Object.values(
-  history
-    .flatMap((run) => run.mechanicsDetail ?? [])
-    .reduce<Record<string, { boss: string; mechanic: string; hits: number }>>((acc, item) => {
-      const chave = `${item.boss}|${item.mechanic}`;
-      if (acc[chave]) acc[chave].hits += item.hits;
-      else acc[chave] = { ...item };
-      return acc;
-    }, {})
-)
+// O Score Geral, porém, mede a ÚLTIMA NOITE, não a temporada: é a foto de
+// como a pessoa está agora. Misturar as duas coisas fazia aparecer erro de
+// boss que nem foi jogado na semana, e uma noite ruim ficava diluída em oito.
+// O histórico é o que o gráfico mostra.
+const ultimaNoite = history.at(-1);
+
+// Detalhe da MESMA noite que o Score Geral mede. Antes isto somava a
+// temporada inteira, e aparecia erro de boss que nem foi jogado na semana.
+const mechanicsDetail = [...(ultimaNoite?.mechanicsDetail ?? [])]
   .sort((a, b) => b.hits - a.hits)
   .slice(0, 3);
 
+const preparationMissing = ultimaNoite?.preparationMissing ?? [];
 
-const preparationMissing =
-  [...history].reverse().find((run) => run.preparation !== undefined)?.preparationMissing ?? [];
 const hasData = history.length > 0;
 
 const dpsHistory = history
@@ -125,7 +119,7 @@ const primaryMetricSeries = player.role === 'healer'
 const HIDDEN_CHART_SERIES = new Set(['parse', 'deaths']);
 
 const overallScore = hasData
-  ? calculateOverallScore(seasonAverage, seasonJson.config.performanceTargets)
+  ? calculateOverallScore(ultimaNoite ?? seasonAverage, seasonJson.config.performanceTargets)
   : undefined;
 
 const coachRecommendation = overallScore
@@ -200,9 +194,9 @@ const attendance = calculateAttendance(weeks, player.id);
           score={overallScore}
           trend={trend}
           attendance={attendance}
-          runs={seasonAverage.runs}
+          nightDate={ultimaNoite?.date ?? null}
           preparationMissing={preparationMissing}
-          preparationValue={seasonAverage.preparation ?? null}
+          preparationValue={ultimaNoite?.preparation ?? null}
           mechanicsDetail={mechanicsDetail}
         />
       )

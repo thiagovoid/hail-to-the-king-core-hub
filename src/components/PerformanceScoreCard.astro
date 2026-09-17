@@ -6,8 +6,8 @@ interface Props {
   /** Variação do dps/hps no período, em % — positivo é melhora. */
   trend: number | null;
   attendance: number;
-  /** Quantas runs entraram na conta — deixa a nota rastreável. */
-  runs: number;
+  /** Data da noite medida — deixa a nota rastreável. */
+  nightDate?: string | null;
   /**
    * Slots sem encanto ou sem gema na última noite. Mostrado sob a barra de
    * Preparação: a nota sozinha não diz o que fazer, a lista diz.
@@ -28,10 +28,15 @@ interface Props {
   mechanicsDetail?: Array<{ boss: string; mechanic: string; hits: number }>;
 }
 
-const { score, trend, attendance, runs, preparationMissing = [], preparationValue = null, mechanicsDetail = [] } = Astro.props;
+const { score, trend, attendance, nightDate = null, preparationMissing = [], preparationValue = null, mechanicsDetail = [] } = Astro.props;
 
 // Preparação é completude, não progresso contra meta. As demais dimensões
 // seguem mostrando o progresso.
+const formatarNoite = (iso: string) => {
+  const [ano, mes, dia] = iso.split("-");
+  return `${dia}/${mes}/${ano}`;
+};
+
 const valorExibido = (dimension: (typeof score.dimensions)[number]) =>
   dimension.key === 'preparation' && preparationValue !== null ? preparationValue : dimension.score;
 
@@ -61,9 +66,11 @@ const directionLabel = (direction: 'higher' | 'lower') =>
     </h2>
 
     <p class="text-sm text-slate-400 mt-1">
-      Média de {runs} run(s) da temporada, medindo a noite de raid inteira (todas
-      as trys, não só os kills) contra as metas do core. Dimensão sem dado tem o
-      peso redistribuído entre as demais, em vez de pesar contra o jogador.
+      {nightDate ? `Noite de ${formatarNoite(nightDate)}` : 'Última noite de raid'} —
+      a raid inteira, todas as trys, não só os kills, comparada às metas do core.
+      É a foto de agora, não a média da temporada: a evolução está no gráfico
+      abaixo. Dimensão sem dado tem o peso redistribuído entre as demais, em vez
+      de pesar contra o jogador.
     </p>
   </div>
 
