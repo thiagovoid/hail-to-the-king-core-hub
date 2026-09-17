@@ -34,10 +34,12 @@ const groups: NavGroup[] = [
     label: 'Guild',
     icon: '🏰',
     items: [
-      // Escondidos até o site estar apresentável — as páginas seguem no ar.
+      // Escondidos até o site estar apresentável — as páginas seguem no ar
+      // e continuam sendo geradas no build; é só tirar o hidden pra voltarem.
+      // Com os três ocultos o grupo inteiro some do menu (ver visibleGroups).
       { label: 'História', href: '/historia/', icon: '📜', hidden: true },
       { label: 'Chronicle', href: '/chronicle/', icon: '📖', hidden: true },
-      { label: 'Hall da Fama', href: '/hall-da-fama/', icon: '🏆' },
+      { label: 'Hall da Fama', href: '/hall-da-fama/', icon: '🏆', hidden: true },
     ],
   },
   {
