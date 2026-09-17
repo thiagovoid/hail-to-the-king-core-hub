@@ -26,6 +26,8 @@ export interface WclGearItem {
   /** 0 ou ausente = sem encanto permanente. */
   permanentEnchant?: number;
   permanentEnchantName?: string;
+  /** Nome do item no idioma do cliente de quem subiu o log — não usar na tela. */
+  name?: string;
   gems?: Array<{ id: number }>;
 }
 
@@ -41,19 +43,20 @@ export interface WclCombatantInfo {
 
 export interface PreparationChecklist {
   /**
-   * Quantos encantos o guia da spec recomenda. Serve de denominador, não de
-   * lista: qualquer encanto no personagem conta pro numerador.
-   * 0 = checagem não configurada.
+   * Slots que o guia da spec manda encantar, no **número de slot da WCL**
+   * (campo `slot` do item), nunca a posição no array: o array é esparso —
+   * pula camisa e mão secundária, e chega a repetir o slot de berloque.
+   * Foi exatamente isso que produziu as notas erradas antes.
+   * Vazio = checagem não configurada.
    */
-  recommendedEnchantCount: number;
+  enchantedSlots: number[];
   /**
-   * Quantos soquetes se espera que estejam preenchidos. O próprio guia diz
-   * que todo mundo tem no mínimo três — colar e os dois anéis sempre vêm
-   * com um soquete cada. Soquete vazio em outra peça não é detectável: a
-   * WCL só lista as gemas presentes, nunca os buracos.
-   * 0 = checagem não configurada.
+   * Slots que sempre têm soquete: colar e os dois anéis. O próprio guia diz
+   * ("each piece of jewellery always comes with one socket each"). Soquete
+   * em armadura não entra: a WCL lista as gemas presentes, nunca os buracos.
+   * Vazio = checagem não configurada.
    */
-  expectedGems: number;
+  gemSlots: number[];
   /** IDs de spell do buff de cada consumível. Lista vazia = não configurado. */
   consumables: {
     flask: number[];
@@ -74,6 +77,8 @@ export interface PreparationCheck {
   ratio?: number;
   /** Detalhe legível, ex: "6 de 7 itens encantados". */
   detail?: string;
+  /** Slots (em português) que faltam — é o que a tela mostra pra pessoa agir. */
+  missing?: string[];
 }
 
 export interface PreparationResult {
@@ -98,6 +103,30 @@ function hasAura(auras: WclAura[], spellIds: number[]): boolean {
   return auras.some((aura) => aura.ability !== undefined && spellIds.includes(aura.ability));
 }
 
+/**
+ * Número de slot da WCL → nome em português. Conferido contra log real: o
+ * diagnóstico imprimiu a peça de cada slot (0 = Warhelm, 2 = Pauldrons,
+ * 14 = Cloak, 15 = Warblade).
+ */
+const SLOT_LABELS: Record<number, string> = {
+  0: "Elmo",
+  1: "Colar",
+  2: "Ombreiras",
+  4: "Peito",
+  5: "Cintura",
+  6: "Pernas",
+  7: "Botas",
+  8: "Braçadeiras",
+  9: "Luvas",
+  10: "Anel",
+  11: "Anel",
+  12: "Berloque",
+  13: "Berloque",
+  14: "Capa",
+  15: "Arma",
+  16: "Mão secundária",
+};
+
 function statusFromRatio(ratio: number): PreparationStatus {
   if (ratio >= 1) return "ok";
   return ratio > 0 ? "partial" : "missing";
@@ -116,35 +145,72 @@ export function calculatePreparation(
   const auras = combatantInfo.auras ?? [];
   const checks: PreparationCheck[] = [];
 
-  // Encantos — conta itens encantados, sem olhar qual encanto nem em que
-  // slot. Item vazio (slot sem peça) não entra na conta de jeito nenhum.
-  if (checklist.recommendedEnchantCount > 0) {
-    const encantados = gear.filter((item) => item.id && item.permanentEnchant).length;
-    const ratio = Math.min(encantados / checklist.recommendedEnchantCount, 1);
+  // Acha a peça equipada num slot. Usa o campo `slot` da WCL, nunca a
+  // posição no array — o array é esparso e repete slot de berloque.
+  const pecaNoSlot = (slot: number) => gear.find((item) => item.slot === slot && item.id);
 
-    checks.push({
-      key: "enchants",
-      label: "Encantos",
-      status: statusFromRatio(ratio),
-      ratio,
-      detail: `${encantados} de ${checklist.recommendedEnchantCount} itens encantados`,
-    });
+  // O nome do item vem do log no idioma do cliente de quem subiu — o mesmo
+  // raide pode gerar "Warhelm..." ou "Elmo de Guerra...". Pra tela ser
+  // sempre em português (e mais direta), mostra-se o slot, não a peça.
+  const nomeDoSlot = (slot: number) => SLOT_LABELS[slot] ?? `slot ${slot}`;
+
+  // Encantos — basta ter algum encanto no slot. Qual encanto é indiferente:
+  // o guia publica BIS, e escolher o mais barato é decisão legítima.
+  if (checklist.enchantedSlots.length > 0) {
+    const avaliados: string[] = [];
+    const faltando: string[] = [];
+
+    for (const slot of checklist.enchantedSlots) {
+      const peca = pecaNoSlot(slot);
+      // Slot vazio (arma de duas mãos não tem secundária) não entra na conta:
+      // não dá pra encantar o que não existe.
+      if (!peca) continue;
+      avaliados.push(nomeDoSlot(slot));
+      if (!peca.permanentEnchant) faltando.push(nomeDoSlot(slot));
+    }
+
+    if (avaliados.length === 0) {
+      checks.push({ key: "enchants", label: "Encantos", status: "unconfigured" });
+    } else {
+      const ratio = (avaliados.length - faltando.length) / avaliados.length;
+      checks.push({
+        key: "enchants",
+        label: "Encantos",
+        status: statusFromRatio(ratio),
+        ratio,
+        detail: `${avaliados.length - faltando.length} de ${avaliados.length} peças encantadas`,
+        missing: faltando,
+      });
+    }
   } else {
     checks.push({ key: "enchants", label: "Encantos", status: "unconfigured" });
   }
 
-  // Gemas — qualquer gema conta. Não se exige a gema do guia.
-  if (checklist.expectedGems > 0) {
-    const equipadas = gear.reduce((total, item) => total + (item.gems?.length ?? 0), 0);
-    const ratio = Math.min(equipadas / checklist.expectedGems, 1);
+  // Gemas — qualquer gema conta, não precisa ser a do guia.
+  if (checklist.gemSlots.length > 0) {
+    const avaliados: string[] = [];
+    const faltando: string[] = [];
 
-    checks.push({
-      key: "gems",
-      label: "Gemas",
-      status: statusFromRatio(ratio),
-      ratio,
-      detail: `${equipadas} de ${checklist.expectedGems} soquetes preenchidos`,
-    });
+    for (const slot of checklist.gemSlots) {
+      const peca = pecaNoSlot(slot);
+      if (!peca) continue;
+      avaliados.push(nomeDoSlot(slot));
+      if (!peca.gems || peca.gems.length === 0) faltando.push(nomeDoSlot(slot));
+    }
+
+    if (avaliados.length === 0) {
+      checks.push({ key: "gems", label: "Gemas", status: "unconfigured" });
+    } else {
+      const ratio = (avaliados.length - faltando.length) / avaliados.length;
+      checks.push({
+        key: "gems",
+        label: "Gemas",
+        status: statusFromRatio(ratio),
+        ratio,
+        detail: `${avaliados.length - faltando.length} de ${avaliados.length} soquetes preenchidos`,
+        missing: faltando,
+      });
+    }
   } else {
     checks.push({ key: "gems", label: "Gemas", status: "unconfigured" });
   }

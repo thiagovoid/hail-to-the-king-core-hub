@@ -6,95 +6,120 @@ import {
   type WclCombatantInfo,
 } from "./preparation";
 
+// Slots conferidos no log real: 0 elmo, 1 colar, 2 ombros, 10/11 anéis, 15 arma.
 const CHECKLIST: PreparationChecklist = {
-  recommendedEnchantCount: 7,
-  expectedGems: 3,
+  enchantedSlots: [0, 2, 15],
+  gemSlots: [1, 10, 11],
   consumables: { flask: [], food: [], rune: [], oil: [], potion: [] },
 };
 
 const VAZIO: PreparationChecklist = {
-  recommendedEnchantCount: 0,
-  expectedGems: 0,
+  enchantedSlots: [],
+  gemSlots: [],
   consumables: { flask: [], food: [], rune: [], oil: [], potion: [] },
 };
 
-/** Gear no formato que a WCL devolve de verdade (conferido no log de 15/09). */
-function gear(encantados: number, gemas: number): WclCombatantInfo {
-  const itens = [];
-  for (let i = 0; i < 7; i += 1) {
-    itens.push({ id: 271465 + i, slot: i, ...(i < encantados ? { permanentEnchant: 8017 } : {}) });
-  }
-  itens[0] = { ...itens[0], gems: Array.from({ length: gemas }, () => ({ id: 240983 })) };
-  return { gear: itens };
-}
+/**
+ * Gear como a WCL devolve de verdade: array **esparso**, indexado por posição
+ * mas com o slot real no campo `slot`. Foi confundir os dois que gerou as
+ * notas erradas.
+ */
+const gear = (itens: Array<{ slot: number; name: string; enchant?: boolean; gemas?: number }>): WclCombatantInfo => ({
+  gear: itens.map((item) => ({
+    id: 271465 + item.slot,
+    slot: item.slot,
+    name: item.name,
+    ...(item.enchant ? { permanentEnchant: 8017 } : {}),
+    ...(item.gemas ? { gems: Array.from({ length: item.gemas }, () => ({ id: 240983 })) } : {}),
+  })),
+});
 
-const ratioDe = (resultado: ReturnType<typeof calculatePreparation>, chave: string) =>
-  resultado.checks.find((check) => check.key === chave)?.ratio;
+const checkDe = (r: ReturnType<typeof calculatePreparation>, k: string) => r.checks.find((c) => c.key === k);
 
-describe("calculatePreparation — presença, não BIS", () => {
-  it("dá crédito proporcional em vez de zerar por um encanto faltando", () => {
-    const resultado = calculatePreparation(gear(6, 3), CHECKLIST);
+const COMPLETO = gear([
+  { slot: 0, name: "Elmo", enchant: true },
+  { slot: 2, name: "Ombreiras", enchant: true },
+  { slot: 15, name: "Espada", enchant: true },
+  { slot: 1, name: "Colar", gemas: 1 },
+  { slot: 10, name: "Anel A", gemas: 1 },
+  { slot: 11, name: "Anel B", gemas: 1 },
+]);
 
-    expect(ratioDe(resultado, "enchants")).toBeCloseTo(6 / 7);
-    // 6/7 dos encantos + gemas completas
-    expect(resultado.score).toBe(93);
-  });
+describe("calculatePreparation", () => {
+  it("usa o campo slot, não a posição no array — o array é esparso", () => {
+    // A arma vem por último no array, mas com slot 15. Indexar por posição
+    // apontaria pra peça errada, que foi o bug original.
+    const resultado = calculatePreparation(COMPLETO, CHECKLIST);
 
-  it("não exige a gema recomendada — qualquer gema conta", () => {
-    const outraGema: WclCombatantInfo = {
-      gear: [{ id: 1, slot: 0, permanentEnchant: 1, gems: [{ id: 999 }, { id: 888 }, { id: 777 }] }],
-    };
-
-    const resultado = calculatePreparation(outraGema, CHECKLIST);
-
-    expect(ratioDe(resultado, "gems")).toBe(1);
-  });
-
-  it("não exige o encanto recomendado — qualquer encanto conta", () => {
-    const resultado = calculatePreparation(gear(7, 3), CHECKLIST);
-
-    expect(ratioDe(resultado, "enchants")).toBe(1);
+    expect(checkDe(resultado, "enchants")?.ratio).toBe(1);
     expect(resultado.score).toBe(100);
   });
 
-  it("não passa de 100 quem tem mais gemas que o mínimo de joia", () => {
-    const resultado = calculatePreparation(gear(7, 8), CHECKLIST);
+  it("nomeia em português o slot que falta, não o item (que vem no idioma do log)", () => {
+    const semArma = gear([
+      { slot: 0, name: "Elmo", enchant: true },
+      { slot: 2, name: "Ombreiras", enchant: true },
+      { slot: 15, name: "Espada" },
+      { slot: 1, name: "Colar", gemas: 1 },
+      { slot: 10, name: "Anel A", gemas: 1 },
+      { slot: 11, name: "Anel B" },
+    ]);
 
-    expect(ratioDe(resultado, "gems")).toBe(1);
-    expect(resultado.score).toBe(100);
+    const resultado = calculatePreparation(semArma, CHECKLIST);
+
+    expect(checkDe(resultado, "enchants")?.missing).toEqual(["Arma"]);
+    expect(checkDe(resultado, "gems")?.missing).toEqual(["Anel"]);
   });
 
-  it("item de slot vazio não conta como encanto faltando", () => {
-    const comVazio: WclCombatantInfo = {
+  it("dá crédito proporcional em vez de zerar por uma peça", () => {
+    const resultado = calculatePreparation(
+      gear([
+        { slot: 0, name: "Elmo", enchant: true },
+        { slot: 2, name: "Ombreiras", enchant: true },
+        { slot: 15, name: "Espada" },
+        { slot: 1, name: "Colar", gemas: 1 },
+        { slot: 10, name: "Anel A", gemas: 1 },
+        { slot: 11, name: "Anel B", gemas: 1 },
+      ]),
+      CHECKLIST
+    );
+
+    // 2 de 3 encantos + gemas completas
+    expect(checkDe(resultado, "enchants")?.ratio).toBeCloseTo(2 / 3);
+    expect(resultado.score).toBe(83);
+  });
+
+  it("qualquer encanto e qualquer gema contam — não precisa ser o BIS", () => {
+    const foraDoBis: WclCombatantInfo = {
       gear: [
-        { id: 0, slot: 3 },
-        { id: 1, slot: 0, permanentEnchant: 1 },
+        { id: 1, slot: 0, name: "Elmo", permanentEnchant: 99999 },
+        { id: 2, slot: 2, name: "Ombreiras", permanentEnchant: 99998 },
+        { id: 3, slot: 15, name: "Espada", permanentEnchant: 99997 },
+        { id: 4, slot: 1, name: "Colar", gems: [{ id: 111 }] },
+        { id: 5, slot: 10, name: "Anel A", gems: [{ id: 222 }] },
+        { id: 6, slot: 11, name: "Anel B", gems: [{ id: 333 }] },
       ],
     };
 
-    const resultado = calculatePreparation(comVazio, { ...CHECKLIST, recommendedEnchantCount: 1 });
-
-    expect(ratioDe(resultado, "enchants")).toBe(1);
+    expect(calculatePreparation(foraDoBis, CHECKLIST).score).toBe(100);
   });
 
-  it("quem não encantou nada fica com zero nessa checagem, mas não na nota toda", () => {
-    const resultado = calculatePreparation(gear(0, 3), CHECKLIST);
+  it("slot vazio não conta como falta — não dá pra encantar o que não existe", () => {
+    const semSecundaria = calculatePreparation(COMPLETO, { ...CHECKLIST, enchantedSlots: [0, 2, 15, 16] });
 
-    expect(ratioDe(resultado, "enchants")).toBe(0);
-    expect(resultado.score).toBe(50);
+    expect(checkDe(semSecundaria, "enchants")?.ratio).toBe(1);
+    expect(checkDe(semSecundaria, "enchants")?.detail).toBe("3 de 3 peças encantadas");
   });
 
   it("checagem não configurada fica de fora da conta, não conta como falha", () => {
-    const soGemas: PreparationChecklist = { ...VAZIO, expectedGems: 3 };
+    const soGemas = calculatePreparation(COMPLETO, { ...VAZIO, gemSlots: [1, 10, 11] });
 
-    const resultado = calculatePreparation(gear(0, 3), soGemas);
-
-    expect(resultado.score).toBe(100);
-    expect(resultado.checks.find((c) => c.key === "enchants")?.status).toBe("unconfigured");
+    expect(soGemas.score).toBe(100);
+    expect(checkDe(soGemas, "enchants")?.status).toBe("unconfigured");
   });
 
   it("devolve score undefined quando nada é avaliável — nota ausente, não zero", () => {
-    expect(calculatePreparation(gear(7, 3), VAZIO).score).toBeUndefined();
+    expect(calculatePreparation(COMPLETO, VAZIO).score).toBeUndefined();
     expect(calculatePreparation(undefined, CHECKLIST).score).toBeUndefined();
   });
 });

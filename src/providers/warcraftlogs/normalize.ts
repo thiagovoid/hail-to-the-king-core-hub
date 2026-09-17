@@ -170,6 +170,8 @@ export interface NormalizedRunPlayer {
   deaths: number;
   /** 0-100; undefined quando o checklist não está configurado ou o log não trouxe combatantInfo. */
   preparation?: number;
+  /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
+  preparationMissing?: string[];
 }
 
 export interface WclRankingEntry {
@@ -284,8 +286,14 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     }
 
     const checklist = resolvePreparationChecklist?.(player.id);
-    const preparation = checklist
-      ? calculatePreparation(findCombatantInfo(playerDetails, player.profile.name), checklist).score
+    const resultadoPreparacao = checklist
+      ? calculatePreparation(findCombatantInfo(playerDetails, player.profile.name), checklist)
+      : undefined;
+    const preparation = resultadoPreparacao?.score;
+    // Junta o que faltou nas duas checagens, sem repetir slot (os dois anéis
+    // viram um "Anel" só na tela).
+    const preparationMissing = resultadoPreparacao
+      ? [...new Set(resultadoPreparacao.checks.flatMap((check) => check.missing ?? []))]
       : undefined;
 
     result.push({
@@ -295,6 +303,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       itemLevel: entry.itemLevel,
       deaths,
       preparation,
+      ...(preparationMissing?.length ? { preparationMissing } : {}),
     });
   }
 

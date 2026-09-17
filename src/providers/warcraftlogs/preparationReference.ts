@@ -65,43 +65,94 @@ const CONSUMABLE_TYPE_KEYS: Record<string, keyof PreparationChecklist["consumabl
 };
 
 /**
- * Soquetes que qualquer personagem tem, independente de spec ou tier: um no
- * colar e um em cada anel. É o próprio guia do Wowhead que afirma isso
- * ("each piece of jewellery always comes with one socket each").
+ * Rótulo de slot do guia → número de slot da WCL (campo `slot` do item).
  *
- * Soquete extra em armadura não entra: a WCL lista as gemas presentes, nunca
- * os buracos vazios, então exigir mais que isso seria chutar contra o
- * jogador.
+ * **Conferido contra log real**, não suposto: o diagnóstico imprimiu o nome
+ * de cada peça do Xúlio no report JCvk27bDL6Zdm18j e cada número foi lido do
+ * item que estava lá (0 = Warhelm, 2 = Pauldrons, 14 = Cloak, 15 = Warblade).
+ *
+ * O erro anterior não era este mapa e sim usar a POSIÇÃO no array: ele é
+ * esparso (pula camisa e mão secundária) e chega a repetir slot de berloque,
+ * então gear[15] não era a arma.
+ *
+ * Os apelidos são as grafias que aparecem de fato nos 19 guias coletados.
  */
-const SOQUETES_DE_JOIA = 3;
+const GEAR_SLOT_NUMBERS: Record<string, number[]> = {
+  helm: [0],
+  helmet: [0],
+  head: [0],
+  neck: [1],
+  shoulder: [2],
+  shoulders: [2],
+  chest: [4],
+  belt: [5],
+  waist: [5],
+  legs: [6],
+  boots: [7],
+  feet: [7],
+  bracers: [8],
+  wrist: [8],
+  wrists: [8],
+  hands: [9],
+  gloves: [9],
+  // O guia recomenda um encanto só, mas os dois anéis contam.
+  ring: [10, 11],
+  rings: [10, 11],
+  finger: [10, 11],
+  back: [14],
+  cloak: [14],
+  weapon: [15],
+  "main hand": [15],
+  mainhand: [15],
+  "off hand": [16],
+  offhand: [16],
+};
+
+/**
+ * Slots que sempre têm soquete: colar e os dois anéis. É o próprio guia que
+ * afirma ("each piece of jewellery always comes with one socket each").
+ */
+const SLOTS_DE_JOIA = [1, 10, 11];
 
 export interface BuildChecklistResult {
   checklist: PreparationChecklist;
+  /** Rótulos do guia que não sabemos traduzir — reportados, não ignorados. */
+  unknownSlotLabels: string[];
 }
 
 /**
  * Monta o checklist de uma spec a partir da recomendação do Wowhead.
  *
- * O guia entra só como **denominador**: quantos encantos se espera ver no
- * personagem. Qual encanto é indiferente — ver a nota sobre presença vs BIS
- * em preparation.ts.
+ * O guia diz **onde** encantar, não **com o quê**: qual encanto ou gema o
+ * jogador escolheu é indiferente. Ele publica BIS, e optar por algo mais
+ * barato é decisão legítima de quem joga, não descuido.
  *
  * **Consumíveis ficam de fora do cálculo por ora, de propósito.** O guia dá o
  * *item* id; a WCL entrega a aura pelo *spell* id, com o nome no idioma do
- * cliente de quem logou. Cruzar por nome quebraria no caso mais comum aqui —
- * raider com cliente em português contra nome de item em inglês — e contaria
- * como "faltou flask" um erro nosso de tradução. Pra ligar, rodar
- * `npm run wcl:inspect-preparation -- --report=<codigo>` e pegar os spell ids
- * reais. (No log de 15/09 o combatantInfo veio sem auras nenhuma, então isso
- * ainda depende de descobrir qual query as expõe.)
+ * cliente. Pra ligar, rodar `npm run wcl:inspect-preparation` e pegar os
+ * spell ids reais. (No log de 15/09 o combatantInfo veio sem aura nenhuma,
+ * então isso ainda depende de descobrir qual query as expõe.)
  */
 export function buildChecklistFromReference(entry: PreparationReferenceEntry): BuildChecklistResult {
+  const slots = new Set<number>();
+  const unknownSlotLabels: string[] = [];
+
+  for (const enchant of entry.enchants) {
+    const numeros = GEAR_SLOT_NUMBERS[normalizeKeyPart(enchant.slot)];
+    if (!numeros) {
+      if (!unknownSlotLabels.includes(enchant.slot)) unknownSlotLabels.push(enchant.slot);
+      continue;
+    }
+    for (const numero of numeros) slots.add(numero);
+  }
+
   return {
     checklist: {
-      recommendedEnchantCount: entry.enchants.length,
-      expectedGems: entry.gems.length > 0 ? SOQUETES_DE_JOIA : 0,
+      enchantedSlots: [...slots].sort((a, b) => a - b),
+      gemSlots: entry.gems.length > 0 ? SLOTS_DE_JOIA : [],
       consumables: { flask: [], food: [], rune: [], oil: [], potion: [] },
     },
+    unknownSlotLabels,
   };
 }
 

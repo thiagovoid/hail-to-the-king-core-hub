@@ -235,6 +235,27 @@ describe('buildPlayerSeasonAverage', () => {
     expect(average.runs).toBe(3);
   });
 
+  it('usa a preparação da última noite, não a média — é estado, não desempenho', () => {
+    // Quem arrumou o gear esta semana não pode seguir penalizado pelas
+    // semanas em que estava sem encanto.
+    const comPreparacao = [
+      { playerId: 'p', week: 1, date: '2026-09-01', deaths: 0, preparation: 20 },
+      { playerId: 'p', week: 2, date: '2026-09-08', deaths: 0, preparation: 60 },
+      { playerId: 'p', week: 3, date: '2026-09-15', deaths: 0, preparation: 100 },
+    ];
+
+    expect(buildPlayerSeasonAverage('p', comPreparacao).preparation).toBe(100);
+  });
+
+  it('ignora noite sem preparação e pega a última que tem', () => {
+    const comLacuna = [
+      { playerId: 'p', week: 2, date: '2026-09-08', deaths: 0, preparation: 75 },
+      { playerId: 'p', week: 3, date: '2026-09-15', deaths: 0 },
+    ];
+
+    expect(buildPlayerSeasonAverage('p', comLacuna).preparation).toBe(75);
+  });
+
   it('usa o último item level registrado, não a média — é estado atual', () => {
     expect(buildPlayerSeasonAverage('p', history).itemLevel).toBe(310);
   });

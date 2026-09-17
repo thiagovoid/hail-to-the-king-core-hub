@@ -44,6 +44,11 @@ const history = getPlayerHistory(
 
 // Média da temporada: mesma base pro resumo, pras metas e pro Score Geral.
 const seasonAverage = buildPlayerSeasonAverage(player.id, history);
+
+// Mesma noite que define a nota de Preparação (a última com dado), pra a lista
+// e o número nunca discordarem.
+const preparationMissing =
+  [...history].reverse().find((run) => run.preparation !== undefined)?.preparationMissing ?? [];
 const hasData = history.length > 0;
 
 const dpsHistory = history
@@ -179,6 +184,7 @@ const attendance = calculateAttendance(weeks, player.id);
           trend={trend}
           attendance={attendance}
           runs={seasonAverage.runs}
+          preparationMissing={preparationMissing}
         />
       )
     }

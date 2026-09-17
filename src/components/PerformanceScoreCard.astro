@@ -8,9 +8,14 @@ interface Props {
   attendance: number;
   /** Quantas runs entraram na conta — deixa a nota rastreável. */
   runs: number;
+  /**
+   * Slots sem encanto ou sem gema na última noite. Mostrado sob a barra de
+   * Preparação: a nota sozinha não diz o que fazer, a lista diz.
+   */
+  preparationMissing?: string[];
 }
 
-const { score, trend, attendance, runs } = Astro.props;
+const { score, trend, attendance, runs, preparationMissing = [] } = Astro.props;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
 // não tendência — não vale pintar de verde nem de vermelho.
@@ -113,6 +118,15 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                 />
               )}
             </div>
+
+            {/* A nota sozinha não diz o que fazer. Só aparece quando há o que
+                arrumar — quem está com tudo pronto não vê lista vazia. */}
+            {dimension.key === 'preparation' && preparationMissing.length > 0 && (
+              <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
+                <span class="text-slate-400">Falta arrumar:</span>{' '}
+                {preparationMissing.join(', ')}
+              </p>
+            )}
           </div>
         ))
       }

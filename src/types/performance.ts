@@ -42,6 +42,11 @@ export interface PlayerPerformance {
    * WarcraftLogs pass over `combatantInfo` (gear) plus the consumable buffs.
    */
   preparation?: number;
+  /**
+   * Slots em português que estão sem encanto ou sem gema. É o que explica,
+   * na tela, por que a nota não é 100.
+   */
+  preparationMissing?: string[];
 
   /**
    * Mechanics-related failures.
