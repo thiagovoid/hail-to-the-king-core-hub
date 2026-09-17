@@ -149,7 +149,6 @@ async function loadPreparationResolver(
 
   const byPlayer = new Map<string, PreparationChecklist>();
   const missingSpecs: string[] = [];
-  const unknownSlots = new Set<string>();
 
   for (const player of roster) {
     const entry = reference.specs[specKey(player.class, player.spec)];
@@ -158,20 +157,13 @@ async function loadPreparationResolver(
       continue;
     }
 
-    const { checklist, unknownSlotLabels } = buildChecklistFromReference(entry);
-    unknownSlotLabels.forEach((label) => unknownSlots.add(label));
+    const { checklist } = buildChecklistFromReference(entry);
     byPlayer.set(player.id, checklist);
   }
 
   if (missingSpecs.length > 0) {
     console.warn(
       `Sem recomendação do Wowhead pra ${missingSpecs.length} jogador(es) — ficam sem nota de Preparação:\n  ${missingSpecs.join("\n  ")}`
-    );
-  }
-  if (unknownSlots.size > 0) {
-    console.warn(
-      `Rótulos de slot não reconhecidos no guia (encanto ignorado): ${[...unknownSlots].join(", ")}. ` +
-        "Adicione o apelido em src/providers/warcraftlogs/preparationReference.ts."
     );
   }
   if (byPlayer.size === 0) return undefined;

@@ -1,24 +1,31 @@
 /**
- * Preparação: quanto do "dever de casa" antes da raid o jogador cumpriu —
- * gemas, encantos, flask, comida, poção, runa e óleo.
+ * Preparação: quanto do "dever de casa" antes da raid o jogador cumpriu.
+ *
+ * **A régua é presença, não BIS.** O Wowhead lista o melhor item possível,
+ * mas na prática se escolhe encanto mais barato, gema de outra stat, item
+ * que não compensa. Isso é decisão legítima e não pode virar nota baixa.
+ * Então a medida é "encantou?" e "gemou?", nunca "usou exatamente o que o
+ * guia mandou".
+ *
+ * Por isso também não existe mapa de índice→slot aqui. A versão anterior
+ * conferia slot a slot contra uma ordem de array suposta, que não batia com
+ * o que a WCL devolve — e produzia zeros falsos. Contar quantos itens têm
+ * encanto não depende de ordem nenhuma.
+ *
+ * Cada checagem vale uma proporção de 0 a 1, então a nota é contínua: seis
+ * de sete encantos dá 86, não zero.
  *
  * Tudo aqui é puro: recebe o `combatantInfo` que a WCL já devolve na tabela
- * Summary e um checklist de configuração, e devolve a nota. Sem rede.
- *
- * O checklist não é escrito na mão: vem de `preparation-reference.json`, que
- * o coletor do Wowhead gera por spec a cada temporada — ver
- * `preparationReference.ts`, que faz a tradução.
- *
- * Enquanto uma checagem não estiver configurada ela fica `unconfigured` e sai
- * da conta, em vez de contar como falha e punir o jogador por uma lacuna
- * nossa.
+ * Summary e o checklist derivado do guia, e devolve a nota. Sem rede.
  */
 
 export interface WclGearItem {
   id: number;
+  /** Slot autoritativo informado pela WCL — não depende da posição no array. */
   slot?: number;
   /** 0 ou ausente = sem encanto permanente. */
   permanentEnchant?: number;
+  permanentEnchantName?: string;
   gems?: Array<{ id: number }>;
 }
 
@@ -34,19 +41,19 @@ export interface WclCombatantInfo {
 
 export interface PreparationChecklist {
   /**
-   * Índices de slot no array `gear` da WCL que exigem encanto permanente
-   * no tier atual (ex: costas, peito, pulsos, pernas, pés, anéis, arma).
-   * Vazio = checagem não configurada.
+   * Quantos encantos o guia da spec recomenda. Serve de denominador, não de
+   * lista: qualquer encanto no personagem conta pro numerador.
+   * 0 = checagem não configurada.
    */
-  enchantedSlots: number[];
+  recommendedEnchantCount: number;
   /**
-   * Item ids das gemas recomendadas pra spec. Vazio = não configurado.
-   *
-   * Só dá pra afirmar se a gema equipada é a certa — quantas *deveria* ter
-   * não é observável: a WCL lista as gemas presentes, não os soquetes
-   * vazios. Então soquete vazio não aparece como falha aqui.
+   * Quantos soquetes se espera que estejam preenchidos. O próprio guia diz
+   * que todo mundo tem no mínimo três — colar e os dois anéis sempre vêm
+   * com um soquete cada. Soquete vazio em outra peça não é detectável: a
+   * WCL só lista as gemas presentes, nunca os buracos.
+   * 0 = checagem não configurada.
    */
-  recommendedGemIds: number[];
+  expectedGems: number;
   /** IDs de spell do buff de cada consumível. Lista vazia = não configurado. */
   consumables: {
     flask: number[];
@@ -57,20 +64,23 @@ export interface PreparationChecklist {
   };
 }
 
-export type PreparationStatus = "ok" | "missing" | "unconfigured";
+export type PreparationStatus = "ok" | "partial" | "missing" | "unconfigured";
 
 export interface PreparationCheck {
   key: "gems" | "enchants" | "flask" | "food" | "rune" | "oil" | "potion";
   label: string;
   status: PreparationStatus;
-  /** Detalhe legível, ex: "3 de 5 slots sem encanto". */
+  /** 0 a 1. undefined quando a checagem não pôde ser avaliada. */
+  ratio?: number;
+  /** Detalhe legível, ex: "6 de 7 itens encantados". */
   detail?: string;
 }
 
 export interface PreparationResult {
   /**
-   * 0-100 — proporção das checagens avaliáveis que passaram. `undefined`
-   * quando nenhuma pôde ser avaliada (sem combatantInfo ou checklist vazio).
+   * 0-100 — média das checagens avaliáveis. `undefined` quando nenhuma pôde
+   * ser avaliada (sem combatantInfo ou checklist vazio), nunca zero: a
+   * lacuna seria nossa, não do jogador.
    */
   score?: number;
   checks: PreparationCheck[];
@@ -88,6 +98,11 @@ function hasAura(auras: WclAura[], spellIds: number[]): boolean {
   return auras.some((aura) => aura.ability !== undefined && spellIds.includes(aura.ability));
 }
 
+function statusFromRatio(ratio: number): PreparationStatus {
+  if (ratio >= 1) return "ok";
+  return ratio > 0 ? "partial" : "missing";
+}
+
 export function calculatePreparation(
   combatantInfo: WclCombatantInfo | undefined,
   checklist: PreparationChecklist
@@ -101,64 +116,62 @@ export function calculatePreparation(
   const auras = combatantInfo.auras ?? [];
   const checks: PreparationCheck[] = [];
 
-  // Gemas — item id do Wowhead e da WCL são o mesmo espaço de id, então o
-  // cruzamento é direto e não depende do idioma do cliente.
-  if (checklist.recommendedGemIds.length > 0) {
-    const worn = gear.flatMap((item) => item.gems ?? []).map((gem) => gem.id);
-    const recommended = new Set(checklist.recommendedGemIds);
-    const matching = worn.filter((id) => recommended.has(id)).length;
-
-    checks.push({
-      key: "gems",
-      label: "Gemas",
-      status: worn.length > 0 && matching === worn.length ? "ok" : "missing",
-      detail:
-        worn.length === 0 ? "nenhuma gema equipada" : `${matching} de ${worn.length} gemas são as recomendadas`,
-    });
-  } else {
-    checks.push({ key: "gems", label: "Gemas", status: "unconfigured" });
-  }
-
-  // Encantos
-  if (checklist.enchantedSlots.length > 0) {
-    const missing = checklist.enchantedSlots.filter((slot) => {
-      const item = gear[slot];
-      // Slot vazio (ex: off-hand de quem usa duas mãos) não conta como falha.
-      if (!item || !item.id) return false;
-      return !item.permanentEnchant;
-    });
+  // Encantos — conta itens encantados, sem olhar qual encanto nem em que
+  // slot. Item vazio (slot sem peça) não entra na conta de jeito nenhum.
+  if (checklist.recommendedEnchantCount > 0) {
+    const encantados = gear.filter((item) => item.id && item.permanentEnchant).length;
+    const ratio = Math.min(encantados / checklist.recommendedEnchantCount, 1);
 
     checks.push({
       key: "enchants",
       label: "Encantos",
-      status: missing.length === 0 ? "ok" : "missing",
-      detail: `${checklist.enchantedSlots.length - missing.length} de ${checklist.enchantedSlots.length} slots`,
+      status: statusFromRatio(ratio),
+      ratio,
+      detail: `${encantados} de ${checklist.recommendedEnchantCount} itens encantados`,
     });
   } else {
     checks.push({ key: "enchants", label: "Encantos", status: "unconfigured" });
   }
 
-  // Consumíveis
+  // Gemas — qualquer gema conta. Não se exige a gema do guia.
+  if (checklist.expectedGems > 0) {
+    const equipadas = gear.reduce((total, item) => total + (item.gems?.length ?? 0), 0);
+    const ratio = Math.min(equipadas / checklist.expectedGems, 1);
+
+    checks.push({
+      key: "gems",
+      label: "Gemas",
+      status: statusFromRatio(ratio),
+      ratio,
+      detail: `${equipadas} de ${checklist.expectedGems} soquetes preenchidos`,
+    });
+  } else {
+    checks.push({ key: "gems", label: "Gemas", status: "unconfigured" });
+  }
+
+  // Consumíveis — presença da aura, sem meio-termo.
   for (const key of ["flask", "food", "rune", "oil", "potion"] as const) {
     const spellIds = checklist.consumables[key];
     if (spellIds.length === 0) {
       checks.push({ key, label: CONSUMABLE_LABELS[key], status: "unconfigured" });
       continue;
     }
+    const presente = hasAura(auras, spellIds);
     checks.push({
       key,
       label: CONSUMABLE_LABELS[key],
-      status: hasAura(auras, spellIds) ? "ok" : "missing",
+      status: presente ? "ok" : "missing",
+      ratio: presente ? 1 : 0,
     });
   }
 
-  const evaluated = checks.filter((check) => check.status !== "unconfigured");
-  if (evaluated.length === 0) {
+  const avaliaveis = checks.filter((check) => check.ratio !== undefined);
+  if (avaliaveis.length === 0) {
     return { score: undefined, checks };
   }
 
-  const passed = evaluated.filter((check) => check.status === "ok").length;
-  return { score: Math.round((passed / evaluated.length) * 100), checks };
+  const media = avaliaveis.reduce((sum, check) => sum + (check.ratio ?? 0), 0) / avaliaveis.length;
+  return { score: Math.round(media * 100), checks };
 }
 
 /**

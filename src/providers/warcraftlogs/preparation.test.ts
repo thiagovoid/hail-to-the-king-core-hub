@@ -6,115 +6,96 @@ import {
   type WclCombatantInfo,
 } from "./preparation";
 
-const FULL_CHECKLIST: PreparationChecklist = {
-  enchantedSlots: [4, 6, 14],
-  recommendedGemIds: [9001, 9002, 9003],
-  consumables: { flask: [1001], food: [1002], rune: [1003], oil: [1004], potion: [1005] },
-};
-
-const EMPTY_CHECKLIST: PreparationChecklist = {
-  enchantedSlots: [],
-  recommendedGemIds: [],
+const CHECKLIST: PreparationChecklist = {
+  recommendedEnchantCount: 7,
+  expectedGems: 3,
   consumables: { flask: [], food: [], rune: [], oil: [], potion: [] },
 };
 
-function combatant(overrides: Partial<WclCombatantInfo> = {}): WclCombatantInfo {
-  return {
-    gear: [
-      { id: 1 }, // 0
-      { id: 2 }, // 1
-      { id: 3 }, // 2
-      { id: 4 }, // 3
-      { id: 5, permanentEnchant: 7001, gems: [{ id: 9001 }] }, // 4 peito
-      { id: 6 }, // 5
-      { id: 7, permanentEnchant: 7002, gems: [{ id: 9002 }] }, // 6 pernas
-      { id: 8 }, // 7
-      { id: 9 }, // 8
-      { id: 10 }, // 9
-      { id: 11 }, // 10
-      { id: 12 }, // 11
-      { id: 13 }, // 12
-      { id: 14 }, // 13
-      { id: 15, permanentEnchant: 7003, gems: [{ id: 9003 }] }, // 14 costas
-    ],
-    auras: [{ ability: 1001 }, { ability: 1002 }, { ability: 1003 }, { ability: 1004 }, { ability: 1005 }],
-    ...overrides,
-  };
+const VAZIO: PreparationChecklist = {
+  recommendedEnchantCount: 0,
+  expectedGems: 0,
+  consumables: { flask: [], food: [], rune: [], oil: [], potion: [] },
+};
+
+/** Gear no formato que a WCL devolve de verdade (conferido no log de 15/09). */
+function gear(encantados: number, gemas: number): WclCombatantInfo {
+  const itens = [];
+  for (let i = 0; i < 7; i += 1) {
+    itens.push({ id: 271465 + i, slot: i, ...(i < encantados ? { permanentEnchant: 8017 } : {}) });
+  }
+  itens[0] = { ...itens[0], gems: Array.from({ length: gemas }, () => ({ id: 240983 })) };
+  return { gear: itens };
 }
 
-const statusOf = (result: ReturnType<typeof calculatePreparation>, key: string) =>
-  result.checks.find((check) => check.key === key)?.status;
+const ratioDe = (resultado: ReturnType<typeof calculatePreparation>, chave: string) =>
+  resultado.checks.find((check) => check.key === chave)?.ratio;
 
-describe("calculatePreparation", () => {
-  it("dá 100 quando tudo do checklist está cumprido", () => {
-    const result = calculatePreparation(combatant(), FULL_CHECKLIST);
+describe("calculatePreparation — presença, não BIS", () => {
+  it("dá crédito proporcional em vez de zerar por um encanto faltando", () => {
+    const resultado = calculatePreparation(gear(6, 3), CHECKLIST);
 
-    expect(result.score).toBe(100);
-    expect(result.checks.every((check) => check.status === "ok")).toBe(true);
+    expect(ratioDe(resultado, "enchants")).toBeCloseTo(6 / 7);
+    // 6/7 dos encantos + gemas completas
+    expect(resultado.score).toBe(93);
   });
 
-  it("conta a proporção de checagens cumpridas", () => {
-    // sem flask e sem poção → 5 de 7
-    const result = calculatePreparation(
-      combatant({ auras: [{ ability: 1002 }, { ability: 1003 }, { ability: 1004 }] }),
-      FULL_CHECKLIST
-    );
+  it("não exige a gema recomendada — qualquer gema conta", () => {
+    const outraGema: WclCombatantInfo = {
+      gear: [{ id: 1, slot: 0, permanentEnchant: 1, gems: [{ id: 999 }, { id: 888 }, { id: 777 }] }],
+    };
 
-    expect(statusOf(result, "flask")).toBe("missing");
-    expect(statusOf(result, "potion")).toBe("missing");
-    expect(result.score).toBe(Math.round((5 / 7) * 100));
+    const resultado = calculatePreparation(outraGema, CHECKLIST);
+
+    expect(ratioDe(resultado, "gems")).toBe(1);
   });
 
-  it("reprova gema fora da recomendação e reporta quantas batem", () => {
-    const result = calculatePreparation(
-      combatant({
-        gear: [
-          { id: 5, permanentEnchant: 7001, gems: [{ id: 9001 }] },
-          { id: 7, permanentEnchant: 7002, gems: [{ id: 8888 }] }, // gema errada
-        ],
-      }),
-      FULL_CHECKLIST
-    );
-    const gems = result.checks.find((check) => check.key === "gems");
+  it("não exige o encanto recomendado — qualquer encanto conta", () => {
+    const resultado = calculatePreparation(gear(7, 3), CHECKLIST);
 
-    expect(gems?.status).toBe("missing");
-    expect(gems?.detail).toBe("1 de 2 gemas são as recomendadas");
+    expect(ratioDe(resultado, "enchants")).toBe(1);
+    expect(resultado.score).toBe(100);
   });
 
-  it("reprova quem está sem gema nenhuma", () => {
-    const result = calculatePreparation(combatant({ gear: [{ id: 5, permanentEnchant: 7001 }] }), FULL_CHECKLIST);
-    const gems = result.checks.find((check) => check.key === "gems");
+  it("não passa de 100 quem tem mais gemas que o mínimo de joia", () => {
+    const resultado = calculatePreparation(gear(7, 8), CHECKLIST);
 
-    expect(gems?.status).toBe("missing");
-    expect(gems?.detail).toBe("nenhuma gema equipada");
+    expect(ratioDe(resultado, "gems")).toBe(1);
+    expect(resultado.score).toBe(100);
   });
 
-  it("não conta slot vazio como encanto faltando (off-hand de arma de duas mãos)", () => {
-    const gear = combatant().gear!.slice();
-    gear[14] = { id: 0 }; // costas ausente do log
+  it("item de slot vazio não conta como encanto faltando", () => {
+    const comVazio: WclCombatantInfo = {
+      gear: [
+        { id: 0, slot: 3 },
+        { id: 1, slot: 0, permanentEnchant: 1 },
+      ],
+    };
 
-    const result = calculatePreparation(combatant({ gear }), FULL_CHECKLIST);
+    const resultado = calculatePreparation(comVazio, { ...CHECKLIST, recommendedEnchantCount: 1 });
 
-    expect(statusOf(result, "enchants")).toBe("ok");
+    expect(ratioDe(resultado, "enchants")).toBe(1);
+  });
+
+  it("quem não encantou nada fica com zero nessa checagem, mas não na nota toda", () => {
+    const resultado = calculatePreparation(gear(0, 3), CHECKLIST);
+
+    expect(ratioDe(resultado, "enchants")).toBe(0);
+    expect(resultado.score).toBe(50);
   });
 
   it("checagem não configurada fica de fora da conta, não conta como falha", () => {
-    const checklist: PreparationChecklist = {
-      ...EMPTY_CHECKLIST,
-      consumables: { ...EMPTY_CHECKLIST.consumables, flask: [1001] },
-    };
+    const soGemas: PreparationChecklist = { ...VAZIO, expectedGems: 3 };
 
-    const result = calculatePreparation(combatant(), checklist);
+    const resultado = calculatePreparation(gear(0, 3), soGemas);
 
-    // só flask é avaliável, e está presente → 100
-    expect(result.score).toBe(100);
-    expect(statusOf(result, "gems")).toBe("unconfigured");
-    expect(statusOf(result, "enchants")).toBe("unconfigured");
+    expect(resultado.score).toBe(100);
+    expect(resultado.checks.find((c) => c.key === "enchants")?.status).toBe("unconfigured");
   });
 
   it("devolve score undefined quando nada é avaliável — nota ausente, não zero", () => {
-    expect(calculatePreparation(combatant(), EMPTY_CHECKLIST).score).toBeUndefined();
-    expect(calculatePreparation(undefined, FULL_CHECKLIST).score).toBeUndefined();
+    expect(calculatePreparation(gear(7, 3), VAZIO).score).toBeUndefined();
+    expect(calculatePreparation(undefined, CHECKLIST).score).toBeUndefined();
   });
 });
 

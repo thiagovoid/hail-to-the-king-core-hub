@@ -2,13 +2,13 @@
  * Traduz a referência coletada do Wowhead (`preparation-reference.json`) no
  * checklist que `calculatePreparation` consome.
  *
- * A separação existe porque as duas pontas falam línguas diferentes:
+ * O guia serve de **denominador**, não de lista de compras: quantos encantos
+ * se espera ver no personagem e quantos soquetes deveriam estar preenchidos.
+ * Qual gema ou encanto o jogador escolheu é indiferente — o Wowhead publica
+ * BIS, e optar por algo mais barato é decisão legítima, não descuido.
  *
- *   Wowhead  → rótulo de slot em inglês ("Boots") e **item** id da gema/encanto
- *   WCL      → índice numérico no array `gear` e **spell** id da aura
- *
- * O que dá pra cruzar sem depender de locale é traduzido aqui. O que não dá
- * fica `unconfigured` de propósito — ver a nota sobre consumíveis no fim.
+ * O que não dá pra cruzar fica `unconfigured` de propósito — ver a nota sobre
+ * consumíveis mais abaixo.
  */
 
 import type { PreparationChecklist } from "./preparation";
@@ -48,45 +48,6 @@ export function specKey(wowClass: string, spec: string): string {
   return `${normalizeKeyPart(wowClass)}|${normalizeKeyPart(spec)}`;
 }
 
-/**
- * Rótulo de slot do guia → índice no array `gear` da WCL, que segue a ordem
- * clássica de equipamento (0 = cabeça … 16 = mão secundária).
- *
- * Os apelidos não são chute: são as grafias que aparecem de fato nos 19 guias
- * coletados — o mesmo slot vem como "Boots" num guia e "Feet" em outro,
- * "Helm"/"Head", "Shoulder"/"Shoulders", "Ring"/"Rings".
- */
-const GEAR_SLOT_INDEX: Record<string, number[]> = {
-  helm: [0],
-  helmet: [0],
-  head: [0],
-  neck: [1],
-  shoulder: [2],
-  shoulders: [2],
-  chest: [4],
-  belt: [5],
-  waist: [5],
-  legs: [6],
-  boots: [7],
-  feet: [7],
-  bracers: [8],
-  wrist: [8],
-  wrists: [8],
-  hands: [9],
-  gloves: [9],
-  // Os dois anéis são encantáveis e o guia recomenda um encanto só pros dois.
-  ring: [10, 11],
-  rings: [10, 11],
-  finger: [10, 11],
-  back: [14],
-  cloak: [14],
-  weapon: [15],
-  "main hand": [15],
-  mainhand: [15],
-  "off hand": [16],
-  offhand: [16],
-};
-
 /** Tipo de consumível no guia → chave da checagem. */
 const CONSUMABLE_TYPE_KEYS: Record<string, keyof PreparationChecklist["consumables"]> = {
   flask: "flask",
@@ -103,60 +64,44 @@ const CONSUMABLE_TYPE_KEYS: Record<string, keyof PreparationChecklist["consumabl
   // meio da luta. Não medem preparação.
 };
 
-export interface ResolveEnchantedSlotsResult {
-  slots: number[];
-  /** Rótulos que o guia trouxe e não sabemos traduzir — reportados, não ignorados em silêncio. */
-  unknownLabels: string[];
-}
-
-export function resolveEnchantedSlots(
-  enchants: PreparationReferenceEntry["enchants"]
-): ResolveEnchantedSlotsResult {
-  const slots = new Set<number>();
-  const unknownLabels: string[] = [];
-
-  for (const enchant of enchants) {
-    const indices = GEAR_SLOT_INDEX[normalizeKeyPart(enchant.slot)];
-    if (!indices) {
-      if (!unknownLabels.includes(enchant.slot)) unknownLabels.push(enchant.slot);
-      continue;
-    }
-    for (const index of indices) slots.add(index);
-  }
-
-  return { slots: [...slots].sort((a, b) => a - b), unknownLabels };
-}
+/**
+ * Soquetes que qualquer personagem tem, independente de spec ou tier: um no
+ * colar e um em cada anel. É o próprio guia do Wowhead que afirma isso
+ * ("each piece of jewellery always comes with one socket each").
+ *
+ * Soquete extra em armadura não entra: a WCL lista as gemas presentes, nunca
+ * os buracos vazios, então exigir mais que isso seria chutar contra o
+ * jogador.
+ */
+const SOQUETES_DE_JOIA = 3;
 
 export interface BuildChecklistResult {
   checklist: PreparationChecklist;
-  unknownSlotLabels: string[];
 }
 
 /**
  * Monta o checklist de uma spec a partir da recomendação do Wowhead.
  *
- * **Consumíveis ficam de fora do cálculo por ora, de propósito.** O guia dá o
- * *item* id ("Flask of the Blood Knights" = 241324); a WCL entrega a aura pelo
- * *spell* id, com o nome no idioma do cliente de quem logou. Cruzar por nome
- * quebraria justamente no caso mais comum aqui — raider com cliente em
- * português não casa com nome de item em inglês — e, pior, contaria como
- * "faltou flask" um erro nosso de tradução.
+ * O guia entra só como **denominador**: quantos encantos se espera ver no
+ * personagem. Qual encanto é indiferente — ver a nota sobre presença vs BIS
+ * em preparation.ts.
  *
- * Então eles seguem `unconfigured`: saem da conta, não viram falha. Pra ligar,
- * é preciso rodar `npm run wcl:inspect-preparation -- --report=<codigo>` uma
- * vez, pegar os spell ids reais das auras e preenchê-los — aí o campo deixa de
- * ser adivinhação.
+ * **Consumíveis ficam de fora do cálculo por ora, de propósito.** O guia dá o
+ * *item* id; a WCL entrega a aura pelo *spell* id, com o nome no idioma do
+ * cliente de quem logou. Cruzar por nome quebraria no caso mais comum aqui —
+ * raider com cliente em português contra nome de item em inglês — e contaria
+ * como "faltou flask" um erro nosso de tradução. Pra ligar, rodar
+ * `npm run wcl:inspect-preparation -- --report=<codigo>` e pegar os spell ids
+ * reais. (No log de 15/09 o combatantInfo veio sem auras nenhuma, então isso
+ * ainda depende de descobrir qual query as expõe.)
  */
 export function buildChecklistFromReference(entry: PreparationReferenceEntry): BuildChecklistResult {
-  const { slots, unknownLabels } = resolveEnchantedSlots(entry.enchants);
-
   return {
     checklist: {
-      enchantedSlots: slots,
-      recommendedGemIds: entry.gems.map((gem) => gem.itemId),
+      recommendedEnchantCount: entry.enchants.length,
+      expectedGems: entry.gems.length > 0 ? SOQUETES_DE_JOIA : 0,
       consumables: { flask: [], food: [], rune: [], oil: [], potion: [] },
     },
-    unknownSlotLabels: unknownLabels,
   };
 }
 

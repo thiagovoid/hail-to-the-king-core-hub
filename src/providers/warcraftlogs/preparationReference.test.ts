@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import {
   buildChecklistFromReference,
-  resolveEnchantedSlots,
   specKey,
   type PreparationReference,
   type PreparationReferenceEntry,
@@ -36,45 +35,30 @@ describe("specKey", () => {
   });
 });
 
-describe("resolveEnchantedSlots", () => {
-  it("aceita os apelidos que os guias usam pro mesmo slot", () => {
-    const helm = resolveEnchantedSlots([{ slot: "Helm", itemId: 1, name: "a" }]);
-    const head = resolveEnchantedSlots([{ slot: "Head", itemId: 1, name: "a" }]);
-
-    expect(helm.slots).toEqual(head.slots);
-    expect(resolveEnchantedSlots([{ slot: "Boots", itemId: 1, name: "a" }]).slots).toEqual(
-      resolveEnchantedSlots([{ slot: "Feet", itemId: 1, name: "a" }]).slots
-    );
-  });
-
-  it("expande anel nos dois slots — o guia recomenda um encanto pros dois", () => {
-    expect(resolveEnchantedSlots([{ slot: "Ring", itemId: 1, name: "a" }]).slots).toEqual([10, 11]);
-  });
-
-  it("não repete slot quando o guia lista o mesmo duas vezes", () => {
-    const result = resolveEnchantedSlots([
-      { slot: "Chest", itemId: 1, name: "a" },
-      { slot: "Chest", itemId: 2, name: "b" },
-    ]);
-
-    expect(result.slots).toEqual([4]);
-  });
-
-  it("reporta rótulo desconhecido em vez de inventar um slot", () => {
-    const result = resolveEnchantedSlots([{ slot: "Tabardo Mágico", itemId: 1, name: "a" }]);
-
-    expect(result.slots).toEqual([]);
-    expect(result.unknownLabels).toEqual(["Tabardo Mágico"]);
-  });
-});
-
 describe("buildChecklistFromReference", () => {
-  it("leva os item ids das gemas — mesmo espaço de id da WCL", () => {
+  it("usa a contagem de encantos do guia como denominador, não como lista", () => {
+    const { checklist } = buildChecklistFromReference(
+      entry({ enchants: [
+        { slot: "Helm", itemId: 1, name: "a" },
+        { slot: "Chest", itemId: 2, name: "b" },
+      ] })
+    );
+
+    expect(checklist.recommendedEnchantCount).toBe(2);
+  });
+
+  it("espera os três soquetes de joia quando o guia recomenda gemas", () => {
     const { checklist } = buildChecklistFromReference(
       entry({ gems: [{ slot: "Other Gems", itemId: 240894, name: "Flawless Versatile Peridot" }] })
     );
 
-    expect(checklist.recommendedGemIds).toEqual([240894]);
+    expect(checklist.expectedGems).toBe(3);
+  });
+
+  it("não cobra gema de spec cujo guia não traz nenhuma", () => {
+    const { checklist } = buildChecklistFromReference(entry({ gems: [] }));
+
+    expect(checklist.expectedGems).toBe(0);
   });
 
   it("deixa consumíveis não configurados — item id do guia não é spell id da aura", () => {
@@ -87,34 +71,22 @@ describe("buildChecklistFromReference", () => {
 });
 
 describe("referência real da temporada", () => {
-  it("toda spec coletada vira checklist com slots encantáveis", () => {
+  it("toda spec coletada vira um denominador de encantos utilizável", () => {
     const specs = Object.entries(REFERENCE.specs);
     expect(specs.length).toBeGreaterThan(0);
 
     for (const [key, spec] of specs) {
       const { checklist } = buildChecklistFromReference(spec);
-      expect(checklist.enchantedSlots.length, `${key} ficou sem slot encantável`).toBeGreaterThan(0);
+      expect(checklist.recommendedEnchantCount, `${key} ficou sem encanto recomendado`).toBeGreaterThan(0);
     }
   });
 
-  it("spec cujo guia não traz tabela de gema fica sem a checagem, não com gema errada", () => {
-    // Enhancement é o caso real: o guia do Wowhead lista só os encantos.
-    // Sem recomendação, a checagem de gemas sai da conta (`unconfigured`) em
-    // vez de reprovar o jogador por uma lacuna da fonte.
+  it("spec cujo guia não traz gema nenhuma fica sem a checagem, não reprovada", () => {
     const semGemas = Object.entries(REFERENCE.specs).filter(([, spec]) => spec.gems.length === 0);
 
     for (const [key, spec] of semGemas) {
-      expect(buildChecklistFromReference(spec).checklist.recommendedGemIds, key).toEqual([]);
+      expect(buildChecklistFromReference(spec).checklist.expectedGems, key).toBe(0);
     }
-  });
-
-  it("nenhum rótulo de slot do guia ficou sem tradução", () => {
-    const unknown = new Set<string>();
-    for (const spec of Object.values(REFERENCE.specs)) {
-      buildChecklistFromReference(spec).unknownSlotLabels.forEach((label) => unknown.add(label));
-    }
-
-    expect([...unknown]).toEqual([]);
   });
 
   it("a chave do arquivo é a mesma que specKey monta a partir do roster", () => {
