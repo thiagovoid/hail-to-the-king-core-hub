@@ -46,6 +46,21 @@ function formatValue(value: number): string {
   return value.toString();
 }
 
+/**
+ * Passo "redondo" mais próximo acima de um valor bruto.
+ *
+ * Sem isto o eixo saía com 1.7999999999999998 e 0.23999999999999977 — ruído
+ * de ponto flutuante de dividir um intervalo qualquer em 4. Escolhendo o passo
+ * antes do máximo, todos os cortes caem em múltiplos limpos.
+ */
+function passoRedondo(bruto: number): number {
+  if (bruto <= 0) return 1;
+  const escalas = [0.25, 0.5, 1, 2, 5, 10, 25, 50, 100, 250, 500, 1000];
+  const magnitude = Math.pow(10, Math.floor(Math.log10(bruto)));
+  const candidatos = escalas.map((e) => e * Math.max(1, magnitude / 10));
+  return candidatos.find((c) => c >= bruto) ?? Math.ceil(bruto);
+}
+
 function getScale(item: Series) {
   const values = item.data.map((point) => point.value);
 
@@ -53,33 +68,17 @@ function getScale(item: Series) {
     values.push(item.target);
   }
 
-  let min = Math.min(...values);
-  let max = Math.max(...values);
+  const maiorValor = Math.max(...values, 0);
 
-  if (min === max) {
-    min = Math.max(0, min - 1);
-    max = max + 1;
-  }
-
-  const padding = (max - min) * 0.15;
-
-  min = Math.max(0, min - padding);
-  max = max + padding;
-
-  // Erro mecânico é contagem: existe 8 e existe 9, não 8,5. Sem isto a folga
-  // de 15% gerava rótulos como 7.762499999999999 no eixo.
-  // Os 4 intervalos precisam fechar em inteiro, senão os cortes do meio
-  // voltam a ser fracionários mesmo com min e max inteiros.
-  if (values.every((value) => Number.isInteger(value))) {
-    min = Math.floor(min);
-    max = Math.ceil(max);
-    const resto = (max - min) % 4;
-    if (resto !== 0) max += 4 - resto;
-  }
+  // Começa no zero: erro mecânico, dps e parse são grandezas que partem de
+  // zero, e cortar a base exagera visualmente diferenças pequenas.
+  const min = 0;
+  const passo = passoRedondo(maiorValor / 4);
+  const max = passo * 4;
 
   return {
     min,
-    max,
+    max: max || 1,
     range: max - min || 1,
   };
 }
