@@ -12,7 +12,7 @@
           "itemLevel": 313,
           "deaths": 7,
           "mechanics": {
-            "errors": 6
+            "errors": 1.7
           },
           "mechanicsDetail": [
             {
@@ -88,12 +88,6 @@
               "hits": 2
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 2
-            },
-            {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
@@ -128,12 +122,6 @@
               "mechanic": "Damage from Caustic Deluge",
               "label": "Dilúvio Cáustico",
               "hits": 1
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "hits": 1
             }
           ]
         },
@@ -143,7 +131,7 @@
           "parse": 72,
           "deaths": 6,
           "mechanics": {
-            "errors": 4
+            "errors": 1.5
           },
           "mechanicsDetail": [
             {
@@ -257,7 +245,7 @@
           "itemLevel": 310,
           "deaths": 8,
           "mechanics": {
-            "errors": 9
+            "errors": 1.8
           },
           "mechanicsDetail": [
             {
@@ -288,7 +276,7 @@
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
-              "hits": 9
+              "hits": 8
             },
             {
               "boss": "Vashnik, o Maligno",
@@ -365,7 +353,7 @@
           "itemLevel": 310,
           "deaths": 6,
           "mechanics": {
-            "errors": 5
+            "errors": 1.3
           },
           "mechanicsDetail": [
             {
@@ -454,7 +442,7 @@
           "parse": 84,
           "deaths": 8,
           "mechanics": {
-            "errors": 6
+            "errors": 1.5
           },
           "mechanicsDetail": [
             {
@@ -494,12 +482,6 @@
               "hits": 5
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 5
-            },
-            {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
               "label": "Stunned",
@@ -509,6 +491,12 @@
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
               "label": "Icor Coleante",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 3
             },
             {
@@ -530,12 +518,6 @@
               "hits": 2
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "hits": 2
-            },
-            {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
@@ -545,6 +527,12 @@
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Frostfire Volley",
               "label": "10 yds",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             },
             {
@@ -562,7 +550,7 @@
           "itemLevel": 314,
           "deaths": 7,
           "mechanics": {
-            "errors": 4
+            "errors": 1.4
           },
           "mechanicsDetail": [
             {
@@ -614,12 +602,6 @@
               "hits": 2
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "hits": 2
-            },
-            {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
               "label": "Espuma Pestilenta",
@@ -642,18 +624,6 @@
               "mechanic": "Damage from Deadly Venom",
               "label": "Peçonha Mortífera",
               "hits": 1
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "hits": 1
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "hits": 1
             }
           ]
         },
@@ -664,7 +634,7 @@
           "itemLevel": 312,
           "deaths": 7,
           "mechanics": {
-            "errors": 4
+            "errors": 1.5
           },
           "mechanicsDetail": [
             {
@@ -753,7 +723,7 @@
           "itemLevel": 315,
           "deaths": 10,
           "mechanics": {
-            "errors": 3
+            "errors": 1.8
           },
           "mechanicsDetail": [
             {
@@ -766,12 +736,6 @@
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
               "hits": 4
             },
             {
@@ -808,6 +772,12 @@
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
               "label": "Ventos Contrários Enfurecidos",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 2
             },
             {
@@ -860,15 +830,9 @@
           "itemLevel": 320,
           "deaths": 7,
           "mechanics": {
-            "errors": 3
+            "errors": 1.1
           },
           "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 7
-            },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
@@ -906,12 +870,6 @@
               "hits": 2
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "hits": 2
-            },
-            {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
               "label": "Arremessar Sucata",
@@ -931,14 +889,20 @@
             },
             {
               "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
               "mechanic": "Damage from Soul Sever",
               "label": "Cisão Anímica",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
+              "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             }
           ]
@@ -950,7 +914,7 @@
           "itemLevel": 318,
           "deaths": 6,
           "mechanics": {
-            "errors": 5
+            "errors": 1.3
           },
           "mechanicsDetail": [
             {
@@ -1033,7 +997,7 @@
           "itemLevel": 318,
           "deaths": 6,
           "mechanics": {
-            "errors": 4
+            "errors": 1.9
           },
           "mechanicsDetail": [
             {
@@ -1085,12 +1049,6 @@
               "hits": 3
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "hits": 3
-            },
-            {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
@@ -1106,6 +1064,12 @@
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
               "label": "Vexhaul's",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Widow's Kiss",
+              "label": "50y",
               "hits": 2
             },
             {
@@ -1153,7 +1117,7 @@
           "itemLevel": 302,
           "deaths": 7,
           "mechanics": {
-            "errors": 4
+            "errors": 1.5
           },
           "mechanicsDetail": [
             {
@@ -1230,12 +1194,6 @@
             },
             {
               "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "hits": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
               "label": "Dilúvio Tóxico",
               "hits": 2
@@ -1257,6 +1215,12 @@
               "mechanic": "Damage from Stir the Depths",
               "label": "Mexer nas Profundezas",
               "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
+              "hits": 1
             }
           ]
         },
@@ -1267,14 +1231,14 @@
           "itemLevel": 316,
           "deaths": 5,
           "mechanics": {
-            "errors": 5
+            "errors": 1.5
           },
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
-              "hits": 13
+              "hits": 11
             },
             {
               "boss": "Os Exploradores Perdidos",
@@ -1283,15 +1247,15 @@
               "hits": 7
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 7
-            },
-            {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
               "label": "Glóbulo Cáustico",
+              "hits": 6
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 6
             },
             {
@@ -1347,12 +1311,6 @@
               "mechanic": "Damage from Caustic Deluge",
               "label": "Dilúvio Cáustico",
               "hits": 1
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "hits": 1
             }
           ]
         },
@@ -1363,14 +1321,14 @@
           "itemLevel": 310,
           "deaths": 7,
           "mechanics": {
-            "errors": 7
+            "errors": 1.7
           },
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
-              "hits": 20
+              "hits": 19
             },
             {
               "boss": "Os Exploradores Perdidos",
@@ -1379,15 +1337,15 @@
               "hits": 16
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "hits": 10
-            },
-            {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
+              "hits": 7
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 7
             },
             {
@@ -1455,12 +1413,6 @@
               "mechanic": "Damage from Sever",
               "label": "Arrancar",
               "hits": 1
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "hits": 1
             }
           ]
         },
@@ -1471,7 +1423,7 @@
           "itemLevel": 302,
           "deaths": 5,
           "mechanics": {
-            "errors": 4
+            "errors": 1.3
           },
           "mechanicsDetail": [
             {
@@ -1485,12 +1437,6 @@
               "mechanic": "Debuffs of Tempest",
               "label": "Tempestade",
               "hits": 8
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 5
             },
             {
               "boss": "Vashnik, o Maligno",
@@ -1526,6 +1472,12 @@
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
               "label": "Espuma Pestilenta",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 2
             },
             {
@@ -1567,7 +1519,7 @@
           "itemLevel": 303,
           "deaths": 5,
           "mechanics": {
-            "errors": 4
+            "errors": 1.7
           },
           "mechanicsDetail": [
             {
@@ -1656,7 +1608,7 @@
           "parse": 9,
           "deaths": 10,
           "mechanics": {
-            "errors": 7
+            "errors": 2
           },
           "mechanicsDetail": [
             {
@@ -1681,12 +1633,6 @@
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
               "label": "Soul Fragments",
-              "hits": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
               "hits": 4
             },
             {
@@ -1726,12 +1672,6 @@
               "hits": 3
             },
             {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "hits": 3
-            },
-            {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Deadly Venom",
               "label": "Peçonha Mortífera",
@@ -1741,6 +1681,12 @@
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Sever",
               "label": "Arrancar",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 2
             },
             {

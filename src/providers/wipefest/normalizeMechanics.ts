@@ -31,7 +31,7 @@ export interface MechanicOccurrence {
 }
 
 export interface NightMechanics {
-  /** Média de erros por try, arredondada. É o que vira a métrica do core. */
+  /** Média de mecânicas distintas erradas por try, com uma casa decimal. */
   errors: number;
   /** Em quantas trys o jogador apareceu — deixa a média rastreável. */
   tries: number;
@@ -40,14 +40,16 @@ export interface NightMechanics {
 }
 
 /**
- * Quantos erros o jogador cometeu numa try.
+ * Quantas mecânicas distintas o jogador errou numa try.
  *
- * Mecânica sem contagem na tabela conta como **1**: sabemos que não fechou
- * 100, só não sabemos quantas vezes. Ignorar seria fingir que não houve erro;
- * chutar um número maior seria inventar.
+ * Conta a mecânica, não os hits: ficar 5 ticks numa poça é **um** erro de
+ * execução, não 5. Antes isto somava os hits, e "Peçonha Sanguínea ×62"
+ * virava 62 erros — o número media severidade, não decisões erradas.
+ *
+ * Os hits continuam no detalhe, onde severidade é justamente o que interessa.
  */
 function errosNaTry(jogador: PlayerFightMechanics): number {
-  return jogador.errors.reduce((total, erro) => total + (erro.count ?? 1), 0);
+  return jogador.errors.length;
 }
 
 export function aggregateNightMechanics(fights: FightMechanics[]): Record<string, NightMechanics> {
@@ -87,7 +89,9 @@ export function aggregateNightMechanics(fights: FightMechanics[]): Record<string
   for (const [nome, dados] of porJogador) {
     if (dados.tries === 0) continue;
     resultado[nome] = {
-      errors: Math.round(dados.totalErros / dados.tries),
+      // Uma casa decimal: 1,8 e 2,3 são jogadores diferentes, e arredondar
+      // pra inteiro juntaria os dois em 2 — some justamente a distinção.
+      errors: Math.round((dados.totalErros / dados.tries) * 10) / 10,
       tries: dados.tries,
       byMechanic: [...dados.detalhe.values()].sort((a, b) => b.hits - a.hits),
     };
