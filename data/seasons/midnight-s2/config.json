@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "Abismo Venenoso",
-    "lastUpdated": "2026-09-10T19:15:00.000Z",
+    "lastUpdated": "2026-09-17T16:13:23.755Z",
     "raidWeekAnchor": "2026-08-18",
     "nextRaid": {
       "date": "2026-09-01",
@@ -22,7 +22,11 @@
       "pulls": 3,
       "bestPullPercent": null,
       "killDate": "2026-08-18T21:30:00.000Z",
-      "links": { "warcraftLogs": "https://www.warcraftlogs.com/reports/PvxcbTGDVjMgzqLX?fight=4", "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/PvxcbTGDVjMgzqLX?fight=4",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "sentinelas-sepultados",
@@ -32,7 +36,11 @@
       "pulls": 3,
       "bestPullPercent": null,
       "killDate": "2026-08-18T21:30:00.000Z",
-      "links": { "warcraftLogs": "https://www.warcraftlogs.com/reports/PvxcbTGDVjMgzqLX?fight=15", "wipefest": "https://www.wipefest.gg/report/PvxcbTGDVjMgzqLX/fight/15?gameVersion=warcraft-live", "video": null }
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/PvxcbTGDVjMgzqLX?fight=15",
+        "wipefest": "https://www.wipefest.gg/report/PvxcbTGDVjMgzqLX/fight/15?gameVersion=warcraft-live",
+        "video": null
+      }
     },
     {
       "id": "vashnik-o-maligno",
@@ -42,7 +50,11 @@
       "pulls": 2,
       "bestPullPercent": null,
       "killDate": "2026-08-18T21:30:00.000Z",
-      "links": { "warcraftLogs": "https://www.warcraftlogs.com/reports/PvxcbTGDVjMgzqLX?fight=21", "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/PvxcbTGDVjMgzqLX?fight=21",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "os-exploradores-perdidos",
@@ -52,7 +64,11 @@
       "pulls": 2,
       "bestPullPercent": null,
       "killDate": "2026-08-25T21:30:00.000Z",
-      "links": { "warcraftLogs": "https://www.warcraftlogs.com/reports/WYzBZmRpcVbMHAQT?fight=19", "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/WYzBZmRpcVbMHAQT?fight=19",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "sszorak",
@@ -62,7 +78,11 @@
       "pulls": 2,
       "bestPullPercent": null,
       "killDate": "2026-08-25T21:30:00.000Z",
-      "links": { "warcraftLogs": "https://www.warcraftlogs.com/reports/WYzBZmRpcVbMHAQT?fight=25", "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/WYzBZmRpcVbMHAQT?fight=25",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "as-presas-gemeas",
@@ -72,7 +92,11 @@
       "pulls": 3,
       "bestPullPercent": null,
       "killDate": "2026-08-25T21:30:00.000Z",
-      "links": { "warcraftLogs": "https://www.warcraftlogs.com/reports/jpWrRJFxyGZ4Vn1M?fight=30", "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/jpWrRJFxyGZ4Vn1M?fight=30",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "o-altar-espiralado",
@@ -82,17 +106,25 @@
       "pulls": 16,
       "bestPullPercent": null,
       "killDate": "2026-08-26T21:00:00.000Z",
-      "links": { "warcraftLogs": "https://www.warcraftlogs.com/reports/6BcGTrAN7HaPx431?fight=14", "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/6BcGTrAN7HaPx431?fight=14",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "ulatek",
       "name": "Ula'tek",
       "encounterID": 3492,
-      "status": "progress",
-      "pulls": 6,
+      "status": "killed",
+      "pulls": 10,
       "bestPullPercent": null,
-      "killDate": "",
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "killDate": "2026-09-11T01:35:19.813Z",
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/P1nLMzCrHmgDpWT2?fight=7",
+        "wipefest": null,
+        "video": null
+      }
     }
   ],
   "bossesHeroic": [
@@ -100,21 +132,29 @@
       "id": "nekzali-a-espiral-de-almas",
       "name": "Nek'zali, a Espiral de Almas",
       "encounterID": 3470,
-      "status": "progress",
-      "pulls": 8,
+      "status": "killed",
+      "pulls": 12,
       "bestPullPercent": null,
-      "killDate": "",
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "killDate": "2026-09-16T00:56:47.447Z",
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/JCvk27bDL6Zdm18j?fight=1",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "sentinelas-sepultados",
       "name": "Sentinelas Sepultados",
       "encounterID": 3445,
-      "status": "not_started",
-      "pulls": 0,
+      "status": "killed",
+      "pulls": 12,
       "bestPullPercent": null,
-      "killDate": "2026-08-29T21:30:00.000Z",
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "killDate": "2026-09-16T02:20:47.863Z",
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/JCvk27bDL6Zdm18j?fight=17",
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "vashnik-o-maligno",
@@ -124,7 +164,11 @@
       "pulls": 0,
       "bestPullPercent": 42,
       "killDate": null,
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": null,
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "os-exploradores-perdidos",
@@ -134,7 +178,11 @@
       "pulls": 0,
       "bestPullPercent": null,
       "killDate": null,
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": null,
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "sszorak",
@@ -144,7 +192,11 @@
       "pulls": 0,
       "bestPullPercent": null,
       "killDate": null,
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": null,
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "as-presas-gemeas",
@@ -154,7 +206,11 @@
       "pulls": 0,
       "bestPullPercent": null,
       "killDate": null,
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": null,
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "o-altar-espiralado",
@@ -164,7 +220,11 @@
       "pulls": 0,
       "bestPullPercent": null,
       "killDate": null,
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": null,
+        "wipefest": null,
+        "video": null
+      }
     },
     {
       "id": "ulatek",
@@ -174,10 +234,24 @@
       "pulls": 0,
       "bestPullPercent": null,
       "killDate": null,
-      "links": { "warcraftLogs": null, "wipefest": null, "video": null }
+      "links": {
+        "warcraftLogs": null,
+        "wipefest": null,
+        "video": null
+      }
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-09-15",
+      "url": "https://www.warcraftlogs.com/reports/JCvk27bDL6Zdm18j",
+      "title": "Abismo Venenoso"
+    },
+    {
+      "date": "2026-09-10",
+      "url": "https://www.warcraftlogs.com/reports/P1nLMzCrHmgDpWT2",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-09-09",
       "url": "https://www.warcraftlogs.com/reports/wvVDPmjXMyrJpadH",
