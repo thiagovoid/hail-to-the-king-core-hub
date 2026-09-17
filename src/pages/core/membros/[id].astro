@@ -47,6 +47,23 @@ const seasonAverage = buildPlayerSeasonAverage(player.id, history);
 
 // Mesma noite que define a nota de Preparação (a última com dado), pra a lista
 // e o número nunca discordarem.
+// Onde os erros mecânicos aconteceram na temporada, somando todas as noites.
+// Soma, e não média, porque o número da dimensão já é a média — aqui interessa
+// "Blood Venom x105 no total", que é o que diz o que treinar.
+const mechanicsDetail = Object.values(
+  history
+    .flatMap((run) => run.mechanicsDetail ?? [])
+    .reduce<Record<string, { boss: string; mechanic: string; hits: number }>>((acc, item) => {
+      const chave = `${item.boss}|${item.mechanic}`;
+      if (acc[chave]) acc[chave].hits += item.hits;
+      else acc[chave] = { ...item };
+      return acc;
+    }, {})
+)
+  .sort((a, b) => b.hits - a.hits)
+  .slice(0, 3);
+
+
 const preparationMissing =
   [...history].reverse().find((run) => run.preparation !== undefined)?.preparationMissing ?? [];
 const hasData = history.length > 0;
@@ -105,7 +122,7 @@ const primaryMetricSeries = player.role === 'healer'
 
 // Escondidas por hora (mesmo critério do dashboard do core): só a métrica
 // principal (dps/hps) fica no gráfico. Basta tirar daqui pra voltarem.
-const HIDDEN_CHART_SERIES = new Set(['parse', 'deaths', 'mechanics']);
+const HIDDEN_CHART_SERIES = new Set(['parse', 'deaths']);
 
 const overallScore = hasData
   ? calculateOverallScore(seasonAverage, seasonJson.config.performanceTargets)
@@ -186,6 +203,7 @@ const attendance = calculateAttendance(weeks, player.id);
           runs={seasonAverage.runs}
           preparationMissing={preparationMissing}
           preparationValue={seasonAverage.preparation ?? null}
+          mechanicsDetail={mechanicsDetail}
         />
       )
     }
@@ -224,7 +242,9 @@ const attendance = calculateAttendance(weeks, player.id);
               id: 'mechanics',
               label: 'Mecânicas',
               data: mechanicsHistory,
-              target: player.performanceGoals?.mechanics?.target,
+              // A meta de mecânicas é do core, igual pra todo mundo — a
+              // individual saiu do roster quando só o objetivo de dps ficou.
+              target: seasonJson.config.performanceTargets.mechanics.target,
               direction: 'lower',
             },
             {

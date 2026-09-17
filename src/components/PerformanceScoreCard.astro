@@ -20,9 +20,15 @@ interface Props {
    * core é 60) logo acima de uma lista dizendo o que falta arrumar.
    */
   preparationValue?: number | null;
+  /**
+   * Onde os erros mecânicos aconteceram na temporada, do mais frequente pro
+   * menos. Mesma ideia da lista de preparação: a nota diz quanto, isto diz
+   * o que treinar.
+   */
+  mechanicsDetail?: Array<{ boss: string; mechanic: string; hits: number }>;
 }
 
-const { score, trend, attendance, runs, preparationMissing = [], preparationValue = null } = Astro.props;
+const { score, trend, attendance, runs, preparationMissing = [], preparationValue = null, mechanicsDetail = [] } = Astro.props;
 
 // Preparação é completude, não progresso contra meta. As demais dimensões
 // seguem mostrando o progresso.
@@ -138,6 +144,20 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                 <span class="text-slate-400">Falta arrumar:</span>{' '}
                 {preparationMissing.join(', ')}
               </p>
+            )}
+
+            {/* Mesma ideia da Preparação: o número diz quanto, a lista diz
+                onde treinar. Soma da temporada, igual ao número da dimensão. */}
+            {dimension.key === 'mechanics' && mechanicsDetail.length > 0 && (
+              <ul class="mt-1.5 space-y-0.5">
+                {mechanicsDetail.map((item) => (
+                  <li class="text-[11px] text-slate-500 leading-relaxed">
+                    <span class="text-slate-400">{item.mechanic.replace('Damage from ', '')}</span>
+                    {' '}&times;{item.hits}
+                    <span class="text-slate-600"> &middot; {item.boss}</span>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         ))

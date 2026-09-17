@@ -57,6 +57,12 @@ export interface PlayerPerformance {
   };
 
   /**
+   * Onde os erros mecânicos aconteceram na noite, do mais frequente pro
+   * menos. É o que explica o número — a nota sozinha não diz o que treinar.
+   */
+  mechanicsDetail?: Array<{ boss: string; mechanic: string; hits: number }>;
+
+  /**
    * Wipefest's overall mechanics score (0-100) for the run.
    * Not populated yet — reserved for the Wipefest provider (browser
    * automation, planned separately). Additive: absent for every run until then.

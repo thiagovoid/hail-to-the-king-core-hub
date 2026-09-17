@@ -117,10 +117,10 @@ const mechanicsSeries = getCorePerformanceSeries(
 // Base path
 const base = '';
 
-// Escondidas por hora (só DPS fica visível): parse/mortes/mecânicas ainda
-// não têm dado consistente o bastante pra apresentar. As séries continuam
-// sendo calculadas — basta tirar daqui pra voltarem a aparecer.
-const HIDDEN_CHART_METRICS = new Set(['parse', 'deaths', 'mechanics']);
+// Parse e mortes seguem escondidos: parse só existe pra boss morto, e
+// mortes saíram do score. Mecânicas voltou quando a coleta do Wipefest
+// passou a rodar. As séries continuam sendo calculadas — basta tirar daqui.
+const HIDDEN_CHART_METRICS = new Set(['parse', 'deaths']);
 
 const formatDpsAverage = (value: number | null) => (value === null ? null : formatThousands(value, 2));
 
