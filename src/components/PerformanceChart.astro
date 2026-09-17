@@ -106,22 +106,31 @@ function createPoints(
     .join(' ');
 }
 
+/**
+ * Mesma regra do card "Objetivos de performance": compara a MÉDIA da
+ * temporada com a meta, não o último ponto.
+ *
+ * Olhar só a última noite fazia o gráfico anunciar "Meta atingida"
+ * enquanto o card logo acima mostrava 92% — uma noite boa não significa
+ * a meta batida na temporada.
+ *
+ * O arredondamento acompanha buildPlayerSeasonAverage de propósito, pra
+ * os dois nunca divergirem num caso limítrofe.
+ */
 function isGoalReached(item: Series): boolean {
-  if (
-    item.target === undefined ||
-    item.data.length === 0
-  ) {
+  if (item.target === undefined || item.data.length === 0) {
     return false;
   }
 
-  const current =
-    item.data[item.data.length - 1].value;
+  const average = Math.round(
+    item.data.reduce((sum, point) => sum + point.value, 0) / item.data.length
+  );
 
   if (item.direction === 'lower') {
-    return current <= item.target;
+    return average <= item.target;
   }
 
-  return current >= item.target;
+  return average >= item.target;
 }
 
 const charts = series.map((item) => {
