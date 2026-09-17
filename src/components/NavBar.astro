@@ -15,6 +15,8 @@ interface NavLink {
   label: string;
   href: string;
   icon: string;
+  /** Escondido do menu por hora — a página continua existindo, só não é linkada. */
+  hidden?: boolean;
 }
 
 interface NavGroup {
@@ -32,8 +34,9 @@ const groups: NavGroup[] = [
     label: 'Guild',
     icon: '🏰',
     items: [
-      { label: 'História', href: '/historia/', icon: '📜' },
-      { label: 'Chronicle', href: '/chronicle/', icon: '📖' },
+      // Escondidos até o site estar apresentável — as páginas seguem no ar.
+      { label: 'História', href: '/historia/', icon: '📜', hidden: true },
+      { label: 'Chronicle', href: '/chronicle/', icon: '📖', hidden: true },
       { label: 'Hall da Fama', href: '/hall-da-fama/', icon: '🏆' },
     ],
   },
@@ -54,13 +57,21 @@ const flatItemsEnd: NavLink[] = [
   { label: 'Regras', href: '/regras/', icon: '📋' },
 ];
 
+const isVisible = (item: NavLink) => !item.hidden;
+
+// Um grupo que sobrou com um item só vira link direto — dropdown de uma
+// opção é só um clique a mais.
+const visibleGroupsAll = groups.map((group) => ({ ...group, items: group.items.filter(isVisible) }));
+const visibleGroups = visibleGroupsAll.filter((group) => group.items.length > 1);
+const promotedLinks = visibleGroupsAll.filter((group) => group.items.length === 1).flatMap((group) => group.items);
+const trailingLinks = [...promotedLinks, ...flatItemsEnd];
+
 // Achata tudo pro menu mobile — espaço vertical é barato, não precisa de
 // acordeão, só uns rótulos de seção pra manter a mesma organização.
 const mobileSections: Array<{ label: string | null; items: NavLink[] }> = [
   { label: null, items: flatItemsStart },
-  { label: groups[0].label, items: groups[0].items },
-  { label: groups[1].label, items: groups[1].items },
-  { label: null, items: flatItemsEnd },
+  ...visibleGroups.map((group) => ({ label: group.label, items: group.items })),
+  { label: null, items: trailingLinks },
 ];
 
 function isActive(href: string): boolean {
@@ -112,7 +123,7 @@ function isGroupActive(group: NavGroup): boolean {
             );
           })}
 
-          {groups.map((group) => {
+          {visibleGroups.map((group) => {
             const active = isGroupActive(group);
             const slug = group.label.toLowerCase().replace(/\s+/g, '-');
             return (
@@ -162,7 +173,7 @@ function isGroupActive(group: NavGroup): boolean {
             );
           })}
 
-          {flatItemsEnd.map((item) => {
+          {trailingLinks.map((item) => {
             const active = isActive(item.href);
             return (
               <a

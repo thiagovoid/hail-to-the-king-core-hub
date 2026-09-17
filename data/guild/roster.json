@@ -25,25 +25,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Voidwar"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 69738,
@@ -80,25 +61,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Blackwatch"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 53921,
@@ -135,25 +97,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Apocalïpse"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 52426,
@@ -188,27 +131,6 @@
       "bestParse": 43,
       "attendance": 80,
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/voidsurge"
-    },
-    "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      }
     }
   },
   {
@@ -237,25 +159,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/tol-barad/Kams"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 107954,
@@ -290,27 +193,6 @@
       "bestParse": 64,
       "attendance": 60,
       "profileUrl": "https://www.warcraftlogs.com/character/us/tichondrius/Cowsadeer"
-    },
-    "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      }
     }
   },
   {
@@ -339,25 +221,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Bustgril"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 126592,
@@ -394,25 +257,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Hysillens"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 108920,
@@ -449,25 +293,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Kroline"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 149339,
@@ -504,25 +329,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Jrxamã"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 140864,
@@ -559,25 +365,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Heracranosx"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 113890,
@@ -614,25 +401,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/gunst"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 116539,
@@ -676,25 +444,6 @@
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
         "calculatedAt": "2026-09-02T01:08:02.770Z"
-      },
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
       }
     }
   },
@@ -724,25 +473,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Metallic%C3%A4"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 93061,
@@ -779,25 +509,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Panicdeath"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 142371,
@@ -834,25 +545,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/X%C3%BAliodk"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 51208,
@@ -887,27 +579,6 @@
       "bestParse": null,
       "attendance": 20,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Orth%C3%ADn"
-    },
-    "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      }
     }
   },
   {
@@ -936,25 +607,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Youkaiqqz"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 130612,
@@ -989,27 +641,6 @@
       "bestParse": 4,
       "attendance": 20,
       "profileUrl": "https://www.warcraftlogs.com/character/us/goldrinn/Soju"
-    },
-    "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      }
     }
   },
   {
@@ -1038,25 +669,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/X%C3%BAlio"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 149023,
@@ -1093,25 +705,6 @@
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Dagom"
     },
     "performanceGoals": {
-      "parse": {
-        "metric": "parse",
-        "target": 75,
-        "direction": "higher",
-        "description": "Parse alvo para o nível atual",
-        "source": "Warcraft Logs"
-      },
-      "mechanics": {
-        "metric": "mechanics",
-        "target": 1,
-        "direction": "lower",
-        "description": "Máximo de erros mecânicos desejado"
-      },
-      "deaths": {
-        "metric": "deaths",
-        "target": 0,
-        "direction": "lower",
-        "description": "Evitar mortes durante o encontro"
-      },
       "dps": {
         "metric": "dps",
         "target": 104636,

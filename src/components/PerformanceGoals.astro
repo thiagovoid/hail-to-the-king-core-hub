@@ -17,9 +17,38 @@ interface Props {
 }
 
 const { goals, current } = Astro.props;
+
+// Só a meta de performance (dps/hps) fica visível por hora — mesmo critério
+// já aplicado aos gráficos. As metas seguem em roster.json e os cards são
+// montados normalmente; basta tirar do set pra voltarem a aparecer.
+const HIDDEN_GOALS = new Set(['parse', 'mechanics', 'deaths']);
+
+const cards = [
+  goals.dps && current.dps !== undefined
+    ? { key: 'dps', label: 'DPS', goal: goals.dps, actual: current.dps, format: 'performance' as const }
+    : null,
+  goals.hps && current.hps !== undefined
+    ? { key: 'hps', label: 'HPS', goal: goals.hps, actual: current.hps, format: 'performance' as const }
+    : null,
+  goals.parse && current.parse !== undefined
+    ? { key: 'parse', label: 'Parse', goal: goals.parse, actual: current.parse, format: 'number' as const }
+    : null,
+  goals.mechanics && current.mechanics !== undefined
+    ? {
+        key: 'mechanics',
+        label: 'Erros mecânicos',
+        goal: goals.mechanics,
+        actual: current.mechanics.errors,
+        format: 'number' as const,
+      }
+    : null,
+  goals.deaths && current.deaths !== undefined
+    ? { key: 'deaths', label: 'Mortes', goal: goals.deaths, actual: current.deaths, format: 'number' as const }
+    : null,
+].filter((card) => card !== null && !HIDDEN_GOALS.has(card.key));
 ---
 
-<section class="mb-10">
+<section class="mb-10" hidden={cards.length === 0}>
   <div class="mb-4">
     <h2 class="text-xl font-bold text-white">
       Objetivos de performance
@@ -31,63 +60,15 @@ const { goals, current } = Astro.props;
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
     {
-      goals.dps &&
-      current.dps !== undefined && (
+      cards.map((card) => (
         <PerformanceGoalCard
-          label="DPS"
-          goal={goals.dps}
-          actual={current.dps}
-          format="performance"
+          label={card!.label}
+          goal={card!.goal}
+          actual={card!.actual}
+          format={card!.format}
         />
-      )
+      ))
     }
-
-    {
-      goals.hps &&
-      current.hps !== undefined && (
-        <PerformanceGoalCard
-          label="HPS"
-          goal={goals.hps}
-          actual={current.hps}
-          format="performance"
-        />
-      )
-    }
-
-    {
-      goals.parse &&
-      current.parse !== undefined && (
-        <PerformanceGoalCard
-          label="Parse"
-          goal={goals.parse}
-          actual={current.parse}
-        />
-      )
-    }
-
-    {
-      goals.mechanics &&
-      current.mechanics !== undefined && (
-        <PerformanceGoalCard
-          label="Erros mecânicos"
-          goal={goals.mechanics}
-          actual={current.mechanics.errors}
-        />
-      )
-    }
-
-    {
-      goals.deaths &&
-      current.deaths !== undefined && (
-        <PerformanceGoalCard
-          label="Mortes"
-          goal={goals.deaths}
-          actual={current.deaths}
-        />
-      )
-    }
-
   </div>
 </section>

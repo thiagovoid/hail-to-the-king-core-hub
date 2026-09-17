@@ -77,15 +77,14 @@ describe("selectAggregateFights", () => {
     endTime: 1000,
   });
 
-  it("uses killed fights when there are any", () => {
-    const raid = [fight(1, false), fight(2, true)];
-    const killed = [fight(2, true)];
-    expect(selectAggregateFights(raid, killed)).toBe(killed);
+  it("usa todas as trys da noite, kills e wipes", () => {
+    const raid = [fight(1, false), fight(2, true), fight(3, false)];
+    expect(selectAggregateFights(raid)).toBe(raid);
   });
 
-  it("falls back to every raid fight on a 100% wipe night", () => {
-    const raid = [fight(1, false), fight(2, false)];
-    expect(selectAggregateFights(raid, [])).toBe(raid);
+  it("inclui os wipes mesmo quando houve kill — é o que destrava medir a progressão", () => {
+    const raid = [fight(1, false), fight(2, true)];
+    expect(selectAggregateFights(raid).map((f) => f.id)).toEqual([1, 2]);
   });
 });
 

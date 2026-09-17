@@ -1,18 +1,21 @@
 import { describe, expect, it } from "vitest";
 import { calculateCoreHealth } from "./coreHealth";
 import type { WeeklyPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets } from "../../types/index";
 import type { Boss } from "../../types/index";
+
+const TARGETS: CorePerformanceTargets = {
+  parse: { target: 60, direction: "higher" },
+  mechanics: { target: 2, direction: "lower" },
+  cooldowns: { target: 70, direction: "higher" },
+  preparation: { target: 60, direction: "higher" },
+};
+
 
 const players = [
   { id: "voidwar", name: "Voidwar" },
   { id: "blackwatch", name: "Blackwatch" },
 ];
-
-const goals: Record<string, PlayerPerformanceGoals | undefined> = {
-  voidwar: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-  blackwatch: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-};
 
 function boss(overrides: Partial<Boss>): Boss {
   return {
@@ -36,15 +39,15 @@ describe("calculateCoreHealth", () => {
           {
             date: "2026-09-01",
             players: [
-              { playerId: "voidwar", deaths: 0 },
-              { playerId: "blackwatch", deaths: 0 },
+              { playerId: "voidwar", parse: 60, deaths: 0 },
+              { playerId: "blackwatch", parse: 60, deaths: 0 },
             ],
           },
         ],
       },
     ];
 
-    const health = calculateCoreHealth(weeks, players, goals, [], []);
+    const health = calculateCoreHealth(weeks, players, TARGETS, [], []);
     const performance = health.categories.find((c) => c.key === "performance");
     const attendance = health.categories.find((c) => c.key === "attendance");
 
@@ -53,14 +56,14 @@ describe("calculateCoreHealth", () => {
   });
 
   it("marks performance unknown when nobody has a scoreable dimension", () => {
-    const health = calculateCoreHealth([], players, {}, [], []);
+    const health = calculateCoreHealth([], players, TARGETS, [], []);
     expect(health.categories.find((c) => c.key === "performance")?.status).toBe("unknown");
   });
 
   it("flags progression red when the current boss has 10+ pulls with no kill", () => {
     const bossesNormal = [boss({ id: "b1", status: "killed", pulls: 3 }), boss({ id: "b2", pulls: 12 })];
 
-    const health = calculateCoreHealth([], [], {}, bossesNormal, []);
+    const health = calculateCoreHealth([], [], TARGETS, bossesNormal, []);
     const progression = health.categories.find((c) => c.key === "progression");
 
     expect(progression?.status).toBe("red");
@@ -70,7 +73,7 @@ describe("calculateCoreHealth", () => {
   it("marks progression green when every boss on the active difficulty is killed", () => {
     const bossesNormal = [boss({ id: "b1", status: "killed", pulls: 3 })];
 
-    const health = calculateCoreHealth([], [], {}, bossesNormal, []);
+    const health = calculateCoreHealth([], [], TARGETS, bossesNormal, []);
     expect(health.categories.find((c) => c.key === "progression")?.status).toBe("green");
   });
 
@@ -78,7 +81,7 @@ describe("calculateCoreHealth", () => {
     const bossesNormal = [boss({ id: "b1", status: "killed", pulls: 3 })];
     const bossesHeroic = [boss({ id: "b1", pulls: 6 })];
 
-    const health = calculateCoreHealth([], [], {}, bossesNormal, bossesHeroic);
+    const health = calculateCoreHealth([], [], TARGETS, bossesNormal, bossesHeroic);
     const progression = health.categories.find((c) => c.key === "progression");
 
     expect(progression?.status).toBe("yellow");

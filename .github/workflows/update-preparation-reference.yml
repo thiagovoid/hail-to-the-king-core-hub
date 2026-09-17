@@ -1,0 +1,63 @@
+name: Update Preparation Reference
+
+on:
+  # Gemas/encantos/consumíveis recomendados mudam quando o guia é revisado,
+  # não a cada raid — uma vez por semana (segunda 10:00 UTC = 07:00 BRT) é
+  # de sobra, e o disparo manual cobre virada de temporada.
+  schedule:
+    - cron: "0 10 * * 1"
+  workflow_dispatch:
+    inputs:
+      season:
+        description: "Slug da temporada (pasta em data/seasons)"
+        required: false
+        type: string
+        default: "midnight-s2"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-preparation-reference
+  cancel-in-progress: false
+
+jobs:
+  update-preparation-reference:
+    name: Fetch Wowhead guides & Commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Sem browser: o guia do Wowhead vem renderizado do servidor, então
+      # um fetch resolve. Uma requisição por spec do roster, com 1s entre elas.
+      - name: Fetch recommended gems/enchants/consumables from Wowhead
+        run: npm run wowhead:fetch-preparation -- --season="${{ inputs.season || 'midnight-s2' }}"
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build site (valida que os dados gerados não quebram o build)
+        run: npm run build
+
+      - name: Commit reference
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/seasons/*/preparation-reference.json
+
+          if git diff --cached --quiet; then
+            echo "Nada para commitar."
+          else
+            git commit -m "chore(data): atualiza referência de preparação (Wowhead)"
+            git push
+          fi

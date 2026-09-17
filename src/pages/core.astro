@@ -15,6 +15,7 @@ import CoreHealthPanel from '@/components/CoreHealthPanel.astro';
 import type { SiteConfig, Boss, Player } from '@/types/index';
 import { computeProgression } from '@/utils/progression';
 import { computeMythicStats } from '@/utils/roster';
+import { formatThousands } from '@/utils/format';
 
 import seasonJson from '../../data/seasons/midnight-s2/config.json';
 import rosterJson from '../../data/guild/roster.json';
@@ -33,11 +34,9 @@ import { buildCoreRanking, calculateCoreAverages } from '@/engine/team';
 import { calculateCoreHealth } from '@/engine/guild/coreHealth';
 
 const coreAverages = calculateCoreAverages(performanceWeeks);
-const goalsByPlayerId = Object.fromEntries(
-  players.map((player) => [player.id, player.performanceGoals])
-);
-const coreRanking = buildCoreRanking(performanceWeeks, players, goalsByPlayerId);
-const coreHealth = calculateCoreHealth(performanceWeeks, players, goalsByPlayerId, bossesNormal, bossesHeroic);
+const targets = config.performanceTargets;
+const coreRanking = buildCoreRanking(performanceWeeks, players, targets);
+const coreHealth = calculateCoreHealth(performanceWeeks, players, targets, bossesNormal, bossesHeroic);
 
 const dpsSeries = getCorePerformanceSeries(
   performanceWeeks,
@@ -117,6 +116,13 @@ const mechanicsSeries = getCorePerformanceSeries(
 
 // Base path
 const base = '';
+
+// Escondidas por hora (só DPS fica visível): parse/mortes/mecânicas ainda
+// não têm dado consistente o bastante pra apresentar. As séries continuam
+// sendo calculadas — basta tirar daqui pra voltarem a aparecer.
+const HIDDEN_CHART_METRICS = new Set(['parse', 'deaths', 'mechanics']);
+
+const formatDpsAverage = (value: number | null) => (value === null ? null : formatThousands(value, 2));
 
 // 1 — Progressão Normal
 const progressionNormal = computeProgression(bossesNormal);
@@ -216,7 +222,7 @@ const avgIoSubtitle = bestKey
 
     <!-- Médias do core na run mais recente (Team Analytics Engine) -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-      <SummaryCard title="DPS Médio" value={coreAverages.dps} subtitle="Última run" icon="⚔" accent="red" />
+      <SummaryCard title="DPS Médio" value={formatDpsAverage(coreAverages.dps)} subtitle="Última run" icon="⚔" accent="red" />
       <SummaryCard title="Parse Médio" value={coreAverages.parse} subtitle="Última run" icon="📊" accent="purple" />
       <SummaryCard title="Mortes Médias" value={coreAverages.deaths} subtitle="Última run" icon="💀" accent="default" />
       <SummaryCard title="Erros Mecânicos" value={coreAverages.mechanicErrors} subtitle="Média · última run" icon="⚠" accent="gold" />
@@ -248,7 +254,7 @@ const avgIoSubtitle = bestKey
           direction: 'lower',
           series: mechanicsSeries,
         },
-      ]}
+      ].filter((metric) => !HIDDEN_CHART_METRICS.has(metric.id))}
     />
 
     <div class="mt-14">

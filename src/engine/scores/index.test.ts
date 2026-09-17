@@ -1,75 +1,80 @@
 import { describe, expect, it } from "vitest";
 import { calculateOverallScore } from "./index";
 import type { PlayerPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets } from "../../types/index";
+
+/** Mesmas metas do core em data/seasons/midnight-s2/config.json. */
+const TARGETS: CorePerformanceTargets = {
+  parse: { target: 60, direction: "higher" },
+  mechanics: { target: 2, direction: "lower" },
+  cooldowns: { target: 70, direction: "higher" },
+  preparation: { target: 60, direction: "higher" },
+};
+
+const dimension = (score: ReturnType<typeof calculateOverallScore>, key: string) =>
+  score.dimensions.find((d) => d.key === key);
 
 describe("calculateOverallScore", () => {
-  it("renormalizes weight across the dimensions that have data (cooldowns/preparation stay unavailable)", () => {
+  it("pontua cada dimensão como progresso contra a meta do core", () => {
     const performance: PlayerPerformance = {
       playerId: "voidwar",
-      parse: 80,
-      wipefestScore: 90,
+      parse: 30,
+      mechanics: { errors: 4 },
+      uptime: 35,
+      preparation: 30,
       deaths: 0,
     };
-    const goals: PlayerPerformanceGoals = {
-      parse: { metric: "parse", target: 80, direction: "higher" },
-      deaths: { metric: "deaths", target: 0, direction: "lower" },
-    };
 
-    const result = calculateOverallScore(performance, goals);
+    const result = calculateOverallScore(performance, TARGETS);
 
-    // parse=100 (weight 30), mechanics=90 (weight 25), deaths=100 (weight 15)
-    // -> (100*30 + 90*25 + 100*15) / (30+25+15) = 6750/70 = 96.43 -> 96
-    expect(result.overall).toBe(96);
-
-    const cooldowns = result.dimensions.find((dimension) => dimension.key === "cooldowns");
-    const preparation = result.dimensions.find((dimension) => dimension.key === "preparation");
-    expect(cooldowns?.score).toBeNull();
-    expect(preparation?.score).toBeNull();
+    // metade da meta em todas → 50 em todas
+    expect(dimension(result, "parse")?.score).toBe(50);
+    expect(dimension(result, "mechanics")?.score).toBe(50);
+    expect(dimension(result, "cooldowns")?.score).toBe(50);
+    expect(dimension(result, "preparation")?.score).toBe(50);
+    expect(result.overall).toBe(50);
   });
 
-  it("returns null overall when no dimension has data", () => {
-    const performance: PlayerPerformance = { playerId: "voidwar", deaths: 0 };
+  it("dá 100 pra quem bate exatamente a meta, inclusive nas de 'quanto menor melhor'", () => {
+    const result = calculateOverallScore(
+      { playerId: "voidwar", parse: 60, mechanics: { errors: 2 }, uptime: 70, preparation: 60, deaths: 0 },
+      TARGETS
+    );
 
-    const result = calculateOverallScore(performance, undefined);
+    expect(result.overall).toBe(100);
+  });
+
+  it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
+    // Só parse (peso 30) e mecânicas (peso 25) têm dado → denominador 55.
+    const result = calculateOverallScore(
+      { playerId: "voidwar", parse: 60, mechanics: { errors: 4 }, deaths: 0 },
+      TARGETS
+    );
+
+    expect(dimension(result, "cooldowns")?.score).toBeNull();
+    expect(dimension(result, "preparation")?.score).toBeNull();
+    // (100*30 + 50*25) / 55 = 77.27 → 77
+    expect(result.overall).toBe(77);
+  });
+
+  it("não pontua mortes — elas saíram da contabilização", () => {
+    const result = calculateOverallScore({ playerId: "voidwar", parse: 60, deaths: 16 }, TARGETS);
+
+    expect(result.dimensions.map((d) => d.key)).toEqual(["parse", "mechanics", "cooldowns", "preparation"]);
+    expect(result.overall).toBe(100);
+  });
+
+  it("devolve overall null quando nenhuma dimensão tem dado", () => {
+    const result = calculateOverallScore({ playerId: "voidwar", deaths: 3 }, TARGETS);
 
     expect(result.overall).toBeNull();
-    expect(result.dimensions.every((dimension) => dimension.score === null)).toBe(true);
+    expect(result.dimensions.every((d) => d.score === null)).toBe(true);
   });
 
-  it("uses Wipefest's score directly for Mecânicas instead of goal progress", () => {
-    const performance: PlayerPerformance = { playerId: "voidwar", wipefestScore: 77, deaths: 0 };
+  it("expõe a meta usada em cada dimensão pra UI conseguir explicar a nota", () => {
+    const result = calculateOverallScore({ playerId: "voidwar", parse: 60, deaths: 0 }, TARGETS);
 
-    const result = calculateOverallScore(performance, undefined);
-
-    expect(result.dimensions.find((dimension) => dimension.key === "mechanics")?.score).toBe(77);
-  });
-
-  it("uses WoW Analyzer's uptime directly for Cooldowns once populated", () => {
-    const performance: PlayerPerformance = { playerId: "voidwar", uptime: 82, deaths: 0 };
-
-    const result = calculateOverallScore(performance, undefined);
-
-    expect(result.dimensions.find((dimension) => dimension.key === "cooldowns")?.score).toBe(82);
-    // Only cooldowns has data -> it alone carries the full weighted average.
-    expect(result.overall).toBe(82);
-  });
-
-  it("scores deaths as goal progress, not the raw death count", () => {
-    const performance: PlayerPerformance = { playerId: "voidwar", deaths: 2 };
-    const goals: PlayerPerformanceGoals = { deaths: { metric: "deaths", target: 0, direction: "lower" } };
-
-    const result = calculateOverallScore(performance, goals);
-
-    expect(result.dimensions.find((dimension) => dimension.key === "deaths")?.score).toBe(0);
-    expect(result.overall).toBe(0);
-  });
-
-  it("skips a dimension whose goal isn't set for the player", () => {
-    const performance: PlayerPerformance = { playerId: "voidwar", parse: 80, deaths: 0 };
-
-    const result = calculateOverallScore(performance, undefined);
-
-    expect(result.dimensions.find((dimension) => dimension.key === "parse")?.score).toBeNull();
+    expect(dimension(result, "parse")?.target).toEqual({ target: 60, direction: "higher" });
+    expect(dimension(result, "mechanics")?.target).toEqual({ target: 2, direction: "lower" });
   });
 });

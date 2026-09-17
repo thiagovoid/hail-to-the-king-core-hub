@@ -1,97 +1,122 @@
 import type { PlayerPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets, CoreTarget } from "../../types/index";
 import { calculateGoalProgress } from "../metrics";
 
-export type ScoreDimensionKey = "parse" | "mechanics" | "cooldowns" | "deaths" | "preparation";
+export type ScoreDimensionKey = "parse" | "mechanics" | "cooldowns" | "preparation";
 
 export interface ScoreDimension {
   key: ScoreDimensionKey;
   label: string;
-  /** Documented weight (Parse 30 / Mecânicas 25 / Cooldowns 20 / Deaths 15 / Preparação 10), out of 100. */
+  /** Peso da dimensão — os quatro somam exatamente 100. */
   weight: number;
+  /** O que a métrica mede, pra explicar a nota na interface. */
+  description: string;
+  /** De onde o dado vem (ou por que ainda não vem). */
+  source: string;
   /**
-   * 0-100 sub-score for this dimension, or null when the data behind it
-   * isn't available yet (no goal set for the player, or the provider hasn't
-   * populated it). A null dimension is excluded from the weighted average
-   * entirely, never treated as a 0 — a missing metric should never drag the
-   * score down just because we haven't wired it up yet.
+   * Sub-nota 0-100 da dimensão, ou null quando o dado por trás dela ainda
+   * não é coletado. Dimensão null fica de fora da média ponderada — nunca
+   * conta como 0, pra métrica que não temos não puxar o jogador pra baixo.
    */
   score: number | null;
+  /** Meta do core usada nessa dimensão, pra UI conseguir explicar a nota. */
+  target: CoreTarget;
 }
 
 export interface OverallPerformanceScore {
-  /** Weighted average of every available dimension, renormalized to 100. Null when none are available. */
+  /** Média ponderada das dimensões disponíveis, renormalizada pra 100. Null quando nenhuma tem dado. */
   overall: number | null;
   dimensions: ScoreDimension[];
 }
 
-const DIMENSION_META: Record<ScoreDimensionKey, { label: string; weight: number }> = {
-  parse: { label: "Parse", weight: 30 },
-  mechanics: { label: "Mecânicas", weight: 25 },
-  cooldowns: { label: "Cooldowns", weight: 20 },
-  deaths: { label: "Mortes", weight: 15 },
-  preparation: { label: "Preparação", weight: 10 },
+/**
+ * Pesos das quatro dimensões. Somam 100 — quando Mortes (peso 15) saiu da
+ * contabilização, os 15 pontos foram redistribuídos mantendo a ordem de
+ * importância original (Parse > Mecânicas > Cooldowns > Preparação), em vez
+ * de deixar os quatro somando 85.
+ */
+const DIMENSION_META: Record<ScoreDimensionKey, { label: string; weight: number; description: string; source: string }> = {
+  parse: {
+    label: "Parse",
+    weight: 35,
+    description:
+      "Percentil do seu dano (ou cura) comparado com jogadores da mesma spec no mesmo boss e dificuldade. 60 significa que você ficou acima de 60% deles.",
+    source:
+      "Warcraft Logs. Só existe para boss morto — wipe não recebe ranking, então esse número olha os bosses que caíram na noite.",
+  },
+  mechanics: {
+    label: "Mecânicas",
+    weight: 30,
+    description: "Erros de execução de mecânica ao longo da noite — dano evitável tomado, soak perdido, etc.",
+    source: "Wipefest. Coleta ainda não rodou com dado real, por isso aparece sem dado.",
+  },
+  cooldowns: {
+    label: "Cooldowns",
+    weight: 25,
+    description: "Percentual de uso correto dos seus cooldowns ao longo da noite.",
+    source: "WoW Analyzer. Sem coleta hoje: o site bloqueia automação via Cloudflare.",
+  },
+  preparation: {
+    label: "Preparação",
+    weight: 10,
+    description:
+      "Percentual dos itens de preparação prontos: gemas, encantos, flask, comida, poções, runa e óleo.",
+    source: "Warcraft Logs (gear e buffs de consumível). Coleta ainda não implementada.",
+  },
 };
 
+function progress(value: number | undefined, target: CoreTarget): number | null {
+  if (value === undefined) return null;
+  return calculateGoalProgress(value, target.target, target.direction);
+}
+
 /**
- * Score Engine: builds the Overall Performance Score, a single 0-100 summary
- * across Parse/Mecânicas/Cooldowns/Deaths/Preparação (see "8. Score Engine"
- * in the architecture doc).
+ * Score Engine: Score Geral 0-100 de um jogador numa noite de raid,
+ * comparando cada dimensão contra a meta do core (igual pra todo mundo,
+ * definida em `config.performanceTargets` do arquivo da temporada).
  *
- * Parse and Deaths are scored as goal progress (0-100), not the raw metric —
- * same Metric → Goal → Assessment separation the Goal Engine already uses,
- * so a player with a harder goal isn't compared on an absolute scale.
- * Mecânicas reuses Wipefest's own 0-100 score directly instead: there's no
- * personal target to hit there, it's already normalized by the tool.
+ * O insumo é a noite inteira: desde que a agregação da WCL passou a somar
+ * todas as trys (kills + wipes), `dps`/`hps` e as notas do Wipefest cobrem
+ * a noite toda, não só os kills. A exceção é `parse`: a WCL só calcula
+ * percentil pra kill — wipe não tem ranking, então esse número continua
+ * sendo o melhor parse entre os bosses mortos na noite.
  *
- * Cooldowns and Preparação are always null today:
- * - Cooldowns needs `PlayerPerformance.uptime`, which the WoW Analyzer
- *   provider can't populate while blocked by Cloudflare (see
- *   providers/wowanalyzer/README.md).
- * - Preparação would come from Wipefest's "bonus" score (ready check,
- *   potions), which the provider already captures per fight but isn't
- *   propagated into the Unified Model yet (see providers/wipefest/README.md).
+ * Mortes saíram da contabilização por hora (segue coletado, aparece no
+ * histórico, mas não pontua). Cooldowns e Preparação ainda não têm coleta:
+ * Cooldowns depende do WoW Analyzer (bloqueado pela Cloudflare) e
+ * Preparação de um passe novo na WCL sobre gear/consumíveis.
  *
- * Rather than assume a fixed 100-point denominator, a dimension without data
- * is dropped and its weight redistributed proportionally among the ones that
- * do have data. That keeps `overall` meaningful while Cooldowns/Preparação
- * are unavailable, and both start contributing automatically — without
- * touching this function — the moment their data source is wired in.
+ * Dimensão sem dado é descartada e seu peso é redistribuído entre as que
+ * têm — em vez de assumir um denominador fixo de 100 pontos.
  */
 export function calculateOverallScore(
   performance: PlayerPerformance,
-  goals: PlayerPerformanceGoals | undefined
+  targets: CorePerformanceTargets
 ): OverallPerformanceScore {
   const dimensions: ScoreDimension[] = [
     {
       key: "parse",
       ...DIMENSION_META.parse,
-      score:
-        goals?.parse && performance.parse !== undefined
-          ? calculateGoalProgress(performance.parse, goals.parse.target, goals.parse.direction)
-          : null,
+      target: targets.parse,
+      score: progress(performance.parse, targets.parse),
     },
     {
       key: "mechanics",
       ...DIMENSION_META.mechanics,
-      score: performance.wipefestScore ?? null,
+      target: targets.mechanics,
+      score: progress(performance.mechanics?.errors, targets.mechanics),
     },
     {
       key: "cooldowns",
       ...DIMENSION_META.cooldowns,
-      score: performance.uptime ?? null,
-    },
-    {
-      key: "deaths",
-      ...DIMENSION_META.deaths,
-      score: goals?.deaths
-        ? calculateGoalProgress(performance.deaths, goals.deaths.target, goals.deaths.direction)
-        : null,
+      target: targets.cooldowns,
+      score: progress(performance.uptime, targets.cooldowns),
     },
     {
       key: "preparation",
       ...DIMENSION_META.preparation,
-      score: null,
+      target: targets.preparation,
+      score: progress(performance.preparation, targets.preparation),
     },
   ];
 

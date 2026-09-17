@@ -1,8 +1,16 @@
 import { describe, expect, it } from "vitest";
 import { buildSeasonChronicle } from "./chronicle";
 import type { WeeklyPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets } from "../../types/index";
 import type { Boss } from "../../types/index";
+
+const TARGETS: CorePerformanceTargets = {
+  parse: { target: 60, direction: "higher" },
+  mechanics: { target: 2, direction: "lower" },
+  cooldowns: { target: 70, direction: "higher" },
+  preparation: { target: 60, direction: "higher" },
+};
+
 
 function boss(overrides: Partial<Boss>): Boss {
   return {
@@ -22,11 +30,6 @@ const players = [
   { id: "blackwatch", name: "Blackwatch" },
 ];
 
-const goals: Record<string, PlayerPerformanceGoals | undefined> = {
-  voidwar: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-  blackwatch: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-};
-
 describe("buildSeasonChronicle", () => {
   it("counts raids, pulls and kills across both difficulties", () => {
     const weeks: WeeklyPerformance[] = [
@@ -36,7 +39,7 @@ describe("buildSeasonChronicle", () => {
     const bossesNormal = [boss({ id: "b1", status: "killed", pulls: 3 }), boss({ id: "b2", pulls: 5 })];
     const bossesHeroic = [boss({ id: "b1", pulls: 2 })];
 
-    const chronicle = buildSeasonChronicle("Midnight Season 2", weeks, bossesNormal, bossesHeroic, [], {});
+    const chronicle = buildSeasonChronicle("Midnight Season 2", weeks, bossesNormal, bossesHeroic, [], TARGETS);
 
     expect(chronicle.raids).toBe(3);
     expect(chronicle.totalPulls).toBe(10);
@@ -52,8 +55,8 @@ describe("buildSeasonChronicle", () => {
           {
             date: "2026-08-18",
             players: [
-              { playerId: "voidwar", deaths: 0 },
-              { playerId: "blackwatch", deaths: 2 },
+              { playerId: "voidwar", parse: 60, deaths: 0 },
+              { playerId: "blackwatch", parse: 30, deaths: 2 },
             ],
           },
         ],
@@ -64,25 +67,25 @@ describe("buildSeasonChronicle", () => {
           {
             date: "2026-08-25",
             players: [
-              { playerId: "voidwar", deaths: 4 },
-              { playerId: "blackwatch", deaths: 0 },
+              { playerId: "voidwar", parse: 30, deaths: 4 },
+              { playerId: "blackwatch", parse: 60, deaths: 0 },
             ],
           },
         ],
       },
     ];
 
-    const chronicle = buildSeasonChronicle("Midnight Season 2", weeks, [], [], players, goals);
+    const chronicle = buildSeasonChronicle("Midnight Season 2", weeks, [], [], players, TARGETS);
 
-    // voidwar: [100, 0] -> avg 50. blackwatch: [0, 100] -> avg 50. Tied ->
-    // whoever the sort/insertion order favors; what matters is both appear.
+    // parse vs meta 60: voidwar [100, 50] -> 75; blackwatch [50, 100] -> 75.
+    // Empate — o que importa é que o cálculo cobre a temporada toda, não só a última run.
     expect(chronicle.mvp).not.toBeNull();
     expect(["voidwar", "blackwatch"]).toContain(chronicle.mvp?.playerId);
-    expect(chronicle.mvp?.avgScore).toBe(50);
+    expect(chronicle.mvp?.avgScore).toBe(75);
   });
 
   it("returns mvp: null when no run has scoreable data", () => {
-    const chronicle = buildSeasonChronicle("Midnight Season 2", [], [], [], players, {});
+    const chronicle = buildSeasonChronicle("Midnight Season 2", [], [], [], players, TARGETS);
     expect(chronicle.mvp).toBeNull();
   });
 });

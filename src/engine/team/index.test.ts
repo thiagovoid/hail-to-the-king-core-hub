@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { buildCoreRanking, calculateCoreAverages } from "./index";
 import type { WeeklyPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets } from "../../types/index";
+
+const TARGETS: CorePerformanceTargets = {
+  parse: { target: 60, direction: "higher" },
+  mechanics: { target: 2, direction: "lower" },
+  cooldowns: { target: 70, direction: "higher" },
+  preparation: { target: 60, direction: "higher" },
+};
 
 const weeks: WeeklyPerformance[] = [
   {
@@ -49,26 +56,17 @@ describe("buildCoreRanking", () => {
     { id: "benched", name: "Benched" },
   ];
 
-  it("ranks by Overall Performance Score descending, using the latest run", () => {
-    const goals: Record<string, PlayerPerformanceGoals | undefined> = {
-      voidwar: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-      blackwatch: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-    };
+  it("ordena pelo Score Geral (decrescente) usando a run mais recente", () => {
+    const ranking = buildCoreRanking(weeks, players, TARGETS);
 
-    const ranking = buildCoreRanking(weeks, players, goals);
-
-    // voidwar: 0 deaths -> 100. blackwatch: 2 deaths, target 0 -> 0.
+    // run mais recente: voidwar parse 90 vs meta 60 -> 100; blackwatch parse 70 -> 100.
+    // Empate no teto, então o desempate é a ordem de entrada.
     expect(ranking[0]).toMatchObject({ playerId: "voidwar", overall: 100 });
-    expect(ranking[1]).toMatchObject({ playerId: "blackwatch", overall: 0 });
+    expect(ranking[1]).toMatchObject({ playerId: "blackwatch", overall: 100 });
   });
 
-  it("sorts a player absent from the latest run last, not as a 0", () => {
-    const goals: Record<string, PlayerPerformanceGoals | undefined> = {
-      voidwar: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-      blackwatch: { deaths: { metric: "deaths", target: 0, direction: "lower" } },
-    };
-
-    const ranking = buildCoreRanking(weeks, players, goals);
+  it("joga pro fim quem não aparece na run mais recente, em vez de tratar como 0", () => {
+    const ranking = buildCoreRanking(weeks, players, TARGETS);
 
     expect(ranking.at(-1)?.playerId).toBe("benched");
     expect(ranking.at(-1)?.overall).toBeNull();

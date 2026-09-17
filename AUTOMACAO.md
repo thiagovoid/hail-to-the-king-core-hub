@@ -105,3 +105,50 @@ Esse é um script mais pesado que os outros dois (abre um navegador Chromium de 
 ## Ordem recomendada
 
 Se for atualizar tudo de uma vez (ex: início de uma nova season): **1 → 2 → 3**, nessa ordem — a etapa 3 usa a spec/gear atual do personagem, então faz mais sentido depois que os dados de performance/equipamento já estiverem frescos.
+
+## Automação por cron (GitHub Actions)
+
+Dois workflows rodam sozinhos, sempre só pro roster do core (`data/guild/roster.json`), nunca pra guild inteira:
+
+| Workflow | Quando | O que atualiza |
+|---|---|---|
+| `update-data.yml` | quarta e sexta 06:00 BRT (após as raids de terça/quinta), janela de 3 dias | `data/weekly/performance/week-NN.json` (dps/hps/parse por run — semana derivada da data do report via `config.seasonStart`), e `data/seasons/<season>/config.json` (pulls/kills por boss + "Últimos Logs" + `lastUpdated`) |
+| `update-roster-stats.yml` | todo dia 06:30 BRT | `data/guild/roster.json` — IO/melhor key/rank (Raider.IO), avg/best parse e presença (WCL) |
+
+Ambos aceitam `workflow_dispatch` pra rodar na mão. `update-data.yml` mantém os inputs antigos (`week`, `start`/`end`, `days`, `reports`).
+
+### Contagem de pulls/kills (`scripts/warcraftlogs/update-season.ts`)
+
+Regra: **quantas tentativas até a primeira kill**, por boss e dificuldade. A cada report novo soma os pulls do boss (wipes + a kill, se houver). Na primeira kill o boss vira `killed`, ganha `killDate` e o link do fight, e o número **tomba** — reports posteriores não mexem mais. Cada report contabilizado fica registrado em `pullLog`, então rever o mesmo report (o cron tem janela sobreposta) não conta duas vezes.
+
+Pré-requisitos no `config.json` da temporada:
+
+- `config.progressionAutoSince` — reports anteriores a essa data são ignorados (já foram somados à mão em `pulls`).
+- `encounterId` em cada boss (Normal e Heroica) — é o que liga um fight da WCL ao boss. Enquanto estiver `null`, o script **não conta** aquele boss e imprime no log a lista `encounterId → nome` do tier pra preencher. Preencha uma vez por temporada.
+
+### Preparação (dimensão do Score Geral)
+
+São dois coletores, em cadências diferentes:
+
+**1. O que é o esperado** — `update-preparation-reference.yml` (segunda, 07:00 BRT, e disparo manual na virada de temporada).
+
+Lê do Wowhead as gemas, encantos e consumíveis recomendados para **cada spec do roster** e grava em `data/seasons/<season>/preparation-reference.json`. Não precisa de navegador: a página vem renderizada do servidor, então é `fetch` puro — barato e estável em CI.
+
+A URL é montada por template a partir de `class`/`spec`/`role` do roster, porque o padrão do Wowhead é regular:
+
+```
+https://www.wowhead.com/guide/classes/{class}/{spec}/enchants-gems-pve-{role}
+```
+
+Isso fica em `data/seasons/<season>/preparation-sources.json` — **é o único arquivo a trocar por temporada**, e normalmente nem isso: só se o Wowhead mudar o padrão de URL. Spec com URL fora do padrão vai em `overrides`, com a chave `"<classe>|<spec>"`.
+
+O roster tem spec escrita em português e em inglês misturados (cadastro manual usa PT, rascunho gerado pela WCL usa EN). `src/providers/wowhead/specSlug.ts` aceita as duas grafias. Spec fora do mapa **não vira URL chutada**: o coletor reporta quais faltam e segue, em vez de gravar referência errada.
+
+```bash
+npm run wowhead:fetch-preparation                      # temporada padrão
+npm run wowhead:fetch-preparation -- --season=midnight-s3
+```
+
+**2. O que o jogador realmente levou** — roda dentro do `fetch-performance` (job `update-data.yml`), comparando o `combatantInfo` do log contra a referência acima. `preparation` é campo de `PlayerPerformance`, no mesmo `week-NN.json`, e o dado sai da tabela Summary que já pedimos — job separado gastaria pontos de rate limit à toa.
+
+Checagem sem dado disponível fica de fora da conta em vez de contar como falha, e log sem `combatantInfo` resulta em nota ausente (`undefined`), nunca zero.

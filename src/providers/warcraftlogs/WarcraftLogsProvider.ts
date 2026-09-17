@@ -1,5 +1,6 @@
 import type { DataProvider, ProviderResult } from "../types";
 import { wclGraphql } from "./client";
+import { selectAggregateFights } from "./normalize";
 import type { WclFight, WclFightTables, WclProfile, WclRankingEntry } from "./normalize";
 
 export interface WclReportRef {
@@ -84,6 +85,21 @@ export class WarcraftLogsProvider
       { zoneID }
     );
     return new Set(data.worldData.zone.encounters.map((encounter) => encounter.id));
+  }
+
+  /** Same zone encounters as `fetchRaidEncounterIds`, with names — for mapping bosses to encounterIDs. */
+  async fetchRaidEncounters(zoneID: number): Promise<Array<{ id: number; name: string }>> {
+    const data = await wclGraphql<{ worldData: { zone: { encounters: Array<{ id: number; name: string }> } } }>(
+      `query($zoneID: Int!) {
+        worldData {
+          zone(id: $zoneID) {
+            encounters { id name }
+          }
+        }
+      }`,
+      { zoneID }
+    );
+    return data.worldData.zone.encounters;
   }
 
   async fetchGuildReports(guildId: number, startTime: number, endTime: number, zoneID: number): Promise<WclReportRef[]> {
@@ -265,18 +281,14 @@ export class WarcraftLogsProvider
     const raidFights = fights.filter((fight) => context.validEncounterIds.has(fight.encounterID));
     const killedFights = raidFights.filter((fight) => fight.kill);
 
-    // Numa noite 100% wipe (sem kill nenhum), agrega os wipes no lugar dos
-    // kills — não existe "All Kills" pra comparar nesse caso.
-    const aggregateFights = killedFights.length > 0 ? killedFights : raidFights;
-    const aggregateFightIds = aggregateFights.map((fight) => fight.id);
+    // O agregado é a noite inteira — kills e wipes (ver selectAggregateFights).
+    // Como agora coincide com "todos os fights", uma query só resolve o que
+    // antes eram duas (agregado + tabela completa pra mortes/composição).
+    const aggregateFightIds = selectAggregateFights(raidFights).map((fight) => fight.id);
     const allFightIds = raidFights.map((fight) => fight.id);
 
     const aggregateTables = await this.fetchFightTables(context.reportCode, aggregateFightIds);
-    // Mortes e composição sempre olham pra run inteira (kills + wipes).
-    const fullTables =
-      aggregateFightIds.length === allFightIds.length
-        ? aggregateTables
-        : await this.fetchFightTables(context.reportCode, allFightIds);
+    const fullTables = aggregateTables;
 
     return {
       provider: this.name,

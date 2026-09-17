@@ -1,0 +1,11 @@
+{
+  "_comentario": [
+    "De onde vêm as recomendações de gema/encanto/consumível. É isto que se troca a cada temporada.",
+    "O padrão de URL do Wowhead é regular, então o template cobre todas as specs do roster:",
+    "as chaves {class}, {spec} e {role} são preenchidas a partir de data/guild/roster.json.",
+    "Se alguma spec tiver URL fora do padrão, coloque em 'overrides' com a chave '<classe>|<spec>'.",
+    "Rode: npm run wowhead:fetch-preparation"
+  ],
+  "urlTemplate": "https://www.wowhead.com/guide/classes/{class}/{spec}/enchants-gems-pve-{role}",
+  "overrides": {}
+}

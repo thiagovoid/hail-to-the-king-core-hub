@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  buildPlayerSeasonAverage,
   calculateAttendance,
-  calculateConsistency,
+  calculateTrend,
   calculateDpsEvolution,
   calculateEfficiency,
   calculateEvolution,
@@ -158,24 +159,35 @@ describe("getCorePerformanceSeries", () => {
   });
 });
 
-describe("calculateConsistency", () => {
-  it("returns 100 for perfectly identical values", () => {
-    expect(calculateConsistency([50000, 50000, 50000])).toBe(100);
+describe("calculateTrend", () => {
+  it("mede evolução, não regularidade: quem sobe muito tem tendência alta", () => {
+    // Kroline na temporada real: 17k -> 130k. A antiga consistência dava 55.
+    const subindo = calculateTrend([17352, 93000, 80800, 124326, 130000])!;
+    // Minort real: estável e baixo. A antiga consistência dava 98.
+    const estavel = calculateTrend([43162, 41542])!;
+
+    expect(subindo).toBeGreaterThan(100);
+    expect(estavel).toBeLessThan(5);
+    expect(subindo).toBeGreaterThan(estavel);
   });
 
-  it("returns a lower score for more erratic values", () => {
-    const stable = calculateConsistency([50000, 51000, 49000])!;
-    const erratic = calculateConsistency([20000, 80000, 40000])!;
-    expect(stable).toBeGreaterThan(erratic);
+  it("devolve negativo pra série em queda", () => {
+    expect(calculateTrend([100000, 80000, 60000])).toBeLessThan(0);
   });
 
-  it("returns null with fewer than 2 values", () => {
-    expect(calculateConsistency([50000])).toBeNull();
-    expect(calculateConsistency([])).toBeNull();
+  it("devolve ~0 pra série plana", () => {
+    expect(calculateTrend([50000, 50000, 50000])).toBe(0);
   });
 
-  it("returns null when the mean is 0", () => {
-    expect(calculateConsistency([0, 0])).toBeNull();
+  it("usa todos os pontos, não só primeiro e último — uma noite ruim no fim não inverte o sinal", () => {
+    // primeiro-vs-último daria negativo; a reta ainda sobe.
+    expect(calculateTrend([50000, 90000, 100000, 110000, 49000])).toBeGreaterThan(0);
+  });
+
+  it("devolve null com menos de 2 pontos ou média 0", () => {
+    expect(calculateTrend([50000])).toBeNull();
+    expect(calculateTrend([])).toBeNull();
+    expect(calculateTrend([0, 0])).toBeNull();
   });
 });
 
@@ -203,5 +215,44 @@ describe("calculateAttendance", () => {
       },
     ];
     expect(calculateAttendance(mixedWeeks, "voidwar")).toBe(50);
+  });
+});
+
+describe('buildPlayerSeasonAverage', () => {
+  const history = [
+    { playerId: 'p', week: 1, date: '2026-08-18', dps: 100000, parse: 40, deaths: 4, itemLevel: 300 },
+    { playerId: 'p', week: 2, date: '2026-08-25', dps: 120000, deaths: 2, itemLevel: 310 },
+    { playerId: 'p', week: 3, date: '2026-09-01', dps: 140000, parse: 80, deaths: 0 },
+  ];
+
+  it('tira média de cada métrica só entre as runs em que ela existe', () => {
+    const average = buildPlayerSeasonAverage('p', history);
+
+    expect(average.dps).toBe(120000);
+    // parse existe em 2 das 3 runs: (40 + 80) / 2
+    expect(average.parse).toBe(60);
+    expect(average.deaths).toBe(2);
+    expect(average.runs).toBe(3);
+  });
+
+  it('usa o último item level registrado, não a média — é estado atual', () => {
+    expect(buildPlayerSeasonAverage('p', history).itemLevel).toBe(310);
+  });
+
+  it('deixa a métrica undefined quando nenhuma run tem o dado', () => {
+    const average = buildPlayerSeasonAverage('p', history);
+
+    expect(average.hps).toBeUndefined();
+    expect(average.mechanics).toBeUndefined();
+    expect(average.uptime).toBeUndefined();
+    expect(average.preparation).toBeUndefined();
+  });
+
+  it('devolve um registro vazio (sem runs) sem quebrar', () => {
+    const average = buildPlayerSeasonAverage('p', []);
+
+    expect(average.runs).toBe(0);
+    expect(average.deaths).toBe(0);
+    expect(average.dps).toBeUndefined();
   });
 });

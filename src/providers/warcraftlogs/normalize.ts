@@ -5,6 +5,8 @@
  * that's the point, it's what makes this testable without mocking the API.
  */
 
+import { calculatePreparation, type PreparationChecklist, type WclCombatantInfo } from "./preparation";
+
 export interface WclProfile {
   region: string;
   realm: string;
@@ -69,11 +71,20 @@ export interface WclFight {
 }
 
 /**
- * dps/hps aggregate over the kills in a run (or the wipes, on a 100% wipe
- * night) — matches exactly what WCL's own "All Kills" tab shows.
+ * Quais fights compõem o agregado da noite: **todas as trys do tier**,
+ * kills e wipes.
+ *
+ * Antes isso espelhava a aba "All Kills" da WCL (só os kills quando havia
+ * algum), o que escondia justamente as tentativas de progressão — uma noite
+ * de 20 wipes e 1 kill era medida só pelo kill. Como o Score Geral mede a
+ * noite de raid, e não a melhor foto dela, o agregado passa a ser o log
+ * inteiro.
+ *
+ * Único número que não segue essa regra é o `parse`: a WCL só calcula
+ * percentil pra kill, wipe não tem ranking (ver buildRunPlayers).
  */
-export function selectAggregateFights(raidFights: WclFight[], killedFights: WclFight[]): WclFight[] {
-  return killedFights.length > 0 ? killedFights : raidFights;
+export function selectAggregateFights(raidFights: WclFight[]): WclFight[] {
+  return raidFights;
 }
 
 export function calculateAggregateDurationMs(fights: WclFight[]): number {
@@ -146,6 +157,8 @@ export interface WclPlayerDetail {
   specs?: Array<{ name: string }>;
   server: string;
   region: string;
+  /** Gear e auras do pull — base da nota de Preparação (ver preparation.ts). */
+  combatantInfo?: WclCombatantInfo;
 }
 
 export interface NormalizedRunPlayer {
@@ -155,6 +168,8 @@ export interface NormalizedRunPlayer {
   parse?: number;
   itemLevel: number;
   deaths: number;
+  /** 0-100; undefined quando o checklist não está configurado ou o log não trouxe combatantInfo. */
+  preparation?: number;
 }
 
 export interface WclRankingEntry {
@@ -172,6 +187,24 @@ export interface BuildRunPlayersInput {
   fullTables: WclFightTables;
   rankings: WclRankingEntry[];
   players: Array<{ id: string; role: "tank" | "healer" | "dps"; profile: WclProfile }>;
+  /**
+   * Checklist de preparação **daquele jogador** — a recomendação é por spec,
+   * não do raide inteiro. Ausente (ou devolvendo undefined) = a nota não é
+   * calculada e fica undefined, em vez de sair zerada.
+   */
+  resolvePreparationChecklist?: (playerId: string) => PreparationChecklist | undefined;
+}
+
+/** Acha o combatantInfo de um personagem entre tanks/dps/healers do Summary. */
+export function findCombatantInfo(
+  playerDetails: Record<string, WclPlayerDetail[]> | undefined,
+  characterName: string
+): WclCombatantInfo | undefined {
+  for (const bucket of Object.values(playerDetails ?? {})) {
+    const match = bucket?.find((member) => sameCharacterName(member.name, characterName));
+    if (match?.combatantInfo) return match.combatantInfo;
+  }
+  return undefined;
 }
 
 /**
@@ -179,8 +212,18 @@ export interface BuildRunPlayersInput {
  * tables/rankings already fetched for that report. Pure — no network.
  */
 export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlayer[] {
-  const { reportCode, aggregateFightIds, aggregateDurationMs, aggregateTables, fullTables, rankings, players } = input;
+  const {
+    reportCode,
+    aggregateFightIds,
+    aggregateDurationMs,
+    aggregateTables,
+    fullTables,
+    rankings,
+    players,
+    resolvePreparationChecklist,
+  } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
+  const playerDetails = fullTables.summary.data.playerDetails;
   const result: NormalizedRunPlayer[] = [];
 
   for (const player of players) {
@@ -193,6 +236,9 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     const value = calculateMetricValue(entry.total, aggregateDurationMs);
     const deaths = countDeaths(deathEvents, player.profile.name);
 
+    // A WCL só rankeia kill — wipe não tem percentil. Então mesmo com o
+    // agregado cobrindo a noite toda, o parse é o melhor rank entre os
+    // bosses efetivamente mortos (os ranks já vêm só desses fights).
     let bestRankPercent: number | undefined;
     for (const ranking of rankings) {
       if (ranking.metric !== metricKey) continue;
@@ -207,12 +253,18 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       }
     }
 
+    const checklist = resolvePreparationChecklist?.(player.id);
+    const preparation = checklist
+      ? calculatePreparation(findCombatantInfo(playerDetails, player.profile.name), checklist).score
+      : undefined;
+
     result.push({
       playerId: player.id,
       [metricKey]: Math.round(value),
       parse: bestRankPercent !== undefined ? Math.round(bestRankPercent) : undefined,
       itemLevel: entry.itemLevel,
       deaths,
+      preparation,
     });
   }
 

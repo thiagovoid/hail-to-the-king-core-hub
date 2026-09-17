@@ -19,10 +19,16 @@ const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
   dps: 'DPS',
 };
 
+// Mains antes de alts dentro de cada role; o sort é estável, então a ordem
+// do roster.json é preservada dentro de cada grupo.
+const TYPE_ORDER: Record<Player['type'], number> = { main: 0, alt: 1 };
+
 const groups = ROLE_ORDER.map((role) => ({
   role,
   label: ROLE_LABEL[role],
-  players: players.filter((p) => p.role === role),
+  players: players
+    .filter((p) => p.role === role)
+    .sort((a, b) => TYPE_ORDER[a.type] - TYPE_ORDER[b.type]),
 }));
 
 const classesInRoster = [...new Set(players.map((p) => p.class))].sort() as WowClass[];
@@ -126,21 +132,27 @@ function capitalize(s: string): string {
 
     let visibleCount = 0;
 
+    // Esconde via style inline, não pelo atributo `hidden`: o card tem a
+    // classe `flex` do Tailwind, que empata em especificidade com a regra
+    // `[hidden]` do navegador e ganha por vir depois na folha de estilo —
+    // o atributo era marcado mas o card continuava aparecendo.
     document.querySelectorAll<HTMLElement>('article[data-role]').forEach((card) => {
       const matches =
         (!status || card.dataset.status === status) &&
         (!wowClass || card.dataset.class === wowClass) &&
         (!type || card.dataset.type === type);
 
-      card.hidden = !matches;
+      card.style.display = matches ? '' : 'none';
       if (matches) visibleCount++;
     });
 
     // Esconde o cabeçalho de uma seção de role inteira quando o filtro zera
     // todos os cards dela, em vez de deixar um título "Tanks" sobre nada.
     document.querySelectorAll<HTMLElement>('[data-role-section]').forEach((section) => {
-      const hasVisibleCard = section.querySelector('article[data-role]:not([hidden])');
-      section.hidden = !hasVisibleCard;
+      const hasVisibleCard = [...section.querySelectorAll<HTMLElement>('article[data-role]')].some(
+        (card) => card.style.display !== 'none'
+      );
+      section.style.display = hasVisibleCard ? '' : 'none';
     });
 
     emptyHint?.classList.toggle('hidden', visibleCount > 0);

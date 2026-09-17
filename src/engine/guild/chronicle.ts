@@ -1,5 +1,5 @@
 import type { WeeklyPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets } from "../../types/index";
 import type { Boss } from "../../types/index";
 import { calculateOverallScore } from "../scores";
 
@@ -46,7 +46,7 @@ export function buildSeasonChronicle(
   bossesNormal: Boss[],
   bossesHeroic: Boss[],
   players: Array<{ id: string; name: string }>,
-  goalsByPlayerId: Record<string, PlayerPerformanceGoals | undefined>
+  targets: CorePerformanceTargets
 ): SeasonChronicle {
   const raids = weeks.reduce((sum, week) => sum + week.runs.length, 0);
 
@@ -58,7 +58,7 @@ export function buildSeasonChronicle(
   for (const week of weeks) {
     for (const run of week.runs) {
       for (const performance of run.players) {
-        const { overall } = calculateOverallScore(performance, goalsByPlayerId[performance.playerId]);
+        const { overall } = calculateOverallScore(performance, targets);
         if (overall === null) continue;
 
         const scores = scoresByPlayer.get(performance.playerId) ?? [];

@@ -20,9 +20,7 @@ const bossesNormal = seasonJson.bossesNormal as Boss[];
 const bossesHeroic = seasonJson.bossesHeroic as Boss[];
 const players = rosterJson as Player[];
 
-const goalsByPlayerId = Object.fromEntries(
-  players.map((player) => [player.id, player.performanceGoals])
-);
+const targets = config.performanceTargets;
 
 const chronicle = buildSeasonChronicle(
   config.currentSeason,
@@ -30,7 +28,7 @@ const chronicle = buildSeasonChronicle(
   bossesNormal,
   bossesHeroic,
   players,
-  goalsByPlayerId
+  targets
 );
 ---
 

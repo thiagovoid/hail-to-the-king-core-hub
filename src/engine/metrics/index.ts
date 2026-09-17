@@ -39,6 +39,45 @@ export function getPlayerHistory(
 }
 
 /**
+ * Média do jogador na temporada, na forma de um PlayerPerformance — assim
+ * o mesmo objeto alimenta o resumo, as metas e o Score Geral, e todo número
+ * na tela do jogador passa a vir das mesmas runs.
+ *
+ * Cada métrica é a média das runs em que ela existe (quem não tem parse em
+ * 2 das 5 runs tira média das 3 que tem). `itemLevel` é o último registrado,
+ * não média: é um estado atual, não um acumulado.
+ */
+export interface PlayerSeasonAverage extends PlayerPerformance {
+  /** Quantas runs entraram na média — o "rastro" do número. */
+  runs: number;
+}
+
+export function buildPlayerSeasonAverage(
+  playerId: string,
+  history: PlayerRunPerformance[]
+): PlayerSeasonAverage {
+  const average = (values: number[]): number | undefined =>
+    values.length === 0 ? undefined : Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
+
+  const defined = <T>(values: Array<T | undefined>): T[] => values.filter((value): value is T => value !== undefined);
+
+  const mechanicErrors = average(defined(history.map((run) => run.mechanics?.errors)));
+
+  return {
+    playerId,
+    runs: history.length,
+    dps: average(defined(history.map((run) => run.dps))),
+    hps: average(defined(history.map((run) => run.hps))),
+    parse: average(defined(history.map((run) => run.parse))),
+    deaths: average(history.map((run) => run.deaths)) ?? 0,
+    mechanics: mechanicErrors === undefined ? undefined : { errors: mechanicErrors },
+    uptime: average(defined(history.map((run) => run.uptime))),
+    preparation: average(defined(history.map((run) => run.preparation))),
+    itemLevel: defined(history.map((run) => run.itemLevel)).at(-1),
+  };
+}
+
+/**
  * Returns the most recent performance record for a player.
  */
 export function getLatestPerformance(
@@ -287,31 +326,47 @@ export function getCorePerformanceSeries(
 }
 
 /**
- * Measures how stable a set of values has been (e.g. a player's dps across
- * their last few runs), as a 0-100 score — 100 means no variation at all,
- * lower means more erratic. Based on the coefficient of variation
- * (standard deviation / mean), which is scale-independent so the same
- * function works for dps, parse, wipefestScore, etc. without normalizing
- * units first.
+ * Tendência de uma série (ex: o dps do jogador run a run): quanto ela subiu
+ * ou caiu no período, em % da média. Positivo = melhorando.
  *
- * Needs at least 2 values to mean anything; null otherwise (including when
- * the mean is 0, where "% variation" isn't a meaningful number).
+ * Substituiu a antiga "consistência" (coeficiente de variação), que media
+ * regularidade e por isso **punia quem evolui**: um jogador que saiu de 17k
+ * para 130k ao longo da temporada pontuava pior que um estável em 42k —
+ * o oposto do que o doc de Visão pede ("o foco deve ser evolução").
+ *
+ * Usa regressão linear por mínimos quadrados, não primeiro-vs-último: assim
+ * uma única noite ruim no fim não inverte o sinal, e todos os pontos pesam.
+ * O resultado é a variação modelada entre a primeira e a última run
+ * (inclinação × período), normalizada pela média pra ser comparável entre
+ * jogadores de dps muito diferente.
+ *
+ * Precisa de pelo menos 2 pontos; null caso contrário (e também quando a
+ * média é 0, onde "% de variação" não significa nada).
  */
-export function calculateConsistency(values: number[]): number | null {
+export function calculateTrend(values: number[]): number | null {
   if (values.length < 2) {
     return null;
   }
 
-  const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  const n = values.length;
+  const mean = values.reduce((sum, value) => sum + value, 0) / n;
   if (mean === 0) {
     return null;
   }
 
-  const variance =
-    values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length;
-  const coefficientOfVariation = Math.sqrt(variance) / Math.abs(mean);
+  const meanIndex = (n - 1) / 2;
+  let covariance = 0;
+  let varianceIndex = 0;
 
-  return Math.max(0, Math.round(100 - coefficientOfVariation * 100));
+  for (const [index, value] of values.entries()) {
+    covariance += (index - meanIndex) * (value - mean);
+    varianceIndex += (index - meanIndex) ** 2;
+  }
+
+  const slopePerRun = covariance / varianceIndex;
+  const modelledChange = slopePerRun * (n - 1);
+
+  return Math.round((modelledChange / Math.abs(mean)) * 100);
 }
 
 /**

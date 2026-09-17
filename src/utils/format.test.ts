@@ -174,3 +174,26 @@ describe('formatPercent', () => {
     );
   });
 });
+
+import { formatThousands } from './format';
+
+describe('formatThousands', () => {
+  it('formats with 2 decimals and a k suffix by default', () => {
+    expect(formatThousands(100340)).toBe('100.34k');
+    expect(formatThousands(88261)).toBe('88.26k');
+  });
+
+  it('keeps trailing zeros so widths stay stable', () => {
+    expect(formatThousands(100000)).toBe('100.00k');
+  });
+
+  it('returns the rounded integer below 1000', () => {
+    expect(formatThousands(999.6)).toBe('1000');
+    expect(formatThousands(42)).toBe('42');
+  });
+
+  it('returns "—" for non-finite input', () => {
+    expect(formatThousands(NaN)).toBe('—');
+    expect(formatThousands(Infinity)).toBe('—');
+  });
+});

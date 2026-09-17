@@ -62,6 +62,20 @@ export function formatDate(iso: string | null): string {
 }
 
 /**
+ * Formata um número grande em milhares com casas decimais fixas,
+ * ex: 100340 → "100.34k" (2 casas). Abaixo de 1000 devolve o número inteiro.
+ */
+export function formatThousands(value: number, decimals = 2): string {
+  if (!Number.isFinite(value)) {
+    return "—";
+  }
+  if (Math.abs(value) < 1000) {
+    return String(Math.round(value));
+  }
+  return `${(value / 1000).toFixed(decimals)}k`;
+}
+
+/**
  * Formata um número como percentual, ex: 73 → "73%".
  * Retorna "—" para null.
  */

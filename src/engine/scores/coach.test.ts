@@ -1,55 +1,60 @@
 import { describe, expect, it } from "vitest";
 import { buildCoachRecommendation } from "./coach";
-import type { OverallPerformanceScore } from "./index";
+import type { OverallPerformanceScore, ScoreDimension, ScoreDimensionKey } from "./index";
 
-function score(dimensions: OverallPerformanceScore["dimensions"]): OverallPerformanceScore {
-  const scored = dimensions.filter((d) => d.score !== null);
-  const overall = scored.length
-    ? Math.round(scored.reduce((s, d) => s + d.weight * (d.score as number), 0) / scored.reduce((s, d) => s + d.weight, 0))
+const WEIGHTS: Record<ScoreDimensionKey, number> = {
+  parse: 35,
+  mechanics: 30,
+  cooldowns: 25,
+  preparation: 10,
+};
+
+const LABELS: Record<ScoreDimensionKey, string> = {
+  parse: "Parse",
+  mechanics: "Mecânicas",
+  cooldowns: "Cooldowns",
+  preparation: "Preparação",
+};
+
+/** Monta o score a partir de `{ dimensão: nota }`, preenchendo o resto do shape. */
+function score(scores: Partial<Record<ScoreDimensionKey, number | null>>): OverallPerformanceScore {
+  const dimensions: ScoreDimension[] = (Object.keys(WEIGHTS) as ScoreDimensionKey[]).map((key) => ({
+    key,
+    label: LABELS[key],
+    weight: WEIGHTS[key],
+    score: scores[key] ?? null,
+    description: `descrição de ${key}`,
+    source: `fonte de ${key}`,
+    target: { target: 60, direction: "higher" as const },
+  }));
+
+  const available = dimensions.filter((dimension) => dimension.score !== null);
+  const overall = available.length
+    ? Math.round(
+        available.reduce((sum, d) => sum + d.weight * (d.score as number), 0) /
+          available.reduce((sum, d) => sum + d.weight, 0)
+      )
     : null;
+
   return { overall, dimensions };
 }
 
 describe("buildCoachRecommendation", () => {
-  it("picks the weakest available dimension as the focus", () => {
-    const result = buildCoachRecommendation(
-      score([
-        { key: "parse", label: "Parse", weight: 30, score: 90 },
-        { key: "mechanics", label: "Mecânicas", weight: 25, score: 40 },
-        { key: "cooldowns", label: "Cooldowns", weight: 20, score: null },
-        { key: "deaths", label: "Mortes", weight: 15, score: 70 },
-        { key: "preparation", label: "Preparação", weight: 10, score: null },
-      ])
-    );
+  it("escolhe a dimensão mais fraca entre as que têm dado", () => {
+    const result = buildCoachRecommendation(score({ parse: 90, mechanics: 40, preparation: 70 }));
 
     expect(result.focusKey).toBe("mechanics");
     expect(result.message).toMatch(/Mecânicas/);
   });
 
-  it("recognizes rather than nags when every available dimension is strong", () => {
-    const result = buildCoachRecommendation(
-      score([
-        { key: "parse", label: "Parse", weight: 30, score: 85 },
-        { key: "mechanics", label: "Mecânicas", weight: 25, score: 100 },
-        { key: "cooldowns", label: "Cooldowns", weight: 20, score: null },
-        { key: "deaths", label: "Mortes", weight: 15, score: 90 },
-        { key: "preparation", label: "Preparação", weight: 10, score: null },
-      ])
-    );
+  it("reconhece em vez de cobrar quando tudo que tem dado está forte", () => {
+    const result = buildCoachRecommendation(score({ parse: 85, mechanics: 100, preparation: 90 }));
 
     expect(result.message).toBe("Performance sólida em todas as frentes disponíveis. Continue assim.");
   });
 
-  it("returns a null focus when no dimension has data", () => {
-    const result = buildCoachRecommendation(
-      score([
-        { key: "parse", label: "Parse", weight: 30, score: null },
-        { key: "mechanics", label: "Mecânicas", weight: 25, score: null },
-        { key: "cooldowns", label: "Cooldowns", weight: 20, score: null },
-        { key: "deaths", label: "Mortes", weight: 15, score: null },
-        { key: "preparation", label: "Preparação", weight: 10, score: null },
-      ])
-    );
+  it("devolve foco null quando nenhuma dimensão tem dado", () => {
+    const result = buildCoachRecommendation(score({}));
 
     expect(result.focusKey).toBeNull();
     expect(result.focusLabel).toBeNull();

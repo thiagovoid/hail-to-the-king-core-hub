@@ -1,6 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { buildHallOfFame } from "./hallOfFame";
 import type { WeeklyPerformance } from "../../types/performance";
+import type { CorePerformanceTargets } from "../../types/index";
+
+const TARGETS: CorePerformanceTargets = {
+  parse: { target: 60, direction: "higher" },
+  mechanics: { target: 2, direction: "lower" },
+  cooldowns: { target: 70, direction: "higher" },
+  preparation: { target: 60, direction: "higher" },
+};
+
 
 const players = [
   { id: "voidwar", name: "Voidwar" },
@@ -24,7 +33,7 @@ describe("buildHallOfFame", () => {
       },
     ];
 
-    const hof = buildHallOfFame("S2", weeks, [], [], players, {});
+    const hof = buildHallOfFame("S2", weeks, [], [], players, TARGETS);
     const bestParse = hof.entries.find((e) => e.key === "bestParse");
 
     expect(bestParse?.winner).toEqual({ playerId: "voidwar", playerName: "Voidwar", value: "92" });
@@ -38,7 +47,7 @@ describe("buildHallOfFame", () => {
       },
     ];
 
-    const hof = buildHallOfFame("S2", weeks, [], [], players, {});
+    const hof = buildHallOfFame("S2", weeks, [], [], players, TARGETS);
 
     expect(hof.entries.find((e) => e.key === "fewestDeaths")?.winner).toBeNull();
     expect(hof.entries.find((e) => e.key === "bestEvolution")?.winner).toBeNull();
@@ -51,7 +60,7 @@ describe("buildHallOfFame", () => {
       { week: 3, runs: [{ date: "2026-09-01", players: [{ playerId: "voidwar", parse: 75, deaths: 0 }] }] },
     ];
 
-    const hof = buildHallOfFame("S2", weeks, [], [], players, {});
+    const hof = buildHallOfFame("S2", weeks, [], [], players, TARGETS);
     const evolution = hof.entries.find((e) => e.key === "bestEvolution");
 
     // 50 -> 75 = +50%, not 60 -> 75 = +25%
@@ -60,11 +69,10 @@ describe("buildHallOfFame", () => {
 
   it("reuses the Chronicle MVP calculation instead of duplicating it", () => {
     const weeks: WeeklyPerformance[] = [
-      { week: 1, runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", deaths: 0 }] }] },
+      { week: 1, runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", parse: 60, deaths: 0 }] }] },
     ];
-    const goals = { voidwar: { deaths: { metric: "deaths" as const, target: 0, direction: "lower" as const } } };
-
-    const hof = buildHallOfFame("S2", weeks, [], [], players, goals);
+    
+    const hof = buildHallOfFame("S2", weeks, [], [], players, TARGETS);
     const mvp = hof.entries.find((e) => e.key === "mvp");
 
     expect(mvp?.winner).toEqual({ playerId: "voidwar", playerName: "Voidwar", value: "Score 100" });

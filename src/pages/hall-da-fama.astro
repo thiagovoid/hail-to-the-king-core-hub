@@ -17,9 +17,7 @@ const bossesNormal = seasonJson.bossesNormal as Boss[];
 const bossesHeroic = seasonJson.bossesHeroic as Boss[];
 const players = rosterJson as Player[];
 
-const goalsByPlayerId = Object.fromEntries(
-  players.map((player) => [player.id, player.performanceGoals])
-);
+const targets = config.performanceTargets;
 
 const hallOfFame = buildHallOfFame(
   config.currentSeason,
@@ -27,7 +25,7 @@ const hallOfFame = buildHallOfFame(
   bossesNormal,
   bossesHeroic,
   players,
-  goalsByPlayerId
+  targets
 );
 
 const ICON: Record<string, string> = {

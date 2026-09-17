@@ -1,5 +1,5 @@
 import type { WeeklyPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets } from "../../types/index";
 import type { Boss } from "../../types/index";
 import { calculateAttendance } from "../metrics";
 import { buildCoreRanking } from "../team";
@@ -35,13 +35,13 @@ export interface CoreHealth {
 export function calculateCoreHealth(
   weeks: WeeklyPerformance[],
   players: Array<{ id: string; name: string }>,
-  goalsByPlayerId: Record<string, PlayerPerformanceGoals | undefined>,
+  targets: CorePerformanceTargets,
   bossesNormal: Boss[],
   bossesHeroic: Boss[]
 ): CoreHealth {
   return {
     categories: [
-      performanceCategory(weeks, players, goalsByPlayerId),
+      performanceCategory(weeks, players, targets),
       attendanceCategory(weeks, players),
       progressionCategory(bossesNormal, bossesHeroic),
     ],
@@ -65,9 +65,9 @@ function average(values: number[]): number | null {
 function performanceCategory(
   weeks: WeeklyPerformance[],
   players: Array<{ id: string; name: string }>,
-  goalsByPlayerId: Record<string, PlayerPerformanceGoals | undefined>
+  targets: CorePerformanceTargets
 ): CoreHealthCategory {
-  const ranking = buildCoreRanking(weeks, players, goalsByPlayerId);
+  const ranking = buildCoreRanking(weeks, players, targets);
   const scores = ranking.map((entry) => entry.overall).filter((value): value is number => value !== null);
   const avgScore = average(scores);
 

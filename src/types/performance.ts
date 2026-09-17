@@ -32,8 +32,16 @@ export interface PlayerPerformance {
 
   /**
    * Number of deaths during the run.
+   * Collected and shown in the history table, but out of the Score for now.
    */
   deaths: number;
+
+  /**
+   * Percentage (0-100) of preparation items ready for the night — gems,
+   * enchants, flask, food, potions, rune, oil. Not collected yet: needs a
+   * WarcraftLogs pass over `combatantInfo` (gear) plus the consumable buffs.
+   */
+  preparation?: number;
 
   /**
    * Mechanics-related failures.

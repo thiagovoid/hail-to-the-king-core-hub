@@ -1,5 +1,5 @@
 import type { WeeklyPerformance } from "../../types/performance";
-import type { PlayerPerformanceGoals } from "../../types/goals";
+import type { CorePerformanceTargets } from "../../types/index";
 import type { Boss } from "../../types/index";
 import { calculateAttendance, calculateEvolution, getPlayerHistory } from "../metrics";
 import { buildSeasonChronicle } from "./chronicle";
@@ -37,7 +37,7 @@ export function buildHallOfFame(
   bossesNormal: Boss[],
   bossesHeroic: Boss[],
   players: Array<{ id: string; name: string }>,
-  goalsByPlayerId: Record<string, PlayerPerformanceGoals | undefined>
+  targets: CorePerformanceTargets
 ): HallOfFame {
   return {
     entries: [
@@ -45,7 +45,7 @@ export function buildHallOfFame(
       fewestDeathsEntry(weeks, players),
       bestAttendanceEntry(weeks, players),
       bestEvolutionEntry(weeks, players),
-      mvpEntry(seasonName, weeks, bossesNormal, bossesHeroic, players, goalsByPlayerId),
+      mvpEntry(seasonName, weeks, bossesNormal, bossesHeroic, players, targets),
     ],
   };
 }
@@ -151,11 +151,11 @@ function mvpEntry(
   bossesNormal: Boss[],
   bossesHeroic: Boss[],
   players: Array<{ id: string; name: string }>,
-  goalsByPlayerId: Record<string, PlayerPerformanceGoals | undefined>
+  targets: CorePerformanceTargets
 ): HallOfFameEntry {
   // Reaproveita o mesmo cálculo do Chronicle em vez de duplicar a lógica de
   // média de Score Geral por jogador.
-  const { mvp } = buildSeasonChronicle(seasonName, weeks, bossesNormal, bossesHeroic, players, goalsByPlayerId);
+  const { mvp } = buildSeasonChronicle(seasonName, weeks, bossesNormal, bossesHeroic, players, targets);
 
   return {
     key: "mvp",

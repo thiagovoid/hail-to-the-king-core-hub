@@ -1,11 +1,16 @@
 name: Update Performance Data
 
 on:
+  # Raids são terça e quinta à noite (BRT). Roda quarta e sexta de manhã
+  # (09:00 UTC = 06:00 BRT), com folga pros logs terem sido subidos.
+  schedule:
+    - cron: "0 9 * * 3,5"
+
   workflow_dispatch:
     inputs:
       week:
-        description: "Número da semana (ex: 3)"
-        required: true
+        description: "Forçar número da semana (ex: 3). Em branco = derivado da data de cada report."
+        required: false
         type: string
       start:
         description: "Data de início da janela (YYYY-MM-DD). Deixe em branco para usar 'days' a partir de agora."
@@ -28,16 +33,26 @@ on:
 permissions:
   contents: write
 
-# Fase de teste: dispara só manualmente (workflow_dispatch). Vira cron
-# (terça/quinta) quando o pipeline estiver validado em produção.
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
 jobs:
   update-data:
     name: Fetch & Commit
     runs-on: ubuntu-latest
     env:
       # ID de conta WCL de quem sobe os logs de raid (não é dado sensível,
-      # é só um ID numérico de conta). Ver scripts/warcraftlogs/fetch-performance.ts.
+      # é só um ID numérico de conta). Ver scripts/warcraftlogs/discover-reports.ts.
       WCL_UPLOADER_USER_IDS: "922357"
+      WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+      WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+      # No cron não há inputs: janela curta (3 dias) cobre a última raid.
+      INPUT_WEEK: ${{ inputs.week }}
+      INPUT_START: ${{ inputs.start }}
+      INPUT_END: ${{ inputs.end }}
+      INPUT_DAYS: ${{ inputs.days || '3' }}
+      INPUT_REPORTS: ${{ inputs.reports }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,29 +66,32 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch performance data from WarcraftLogs
-        env:
-          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
-          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
-          INPUT_WEEK: ${{ inputs.week }}
-          INPUT_START: ${{ inputs.start }}
-          INPUT_END: ${{ inputs.end }}
-          INPUT_DAYS: ${{ inputs.days }}
-          INPUT_REPORTS: ${{ inputs.reports }}
+      - name: Build script args
+        id: args
         run: |
-          ARGS=(--week="$INPUT_WEEK")
-
+          ARGS=()
           if [ -n "$INPUT_START" ]; then
             ARGS+=(--start="$INPUT_START" --end="$INPUT_END")
           else
             ARGS+=(--days="$INPUT_DAYS")
           fi
-
           if [ -n "$INPUT_REPORTS" ]; then
             ARGS+=(--reports="$INPUT_REPORTS")
           fi
+          echo "common=${ARGS[*]}" >> "$GITHUB_OUTPUT"
 
+      - name: Fetch performance data from WarcraftLogs (dps/parse por run)
+        run: |
+          ARGS=(${{ steps.args.outputs.common }})
+          if [ -n "$INPUT_WEEK" ]; then
+            ARGS+=(--week="$INPUT_WEEK")
+          fi
           npx vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts "${ARGS[@]}"
+
+      - name: Update season (pulls/kills por boss + últimos logs)
+        run: |
+          ARGS=(${{ steps.args.outputs.common }})
+          npx vite-node -c vitest.config.ts scripts/warcraftlogs/update-season.ts "${ARGS[@]}"
 
       - name: Run tests
         run: npm test
@@ -82,16 +100,14 @@ jobs:
         run: npm run build
 
       - name: Commit generated data
-        env:
-          INPUT_WEEK: ${{ inputs.week }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/weekly/performance/week-*.json data/guild/roster.json
+          git add data/weekly/performance/week-*.json data/guild/roster.json data/seasons/*/config.json
 
           if git diff --cached --quiet; then
             echo "Nada para commitar."
           else
-            git commit -m "chore(data): atualiza performance da semana $INPUT_WEEK"
+            git commit -m "chore(data): atualiza performance e progressão via WarcraftLogs"
             git push
           fi

@@ -1,5 +1,5 @@
 
-import type { PlayerPerformanceGoals } from "./goals";
+import type { GoalDirection, PlayerPerformanceGoals } from "./goals";
 
 /**
  * Tipos TypeScript centrais do Core Hub — Core Nemesis
@@ -143,6 +143,33 @@ export interface TimelineEntry {
 }
 
 // ---------------------------------------------------------------------------
+// Metas do core
+// ---------------------------------------------------------------------------
+
+/** Uma meta do core: o valor alvo e se mais alto ou mais baixo é melhor. */
+export interface CoreTarget {
+  target: number;
+  direction: GoalDirection;
+  description?: string;
+}
+
+/**
+ * As quatro dimensões pontuadas do Score Geral. Mortes ficaram fora da
+ * contabilização por hora (o dado continua sendo coletado e aparece no
+ * histórico, só não pontua).
+ */
+export interface CorePerformanceTargets {
+  /** Percentil de parse mínimo esperado. */
+  parse: CoreTarget;
+  /** Máximo de erros mecânicos por noite. */
+  mechanics: CoreTarget;
+  /** % de uso correto de cooldowns. */
+  cooldowns: CoreTarget;
+  /** % dos itens de preparação prontos. */
+  preparation: CoreTarget;
+}
+
+// ---------------------------------------------------------------------------
 // Configuração do Site
 // ---------------------------------------------------------------------------
 
@@ -165,6 +192,24 @@ export interface SiteConfig {
   currentRaid: string;
   /** Data da última atualização manual dos dados, formato ISO 8601. */
   lastUpdated: string;
+  /**
+   * Primeira terça de raid da temporada (YYYY-MM-DD). Define a numeração
+   * das semanas de `data/weekly/performance/week-NN.json`: semana 1 começa
+   * aqui e cada semana seguinte vira na terça (reset do WoW nas Américas).
+   */
+  seasonStart: string;
+  /**
+   * A partir de que data (YYYY-MM-DD) a contagem de pulls/kills passa a ser
+   * automática via WarcraftLogs. Reports anteriores já foram somados à mão
+   * em `pulls` e são ignorados pelo atualizador pra não contar em dobro.
+   */
+  progressionAutoSince: string;
+  /**
+   * Metas do core, iguais pra todo mundo — o Score Geral compara cada
+   * dimensão contra elas. Diferente de `Player.performanceGoals`, que é
+   * individual (a meta de dps vinda do Raidbots) e não entra no score.
+   */
+  performanceTargets: CorePerformanceTargets;
   /** Informações sobre a próxima sessão de raid agendada. */
   nextRaid: {
     /** Data da próxima raid, formato ISO 8601 (ex: "2025-07-16"). */
@@ -209,6 +254,16 @@ export interface WeeklyHighlights {
 // Boss / Progressão
 // ---------------------------------------------------------------------------
 
+/** Um report da WCL contabilizado na progressão de um boss. */
+export interface BossPullLogEntry {
+  reportCode: string;
+  /** Data da run (YYYY-MM-DD). */
+  date: string;
+  /** Pulls desse boss nesse report, até e incluindo a kill se houver. */
+  pulls: number;
+  kill: boolean;
+}
+
 /**
  * Representa um boss da raid com status de progressão e links externos.
  */
@@ -217,10 +272,26 @@ export interface Boss {
   id: string;
   /** Nome completo do boss exibido na interface. */
   name: string;
+  /**
+   * `encounterID` desse boss na WarcraftLogs — é o que liga um fight de um
+   * report a este boss. Null enquanto não preenchido; o atualizador de
+   * progressão avisa quais encontros ficaram sem mapeamento.
+   */
+  encounterId?: number | null;
   /** Status atual do encontro: morto, em progressão ou não iniciado. */
   status: "killed" | "progress" | "not_started";
-  /** Quantidade total de pulls (tentativas) no boss. */
+  /**
+   * Quantidade total de pulls (tentativas) até a primeira kill, inclusive a
+   * própria kill. Depois da primeira kill o valor tomba: vira histórico e
+   * reports posteriores não mexem mais nele.
+   */
   pulls: number;
+  /**
+   * Reports da WCL já somados em `pulls`, um por report. É o que torna o
+   * atualizador idempotente (o mesmo report visto de novo não conta duas
+   * vezes). Ausente em bosses cujos pulls foram contados à mão.
+   */
+  pullLog?: BossPullLogEntry[];
   /**
    * Melhor percentual de pull registrado (0–100).
    * Null quando o boss ainda não foi iniciado.

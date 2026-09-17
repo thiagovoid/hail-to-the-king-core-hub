@@ -3,8 +3,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { DataCollector } from "../../src/services/DataCollector";
-import { saveRaw } from "../../src/services/RawStorage";
 import type { DataProvider } from "../../src/providers/types";
+import { weekNumberFromDate } from "../../src/engine/progression";
+import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
+import {
+  buildChecklistFromReference,
+  specKey,
+  type PreparationReference,
+} from "../../src/providers/warcraftlogs/preparationReference";
+import { RAID_ZONE_ID, discoverReports } from "./discover-reports";
 import { RaiderIoProvider } from "../../src/providers/raiderio/RaiderIoProvider";
 import { buildPlayerPerformance } from "../../src/normalization/buildPlayerPerformance";
 import type { PlayerPerformance } from "../../src/types/performance";
@@ -31,13 +38,6 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 
-const GUILD_NAME = "Hail to the King";
-const GUILD_SERVER_SLUG = "nemesis";
-const GUILD_SERVER_REGION = "US";
-
-// Raid da season atual (Midnight S2). Atualizar a cada novo tier de raid.
-const RAID_ZONE_ID = 53; // The Venomous Abyss / Abismo Venenoso
-
 const wcl = new WarcraftLogsProvider();
 const raiderIo = new RaiderIoProvider();
 const collector = new DataCollector();
@@ -52,7 +52,8 @@ const wclRankings: DataProvider<WarcraftLogsRankingContext, WarcraftLogsRawRanki
 };
 
 interface Args {
-  week: number;
+  /** Força todas as runs num arquivo de semana; sem isso a semana vem da data de cada report. */
+  week?: number;
   days: number;
   start?: number;
   end?: number;
@@ -68,14 +69,9 @@ function parseArgs(): Args {
     })
   ) as Record<string, string | boolean>;
 
-  if (!args.week) {
-    throw new Error(
-      "Uso: vite-node fetch-performance.ts --week=3 [--days=7] [--start=2026-08-18 --end=2026-08-19] [--reports=codigo1,codigo2] [--discover-characters]"
-    );
-  }
-
+  // Uso: vite-node fetch-performance.ts [--week=3] [--days=7] [--start=2026-08-18 --end=2026-08-19] [--reports=codigo1,codigo2] [--discover-characters]
   return {
-    week: Number(args.week),
+    week: args.week ? Number(args.week) : undefined,
     days: Number(args.days ?? 7),
     start: args.start ? new Date(String(args.start)).getTime() : undefined,
     end: args.end ? new Date(String(args.end)).getTime() : undefined,
@@ -109,11 +105,68 @@ async function loadRoster(): Promise<RosterPlayer[]> {
   return JSON.parse(raw);
 }
 
-function getUploaderUserIds(): number[] {
-  return (process.env.WCL_UPLOADER_USER_IDS ?? "")
-    .split(",")
-    .map((id) => Number(id.trim()))
-    .filter((id) => Number.isInteger(id) && id > 0);
+/**
+ * Monta, por jogador, o checklist de Preparação a partir da referência que o
+ * coletor do Wowhead gerou pra temporada. Cada jogador é avaliado contra a
+ * recomendação da **sua** spec.
+ *
+ * Referência ausente ou spec sem entrada = nota não calculada (undefined),
+ * nunca zero: a lacuna é nossa, não do raider.
+ */
+async function loadPreparationResolver(
+  roster: Array<{ id: string; name: string; class: string; spec: string }>
+): Promise<((playerId: string) => PreparationChecklist | undefined) | undefined> {
+  let reference: PreparationReference;
+  try {
+    const raw = await readFile(path.join(ROOT, "data/seasons/midnight-s2/preparation-reference.json"), "utf-8");
+    reference = JSON.parse(raw);
+  } catch {
+    console.warn(
+      "Sem preparation-reference.json — a nota de Preparação não será calculada. Rode 'npm run wowhead:fetch-preparation'."
+    );
+    return undefined;
+  }
+
+  const byPlayer = new Map<string, PreparationChecklist>();
+  const missingSpecs: string[] = [];
+  const unknownSlots = new Set<string>();
+
+  for (const player of roster) {
+    const entry = reference.specs[specKey(player.class, player.spec)];
+    if (!entry) {
+      missingSpecs.push(`${player.name} (${player.class} / ${player.spec})`);
+      continue;
+    }
+
+    const { checklist, unknownSlotLabels } = buildChecklistFromReference(entry);
+    unknownSlotLabels.forEach((label) => unknownSlots.add(label));
+    byPlayer.set(player.id, checklist);
+  }
+
+  if (missingSpecs.length > 0) {
+    console.warn(
+      `Sem recomendação do Wowhead pra ${missingSpecs.length} jogador(es) — ficam sem nota de Preparação:\n  ${missingSpecs.join("\n  ")}`
+    );
+  }
+  if (unknownSlots.size > 0) {
+    console.warn(
+      `Rótulos de slot não reconhecidos no guia (encanto ignorado): ${[...unknownSlots].join(", ")}. ` +
+        "Adicione o apelido em src/providers/warcraftlogs/preparationReference.ts."
+    );
+  }
+  if (byPlayer.size === 0) return undefined;
+
+  console.log(`Preparação: checklist montado pra ${byPlayer.size} de ${roster.length} jogador(es).`);
+  return (playerId) => byPlayer.get(playerId);
+}
+
+async function loadSeasonStart(): Promise<string> {
+  const raw = await readFile(path.join(ROOT, "data/seasons/midnight-s2/config.json"), "utf-8");
+  const seasonStart: string | undefined = JSON.parse(raw).config?.seasonStart;
+  if (!seasonStart) {
+    throw new Error("config.seasonStart ausente em data/seasons/midnight-s2/config.json — necessário pra numerar as semanas.");
+  }
+  return seasonStart;
 }
 
 // Monta um rascunho de entrada pro roster.json com o que a WCL e o Raider.io
@@ -173,88 +226,16 @@ async function main() {
   const { week, days, start, end, extraReportCodes, discoverByCharacter } = parseArgs();
   const roster = await loadRoster();
 
+  const seasonStart = await loadSeasonStart();
+  const resolvePreparationChecklist = await loadPreparationResolver(roster);
+
   const endTime = end ?? Date.now();
   const startTime = start ?? endTime - days * 24 * 60 * 60 * 1000;
 
   console.log(`Buscando reports entre ${new Date(startTime).toISOString()} e ${new Date(endTime).toISOString()}...`);
 
-  const [guildId, validEncounterIds] = await Promise.all([
-    wcl.resolveGuildId(GUILD_NAME, GUILD_SERVER_SLUG, GUILD_SERVER_REGION),
-    wcl.fetchRaidEncounterIds(RAID_ZONE_ID),
-  ]);
-
-  const guildReports = await wcl.fetchGuildReports(guildId, startTime, endTime, RAID_ZONE_ID);
-
-  const extraReports: WclReportRef[] = [];
-  for (const code of extraReportCodes) {
-    if (guildReports.some((report) => report.code === code)) continue;
-    const meta = await wcl.fetchReportMeta(code);
-    if (meta?.zone?.id === RAID_ZONE_ID) extraReports.push(meta);
-  }
-
-  const uploaderUserIds = getUploaderUserIds();
-  const uploaderReports: WclReportRef[] = [];
-  for (const userID of uploaderUserIds) {
-    uploaderReports.push(...(await wcl.fetchUserReports(userID, startTime, endTime, RAID_ZONE_ID)));
-  }
-
-  const reportsByCode = new Map<string, WclReportRef>();
-  for (const report of [...guildReports, ...uploaderReports, ...extraReports]) {
-    reportsByCode.set(report.code, report);
-  }
-
-  // Descoberta por personagem: acha reports pessoais/unlisted que nenhuma
-  // busca por guildID/userID enxerga. Só aceito automaticamente se o dono for
-  // uma conta confiável (WCL_UPLOADER_USER_IDS) — sem isso, é modo investigação.
-  const trustedUploaderIds = new Set(uploaderUserIds);
-  const trustedDiscovered: WclReportRef[] = [];
-  const untrustedDiscovered: WclReportRef[] = [];
-
-  if (trustedUploaderIds.size > 0 || discoverByCharacter) {
-    for (const player of roster) {
-      const profile = parseWclProfile(player.warcraftLogs.profileUrl);
-      const playerReports = await wcl.fetchCharacterRecentReports(profile);
-
-      for (const report of playerReports) {
-        if (report.zone?.id !== RAID_ZONE_ID) continue;
-        if (report.startTime < startTime || report.startTime > endTime) continue;
-        if (reportsByCode.has(report.code)) continue;
-        if (trustedDiscovered.some((r) => r.code === report.code)) continue;
-        if (untrustedDiscovered.some((r) => r.code === report.code)) continue;
-
-        if (report.owner?.id && trustedUploaderIds.has(report.owner.id)) {
-          trustedDiscovered.push(report);
-        } else if (discoverByCharacter) {
-          untrustedDiscovered.push(report);
-        }
-      }
-    }
-  }
-
-  for (const report of [...trustedDiscovered, ...untrustedDiscovered]) {
-    reportsByCode.set(report.code, report);
-  }
-
-  const reports = [...reportsByCode.values()];
-  console.log(
-    `${reports.length} report(s) de raid encontrados (${guildReports.length} pela guild, ${uploaderReports.length} por conta de upload conhecida, ${extraReports.length} manuais, ${trustedDiscovered.length} descobertos de contas confiáveis, ${untrustedDiscovered.length} descobertos de contas não verificadas).`
-  );
-
-  if (untrustedDiscovered.length > 0) {
-    console.warn(
-      "Atenção: reports de contas não verificadas incluídos (--discover-characters). Confirme que não são cópias duplicadas de outra pessoa antes de usar esses dados (pode contar mortes em dobro)."
-    );
-  }
-
-  const weekPadded = String(week).padStart(2, "0");
-  await saveRaw("warcraftlogs", `_discovery/week-${weekPadded}`, {
-    window: { startTime, endTime },
-    guildReports,
-    uploaderReports,
-    extraReports,
-    trustedDiscovered,
-    untrustedDiscovered,
-  });
+  const validEncounterIds = await wcl.fetchRaidEncounterIds(RAID_ZONE_ID);
+  const { reports } = await discoverReports({ wcl, roster, startTime, endTime, extraReportCodes, discoverByCharacter });
 
   // Pass 1: fights + tables de cada report, via DataCollector (arquiva em
   // data/raw/warcraftlogs/<code>.json). Falha num report não derruba o resto.
@@ -288,7 +269,7 @@ async function main() {
     }
 
     const tables = outcome.result.raw;
-    const aggregateFights = selectAggregateFights(tables.raidFights, tables.killedFights);
+    const aggregateFights = selectAggregateFights(tables.raidFights);
     const aggregateDurationMs = calculateAggregateDurationMs(aggregateFights);
     const playerDetails = tables.fullTables.summary.data.playerDetails ?? {};
 
@@ -394,6 +375,7 @@ async function main() {
       fullTables: ctx.fullTables,
       rankings,
       players: rosterProfiles,
+      resolvePreparationChecklist,
     });
 
     // Passa pela Normalization Layer explícita mesmo só com a WCL contribuindo
@@ -410,34 +392,50 @@ async function main() {
     });
   }
 
-  const fileName = `week-${weekPadded}.json`;
-  const outPath = path.join(ROOT, "data/weekly/performance", fileName);
-
-  // Mescla com o arquivo existente: uma run nova soma às que já tinha.
-  let existingRuns: Array<{ date: string; reportCode?: string; players: unknown[] }> = [];
-  try {
-    const raw = await readFile(outPath, "utf-8");
-    existingRuns = JSON.parse(raw).runs ?? [];
-  } catch {
-    existingRuns = [];
-  }
-
-  const runsByKey = new Map<string, { date: string; reportCode?: string; players: unknown[] }>();
-  for (const run of existingRuns) {
-    runsByKey.set(run.reportCode ?? run.date, run);
-  }
+  // Agrupa por semana: com --week tudo vai pro mesmo arquivo; sem, cada run
+  // cai na semana da própria data (o cron cobre janelas que podem cruzar a
+  // terça de virada, então um lote pode alimentar dois arquivos).
+  const runsByWeek = new Map<number, typeof runsByReportCode>();
   for (const [reportCode, run] of runsByReportCode) {
-    runsByKey.set(reportCode, run);
+    const runWeek = week ?? weekNumberFromDate(run.date, seasonStart);
+    const bucket = runsByWeek.get(runWeek) ?? new Map();
+    bucket.set(reportCode, run);
+    runsByWeek.set(runWeek, bucket);
   }
 
-  const runs = [...runsByKey.values()].sort((a, b) => a.date.localeCompare(b.date));
-  const output = { week, runs };
+  if (runsByWeek.size === 0) {
+    console.log("Nenhuma run nova pra gravar.");
+    return;
+  }
 
-  await writeFile(outPath, `${JSON.stringify(output, null, 2)}\n`);
+  for (const [runWeek, weekRuns] of [...runsByWeek.entries()].sort(([a], [b]) => a - b)) {
+    const weekPadded = String(runWeek).padStart(2, "0");
+    const outPath = path.join(ROOT, "data/weekly/performance", `week-${weekPadded}.json`);
 
-  console.log(
-    `Gerado ${path.relative(ROOT, outPath)} com ${runs.length} run(s) (${runsByReportCode.size} atualizada(s)/nova(s) nessa execução).`
-  );
+    // Mescla com o arquivo existente: uma run nova soma às que já tinha.
+    let existingRuns: Array<{ date: string; reportCode?: string; players: unknown[] }> = [];
+    try {
+      const raw = await readFile(outPath, "utf-8");
+      existingRuns = JSON.parse(raw).runs ?? [];
+    } catch {
+      existingRuns = [];
+    }
+
+    const runsByKey = new Map<string, { date: string; reportCode?: string; players: unknown[] }>();
+    for (const run of existingRuns) {
+      runsByKey.set(run.reportCode ?? run.date, run);
+    }
+    for (const [reportCode, run] of weekRuns) {
+      runsByKey.set(reportCode, run);
+    }
+
+    const runs = [...runsByKey.values()].sort((a, b) => a.date.localeCompare(b.date));
+    await writeFile(outPath, `${JSON.stringify({ week: runWeek, runs }, null, 2)}\n`);
+
+    console.log(
+      `Gerado ${path.relative(ROOT, outPath)} com ${runs.length} run(s) (${weekRuns.size} atualizada(s)/nova(s) nessa execução).`
+    );
+  }
 }
 
 main().catch((error) => {
