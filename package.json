@@ -12,7 +12,6 @@
     "wcl:test": "vite-node -c vitest.config.ts scripts/warcraftlogs/test-connection.ts",
     "wcl:fetch-performance": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts",
     "wcl:sync-roster-stats": "vite-node -c vitest.config.ts scripts/warcraftlogs/sync-roster-stats.ts",
-    "wcl:update-season": "vite-node -c vitest.config.ts scripts/warcraftlogs/update-season.ts",
     "raidbots:update-goals": "vite-node -c vitest.config.ts scripts/raidbots/update-performance-goals.ts",
     "wipefest:fetch-scores": "vite-node -c vitest.config.ts scripts/wipefest/fetch-scores.ts",
     "wipefest:fetch-boss-insights": "vite-node -c vitest.config.ts scripts/wipefest/fetch-boss-insights.ts",
@@ -20,7 +19,8 @@
     "wcl:inspect-preparation": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-preparation.ts",
     "wowhead:fetch-preparation": "vite-node -c vitest.config.ts scripts/wowhead/fetch-preparation.ts",
     "raiderio:check-guild-membership": "vite-node -c vitest.config.ts scripts/raiderio/check-guild-membership.ts",
-    "raiderio:update-weekly-mythic": "vite-node -c vitest.config.ts scripts/raiderio/update-weekly-mythic-highlights.ts"
+    "raiderio:update-weekly-mythic": "vite-node -c vitest.config.ts scripts/raiderio/update-weekly-mythic-highlights.ts",
+    "wcl:inspect-roles": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-roles.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

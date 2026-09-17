@@ -1,0 +1,46 @@
+name: Inspect Report (diagnóstico)
+
+# Não tem cron de propósito: é ferramenta de investigação, rodada à mão
+# quando algum número do site não bate com o log. As credenciais da WCL só
+# existem aqui como secret, então é o único lugar onde dá pra olhar o dado
+# cru sem colocar credencial na máquina de ninguém.
+on:
+  workflow_dispatch:
+    inputs:
+      report:
+        description: "Código do report na WarcraftLogs (ex: JCvk27bDL6Zdm18j)"
+        required: true
+        type: string
+      player:
+        description: "Filtrar por jogador (opcional, casa por trecho do nome)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    name: Inspect roles
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - run: npm ci
+
+      # Só lê e imprime. Não grava nada no repositório.
+      - name: Inspecionar papéis por fight
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: |
+          ARGS=(--report="${{ inputs.report }}")
+          if [ -n "${{ inputs.player }}" ]; then
+            ARGS+=(--player="${{ inputs.player }}")
+          fi
+          npm run wcl:inspect-roles -- "${ARGS[@]}"
