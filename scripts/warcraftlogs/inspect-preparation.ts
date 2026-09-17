@@ -87,6 +87,19 @@ async function main() {
     );
   });
 
+  // Dump cru: quais campos a WCL realmente manda em cada item de gear.
+  // O mapa de índice->slot foi escrito por suposição e não bateu com o dado
+  // real, então aqui é onde se descobre se existe um campo autoritativo.
+  console.log(`\n=== CAMPOS CRUS DO GEAR (3 primeiros itens) ===`);
+  const gear = sample.combatantInfo.gear ?? [];
+  for (const item of gear.slice(0, 3)) {
+    console.log(`  ${JSON.stringify(item)}`);
+  }
+  const chaves = new Set<string>();
+  for (const item of gear) Object.keys(item ?? {}).forEach((k) => chaves.add(k));
+  console.log(`  campos presentes: [${[...chaves].join(", ")}]`);
+  console.log(`  total de itens no array: ${gear.length}`);
+
   console.log(`\n=== AURAS no pull (candidatas a flask/comida/runa/óleo/poção) ===`);
   const auras = sample.combatantInfo.auras ?? [];
   if (auras.length === 0) {
