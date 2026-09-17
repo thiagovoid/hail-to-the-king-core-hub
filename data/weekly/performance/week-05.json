@@ -112,14 +112,21 @@
           "playerId": "blackwatch",
           "dps": 6412,
           "itemLevel": 317,
-          "preparation": 100,
+          "preparation": 86,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras"
+          ],
           "deaths": 3
         },
         {
           "playerId": "apocalipse",
           "dps": 47057,
           "itemLevel": 316,
-          "preparation": 100,
+          "preparation": 94,
+          "preparationMissing": [
+            "Botas"
+          ],
           "deaths": 11
         },
         {
@@ -133,35 +140,64 @@
           "playerId": "kams",
           "hps": 175882,
           "itemLevel": 316,
-          "preparation": 55,
+          "preparation": 52,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Colar"
+          ],
           "deaths": 11
         },
         {
           "playerId": "cowsadeer",
           "hps": 210628,
           "itemLevel": 320,
-          "preparation": 100,
+          "preparation": 94,
+          "preparationMissing": [
+            "Pernas"
+          ],
           "deaths": 9
         },
         {
           "playerId": "bustgril",
           "dps": 96868,
           "itemLevel": 316,
-          "preparation": 86,
+          "preparation": 81,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Botas"
+          ],
           "deaths": 10
         },
         {
           "playerId": "hysillens",
           "dps": 90323,
           "itemLevel": 316,
-          "preparation": 7,
+          "preparation": 6,
+          "preparationMissing": [
+            "Elmo",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma",
+            "Colar"
+          ],
           "deaths": 11
         },
         {
           "playerId": "kroline",
           "dps": 106288,
           "itemLevel": 319,
-          "preparation": 93,
+          "preparation": 88,
+          "preparationMissing": [
+            "Elmo",
+            "Botas"
+          ],
           "deaths": 9
         },
         {
@@ -175,14 +211,23 @@
           "playerId": "heracranosx",
           "dps": 109362,
           "itemLevel": 320,
-          "preparation": 100,
+          "preparation": 94,
+          "preparationMissing": [
+            "Elmo"
+          ],
           "deaths": 10
         },
         {
           "playerId": "gunst",
           "dps": 106196,
           "itemLevel": 321,
-          "preparation": 85,
+          "preparation": 82,
+          "preparationMissing": [
+            "Elmo",
+            "Cintura",
+            "Botas",
+            "Braçadeiras"
+          ],
           "deaths": 11
         },
         {
@@ -208,14 +253,22 @@
         },
         {
           "playerId": "ligiaf",
-          "preparation": 93,
+          "preparation": 88,
+          "preparationMissing": [
+            "Elmo",
+            "Peito"
+          ],
           "deaths": 8
         },
         {
           "playerId": "minort",
           "dps": 66751,
           "itemLevel": 303,
-          "preparation": 100,
+          "preparation": 88,
+          "preparationMissing": [
+            "Peito",
+            "Botas"
+          ],
           "deaths": 10
         }
       ]
