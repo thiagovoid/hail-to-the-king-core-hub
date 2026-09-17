@@ -14,9 +14,9 @@
         "description": "Parse mínimo esperado em todas as trys da noite"
       },
       "mechanics": {
-        "target": 2,
+        "target": 7,
         "direction": "lower",
-        "description": "Máximo de erros mecânicos por noite"
+        "description": "Máximo de erros mecânicos por try (média da noite). Calibrado sobre os logs de 10/09 e 15/09: mediana 8, faixa 2 a 16."
       },
       "cooldowns": {
         "target": 70,

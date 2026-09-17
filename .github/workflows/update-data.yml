@@ -99,6 +99,24 @@ jobs:
 
           npx vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts "${ARGS[@]}"
 
+      # Depois do passo acima, porque escreve no MESMO week-NN.json que ele
+      # acabou de gerar — precisa dos reportCode. Por isso é um passo daqui e
+      # não um workflow à parte: separado, exigiria encadear workflows e
+      # geraria um segundo commit.
+      #
+      # Sem credencial e sem navegador: a API do Wipefest é pública. Sem
+      # --week de propósito — a semana sai do raidWeekAnchor, igual acima.
+      - name: Fetch mechanic errors from Wipefest
+        env:
+          INPUT_WEEK: ${{ inputs.week }}
+        run: |
+          ARGS=()
+          if [ -n "$INPUT_WEEK" ]; then
+            ARGS+=(--week="$INPUT_WEEK")
+          fi
+
+          npm run wipefest:fetch-mechanics -- "${ARGS[@]}"
+
       - name: Run tests
         run: npm test
 
@@ -114,6 +132,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nada para commitar."
           else
-            git commit -m "chore(data): atualização automática de log de raid (WarcraftLogs)"
+            git commit -m "chore(data): atualização automática de log de raid (WarcraftLogs + Wipefest)"
             git push
           fi

@@ -10,106 +10,1261 @@
           "dps": 48654,
           "parse": 39,
           "itemLevel": 307,
-          "deaths": 5
+          "deaths": 5,
+          "mechanics": {
+            "errors": 6
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 15
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 7
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 5
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 5
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "apocalipse",
           "dps": 37808,
           "parse": 41,
-          "deaths": 3
+          "deaths": 3,
+          "mechanics": {
+            "errors": 5
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 5
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 5
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 5
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 5
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 4
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 3
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Corrosive Spit",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "voidsurge",
           "hps": 84248,
           "parse": 30,
           "itemLevel": 288,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 11
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 26
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 12
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 12
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Splinters",
+              "hits": 10
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 8
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 7
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 3
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 2
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
           "hps": 140027,
           "parse": 82,
           "itemLevel": 305,
-          "deaths": 4
+          "deaths": 4,
+          "mechanics": {
+            "errors": 6
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 12
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 9
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 8
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 5
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "cowsadeer",
           "hps": 156548,
           "parse": 95,
-          "deaths": 2
+          "deaths": 2,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Splinters",
+              "hits": 16
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 15
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 10
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 5
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 5
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 4
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 1
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Deadly Venom",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "bustgril",
           "dps": 106754,
           "parse": 69,
           "itemLevel": 305,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 6
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 3
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Corrosive Spit",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "hysillens",
           "dps": 114692,
           "parse": 76,
-          "deaths": 3
+          "deaths": 3,
+          "mechanics": {
+            "errors": 6
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 14
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 7
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 7
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 7
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 3
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 3
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Splinters",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kroline",
           "dps": 124326,
           "parse": 64,
           "itemLevel": 311,
-          "deaths": 5
+          "deaths": 5,
+          "mechanics": {
+            "errors": 5
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 9
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 8
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 6
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 5
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 4
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 3
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 2
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Corrosive Spit",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Sever",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "jrxamã",
           "dps": 151707,
           "parse": 87,
           "itemLevel": 313,
-          "deaths": 4
+          "deaths": 4,
+          "mechanics": {
+            "errors": 5
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 13
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 5
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 5
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 4
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Deluge",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Damage from Throw Junk",
+              "hits": 1
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
           "dps": 86369,
           "parse": 27,
           "itemLevel": 313,
-          "deaths": 4
+          "deaths": 4,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 14
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 8
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 3
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Damage from Evil Eyes",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Damage from Throw Junk",
+              "hits": 2
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Soul Sever",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "gunst",
           "dps": 75821,
           "parse": 37,
           "itemLevel": 307,
-          "deaths": 4
+          "deaths": 4,
+          "mechanics": {
+            "errors": 10
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 18
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 13
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 10
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 6
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 5
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Deadly Venom",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Corrosive Spit",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "nerlock",
           "dps": 55784,
           "parse": 8,
-          "deaths": 4
+          "deaths": 4,
+          "mechanics": {
+            "errors": 5
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 10
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 7
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 4
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 4
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Splinters",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 3
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Stir the Depths",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "xúlio",
           "dps": 121755,
           "parse": 72,
           "itemLevel": 312,
-          "deaths": 2
+          "deaths": 2,
+          "mechanics": {
+            "errors": 10
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 25
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 15
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 7
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 4
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Splinters",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 3
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Deluge",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Damage from Throw Junk",
+              "hits": 1
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Deadly Venom",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "dagom",
           "dps": 51679,
           "parse": 10,
           "itemLevel": 307,
-          "deaths": 3
+          "deaths": 3,
+          "mechanics": {
+            "errors": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 34
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 17
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 8
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 6
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 4
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 3
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Splinters",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Deluge",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 2
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Deadly Venom",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "ligiaf",
           "dps": 64591,
           "parse": 23,
-          "deaths": 5
+          "deaths": 5,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 6
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 4
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 2
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 2
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "minort",
           "dps": 43162,
           "parse": 6,
-          "deaths": 4
+          "deaths": 4,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sszorak",
+              "mechanic": "Debuffs of Tempest",
+              "hits": 21
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 9
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 7
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Froth",
+              "hits": 4
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Globule",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 3
+            },
+            {
+              "boss": "Vashnik, o Maligno",
+              "mechanic": "Damage from Plague Wave",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Vile Flood",
+              "hits": 3
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Coiling Ichor",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 3
+            },
+            {
+              "boss": "Os Exploradores Perdidos",
+              "mechanic": "Debuffs of Shell Spin",
+              "hits": 1
+            },
+            {
+              "boss": "Sszorak",
+              "mechanic": "Damage from Raging Crosswinds",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Congelead Gore",
+              "hits": 1
+            },
+            {
+              "boss": "As Presas Gêmeas",
+              "mechanic": "Damage from Caustic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Soul Sever",
+              "hits": 1
+            }
+          ]
         }
       ]
     },
@@ -122,91 +1277,626 @@
           "dps": 42548,
           "parse": 15,
           "itemLevel": 308,
-          "deaths": 16
+          "deaths": 16,
+          "mechanics": {
+            "errors": 6
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 72
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 6
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "apocalipse",
           "dps": 46559,
           "parse": 28,
           "itemLevel": 306,
-          "deaths": 17
+          "deaths": 17,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 46
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 22
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 13
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 12
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "voidsurge",
           "hps": 85310,
           "parse": 7,
           "itemLevel": 300,
-          "deaths": 15
+          "deaths": 15,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 35
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 14
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 13
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
           "hps": 150798,
           "parse": 48,
           "itemLevel": 305,
-          "deaths": 15
+          "deaths": 15,
+          "mechanics": {
+            "errors": 2
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 14
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 9
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "cowsadeer",
           "hps": 169821,
           "parse": 68,
           "itemLevel": 314,
-          "deaths": 15
+          "deaths": 15,
+          "mechanics": {
+            "errors": 1
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "bustgril",
           "dps": 106917,
           "parse": 40,
           "itemLevel": 307,
-          "deaths": 16
+          "deaths": 16,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 13
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 11
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 8
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "hysillens",
           "dps": 109387,
           "parse": 37,
           "itemLevel": 310,
-          "deaths": 16
+          "deaths": 16,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 24
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 9
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 9
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 7
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Widow's Kiss",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Mephitic Thrash",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kroline",
           "dps": 129991,
           "parse": 61,
           "itemLevel": 312,
-          "deaths": 15
+          "deaths": 15,
+          "mechanics": {
+            "errors": 1
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 6
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
           "dps": 94574,
           "parse": 31,
           "itemLevel": 315,
-          "deaths": 15
+          "deaths": 15,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 22
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 8
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "gunst",
           "dps": 117112,
           "parse": 38,
           "itemLevel": 315,
-          "deaths": 17
+          "deaths": 17,
+          "mechanics": {
+            "errors": 2
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 18
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 4
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Sever",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "xúlio",
           "dps": 109946,
           "parse": 38,
           "itemLevel": 313,
-          "deaths": 17
+          "deaths": 17,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 19
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 12
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 11
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Widow's Kiss",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Sever",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "ligiaf",
           "dps": 84033,
           "parse": 18,
           "itemLevel": 290,
-          "deaths": 16
+          "deaths": 16,
+          "mechanics": {
+            "errors": 1
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Widow's Kiss",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "minort",
           "dps": 41542,
           "parse": 7,
           "itemLevel": 288,
-          "deaths": 17
+          "deaths": 17,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 16
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 10
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 9
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 4
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Widow's Kiss",
+              "hits": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 1
+            }
+          ]
         }
       ]
     }

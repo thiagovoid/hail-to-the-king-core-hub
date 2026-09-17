@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { WipefestApiProvider, fetchWipefestReport } from "../../src/providers/wipefest/WipefestApiProvider";
 import { buildFightMechanics } from "../../src/providers/wipefest/insights";
 import { aggregateNightMechanics } from "../../src/providers/wipefest/normalizeMechanics";
+import { computeWeekNumber } from "../../src/normalization/buildSeasonProgression";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -30,8 +31,12 @@ function parseArgs() {
     })
   ) as Record<string, string | boolean>;
 
-  if (!args.week) throw new Error("Uso: npm run wipefest:fetch-mechanics -- --week=5 [--season=midnight-s2]");
-  return { week: Number(args.week), season: String(args.season ?? "midnight-s2") };
+  // --week é opcional: sem ele, a semana sai do raidWeekAnchor, igual ao
+  // fetch-performance. É o que permite rodar no cron, que não passa input.
+  return {
+    week: args.week ? Number(args.week) : undefined,
+    season: String(args.season ?? "midnight-s2"),
+  };
 }
 
 /** O id do roster vem do nome do personagem na URL da WCL. */
@@ -51,7 +56,11 @@ function characterName(profileUrl: string): string {
  * e medir só o kill esconderia justamente a progressão.
  */
 async function main() {
-  const { week, season } = parseArgs();
+  const { week: weekArg, season } = parseArgs();
+  const seasonDir = path.join(ROOT, "data/seasons", season);
+  const config = JSON.parse(await readFile(path.join(seasonDir, "config.json"), "utf-8"));
+  const week = weekArg ?? computeWeekNumber(config.config.raidWeekAnchor, Date.now());
+  console.log(`Semana ${week}${weekArg ? "" : " (calculada a partir de raidWeekAnchor)"}.`);
   const weekPadded = String(week).padStart(2, "0");
   const filePath = path.join(ROOT, "data/weekly/performance", `week-${weekPadded}.json`);
 
@@ -59,7 +68,6 @@ async function main() {
   const roster: RosterPlayer[] = JSON.parse(await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8"));
   const bosses: Record<number, string> = {};
 
-  const config = JSON.parse(await readFile(path.join(ROOT, "data/seasons", season, "config.json"), "utf-8"));
   for (const boss of [...(config.bossesHeroic ?? []), ...(config.bossesNormal ?? [])]) {
     if (boss.encounterID) bosses[boss.encounterID] = boss.name;
   }

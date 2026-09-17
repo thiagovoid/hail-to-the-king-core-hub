@@ -9,60 +9,230 @@
           "playerId": "voidwar",
           "dps": 48020,
           "itemLevel": 290,
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 6
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 41
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 9
+            }
+          ]
         },
         {
           "playerId": "blackwatch",
           "dps": 37606,
           "itemLevel": 292,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 68
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
           "hps": 107887,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 1
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            }
+          ]
         },
         {
           "playerId": "bustgril",
           "dps": 67209,
           "itemLevel": 286,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 2
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 10
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 8
+            }
+          ]
         },
         {
           "playerId": "kroline",
           "dps": 17352,
           "itemLevel": 291,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 1
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 2
+            }
+          ]
         },
         {
           "playerId": "jrxamã",
           "dps": 99309,
           "itemLevel": 290,
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 1
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
           "dps": 85671,
           "itemLevel": 293,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 17
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "nerlock",
           "dps": 35285,
           "itemLevel": 258,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 0
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "metallicä",
           "dps": 45084,
           "itemLevel": 290,
-          "deaths": 5
+          "deaths": 5,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 16
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            }
+          ]
         },
         {
           "playerId": "xúliodk",
           "dps": 59531,
           "itemLevel": 293,
-          "deaths": 5
+          "deaths": 5,
+          "mechanics": {
+            "errors": 5
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 31
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 1
+            }
+          ]
         }
       ]
     }
