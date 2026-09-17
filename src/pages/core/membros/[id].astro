@@ -185,6 +185,7 @@ const attendance = calculateAttendance(weeks, player.id);
           attendance={attendance}
           runs={seasonAverage.runs}
           preparationMissing={preparationMissing}
+          preparationValue={seasonAverage.preparation ?? null}
         />
       )
     }

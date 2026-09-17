@@ -13,9 +13,21 @@ interface Props {
    * Preparação: a nota sozinha não diz o que fazer, a lista diz.
    */
   preparationMissing?: string[];
+  /**
+   * Preparação de fato (0-100) da última noite. Existe porque, nas outras
+   * dimensões, o número exibido é o progresso contra a meta — e pra
+   * Preparação isso confundia: quem está em 88% aparecia como 100 (a meta do
+   * core é 60) logo acima de uma lista dizendo o que falta arrumar.
+   */
+  preparationValue?: number | null;
 }
 
-const { score, trend, attendance, runs, preparationMissing = [] } = Astro.props;
+const { score, trend, attendance, runs, preparationMissing = [], preparationValue = null } = Astro.props;
+
+// Preparação é completude, não progresso contra meta. As demais dimensões
+// seguem mostrando o progresso.
+const valorExibido = (dimension: (typeof score.dimensions)[number]) =>
+  dimension.key === 'preparation' && preparationValue !== null ? preparationValue : dimension.score;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
 // não tendência — não vale pintar de verde nem de vermelho.
@@ -105,16 +117,16 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                 </span>
               </span>
 
-              <span class={dimension.score !== null ? 'text-slate-300' : 'text-slate-600'}>
-                {dimension.score !== null ? dimension.score : 'sem dado'}
+              <span class={valorExibido(dimension) !== null ? 'text-slate-300' : 'text-slate-600'}>
+                {valorExibido(dimension) !== null ? valorExibido(dimension) : 'sem dado'}
               </span>
             </div>
 
             <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-              {dimension.score !== null && (
+              {valorExibido(dimension) !== null && (
                 <div
-                  class={`h-full rounded-full ${scoreBarColor(dimension.score)}`}
-                  style={`width: ${dimension.score}%`}
+                  class={`h-full rounded-full ${scoreBarColor(valorExibido(dimension)!)}`}
+                  style={`width: ${valorExibido(dimension)}%`}
                 />
               )}
             </div>
