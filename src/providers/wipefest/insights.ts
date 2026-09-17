@@ -158,6 +158,9 @@ export interface PlayerFightMechanics {
   errors: PlayerMechanicError[];
 }
 
+/** Mecânicas que o Wipefest pontua mas o core não conta. */
+const IGNORED_MECHANICS = new Set(["Deaths"]);
+
 /**
  * Consolida o fight: por jogador, quais mecânicas principais não fecharam 100
  * e quantas vezes.
@@ -166,12 +169,18 @@ export interface PlayerFightMechanics {
  * levar falta por não usar poção. Esses itens pertencem à Preparação.
  */
 export function buildFightMechanics(api: WipefestApiFight): PlayerFightMechanics[] {
-  const configs = new Map((api.insightConfigs ?? []).map((config) => [config.id, config]));
+  // Chave composta de propósito: o id se repete entre grupos. Neste report,
+  // id=3 é "Deaths" no grupo raid e "Average duration of Mark of Blood" no
+  // grupo do encontro — indexar só por id troca o nome da mecânica.
+  const chave = (group: string, id: string) => `${group}|${id}`;
+  const configs = new Map(
+    (api.insightConfigs ?? []).map((config) => [chave(config.group, config.id), config])
+  );
   const nomes = new Map((api.report?.friendlies ?? []).map((amigo) => [amigo.id, amigo.name]));
 
   const contagens = new Map<string, ReturnType<typeof extractCounts>>();
   for (const insight of api.insights ?? []) {
-    contagens.set(insight.id, extractCounts(insight.details));
+    contagens.set(chave(insight.group, insight.id), extractCounts(insight.details));
   }
 
   const resultado: PlayerFightMechanics[] = [];
@@ -187,11 +196,23 @@ export function buildFightMechanics(api: WipefestApiFight): PlayerFightMechanics
     const errors: PlayerMechanicError[] = [];
 
     for (const valor of jogador.values) {
-      if (valor.isBonus) continue;
+      // Mortes saíram do score do core por decisão do projeto — e a API não
+      // as marca como bônus, então precisam sair explicitamente aqui.
+      if (IGNORED_MECHANICS.has(configs.get(chave(valor.insightGroup, valor.insightId))?.name ?? "")) continue;
+      const config = configs.get(chave(valor.insightGroup, valor.insightId));
+      const direcao = config?.statistics?.[0]?.higherIsBetter;
+
+      // O que conta como erro é a DIREÇÃO, não o isBonus. Coletar droplet é
+      // participação (higherIsBetter: true); tomar dano de droplet é o
+      // oposto (false) — e o Wipefest põe essa segunda no bônus. Filtrar por
+      // isBonus deixava de fora justamente a mecânica que matou o Dagom.
+      //
+      // Isso também mantém fora soaks e dispels (true), então ninguém leva
+      // falta por um soak que era dividido entre poucos.
+      if (direcao !== false) continue;
       if (valor.value >= 100) continue;
 
-      const config = configs.get(valor.insightId);
-      const contagem = contagens.get(valor.insightId);
+      const contagem = contagens.get(chave(valor.insightGroup, valor.insightId));
 
       errors.push({
         mechanic: config?.name ?? valor.insightId,

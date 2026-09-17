@@ -75,7 +75,7 @@ describe("buildFightMechanics", () => {
     expect(ligiaf.errors.map((e) => e.mechanic)).toEqual(["Damage from Living Venom"]);
   });
 
-  it("ignora bônus — ninguém leva falta por não usar poção ou não fazer soak", () => {
+  it("ignora participação — ninguém leva falta por não usar poção ou não fazer soak", () => {
     // 'Unstable Miasma soaks' (0) e 'Ready Check' (1) são isBonus no Wipefest.
     const nomes = ligiaf.errors.map((e) => e.mechanic);
     expect(nomes).not.toContain("Unstable Miasma soaks");
@@ -89,6 +89,63 @@ describe("buildFightMechanics", () => {
   it("usa o nome canônico em inglês, não o título traduzido do log", () => {
     // O título era 'Hit by Peçonha Viva'; o nome do config é estável.
     expect(ligiaf.errors[0].mechanic).toBe("Damage from Living Venom");
+  });
+
+  it("conta mecânica de dano mesmo quando o Wipefest a põe no bônus", () => {
+    // Caso real (Dagom, fight 17): coletar Toxic Droplets é participação, mas
+    // TOMAR dano deles é erro — e foi o que o matou. O Wipefest marca essa
+    // segunda como isBonus, então filtrar por isBonus a deixava de fora.
+    const comBonusDeDano = buildFightMechanics({
+      ...FIGHT,
+      insightConfigs: [
+        ...FIGHT.insightConfigs!,
+        { id: "50", group: "3445", name: "Damage from Toxic Droplets", statistics: [{ name: "Hits", higherIsBetter: false }] },
+      ],
+      playerValues: [
+        {
+          playerId: 15,
+          totalValue: 50,
+          totalBonus: 0,
+          values: [{ insightId: "50", insightGroup: "3445", value: 0, isBonus: true }],
+        },
+      ],
+    });
+
+    expect(comBonusDeDano[0].errors.map((e) => e.mechanic)).toEqual(["Damage from Toxic Droplets"]);
+  });
+
+  it("não confunde mecânicas de grupos diferentes que dividem o mesmo id", () => {
+    // No report real, id=3 é "Deaths" no grupo raid e "Average duration of
+    // Mark of Blood" no grupo do encontro. Indexar só por id trocava o nome.
+    const comColisao = buildFightMechanics({
+      report: { friendlies: [{ id: 15, name: "Dagom" }] },
+      insightConfigs: [
+        { id: "3", group: "raid", name: "Deaths", statistics: [{ name: "Events", higherIsBetter: false }] },
+        { id: "3", group: "3445", name: "Average duration of Mark of Blood", statistics: [{ name: "Duration", higherIsBetter: false }] },
+      ],
+      insights: [],
+      playerValues: [
+        {
+          playerId: 15,
+          totalValue: 50,
+          totalBonus: 0,
+          values: [{ insightId: "3", insightGroup: "3445", value: 1, isBonus: false }],
+        },
+      ],
+    });
+
+    expect(comColisao[0].errors.map((e) => e.mechanic)).toEqual(["Average duration of Mark of Blood"]);
+  });
+
+  it("exclui Deaths — mortes saíram do score por decisão do projeto", () => {
+    const comMorte = buildFightMechanics({
+      report: { friendlies: [{ id: 15, name: "Dagom" }] },
+      insightConfigs: [{ id: "3", group: "raid", name: "Deaths", statistics: [{ name: "Events", higherIsBetter: false }] }],
+      insights: [],
+      playerValues: [{ playerId: 15, totalValue: 50, totalBonus: 0, values: [{ insightId: "3", insightGroup: "raid", value: 1, isBonus: false }] }],
+    });
+
+    expect(comMorte[0].errors).toEqual([]);
   });
 
   it("mantém a nota geral do fight", () => {

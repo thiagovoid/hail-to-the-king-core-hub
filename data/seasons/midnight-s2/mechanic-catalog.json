@@ -1,0 +1,1145 @@
+{
+  "updatedAt": "2026-09-17T21:11:12.565Z",
+  "source": "wipefest",
+  "encounters": {
+    "3420": {
+      "bossName": "Sszorak",
+      "referenceReport": "WYzBZmRpcVbMHAQT",
+      "referenceFight": 25,
+      "mechanics": [
+        {
+          "insightId": "3420--T",
+          "title": "Hit by the traveling Tempestade vortices 105 times, gaining a stacking DoT.",
+          "spellIds": [
+            1287083
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "raid--3",
+          "title": "Died to Assolar / Surto Peçonhento 4 times.",
+          "spellIds": [
+            1277101,
+            1306120
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 12 Combat or Mana Potions.",
+          "spellIds": [
+            1236994,
+            1236616,
+            371028
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 7/12 Flasks and ate 12/12 Food. Equipped 4.3 Enchants, 2.5 Gems, and 3.2 Tier Pieces with an average Item Level of 295.8.",
+          "spellIds": [
+            1235108,
+            1235111,
+            1235110,
+            1285644,
+            1219185
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Pedra de Vida / Poção de Vida de Luaprata 7 times for a total of 1.6m.",
+          "spellIds": [
+            6262,
+            1234768
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "3420--2",
+          "title": "Took 810k damage from Surto Peçonhento on average, reduced by distance.",
+          "spellIds": [
+            1306120
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3420--C",
+          "title": "Reset stacks of Peçonha Corrosiva every 38.9s, on an average of 6.3 stacks each time.",
+          "spellIds": [
+            1282873
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        }
+      ],
+      "unclassified": [
+        "Stood too close to a player when Ventos Contrários Enfurecidos expired 1 time, getting hit by Ventos Contrários Enfurecidos unnecessarily.",
+        "Splashed Ventos Contrários Enfurecidos to other players 9 times, causing unnecessary damage.",
+        "Had an average Rajadas Turbulentas duration of 1.5s, reduced by contacting other players affected by Rajadas Turbulentas."
+      ]
+    },
+    "3421": {
+      "bossName": "As Presas Gêmeas",
+      "referenceReport": "jpWrRJFxyGZ4Vn1M",
+      "referenceFight": 30,
+      "mechanics": [
+        {
+          "insightId": "raid--3",
+          "title": "Died to Peçonha Eterna / Enchente Torpe / Cuspe Corrosivo / Icor Coleante 7 times.",
+          "spellIds": [
+            1303196,
+            1294605,
+            1293295,
+            1290878
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3421--R",
+          "title": "Soaked Banquete Voraz with 13.2/16.0 players on average, clearing a stack of Eternal Venom.",
+          "spellIds": [
+            1290662,
+            1290336
+          ],
+          "verb": "Soaked",
+          "kind": "participation",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3421--2",
+          "title": "Hit by the traveling waves from Mexer nas Profundezas 25 times, gaining a stack of Eternal Venom.",
+          "spellIds": [
+            1292807,
+            1290336
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3421--C",
+          "title": "Hit by the Cuspe Corrosivo line from Spawn of Vexhauls 4 times (except when targeted), gaining a stack of Eternal Venom.",
+          "spellIds": [
+            1293295,
+            1290336
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3421--V",
+          "title": "Stood in Vexhaul's Enchente Torpe frontal 22 times, gaining a stack of Eternal Venom.",
+          "spellIds": [
+            1294605,
+            1290336
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 9/16 Flasks and ate 16/16 Food. Equipped 4.1 Enchants, 2.3 Gems, and 3.2 Tier Pieces with an average Item Level of 302.7.",
+          "spellIds": [
+            1235108,
+            1235110,
+            1235111,
+            1285644,
+            1219185
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "3421--Y",
+          "title": "Stood in the impact zone of Dilúvio Cáustico 9 times, gaining a stack of Eternal Venom.",
+          "spellIds": [
+            1289994,
+            1290336
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3421--G",
+          "title": "Stood in Sangue Solidificado from Coiling Ichor, taking 872k avoidable damage.",
+          "spellIds": [
+            1292552,
+            1290814
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 11 Combat or Mana Potions.",
+          "spellIds": [
+            1236616,
+            1236994,
+            1236998
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Pedra de Vida Demoníaca / Pedra de Vida / Poção de Vida de Luaprata 11 times for a total of 2.4m.",
+          "spellIds": [
+            452930,
+            6262,
+            1234768
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "3421--1",
+          "title": "Reset stacks of Empeçonhado every 103.3s, on an average of 13.2 stacks each time.",
+          "spellIds": [
+            1310360
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3421--S",
+          "title": "Reset stacks of Quebrador de Pedras every 97.6s, on an average of 2.7 stacks each time.",
+          "spellIds": [
+            1289092
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        }
+      ],
+      "unclassified": [
+        "The Twin Fangs' targets took 2.2m damage from Seta Coagulada / Cusparada Concentrada, caused by not being in melee range.",
+        "Fell into the Peçonha Mortífera, taking 2m avoidable damage.",
+        "Stood too close to a player targeted by Icor Coleante, getting hit by Icor Coleante unnecessarily.",
+        "Players soaked a Glóbulo Cáustico 53 times before it expired, gaining a stack of Eternal Venom."
+      ]
+    },
+    "3429": {
+      "bossName": "O Altar Espiralado",
+      "referenceReport": "6BcGTrAN7HaPx431",
+      "referenceFight": 14,
+      "mechanics": [
+        {
+          "insightId": "raid--3",
+          "title": "Died to Rumo ao Túmulo / Purgatório / Melee 4 times.",
+          "spellIds": [
+            1297906,
+            123982,
+            1
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 10/13 Flasks and ate 13/13 Food. Equipped 4.8 Enchants, 2.5 Gems, and 3.4 Tier Pieces with an average Item Level of 306.4.",
+          "spellIds": [
+            1235108,
+            1235111,
+            1235110,
+            1285644,
+            1219185
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Pedra de Vida Demoníaca / Pedra de Vida / Poção de Vida de Luaprata 5 times for a total of 1.3m.",
+          "spellIds": [
+            452930,
+            6262,
+            1234768
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 10 Combat or Mana Potions.",
+          "spellIds": [
+            1236616,
+            1236998
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "3429-P1-N",
+          "title": "Stood in the Terra Nóxia created by Fangs of the Coiled Altar for 17 ticks, taking avoidable damage.",
+          "spellIds": [
+            1283290,
+            1282487
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3429-P1-A",
+          "title": "Stood in Machadeiro Moedor for 21 ticks, taking moderate ticking damage.",
+          "spellIds": [
+            1285017
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3429-P1-T",
+          "title": "Hit by Dilúvio Tóxico 2 times.",
+          "spellIds": [
+            1300137
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3429-P1-G",
+          "title": "Soaked Guilhotina with an average of 13.0/13.0 players.",
+          "spellIds": [
+            1283594
+          ],
+          "verb": "Soaked",
+          "kind": "participation",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3429-P1-V",
+          "title": "Dispelled Peçonhenta 4 times with Purificação.",
+          "spellIds": [
+            1306906,
+            4987
+          ],
+          "verb": "Dispelled",
+          "kind": "participation",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3429-P1-6",
+          "title": "Reset stacks of Arrancar every 33s, on an average of 1 stack each time.",
+          "spellIds": [
+            1301690
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3429-P2-7",
+          "title": "Reset stacks of Cisão Anímica every 45s, on an average of 1 stack each time.",
+          "spellIds": [
+            1307959
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3429-P3-8",
+          "title": "Reset stacks of Arrancar Pestilento every 26.1s, on an average of 1 stack each time.",
+          "spellIds": [
+            1307403
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        }
+      ],
+      "unclassified": [
+        "Broke Malacrass' Veil of Twilight in 7.8s on average, allowing Eternal Nightfall to be interrupted.",
+        "Failed to collect Soul Fragments before Rumo ao Túmulo expired 1 time, causing the target to cease to exist.",
+        "Freed mind-controlled players from Marcha do Pavor in 6s on average.",
+        "Cleared 2.0 Manifestation of Dread ghosts with Cisão Anímica on average.",
+        "Allowed Fragments of Malacrass to reach Zul'jan 2 times, healing Zul'jan for 10% of his HP each time.",
+        "Broke Malacrass' Veil of Twilight in 7.8s on average, allowing Eternal Nightfall to be interrupted.",
+        "Failed to collect Soul Fragments before Rumo ao Túmulo expired 1 time, causing the target to cease to exist.",
+        "Freed mind-controlled players from Marcha do Pavor in 6s on average.",
+        "Cleared 2.0 Manifestation of Dread ghosts with Cisão Anímica on average."
+      ]
+    },
+    "3445": {
+      "bossName": "Sentinelas Sepultados",
+      "referenceReport": "JCvk27bDL6Zdm18j",
+      "referenceFight": 17,
+      "mechanics": [
+        {
+          "insightId": "raid--3",
+          "title": "Died to Gotículas Tóxicas 1 time.",
+          "spellIds": [
+            1284451
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3445--V",
+          "title": "Stood in Peçonha Sanguínea for 101 ticks, taking 79k damage on average.",
+          "spellIds": [
+            1284210
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 12/15 Flasks and ate 12/15 Food. Equipped 6.5 Enchants, 3.4 Gems, and 4.4 Tier Pieces with an average Item Level of 314.1.",
+          "spellIds": [
+            1235108,
+            1235110,
+            1285644,
+            1284616,
+            1219185
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 18 Combat or Mana Potions.",
+          "spellIds": [
+            1236994,
+            1236616,
+            1236998
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Pedra de Vida / Pedra de Vida Demoníaca / Poção de Vida de Luaprata 10 times for a total of 2.2m.",
+          "spellIds": [
+            6262,
+            452930,
+            1234768
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "3445--2",
+          "title": "Reset stacks of Marca de Ácido every 94.5s, on an average of 12.6 stacks each time.",
+          "spellIds": [
+            1284500
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3445--3",
+          "title": "Reset stacks of Marca de Sangue every 85.7s, on an average of 11.4 stacks each time.",
+          "spellIds": [
+            1284506
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3445-P1-B",
+          "title": "Dispelled Sangue Empesteado 10 times with Purificação / Purificar.",
+          "spellIds": [
+            1284471,
+            4987,
+            527
+          ],
+          "verb": "Dispelled",
+          "kind": "participation",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3445-P1-1",
+          "title": "Failed to soak Toxic Droplets before they erupted 1 time, taking heavy raid-wide damage.",
+          "spellIds": [],
+          "verb": "Failed to soak",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3445-P1-0",
+          "title": "Hit by Peçonha Viva 43 times.",
+          "spellIds": [
+            1284209
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3445-P1-U",
+          "title": "Soaked Miasma Instável with 5.8/15.0 players on average. Soaking with less than 8 players causes Clinging Murk to stack.",
+          "spellIds": [
+            1288282,
+            1288297
+          ],
+          "verb": "Soaked",
+          "kind": "participation",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3445-P1-G",
+          "title": "Took 30.4m damage from Contaminar, reduced by killing the Venom Coagulation more quickly.",
+          "spellIds": [
+            1284258
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3445-P1-T",
+          "title": "Soaked Gotículas Tóxicas before they erupted 128 times.",
+          "spellIds": [
+            1284451
+          ],
+          "verb": "Soaked",
+          "kind": "participation",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3445-P1-J",
+          "title": "Reset stacks of Injeção de Peçonha de Sangue every 96.2s, on an average of 3.6 stacks each time.",
+          "spellIds": [
+            1284491
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3445-P1-E",
+          "title": "Reset stacks of Batida Potencializadora every 89.8s, on an average of 3.6 stacks each time.",
+          "spellIds": [
+            1284459
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3445-I1-H",
+          "title": "Incorrectly added Toxinas Helicoidais 2 times, causing players to become afflicted with Cultivated Burst and spawning extra Blood Venom pools.",
+          "spellIds": [
+            1284590,
+            1284941,
+            1284210
+          ],
+          "verb": "Incorrectly added",
+          "kind": "failure"
+        }
+      ],
+      "unclassified": []
+    },
+    "3455": {
+      "bossName": "Vashnik, o Maligno",
+      "referenceReport": "PvxcbTGDVjMgzqLX",
+      "referenceFight": 21,
+      "mechanics": [
+        {
+          "insightId": "raid--3",
+          "title": "Died to Presença Flamejante 1 time.",
+          "spellIds": [
+            1305901
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 9/13 Flasks and ate 12/13 Food. Equipped 4.5 Enchants, 2.9 Gems, and 2.7 Tier Pieces with an average Item Level of 287.5.",
+          "spellIds": [
+            1235111,
+            1235110,
+            1235108,
+            1232585,
+            1219185,
+            1233724
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 13 Combat or Mana Potions.",
+          "spellIds": [
+            1236616,
+            1236994,
+            1238443,
+            1236648
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Poção de Vida de Luaprata 3 times for a total of 651k.",
+          "spellIds": [
+            1234768
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "3455--5",
+          "title": "Reset stacks of Presas Gotejantes every 29.8s, on an average of 1 stack each time.",
+          "spellIds": [
+            1280934
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3455--0",
+          "title": "Stood in Onda Pestilenta 23 times, taking 4.4m avoidable damage.",
+          "spellIds": [
+            1295798
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3455--S",
+          "title": "Stood in Estouro Estígio 46 times, taking 5.9m avoidable damage.",
+          "spellIds": [
+            1302489
+          ],
+          "verb": "Stood in",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3455--I",
+          "title": "Stood in others' Espuma Pestilenta 69 times, taking 4m avoidable damage.",
+          "spellIds": [
+            1281925
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3455--P",
+          "title": "Took an average of 460k damage from Explosão Cáustica.",
+          "spellIds": [
+            1295209
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3455--G",
+          "title": "Took an average of 288k per application of Surto Cáustico, reduced by staggering the deaths of Burning Venom.",
+          "spellIds": [
+            1285979
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        }
+      ],
+      "unclassified": [
+        "Removed Infecção Estígia in an average of 15.5s, restoring the ability to heal the affected players and reducing the amount of Stygian Burst to dodge.",
+        "Removed Infecção Sifonante in an average of 15.7s, restoring the ability to heal the affected players."
+      ]
+    },
+    "3470": {
+      "bossName": "Nek'zali, a Espiral de Almas",
+      "referenceReport": "JCvk27bDL6Zdm18j",
+      "referenceFight": 1,
+      "mechanics": [
+        {
+          "insightId": "raid--3",
+          "title": "Died to Golpes Exaurientes / Sectário Latente / Purgatório / Melee 12 times.",
+          "spellIds": [
+            1284109,
+            1288554,
+            123982,
+            1
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 13/16 Flasks and ate 14/16 Food. Equipped 6.4 Enchants, 3.3 Gems, and 4.5 Tier Pieces with an average Item Level of 315.8.",
+          "spellIds": [
+            1235108,
+            1235110,
+            1235111,
+            1285644,
+            1284616
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "3470--G",
+          "title": "Took an average of 15.3s to break Restless Amanis' Avanço Rumo ao Túmulo, stopping them from fixating on the Soulcoil Well.",
+          "spellIds": [
+            1287533,
+            1285623
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 14 Combat or Mana Potions.",
+          "spellIds": [
+            1236616,
+            1236994,
+            1236998,
+            371028
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Pedra de Vida / Pedra de Vida Demoníaca / Poção de Vida de Luaprata Concentrada 9 times for a total of 2.4m.",
+          "spellIds": [
+            6262,
+            452930,
+            1295247
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "3470-P1-L",
+          "title": "Stood in Sectário Latente, taking 25.6m avoidable damage.",
+          "spellIds": [
+            1288554
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3470-P1-P",
+          "title": "Took an average of 3.7m damage from Barragem de Possessão, reduced the farther each echo travels.",
+          "spellIds": [
+            1292034
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3470-P1-A",
+          "title": "Hit by Ecos Angustiados 5 times.",
+          "spellIds": [
+            1294846
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3470-P1-H",
+          "title": "Reset stacks of Golpes Exaurientes every 27s, on an average of 8.1 stacks each time.",
+          "spellIds": [
+            1284109
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3470-P1-B",
+          "title": "Reset stacks of Praga dos Corpos every 24.6s, on an average of 5.6 stacks each time.",
+          "spellIds": [
+            1307939
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3470-I1-1",
+          "title": "Hit by Transferência de Alma 3 times.",
+          "spellIds": [
+            1295085
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3470-I1-2",
+          "title": "Soaked Pira Voraz with 1.7/16.0 players on average.",
+          "spellIds": [
+            1289855
+          ],
+          "verb": "Soaked",
+          "kind": "participation",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3470-P2-L",
+          "title": "Stood in Sectário Latente, taking 25.6m avoidable damage.",
+          "spellIds": [
+            1288554
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3470-P2-P",
+          "title": "Took an average of 3.7m damage from Barragem de Possessão, reduced the farther each echo travels.",
+          "spellIds": [
+            1292034
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3470-P2-A",
+          "title": "Hit by Ecos Angustiados 5 times.",
+          "spellIds": [
+            1294846
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3470-P2-H",
+          "title": "Reset stacks of Golpes Exaurientes every 27s, on an average of 8.1 stacks each time.",
+          "spellIds": [
+            1284109
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3470-P2-B",
+          "title": "Reset stacks of Praga dos Corpos every 24.6s, on an average of 5.6 stacks each time.",
+          "spellIds": [
+            1307939
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        }
+      ],
+      "unclassified": [
+        "Nek'zali gained full energy casting Fúria Desemaranhada.",
+        "Had an average Dilaceração de Essência duration of 8.5s.",
+        "Stood too close to a player when Chama Serpeante expired 6 times, gaining Cremação unnecessarily.",
+        "Had an average Dilaceração de Essência duration of 8.5s."
+      ]
+    },
+    "3492": {
+      "bossName": "Ula'tek",
+      "referenceReport": "P1nLMzCrHmgDpWT2",
+      "referenceFight": 7,
+      "mechanics": [
+        {
+          "insightId": "raid--3",
+          "title": "Died to Vapores Necróticos / Ondas Cáusticas 2 times.",
+          "spellIds": [
+            1286835,
+            1292403
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "3492--F",
+          "title": "Stood in the impact zone of Destroços em Queda 3 times, taking 479k avoidable damage.",
+          "spellIds": [
+            1286885
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 13/15 Flasks and ate 11/15 Food. Equipped 6.3 Enchants, 3.2 Gems, and 3.8 Tier Pieces with an average Item Level of 312.9.",
+          "spellIds": [
+            1235108,
+            1235110,
+            1235111,
+            1285644,
+            1219185
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 14 Combat or Mana Potions.",
+          "spellIds": [
+            1236994,
+            1236998,
+            1236616
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Poção de Vida de Luaprata / Poção de Vida de Luaprata Concentrada 6 times for a total of 1.2m.",
+          "spellIds": [
+            1234768,
+            1295247
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "3492-P1-S",
+          "title": "Took an average of 2.9m damage from Espirais Espectrais, reduced by having more players stand within 10y of the impact location.",
+          "spellIds": [
+            1287265
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3492-P1-L",
+          "title": "Took an average of 8.4s to kill Blightscale Clutches, preventing them from hatching into Blightscale Viper.",
+          "spellIds": [],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3492-P1-C",
+          "title": "Hit by Ondas Cáusticas 12 times, taking avoidable damage and gaining stacks of Caustic Waves.",
+          "spellIds": [
+            1292403
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3492-P1-7",
+          "title": "Reset stacks of Peçonha da Pedra every 69.8s, on an average of 9 stacks each time.",
+          "spellIds": [
+            1298417
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3492-P2-V",
+          "title": "Stood in the impact zone of Cusparada Virulenta 8 times, taking 1.7m avoidable damage.",
+          "spellIds": [
+            1302982
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3492-P2-G",
+          "title": "Took an average of 16.5s to snap Presas Constritoras.",
+          "spellIds": [
+            1311611
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3492-I1-S",
+          "title": "Took an average of 2.9m damage from Espirais Espectrais, reduced by having more players stand within 10y of the impact location.",
+          "spellIds": [
+            1287265
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3492-P3-L",
+          "title": "Took an average of 8.4s to kill Blightscale Clutches, preventing them from hatching into Blightscale Viper.",
+          "spellIds": [],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3492-P3-C",
+          "title": "Hit by Ondas Cáusticas 12 times, taking avoidable damage and gaining stacks of Caustic Waves.",
+          "spellIds": [
+            1292403
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3492-P3-7",
+          "title": "Reset stacks of Peçonha da Pedra every 69.8s, on an average of 9 stacks each time.",
+          "spellIds": [
+            1298417
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        }
+      ],
+      "unclassified": [
+        "Interrupted Malícia 3/4 times.",
+        "Interrupted Grito Angustiado 4/4 times.",
+        "Non-Tanks stood in the Weakened Doomscale's Contorção Desesperada cone 6 times, taking unnecessary damage.",
+        "Stood within Doomscale Warden's Proteção de Guardião aura for 72 ticks, taking 7.2m avoidable damage.",
+        "Carried a Doomscale Egg to a Doombscale Cauldron before it finished hatching 2 times, applying Defeito: Enfraquecida and causing a Weakened Doomscales to hatch.",
+        "Stood too close to a player when Expurgo Volátil expired 1 time, getting hit by Expurgo Volátil unnecessarily.",
+        "Players helped leech the venom from Mordida da Serpente targets for 104 ticks.",
+        "Leeched the venom from Mordida da Serpente targets in an average of 7.6s, preventing them from turning into Calcified Corpses."
+      ]
+    },
+    "3497": {
+      "bossName": "Os Exploradores Perdidos",
+      "referenceReport": "WYzBZmRpcVbMHAQT",
+      "referenceFight": 19,
+      "mechanics": [
+        {
+          "insightId": "raid--3",
+          "title": "Died to Onda de Impacto / Presença Maléfica 3 times.",
+          "spellIds": [
+            1305844,
+            1295450
+          ],
+          "verb": "Died to",
+          "kind": "ignored",
+          "countColumn": "frequency"
+        },
+        {
+          "insightId": "raid--6",
+          "title": "Used 7/12 Flasks and ate 12/12 Food. Equipped 4.4 Enchants, 2.5 Gems, and 3.3 Tier Pieces with an average Item Level of 295.6.",
+          "spellIds": [
+            1235108,
+            1235111,
+            1235110,
+            1285644,
+            1219185
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "3497--B",
+          "title": "Took 10.8m damage from Nova Lampejante, reduced by standing farther from Scrollsage Iku's target.",
+          "spellIds": [
+            1294334
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "raid--1",
+          "title": "Used 13 Combat or Mana Potions.",
+          "spellIds": [
+            1236994,
+            1236616,
+            371028
+          ],
+          "verb": "Used",
+          "kind": "preparation"
+        },
+        {
+          "insightId": "3497--J",
+          "title": "Hit by Arremessar Sucata 4 times from standing within 3 yds of Trader Gebbo's thrown crates.",
+          "spellIds": [
+            1291935
+          ],
+          "verb": "Hit by",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "raid--0",
+          "title": "Healed with Pedra de Vida / Pedra de Vida Demoníaca / Poção de Vida de Luaprata 9 times for a total of 2.1m.",
+          "spellIds": [
+            6262,
+            452930,
+            1234768
+          ],
+          "verb": "Healed with",
+          "kind": "preparation",
+          "countColumn": "casts"
+        },
+        {
+          "insightId": "3497--D",
+          "title": "Reset stacks of Estilhaços Dilacerantes every 191.8s, on an average of 20 stacks each time.",
+          "spellIds": [
+            1295858
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3497--K",
+          "title": "Reset stacks of Golpes Constantes every 57s, on an average of 18.7 stacks each time.",
+          "spellIds": [
+            1291929
+          ],
+          "verb": "Reset stacks of",
+          "kind": "participation"
+        },
+        {
+          "insightId": "3497-P2-Y",
+          "title": "Took 1.2m damage from Explosão Elemental, detonated by carrying Burning Flames or Piercing Frost into the opposing elemental patch.",
+          "spellIds": [
+            1295952,
+            1295928,
+            1295954
+          ],
+          "verb": "Took",
+          "kind": "failure"
+        },
+        {
+          "insightId": "3497-P2-C",
+          "title": "Stood in Trecho de Fogo / Área de Gelo for 13 ticks, taking 170k avoidable damage.",
+          "spellIds": [
+            1297649,
+            1297648
+          ],
+          "verb": "Stood in",
+          "kind": "failure",
+          "countColumn": "hits"
+        },
+        {
+          "insightId": "3497-P3-T",
+          "title": "Soaked Baque Poderoso with an average of 6.2/12.0 players.",
+          "spellIds": [
+            1300237
+          ],
+          "verb": "Soaked",
+          "kind": "participation",
+          "countColumn": "frequency"
+        }
+      ],
+      "unclassified": [
+        "Interrupted Chamas Congélidas 21/21 times.",
+        "Stomped a crate from Throw Junk while already bleeding from Farpas 40 times, gaining extra stacks.",
+        "Stunned by Girar Casca 16 times from standing in front of First Mate Nama.",
+        "Stood within 10 yds of a Frostfire Volley fire target 4 times, taking 32k splash damage.",
+        "Stood within 10 yds of a Frostfire Volley frost target 1 time, taking 18k splash damage.",
+        "Had Burning Flames / Piercing Frost for 5.7s on average."
+      ]
+    }
+  }
+}

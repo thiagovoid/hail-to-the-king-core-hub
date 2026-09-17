@@ -9,91 +9,936 @@
           "playerId": "blackwatch",
           "dps": 45413,
           "itemLevel": 314,
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 37
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 21
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 8
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "apocalipse",
           "dps": 48060,
           "itemLevel": 312,
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 33
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 12
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "voidsurge",
           "hps": 125261,
           "itemLevel": 310,
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 38
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 5
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
           "hps": 168141,
           "itemLevel": 310,
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 5
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 9
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 7
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 4
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 3
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "cowsadeer",
           "hps": 206253,
           "itemLevel": 320,
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 9
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "bustgril",
           "dps": 114169,
           "itemLevel": 314,
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 2
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kroline",
           "dps": 118888,
           "itemLevel": 318,
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 7
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "jrxamã",
           "dps": 136721,
           "itemLevel": 321,
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 2
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
           "dps": 110648,
           "itemLevel": 319,
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 32
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 9
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Mephitic Thrash",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "gunst",
           "dps": 119750,
           "itemLevel": 318,
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 34
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 6
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Widow's Kiss",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "nerlock",
           "dps": 60420,
           "itemLevel": 302,
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 25
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 10
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 7
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 6
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 4
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "xúlio",
           "dps": 110719,
           "itemLevel": 316,
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 5
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "dagom",
           "dps": 47957,
           "itemLevel": 310,
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "ligiaf",
           "dps": 99492,
           "itemLevel": 304,
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 8
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "minort",
           "dps": 80042,
           "itemLevel": 303,
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "hits": 24
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 11
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 7
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "hits": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 5
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "hits": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "hits": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Mephitic Thrash",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 1
+            }
+          ]
         }
       ]
     },
@@ -106,7 +951,22 @@
           "dps": 34466,
           "itemLevel": 290,
           "preparation": 100,
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 40
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 25
+            }
+          ]
         },
         {
           "playerId": "blackwatch",
@@ -117,7 +977,27 @@
             "Elmo",
             "Ombreiras"
           ],
-          "deaths": 3
+          "deaths": 3,
+          "mechanics": {
+            "errors": 6
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 3
+            }
+          ]
         },
         {
           "playerId": "apocalipse",
@@ -127,14 +1007,74 @@
           "preparationMissing": [
             "Botas"
           ],
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 56
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 33
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 10
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "hits": 3
+            }
+          ]
         },
         {
           "playerId": "voidsurge",
           "hps": 31074,
           "itemLevel": 314,
           "preparation": 100,
-          "deaths": 2
+          "deaths": 2,
+          "mechanics": {
+            "errors": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 5
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
@@ -149,7 +1089,32 @@
             "Botas",
             "Colar"
           ],
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 14
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 80
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 58
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 23
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            }
+          ]
         },
         {
           "playerId": "cowsadeer",
@@ -159,7 +1124,37 @@
           "preparationMissing": [
             "Pernas"
           ],
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 16
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 105
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 69
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 9
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "bustgril",
@@ -171,7 +1166,32 @@
             "Ombreiras",
             "Botas"
           ],
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 25
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 18
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 2
+            }
+          ]
         },
         {
           "playerId": "hysillens",
@@ -187,7 +1207,27 @@
             "Arma",
             "Colar"
           ],
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 2
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 19
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 7
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            }
+          ]
         },
         {
           "playerId": "kroline",
@@ -198,14 +1238,64 @@
             "Elmo",
             "Botas"
           ],
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 5
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 24
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 18
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 15
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 3
+            }
+          ]
         },
         {
           "playerId": "jrxamã",
           "dps": 129010,
           "itemLevel": 322,
           "preparation": 100,
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 4
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 20
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 15
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
@@ -215,7 +1305,37 @@
           "preparationMissing": [
             "Elmo"
           ],
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 14
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 62
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 62
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 37
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "gunst",
@@ -228,28 +1348,138 @@
             "Botas",
             "Braçadeiras"
           ],
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 55
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 35
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 1
+            }
+          ]
         },
         {
           "playerId": "nerlock",
           "dps": 55444,
           "itemLevel": 304,
           "preparation": 100,
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 53
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 36
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 16
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            }
+          ]
         },
         {
           "playerId": "xúlio",
           "dps": 105695,
           "itemLevel": 321,
           "preparation": 100,
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 11
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 68
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 53
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 9
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 6
+            }
+          ]
         },
         {
           "playerId": "dagom",
           "dps": 76783,
           "itemLevel": 315,
           "preparation": 100,
-          "deaths": 12
+          "deaths": 12,
+          "mechanics": {
+            "errors": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 41
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 30
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 15
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            }
+          ]
         },
         {
           "playerId": "ligiaf",
@@ -258,7 +1488,32 @@
             "Elmo",
             "Peito"
           ],
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 11
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 70
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 31
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 24
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 5
+            }
+          ]
         },
         {
           "playerId": "minort",
@@ -269,7 +1524,42 @@
             "Peito",
             "Botas"
           ],
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "hits": 29
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "hits": 28
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "hits": 22
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "hits": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "hits": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "hits": 1
+            }
+          ]
         }
       ]
     }
