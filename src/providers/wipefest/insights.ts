@@ -139,9 +139,32 @@ export function extractCounts(details: string | undefined): {
   return { countColumn, byPlayer };
 }
 
+/**
+ * Nome da habilidade no idioma do log, tirado do título do insight.
+ *
+ * O `name` do insightConfig é canônico em inglês — ótimo pra cruzar entre
+ * relatórios, péssimo pra ler: quem raida em português conhece "Peçonha
+ * Sanguínea", não "Blood Venom", e não reconhece a própria mecânica.
+ *
+ * O título vem com markup do Wipefest: `Stood in {[style=icon] Peçonha
+ * Sanguínea} {...} for {...} ticks`. O primeiro grupo é a habilidade.
+ */
+export function extractAbilityLabel(title: string | undefined): string | undefined {
+  // Nem todo insight tem título: a API devolve entradas vazias, e sem esta
+  // guarda o erro subia até o catch por fight do coletor — que registrava a
+  // falha e seguia, deixando a coleta inteira sem rótulo em silêncio.
+  const match = title?.match(/\{\[[^\]]*\]\s*([^{}]+)\}/);
+  const nome = match?.[1]?.trim();
+  // Números vêm do mesmo markup ({[style="info"] 12}); só interessa quando o
+  // primeiro grupo é mesmo o nome da habilidade.
+  return nome && nome.length > 2 && !/^[\d.,/%]+$/.test(nome) ? nome : undefined;
+}
+
 export interface PlayerMechanicError {
-  /** Nome canônico da mecânica (inglês, estável entre idiomas). */
+  /** Nome canônico da mecânica (inglês, estável entre idiomas). Chave, não rótulo. */
   mechanic: string;
+  /** Nome como aparece no log — é o que vai pra tela. */
+  label?: string;
   /** Nota 0-100 do Wipefest. Menor que 100 = algo saiu errado. */
   value: number;
   /** Quantas vezes, quando a tabela do insight informa. */
@@ -179,8 +202,12 @@ export function buildFightMechanics(api: WipefestApiFight): PlayerFightMechanics
   const nomes = new Map((api.report?.friendlies ?? []).map((amigo) => [amigo.id, amigo.name]));
 
   const contagens = new Map<string, ReturnType<typeof extractCounts>>();
+  const rotulos = new Map<string, string>();
   for (const insight of api.insights ?? []) {
-    contagens.set(chave(insight.group, insight.id), extractCounts(insight.details));
+    const k = chave(insight.group, insight.id);
+    contagens.set(k, extractCounts(insight.details));
+    const rotulo = extractAbilityLabel(insight.title);
+    if (rotulo && !rotulos.has(k)) rotulos.set(k, rotulo);
   }
 
   const resultado: PlayerFightMechanics[] = [];
@@ -216,6 +243,9 @@ export function buildFightMechanics(api: WipefestApiFight): PlayerFightMechanics
 
       errors.push({
         mechanic: config?.name ?? valor.insightId,
+        ...(rotulos.get(chave(valor.insightGroup, valor.insightId))
+          ? { label: rotulos.get(chave(valor.insightGroup, valor.insightId)) }
+          : {}),
         value: valor.value,
         ...(contagem?.byPlayer[nome] !== undefined ? { count: contagem.byPlayer[nome] } : {}),
         ...(contagem?.countColumn ? { countColumn: contagem.countColumn } : {}),

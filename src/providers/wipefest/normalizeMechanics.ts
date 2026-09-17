@@ -69,7 +69,13 @@ export function aggregateNightMechanics(fights: FightMechanics[]): Record<string
         const existente = atual.detalhe.get(chave);
         const hits = erro.count ?? 1;
         if (existente) existente.hits += hits;
-        else atual.detalhe.set(chave, { boss: fight.boss, mechanic: erro.mechanic, hits });
+        else
+          atual.detalhe.set(chave, {
+            boss: fight.boss,
+            mechanic: erro.mechanic,
+            ...(erro.label ? { label: erro.label } : {}),
+            hits,
+          });
       }
 
       porJogador.set(jogador.player, atual);

@@ -17,11 +17,13 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 41
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 9
             }
           ]
@@ -38,16 +40,19 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 68
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 1
             }
           ]
@@ -63,11 +68,13 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 7
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 4
             }
           ]
@@ -84,11 +91,13 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 10
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 8
             }
           ]
@@ -105,11 +114,13 @@
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 2
             }
           ]
@@ -126,6 +137,7 @@
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 5
             }
           ]
@@ -142,16 +154,19 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 17
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 7
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 1
             }
           ]
@@ -168,11 +183,13 @@
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 1
             }
           ]
@@ -189,16 +206,19 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 16
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 2
             }
           ]
@@ -215,21 +235,25 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 31
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 5
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 1
             }
           ]

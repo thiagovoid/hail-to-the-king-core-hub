@@ -18,101 +18,121 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 18
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 7
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 6
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 5
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 4
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+              "label": "The Twin Fangs'",
               "hits": 4
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Evil Eyes",
+              "label": "3 yds",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Stir the Depths",
+              "label": "Mexer nas Profundezas",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             }
           ]
@@ -129,86 +149,103 @@
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 9
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
+              "label": "The Twin Fangs'",
               "hits": 7
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 6
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 6
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 5
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Stir the Depths",
+              "label": "Mexer nas Profundezas",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Frostfire Volley",
+              "label": "10 yds",
               "hits": 1
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Corrosive Spit",
+              "label": "Cuspe Corrosivo",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Deadly Venom",
+              "label": "Peçonha Mortífera",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 1
             }
           ]
@@ -226,81 +263,97 @@
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 37
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 14
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 13
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 11
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 9
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 4
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Splinters",
+              "label": "Throw Junk",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Frostfire Volley",
+              "label": "10 yds",
               "hits": 1
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 1
             }
           ]
@@ -318,66 +371,79 @@
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 25
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 9
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 4
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 4
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 4
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 1
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Widow's Kiss",
+              "label": "50y",
               "hits": 1
             }
           ]
@@ -394,81 +460,97 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 11
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Splinters",
+              "label": "Throw Junk",
               "hits": 9
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 7
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 6
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 6
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 5
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 5
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Frostfire Volley",
+              "label": "10 yds",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Soul Sever",
+              "label": "Cisão Anímica",
               "hits": 1
             }
           ]
@@ -486,76 +568,91 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 8
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 6
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 5
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 4
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 4
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Stir the Depths",
+              "label": "Mexer nas Profundezas",
               "hits": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 2
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 1
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Deadly Venom",
+              "label": "Peçonha Mortífera",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Widow's Kiss",
+              "label": "50y",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             }
           ]
@@ -573,66 +670,79 @@
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 8
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 5
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 5
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 4
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 4
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 4
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Splinters",
+              "label": "Throw Junk",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 1
             }
           ]
@@ -649,81 +759,97 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 5
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 4
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 4
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Stir the Depths",
+              "label": "Mexer nas Profundezas",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 3
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 2
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Corrosive Spit",
+              "label": "Cuspe Corrosivo",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Widow's Kiss",
+              "label": "50y",
               "hits": 1
             }
           ]
@@ -740,66 +866,79 @@
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 7
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 4
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Soul Sever",
+              "label": "Cisão Anímica",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 1
             }
           ]
@@ -817,61 +956,73 @@
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 17
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 9
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 6
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 5
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 4
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 4
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 2
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 1
             }
           ]
@@ -888,91 +1039,109 @@
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 9
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 5
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 4
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 4
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 4
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Widow's Kiss",
+              "label": "50y",
               "hits": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 1
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Deadly Venom",
+              "label": "Peçonha Mortífera",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 1
             }
           ]
@@ -990,86 +1159,103 @@
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 6
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 5
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 5
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 2
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 2
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Umbral Ejection",
+              "label": "Ejeção Umbrática",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Evil Eyes",
+              "label": "3 yds",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Stir the Depths",
+              "label": "Mexer nas Profundezas",
               "hits": 1
             }
           ]
@@ -1087,71 +1273,85 @@
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 13
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Splinters",
+              "label": "Throw Junk",
               "hits": 7
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 7
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 6
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 5
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 5
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 3
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Deluge",
+              "label": "Dilúvio Cáustico",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             }
           ]
@@ -1169,81 +1369,97 @@
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 20
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Splinters",
+              "label": "Throw Junk",
               "hits": 16
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 10
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 7
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 6
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 5
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 4
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Deadly Venom",
+              "label": "Peçonha Mortífera",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Sever",
+              "label": "Arrancar",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             }
           ]
@@ -1261,71 +1477,85 @@
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
               "hits": 10
             },
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 8
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 5
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 2
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Elemental Patches",
+              "label": "Trecho de Fogo",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Frostfire Volley",
+              "label": "10 yds",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 1
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             }
           ]
@@ -1343,66 +1573,79 @@
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 6
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 6
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 5
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 5
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Caustic Globule",
+              "label": "Glóbulo Cáustico",
               "hits": 3
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Evil Eyes",
+              "label": "3 yds",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Congelead Gore",
+              "label": "Sangue Solidificado",
               "hits": 2
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Coiling Ichor",
+              "label": "Icor Coleante",
               "hits": 2
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Splinters",
+              "label": "Throw Junk",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 1
             }
           ]
@@ -1419,96 +1662,115 @@
             {
               "boss": "Sszorak",
               "mechanic": "Debuffs of Tempest",
+              "label": "Tempestade",
               "hits": 30
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
               "hits": 6
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Wave",
+              "label": "Onda Pestilenta",
               "hits": 6
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
               "hits": 5
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
               "hits": 4
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Evil Eyes",
+              "label": "3 yds",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Throw Junk",
+              "label": "Arremessar Sucata",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Shell Spin",
+              "label": "Stunned",
               "hits": 3
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Debuffs of Splinters",
+              "label": "Throw Junk",
               "hits": 3
             },
             {
               "boss": "Sszorak",
               "mechanic": "Damage from Raging Crosswinds",
+              "label": "Ventos Contrários Enfurecidos",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Vile Flood",
+              "label": "Vexhaul's",
               "hits": 3
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
               "hits": 3
             },
             {
               "boss": "As Presas Gêmeas",
               "mechanic": "Damage from Deadly Venom",
+              "label": "Peçonha Mortífera",
               "hits": 2
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Sever",
+              "label": "Arrancar",
               "hits": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "hits": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
               "hits": 1
             },
             {
               "boss": "Vashnik, o Maligno",
               "mechanic": "Damage from Plague Froth",
+              "label": "Espuma Pestilenta",
               "hits": 1
             },
             {
               "boss": "Os Exploradores Perdidos",
               "mechanic": "Damage from Frostfire Volley",
+              "label": "10 yds",
               "hits": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Soul Sever",
+              "label": "Cisão Anímica",
               "hits": 1
             }
           ]

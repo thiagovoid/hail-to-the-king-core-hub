@@ -25,7 +25,7 @@ interface Props {
    * menos. Mesma ideia da lista de preparação: a nota diz quanto, isto diz
    * o que treinar.
    */
-  mechanicsDetail?: Array<{ boss: string; mechanic: string; hits: number }>;
+  mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; hits: number }>;
 }
 
 const { score, trend, attendance, nightDate = null, preparationMissing = [], preparationValue = null, mechanicsDetail = [] } = Astro.props;
@@ -159,7 +159,10 @@ const directionLabel = (direction: 'higher' | 'lower') =>
               <ul class="mt-1.5 space-y-0.5">
                 {mechanicsDetail.map((item) => (
                   <li class="text-[11px] text-slate-500 leading-relaxed">
-                    <span class="text-slate-400">{item.mechanic.replace('Damage from ', '')}</span>
+                    {/* O rótulo vem do log, no idioma de quem gravou: quem raida
+                        em português conhece "Peçonha Sanguínea", não "Blood
+                        Venom", e não reconhecia a própria mecânica. */}
+                    <span class="text-slate-400">{item.label ?? item.mechanic.replace('Damage from ', '')}</span>
                     {' '}&times;{item.hits}
                     <span class="text-slate-600"> &middot; {item.boss}</span>
                   </li>
