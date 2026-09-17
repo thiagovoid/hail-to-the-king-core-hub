@@ -39,7 +39,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          # Sempre a ponta da master, nunca um SHA fixo. Em workflow_run o
+          # head_sha é o commit de ANTES do cron commitar os dados — o deploy
+          # construía o código novo com o dado velho e o site ficava uma
+          # atualização atrasada, sem nenhum workflow falhar.
+          ref: master
 
       - name: Setup Node
         uses: actions/setup-node@v4
