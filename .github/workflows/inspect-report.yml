@@ -11,6 +11,14 @@ on:
         description: "Código do report na WarcraftLogs (ex: JCvk27bDL6Zdm18j)"
         required: true
         type: string
+      tool:
+        description: "Qual diagnóstico rodar"
+        required: true
+        default: roles
+        type: choice
+        options:
+          - roles
+          - preparation
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -35,6 +43,7 @@ jobs:
 
       # Só lê e imprime. Não grava nada no repositório.
       - name: Inspecionar papéis por fight
+        if: inputs.tool == 'roles'
         env:
           WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
@@ -44,3 +53,15 @@ jobs:
             ARGS+=(--player="${{ inputs.player }}")
           fi
           npm run wcl:inspect-roles -- "${ARGS[@]}"
+
+      - name: Inspecionar preparação (gear/gemas/encantos/auras crus)
+        if: inputs.tool == 'preparation'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: |
+          ARGS=(--report="${{ inputs.report }}")
+          if [ -n "${{ inputs.player }}" ]; then
+            ARGS+=(--player="${{ inputs.player }}")
+          fi
+          npm run wcl:inspect-preparation -- "${ARGS[@]}"
