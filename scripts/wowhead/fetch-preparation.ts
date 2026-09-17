@@ -136,13 +136,28 @@ async function main() {
     throw new Error("Nenhuma spec foi coletada — não vou sobrescrever a referência com um arquivo vazio.");
   }
 
+  const outPath = path.join(seasonDir, "preparation-reference.json");
+
+  // O guia muda de vez em quando; o job roda toda semana. Se a recomendação
+  // veio igual à que já está gravada, nem toca no arquivo: carimbar um
+  // updatedAt novo faria o workflow commitar um diff de uma linha toda
+  // semana, sem nada ter mudado de verdade.
+  const previous = await readFile(outPath, "utf-8").then(
+    (raw) => JSON.parse(raw) as PreparationReference,
+    () => undefined
+  );
+
+  if (previous && JSON.stringify(previous.specs) === JSON.stringify(specs)) {
+    console.log(`\nReferência inalterada (${Object.keys(specs).length} spec(s)) — nada reescrito.`);
+    return;
+  }
+
   const reference: PreparationReference = {
     updatedAt: new Date().toISOString(),
     source: "wowhead",
     specs,
   };
 
-  const outPath = path.join(seasonDir, "preparation-reference.json");
   await writeFile(outPath, `${JSON.stringify(reference, null, 2)}\n`);
 
   console.log(
