@@ -5,6 +5,12 @@ import PerformanceGoalCard from '@/components/PerformanceGoalCard.astro';
 
 interface Props {
   goals: PlayerPerformanceGoals;
+  /**
+   * Meta de erros mecânicos do core — igual pra todo mundo, diferente das
+   * metas individuais (a de dps vem do Raidbots, por jogador). Por isso vem
+   * à parte, e não dentro de `goals`.
+   */
+  coreMechanicsTarget?: number | null;
   current: {
     dps?: number;
     hps?: number;
@@ -16,12 +22,12 @@ interface Props {
   };
 }
 
-const { goals, current } = Astro.props;
+const { goals, current, coreMechanicsTarget = null } = Astro.props;
 
-// Só a meta de performance (dps/hps) fica visível por hora — mesmo critério
-// já aplicado aos gráficos. As metas seguem em roster.json e os cards são
-// montados normalmente; basta tirar do set pra voltarem a aparecer.
-const HIDDEN_GOALS = new Set(['parse', 'mechanics', 'deaths']);
+// Parse e mortes seguem escondidos: parse só existe pra boss morto e mortes
+// saíram do score. Erros mecânicos voltou quando a coleta do Wipefest passou
+// a rodar. Basta tirar do set pra voltarem a aparecer.
+const HIDDEN_GOALS = new Set(['parse', 'deaths']);
 
 const cards = [
   goals.dps && current.dps !== undefined
@@ -33,11 +39,17 @@ const cards = [
   goals.parse && current.parse !== undefined
     ? { key: 'parse', label: 'Parse', goal: goals.parse, actual: current.parse, format: 'number' as const }
     : null,
-  goals.mechanics && current.mechanics !== undefined
+  coreMechanicsTarget !== null && current.mechanics !== undefined
     ? {
         key: 'mechanics',
         label: 'Erros mecânicos',
-        goal: goals.mechanics,
+        goal: {
+          metric: 'mechanics' as const,
+          target: coreMechanicsTarget,
+          direction: 'lower' as const,
+          description: 'Máximo de erros por try, na média da última noite',
+          source: 'Wipefest (meta do core)',
+        },
         actual: current.mechanics.errors,
         format: 'number' as const,
       }

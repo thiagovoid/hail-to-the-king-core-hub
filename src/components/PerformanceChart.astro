@@ -16,6 +16,12 @@ interface Series {
   data: DataPoint[];
   target?: number;
   direction?: 'higher' | 'lower';
+  /**
+   * Valor que o selo de meta compara. Vem de fora porque cada métrica tem
+   * a sua régua: o objetivo de dps olha a média da temporada, enquanto o
+   * Score Geral olha a última noite. Sem isto, gráfico e card discordavam.
+   */
+  current?: number | null;
 }
 
 interface Props {
@@ -59,6 +65,17 @@ function getScale(item: Series) {
 
   min = Math.max(0, min - padding);
   max = max + padding;
+
+  // Erro mecânico é contagem: existe 8 e existe 9, não 8,5. Sem isto a folga
+  // de 15% gerava rótulos como 7.762499999999999 no eixo.
+  // Os 4 intervalos precisam fechar em inteiro, senão os cortes do meio
+  // voltam a ser fracionários mesmo com min e max inteiros.
+  if (values.every((value) => Number.isInteger(value))) {
+    min = Math.floor(min);
+    max = Math.ceil(max);
+    const resto = (max - min) % 4;
+    if (resto !== 0) max += 4 - resto;
+  }
 
   return {
     min,
@@ -122,15 +139,18 @@ function isGoalReached(item: Series): boolean {
     return false;
   }
 
-  const average = Math.round(
-    item.data.reduce((sum, point) => sum + point.value, 0) / item.data.length
-  );
+  // Quem manda é o valor que a métrica usa de verdade: o objetivo de dps
+  // compara a média da temporada, o Score Geral compara a última noite.
+  // Só cai na média quando quem chama não informou nada.
+  const referencia =
+    item.current ??
+    Math.round(item.data.reduce((sum, point) => sum + point.value, 0) / item.data.length);
 
   if (item.direction === 'lower') {
-    return average <= item.target;
+    return referencia <= item.target;
   }
 
-  return average >= item.target;
+  return referencia >= item.target;
 }
 
 const charts = series.map((item) => {
