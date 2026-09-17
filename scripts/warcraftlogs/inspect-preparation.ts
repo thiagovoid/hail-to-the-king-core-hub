@@ -98,6 +98,12 @@ async function main() {
   const chaves = new Set<string>();
   for (const item of gear) Object.keys(item ?? {}).forEach((k) => chaves.add(k));
   console.log(`  campos presentes: [${[...chaves].join(", ")}]`);
+  console.log(`\n=== SLOT -> NOME (pra confirmar a numeração da WCL) ===`);
+  for (const item of gear) {
+    if (!item.id) continue;
+    const enc = item.permanentEnchantName ?? (item.permanentEnchant ? String(item.permanentEnchant) : "—");
+    console.log(`  slot ${String(item.slot ?? "?").padStart(2)}  ${String((item as { name?: string }).name ?? "?").padEnd(38)} encanto: ${enc}`);
+  }
   console.log(`  total de itens no array: ${gear.length}`);
 
   console.log(`\n=== AURAS no pull (candidatas a flask/comida/runa/óleo/poção) ===`);
