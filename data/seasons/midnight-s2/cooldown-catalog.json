@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T05:30:20.667Z",
+  "generatedAt": "2026-09-18T05:41:37.645Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -84,6 +84,12 @@
       "cooldownMs": 120000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "8122": {
+      "name": "Psychic Scream",
+      "cooldownMs": 40000,
+      "charges": 1,
+      "kind": "utility"
     },
     "10060": {
       "name": "Power Infusion",
@@ -223,6 +229,12 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "49039": {
+      "name": "Lichborne",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "51052": {
       "name": "Anti-Magic Zone",
       "cooldownMs": 240000,
@@ -256,6 +268,12 @@
     "59752": {
       "name": "Will to Survive",
       "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "61999": {
+      "name": "Raise Ally",
+      "cooldownMs": 600000,
       "charges": 1,
       "kind": "utility"
     },
@@ -337,6 +355,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "110959": {
+      "name": "Greater Invisibility",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "114050": {
       "name": "Ascendance",
       "cooldownMs": 180000,
@@ -400,6 +424,12 @@
     "192058": {
       "name": "Capacitor Totem",
       "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "192077": {
+      "name": "Wind Rush Totem",
+      "cooldownMs": 120000,
       "charges": 1,
       "kind": "utility"
     },
@@ -487,6 +517,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "256948": {
+      "name": "Spatial Rift",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "258860": {
       "name": "Essence Break",
       "cooldownMs": 40000,
@@ -556,6 +592,12 @@
     "378081": {
       "name": "Nature's Swiftness",
       "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "383013": {
+      "name": "Poison Cleansing Totem",
+      "cooldownMs": 120000,
       "charges": 1,
       "kind": "utility"
     },
@@ -697,6 +739,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1250580": {
+      "name": "Seed of the Devouring Wild",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "1257052": {
       "name": "Dark Harvest",
       "cooldownMs": 60000,
@@ -777,7 +825,9 @@
     980,
     1044,
     1064,
+    1459,
     1464,
+    1706,
     2061,
     2139,
     2565,
@@ -809,7 +859,10 @@
     31935,
     32379,
     33076,
+    33757,
     34914,
+    47528,
+    47541,
     48181,
     49576,
     49998,
@@ -820,6 +873,7 @@
     53600,
     56222,
     57755,
+    57994,
     60103,
     61295,
     62124,
@@ -831,7 +885,9 @@
     85222,
     85288,
     85673,
+    96231,
     108287,
+    110960,
     111400,
     115356,
     117014,
@@ -843,6 +899,7 @@
     156322,
     162794,
     163201,
+    183752,
     184367,
     184575,
     185123,
@@ -854,10 +911,12 @@
     190411,
     190456,
     192063,
+    192106,
     195072,
     195182,
     195292,
     196881,
+    198137,
     198793,
     199786,
     200025,
@@ -870,12 +929,15 @@
     209693,
     210152,
     213243,
+    213634,
     228537,
     232893,
     234153,
+    257040,
     275773,
     275779,
     281000,
+    318038,
     335096,
     335097,
     335467,
@@ -888,6 +950,8 @@
     408385,
     415091,
     415388,
+    427453,
+    431398,
     433895,
     434144,
     435222,
@@ -897,12 +961,15 @@
     445468,
     450983,
     452201,
+    454351,
+    461867,
     462620,
     462854,
     469270,
     470057,
     470411,
     1227280,
+    1236942,
     1241413,
     1242173,
     1259790,
