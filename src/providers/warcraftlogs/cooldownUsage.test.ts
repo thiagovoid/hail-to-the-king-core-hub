@@ -4,6 +4,7 @@ import type { CooldownDaMagia } from "../wowhead/spellCooldown";
 import {
   buildCooldownUsage,
   buildDamageShares,
+  categoriaEfetiva,
   tempoEmRecarga,
   type EventoDeCast,
 } from "./cooldownUsage";
@@ -306,5 +307,63 @@ describe("buildCooldownUsage — relevância por participação no dano", () => 
     const [jogador] = buildCooldownUsage([cast(GAP_CLOSER.spellId, 0)], janelas, comGapCloser);
 
     expect(jogador.abilities.map((a) => a.spellId)).toEqual([GAP_CLOSER.spellId]);
+  });
+});
+
+// Doom Winds, o cooldown de dano do xamã Aperfeiçoamento, não usa a palavra
+// "damage" no tooltip — fala em Windfury — e caía em "utility". O jogador
+// ficava com "sem cooldown ofensivo medido na noite" tendo 97% de uptime.
+describe("categoriaEfetiva", () => {
+  it("promove utilidade que responde por parte relevante do dano", () => {
+    expect(categoriaEfetiva("utility", 3.3)).toBe("offensive");
+  });
+
+  it("mantém como utilidade o que quase não causa dano", () => {
+    expect(categoriaEfetiva("utility", 0.2)).toBe("utility");
+  });
+
+  // Ausente da tabela de dano = não causou dano nenhum. Aqui isso é o
+  // contrário de buff puro: a habilidade já era utilidade pelo texto.
+  it("mantém como utilidade o que não aparece na tabela de dano", () => {
+    expect(categoriaEfetiva("utility", undefined)).toBe("utility");
+  });
+
+  it("não mexe em quem o tooltip já classificou", () => {
+    expect(categoriaEfetiva("offensive", 0)).toBe("offensive");
+    expect(categoriaEfetiva("defensive", 50)).toBe("defensive");
+  });
+});
+
+describe("buildCooldownUsage — promoção de utilidade", () => {
+  const janelas = [{ id: 1, startTime: 0, endTime: 600_000 }];
+  const DOOM_WINDS: CooldownDaMagia = {
+    spellId: 384352,
+    name: "Doom Winds",
+    cooldownMs: 60_000,
+    charges: 1,
+    kind: "utility",
+  };
+  const comDoomWinds = new Map([[DOOM_WINDS.spellId, DOOM_WINDS]]);
+  const cast = (spellId: number, timestamp: number): EventoDeCast => ({
+    sourceID: 12,
+    abilityGameID: spellId,
+    timestamp,
+    fight: 1,
+  });
+
+  it("dá nota ofensiva a quem só tem cooldown que o tooltip não reconheceu", () => {
+    const shares = new Map([[12, new Map([["doom winds", 3.3]])]]);
+    const [jogador] = buildCooldownUsage([cast(DOOM_WINDS.spellId, 0)], janelas, comDoomWinds, shares);
+
+    expect(jogador.abilities.map((a) => a.name)).toEqual(["Doom Winds"]);
+    expect(jogador.offensive).toBe(10);
+  });
+
+  it("segue descartando utilidade sem dano", () => {
+    const shares = new Map([[12, new Map([["doom winds", 0.1]])]]);
+    const [jogador] = buildCooldownUsage([cast(DOOM_WINDS.spellId, 0)], janelas, comDoomWinds, shares);
+
+    expect(jogador.abilities).toEqual([]);
+    expect(jogador.offensive).toBeNull();
   });
 });

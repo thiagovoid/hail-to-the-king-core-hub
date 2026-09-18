@@ -123,6 +123,28 @@ export function tempoEmRecarga(
 export const PARTICIPACAO_MINIMA_NO_DANO = 2;
 
 /**
+ * A categoria que vale pra pontuação DESTE jogador.
+ *
+ * O tooltip nem sempre diz que a habilidade é ofensiva. Doom Winds, o
+ * cooldown de dano do xamã Aperfeiçoamento, não usa a palavra "damage" em
+ * lugar nenhum — fala em Windfury — e caía em "utility", deixando o jogador
+ * sem nenhum cooldown ofensivo medido. O dano que ela representa é um sinal
+ * melhor do que o texto: utilidade que responde por parte relevante do dano
+ * do jogador é, na prática, cooldown ofensivo.
+ *
+ * A promoção é por jogador de propósito: a mesma magia pode ser dano numa
+ * spec e só utilidade em outra.
+ */
+export function categoriaEfetiva(
+  kind: TipoDeCooldown,
+  damageShare: number | undefined
+): TipoDeCooldown {
+  if (kind !== "utility") return kind;
+  if (damageShare === undefined) return "utility";
+  return damageShare >= PARTICIPACAO_MINIMA_NO_DANO ? "offensive" : "utility";
+}
+
+/**
  * Se a habilidade entra na nota da sua categoria.
  *
  * "Não aparece na tabela de dano" é a definição observável de buff puro:
@@ -245,17 +267,14 @@ export function buildCooldownUsage(
     }
 
     const abilities: UsoDeCooldown[] = [...acumulado.entries()]
-      // "utility" fica de fora: stun, silêncio, battle res e invocação de
-      // pet não são decisão de atacar nem de se defender, e entravam na
-      // média afundando a nota (ver classifyCooldown).
-      .filter(([spellId]) => catalogo.get(spellId)!.kind !== "utility")
       .map(([spellId, dados]) => {
         const magia = catalogo.get(spellId)!;
         const share = sharesDoJogador?.get(chaveDeNome(magia.name));
         return {
           spellId,
           name: magia.name,
-          kind: magia.kind,
+          // Pode virar "offensive" aqui: ver categoriaEfetiva.
+          kind: categoriaEfetiva(magia.kind, share),
           casts: dados.casts,
           timeOnCooldownMs: Math.round(dados.tempo),
           possibleMs,
@@ -263,6 +282,9 @@ export function buildCooldownUsage(
           ...(share === undefined ? {} : { damageShare: Math.round(share * 10) / 10 }),
         };
       })
+      // Stun, silêncio, battle res e invocação de pet não são decisão de
+      // atacar nem de se defender, e entravam na média afundando a nota.
+      .filter((uso) => uso.kind !== "utility")
       .filter((uso) => contaParaNota(uso, sharesDoJogador !== undefined))
       .sort((a, b) => a.efficiency - b.efficiency);
 
