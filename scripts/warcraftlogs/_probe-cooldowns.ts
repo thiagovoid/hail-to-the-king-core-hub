@@ -43,15 +43,15 @@ for (const fight of fights) {
         } | null;
       };
     } = await wclGraphql(
-      `query($code: String!, $fightIDs: [Int]!, $start: Float!) {
+      `query($code: String!, $fightIDs: [Int]!, $start: Float!, $end: Float!) {
         reportData { report(code: $code) {
-          events(fightIDs: $fightIDs, dataType: Casts, startTime: $start, limit: 10000) {
+          events(fightIDs: $fightIDs, dataType: Casts, startTime: $start, endTime: $end, limit: 10000) {
             data
             nextPageTimestamp
           }
         } }
       }`,
-      { code, fightIDs: [fight.id], start: cursor }
+      { code, fightIDs: [fight.id], start: cursor, end: fight.endTime }
     );
 
     const eventos = pagina.reportData.report?.events?.data ?? [];
