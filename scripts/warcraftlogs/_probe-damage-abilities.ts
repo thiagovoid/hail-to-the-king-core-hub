@@ -20,36 +20,35 @@ const { reportData } = await wclGraphql<{ reportData: { report: { fights: WclFig
 const fights = reportData.report.fights.filter((f) => f.encounterID > 0);
 
 const tabelas = await wcl.fetchFightTables(code, fights.map((f) => f.id));
-const entries = tabelas.damage.data.entries;
+const entries = tabelas.damage.data.entries as unknown as Array<Record<string, unknown>>;
 
 console.log(`entradas na tabela de dano: ${entries.length}`);
 console.log(`campos da primeira entrada: ${Object.keys(entries[0] ?? {}).join(", ")}`);
 
-const shares = buildDamageShares(entries);
-console.log(`buildDamageShares: ${shares.size} jogador(es)`);
-console.log(`ids da tabela de dano: ${[...shares.keys()].slice(0, 20).join(", ")}`);
-
-const eventos = await wcl.fetchCastEvents(code, fights.slice(0, 2));
-const sourceIDs = [...new Set(eventos.map((e) => e.sourceID))].sort((a, b) => a - b);
-console.log(`sourceIDs nos eventos: ${sourceIDs.slice(0, 25).join(", ")}`);
-
-const emComum = sourceIDs.filter((id) => shares.has(id));
-console.log(`ids em comum: ${emComum.length} de ${sourceIDs.length}`);
-
-console.log("
-quantas habilidades cada entrada tem:");
-for (const e of entries as unknown as Array<Record<string, unknown>>) {
+console.log("");
+console.log("quantas habilidades cada entrada tem:");
+for (const e of entries) {
   const abilities = (e.abilities ?? []) as unknown[];
   const damageAbilities = (e.damageAbilities ?? []) as unknown[];
   console.log(
     `  id ${String(e.id).padEnd(4)} ${String(e.name).padEnd(16)} abilities=${abilities.length} damageAbilities=${damageAbilities.length} total=${e.total}`
   );
   if (abilities.length > 0) console.log(`     amostra: ${JSON.stringify(abilities[0])}`);
-  if (damageAbilities.length > 0) console.log(`     amostra dmgAb: ${JSON.stringify(damageAbilities[0])}`);
+  else if (damageAbilities.length > 0) console.log(`     amostra dmgAb: ${JSON.stringify(damageAbilities[0])}`);
 }
 
+const shares = buildDamageShares(tabelas.damage.data.entries);
+console.log("");
+console.log(`buildDamageShares: ${shares.size} jogador(es)`);
+
+const eventos = await wcl.fetchCastEvents(code, fights.slice(0, 2));
+const sourceIDs = [...new Set(eventos.map((e) => e.sourceID))].sort((a, b) => a - b);
+const emComum = sourceIDs.filter((id) => (shares.get(id)?.size ?? 0) > 0);
+console.log(`ids com habilidades cruzadas: ${emComum.length} de ${sourceIDs.length}`);
+
 const alvo = emComum[0] ?? sourceIDs[0];
-console.log(`\nhabilidades na tabela de dano do ator ${alvo}:`);
-for (const [nome, parte] of [...(shares.get(alvo) ?? [])].sort((a, b) => b[1] - a[1]).slice(0, 12)) {
+console.log("");
+console.log(`habilidades no dano do ator ${alvo}:`);
+for (const [nome, parte] of [...(shares.get(alvo) ?? [])].sort((a, b) => b[1] - a[1]).slice(0, 10)) {
   console.log(`  ${nome.padEnd(32)} ${parte.toFixed(2)}%`);
 }
