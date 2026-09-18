@@ -173,6 +173,21 @@ const defenseHistory = history
     ],
   }));
 
+// Curar e HPS convivem de propósito: HPS é volume, Curar é quanto do dano
+// do raide você cobriu e quanto da sua cura não foi pro ralo. Duas noites
+// com o mesmo HPS podem ter notas de Curar bem diferentes.
+const healingHistory = history
+  .filter((performance) => performance.healing !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.healing!.score,
+    detail: [
+      `Cobriu ${performance.healing!.coverage}% do dano do raide`,
+      `${performance.healing!.share}% do seu quinhão`,
+      `${performance.healing!.overheal}% caiu em quem já estava cheio`,
+    ],
+  }));
+
 const deathsHistory = history
   .map((performance) => ({
     date: performance.date,
@@ -341,6 +356,20 @@ const attendance = calculateAttendance(weeks, player.id);
       history.length > 0 && (
         <PerformanceChart
           series={[
+            // Curar na frente quando existe: pro healer é o ofício, e o
+            // volume (HPS) logo atrás explica o número.
+            ...(healingHistory.length > 0
+              ? [
+                  {
+                    id: 'healing',
+                    label: 'Curar',
+                    data: healingHistory,
+                    target: seasonJson.config.performanceTargets.healing.target,
+                    current: ultimaNoite?.healing?.score ?? null,
+                    direction: 'higher' as const,
+                  },
+                ]
+              : []),
             primaryMetricSeries,
             {
               id: 'parse',
