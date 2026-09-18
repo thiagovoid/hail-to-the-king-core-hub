@@ -383,18 +383,42 @@ export class WarcraftLogsProvider
    * Nome de cada ator do relatório, por id. Os eventos só trazem
    * `sourceID` — sem esse mapa não dá pra ligar um cast a um jogador.
    */
+  /**
+   * Quem é quem no relatório: `actorId` -> nome do personagem.
+   *
+   * Tenta de novo quando volta vazio, porque volta vazio às vezes: o log de
+   * 15/09 devolveu zero atores numa coleta e a lista completa dois minutos
+   * depois, na mesma versão do código. E vazio aqui não falha sozinho — ele
+   * derruba junto tudo que depende de ligar evento a jogador (cooldowns,
+   * dano recebido, bosses mortos, a noite try a try), deixando a noite pela
+   * metade sem nada explodir.
+   */
   async fetchActorNames(reportCode: string): Promise<Map<number, string>> {
-    const data = await wclGraphql<{
-      reportData: { report: { masterData?: { actors?: Array<{ id: number; name: string; type: string }> } } | null };
-    }>(
-      `query($code: String!) {
-        reportData { report(code: $code) { masterData { actors(type: "Player") { id name type } } } }
-      }`,
-      { code: reportCode }
-    );
+    const ESPERA_MS = [0, 2_000, 6_000];
 
-    const atores = data.reportData.report?.masterData?.actors ?? [];
-    return new Map(atores.map((ator) => [ator.id, ator.name]));
+    for (const [tentativa, espera] of ESPERA_MS.entries()) {
+      if (espera > 0) await new Promise((resolve) => setTimeout(resolve, espera));
+
+      const data = await wclGraphql<{
+        reportData: { report: { masterData?: { actors?: Array<{ id: number; name: string; type: string }> } } | null };
+      }>(
+        `query($code: String!) {
+          reportData { report(code: $code) { masterData { actors(type: "Player") { id name type } } } }
+        }`,
+        { code: reportCode }
+      );
+
+      const atores = data.reportData.report?.masterData?.actors ?? [];
+      if (atores.length > 0) return new Map(atores.map((ator) => [ator.id, ator.name]));
+
+      if (tentativa < ESPERA_MS.length - 1) {
+        console.warn(
+          `masterData do report ${reportCode} voltou vazio — tentando de novo em ${ESPERA_MS[tentativa + 1] / 1000}s.`
+        );
+      }
+    }
+
+    return new Map();
   }
 
   /**

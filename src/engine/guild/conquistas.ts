@@ -51,7 +51,19 @@ export type SimboloDeConquista =
   | "bigorna"
   | "moldura"
   | "maca"
-  | "vela";
+  | "vela"
+  | "coracao"
+  | "ampulheta"
+  | "tridente"
+  | "bifurcacao"
+  | "coringa"
+  | "pomba"
+  | "garfo"
+  | "porta"
+  | "raio"
+  | "camera"
+  | "fantasma"
+  | "ciclo";
 
 export interface DefinicaoDeConquista {
   id: string;
