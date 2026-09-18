@@ -1,54 +1,53 @@
 /**
- * Sonda: o cruzamento entre a tabela de dano e os eventos de cast está
- * casando? Duas coletas seguidas saíram idênticas depois de mudar o filtro,
- * o que só acontece se nada estiver casando.
+ * Sonda: como pedir a lista COMPLETA de habilidades de dano de um jogador.
+ *
+ * A tabela agregada de DamageDone trunca em 5 habilidades por jogador — o
+ * mesmo que acontece na tabela de Casts. Com só o top 5, o filtro de
+ * relevância não enxerga as habilidades situacionais, que são justamente as
+ * que ele existe pra descartar.
  */
 import { wclGraphql } from "../../src/providers/warcraftlogs/client";
-import { WarcraftLogsProvider } from "../../src/providers/warcraftlogs/WarcraftLogsProvider";
-import { buildDamageShares } from "../../src/providers/warcraftlogs/cooldownUsage";
 import type { WclFight } from "../../src/providers/warcraftlogs/normalize";
 
 const code = process.env.PROBE_REPORT || "JCvk27bDL6Zdm18j";
-const wcl = new WarcraftLogsProvider();
 
 const { reportData } = await wclGraphql<{ reportData: { report: { fights: WclFight[] } } }>(
   `query($code: String!) {
-    reportData { report(code: $code) { fights { id encounterID kill startTime endTime } } }
+    reportData { report(code: $code) { fights { id encounterID } } }
   }`,
   { code }
 );
-const fights = reportData.report.fights.filter((f) => f.encounterID > 0);
+const ids = reportData.report.fights.filter((f) => f.encounterID > 0).map((f) => f.id);
 
-const tabelas = await wcl.fetchFightTables(code, fights.map((f) => f.id));
-const entries = tabelas.damage.data.entries as unknown as Array<Record<string, unknown>>;
+// Gunst (id 12): o jogador cujo único "cooldown ofensivo" detectado foi um
+// gap closer. Se a lista completa dele aparecer, o filtro passa a funcionar.
+const GUNST = 12;
 
-console.log(`entradas na tabela de dano: ${entries.length}`);
-console.log(`campos da primeira entrada: ${Object.keys(entries[0] ?? {}).join(", ")}`);
-
-console.log("");
-console.log("quantas habilidades cada entrada tem:");
-for (const e of entries) {
-  const abilities = (e.abilities ?? []) as unknown[];
-  const damageAbilities = (e.damageAbilities ?? []) as unknown[];
-  console.log(
-    `  id ${String(e.id).padEnd(4)} ${String(e.name).padEnd(16)} abilities=${abilities.length} damageAbilities=${damageAbilities.length} total=${e.total}`
-  );
-  if (abilities.length > 0) console.log(`     amostra: ${JSON.stringify(abilities[0])}`);
-  else if (damageAbilities.length > 0) console.log(`     amostra dmgAb: ${JSON.stringify(damageAbilities[0])}`);
+async function tentar(rotulo: string, argsExtras: string, variaveis: Record<string, unknown>) {
+  try {
+    const data = await wclGraphql<{ reportData: { report: { table?: unknown } | null } }>(
+      `query($code: String!, $fightIDs: [Int]!) {
+        reportData { report(code: $code) {
+          table(fightIDs: $fightIDs, dataType: DamageDone${argsExtras})
+        } }
+      }`,
+      { code, fightIDs: ids, ...variaveis }
+    );
+    const tabela = (data.reportData.report?.table ?? {}) as { data?: { entries?: unknown[] } };
+    const entries = (tabela.data?.entries ?? []) as Array<Record<string, unknown>>;
+    const alvo = entries.find((e) => e.id === GUNST) ?? entries[0];
+    const abilities = (alvo?.abilities ?? []) as Array<Record<string, unknown>>;
+    console.log(`${rotulo}: ${entries.length} entrada(s), alvo "${alvo?.name}" com ${abilities.length} habilidade(s)`);
+    if (abilities.length > 5) {
+      console.log("   " + abilities.map((a) => a.name).slice(0, 25).join(", "));
+    }
+  } catch (erro) {
+    console.log(`${rotulo}: FALHOU — ${erro instanceof Error ? erro.message.slice(0, 160) : erro}`);
+  }
 }
 
-const shares = buildDamageShares(tabelas.damage.data.entries);
-console.log("");
-console.log(`buildDamageShares: ${shares.size} jogador(es)`);
-
-const eventos = await wcl.fetchCastEvents(code, fights.slice(0, 2));
-const sourceIDs = [...new Set(eventos.map((e) => e.sourceID))].sort((a, b) => a - b);
-const emComum = sourceIDs.filter((id) => (shares.get(id)?.size ?? 0) > 0);
-console.log(`ids com habilidades cruzadas: ${emComum.length} de ${sourceIDs.length}`);
-
-const alvo = emComum[0] ?? sourceIDs[0];
-console.log("");
-console.log(`habilidades no dano do ator ${alvo}:`);
-for (const [nome, parte] of [...(shares.get(alvo) ?? [])].sort((a, b) => b[1] - a[1]).slice(0, 10)) {
-  console.log(`  ${nome.padEnd(32)} ${parte.toFixed(2)}%`);
-}
+await tentar("agregada (como hoje)", "", {});
+await tentar("com sourceID", ", sourceID: 12", {});
+await tentar("viewBy ability", `, viewBy: "ability"`, {});
+await tentar("sourceID + viewBy ability", `, sourceID: 12, viewBy: "ability"`, {});
+await tentar("viewOptions 1", ", viewOptions: 1", {});
