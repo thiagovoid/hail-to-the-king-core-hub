@@ -14,7 +14,7 @@ import CoreRankingTable from '@/components/CoreRankingTable.astro';
 import CoreHealthPanel from '@/components/CoreHealthPanel.astro';
 import type { SiteConfig, Boss, Player } from '@/types/index';
 import { computeProgression } from '@/utils/progression';
-import { computeMythicStats } from '@/utils/roster';
+import { computeMythicStats, getClassColor } from '@/utils/roster';
 import { formatThousands } from '@/utils/format';
 
 import seasonJson from '../../data/seasons/midnight-s2/config.json';
@@ -46,6 +46,29 @@ const hailScore = serieDoHailScore(performanceWeeks, targets);
 const hailScoreAtual = hailScore.at(-1)?.value ?? null;
 const hailScoreAnterior = hailScore.at(-2)?.value ?? null;
 const hailScoreData = hailScore.at(-1)?.date ?? null;
+
+// Mesma ordenação da página de membros: tank, healer, dps; main antes de
+// alt dentro de cada grupo. Duas telas listando o core em ordens diferentes
+// fariam a pessoa procurar duas vezes.
+const ROLE_ORDER = ['tank', 'healer', 'dps'] as const;
+const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
+  tank: 'Tanks',
+  healer: 'Healers',
+  dps: 'DPS',
+};
+const TYPE_ORDER: Record<Player['type'], number> = { main: 0, alt: 1 };
+
+const rosterGroups = ROLE_ORDER.map((role) => ({
+  label: ROLE_LABEL[role],
+  players: players
+    .filter((player) => player.role === role)
+    .sort((a, b) => TYPE_ORDER[a.type] - TYPE_ORDER[b.type])
+    .map((player) => ({
+      name: player.name,
+      slug: encodeURIComponent(player.name.toLowerCase()),
+      colorClass: getClassColor(player.class),
+    })),
+})).filter((grupo) => grupo.players.length > 0);
 
 const dpsSeries = getCorePerformanceSeries(
   performanceWeeks,
@@ -246,6 +269,7 @@ const avgIoSubtitle = bestKey
     />
 
     <CorePerformanceChart
+      rosterGroups={rosterGroups}
       metrics={[
         {
           id: 'hail-score',
