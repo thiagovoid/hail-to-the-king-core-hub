@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T05:51:02.597Z",
+  "generatedAt": "2026-09-18T05:52:53.443Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -37,6 +37,12 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "1022": {
+      "name": "Blessing of Protection",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1160": {
       "name": "Demoralizing Shout",
       "cooldownMs": 45000,
@@ -52,6 +58,12 @@
     "5394": {
       "name": "Healing Stream Totem",
       "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "6262": {
+      "name": "Healthstone",
+      "cooldownMs": 60000,
       "charges": 1,
       "kind": "defensive"
     },
@@ -79,6 +91,18 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "15286": {
+      "name": "Vampiric Embrace",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "15487": {
+      "name": "Silence",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "19236": {
       "name": "Desperate Prayer",
       "cooldownMs": 90000,
@@ -97,15 +121,45 @@
       "charges": 1,
       "kind": "utility"
     },
+    "20707": {
+      "name": "Soulstone",
+      "cooldownMs": 600000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "21169": {
       "name": "Reincarnation",
       "cooldownMs": 1800000,
       "charges": 1,
       "kind": "utility"
     },
+    "29893": {
+      "name": "Create Soulwell",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "30283": {
+      "name": "Shadowfury",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "31661": {
+      "name": "Dragon's Breath",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "31821": {
       "name": "Aura Mastery",
       "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "31850": {
+      "name": "Ardent Defender",
+      "cooldownMs": 90000,
       "charges": 1,
       "kind": "defensive"
     },
@@ -168,6 +222,12 @@
       "cooldownMs": 30000,
       "charges": 2,
       "kind": "offensive"
+    },
+    "47585": {
+      "name": "Dispersion",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "48265": {
       "name": "Death's Advance",
@@ -241,6 +301,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "59752": {
+      "name": "Will to Survive",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "61999": {
       "name": "Raise Ally",
       "cooldownMs": 600000,
@@ -252,6 +318,12 @@
       "cooldownMs": 180000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "64800": {
+      "name": "Wrathstone",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
     },
     "79206": {
       "name": "Spiritwalker's Grace",
@@ -271,6 +343,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "86659": {
+      "name": "Guardian of Ancient Kings",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "97462": {
       "name": "Rallying Cry",
       "cooldownMs": 180000,
@@ -279,6 +357,12 @@
     },
     "98008": {
       "name": "Spirit Link Totem",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "104773": {
+      "name": "Unending Resolve",
       "cooldownMs": 180000,
       "charges": 1,
       "kind": "defensive"
@@ -313,6 +397,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "108416": {
+      "name": "Dark Pact",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "109248": {
       "name": "Binding Shot",
       "cooldownMs": 45000,
@@ -337,6 +427,18 @@
       "charges": 1,
       "kind": "utility"
     },
+    "114051": {
+      "name": "Ascendance",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "114052": {
+      "name": "Ascendance",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "115750": {
       "name": "Blinding Light",
       "cooldownMs": 90000,
@@ -348,6 +450,12 @@
       "cooldownMs": 120000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "120644": {
+      "name": "Halo",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
     },
     "157980": {
       "name": "Supernova",
@@ -415,11 +523,23 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "196884": {
+      "name": "Feral Lunge",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "198013": {
       "name": "Eye Beam",
       "cooldownMs": 30000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "198103": {
+      "name": "Earth Elemental",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
     },
     "198589": {
       "name": "Blur",
@@ -430,6 +550,12 @@
     "205021": {
       "name": "Ray of Frost",
       "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "205180": {
+      "name": "Summon Darkglare",
+      "cooldownMs": 120000,
       "charges": 1,
       "kind": "offensive"
     },
@@ -451,6 +577,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "212641": {
+      "name": "Guardian of Ancient Kings",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "212653": {
       "name": "Shimmer",
       "cooldownMs": 30000,
@@ -463,11 +595,23 @@
       "charges": 1,
       "kind": "utility"
     },
+    "228260": {
+      "name": "Voidform",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "255937": {
       "name": "Wake of Ashes",
       "cooldownMs": 30000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "256948": {
+      "name": "Spatial Rift",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
     },
     "258920": {
       "name": "Immolation Aura",
@@ -481,17 +625,35 @@
       "charges": 1,
       "kind": "utility"
     },
+    "263165": {
+      "name": "Void Torrent",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "264735": {
       "name": "Survival of the Fittest",
       "cooldownMs": 90000,
       "charges": 1,
       "kind": "utility"
     },
+    "265946": {
+      "name": "Ritual Wraps",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "279302": {
       "name": "Frostwyrm's Fury",
       "cooldownMs": 90000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "333889": {
+      "name": "Fel Domination",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
     },
     "342245": {
       "name": "Alter Time",
@@ -510,6 +672,12 @@
       "cooldownMs": 90000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "371028": {
+      "name": "Elemental Potion of Ultimate Power",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
     },
     "375576": {
       "name": "Divine Toll",
@@ -541,6 +709,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "389539": {
+      "name": "Sentinel",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "391054": {
       "name": "Intercession",
       "cooldownMs": 600000,
@@ -570,6 +744,18 @@
       "cooldownMs": 30000,
       "charges": 1,
       "kind": "utility"
+    },
+    "432459": {
+      "name": "Holy Bulwark",
+      "cooldownMs": 60000,
+      "charges": 2,
+      "kind": "defensive"
+    },
+    "432472": {
+      "name": "Sacred Weapon",
+      "cooldownMs": 60000,
+      "charges": 2,
+      "kind": "offensive"
     },
     "439843": {
       "name": "Reaper's Mark",
@@ -607,11 +793,23 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "452930": {
+      "name": "Demonic Healthstone",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "456640": {
       "name": "Consuming Fire",
       "cooldownMs": 30000,
       "charges": 1,
       "kind": "utility"
+    },
+    "471195": {
+      "name": "Lay on Hands",
+      "cooldownMs": 600000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "472433": {
       "name": "Evangelism",
@@ -649,6 +847,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1236998": {
+      "name": "Draught of Rampant Abandon",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1238443": {
       "name": "Potion of Zealotry",
       "cooldownMs": 300000,
@@ -678,6 +882,18 @@
       "cooldownMs": 90000,
       "charges": 1,
       "kind": "utility"
+    },
+    "1250557": {
+      "name": "Void Execution Mandate",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1257052": {
+      "name": "Dark Harvest",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
     },
     "1258283": {
       "name": "Beacon of Lightblind Wrath",
@@ -709,6 +925,18 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "1293316": {
+      "name": "Empowering Venom",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1293326": {
+      "name": "Tattered Amani War Banner",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1295247": {
       "name": "Concentrated Silvermoon Health Potion",
       "cooldownMs": 300000,
@@ -721,21 +949,30 @@
     100,
     116,
     120,
+    172,
     355,
+    370,
+    465,
     527,
     585,
     589,
+    686,
+    691,
+    702,
     772,
     781,
     845,
     974,
+    980,
     1044,
     1064,
     1459,
     1464,
     2061,
+    2139,
     2565,
     2645,
+    3714,
     4987,
     6343,
     6572,
@@ -744,19 +981,27 @@
     8004,
     8092,
     12294,
+    15407,
+    17364,
     19750,
     20271,
     20473,
+    21562,
     23920,
     23922,
     24275,
+    26573,
+    27243,
     30449,
     30455,
+    31935,
     32379,
     34026,
+    34914,
     47528,
     47540,
     47541,
+    48181,
     49020,
     49143,
     49184,
@@ -766,10 +1011,14 @@
     51505,
     52174,
     53385,
+    53600,
     55090,
     56222,
     57755,
+    57994,
+    60103,
     61295,
+    62124,
     73685,
     77130,
     77472,
@@ -779,9 +1028,14 @@
     85222,
     85673,
     85948,
+    96231,
     108287,
     110960,
+    111400,
+    111771,
+    115356,
     117014,
+    119910,
     121536,
     126664,
     131347,
@@ -792,6 +1046,7 @@
     184575,
     185123,
     186263,
+    187874,
     188196,
     188389,
     188443,
@@ -805,6 +1060,7 @@
     195072,
     195182,
     195292,
+    196881,
     198137,
     198793,
     199786,
@@ -813,50 +1069,73 @@
     200829,
     201427,
     202168,
+    204019,
+    204079,
     206930,
     207230,
     207317,
     209693,
     210152,
     213243,
+    213634,
     217200,
     228537,
+    232698,
     232893,
+    234153,
+    257040,
     257284,
     272790,
     275773,
+    275779,
     278326,
     281000,
+    317920,
     318038,
+    335467,
+    341263,
     342247,
     343294,
     370966,
     383269,
     383328,
+    385899,
+    391403,
     408385,
     415091,
     415388,
     427453,
     431398,
+    433895,
+    434144,
     435222,
     440839,
     441424,
     441426,
     444995,
+    450983,
+    452201,
+    454351,
     458128,
     461867,
     462620,
     462854,
+    469270,
     470057,
     470411,
+    1227280,
     1236942,
     1241413,
+    1242173,
     1242174,
     1248829,
     1253593,
+    1259790,
     1264359,
     1265384,
     1269383,
+    1295735,
+    1296535,
     1308188
   ]
 }

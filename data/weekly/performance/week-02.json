@@ -9,14 +9,36 @@
           "playerId": "blackwatch",
           "dps": 45820,
           "parse": 29,
-          "preparation": 31,
+          "preparation": 28,
           "preparationMissing": [
             "Elmo",
             "Peito",
             "Pernas",
             "Botas",
             "Anel",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 96,
+            "uptime": 99.9,
+            "cooldowns": 92.1
+          },
+          "attackDetail": [
+            {
+              "spellId": 46585,
+              "name": "Raise Dead",
+              "casts": 30,
+              "efficiency": 87
+            },
+            {
+              "spellId": 43265,
+              "name": "Death and Decay",
+              "casts": 291,
+              "efficiency": 97.1
+            }
           ],
           "deaths": 4,
           "mechanics": {
@@ -139,7 +161,7 @@
           "dps": 33022,
           "parse": 9,
           "itemLevel": 288,
-          "preparation": 0,
+          "preparation": 29,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -148,7 +170,28 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 73.1,
+            "uptime": 96.3,
+            "cooldowns": 50
+          },
+          "attackDetail": [
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 32,
+              "efficiency": 49.5
+            },
+            {
+              "spellId": 432472,
+              "name": "Sacred Weapon",
+              "casts": 33,
+              "efficiency": 50.4
+            }
           ],
           "deaths": 4,
           "mechanics": {
@@ -229,12 +272,24 @@
           "hps": 126969,
           "parse": 41,
           "itemLevel": 287,
-          "preparation": 100,
+          "preparation": 54,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 98.7,
+            "uptime": 98.7,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 5,
           "mechanics": {
             "errors": 2.2,
             "tries": 10
           },
+          "preparationMissing": [
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -321,7 +376,7 @@
           "hps": 156613,
           "parse": 92,
           "itemLevel": 294,
-          "preparation": 0,
+          "preparation": 11,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -330,7 +385,30 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 83.4,
+            "uptime": 98.4,
+            "cooldowns": 68.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 31884,
+              "name": "Avenging Wrath",
+              "casts": 18,
+              "efficiency": 53.3
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 81,
+              "efficiency": 83.6
+            }
           ],
           "deaths": 5,
           "mechanics": {
@@ -435,12 +513,38 @@
           "dps": 69041,
           "parse": 28,
           "itemLevel": 290,
-          "preparation": 75,
+          "preparation": 71,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
             "Pernas",
             "Botas"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 73.4,
+            "uptime": 70.3,
+            "cooldowns": 76.5
+          },
+          "attackDetail": [
+            {
+              "spellId": 205021,
+              "name": "Ray of Frost",
+              "casts": 67,
+              "efficiency": 73.7
+            },
+            {
+              "spellId": 84714,
+              "name": "Frozen Orb",
+              "casts": 73,
+              "efficiency": 77.6
+            },
+            {
+              "spellId": 44614,
+              "name": "Flurry",
+              "casts": 267,
+              "efficiency": 78.3
+            }
           ],
           "deaths": 7,
           "mechanics": {
@@ -533,11 +637,31 @@
           "dps": 95710,
           "parse": 38,
           "itemLevel": 300,
-          "preparation": 71,
+          "preparation": 82,
           "preparationMissing": [
             "Elmo",
             "Arma",
             "Colar"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 90.6,
+            "uptime": 99,
+            "cooldowns": 82.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 1257052,
+              "name": "Dark Harvest",
+              "casts": 59,
+              "efficiency": 81.6
+            },
+            {
+              "spellId": 205180,
+              "name": "Summon Darkglare",
+              "casts": 28,
+              "efficiency": 82.7
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -624,9 +748,35 @@
           "dps": 96335,
           "parse": 40,
           "itemLevel": 302,
-          "preparation": 94,
+          "preparation": 89,
           "preparationMissing": [
             "Botas"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 80.2,
+            "uptime": 88.2,
+            "cooldowns": 72.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 15286,
+              "name": "Vampiric Embrace",
+              "casts": 20,
+              "efficiency": 58.3
+            },
+            {
+              "spellId": 120644,
+              "name": "Halo",
+              "casts": 109,
+              "efficiency": 73.6
+            },
+            {
+              "spellId": 228260,
+              "name": "Voidform",
+              "casts": 58,
+              "efficiency": 84.8
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -719,7 +869,27 @@
           "dps": 132510,
           "parse": 76,
           "itemLevel": 308,
-          "preparation": 100,
+          "preparation": 84,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 90.6,
+            "uptime": 99,
+            "cooldowns": 82.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 443454,
+              "name": "Ancestral Swiftness",
+              "casts": 87,
+              "efficiency": 69.6
+            },
+            {
+              "spellId": 191634,
+              "name": "Stormkeeper",
+              "casts": 138,
+              "efficiency": 94.8
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.6,
@@ -799,12 +969,44 @@
           "dps": 90383,
           "parse": 37,
           "itemLevel": 305,
-          "preparation": 35,
+          "preparation": 60,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Botas",
             "Anel"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 86.6,
+            "uptime": 98.2,
+            "cooldowns": 75
+          },
+          "attackDetail": [
+            {
+              "spellId": 452497,
+              "name": "Abyssal Gaze",
+              "casts": 46,
+              "efficiency": 32.4
+            },
+            {
+              "spellId": 198013,
+              "name": "Eye Beam",
+              "casts": 124,
+              "efficiency": 84.3
+            },
+            {
+              "spellId": 258920,
+              "name": "Immolation Aura",
+              "casts": 161,
+              "efficiency": 84.8
+            },
+            {
+              "spellId": 370965,
+              "name": "The Hunt",
+              "casts": 121,
+              "efficiency": 98.6
+            }
           ],
           "deaths": 4,
           "mechanics": {
@@ -878,7 +1080,7 @@
           "playerId": "gunst",
           "dps": 110671,
           "parse": 34,
-          "preparation": 68,
+          "preparation": 72,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -886,6 +1088,26 @@
             "Botas",
             "Braçadeiras",
             "Anel"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 75.5,
+            "uptime": 98.1,
+            "cooldowns": 52.9
+          },
+          "attackDetail": [
+            {
+              "spellId": 198103,
+              "name": "Earth Elemental",
+              "casts": 3,
+              "efficiency": 7.5
+            },
+            {
+              "spellId": 114051,
+              "name": "Ascendance",
+              "casts": 32,
+              "efficiency": 98.3
+            }
           ],
           "deaths": 5,
           "mechanics": {
@@ -978,7 +1200,7 @@
           "dps": 41759,
           "parse": 6,
           "itemLevel": 279,
-          "preparation": 0,
+          "preparation": 10,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -987,7 +1209,30 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 87.3,
+            "uptime": 85.3,
+            "cooldowns": 89.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 446035,
+              "name": "Bladestorm",
+              "casts": 53,
+              "efficiency": 87.4
+            },
+            {
+              "spellId": 107574,
+              "name": "Avatar",
+              "casts": 46,
+              "efficiency": 91
+            }
           ],
           "deaths": 8,
           "mechanics": {
@@ -1074,9 +1319,29 @@
           "dps": 78739,
           "parse": 28,
           "itemLevel": 295,
-          "preparation": 93,
+          "preparation": 88,
           "preparationMissing": [
             "Botas"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 83.7,
+            "uptime": 88.9,
+            "cooldowns": 78.5
+          },
+          "attackDetail": [
+            {
+              "spellId": 1247378,
+              "name": "Putrefy",
+              "casts": 123,
+              "efficiency": 73.5
+            },
+            {
+              "spellId": 42650,
+              "name": "Army of the Dead",
+              "casts": 37,
+              "efficiency": 83.4
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -1180,14 +1445,37 @@
           "playerId": "blackwatch",
           "dps": 3994,
           "itemLevel": 303,
-          "preparation": 31,
+          "preparation": 23,
           "preparationMissing": [
             "Elmo",
             "Peito",
             "Pernas",
             "Botas",
             "Anel",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 76.5,
+            "uptime": 82.5,
+            "cooldowns": 70.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 46585,
+              "name": "Raise Dead",
+              "casts": 4,
+              "efficiency": 65.8
+            },
+            {
+              "spellId": 43265,
+              "name": "Death and Decay",
+              "casts": 34,
+              "efficiency": 75.1
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -1225,7 +1513,7 @@
           "playerId": "apocalipse",
           "dps": 20536,
           "itemLevel": 292,
-          "preparation": 0,
+          "preparation": 21,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1234,7 +1522,29 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 65.2,
+            "uptime": 86.1,
+            "cooldowns": 44.3
+          },
+          "attackDetail": [
+            {
+              "spellId": 432472,
+              "name": "Sacred Weapon",
+              "casts": 21,
+              "efficiency": 35.7
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 28,
+              "efficiency": 52.8
+            }
           ],
           "deaths": 16,
           "mechanics": {
@@ -1272,12 +1582,24 @@
           "playerId": "voidsurge",
           "hps": 61682,
           "itemLevel": 287,
-          "preparation": 100,
+          "preparation": 43,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 85.8,
+            "uptime": 85.8,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 18,
           "mechanics": {
             "errors": 1.9,
             "tries": 14
           },
+          "preparationMissing": [
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
@@ -1313,7 +1635,7 @@
         },
         {
           "playerId": "kams",
-          "preparation": 0,
+          "preparation": 2,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1322,8 +1644,12 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
           ],
+          "preparationChecks": 2,
           "deaths": 14,
           "mechanics": {
             "errors": 0.9,
@@ -1360,11 +1686,34 @@
           "playerId": "cowsadeer",
           "hps": 173200,
           "itemLevel": 305,
-          "preparation": 58,
+          "preparation": 30,
           "preparationMissing": [
             "Pernas",
             "Botas",
-            "Anel"
+            "Anel",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 88,
+            "uptime": 96.7,
+            "cooldowns": 79.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 31884,
+              "name": "Avenging Wrath",
+              "casts": 23,
+              "efficiency": 69.1
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 69,
+              "efficiency": 89.6
+            }
           ],
           "deaths": 12,
           "mechanics": {
@@ -1402,12 +1751,40 @@
           "playerId": "bustgril",
           "dps": 56132,
           "itemLevel": 296,
-          "preparation": 75,
+          "preparation": 53,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
             "Pernas",
-            "Botas"
+            "Botas",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 83.7,
+            "uptime": 78.4,
+            "cooldowns": 88.9
+          },
+          "attackDetail": [
+            {
+              "spellId": 205021,
+              "name": "Ray of Frost",
+              "casts": 65,
+              "efficiency": 86.9
+            },
+            {
+              "spellId": 44614,
+              "name": "Flurry",
+              "casts": 162,
+              "efficiency": 89.9
+            },
+            {
+              "spellId": 84714,
+              "name": "Frozen Orb",
+              "casts": 69,
+              "efficiency": 90
+            }
           ],
           "deaths": 16,
           "mechanics": {
@@ -1451,11 +1828,33 @@
           "playerId": "hysillens",
           "dps": 46410,
           "itemLevel": 300,
-          "preparation": 71,
+          "preparation": 43,
           "preparationMissing": [
             "Elmo",
             "Arma",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 71.2,
+            "uptime": 77.8,
+            "cooldowns": 64.5
+          },
+          "attackDetail": [
+            {
+              "spellId": 1257052,
+              "name": "Dark Harvest",
+              "casts": 32,
+              "efficiency": 59.3
+            },
+            {
+              "spellId": 205180,
+              "name": "Summon Darkglare",
+              "casts": 20,
+              "efficiency": 69.7
+            }
           ],
           "deaths": 15,
           "mechanics": {
@@ -1511,11 +1910,37 @@
           "playerId": "kroline",
           "dps": 80755,
           "itemLevel": 306,
-          "preparation": 81,
+          "preparation": 77,
           "preparationMissing": [
             "Pernas",
             "Botas",
             "Anel"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 79.8,
+            "uptime": 93.9,
+            "cooldowns": 65.7
+          },
+          "attackDetail": [
+            {
+              "spellId": 15286,
+              "name": "Vampiric Embrace",
+              "casts": 15,
+              "efficiency": 40.4
+            },
+            {
+              "spellId": 263165,
+              "name": "Void Torrent",
+              "casts": 76,
+              "efficiency": 74.5
+            },
+            {
+              "spellId": 228260,
+              "name": "Voidform",
+              "casts": 52,
+              "efficiency": 82.2
+            }
           ],
           "deaths": 15,
           "mechanics": {
@@ -1571,12 +1996,37 @@
           "playerId": "jrxamã",
           "dps": 89154,
           "itemLevel": 310,
-          "preparation": 100,
+          "preparation": 65,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 76.1,
+            "uptime": 86.8,
+            "cooldowns": 65.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 443454,
+              "name": "Ancestral Swiftness",
+              "casts": 61,
+              "efficiency": 58.8
+            },
+            {
+              "spellId": 191634,
+              "name": "Stormkeeper",
+              "casts": 84,
+              "efficiency": 72.1
+            }
+          ],
           "deaths": 17,
           "mechanics": {
             "errors": 1.2,
             "tries": 14
           },
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida",
+            "Flask/comida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
@@ -1614,12 +2064,47 @@
           "playerId": "heracranosx",
           "dps": 58545,
           "itemLevel": 305,
-          "preparation": 35,
+          "preparation": 39,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Botas",
-            "Anel"
+            "Anel",
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 76.3,
+            "uptime": 86.6,
+            "cooldowns": 65.9
+          },
+          "attackDetail": [
+            {
+              "spellId": 452497,
+              "name": "Abyssal Gaze",
+              "casts": 25,
+              "efficiency": 24
+            },
+            {
+              "spellId": 258920,
+              "name": "Immolation Aura",
+              "casts": 113,
+              "efficiency": 70.6
+            },
+            {
+              "spellId": 198013,
+              "name": "Eye Beam",
+              "casts": 91,
+              "efficiency": 76.1
+            },
+            {
+              "spellId": 370965,
+              "name": "The Hunt",
+              "casts": 85,
+              "efficiency": 93.1
+            }
           ],
           "deaths": 14,
           "mechanics": {
@@ -1662,13 +2147,35 @@
         {
           "playerId": "gunst",
           "dps": 63774,
-          "preparation": 77,
+          "preparation": 51,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Cintura",
             "Botas",
-            "Braçadeiras"
+            "Braçadeiras",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 64.4,
+            "uptime": 82.7,
+            "cooldowns": 46
+          },
+          "attackDetail": [
+            {
+              "spellId": 198103,
+              "name": "Earth Elemental",
+              "casts": 2,
+              "efficiency": 1.7
+            },
+            {
+              "spellId": 114051,
+              "name": "Ascendance",
+              "casts": 23,
+              "efficiency": 90.3
+            }
           ],
           "deaths": 15,
           "mechanics": {
@@ -1724,7 +2231,7 @@
           "playerId": "nerlock",
           "dps": 22825,
           "itemLevel": 286,
-          "preparation": 0,
+          "preparation": 2,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1733,7 +2240,30 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 70.7,
+            "uptime": 66.7,
+            "cooldowns": 74.7
+          },
+          "attackDetail": [
+            {
+              "spellId": 107574,
+              "name": "Avatar",
+              "casts": 27,
+              "efficiency": 74
+            },
+            {
+              "spellId": 446035,
+              "name": "Bladestorm",
+              "casts": 31,
+              "efficiency": 75.3
+            }
           ],
           "deaths": 15,
           "mechanics": {
@@ -1781,11 +2311,15 @@
         },
         {
           "playerId": "xúlio",
-          "preparation": 77,
+          "preparation": 48,
           "preparationMissing": [
             "Pernas",
-            "Anel"
+            "Anel",
+            "Poção",
+            "Pedra de vida",
+            "Flask/comida"
           ],
+          "preparationChecks": 2,
           "deaths": 12,
           "mechanics": {
             "errors": 1.6,
@@ -1828,13 +2362,36 @@
           "playerId": "dagom",
           "dps": 17460,
           "itemLevel": 300,
-          "preparation": 19,
+          "preparation": 17,
           "preparationMissing": [
             "Peito",
             "Pernas",
             "Botas",
             "Anel",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 72.4,
+            "uptime": 80.7,
+            "cooldowns": 64.1
+          },
+          "attackDetail": [
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 18,
+              "efficiency": 55.9
+            },
+            {
+              "spellId": 255937,
+              "name": "Wake of Ashes",
+              "casts": 35,
+              "efficiency": 72.2
+            }
           ],
           "deaths": 8,
           "mechanics": {
