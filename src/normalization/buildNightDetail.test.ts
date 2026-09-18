@@ -51,12 +51,14 @@ describe("buildNightDetail", () => {
 
   it("conta try com zero dano como ociosa", () => {
     const detalhe = buildNightDetail(
-      [luta(1, [10]), luta(2, [10])],
+      [luta(1, [10, 20]), luta(2, [10, 20])],
       [],
-      dano({ 1: { 10: 5000 }, 2: {} })
+      // Na try 2 o outro bateu e o 10 não: a try teve atividade, ele não.
+      dano({ 1: { 10: 5000, 20: 4000 }, 2: { 20: 4000 } })
     );
 
     expect(detalhe.get(10)?.tries.idle).toBe(1);
+    expect(detalhe.get(20)?.tries.idle).toBe(0);
   });
 
   // Em 27/08 isso dava "ocioso" pros 14 jogadores da noite: a try não tinha
