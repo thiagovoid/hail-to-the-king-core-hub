@@ -89,3 +89,11 @@ jobs:
           WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
         run: npm run wcl:_probe-casts
+
+      - name: Medir custo dos eventos de Casts (cooldowns)
+        if: inputs.tool == 'cooldowns'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          PROBE_REPORT: ${{ inputs.report }}
+        run: npm run wcl:_probe-cooldowns
