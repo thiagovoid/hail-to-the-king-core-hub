@@ -48,6 +48,5 @@ async function tentar(rotulo: string, argsExtras: string, variaveis: Record<stri
 
 await tentar("agregada (como hoje)", "", {});
 await tentar("com sourceID", ", sourceID: 12", {});
-await tentar("viewBy ability", `, viewBy: "ability"`, {});
-await tentar("sourceID + viewBy ability", `, sourceID: 12, viewBy: "ability"`, {});
-await tentar("viewOptions 1", ", viewOptions: 1", {});
+await tentar("viewBy Ability", ", viewBy: Ability", {});
+await tentar("sourceID + viewBy Ability", ", sourceID: 12, viewBy: Ability", {});
