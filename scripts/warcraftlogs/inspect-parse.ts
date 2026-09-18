@@ -91,6 +91,11 @@ async function main() {
         `  deste report=${doNossoReport.length}` +
         (doNossoReport[0] ? `  parse=${Math.round(doNossoReport[0].rankPercent ?? 0)}` : "")
     );
+    // De onde vieram os ranks que existem: se for um log nosso, o ranking
+    // funciona e o problema é outro.
+    for (const r of ranks.slice(0, 3)) {
+      console.log(`      rank em report=${r.report?.code} fight=${r.report?.fightID} parse=${Math.round(r.rankPercent ?? 0)}`);
+    }
   }
 }
 
