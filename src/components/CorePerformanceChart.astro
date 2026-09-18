@@ -194,6 +194,33 @@ function getTrend(
 // demanda, no primeiro clique — renderizar as 4 de uma vez (só escondendo
 // 3 via CSS) inflava o DOM da home pra ~950 elementos com o roster atual,
 // o suficiente pra reprovar o orçamento de performance do Lighthouse CI.
+/**
+ * Meses presentes no dado, do mais antigo pro mais novo.
+ *
+ * O filtro é só de visualização: ele muda o que é desenhado e nada do que é
+ * calculado. A tendência da legenda, por exemplo, continua olhando o
+ * histórico inteiro mesmo com um mês selecionado — senão "↑12%" passaria a
+ * significar coisas diferentes conforme o botão apertado.
+ */
+function mesesDoDado(lista: Metric[]): string[] {
+  const meses = new Set<string>();
+  for (const metric of lista) {
+    for (const series of metric.series) {
+      for (const point of series.data) meses.add(point.date.slice(0, 7));
+    }
+  }
+  return [...meses].sort();
+}
+
+const MES_CURTO = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+function rotuloDoMes(mes: string): string {
+  const [ano, numero] = mes.split('-');
+  return `${MES_CURTO[Number(numero) - 1]}/${ano.slice(2)}`;
+}
+
+const mesesDisponiveis = mesesDoDado(metrics);
+
 const serializedMetrics = metrics.map((metric) => ({
   id: metric.id,
   label: metric.label,
@@ -242,6 +269,55 @@ const serializedMetrics = metrics.map((metric) => ({
           </button>
         ))
       }
+    </div>
+  </div>
+
+  <!-- Controles de visualização. Ficam numa linha só acima do gráfico, e
+       nenhum dos dois altera cálculo: mudam o recorte desenhado. -->
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-slate-800">
+    <div id="core-performance-meses" class="flex flex-wrap items-center gap-1.5">
+      <span class="text-[11px] uppercase tracking-wide text-slate-600 mr-1">Período</span>
+
+      <button
+        type="button"
+        data-mes="todos"
+        class="px-2.5 py-1 rounded-md text-xs transition-colors bg-slate-700 text-white"
+      >
+        Tudo
+      </button>
+
+      {
+        mesesDisponiveis.map((mes) => (
+          <button
+            type="button"
+            data-mes={mes}
+            class="px-2.5 py-1 rounded-md text-xs transition-colors text-slate-400 hover:text-white hover:bg-slate-800"
+          >
+            {rotuloDoMes(mes)}
+          </button>
+        ))
+      }
+    </div>
+
+    <div id="core-performance-modo" class="flex items-center gap-1.5">
+      <span class="text-[11px] uppercase tracking-wide text-slate-600 mr-1">Ver como</span>
+
+      <button
+        type="button"
+        data-modo="valor"
+        class="px-2.5 py-1 rounded-md text-xs transition-colors bg-slate-700 text-white"
+      >
+        Valor
+      </button>
+
+      <button
+        type="button"
+        data-modo="ranking"
+        class="px-2.5 py-1 rounded-md text-xs transition-colors text-slate-400 hover:text-white hover:bg-slate-800"
+        title="Mostra a posição de cada jogador em vez do número. Aguenta muito mais linhas juntas, mas some com a magnitude — o valor aparece ao passar o mouse."
+      >
+        Ranking
+      </button>
     </div>
   </div>
 
@@ -609,10 +685,179 @@ const serializedMetrics = metrics.map((metric) => ({
     return { symbol: change > 0 ? '↑' : '↓', value: `${Math.abs(change)}%`, positive: improved };
   }
 
-  function buildMetricMarkup(metric: SerializedMetric): string {
+  /**
+   * Recorta as séries a um mês, sem mexer em mais nada.
+   *
+   * Devolve séries novas com os pontos filtrados. A série original continua
+   * disponível pra quem precisa do período completo — a tendência da legenda
+   * e a meta são calculadas em cima dela, não em cima deste recorte.
+   */
+  function filtrarPorMes(
+    metric: SerializedMetric,
+    mes: string
+  ): SerializedMetric {
+    if (mes === 'todos') return metric;
+
+    return {
+      ...metric,
+      series: metric.series.map((series) => ({
+        ...series,
+        data: series.data.filter((point) => point.date.slice(0, 7) === mes),
+      })),
+    };
+  }
+
+  /**
+   * Posição de cada jogador em cada data.
+   *
+   * Empate é resolvido pelo nome, não pela ordem em que o jogador apareceu no
+   * array: sem isso, dois jogadores com o mesmo valor trocariam de faixa
+   * entre um render e outro sem nada ter mudado.
+   *
+   * Quem não jogou a noite não recebe posição — a linha abre um vão em vez de
+   * inventar uma colocação.
+   */
+  function calcularPosicoes(
+    metric: SerializedMetric,
+    dates: string[]
+  ): Map<string, Map<string, number>> {
+    const posicoes = new Map<string, Map<string, number>>();
+
+    for (const date of dates) {
+      const presentes = metric.series
+        .map((series) => {
+          const ponto = series.data.find((point) => point.date === date);
+          return ponto ? { nome: series.playerName, valor: ponto.value } : null;
+        })
+        .filter((item): item is { nome: string; valor: number } => item !== null)
+        .sort((a, b) =>
+          metric.direction === 'higher'
+            ? b.valor - a.valor || a.nome.localeCompare(b.nome)
+            : a.valor - b.valor || a.nome.localeCompare(b.nome)
+        );
+
+      posicoes.set(date, new Map(presentes.map((item, indice) => [item.nome, indice + 1])));
+    }
+
+    return posicoes;
+  }
+
+  /**
+   * O ranking precisa de mais margem à direita que o gráfico de valor: ali
+   * mora o nome de cada jogador, e com 30px ele saía cortado ("Kroli", "Jrxan").
+   */
+  const paddingRightRanking = 96;
+
+  function getXRanking(date: string, dates: string[]): number {
+    const chartWidth = width - paddingLeft - paddingRightRanking;
+    if (dates.length <= 1) return paddingLeft + chartWidth / 2;
+    const index = dates.indexOf(date);
+    if (index === -1) return paddingLeft;
+    return paddingLeft + (index / (dates.length - 1)) * chartWidth;
+  }
+
+  /** Faixa vertical de uma posição. A 1ª fica no topo. */
+  function getYDaPosicao(posicao: number, totalDeFaixas: number): number {
+    if (totalDeFaixas <= 1) return paddingTop + (height - paddingTop - paddingBottom) / 2;
+    const util = height - paddingTop - paddingBottom;
+    return paddingTop + ((posicao - 1) / (totalDeFaixas - 1)) * util;
+  }
+
+  /**
+   * Bump chart: posição no eixo, não valor.
+   *
+   * É o que deixa 17 linhas legíveis — as faixas são discretas, então as
+   * linhas não se sobrepõem em diagonal. O preço é a magnitude: uma noite em
+   * que o raide inteiro melhorou fica igual a uma em que todo mundo caiu. Por
+   * isso o valor continua existindo, no <title> de cada ponto.
+   */
+  function buildRankingSvg(metric: SerializedMetric, dates: string[]): string {
+    const posicoes = calcularPosicoes(metric, dates);
+    const totalDeFaixas = Math.max(
+      1,
+      ...dates.map((date) => posicoes.get(date)?.size ?? 0)
+    );
+
+    let gridSvg = '';
+    for (let faixa = 1; faixa <= totalDeFaixas; faixa += 1) {
+      const y = getYDaPosicao(faixa, totalDeFaixas);
+      gridSvg += `<g><line x1="${paddingLeft}" y1="${y}" x2="${width - paddingRightRanking}" y2="${y}" stroke="currentColor" class="text-slate-800" stroke-width="1"/><text x="${paddingLeft - 8}" y="${y + 4}" text-anchor="end" class="fill-slate-500 text-[11px]">${faixa}º</text></g>`;
+    }
+
+    let seriesSvg = '';
+    for (const series of metric.series) {
+      const pontos = dates
+        .map((date) => {
+          const posicao = posicoes.get(date)?.get(series.playerName);
+          if (posicao === undefined) return null;
+          const valor = series.data.find((point) => point.date === date)?.value ?? 0;
+          return {
+            date,
+            posicao,
+            valor,
+            x: getXRanking(date, dates),
+            y: getYDaPosicao(posicao, totalDeFaixas),
+          };
+        })
+        .filter((item): item is NonNullable<typeof item> => item !== null);
+
+      if (pontos.length === 0) continue;
+
+      // Vão quando o jogador faltou: cada trecho contínuo é uma polyline.
+      const trechos: Array<typeof pontos> = [];
+      let atual: typeof pontos = [];
+      for (const [indice, ponto] of pontos.entries()) {
+        const anterior = pontos[indice - 1];
+        const seguido = anterior && dates.indexOf(ponto.date) === dates.indexOf(anterior.date) + 1;
+        if (anterior && !seguido) {
+          trechos.push(atual);
+          atual = [];
+        }
+        atual.push(ponto);
+      }
+      trechos.push(atual);
+
+      let linhasSvg = '';
+      for (const trecho of trechos) {
+        if (trecho.length < 2) continue;
+        linhasSvg += `<polyline points="${trecho.map((ponto) => `${ponto.x},${ponto.y}`).join(' ')}" fill="none" stroke="currentColor" class="${series.playerColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+      }
+
+      const nomeEscapado = escapeHtml(series.playerName);
+      let marcasSvg = '';
+      for (const ponto of pontos) {
+        marcasSvg += `<circle cx="${ponto.x}" cy="${ponto.y}" r="4.5" class="${series.playerColor} stroke-slate-950" fill="currentColor" stroke-width="2"><title>${nomeEscapado} — ${ponto.posicao}º em ${formatShortDate(ponto.date)} · ${formatValue(ponto.valor)}</title></circle>`;
+      }
+
+      // Só no fim da linha. A convenção do bump põe nas duas pontas, mas com
+      // dezessete jogadores os nomes da esquerda cobriam a numeração das
+      // faixas — as posições de 1º a 9º sumiam atrás deles.
+      const ultimo = pontos[pontos.length - 1];
+      const rotulos = `<text x="${ultimo.x + 8}" y="${ultimo.y + 4}" class="fill-slate-200 text-[10px]">${nomeEscapado}</text>`;
+
+      seriesSvg += `<g>${linhasSvg}${marcasSvg}${rotulos}</g>`;
+    }
+
+    let labelsSvg = '';
+    for (const date of dates) {
+      labelsSvg += `<text x="${getXRanking(date, dates)}" y="${height - 8}" text-anchor="middle" class="fill-slate-500 text-[11px]">${formatShortDate(date)}</text>`;
+    }
+
+    return `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Ranking de ${escapeHtml(metric.label)} do core">${gridSvg}${seriesSvg}<g>${labelsSvg}</g></svg>`;
+  }
+
+  function buildMetricMarkup(
+    metric: SerializedMetric,
+    modo: 'valor' | 'ranking',
+    completo: SerializedMetric
+  ): string {
     const scale = getScale(metric.series);
     const dates = getDates(metric.series);
     const lastDate = getLastDate(dates);
+
+    if (dates.length === 0) {
+      return '<p class="text-sm text-slate-500 py-8 text-center">Nenhuma run neste período.</p>';
+    }
 
     let gridSvg = '';
     for (let gridIndex = 0; gridIndex < 5; gridIndex += 1) {
@@ -633,7 +878,11 @@ const serializedMetrics = metrics.map((metric) => ({
     for (const playerSeries of metric.series) {
       if (playerSeries.data.length === 0) continue;
 
-      const trend = getTrend(playerSeries.data, metric.direction);
+      // Do histórico inteiro, de propósito: "↑12%" tem que significar a
+      // mesma coisa com ou sem mês selecionado.
+      const serieCompleta =
+        completo.series.find((item) => item.playerName === playerSeries.playerName) ?? playerSeries;
+      const trend = getTrend(serieCompleta.data, metric.direction);
       const lastPoint = playerSeries.data[playerSeries.data.length - 1];
       const labelY = getY(lastPoint.value, scale);
       const points = createPoints(playerSeries.data, scale, dates);
@@ -671,9 +920,19 @@ const serializedMetrics = metrics.map((metric) => ({
       axisSvg = `<g>${labelsSvg}</g>`;
     }
 
-    const svg = `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Evolução de ${escapeHtml(metric.label)} do core">${gridSvg}${currentSvg}${seriesSvg}${axisSvg}</svg>`;
+    const svg =
+      modo === 'ranking'
+        ? buildRankingSvg(metric, dates)
+        : `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Evolução de ${escapeHtml(metric.label)} do core">${gridSvg}${currentSvg}${seriesSvg}${axisSvg}</svg>`;
 
-    return `<div class="overflow-x-auto">${svg}</div><div class="flex flex-wrap gap-x-5 gap-y-2 mt-4 pt-4 border-t border-slate-800">${legendHtml}</div>`;
+    // No ranking a posição já é a leitura; sem esta nota ninguém descobre que
+    // o valor continua ali, no hover de cada ponto.
+    const nota =
+      modo === 'ranking'
+        ? '<p class="text-[11px] text-slate-500 mt-3">Posição na noite, não o número. Passe o mouse num ponto pra ver o valor.</p>'
+        : '';
+
+    return `<div class="overflow-x-auto">${svg}</div>${nota}<div class="flex flex-wrap gap-x-5 gap-y-2 mt-4 pt-4 border-t border-slate-800">${legendHtml}</div>`;
   }
 
   const dataScript = document.querySelector('#core-performance-data');
@@ -682,36 +941,72 @@ const serializedMetrics = metrics.map((metric) => ({
     : [];
 
   const container = document.querySelector('#core-performance-tabs');
+  const barraDeMeses = document.querySelector('#core-performance-meses');
+  const barraDeModo = document.querySelector('#core-performance-modo');
+
+  // Estado da VISUALIZAÇÃO. Nada aqui entra em cálculo: a tendência da
+  // legenda e a meta seguem lendo a série completa.
+  let metricaAtiva = metricsData[0]?.id ?? '';
+  let mesAtivo = 'todos';
+  let modoAtivo: 'valor' | 'ranking' = 'valor';
+
+  function marcarAtivo(botoes: NodeListOf<Element>, ativo: Element) {
+    botoes.forEach((botao) => {
+      const eAtivo = botao === ativo;
+      botao.classList.toggle('bg-slate-700', eAtivo);
+      botao.classList.toggle('text-white', eAtivo);
+      botao.classList.toggle('text-slate-400', !eAtivo);
+    });
+  }
+
+  function renderizar() {
+    const metric = metricsData.find((item) => item.id === metricaAtiva);
+    const alvo = document.querySelector(`[data-metric-chart="${metricaAtiva}"]`);
+    if (!metric || !alvo) return;
+
+    // A série COMPLETA vai junto: buildMetricMarkup usa o recorte pra
+    // desenhar e o completo pra calcular tendência.
+    alvo.innerHTML = buildMetricMarkup(filtrarPorMes(metric, mesAtivo), modoAtivo, metric);
+
+    document.querySelectorAll('[data-metric-chart]').forEach((el) => {
+      el.classList.toggle('hidden', el.getAttribute('data-metric-chart') !== metricaAtiva);
+    });
+  }
 
   if (container) {
-    const buttons = container.querySelectorAll('[data-metric]');
+    const botoesDeMetrica = container.querySelectorAll('[data-metric]');
 
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const metricId = button.getAttribute('data-metric');
-        if (!metricId) return;
+    botoesDeMetrica.forEach((botao) => {
+      botao.addEventListener('click', () => {
+        const id = botao.getAttribute('data-metric');
+        if (!id) return;
+        metricaAtiva = id;
+        marcarAtivo(botoesDeMetrica, botao);
+        renderizar();
+      });
+    });
+  }
 
-        const chart = document.querySelector(`[data-metric-chart="${metricId}"]`);
+  if (barraDeMeses) {
+    const botoesDeMes = barraDeMeses.querySelectorAll('[data-mes]');
 
-        if (chart && chart.getAttribute('data-rendered') !== 'true') {
-          const metric = metricsData.find((item) => item.id === metricId);
+    botoesDeMes.forEach((botao) => {
+      botao.addEventListener('click', () => {
+        mesAtivo = botao.getAttribute('data-mes') ?? 'todos';
+        marcarAtivo(botoesDeMes, botao);
+        renderizar();
+      });
+    });
+  }
 
-          if (metric) {
-            chart.innerHTML = buildMetricMarkup(metric);
-            chart.setAttribute('data-rendered', 'true');
-          }
-        }
+  if (barraDeModo) {
+    const botoesDeModo = barraDeModo.querySelectorAll('[data-modo]');
 
-        document.querySelectorAll('[data-metric-chart]').forEach((el) => {
-          el.classList.toggle('hidden', el.getAttribute('data-metric-chart') !== metricId);
-        });
-
-        buttons.forEach((item) => {
-          const active = item === button;
-          item.classList.toggle('bg-slate-700', active);
-          item.classList.toggle('text-white', active);
-          item.classList.toggle('text-slate-400', !active);
-        });
+    botoesDeModo.forEach((botao) => {
+      botao.addEventListener('click', () => {
+        modoAtivo = botao.getAttribute('data-modo') === 'ranking' ? 'ranking' : 'valor';
+        marcarAtivo(botoesDeModo, botao);
+        renderizar();
       });
     });
   }
