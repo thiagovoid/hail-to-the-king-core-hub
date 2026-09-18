@@ -195,17 +195,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 79.8,
+            "score": 87.8,
             "uptime": 85.3,
-            "cooldowns": 74.3
+            "cooldowns": 90.2
           },
           "attackDetail": [
-            {
-              "spellId": 55342,
-              "name": "Mirror Image",
-              "casts": 9,
-              "efficiency": 26.6
-            },
             {
               "spellId": 205021,
               "name": "Ray of Frost",
