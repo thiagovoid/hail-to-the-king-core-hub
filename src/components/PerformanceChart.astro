@@ -154,6 +154,21 @@ function isGoalReached(item: Series): boolean {
   return referencia >= item.target;
 }
 
+/**
+ * Meses presentes no dado. Mesmo filtro da home, mesma regra: recorta o que
+ * é DESENHADO e nada do que é calculado.
+ */
+const MES_CURTO = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+const mesesDisponiveis = [
+  ...new Set(series.flatMap((item) => item.data.map((point) => point.date.slice(0, 7)))),
+].sort();
+
+const rotuloDoMes = (mes: string) => {
+  const [ano, numero] = mes.split('-');
+  return `${MES_CURTO[Number(numero) - 1]}/${ano.slice(2)}`;
+};
+
 const charts = series.map((item) => {
   const scale = getScale(item);
 
@@ -205,6 +220,36 @@ const charts = series.map((item) => {
         })
       }
     </div>
+  </div>
+
+  <!-- Mesmo controle da home. Recorta o desenho, não o cálculo: a escala
+       vertical, a linha de META e o selo de meta atingida continuam olhando
+       o período completo. -->
+  <div
+    id="performance-chart-meses"
+    class="flex flex-wrap items-center gap-1.5 mb-5 pb-4 border-b border-slate-800"
+  >
+    <span class="text-[11px] uppercase tracking-wide text-slate-600 mr-1">Período</span>
+
+    <button
+      type="button"
+      data-mes="todos"
+      class="px-2.5 py-1 rounded-md text-xs transition-colors bg-slate-700 text-white"
+    >
+      Tudo
+    </button>
+
+    {
+      mesesDisponiveis.map((mes) => (
+        <button
+          type="button"
+          data-mes={mes}
+          class="px-2.5 py-1 rounded-md text-xs transition-colors text-slate-400 hover:text-white hover:bg-slate-800"
+        >
+          {rotuloDoMes(mes)}
+        </button>
+      ))
+    }
   </div>
 
   {
@@ -324,6 +369,7 @@ const charts = series.map((item) => {
               }
 
               <polyline
+                data-linha
                 points={createPoints(item.data, scale)}
                 fill="none"
                 stroke="currentColor"
@@ -359,7 +405,11 @@ const charts = series.map((item) => {
                   const caixaY = Math.max(paddingTop, Math.min(y - alturaCaixa / 2, height - paddingBottom - alturaCaixa));
 
                   return (
-                    <g class="group">
+                    /* data-x guarda a posição original: o filtro de período
+                       desloca o grupo inteiro por diferença, em vez de
+                       redesenhar. Assim a escala vertical, a linha de meta e
+                       o selo ficam exatamente como estavam. */
+                    <g class="group" data-ponto data-date={point.date} data-x={x} data-y={y}>
                       {/* Alvo generoso: acertar um círculo de 6px com o mouse
                           é frustrante, e ele fica invisível. */}
                       <circle cx={x} cy={y} r="16" class="fill-transparent" />
@@ -480,6 +530,71 @@ const charts = series.map((item) => {
             'text-slate-400',
             !active
           );
+        });
+      });
+    });
+  }
+
+  // ----- Filtro de período -----
+  //
+  // Reposiciona o que já está desenhado, em vez de redesenhar: cada ponto é
+  // um <g> que guarda a própria posição original em data-x, e o filtro
+  // aplica um deslocamento horizontal. A escala vertical, a linha de META e
+  // o selo de meta atingida não são tocados — continuam do período completo,
+  // que é o comportamento que o core pediu pra manter.
+  const larguraDoGrafico = 800 - 55 - 30;
+  const margemEsquerda = 55;
+
+  function xDoIndice(indice: number, total: number): number {
+    if (total <= 1) return margemEsquerda + larguraDoGrafico / 2;
+    return margemEsquerda + (indice / (total - 1)) * larguraDoGrafico;
+  }
+
+  function aplicarPeriodo(mes: string) {
+    document.querySelectorAll('[data-chart]').forEach((grafico) => {
+      const pontos = [...grafico.querySelectorAll('[data-ponto]')] as SVGGElement[];
+      if (pontos.length === 0) return;
+
+      const visiveis = pontos.filter(
+        (ponto) => mes === 'todos' || (ponto.getAttribute('data-date') ?? '').slice(0, 7) === mes
+      );
+
+      const coordenadas: string[] = [];
+
+      pontos.forEach((ponto) => {
+        const dentro = visiveis.includes(ponto);
+        ponto.style.display = dentro ? '' : 'none';
+        if (!dentro) return;
+
+        const xOriginal = Number(ponto.getAttribute('data-x'));
+        const xNovo = xDoIndice(visiveis.indexOf(ponto), visiveis.length);
+        ponto.setAttribute('transform', `translate(${xNovo - xOriginal}, 0)`);
+        coordenadas.push(`${xNovo},${ponto.getAttribute('data-y')}`);
+      });
+
+      const linha = grafico.querySelector('[data-linha]');
+      if (linha) {
+        // Um ponto só não faz linha; deixar a antiga seria desenhar um
+        // traço que não corresponde a nada.
+        linha.setAttribute('points', coordenadas.length > 1 ? coordenadas.join(' ') : '');
+      }
+    });
+  }
+
+  const barraDeMeses = document.querySelector('#performance-chart-meses');
+
+  if (barraDeMeses) {
+    const botoes = barraDeMeses.querySelectorAll('[data-mes]');
+
+    botoes.forEach((botao) => {
+      botao.addEventListener('click', () => {
+        aplicarPeriodo(botao.getAttribute('data-mes') ?? 'todos');
+
+        botoes.forEach((item) => {
+          const ativo = item === botao;
+          item.classList.toggle('bg-slate-700', ativo);
+          item.classList.toggle('text-white', ativo);
+          item.classList.toggle('text-slate-400', !ativo);
         });
       });
     });
