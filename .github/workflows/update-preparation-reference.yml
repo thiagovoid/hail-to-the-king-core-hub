@@ -1,11 +1,13 @@
-name: Update Preparation Reference
+name: Referência de preparação (Wowhead)
 
 on:
   # Gemas/encantos/consumíveis recomendados mudam quando o guia é revisado,
   # não a cada raid — uma vez por semana (segunda 10:00 UTC = 07:00 BRT) é
   # de sobra, e o disparo manual cobre virada de temporada.
   schedule:
-    - cron: "0 10 * * 1"
+    # Era semanal (segundas). Passa a rodar todo dia à meia-noite de
+    # Brasília: o guia do Wowhead muda com hotfix, não com o calendário.
+    - cron: "0 3 * * *"
   workflow_dispatch:
     inputs:
       season:

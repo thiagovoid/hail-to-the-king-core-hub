@@ -1,10 +1,11 @@
-name: Update Roster Stats
+name: Stats do roster (Raider.IO + WCL)
 
 on:
   # Raider.IO (IO, melhor key, rank) e parse médio/attendance da WCL mudam
   # ao longo da semana toda — uma vez por dia de manhã (09:30 UTC = 06:30 BRT).
   schedule:
-    - cron: "30 9 * * *"
+    # Meia-noite de Brasília.
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 permissions:

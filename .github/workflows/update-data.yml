@@ -1,4 +1,4 @@
-name: Update Performance Data
+name: Performance da raide (WCL + Wipefest + Wowhead)
 
 on:
   workflow_dispatch:
@@ -34,6 +34,10 @@ on:
     # o script não escreve nada e o passo de commit não faz nada (ver
     # "Nada para commitar" abaixo). Cedo o bastante em UTC pra já ter passado
     # de qualquer raid que tenha ido até a virada da noite no horário do Brasil.
+    # Meia-noite de Brasília. O segundo horário existe porque raide começa
+    # 21:30 e às vezes passa da meia-noite: sem ele, o log da noite só seria
+    # coletado no dia seguinte, quase 48h depois.
+    - cron: "0 3 * * *"
     - cron: "0 10 * * *"
 
 permissions:

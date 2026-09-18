@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Publicação do site (GitHub Pages)
 
 on:
   push:
@@ -10,8 +10,14 @@ on:
   # dispara outros workflows via "on: push" (evita loop infinito). workflow_run
   # escuta o término do update-data.yml independente de quem/como ele rodou,
   # então o deploy dispara mesmo quando é o cron que atualiza os dados.
+  # ATENÇÃO: workflow_run casa pelo NOME do workflow. Renomear qualquer um
+  # dos três abaixo sem mexer aqui faz o site parar de publicar dado novo,
+  # silenciosamente — os jobs continuam verdes.
   workflow_run:
-    workflows: ["Update Performance Data"]
+    workflows:
+      - "Performance da raide (WCL + Wipefest + Wowhead)"
+      - "Stats do roster (Raider.IO + WCL)"
+      - "Referência de preparação (Wowhead)"
     types: [completed]
 
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Inspect Report (diagnóstico)
+name: Diagnóstico de log (WCL)
 
 # Não tem cron de propósito: é ferramenta de investigação, rodada à mão
 # quando algum número do site não bate com o log. As credenciais da WCL só
@@ -32,7 +32,7 @@ permissions:
 
 jobs:
   inspect:
-    name: Inspect roles
+    name: Diagnóstico
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
