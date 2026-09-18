@@ -23,6 +23,7 @@ on:
           - parse-report
           - casts
           - cooldowns
+          - damage-abilities
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -98,3 +99,11 @@ jobs:
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
           PROBE_REPORT: ${{ inputs.report }}
         run: npm run wcl:_probe-cooldowns
+
+      - name: Ver quebra de dano por habilidade
+        if: inputs.tool == 'damage-abilities'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          PROBE_REPORT: ${{ inputs.report }}
+        run: npm run wcl:_probe-damage-abilities
