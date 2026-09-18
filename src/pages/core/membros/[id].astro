@@ -17,6 +17,7 @@ import {
   formatPerformanceValue,
   getPlayerHistory,
 } from '@/engine/metrics';
+import { formatCompact } from '@/utils/format';
 import { calculateOverallScore } from '@/engine/scores';
 import { buildCoachRecommendation } from '@/engine/scores/coach';
 import CoachCard from '@/components/CoachCard.astro';
@@ -124,7 +125,7 @@ const defenseHistory = history
     date: performance.date,
     value: performance.defense!.score!,
     detail: [
-      `${performance.defense!.dtps} de dano recebido por segundo`,
+      `${formatCompact(performance.defense!.dtps)} de dano recebido por segundo`,
       `${performance.defense!.mitigation}% mitigado`,
       ...(performance.defenseDetail ?? [])
         .slice(0, 3)
