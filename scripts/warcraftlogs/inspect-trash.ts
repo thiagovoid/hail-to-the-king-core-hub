@@ -1,62 +1,112 @@
 /**
- * Diagnóstico: o que existe de dado nas lutas de TRASH.
+ * Diagnóstico: dá pra pegar quem some entre um boss e outro?
  *
- * O coletor só olha fight com encounterID > 0 — ou seja, boss. A pergunta é
- * se o trash entre bosses tem dado suficiente pra dizer quem participou e
- * quem foi fazer outra coisa.
+ * Duas hipóteses testadas aqui:
+ *  1. dano no trash — quem não bate no trash estava fazendo outra coisa;
+ *  2. presença na try — quem estava na anterior e na seguinte, mas faltou
+ *     nesta, perdeu a pull. É o sinal de "voltei tarde do banheiro".
  */
 import { wclGraphql } from "../../src/providers/warcraftlogs/client";
 import { WarcraftLogsProvider } from "../../src/providers/warcraftlogs/WarcraftLogsProvider";
-import type { WclFight } from "../../src/providers/warcraftlogs/normalize";
+
+interface FightSonda {
+  id: number;
+  name: string;
+  encounterID: number;
+  startTime: number;
+  endTime: number;
+  friendlyPlayers: number[] | null;
+}
 
 const code = process.env.PROBE_REPORT || "JCvk27bDL6Zdm18j";
 const wcl = new WarcraftLogsProvider();
 
 const { reportData } = await wclGraphql<{
-  reportData: { report: { fights: WclFight[]; startTime: number; endTime: number } };
+  reportData: {
+    report: {
+      startTime: number;
+      endTime: number;
+      fights: FightSonda[];
+      masterData: { actors: { id: number; name: string; type: string }[] };
+    };
+  };
 }>(
   `query($code: String!) {
-    reportData { report(code: $code) { startTime endTime fights { id name encounterID kill startTime endTime } } }
+    reportData { report(code: $code) {
+      startTime endTime
+      fights { id name encounterID startTime endTime friendlyPlayers }
+      masterData { actors(type: "Player") { id name type } }
+    } }
   }`,
   { code }
 );
 
-const todas = reportData.report.fights;
-const boss = todas.filter((f) => f.encounterID > 0);
-const trash = todas.filter((f) => f.encounterID === 0);
+const { fights, masterData } = reportData.report;
+const nomeDe = new Map(masterData.actors.map((a) => [a.id, a.name]));
+const bosses = fights.filter((f) => f.encounterID > 0);
 
-const soma = (lista: WclFight[]) => lista.reduce((s, f) => s + (f.endTime - f.startTime), 0);
-const duracaoTotal = reportData.report.endTime - reportData.report.startTime;
+console.log(`=== PRESENÇA POR TRY (${bosses.length} trys de boss) ===\n`);
 
-console.log(`fights no relatório: ${todas.length} (${boss.length} de boss, ${trash.length} de trash)`);
-console.log(`tempo em boss:  ${Math.round(soma(boss) / 60000)} min`);
-console.log(`tempo em trash: ${Math.round(soma(trash) / 60000)} min`);
-console.log(`duração do log: ${Math.round(duracaoTotal / 60000)} min`);
-console.log(
-  `tempo FORA de combate: ${Math.round((duracaoTotal - soma(boss) - soma(trash)) / 60000)} min`
-);
+const perdidas = new Map<string, { trys: string[]; presentes: number }>();
 
-if (trash.length === 0) {
-  console.log("\nNenhum trash registrado — o log pode ter sido gravado só nos bosses.");
-} else {
-  console.log("\nprimeiras lutas de trash:");
-  trash.slice(0, 6).forEach((f) =>
-    console.log(`  #${f.id} "${f.name}" — ${Math.round((f.endTime - f.startTime) / 1000)}s`)
+bosses.forEach((fight, indice) => {
+  const presentes = new Set(fight.friendlyPlayers ?? []);
+  const anterior = new Set(bosses[indice - 1]?.friendlyPlayers ?? []);
+  const seguinte = new Set(bosses[indice + 1]?.friendlyPlayers ?? []);
+
+  // Quem estava antes E depois, mas não nesta: não deslogou, só não desceu.
+  const faltaram = [...anterior].filter((id) => !presentes.has(id) && seguinte.has(id));
+
+  console.log(
+    `try ${indice + 1} — ${fight.name}: ${presentes.size} jogadores` +
+      (faltaram.length ? ` · FALTOU: ${faltaram.map((id) => nomeDe.get(id) ?? id).join(", ")}` : "")
   );
 
-  const ids = trash.map((f) => f.id);
-  const tabelas = await wcl.fetchFightTables(code, ids);
-  const dano = tabelas.damage.data.entries;
-  const totalTrash = dano.reduce((s, e) => s + (e.total ?? 0), 0);
+  for (const id of faltaram) {
+    const nome = nomeDe.get(id) ?? String(id);
+    const registro = perdidas.get(nome) ?? { trys: [], presentes: 0 };
+    registro.trys.push(`${fight.name} #${indice + 1}`);
+    perdidas.set(nome, registro);
+  }
+});
 
-  console.log(`\nDANO NO TRASH: ${dano.length} jogadores, ${totalTrash.toLocaleString("pt-BR")} total`);
-  console.log("jogador          dano no trash   % do raide   tempo ativo");
-  [...dano]
-    .sort((a, b) => (b.total ?? 0) - (a.total ?? 0))
-    .forEach((e) => {
-      const parte = totalTrash > 0 ? ((e.total ?? 0) / totalTrash) * 100 : 0;
+console.log("\n=== PULLS PERDIDAS NA NOITE ===");
+if (perdidas.size === 0) {
+  console.log("Ninguém perdeu pull entre trys nesta noite.");
+} else {
+  [...perdidas.entries()]
+    .sort((a, b) => b[1].trys.length - a[1].trys.length)
+    .forEach(([nome, r]) => console.log(`${nome.padEnd(14)} ${r.trys.length}x — ${r.trys.join("; ")}`));
+}
+
+// --- tempo morto entre trys: é aí que o AFK mora, não no trash ---
+console.log("\n=== INTERVALOS ENTRE TRYS (> 3 min) ===");
+fights
+  .filter((f) => f.encounterID > 0)
+  .forEach((fight, indice, lista) => {
+    const anterior = lista[indice - 1];
+    if (!anterior) return;
+    const parado = fight.startTime - anterior.endTime;
+    if (parado > 180_000) {
       console.log(
-        `${String(e.name).padEnd(16)} ${(e.total ?? 0).toLocaleString("pt-BR").padStart(13)} ${parte.toFixed(1).padStart(10)}% ${Math.round((e.activeTime ?? 0) / 1000)}s`
+        `${Math.round(parado / 60000)} min parado antes de "${fight.name}" (try ${indice + 1})`
       );
-    });
+    }
+  });
+
+// --- checa se o trash cobre esse tempo parado ---
+const trash = fights.filter((f) => f.encounterID === 0);
+console.log(`\n=== O TRASH COBRE O TEMPO PARADO? ===`);
+console.log(
+  `trash: ${trash.length} lutas, ${Math.round(trash.reduce((s, f) => s + (f.endTime - f.startTime), 0) / 60000)} min`
+);
+
+if (trash.length > 0) {
+  const tabelas = await wcl.fetchFightTables(code, trash.map((f) => f.id));
+  const comDano = new Set(tabelas.damage.data.entries.map((e) => e.name));
+  const ausentes = masterData.actors.filter((a) => !comDano.has(a.name));
+  console.log(
+    `jogadores no log: ${masterData.actors.length} · com dano no trash: ${comDano.size} · ZERO dano no trash: ${ausentes.length}`
+  );
+  if (ausentes.length > 0) console.log(`  ${ausentes.map((a) => a.name).join(", ")}`);
 }
