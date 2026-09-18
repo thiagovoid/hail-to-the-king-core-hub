@@ -14,13 +14,6 @@ interface Props {
    */
   preparationMissing?: string[];
   /**
-   * Preparação de fato (0-100) da última noite. Existe porque, nas outras
-   * dimensões, o número exibido é o progresso contra a meta — e pra
-   * Preparação isso confundia: quem está em 88% aparecia como 100 (a meta do
-   * core é 60) logo acima de uma lista dizendo o que falta arrumar.
-   */
-  preparationValue?: number | null;
-  /**
    * Onde os erros mecânicos aconteceram na temporada, do mais frequente pro
    * menos. Mesma ideia da lista de preparação: a nota diz quanto, isto diz
    * o que treinar.
@@ -28,17 +21,7 @@ interface Props {
   mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; hits: number }>;
 }
 
-const { score, trend, attendance, nightDate = null, preparationMissing = [], preparationValue = null, mechanicsDetail = [] } = Astro.props;
-
-// Preparação é completude, não progresso contra meta. As demais dimensões
-// seguem mostrando o progresso.
-const formatarNoite = (iso: string) => {
-  const [ano, mes, dia] = iso.split("-");
-  return `${dia}/${mes}/${ano}`;
-};
-
-const valorExibido = (dimension: (typeof score.dimensions)[number]) =>
-  dimension.key === 'preparation' && preparationValue !== null ? preparationValue : dimension.score;
+const { score, trend, attendance, nightDate = null, preparationMissing = [], mechanicsDetail = [] } = Astro.props;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
 // não tendência — não vale pintar de verde nem de vermelho.
@@ -52,8 +35,35 @@ const trendColor =
 const scoreTextColor = (value: number) =>
   value >= 80 ? 'text-emerald-400' : value >= 50 ? 'text-amber-400' : 'text-red-400';
 
-const scoreBarColor = (value: number) =>
-  value >= 80 ? 'bg-emerald-500' : value >= 50 ? 'bg-amber-500' : 'bg-red-500';
+/**
+ * A cor conta se a meta foi cumprida, não quanto do caminho foi andado.
+ *
+ * Antes usava o progresso: 2,3 erros contra meta 2 dava 87% e pintava de
+ * verde, com a meta estourada. Agora verde é só quem cumpre; âmbar é quem
+ * está perto (80% do caminho); vermelho, longe.
+ */
+const metaCumprida = (dimension: (typeof score.dimensions)[number]) => {
+  if (dimension.value === null) return false;
+  return dimension.target.direction === 'lower'
+    ? dimension.value <= dimension.target.target
+    : dimension.value >= dimension.target.target;
+};
+
+const corDaDimensao = (dimension: (typeof score.dimensions)[number]) => {
+  if (metaCumprida(dimension)) return { barra: 'bg-emerald-500', texto: 'text-emerald-400' };
+  if ((dimension.score ?? 0) >= 80) return { barra: 'bg-amber-500', texto: 'text-amber-400' };
+  return { barra: 'bg-red-500', texto: 'text-red-400' };
+};
+
+/** 2.3 fica 2,3; 34 fica 34 — sem casa decimal inventada. */
+/** 2026-09-15 -> 15/09/2026, pra dizer qual noite a nota mede. */
+const formatarNoite = (iso: string) => {
+  const [ano, mes, dia] = iso.split("-");
+  return `${dia}/${mes}/${ano}`;
+};
+
+const formatarValor = (valor: number) =>
+  Number.isInteger(valor) ? String(valor) : valor.toFixed(1).replace('.', ',');
 
 const directionLabel = (direction: 'higher' | 'lower') =>
   direction === 'higher' ? 'quanto maior, melhor' : 'quanto menor, melhor';
@@ -130,16 +140,29 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                 </span>
               </span>
 
-              <span class={valorExibido(dimension) !== null ? 'text-slate-300' : 'text-slate-600'}>
-                {valorExibido(dimension) !== null ? valorExibido(dimension) : 'sem dado'}
+              {/* Valor real e meta lado a lado, como no card de Objetivos: "87"
+                  sozinho parecia um valor, mas é percentual de caminho andado —
+                  e ninguém reconhecia a própria métrica nele. */}
+              <span class="flex items-baseline gap-2">
+                {dimension.value !== null ? (
+                  <>
+                    <span class={`font-semibold ${corDaDimensao(dimension).texto}`}>
+                      {formatarValor(dimension.value)}
+                    </span>
+                    <span class="text-slate-600">meta {formatarValor(dimension.target.target)}</span>
+                    {dimension.score !== null && <span class="text-slate-600">&middot; {dimension.score}%</span>}
+                  </>
+                ) : (
+                  <span class="text-slate-600">sem dado</span>
+                )}
               </span>
             </div>
 
             <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-              {valorExibido(dimension) !== null && (
+              {dimension.score !== null && (
                 <div
-                  class={`h-full rounded-full ${scoreBarColor(valorExibido(dimension)!)}`}
-                  style={`width: ${valorExibido(dimension)}%`}
+                  class={`h-full rounded-full ${corDaDimensao(dimension).barra}`}
+                  style={`width: ${dimension.score}%`}
                 />
               )}
             </div>

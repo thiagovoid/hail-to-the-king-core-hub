@@ -19,6 +19,12 @@ export interface ScoreDimension {
    * conta como 0, pra métrica que não temos não puxar o jogador pra baixo.
    */
   score: number | null;
+  /**
+   * Valor medido de verdade (34 de parse, 2.3 erros por try), não o
+   * progresso. É o que a tela mostra: "87" parece um valor mas é percentual
+   * de caminho andado, e ninguém reconhecia a própria métrica nele.
+   */
+  value: number | null;
   /** Meta do core usada nessa dimensão, pra UI conseguir explicar a nota. */
   target: CoreTarget;
 }
@@ -98,24 +104,28 @@ export function calculateOverallScore(
       key: "parse",
       ...DIMENSION_META.parse,
       target: targets.parse,
+      value: performance.parse ?? null,
       score: progress(performance.parse, targets.parse),
     },
     {
       key: "mechanics",
       ...DIMENSION_META.mechanics,
       target: targets.mechanics,
+      value: performance.mechanics?.errors ?? null,
       score: progress(performance.mechanics?.errors, targets.mechanics),
     },
     {
       key: "cooldowns",
       ...DIMENSION_META.cooldowns,
       target: targets.cooldowns,
+      value: performance.uptime ?? null,
       score: progress(performance.uptime, targets.cooldowns),
     },
     {
       key: "preparation",
       ...DIMENSION_META.preparation,
       target: targets.preparation,
+      value: performance.preparation ?? null,
       score: progress(performance.preparation, targets.preparation),
     },
   ];

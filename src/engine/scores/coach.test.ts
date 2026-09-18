@@ -23,6 +23,7 @@ function score(scores: Partial<Record<ScoreDimensionKey, number | null>>): Overa
     label: LABELS[key],
     weight: WEIGHTS[key],
     score: scores[key] ?? null,
+    value: scores[key] ?? null,
     description: `descrição de ${key}`,
     source: `fonte de ${key}`,
     target: { target: 60, direction: "higher" as const },
