@@ -108,3 +108,103 @@ export function aggregateNightMechanics(fights: FightMechanics[]): Record<string
 
   return resultado;
 }
+
+import type { PlayerFightPreparation } from "./insights";
+
+/** Nome do Wipefest → rótulo curto em português, pro que falta na tela. */
+const ROTULOS_DE_CONSUMIVEL: Record<string, string> = {
+  "Ready Check (Flask, Gear, etc.)": "Flask/comida",
+  Potions: "Poção",
+  "Healthstone / Healing Potion": "Pedra de vida",
+};
+
+export interface NightPreparation {
+  /** 0-100: média dos itens de consumível entre as trys da noite. */
+  score: number;
+  /** Itens que ficaram abaixo do ideal, pra tela dizer o que arrumar. */
+  missing: string[];
+  /** Quantos itens entraram na média — é o peso desta fonte na combinação. */
+  itens: number;
+}
+
+/**
+ * Consolida os consumíveis da noite, try a try.
+ *
+ * Média entre as trys de propósito: poção é por pull e flask cai, então o
+ * estado varia dentro da mesma noite — diferente de encanto e gema, que são
+ * foto do começo.
+ *
+ * Um item entra em `missing` quando fica abaixo de 100 em média. Não é rigor
+ * exagerado: o Wipefest já dá crédito parcial (usou poção em metade das
+ * trys = 54), então 100 significa "fez em todas".
+ */
+export function aggregateNightPreparation(
+  fights: Array<{ players: PlayerFightPreparation[] }>
+): Record<string, NightPreparation> {
+  const porJogador = new Map<string, Map<string, { soma: number; trys: number }>>();
+
+  for (const fight of fights) {
+    for (const jogador of fight.players) {
+      const itens = porJogador.get(jogador.player) ?? new Map();
+
+      for (const item of jogador.itens) {
+        const atual = itens.get(item.nome) ?? { soma: 0, trys: 0 };
+        atual.soma += item.value;
+        atual.trys += 1;
+        itens.set(item.nome, atual);
+      }
+
+      porJogador.set(jogador.player, itens);
+    }
+  }
+
+  const resultado: Record<string, NightPreparation> = {};
+
+  for (const [nome, itens] of porJogador) {
+    if (itens.size === 0) continue;
+
+    const medias = [...itens].map(([item, { soma, trys }]) => ({
+      item,
+      media: soma / trys,
+    }));
+
+    const score = Math.round(medias.reduce((total, m) => total + m.media, 0) / medias.length);
+    const missing = medias
+      .filter((m) => Math.round(m.media) < 100)
+      .sort((a, b) => a.media - b.media)
+      .map((m) => ROTULOS_DE_CONSUMIVEL[m.item] ?? m.item);
+
+    resultado[nome] = { score, missing, itens: medias.length };
+  }
+
+  return resultado;
+}
+
+/**
+ * Junta a preparação das duas fontes numa nota só.
+ *
+ * Encantos e gemas vêm do gear na WarcraftLogs; consumíveis vêm da curadoria
+ * do Wipefest. São coletas diferentes, em momentos diferentes, e por isso a
+ * combinação precisa saber o peso de cada lado: sem `checksExistentes`,
+ * somar as duas notas daria peso igual a "2 checagens de gear" e "3 de
+ * consumível".
+ *
+ * Qualquer lado pode faltar — spec sem gema no guia, log sem dado do
+ * Wipefest — e aí vale o que existe, nunca zero.
+ */
+export function combinePreparation(
+  existente: { score?: number; checks?: number } | undefined,
+  consumiveis: { score: number; itens: number } | undefined
+): number | undefined {
+  const temGear = existente?.score !== undefined && (existente.checks ?? 0) > 0;
+  if (!temGear && !consumiveis) return undefined;
+  if (!temGear) return consumiveis!.score;
+  if (!consumiveis) return existente!.score;
+
+  const pesoGear = existente!.checks!;
+  const pesoConsumivel = consumiveis.itens;
+  const total =
+    existente!.score! * pesoGear + consumiveis.score * pesoConsumivel;
+
+  return Math.round(total / (pesoGear + pesoConsumivel));
+}

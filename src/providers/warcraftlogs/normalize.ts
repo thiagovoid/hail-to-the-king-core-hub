@@ -173,6 +173,13 @@ export interface NormalizedRunPlayer {
   preparation?: number;
   /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
   preparationMissing?: string[];
+  /**
+   * Quantas checagens entraram na nota de preparação (encantos, gemas).
+   *
+   * Necessário porque os consumíveis vêm de outra fonte, coletada depois:
+   * sem saber o peso desta parte, não dá pra somar as duas sem distorcer.
+   */
+  preparationChecks?: number;
 }
 
 export interface WclRankingEntry {
@@ -310,6 +317,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ? calculatePreparation(findCombatantInfo(playerDetails, player.profile.name), checklist)
       : undefined;
     const preparation = resultadoPreparacao?.score;
+    const preparationChecks = resultadoPreparacao?.checks.filter((c) => c.ratio !== undefined).length;
     // Junta o que faltou nas duas checagens, sem repetir slot (os dois anéis
     // viram um "Anel" só na tela).
     const preparationMissing = resultadoPreparacao
@@ -324,6 +332,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       deaths,
       preparation,
       ...(preparationMissing?.length ? { preparationMissing } : {}),
+      ...(preparationChecks ? { preparationChecks } : {}),
     });
   }
 

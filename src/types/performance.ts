@@ -47,6 +47,8 @@ export interface PlayerPerformance {
    * na tela, por que a nota não é 100.
    */
   preparationMissing?: string[];
+  /** Quantas checagens formaram a nota — deixa a combinação com os consumíveis rastreável. */
+  preparationChecks?: number;
 
   /**
    * Mechanics-related failures.

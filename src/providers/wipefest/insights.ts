@@ -257,3 +257,56 @@ export function buildFightMechanics(api: WipefestApiFight): PlayerFightMechanics
 
   return resultado;
 }
+
+/** Mecânicas do grupo `raid` que não são preparação. */
+const RAID_NAO_PREPARACAO = new Set(["Deaths"]);
+
+export interface PlayerFightPreparation {
+  player: string;
+  /** 0-100 por item: Ready Check (flask/comida/gear), Poções, Healthstone. */
+  itens: Array<{ nome: string; value: number }>;
+}
+
+/**
+ * Consumíveis de cada jogador no fight, pela curadoria do Wipefest.
+ *
+ * Fecha a lacuna que a coleta da WarcraftLogs não resolvia: o
+ * `combatantInfo` dos logs do core vem sem aura nenhuma, então flask,
+ * comida e poção nunca entravam na nota de Preparação.
+ *
+ * O grupo `raid` é o que agrupa o que vale pra qualquer encontro — é onde o
+ * Wipefest põe Ready Check, Potions e Healthstone. `Deaths` também mora lá e
+ * fica de fora: mortes saíram do score por decisão do projeto.
+ */
+export function buildFightPreparation(api: WipefestApiFight): PlayerFightPreparation[] {
+  const chave = (group: string, id: string) => `${group}|${id}`;
+  const configs = new Map(
+    (api.insightConfigs ?? []).map((config) => [chave(config.group, config.id), config])
+  );
+  const nomes = new Map((api.report?.friendlies ?? []).map((amigo) => [amigo.id, amigo.name]));
+
+  const resultado: PlayerFightPreparation[] = [];
+
+  for (const jogador of api.playerValues ?? []) {
+    if (jogador.interval?.unit && jogador.interval.unit !== "EntireFight") continue;
+
+    const nome = nomes.get(jogador.playerId);
+    if (!nome) continue;
+
+    const itens: PlayerFightPreparation["itens"] = [];
+
+    for (const valor of jogador.values) {
+      if (valor.insightGroup !== "raid") continue;
+
+      const config = configs.get(chave(valor.insightGroup, valor.insightId));
+      const nomeItem = config?.name;
+      if (!nomeItem || RAID_NAO_PREPARACAO.has(nomeItem)) continue;
+
+      itens.push({ nome: nomeItem, value: valor.value });
+    }
+
+    if (itens.length > 0) resultado.push({ player: nome, itens });
+  }
+
+  return resultado;
+}

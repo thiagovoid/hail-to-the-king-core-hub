@@ -121,6 +121,23 @@ interface RosterPlayer {
   warcraftLogs: { avgParse: null; bestParse: null; attendance: null; profileUrl: string };
 }
 
+/**
+ * Personagens que aparecem nos logs mas não entram no roster.
+ *
+ * Sem isto, quem foi removido à mão volta como rascunho na próxima coleta —
+ * aconteceu ao recoletar noites antigas, que trouxeram de volta os quatro
+ * personagens que a limpeza de roster tinha removido.
+ */
+async function loadRosterExclusions(): Promise<Set<string>> {
+  try {
+    const raw = await readFile(path.join(ROOT, "data/guild/roster-exclusions.json"), "utf-8");
+    const nomes: string[] = JSON.parse(raw).nomes ?? [];
+    return new Set(nomes.map((nome) => nome.toLowerCase()));
+  } catch {
+    return new Set();
+  }
+}
+
 async function loadRoster(): Promise<RosterPlayer[]> {
   const raw = await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8");
   return JSON.parse(raw);
@@ -444,9 +461,19 @@ async function main() {
   const knownWclNames = new Set(
     roster.map((player) => parseWclProfile(player.warcraftLogs.profileUrl).name.toLowerCase())
   );
+  // A exclusão vem antes do rascunho: quem foi tirado do roster à mão não
+  // pode voltar só porque aparece num log recoletado.
+  const excluidos = await loadRosterExclusions();
   const newCharacters = [...seenCharacters.values()].filter(
-    (character) => !knownWclNames.has(character.name.toLowerCase())
+    (character) =>
+      !knownWclNames.has(character.name.toLowerCase()) &&
+      !excluidos.has(character.name.toLowerCase())
   );
+
+  const ignorados = [...seenCharacters.values()].filter((c) => excluidos.has(c.name.toLowerCase()));
+  if (ignorados.length > 0) {
+    console.log(`Ignorados por roster-exclusions.json: ${ignorados.map((c) => c.name).join(", ")}`);
+  }
 
   let effectiveRoster = roster;
 

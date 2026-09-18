@@ -3,8 +3,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { WipefestApiProvider, fetchWipefestReport } from "../../src/providers/wipefest/WipefestApiProvider";
-import { buildFightMechanics } from "../../src/providers/wipefest/insights";
-import { aggregateNightMechanics } from "../../src/providers/wipefest/normalizeMechanics";
+import { buildFightMechanics, buildFightPreparation } from "../../src/providers/wipefest/insights";
+import {
+  aggregateNightMechanics,
+  aggregateNightPreparation,
+  combinePreparation,
+} from "../../src/providers/wipefest/normalizeMechanics";
 import { computeWeekNumber } from "../../src/normalization/buildSeasonProgression";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -96,6 +100,7 @@ async function main() {
     console.log(`  ${fights.length} try(s) de raid.`);
 
     const porFight = [];
+    const preparacaoPorFight: Array<{ players: ReturnType<typeof buildFightPreparation> }> = [];
     for (const fight of fights) {
       try {
         const resposta = await provider.fetch({ reportCode: run.reportCode, fightId: fight.id });
@@ -104,12 +109,14 @@ async function main() {
           kill: fight.kill,
           players: buildFightMechanics(resposta.raw),
         });
+        preparacaoPorFight.push({ players: buildFightPreparation(resposta.raw) });
       } catch (error) {
         console.warn(`  fight ${fight.id} falhou: ${error instanceof Error ? error.message : error}`);
       }
     }
 
     const agregado = aggregateNightMechanics(porFight);
+    const consumiveis = aggregateNightPreparation(preparacaoPorFight);
     let gravados = 0;
 
     for (const [nome, resumo] of Object.entries(agregado)) {
@@ -123,6 +130,21 @@ async function main() {
       // na API (acontece), a média sai de menos trys e sem isto ninguém
       // saberia.
       existente.mechanics = { errors: resumo.errors, tries: resumo.tries };
+
+      // Consumíveis vêm do Wipefest e se juntam à preparação de gear que o
+      // fetch-performance já calculou. Era a lacuna que a WarcraftLogs não
+      // fechava: o combatantInfo dos logs do core vem sem aura nenhuma.
+      const doWipefest = consumiveis[nome];
+      if (doWipefest) {
+        const combinada = combinePreparation(
+          { score: existente.preparation as number | undefined, checks: existente.preparationChecks as number | undefined },
+          { score: doWipefest.score, itens: doWipefest.itens }
+        );
+        if (combinada !== undefined) existente.preparation = combinada;
+
+        const faltando = [...((existente.preparationMissing as string[]) ?? []), ...doWipefest.missing];
+        if (faltando.length > 0) existente.preparationMissing = [...new Set(faltando)];
+      }
       if (resumo.byMechanic.length > 0) existente.mechanicsDetail = resumo.byMechanic;
       gravados++;
     }

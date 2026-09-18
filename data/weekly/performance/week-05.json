@@ -10,9 +10,12 @@
           "dps": 43161,
           "parse": 34,
           "itemLevel": 314,
-          "preparation": 93,
+          "preparation": 14,
           "preparationMissing": [
-            "Elmo"
+            "Elmo",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "deaths": 8,
           "mechanics": {
@@ -99,10 +102,13 @@
           "dps": 48319,
           "parse": 62,
           "itemLevel": 312,
-          "preparation": 77,
+          "preparation": 34,
           "preparationMissing": [
             "Botas",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Pedra de vida",
+            "Flask/comida"
           ],
           "deaths": 7,
           "mechanics": {
@@ -171,7 +177,7 @@
           "hps": 126133,
           "parse": 73,
           "itemLevel": 310,
-          "preparation": 17,
+          "preparation": 9,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -179,7 +185,10 @@
             "Pernas",
             "Botas",
             "Anel",
-            "Arma"
+            "Arma",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "deaths": 8,
           "mechanics": {
@@ -254,7 +263,7 @@
           "hps": 172454,
           "parse": 96,
           "itemLevel": 310,
-          "preparation": 29,
+          "preparation": 15,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -262,7 +271,10 @@
             "Pernas",
             "Botas",
             "Anel",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "deaths": 7,
           "mechanics": {
@@ -354,7 +366,7 @@
           "playerId": "cowsadeer",
           "hps": 219039,
           "parse": 59,
-          "preparation": 100,
+          "preparation": 65,
           "deaths": 7,
           "mechanics": {
             "errors": 1.4,
@@ -427,6 +439,11 @@
               "label": "Gotículas Tóxicas",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ]
         },
         {
@@ -434,11 +451,14 @@
           "dps": 102428,
           "parse": 78,
           "itemLevel": 314,
-          "preparation": 81,
+          "preparation": 74,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
-            "Botas"
+            "Botas",
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
           ],
           "deaths": 8,
           "mechanics": {
@@ -489,10 +509,13 @@
           "dps": 107453,
           "parse": 63,
           "itemLevel": 318,
-          "preparation": 88,
+          "preparation": 82,
           "preparationMissing": [
             "Elmo",
-            "Botas"
+            "Botas",
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ],
           "deaths": 9,
           "mechanics": {
@@ -555,7 +578,7 @@
           "dps": 131483,
           "parse": 86,
           "itemLevel": 321,
-          "preparation": 100,
+          "preparation": 52,
           "deaths": 9,
           "mechanics": {
             "errors": 1.3,
@@ -610,6 +633,11 @@
               "label": "Peçonha Sanguínea",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
           ]
         },
         {
@@ -617,9 +645,12 @@
           "dps": 104464,
           "parse": 60,
           "itemLevel": 319,
-          "preparation": 94,
+          "preparation": 70,
           "preparationMissing": [
-            "Elmo"
+            "Elmo",
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
           ],
           "deaths": 8,
           "mechanics": {
@@ -718,11 +749,14 @@
           "dps": 107740,
           "parse": 61,
           "itemLevel": 318,
-          "preparation": 86,
+          "preparation": 71,
           "preparationMissing": [
             "Elmo",
             "Cintura",
-            "Braçadeiras"
+            "Braçadeiras",
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ],
           "deaths": 9,
           "mechanics": {
@@ -803,7 +837,7 @@
           "dps": 50924,
           "parse": 10,
           "itemLevel": 302,
-          "preparation": 100,
+          "preparation": 27,
           "deaths": 10,
           "mechanics": {
             "errors": 2.4,
@@ -888,6 +922,11 @@
               "label": "Gotículas Tóxicas",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Flask/comida",
+            "Pedra de vida",
+            "Poção"
           ]
         },
         {
@@ -895,7 +934,7 @@
           "dps": 100635,
           "parse": 71,
           "itemLevel": 316,
-          "preparation": 100,
+          "preparation": 66,
           "deaths": 8,
           "mechanics": {
             "errors": 2,
@@ -968,15 +1007,23 @@
               "label": "Gotículas Tóxicas",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ]
         },
         {
           "playerId": "dagom",
           "dps": 40453,
           "parse": 8,
-          "preparation": 94,
+          "preparation": 11,
           "preparationMissing": [
-            "Ombreiras"
+            "Ombreiras",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "deaths": 6,
           "mechanics": {
@@ -1033,11 +1080,14 @@
           "dps": 89333,
           "parse": 54,
           "itemLevel": 304,
-          "preparation": 81,
+          "preparation": 38,
           "preparationMissing": [
             "Elmo",
             "Peito",
-            "Botas"
+            "Botas",
+            "Flask/comida",
+            "Pedra de vida",
+            "Poção"
           ],
           "deaths": 7,
           "mechanics": {
@@ -1112,10 +1162,13 @@
           "dps": 74597,
           "parse": 35,
           "itemLevel": 303,
-          "preparation": 88,
+          "preparation": 30,
           "preparationMissing": [
             "Peito",
-            "Botas"
+            "Botas",
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
           ],
           "deaths": 8,
           "mechanics": {
@@ -1202,7 +1255,7 @@
           "dps": 34466,
           "parse": 12,
           "itemLevel": 290,
-          "preparation": 100,
+          "preparation": 6,
           "deaths": 9,
           "mechanics": {
             "errors": 1,
@@ -1221,6 +1274,11 @@
               "label": "Peçonha Viva",
               "tries": 4
             }
+          ],
+          "preparationMissing": [
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
           ]
         },
         {
@@ -1228,10 +1286,13 @@
           "dps": 6412,
           "parse": 13,
           "itemLevel": 317,
-          "preparation": 86,
+          "preparation": 11,
           "preparationMissing": [
             "Elmo",
-            "Ombreiras"
+            "Ombreiras",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "deaths": 3,
           "mechanics": {
@@ -1264,9 +1325,12 @@
           "dps": 47057,
           "parse": 30,
           "itemLevel": 316,
-          "preparation": 94,
+          "preparation": 51,
           "preparationMissing": [
-            "Botas"
+            "Botas",
+            "Poção",
+            "Pedra de vida",
+            "Flask/comida"
           ],
           "deaths": 11,
           "mechanics": {
@@ -1311,7 +1375,7 @@
           "hps": 31074,
           "parse": 47,
           "itemLevel": 314,
-          "preparation": 100,
+          "preparation": 12,
           "deaths": 2,
           "mechanics": {
             "errors": 2,
@@ -1348,6 +1412,11 @@
               "label": "Peçonha Viva",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ]
         },
         {
@@ -1355,14 +1424,17 @@
           "hps": 175882,
           "parse": 90,
           "itemLevel": 316,
-          "preparation": 52,
+          "preparation": 13,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Peito",
             "Pernas",
             "Botas",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "deaths": 11,
           "mechanics": {
@@ -1401,9 +1473,12 @@
           "hps": 210628,
           "parse": 18,
           "itemLevel": 320,
-          "preparation": 94,
+          "preparation": 46,
           "preparationMissing": [
-            "Pernas"
+            "Pernas",
+            "Poção",
+            "Pedra de vida",
+            "Flask/comida"
           ],
           "deaths": 9,
           "mechanics": {
@@ -1448,11 +1523,14 @@
           "dps": 96868,
           "parse": 51,
           "itemLevel": 316,
-          "preparation": 81,
+          "preparation": 50,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
-            "Botas"
+            "Botas",
+            "Flask/comida",
+            "Pedra de vida",
+            "Poção"
           ],
           "deaths": 10,
           "mechanics": {
@@ -1491,7 +1569,7 @@
           "dps": 90323,
           "parse": 23,
           "itemLevel": 316,
-          "preparation": 6,
+          "preparation": 37,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -1499,7 +1577,10 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
           ],
           "deaths": 11,
           "mechanics": {
@@ -1532,10 +1613,13 @@
           "dps": 106288,
           "parse": 46,
           "itemLevel": 319,
-          "preparation": 88,
+          "preparation": 67,
           "preparationMissing": [
             "Elmo",
-            "Botas"
+            "Botas",
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ],
           "deaths": 9,
           "mechanics": {
@@ -1574,7 +1658,7 @@
           "dps": 129010,
           "parse": 69,
           "itemLevel": 322,
-          "preparation": 100,
+          "preparation": 47,
           "deaths": 10,
           "mechanics": {
             "errors": 1.4,
@@ -1605,6 +1689,11 @@
               "label": "Sectário Latente",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ]
         },
         {
@@ -1612,9 +1701,12 @@
           "dps": 109362,
           "parse": 48,
           "itemLevel": 320,
-          "preparation": 94,
+          "preparation": 65,
           "preparationMissing": [
-            "Elmo"
+            "Elmo",
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ],
           "deaths": 10,
           "mechanics": {
@@ -1659,12 +1751,15 @@
           "dps": 106196,
           "parse": 31,
           "itemLevel": 321,
-          "preparation": 82,
+          "preparation": 61,
           "preparationMissing": [
             "Elmo",
             "Cintura",
             "Botas",
-            "Braçadeiras"
+            "Braçadeiras",
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ],
           "deaths": 11,
           "mechanics": {
@@ -1715,7 +1810,7 @@
           "dps": 55444,
           "parse": 7,
           "itemLevel": 304,
-          "preparation": 100,
+          "preparation": 42,
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -1746,6 +1841,11 @@
               "label": "Sectário Latente",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ]
         },
         {
@@ -1753,7 +1853,7 @@
           "dps": 105695,
           "parse": 33,
           "itemLevel": 321,
-          "preparation": 100,
+          "preparation": 71,
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -1784,6 +1884,11 @@
               "label": "Sectário Latente",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção",
+            "Flask/comida"
           ]
         },
         {
@@ -1791,7 +1896,7 @@
           "dps": 76783,
           "parse": 12,
           "itemLevel": 315,
-          "preparation": 100,
+          "preparation": 37,
           "deaths": 12,
           "mechanics": {
             "errors": 1.8,
@@ -1822,15 +1927,23 @@
               "label": "Sectário Latente",
               "tries": 1
             }
+          ],
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida",
+            "Flask/comida"
           ]
         },
         {
           "playerId": "ligiaf",
           "parse": 81,
-          "preparation": 88,
+          "preparation": 41,
           "preparationMissing": [
             "Elmo",
-            "Peito"
+            "Peito",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "deaths": 8,
           "mechanics": {
@@ -1869,10 +1982,13 @@
           "dps": 66751,
           "parse": 9,
           "itemLevel": 303,
-          "preparation": 88,
+          "preparation": 28,
           "preparationMissing": [
             "Peito",
-            "Botas"
+            "Botas",
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
           ],
           "deaths": 10,
           "mechanics": {
