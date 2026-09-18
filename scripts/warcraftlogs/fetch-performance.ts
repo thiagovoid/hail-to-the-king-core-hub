@@ -558,6 +558,15 @@ async function main() {
         wcl.fetchCastEvents(ctx.report.code, ctx.raidFights),
       ]);
 
+      // Sem o mapa de atores, os eventos viram números soltos: o sourceID
+      // não liga a ninguém e a noite inteira sai sem cooldown, sem erro
+      // nenhum. Aconteceu com o log de 09/09 — 73 mil casts e zero
+      // jogadores — e passou despercebido porque a nota de Atacar continua
+      // saindo (só com o uptime).
+      if (atores.size === 0) {
+        throw new Error("masterData não devolveu ator nenhum — sem isso não dá pra ligar cast a jogador");
+      }
+
       // Só quem aparece nos eventos: buscar o dano de ator que não lançou
       // nada é ida de rede à toa.
       const atoresComCast = [...new Set(eventos.map((evento) => evento.sourceID))].filter((id) =>
@@ -603,6 +612,13 @@ async function main() {
       console.log(
         `Cooldowns do report ${ctx.report.code}: ${eventos.length} casts, ${porJogador.size} jogador(es) do roster.`
       );
+
+      if (porJogador.size === 0 && usos.length > 0) {
+        console.warn(
+          `  Nenhum dos ${usos.length} ator(es) com cast casou com o roster. Atores no log: ` +
+            [...atores.values()].slice(0, 8).join(", ")
+        );
+      }
     } catch (error) {
       // Falha aqui não pode derrubar a coleta inteira: sem cooldowns, a
       // nota de Atacar fica só com o uptime, e o resto do log segue.
