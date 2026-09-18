@@ -62,6 +62,15 @@ export interface PlayerSeasonAverage extends PlayerPerformance {
    * acumulado é um número que o core quer ver — por isso soma, não média.
    */
   mortesNaSeason: number;
+  /**
+   * Total de erros mecânicos na temporada.
+   *
+   * Sai da SOMA do detalhe por mecânica, não de `errors × trys`: o campo
+   * `errors` é média arredondada a uma casa, e multiplicar de volta acumula
+   * o erro do arredondamento (118 exatos contra 119,3 aproximados, num
+   * jogador só).
+   */
+  errosMecanicosNaSeason: number;
 }
 
 export function buildPlayerSeasonAverage(
@@ -80,6 +89,10 @@ export function buildPlayerSeasonAverage(
     runs: history.length,
     bossesMortos: contarKills(history.map((run) => run.bossKills)),
     mortesNaSeason: history.reduce((soma, run) => soma + run.deaths, 0),
+    errosMecanicosNaSeason: history.reduce(
+      (soma, run) => soma + (run.mechanicsDetail ?? []).reduce((total, item) => total + item.tries, 0),
+      0
+    ),
     dps: average(defined(history.map((run) => run.dps))),
     hps: average(defined(history.map((run) => run.hps))),
     parse: average(defined(history.map((run) => run.parse))),
