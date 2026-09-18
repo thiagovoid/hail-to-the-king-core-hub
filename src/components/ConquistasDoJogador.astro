@@ -22,9 +22,24 @@ interface Props {
    * quem já é de casa.
    */
   elegivel?: boolean;
+  /**
+   * Quando esta ficha é de um ALT: pra onde as medalhas foram.
+   *
+   * Duas estantes pro mesmo jogador dividiriam a temporada dele em duas
+   * metades — e é justamente o que as conquistas de presença e sequência
+   * não podem fazer com quem trocou de personagem pra compor o raide.
+   */
+  remeteAo?: { id: string; nome: string };
+  /** Os outros personagens da mesma pessoa, pra nomear o que está somado. */
+  tambemJoga?: string[];
 }
 
-const { ganhas = new Map<string, ConquistaGanha>(), elegivel = true } = Astro.props;
+const {
+  ganhas = new Map<string, ConquistaGanha>(),
+  elegivel = true,
+  remeteAo = undefined,
+  tambemJoga = [],
+} = Astro.props;
 
 const medalhas = CONQUISTAS.map((conquista) => ({
   conquista,
@@ -54,7 +69,21 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
 ---
 
 {
-  elegivel ? (
+  remeteAo ? (
+    <section class="mb-10">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+        <p class="text-sm font-semibold text-slate-300">Medalhas</p>
+        <p class="text-sm text-slate-400 mt-1">
+          Este é um personagem alternativo. As medalhas são do jogador, não do personagem — o que
+          você faz aqui está somado na ficha do{' '}
+          <a href={`/core/membros/${remeteAo.id}/`} class="text-[#f0a500] hover:underline">
+            {remeteAo.nome}
+          </a>
+          . Trocar de cadeira pra compor o raide não é falta.
+        </p>
+      </div>
+    </section>
+  ) : elegivel ? (
     <section class="mb-10">
       <div class="mb-4">
         <h2 class="text-xl font-bold text-white">Medalhas</h2>
@@ -64,6 +93,12 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
           {totalGanho > desbloqueadas && ` · ${totalGanho} no total da temporada`}. As esmaecidas
           ainda não foram conquistadas — passe o mouse pra ver como se consegue.
         </p>
+
+        {tambemJoga.length > 0 && (
+          <p class="text-[11px] text-slate-500 mt-1.5">
+            Inclui o que você fez como {tambemJoga.join(', ')}.
+          </p>
+        )}
       </div>
 
       <div class="space-y-4">

@@ -336,8 +336,25 @@ export interface Player {
   heroSpec: string | null;
   /** Papel do personagem no grupo: tank, healer ou dps. */
   role: "tank" | "healer" | "dps";
-  /** Indica se é o personagem principal ou alternativo do jogador. */
-  type: "main" | "alt";
+  /**
+   * O papel do PERSONAGEM na estrutura do core.
+   *
+   * - `main`: o personagem principal de alguém.
+   * - `alt`: outro personagem da MESMA pessoa (ver `pertenceA`).
+   * - `replace`: quem fica no banco e entra quando falta gente. Ninguém é
+   *   replace hoje; o tipo existe pro dia em que for.
+   */
+  type: "main" | "alt" | "replace";
+  /**
+   * `id` do personagem principal, quando este é um alt.
+   *
+   * É o que amarra os personagens a uma PESSOA. Sem isso, quem foi de
+   * Metallicä numa noite e de Gunst nas outras aparece como dois jogadores
+   * de meia temporada cada — e as conquistas de presença e de sequência
+   * punem os dois por um buraco que nunca existiu. Quem tem `type: "alt"`
+   * e não preenche isso continua contando como pessoa própria.
+   */
+  pertenceA?: string | null;
   /** Vínculo atual do jogador com a guilda. */
   status: PlayerStatus;
   /** Nick do Discord do jogador, ou null se não cadastrado. */

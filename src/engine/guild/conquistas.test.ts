@@ -235,7 +235,7 @@ describe("conquistas de uma noite só", () => {
       ]),
     ];
 
-    const apurado = contarConquistas(weeks, TARGETS, funcaoDe);
+    const apurado = contarConquistas(weeks, TARGETS, { funcaoDe });
     expect(apurado.get("melee")?.get("tanque-nao-oficial")?.vezes).toBe(1);
     expect(apurado.get("tank")?.get("tanque-nao-oficial")).toBeUndefined();
     expect(apurado.get("ranged")?.get("tanque-nao-oficial")).toBeUndefined();
@@ -250,7 +250,7 @@ describe("conquistas de uma noite só", () => {
       ]),
     ];
 
-    const apurado = contarConquistas(weeks, TARGETS, funcaoDe);
+    const apurado = contarConquistas(weeks, TARGETS, { funcaoDe });
     expect(apurado.get("tank")?.get("muralha")?.vezes).toBe(1);
     expect(apurado.get("dps")?.get("muralha")).toBeUndefined();
   });
@@ -335,7 +335,7 @@ describe("conquistas de uma noite só", () => {
         { playerId: "tank", deaths: 1, offRole: { dps: 50_000 } },
       ]),
     ];
-    expect(contarConquistas(alcancou, TARGETS, funcaoDe).get("tank")?.get("polivalente")?.vezes).toBe(
+    expect(contarConquistas(alcancou, TARGETS, { funcaoDe }).get("tank")?.get("polivalente")?.vezes).toBe(
       1
     );
 
@@ -347,7 +347,7 @@ describe("conquistas de uma noite só", () => {
       ]),
     ];
     expect(
-      contarConquistas(faltou, TARGETS, funcaoDe).get("tank")?.get("polivalente")
+      contarConquistas(faltou, TARGETS, { funcaoDe }).get("tank")?.get("polivalente")
     ).toBeUndefined();
   });
 
@@ -461,9 +461,9 @@ describe("conquistas de temporada", () => {
       ],
     ]);
 
-    const apurado = contarConquistas(weeks, TARGETS, undefined, (id) =>
-      id === 3470 ? "Nekzali" : undefined
-    );
+    const apurado = contarConquistas(weeks, TARGETS, {
+      nomeDoBoss: (id) => (id === 3470 ? "Nekzali" : undefined),
+    });
 
     expect(apurado.get("pioneiro")?.get("fundador")?.vezes).toBe(1);
     expect(apurado.get("pioneiro")?.get("fundador")?.detalhe).toBe("Nekzali");
@@ -489,6 +489,72 @@ describe("conquistas de temporada", () => {
     ]);
 
     expect(quantas(weeks, "a", "fundador")).toBe(2);
+  });
+
+  // O ponto inteiro da identidade de pessoa: quem foi de alt numa noite pra
+  // compor o raide não abriu buraco na temporada.
+  it("não abre buraco na presença de quem jogou de alt", () => {
+    const pessoaDe = (id: string) => (id === "metallica" ? "gunst" : id);
+    const weeks = noites([
+      ["2026-09-01", [{ playerId: "gunst", deaths: 1 }]],
+      ["2026-09-03", [{ playerId: "metallica", deaths: 1 }]],
+    ]);
+
+    const semIdentidade = contarConquistas(weeks, TARGETS);
+    expect(semIdentidade.get("gunst")?.get("inabalavel")).toBeUndefined();
+
+    const comIdentidade = contarConquistas(weeks, TARGETS, { pessoaDe });
+    expect(comIdentidade.get("gunst")?.get("inabalavel")?.vezes).toBe(1);
+    expect(comIdentidade.get("metallica")).toBeUndefined();
+  });
+
+  it("não quebra a sequência da Constante por troca de personagem", () => {
+    const pessoaDe = (id: string) => (id === "metallica" ? "gunst" : id);
+    const weeks = noites([
+      ["2026-09-01", [{ playerId: "gunst", deaths: 1, parse: 60 }]],
+      ["2026-09-03", [{ playerId: "metallica", deaths: 1, parse: 60 }]],
+      ["2026-09-05", [{ playerId: "gunst", deaths: 1, parse: 60 }]],
+    ]);
+
+    expect(contarConquistas(weeks, TARGETS, { pessoaDe }).get("gunst")?.get("constante")?.vezes).toBe(
+      1
+    );
+  });
+
+  // Aconteceu em 15/09: a mesma pessoa aparece como Voidsurge e como Voidwar
+  // porque trocou de cadeira no meio da noite.
+  it("conta uma noite só quando a pessoa jogou com dois personagens", () => {
+    const pessoaDe = (id: string) => (id === "voidwar" ? "voidsurge" : id);
+    const weeks = noites([
+      [
+        "2026-09-15",
+        [
+          { playerId: "voidsurge", deaths: 0 },
+          { playerId: "voidwar", deaths: 0 },
+        ],
+      ],
+    ]);
+
+    const apurado = contarConquistas(weeks, TARGETS, { pessoaDe });
+    expect(apurado.get("voidsurge")?.get("noite-limpa")?.vezes).toBe(1);
+    expect(apurado.get("voidsurge")?.get("inabalavel")?.detalhe).toBe("1 de 1 noites");
+  });
+
+  it("soma as kills dos dois personagens no mesmo Fundador", () => {
+    const pessoaDe = (id: string) => (id === "voidwar" ? "voidsurge" : id);
+    const weeks = noites([
+      [
+        "2026-09-15",
+        [
+          { playerId: "voidsurge", deaths: 1, bossKills: [{ encounterID: 3470, difficulty: 4 }] },
+          { playerId: "voidwar", deaths: 1, bossKills: [{ encounterID: 3445, difficulty: 4 }] },
+        ],
+      ],
+    ]);
+
+    expect(contarConquistas(weeks, TARGETS, { pessoaDe }).get("voidsurge")?.get("fundador")?.vezes).toBe(
+      2
+    );
   });
 
   it("cobra cinco noites com a mesma mecânica pra Pagando promessa", () => {

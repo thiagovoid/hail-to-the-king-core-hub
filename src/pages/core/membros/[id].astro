@@ -15,6 +15,7 @@ import PainelDoTank from '@/components/PainelDoTank.astro';
 import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
 import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
 import { contarConquistas } from '@/engine/guild/conquistas';
+import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
 
 import {
   buildPlayerSeasonAverage,
@@ -276,12 +277,28 @@ const nomeDoBoss = new Map(
   ])
 );
 
+/**
+ * Medalha é da PESSOA, não do personagem: quem foi de alt numa noite pra
+ * compor o raide continua com a temporada inteira. A ficha do alt remete
+ * pra do main em vez de ter estante própria — ver `pessoas.ts`.
+ */
+const pessoas = mapearPessoas(roster);
+const pessoaDoJogador = pessoas.get(player.id) ?? player.id;
+const eAlt = pessoaDoJogador !== player.id;
+const mainDoJogador = eAlt ? roster.find((jogador) => jogador.id === pessoaDoJogador) : undefined;
+const outrosPersonagens = alterEgosDe(roster, player.id)
+  .map((id) => roster.find((jogador) => jogador.id === id))
+  .filter((jogador): jogador is (typeof roster)[number] => jogador !== undefined);
+
 const conquistasDoJogador = contarConquistas(
   performanceWeeks,
   seasonJson.config.performanceTargets,
-  (playerId) => roster.find((jogador) => jogador.id === playerId)?.role,
-  (encounterID) => nomeDoBoss.get(encounterID)
-).get(player.id);
+  {
+    funcaoDe: (playerId) => roster.find((jogador) => jogador.id === playerId)?.role,
+    nomeDoBoss: (encounterID) => nomeDoBoss.get(encounterID),
+    pessoaDe: (playerId) => pessoas.get(playerId) ?? playerId,
+  }
+).get(pessoaDoJogador);
 
 // Mesma fonte da página de regras — sem cópia, pra não divergirem.
 const regrasDoCore =
@@ -421,6 +438,8 @@ const attendance = calculateAttendance(weeks, player.id);
     <ConquistasDoJogador
       ganhas={conquistasDoJogador}
       elegivel={player.status === 'member' || player.status === 'veteran'}
+      remeteAo={mainDoJogador ? { id: mainDoJogador.id, nome: mainDoJogador.name } : undefined}
+      tambemJoga={outrosPersonagens.map((jogador) => jogador.name)}
     />
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />

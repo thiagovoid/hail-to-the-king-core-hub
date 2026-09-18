@@ -21,7 +21,7 @@ const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
 
 // Mains antes de alts dentro de cada role; o sort é estável, então a ordem
 // do roster.json é preservada dentro de cada grupo.
-const TYPE_ORDER: Record<Player['type'], number> = { main: 0, alt: 1 };
+const TYPE_ORDER: Record<Player['type'], number> = { main: 0, alt: 1, replace: 2 };
 
 const groups = ROLE_ORDER.map((role) => ({
   role,
@@ -84,6 +84,7 @@ function capitalize(s: string): string {
             <option value="">Todos</option>
             <option value="main">Main</option>
             <option value="alt">Alt</option>
+            <option value="replace">Reserva</option>
           </select>
         </label>
 

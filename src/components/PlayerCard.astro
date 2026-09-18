@@ -89,6 +89,9 @@ const attendance = player.warcraftLogs.attendance;
 const discord  = formatValue(player.discord);
 const initials = player.name.slice(0, 2).toUpperCase();
 const isMain   = player.type === 'main';
+// Três tipos agora: main, alt (outro personagem da mesma pessoa) e replace
+// (quem entra quando falta gente). Ninguém é replace hoje.
+const TIPO_LABEL = { main: 'MAIN', alt: 'ALT', replace: 'RESERVA' } as const;
 
 // Direto dos perfis reais do jogador — nunca uma cópia separada do mesmo
 // link (era assim antes, em `externalLinks`, e o link do WCL ficava sempre
@@ -168,7 +171,7 @@ const linkWcl      = safeUrl(player.warcraftLogs.profileUrl);
               ? 'bg-[#f0a500]/10 border-[#f0a500]/30 text-[#f0a500]'
               : 'bg-white/5 border-white/10 text-slate-400'
           }`} aria-hidden="true">
-            {isMain ? 'MAIN' : 'ALT'}
+            {TIPO_LABEL[player.type]}
           </span>
         </div>
         <!-- Fix color-contrast: use slate-400 (6.1:1 on #0a0d14) instead of slate-500 (4.4:1) -->

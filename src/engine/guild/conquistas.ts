@@ -312,6 +312,19 @@ export interface ConquistaGanha {
 
 export type ConquistasPorJogador = Map<string, Map<string, ConquistaGanha>>;
 
+/** O que a apuração precisa saber além dos números da noite. */
+export interface ContextoDasConquistas {
+  /** Função do jogador no roster — o log manda quando discorda. */
+  funcaoDe?: (playerId: string) => FuncaoDoJogador | undefined;
+  /** Nome do boss, pro detalhe de "Fundador" dizer qual caiu. */
+  nomeDoBoss?: (encounterID: number) => string | undefined;
+  /**
+   * Personagem -> pessoa (ver `pessoas.ts`). É o que faz o que alguém fez de
+   * alt contar pro main. Sem isso, cada personagem é uma pessoa.
+   */
+  pessoaDe?: (playerId: string) => string;
+}
+
 interface Vitoria {
   playerId: string;
   detalhe?: string;
@@ -568,16 +581,21 @@ interface VitoriaDaTemporada extends Vitoria {
  * As conquistas que só existem olhando várias noites: recorde pessoal,
  * sequência, presença, primeira kill, a mecânica que não larga do pé.
  *
- * Nenhuma delas dá pra apurar noite a noite, porque todas dependem do que
- * veio antes — é o que as torna as mais difíceis da lista.
+ * Todas elas medem a PESSOA, não o personagem — são justamente as que
+ * puniriam quem trocou de cadeira pra compor o raide. Quem foi de alt numa
+ * noite continua com a temporada inteira. Ver `pessoas.ts`.
+ *
+ * Nenhuma dá pra apurar noite a noite, porque todas dependem do que veio
+ * antes — é o que as torna as mais difíceis da lista.
  */
 function vencedoresDaTemporada(
   runs: PerformanceRun[],
   targets: CorePerformanceTargets,
-  funcaoDe?: (playerId: string) => FuncaoDoJogador | undefined,
-  nomeDoBoss?: (encounterID: number) => string | undefined
+  contexto: ContextoDasConquistas
 ): Map<string, VitoriaDaTemporada[]> {
+  const { funcaoDe, nomeDoBoss, pessoaDe } = contexto;
   const porConquista = new Map<string, VitoriaDaTemporada[]>();
+  const pessoa = (playerId: string) => pessoaDe?.(playerId) ?? playerId;
   const score = (player: PlayerPerformance) =>
     calculateOverallScore(player, targets, funcaoDe?.(player.playerId)).overall;
 
@@ -608,14 +626,30 @@ function vencedoresDaTemporada(
       }
     }
 
+    /**
+     * A noite vista por pessoa, não por personagem.
+     *
+     * Quase sempre é um personagem por pessoa. A exceção é quem trocou no
+     * meio da noite — em 15/09 a mesma pessoa aparece como Voidsurge e como
+     * Voidwar —, e aí a noite vale uma só, com o melhor dos dois.
+     */
+    const daNoite = new Map<string, PlayerPerformance[]>();
     for (const player of run.players) {
-      const id = player.playerId;
+      const id = pessoa(player.playerId);
+      daNoite.set(id, [...(daNoite.get(id) ?? []), player]);
+    }
+
+    for (const [id, personagens] of daNoite) {
       noitesJogadas.set(id, (noitesJogadas.get(id) ?? 0) + 1);
 
       // Noite sem dimensão nenhuma coletada não tem nota — e nota que não
       // existe não é nota ruim. Passa reto por recorde e por sequência, do
       // mesmo jeito que uma ausência passa.
-      const nota = score(player);
+      const notas = personagens
+        .map(score)
+        .filter((valor): valor is number => valor !== null);
+      const nota = notas.length > 0 ? Math.max(...notas) : null;
+
       if (nota !== null) {
         const teto = recorde.get(id);
         if (teto !== undefined && nota > teto) superacoes.set(id, (superacoes.get(id) ?? 0) + 1);
@@ -634,7 +668,7 @@ function vencedoresDaTemporada(
         }
       }
 
-      for (const kill of player.bossKills ?? []) {
+      for (const kill of personagens.flatMap((p) => p.bossKills ?? [])) {
         if (!estreias.has(kill.encounterID)) continue;
         const lista = fundacoes.get(id) ?? [];
         const nome = nomeDoBoss?.(kill.encounterID) ?? `boss ${kill.encounterID}`;
@@ -642,11 +676,13 @@ function vencedoresDaTemporada(
         fundacoes.set(id, lista);
       }
 
+      // Uma noite conta UMA vez por mecânica, mesmo que a pessoa tenha
+      // levado o mesmo tapa com dois personagens diferentes.
       const doJogador = mecanicasPorJogador.get(id) ?? new Map<string, number>();
-      for (const detalhe of player.mechanicsDetail ?? []) {
-        const nome = nomeDaMecanica(detalhe);
-        doJogador.set(nome, (doJogador.get(nome) ?? 0) + 1);
-      }
+      const daNoiteDele = new Set(
+        personagens.flatMap((p) => (p.mechanicsDetail ?? []).map(nomeDaMecanica))
+      );
+      for (const nome of daNoiteDele) doJogador.set(nome, (doJogador.get(nome) ?? 0) + 1);
       mecanicasPorJogador.set(id, doJogador);
     }
 
@@ -707,19 +743,23 @@ function vencedoresDaTemporada(
 }
 
 /**
- * Quantas vezes cada jogador levou cada conquista na temporada.
+ * Quantas vezes cada PESSOA levou cada conquista na temporada.
  *
  * Recontado do histórico inteiro a cada build, e não incrementado: assim uma
  * recoleta que corrige uma noite antiga corrige o placar junto, em vez de
  * deixar um número que ninguém sabe de onde veio.
+ *
+ * A chave do resultado é a pessoa (o `id` do main), não o personagem: o que
+ * alguém fez de alt aparece na ficha do main. Sem `pessoaDe`, cada
+ * personagem é uma pessoa e nada muda.
  */
 export function contarConquistas(
   weeks: WeeklyPerformance[],
   targets: CorePerformanceTargets,
-  funcaoDe?: (playerId: string) => FuncaoDoJogador | undefined,
-  nomeDoBoss?: (encounterID: number) => string | undefined
+  contexto: ContextoDasConquistas = {}
 ): ConquistasPorJogador {
   const total: ConquistasPorJogador = new Map();
+  const pessoa = (playerId: string) => contexto.pessoaDe?.(playerId) ?? playerId;
 
   const registrar = (playerId: string, conquistaId: string, vezes: number, detalhe?: string) => {
     const doJogador = total.get(playerId) ?? new Map<string, ConquistaGanha>();
@@ -743,12 +783,21 @@ export function contarConquistas(
     .sort((a, b) => a.date.localeCompare(b.date));
 
   for (const run of runs) {
-    for (const [conquistaId, vitorias] of vencedoresDaRun(run, targets, funcaoDe)) {
-      for (const vitoria of vitorias) registrar(vitoria.playerId, conquistaId, 1, vitoria.detalhe);
+    for (const [conquistaId, vitorias] of vencedoresDaRun(run, targets, contexto.funcaoDe)) {
+      // Quem jogou com dois personagens na mesma noite leva a medalha uma
+      // vez só: ela é da pessoa, e a noite foi uma.
+      const jaContados = new Set<string>();
+
+      for (const vitoria of vitorias) {
+        const dono = pessoa(vitoria.playerId);
+        if (jaContados.has(dono)) continue;
+        jaContados.add(dono);
+        registrar(dono, conquistaId, 1, vitoria.detalhe);
+      }
     }
   }
 
-  for (const [conquistaId, vitorias] of vencedoresDaTemporada(runs, targets, funcaoDe, nomeDoBoss)) {
+  for (const [conquistaId, vitorias] of vencedoresDaTemporada(runs, targets, contexto)) {
     for (const vitoria of vitorias) {
       registrar(vitoria.playerId, conquistaId, vitoria.vezes, vitoria.detalhe);
     }
