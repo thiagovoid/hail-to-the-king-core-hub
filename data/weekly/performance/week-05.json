@@ -111,6 +111,47 @@
             "dps": 43161,
             "hps": 55448
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 4.5,
+          "specs": [
+            {
+              "spec": "Blood",
+              "role": "tank"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2.1,
@@ -297,6 +338,47 @@
             "dps": 48319,
             "hps": 65731
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 6.7,
+          "specs": [
+            {
+              "spec": "Protection",
+              "role": "tank"
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 2,
@@ -445,6 +527,47 @@
           "offRole": {
             "dps": 7116
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0.1,
+          "specs": [
+            {
+              "spec": "Restoration",
+              "role": "healer"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.7,
@@ -630,6 +753,47 @@
           "offRole": {
             "dps": 9912
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0.6,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 2.1,
@@ -808,6 +972,47 @@
           "offRole": {
             "dps": 4062
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0.6,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.4,
@@ -965,6 +1170,47 @@
           "offRole": {
             "hps": 3968
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 11.3,
+          "specs": [
+            {
+              "spec": "Frost",
+              "role": "dps"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 0.8,
@@ -1088,6 +1334,47 @@
           "offRole": {
             "hps": 21915
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 8.7,
+          "specs": [
+            {
+              "spec": "Shadow",
+              "role": "dps"
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1.3,
@@ -1213,6 +1500,47 @@
           "offRole": {
             "hps": 4746
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 7
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 11.2,
+          "specs": [
+            {
+              "spec": "Elemental",
+              "role": "dps"
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1.3,
@@ -1364,6 +1692,47 @@
           "offRole": {
             "hps": 17524
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 12,
+          "specs": [
+            {
+              "spec": "Havoc",
+              "role": "dps"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 3,
@@ -1519,6 +1888,47 @@
           "offRole": {
             "hps": 5506
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 11.2,
+          "specs": [
+            {
+              "spec": "Enhancement",
+              "role": "dps"
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 2.1,
@@ -1662,6 +2072,47 @@
           "offRole": {
             "hps": 6310
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 1,
+          "specs": [
+            {
+              "spec": "Arms",
+              "role": "dps"
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 2.4,
@@ -1834,6 +2285,47 @@
           "offRole": {
             "hps": 9302
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 10.1,
+          "specs": [
+            {
+              "spec": "Retribution",
+              "role": "dps"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2,
@@ -1993,6 +2485,41 @@
           "offRole": {
             "hps": 14799
           },
+          "tries": {
+            "present": 6,
+            "total": 9,
+            "lateStart": true,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3492,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 7.3,
+          "specs": [
+            {
+              "spec": "Retribution",
+              "role": "dps"
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.7,
@@ -2125,6 +2652,47 @@
           "offRole": {
             "hps": 16879
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 8.8,
+          "specs": [
+            {
+              "spec": "Shadow",
+              "role": "dps"
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.7,
@@ -2287,6 +2855,47 @@
           "offRole": {
             "hps": 10937
           },
+          "tries": {
+            "present": 9,
+            "total": 9,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3492,
+              "tries": 4,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3470,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 5.6,
+          "specs": [
+            {
+              "spec": "Havoc",
+              "role": "dps"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2.3,
@@ -2375,53 +2984,14 @@
           "preparation": 44,
           "preparationChecks": 2,
           "attack": {
-            "score": 97.4,
-            "uptime": 95.8,
-            "cooldowns": 99
+            "score": 74.7,
+            "uptime": 74.7,
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 107574,
-              "name": "Avatar",
-              "casts": 41,
-              "efficiency": 99
-            }
-          ],
-          "defense": {
-            "score": 54.8,
-            "mitigation": 41.9,
-            "dtps": 103825,
-            "selfSustain": 27.4
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 2,
-              "efficiency": 22.2
-            },
-            {
-              "spellId": 97462,
-              "name": "Rallying Cry",
-              "casts": 10,
-              "efficiency": 56.4
-            },
-            {
-              "spellId": 871,
-              "name": "Shield Wall",
-              "casts": 39,
-              "efficiency": 85.9
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
-            "dps": 44172,
-            "hps": 28485
+            "dps": 34466,
+            "hps": 22225
           },
           "deaths": 9,
           "mechanics": {
@@ -2451,7 +3021,7 @@
         {
           "playerId": "blackwatch",
           "dps": 6412,
-          "parse": 13,
+          "parse": 12,
           "itemLevel": 317,
           "preparation": 41,
           "preparationMissing": [
@@ -2463,83 +3033,14 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 89.8,
-            "uptime": 92.7,
-            "cooldowns": 86.8
+            "score": 20.4,
+            "uptime": 20.4,
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 46585,
-              "name": "Raise Dead",
-              "casts": 6,
-              "efficiency": 83.4
-            },
-            {
-              "spellId": 43265,
-              "name": "Death and Decay",
-              "casts": 50,
-              "efficiency": 90.2
-            }
-          ],
-          "defense": {
-            "score": 43.3,
-            "mitigation": 38.4,
-            "dtps": 101886,
-            "selfSustain": 41.3
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 2.4
-            },
-            {
-              "spellId": 48792,
-              "name": "Icebound Fortitude",
-              "casts": 1,
-              "efficiency": 4.9
-            },
-            {
-              "spellId": 51052,
-              "name": "Anti-Magic Zone",
-              "casts": 2,
-              "efficiency": 39.2
-            },
-            {
-              "spellId": 55233,
-              "name": "Vampiric Blood",
-              "casts": 5,
-              "efficiency": 46.4
-            },
-            {
-              "spellId": 48265,
-              "name": "Death's Advance",
-              "casts": 11,
-              "efficiency": 53
-            },
-            {
-              "spellId": 48707,
-              "name": "Anti-Magic Shell",
-              "casts": 8,
-              "efficiency": 58.5
-            },
-            {
-              "spellId": 49028,
-              "name": "Dancing Rune Weapon",
-              "casts": 7,
-              "efficiency": 98.6
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
-            "dps": 29179,
-            "hps": 42537
+            "dps": 6412,
+            "hps": 9348
           },
           "deaths": 3,
           "mechanics": {
@@ -2579,96 +3080,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 79.3,
+            "score": 95.4,
             "uptime": 95.4,
-            "cooldowns": 63.2
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 432472,
-              "name": "Sacred Weapon",
-              "casts": 28,
-              "efficiency": 49.6
-            },
-            {
-              "spellId": 375576,
-              "name": "Divine Toll",
-              "casts": 34,
-              "efficiency": 57
-            },
-            {
-              "spellId": 1297761,
-              "name": "Voracious Heart of Ula'tek",
-              "casts": 33,
-              "efficiency": 83.1
-            }
-          ],
-          "defense": {
-            "score": 50.7,
-            "mitigation": 42.6,
-            "dtps": 103325,
-            "selfSustain": 50.2
-          },
-          "defenseDetail": [
-            {
-              "spellId": 471195,
-              "name": "Lay on Hands",
-              "casts": 1,
-              "efficiency": 5.1
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 7,
-              "efficiency": 10.8
-            },
-            {
-              "spellId": 642,
-              "name": "Divine Shield",
-              "casts": 15,
-              "efficiency": 48.1
-            },
-            {
-              "spellId": 265946,
-              "name": "Ritual Wraps",
-              "casts": 34,
-              "efficiency": 52.4
-            },
-            {
-              "spellId": 212641,
-              "name": "Guardian of Ancient Kings",
-              "casts": 24,
-              "efficiency": 62.4
-            },
-            {
-              "spellId": 31850,
-              "name": "Ardent Defender",
-              "casts": 31,
-              "efficiency": 63.9
-            },
-            {
-              "spellId": 432459,
-              "name": "Holy Bulwark",
-              "casts": 38,
-              "efficiency": 64.3
-            },
-            {
-              "spellId": 389539,
-              "name": "Sentinel",
-              "casts": 53,
-              "efficiency": 98.5
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "dps": 47057,
             "hps": 66546
@@ -2719,63 +3135,13 @@
           "preparation": 47,
           "preparationChecks": 2,
           "attack": {
-            "score": 95.9,
-            "uptime": 95.9,
+            "score": 21.1,
+            "uptime": 21.1,
             "cooldowns": null
           },
           "attackDetail": [],
-          "defense": {
-            "score": 57.7,
-            "mitigation": 45.7,
-            "dtps": 49729,
-            "selfSustain": 51.9
-          },
-          "defenseDetail": [
-            {
-              "spellId": 108271,
-              "name": "Astral Shift",
-              "casts": 4,
-              "efficiency": 39.3
-            },
-            {
-              "spellId": 98008,
-              "name": "Spirit Link Totem",
-              "casts": 3,
-              "efficiency": 55.1
-            },
-            {
-              "spellId": 1267068,
-              "name": "Stormstream Totem",
-              "casts": 17,
-              "efficiency": 55.3
-            },
-            {
-              "spellId": 114052,
-              "name": "Ascendance",
-              "casts": 4,
-              "efficiency": 59.8
-            },
-            {
-              "spellId": 5394,
-              "name": "Healing Stream Totem",
-              "casts": 29,
-              "efficiency": 79.1
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            }
-          ],
-          "healing": {
-            "score": 81.6,
-            "coverage": 17,
-            "share": 83,
-            "overheal": 19.8
-          },
           "offRole": {
-            "dps": 6508
+            "dps": 1430
           },
           "deaths": 2,
           "mechanics": {
@@ -2839,102 +3205,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 83.6,
+            "score": 97.2,
             "uptime": 97.2,
-            "cooldowns": 70.1
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 375576,
-              "name": "Divine Toll",
-              "casts": 50,
-              "efficiency": 62.3
-            },
-            {
-              "spellId": 31884,
-              "name": "Avenging Wrath",
-              "casts": 25,
-              "efficiency": 77.8
-            }
-          ],
-          "defense": {
-            "score": 31.8,
-            "mitigation": 45.5,
-            "dtps": 50243,
-            "selfSustain": 57.7
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1022,
-              "name": "Blessing of Protection",
-              "casts": 1,
-              "efficiency": 0.4
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 1.8
-            },
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 2,
-              "efficiency": 9.4
-            },
-            {
-              "spellId": 6940,
-              "name": "Blessing of Sacrifice",
-              "casts": 7,
-              "efficiency": 24.8
-            },
-            {
-              "spellId": 633,
-              "name": "Lay on Hands",
-              "casts": 4,
-              "efficiency": 36.8
-            },
-            {
-              "spellId": 31821,
-              "name": "Aura Mastery",
-              "casts": 13,
-              "efficiency": 49.4
-            },
-            {
-              "spellId": 642,
-              "name": "Divine Shield",
-              "casts": 13,
-              "efficiency": 49.6
-            },
-            {
-              "spellId": 1291894,
-              "name": "Soulcoiler Ritual Vessel",
-              "casts": 17,
-              "efficiency": 50.4
-            },
-            {
-              "spellId": 498,
-              "name": "Divine Protection",
-              "casts": 39,
-              "efficiency": 63.8
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
-          "healing": {
-            "score": 85,
-            "coverage": 21.1,
-            "share": 103.1,
-            "overheal": 30.1
-          },
+          "attackDetail": [],
           "offRole": {
             "dps": 11761
           },
@@ -2983,84 +3258,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 86.6,
+            "score": 96.8,
             "uptime": 96.8,
-            "cooldowns": 76.4
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 31884,
-              "name": "Avenging Wrath",
-              "casts": 20,
-              "efficiency": 63.3
-            },
-            {
-              "spellId": 375576,
-              "name": "Divine Toll",
-              "casts": 73,
-              "efficiency": 89.5
-            }
-          ],
-          "defense": {
-            "score": 30,
-            "mitigation": 45.7,
-            "dtps": 55229,
-            "selfSustain": 58.5
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6940,
-              "name": "Blessing of Sacrifice",
-              "casts": 1,
-              "efficiency": 0.7
-            },
-            {
-              "spellId": 642,
-              "name": "Divine Shield",
-              "casts": 2,
-              "efficiency": 9.5
-            },
-            {
-              "spellId": 498,
-              "name": "Divine Protection",
-              "casts": 8,
-              "efficiency": 12.6
-            },
-            {
-              "spellId": 1291894,
-              "name": "Soulcoiler Ritual Vessel",
-              "casts": 14,
-              "efficiency": 44.7
-            },
-            {
-              "spellId": 633,
-              "name": "Lay on Hands",
-              "casts": 6,
-              "efficiency": 54.2
-            },
-            {
-              "spellId": 31821,
-              "name": "Aura Mastery",
-              "casts": 16,
-              "efficiency": 58.5
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
-          "healing": {
-            "score": 82.2,
-            "coverage": 25.3,
-            "share": 123.6,
-            "overheal": 35.7
-          },
+          "attackDetail": [],
           "offRole": {
             "dps": 3534
           },
@@ -3117,72 +3319,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 81.2,
+            "score": 78.1,
             "uptime": 78.1,
-            "cooldowns": 84.2
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 205021,
-              "name": "Ray of Frost",
-              "casts": 70,
-              "efficiency": 82
-            },
-            {
-              "spellId": 84714,
-              "name": "Frozen Orb",
-              "casts": 81,
-              "efficiency": 85
-            },
-            {
-              "spellId": 44614,
-              "name": "Flurry",
-              "casts": 278,
-              "efficiency": 85.6
-            }
-          ],
-          "defense": {
-            "score": 30.3,
-            "mitigation": 45.3,
-            "dtps": 39548,
-            "selfSustain": 8.3
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 6,
-              "efficiency": 10.4
-            },
-            {
-              "spellId": 11426,
-              "name": "Ice Barrier",
-              "casts": 28,
-              "efficiency": 20.3
-            },
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 5,
-              "efficiency": 35
-            },
-            {
-              "spellId": 414658,
-              "name": "Ice Cold",
-              "casts": 17,
-              "efficiency": 55.6
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 3282
           },
@@ -3237,66 +3378,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 88.9,
+            "score": 99,
             "uptime": 99,
-            "cooldowns": 78.7
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 205180,
-              "name": "Summon Darkglare",
-              "casts": 24,
-              "efficiency": 75.4
-            },
-            {
-              "spellId": 1257052,
-              "name": "Dark Harvest",
-              "casts": 56,
-              "efficiency": 82
-            }
-          ],
-          "defense": {
-            "score": 22,
-            "mitigation": 42,
-            "dtps": 45848,
-            "selfSustain": 26.1
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6789,
-              "name": "Mortal Coil",
-              "casts": 1,
-              "efficiency": 1.3
-            },
-            {
-              "spellId": 452930,
-              "name": "Demonic Healthstone",
-              "casts": 13,
-              "efficiency": 21.8
-            },
-            {
-              "spellId": 104773,
-              "name": "Unending Resolve",
-              "casts": 9,
-              "efficiency": 31.7
-            },
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 5,
-              "efficiency": 33.1
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 13617
           },
@@ -3339,72 +3425,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 75.4,
+            "score": 89.1,
             "uptime": 89.1,
-            "cooldowns": 61.8
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 15286,
-              "name": "Vampiric Embrace",
-              "casts": 14,
-              "efficiency": 38.6
-            },
-            {
-              "spellId": 263165,
-              "name": "Void Torrent",
-              "casts": 68,
-              "efficiency": 59.8
-            },
-            {
-              "spellId": 228260,
-              "name": "Voidform",
-              "casts": 53,
-              "efficiency": 86.9
-            }
-          ],
-          "defense": {
-            "score": 21.5,
-            "mitigation": 46,
-            "dtps": 48149,
-            "selfSustain": 36.4
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 3,
-              "efficiency": 5.4
-            },
-            {
-              "spellId": 47585,
-              "name": "Dispersion",
-              "casts": 5,
-              "efficiency": 10.9
-            },
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 4,
-              "efficiency": 24
-            },
-            {
-              "spellId": 19236,
-              "name": "Desperate Prayer",
-              "casts": 22,
-              "efficiency": 45.8
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 15785
           },
@@ -3448,66 +3473,11 @@
           "preparation": 68,
           "preparationChecks": 2,
           "attack": {
-            "score": 83.8,
+            "score": 96.6,
             "uptime": 96.6,
-            "cooldowns": 71
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 443454,
-              "name": "Ancestral Swiftness",
-              "casts": 73,
-              "efficiency": 64
-            },
-            {
-              "spellId": 191634,
-              "name": "Stormkeeper",
-              "casts": 94,
-              "efficiency": 77.9
-            }
-          ],
-          "defense": {
-            "score": 3.8,
-            "mitigation": 47.6,
-            "dtps": 49943,
-            "selfSustain": 10.1
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1295247,
-              "name": "Concentrated Silvermoon Health Potion",
-              "casts": 1,
-              "efficiency": 0.6
-            },
-            {
-              "spellId": 5394,
-              "name": "Healing Stream Totem",
-              "casts": 2,
-              "efficiency": 1.8
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 2,
-              "efficiency": 2.7
-            },
-            {
-              "spellId": 108271,
-              "name": "Astral Shift",
-              "casts": 5,
-              "efficiency": 10
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 5148
           },
@@ -3559,84 +3529,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 82.5,
+            "score": 91.8,
             "uptime": 91.8,
-            "cooldowns": 73.2
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 452497,
-              "name": "Abyssal Gaze",
-              "casts": 40,
-              "efficiency": 32.4
-            },
-            {
-              "spellId": 258920,
-              "name": "Immolation Aura",
-              "casts": 119,
-              "efficiency": 74.3
-            },
-            {
-              "spellId": 198013,
-              "name": "Eye Beam",
-              "casts": 111,
-              "efficiency": 78
-            },
-            {
-              "spellId": 258860,
-              "name": "Essence Break",
-              "casts": 93,
-              "efficiency": 89.3
-            },
-            {
-              "spellId": 370965,
-              "name": "The Hunt",
-              "casts": 105,
-              "efficiency": 92
-            }
-          ],
-          "defense": {
-            "score": 32,
-            "mitigation": 45.2,
-            "dtps": 44043,
-            "selfSustain": 35.9
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 2,
-              "efficiency": 1.8
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 4,
-              "efficiency": 5.8
-            },
-            {
-              "spellId": 196718,
-              "name": "Darkness",
-              "casts": 11,
-              "efficiency": 55.8
-            },
-            {
-              "spellId": 198589,
-              "name": "Blur",
-              "casts": 49,
-              "efficiency": 64.6
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 17525
           },
@@ -3693,48 +3590,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 97.8,
+            "score": 97.1,
             "uptime": 97.1,
-            "cooldowns": 98.5
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 114051,
-              "name": "Ascendance",
-              "casts": 30,
-              "efficiency": 98.5
-            }
-          ],
-          "defense": {
-            "score": 16.6,
-            "mitigation": 47.2,
-            "dtps": 52142,
-            "selfSustain": 11.2
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 2,
-              "efficiency": 2.4
-            },
-            {
-              "spellId": 108271,
-              "name": "Astral Shift",
-              "casts": 13,
-              "efficiency": 30.8
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 5860
           },
@@ -3790,78 +3650,11 @@
           "preparation": 65,
           "preparationChecks": 2,
           "attack": {
-            "score": 78.8,
+            "score": 81.1,
             "uptime": 81.1,
-            "cooldowns": 76.4
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 1297145,
-              "name": "Spirit-Rending Poison",
-              "casts": 16,
-              "efficiency": 70.2
-            },
-            {
-              "spellId": 446035,
-              "name": "Bladestorm",
-              "casts": 42,
-              "efficiency": 73.4
-            },
-            {
-              "spellId": 107574,
-              "name": "Avatar",
-              "casts": 41,
-              "efficiency": 85.6
-            }
-          ],
-          "defense": {
-            "score": 3.9,
-            "mitigation": 46.8,
-            "dtps": 41247,
-            "selfSustain": 19.3
-          },
-          "defenseDetail": [
-            {
-              "spellId": 118038,
-              "name": "Die by the Sword",
-              "casts": 2,
-              "efficiency": 1.6
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 1.8
-            },
-            {
-              "spellId": 1295247,
-              "name": "Concentrated Silvermoon Health Potion",
-              "casts": 1,
-              "efficiency": 3.8
-            },
-            {
-              "spellId": 97462,
-              "name": "Rallying Cry",
-              "casts": 1,
-              "efficiency": 5.4
-            },
-            {
-              "spellId": 18499,
-              "name": "Berserker Rage",
-              "casts": 4,
-              "efficiency": 6.9
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 7957
           },
@@ -3909,90 +3702,11 @@
           "preparation": 83,
           "preparationChecks": 2,
           "attack": {
-            "score": 81,
+            "score": 89.5,
             "uptime": 89.5,
-            "cooldowns": 72.5
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 343527,
-              "name": "Execution Sentence",
-              "casts": 28,
-              "efficiency": 47.8
-            },
-            {
-              "spellId": 375576,
-              "name": "Divine Toll",
-              "casts": 40,
-              "efficiency": 71.8
-            },
-            {
-              "spellId": 255937,
-              "name": "Wake of Ashes",
-              "casts": 82,
-              "efficiency": 73.1
-            },
-            {
-              "spellId": 31884,
-              "name": "Avenging Wrath",
-              "casts": 48,
-              "efficiency": 97.3
-            }
-          ],
-          "defense": {
-            "score": 20.4,
-            "mitigation": 46.3,
-            "dtps": 48135,
-            "selfSustain": 14.4
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1022,
-              "name": "Blessing of Protection",
-              "casts": 1,
-              "efficiency": 2.1
-            },
-            {
-              "spellId": 6940,
-              "name": "Blessing of Sacrifice",
-              "casts": 1,
-              "efficiency": 2.1
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 7,
-              "efficiency": 10.9
-            },
-            {
-              "spellId": 642,
-              "name": "Divine Shield",
-              "casts": 7,
-              "efficiency": 25.7
-            },
-            {
-              "spellId": 633,
-              "name": "Lay on Hands",
-              "casts": 6,
-              "efficiency": 35.3
-            },
-            {
-              "spellId": 403876,
-              "name": "Divine Protection",
-              "casts": 27,
-              "efficiency": 46.4
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 10398
           },
@@ -4039,84 +3753,11 @@
           "preparation": 62,
           "preparationChecks": 2,
           "attack": {
-            "score": 80.3,
+            "score": 84.3,
             "uptime": 84.3,
-            "cooldowns": 76.3
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 375576,
-              "name": "Divine Toll",
-              "casts": 37,
-              "efficiency": 59.5
-            },
-            {
-              "spellId": 255937,
-              "name": "Wake of Ashes",
-              "casts": 83,
-              "efficiency": 71.7
-            },
-            {
-              "spellId": 343527,
-              "name": "Execution Sentence",
-              "casts": 46,
-              "efficiency": 80.6
-            },
-            {
-              "spellId": 31884,
-              "name": "Avenging Wrath",
-              "casts": 44,
-              "efficiency": 93.3
-            }
-          ],
-          "defense": {
-            "score": 27.7,
-            "mitigation": 45.6,
-            "dtps": 44304,
-            "selfSustain": 19
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 2,
-              "efficiency": 3.4
-            },
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 1,
-              "efficiency": 4.3
-            },
-            {
-              "spellId": 642,
-              "name": "Divine Shield",
-              "casts": 8,
-              "efficiency": 39
-            },
-            {
-              "spellId": 403876,
-              "name": "Divine Protection",
-              "casts": 27,
-              "efficiency": 45.4
-            },
-            {
-              "spellId": 6940,
-              "name": "Blessing of Sacrifice",
-              "casts": 15,
-              "efficiency": 46.3
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 13436
           },
@@ -4167,72 +3808,6 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
-          "defense": {
-            "score": 36.4,
-            "mitigation": 46.2,
-            "dtps": 57114,
-            "selfSustain": 45.8
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 1,
-              "efficiency": 2.5
-            },
-            {
-              "spellId": 47585,
-              "name": "Dispersion",
-              "casts": 1,
-              "efficiency": 3.6
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 8,
-              "efficiency": 12.9
-            },
-            {
-              "spellId": 64843,
-              "name": "Divine Hymn",
-              "casts": 13,
-              "efficiency": 44.1
-            },
-            {
-              "spellId": 47788,
-              "name": "Guardian Spirit",
-              "casts": 11,
-              "efficiency": 46.5
-            },
-            {
-              "spellId": 2050,
-              "name": "Holy Word: Serenity",
-              "casts": 198,
-              "efficiency": 71.2
-            },
-            {
-              "spellId": 19236,
-              "name": "Desperate Prayer",
-              "casts": 32,
-              "efficiency": 73.9
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
-          "healing": {
-            "score": 81.9,
-            "coverage": 18.5,
-            "share": 90.4,
-            "overheal": 26.7
-          },
           "deaths": 8,
           "mechanics": {
             "errors": 1.8,
@@ -4280,72 +3855,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 78.7,
+            "score": 91.5,
             "uptime": 91.5,
-            "cooldowns": 65.9
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 452497,
-              "name": "Abyssal Gaze",
-              "casts": 27,
-              "efficiency": 22.9
-            },
-            {
-              "spellId": 258860,
-              "name": "Essence Break",
-              "casts": 56,
-              "efficiency": 62.7
-            },
-            {
-              "spellId": 427917,
-              "name": "Immolation Aura",
-              "casts": 121,
-              "efficiency": 74.3
-            },
-            {
-              "spellId": 198013,
-              "name": "Eye Beam",
-              "casts": 98,
-              "efficiency": 75.4
-            },
-            {
-              "spellId": 370965,
-              "name": "The Hunt",
-              "casts": 93,
-              "efficiency": 94.3
-            }
-          ],
-          "defense": {
-            "score": 16.7,
-            "mitigation": 45.1,
-            "dtps": 39179,
-            "selfSustain": 25
-          },
-          "defenseDetail": [
-            {
-              "spellId": 196718,
-              "name": "Darkness",
-              "casts": 5,
-              "efficiency": 15
-            },
-            {
-              "spellId": 198589,
-              "name": "Blur",
-              "casts": 13,
-              "efficiency": 18.4
-            }
-          ],
-          "bossKills": [
-            {
-              "encounterID": 3470,
-              "difficulty": 4
-            },
-            {
-              "encounterID": 3445,
-              "difficulty": 4
-            }
-          ],
+          "attackDetail": [],
           "offRole": {
             "hps": 10435
           },
