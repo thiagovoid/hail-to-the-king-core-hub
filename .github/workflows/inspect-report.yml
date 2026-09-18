@@ -19,6 +19,7 @@ on:
         options:
           - roles
           - preparation
+          - parse
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -65,3 +66,10 @@ jobs:
             ARGS+=(--player="${{ inputs.player }}")
           fi
           npm run wcl:inspect-preparation -- "${ARGS[@]}"
+
+      - name: Inspecionar parse (ranks por dificuldade)
+        if: inputs.tool == 'parse'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: npm run wcl:inspect-parse -- --report="${{ inputs.report }}"

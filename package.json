@@ -21,7 +21,8 @@
     "raiderio:check-guild-membership": "vite-node -c vitest.config.ts scripts/raiderio/check-guild-membership.ts",
     "raiderio:update-weekly-mythic": "vite-node -c vitest.config.ts scripts/raiderio/update-weekly-mythic-highlights.ts",
     "wcl:inspect-roles": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-roles.ts",
-    "wipefest:fetch-mechanics": "vite-node -c vitest.config.ts scripts/wipefest/fetch-mechanics.ts"
+    "wipefest:fetch-mechanics": "vite-node -c vitest.config.ts scripts/wipefest/fetch-mechanics.ts",
+    "wcl:inspect-parse": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-parse.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
