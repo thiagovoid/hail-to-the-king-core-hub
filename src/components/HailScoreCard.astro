@@ -1,0 +1,110 @@
+---
+/**
+ * Hail Score — a nota do core inteiro na noite mais recente.
+ *
+ * O número sozinho ("78") não diz se é bom. O título diz, e é a parte que
+ * dá vontade de perseguir: a guild se chama Hail to the King, então a
+ * escada termina em Rei e todo mundo sabe onde quer chegar.
+ */
+import { TITULOS_DO_HAIL_SCORE, tituloDoHailScore } from '@/engine/team/hailScore';
+
+interface Props {
+  /** Selo da noite mais recente. Null quando nenhuma run tem score. */
+  valor: number | null;
+  /** Selo da noite anterior, pra mostrar o movimento. */
+  anterior?: number | null;
+  nightDate?: string | null;
+}
+
+const { valor, anterior = null, nightDate = null } = Astro.props;
+
+const titulo = valor === null ? null : tituloDoHailScore(valor);
+const variacao = valor !== null && anterior !== null ? valor - anterior : null;
+
+const proximo =
+  valor === null ? null : TITULOS_DO_HAIL_SCORE.find((faixa) => faixa.minimo > valor) ?? null;
+
+const formatarNoite = (iso: string) => {
+  const [ano, mes, dia] = iso.split('-');
+  return `${dia}/${mes}/${ano}`;
+};
+---
+
+<article class="bg-gradient-to-br from-slate-900/80 to-slate-900/40 border border-amber-500/20 rounded-xl p-6 mb-6">
+  <div class="flex flex-wrap items-start justify-between gap-6">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-amber-500/80">
+        Hail Score
+      </p>
+
+      {valor !== null && titulo !== null ? (
+        <>
+          <div class="flex items-baseline gap-3 mt-2">
+            <strong class="text-5xl font-bold text-white leading-none">{valor}</strong>
+            <span class="text-base text-slate-500">/100</span>
+
+            {variacao !== null && variacao !== 0 && (
+              <span
+                class={variacao > 0 ? 'text-sm text-emerald-400' : 'text-sm text-red-400'}
+                title="Contra a noite anterior"
+              >
+                {variacao > 0 ? '↑' : '↓'} {Math.abs(variacao)}
+              </span>
+            )}
+          </div>
+
+          <p class="text-2xl font-bold text-amber-400 mt-2">{titulo.nome}</p>
+          <p class="text-sm text-slate-400 mt-1">{titulo.descricao}</p>
+        </>
+      ) : (
+        <>
+          <p class="text-2xl font-bold text-slate-500 mt-2">Sem dado</p>
+          <p class="text-sm text-slate-500 mt-1">
+            Nenhuma run com score suficiente pra calcular o Hail Score.
+          </p>
+        </>
+      )}
+
+      <p class="text-[11px] text-slate-600 mt-3">
+        Média do Score Geral de quem jogou
+        {nightDate ? ` na noite de ${formatarNoite(nightDate)}` : ' na última noite'} — mesma
+        régua da página de cada jogador.
+      </p>
+    </div>
+
+    {/* A escada inteira à vista: saber que existe "Rei" é o que faz o
+        número virar objetivo em vez de placar. */}
+    <ol class="flex flex-col gap-1.5 min-w-[9rem]">
+      {
+        [...TITULOS_DO_HAIL_SCORE].reverse().map((faixa) => {
+          const alcancado = valor !== null && valor >= faixa.minimo;
+          const atual = titulo !== null && titulo.nome === faixa.nome;
+
+          return (
+            <li
+              class={`flex items-center justify-between gap-3 text-xs px-2.5 py-1 rounded-md ${
+                atual
+                  ? 'bg-amber-500/15 text-amber-300 font-semibold'
+                  : alcancado
+                    ? 'text-slate-400'
+                    : 'text-slate-600'
+              }`}
+            >
+              <span>{faixa.nome}</span>
+              <span class="tabular-nums">{faixa.minimo}+</span>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+
+  {
+    valor !== null && proximo !== null && (
+      <p class="text-xs text-slate-500 mt-4 pt-4 border-t border-slate-800">
+        Faltam <span class="text-amber-400 font-semibold">{proximo.minimo - valor}</span> pontos
+        pro core virar <span class="text-slate-300">{proximo.nome}</span>.
+      </p>
+    )
+  }
+</article>

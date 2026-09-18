@@ -22,6 +22,7 @@ const cards = [
   average.dps !== undefined ? { label: 'DPS médio', value: formatPerformanceValue(average.dps) } : null,
   average.hps !== undefined ? { label: 'HPS médio', value: formatPerformanceValue(average.hps) } : null,
   { label: 'Bosses mortos', value: String(average.bossesMortos) },
+  { label: 'Mortes na season', value: String(average.mortesNaSeason) },
   average.parse !== undefined ? { label: 'Parse médio', value: String(average.parse) } : null,
   average.mechanics !== undefined
     ? { label: 'Erros mecânicos', value: String(average.mechanics.errors) }
@@ -40,7 +41,7 @@ const cards = [
       Média de {average.runs} run(s) registrada(s). Item Level é o último
       registrado, não uma média. Bosses mortos é o total de kills com
       você presente na try, contando repetição: três clears do mesmo boss
-      contam três.
+      contam três. Mortes é o total da temporada, não a média por run.
     </p>
   </div>
 

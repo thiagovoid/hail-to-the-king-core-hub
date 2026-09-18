@@ -168,7 +168,9 @@ const primaryMetricSeries = player.role === 'healer'
 
 // Escondidas por hora (mesmo critério do dashboard do core): só a métrica
 // principal (dps/hps) fica no gráfico. Basta tirar daqui pra voltarem.
-const HIDDEN_CHART_SERIES = new Set(['parse', 'deaths']);
+// Mortes virou indicador de temporada, ao lado de Bosses mortos. Parse
+// voltou: sete das oito noites têm percentil pra 100% dos presentes.
+const HIDDEN_CHART_SERIES = new Set(['deaths']);
 
 const overallScore = hasData
   ? calculateOverallScore(ultimaNoite ?? seasonAverage, seasonJson.config.performanceTargets)

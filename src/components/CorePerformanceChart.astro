@@ -845,7 +845,9 @@ const serializedMetrics = metrics.map((metric) => ({
       labelsSvg += `<text x="${getXRanking(date, dates)}" y="${height - 8}" text-anchor="middle" class="fill-slate-500 text-[11px]">${formatShortDate(date)}</text>`;
     }
 
-    return `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Ranking de ${escapeHtml(metric.label)} do core">${gridSvg}${seriesSvg}<g>${labelsSvg}</g></svg>`;
+    const dicas = buildDicasDeColuna(metric, dates, getXRanking, posicoes);
+
+    return `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Ranking de ${escapeHtml(metric.label)} do core">${gridSvg}${seriesSvg}<g>${labelsSvg}</g>${dicas}</svg>`;
   }
 
 /**
@@ -857,6 +859,75 @@ const serializedMetrics = metrics.map((metric) => ({
    */
   function faixaDeAlcance(points: string): string {
     return `<polyline points="${points}" fill="none" stroke="transparent" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }
+
+  /**
+   * Uma caixa por data, escondida, com o dado de todo mundo naquela noite.
+   *
+   * Poderia ser um retângulo de captura por coluna, resolvido em CSS — mas
+   * ele cobriria as linhas e mataria o realce no hover, que é o outro
+   * mecanismo desta tela. Aqui as caixas ficam por cima, sem capturar
+   * ponteiro, e um único mousemove decide qual aparece.
+   */
+  function buildDicasDeColuna(
+    metric: SerializedMetric,
+    dates: string[],
+    xDe: (date: string, dates: string[]) => number,
+    posicoes?: Map<string, Map<string, number>>
+  ): string {
+    const alturaLinha = 13;
+    const larguraCaixa = 176;
+
+    let svg = '';
+
+    for (const date of dates) {
+      const x = xDe(date, dates);
+
+      const linhas = metric.series
+        .map((series) => {
+          const ponto = series.data.find((item) => item.date === date);
+          if (!ponto) return null;
+          return {
+            nome: series.playerName,
+            cor: series.playerColor,
+            valor: ponto.value,
+            posicao: posicoes?.get(date)?.get(series.playerName),
+          };
+        })
+        .filter((item): item is NonNullable<typeof item> => item !== null)
+        .sort((a, b) =>
+          metric.direction === 'higher' ? b.valor - a.valor : a.valor - b.valor
+        );
+
+      if (linhas.length === 0) continue;
+
+      const alturaCaixa = 34 + linhas.length * alturaLinha;
+      // Abre pro lado com espaço: perto da borda direita a caixa sairia da
+      // área visível.
+      const paraEsquerda = x > width - larguraCaixa - 40;
+      const caixaX = paraEsquerda ? x - larguraCaixa - 12 : x + 12;
+      const caixaY = Math.max(6, Math.min(paddingTop, height - alturaCaixa - 6));
+
+      let corpo = '';
+      linhas.forEach((linha, indice) => {
+        const y = caixaY + 30 + indice * alturaLinha;
+        const marcador = linha.posicao === undefined ? '' : `${linha.posicao}º `;
+        corpo +=
+          `<circle cx="${caixaX + 10}" cy="${y - 3}" r="3" class="${linha.cor}" fill="currentColor"/>` +
+          `<text x="${caixaX + 18}" y="${y}" class="fill-slate-300 text-[10px]">${escapeHtml(linha.nome)}</text>` +
+          `<text x="${caixaX + larguraCaixa - 10}" y="${y}" text-anchor="end" class="fill-slate-400 text-[10px]">${marcador}${formatValue(linha.valor)}</text>`;
+      });
+
+      svg +=
+        `<g class="dica-coluna" data-date="${date}">` +
+        `<line x1="${x}" y1="${paddingTop}" x2="${x}" y2="${height - paddingBottom}" stroke="currentColor" class="text-slate-500" stroke-width="1" stroke-dasharray="3 3"/>` +
+        `<rect x="${caixaX}" y="${caixaY}" width="${larguraCaixa}" height="${alturaCaixa}" rx="8" class="fill-[#141b2d] stroke-white/10" stroke-width="1"/>` +
+        `<text x="${caixaX + 10}" y="${caixaY + 14}" class="fill-slate-400 text-[10px] font-semibold">${formatShortDate(date)}</text>` +
+        corpo +
+        `</g>`;
+    }
+
+    return svg;
   }
 
   function buildMetricMarkup(
@@ -923,7 +994,8 @@ const serializedMetrics = metrics.map((metric) => ({
         ? `<a href="/core/membros/${playerSeries.playerSlug}/" class="text-slate-300 hover:text-white hover:underline transition-colors">${nameEscaped}</a>`
         : `<span class="text-slate-300">${nameEscaped}</span>`;
 
-      legendHtml += `<div class="legenda-item flex items-center gap-2 text-xs" data-jogador="${nameEscaped}"><span class="w-2 h-2 rounded-full ${playerSeries.playerColor}" style="background-color: currentColor;"></span>${nameHtml}${trendHtml}</div>`;
+      if (metric.series.length > 1)
+        legendHtml += `<div class="legenda-item flex items-center gap-2 text-xs" data-jogador="${nameEscaped}"><span class="w-2 h-2 rounded-full ${playerSeries.playerColor}" style="background-color: currentColor;"></span>${nameHtml}${trendHtml}</div>`;
     }
 
     let axisSvg = '';
@@ -939,7 +1011,7 @@ const serializedMetrics = metrics.map((metric) => ({
     const svg =
       modo === 'ranking'
         ? buildRankingSvg(metric, dates)
-        : `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Evolução de ${escapeHtml(metric.label)} do core">${gridSvg}${currentSvg}${seriesSvg}${axisSvg}</svg>`;
+        : `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Evolução de ${escapeHtml(metric.label)} do core">${gridSvg}${currentSvg}${seriesSvg}${axisSvg}${buildDicasDeColuna(metric, dates, getX)}</svg>`;
 
     // No ranking a posição já é a leitura; sem esta nota ninguém descobre que
     // o valor continua ali, no hover de cada ponto.
@@ -979,6 +1051,21 @@ const serializedMetrics = metrics.map((metric) => ({
     const metric = metricsData.find((item) => item.id === metricaAtiva);
     const alvo = document.querySelector(`[data-metric-chart="${metricaAtiva}"]`);
     if (!metric || !alvo) return;
+
+    // Ranking pressupõe gente pra ranquear. No Hail Score, que é uma linha
+    // só do core, o botão some em vez de ficar lá oferecendo um modo que
+    // devolveria uma faixa única.
+    const daPraRanquear = metric.series.length > 1;
+    barraDeModo?.classList.toggle('hidden', !daPraRanquear);
+    if (!daPraRanquear && modoAtivo === 'ranking') {
+      modoAtivo = 'valor';
+      barraDeModo?.querySelectorAll('[data-modo]').forEach((botao) => {
+        const ativo = botao.getAttribute('data-modo') === 'valor';
+        botao.classList.toggle('bg-slate-700', ativo);
+        botao.classList.toggle('text-white', ativo);
+        botao.classList.toggle('text-slate-400', !ativo);
+      });
+    }
 
     // A série COMPLETA vai junto: buildMetricMarkup usa o recorte pra
     // desenhar e o completo pra calcular tendência.
@@ -1055,6 +1142,52 @@ const serializedMetrics = metrics.map((metric) => ({
 
   document.querySelectorAll('[data-metric-chart]').forEach(ligarRealceDaLegenda);
 
+
+  /**
+   * Mostra a caixa da coluna mais próxima do cursor.
+   *
+   * Um mousemove só, no SVG: as caixas não capturam ponteiro, então o realce
+   * da linha continua funcionando por baixo — os dois mecanismos convivem em
+   * vez de disputar o clique.
+   */
+  function ligarDicasDeColuna(container: Element) {
+    container.addEventListener('mousemove', (evento) => {
+      const svg = container.querySelector('svg');
+      if (!svg) return;
+
+      const caixas = [...svg.querySelectorAll('.dica-coluna')] as SVGGElement[];
+      if (caixas.length === 0) return;
+
+      const area = svg.getBoundingClientRect();
+      if (area.width === 0) return;
+
+      // O viewBox é 0 0 800 320 e a altura é automática, então a proporção
+      // bate e a conversão é uma regra de três.
+      const xNoSvg = (((evento as MouseEvent).clientX - area.left) / area.width) * width;
+
+      let maisPerto: SVGGElement | null = null;
+      let menorDistancia = Infinity;
+
+      for (const caixa of caixas) {
+        const linha = caixa.querySelector('line');
+        const x = Number(linha?.getAttribute('x1') ?? 0);
+        const distancia = Math.abs(x - xNoSvg);
+        if (distancia < menorDistancia) {
+          menorDistancia = distancia;
+          maisPerto = caixa;
+        }
+      }
+
+      for (const caixa of caixas) caixa.classList.toggle('visivel', caixa === maisPerto);
+    });
+
+    container.addEventListener('mouseleave', () => {
+      container.querySelectorAll('.dica-coluna').forEach((caixa) => caixa.classList.remove('visivel'));
+    });
+  }
+
+  document.querySelectorAll('[data-metric-chart]').forEach(ligarDicasDeColuna);
+
   // Troca o desenho do servidor pela versão interativa. O do servidor segue
   // servindo de reserva pra quem estiver sem JS — só não tem realce.
   renderizar();
@@ -1101,5 +1234,20 @@ const serializedMetrics = metrics.map((metric) => ({
 
   [data-metric-chart] .legenda-item {
     cursor: default;
+  }
+
+  /*
+   * As caixas de coluna ficam por cima de tudo mas NÃO capturam ponteiro.
+   * Se capturassem, cobririam as linhas e o realce no hover nunca
+   * dispararia — os dois mecanismos precisam conviver.
+   */
+  [data-metric-chart] .dica-coluna {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 90ms ease;
+  }
+
+  [data-metric-chart] .dica-coluna.visivel {
+    opacity: 1;
   }
 </style>

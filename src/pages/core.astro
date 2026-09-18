@@ -32,11 +32,20 @@ const weeklyHighlights = getLatestWeeklyHighlights();
 import { getCorePerformanceSeries } from '@/engine/metrics';
 import { buildCoreRanking, calculateCoreAverages } from '@/engine/team';
 import { calculateCoreHealth } from '@/engine/guild/coreHealth';
+import { serieDoHailScore } from '@/engine/team/hailScore';
+import HailScoreCard from '@/components/HailScoreCard.astro';
 
 const coreAverages = calculateCoreAverages(performanceWeeks);
 const targets = config.performanceTargets;
 const coreRanking = buildCoreRanking(performanceWeeks, players, targets);
 const coreHealth = calculateCoreHealth(performanceWeeks, players, targets, bossesNormal, bossesHeroic);
+
+// Hail Score: a nota do core inteiro, noite a noite. Entra como a primeira
+// aba do gráfico porque é a leitura de cima — as outras explicam ela.
+const hailScore = serieDoHailScore(performanceWeeks, targets);
+const hailScoreAtual = hailScore.at(-1)?.value ?? null;
+const hailScoreAnterior = hailScore.at(-2)?.value ?? null;
+const hailScoreData = hailScore.at(-1)?.date ?? null;
 
 const dpsSeries = getCorePerformanceSeries(
   performanceWeeks,
@@ -120,7 +129,11 @@ const base = '';
 // Parse e mortes seguem escondidos: parse só existe pra boss morto, e
 // mortes saíram do score. Mecânicas voltou quando a coleta do Wipefest
 // passou a rodar. As séries continuam sendo calculadas — basta tirar daqui.
-const HIDDEN_CHART_METRICS = new Set(['parse', 'deaths']);
+// Mortes saiu do score e virou indicador na página do jogador. Parse
+// voltou: das oito noites coletadas, sete têm percentil pra 100% dos
+// presentes — a exceção é 27/08, que não teve kill nenhum, e a WCL só
+// rankeia kill. Noite sem boss morto simplesmente não vira ponto.
+const HIDDEN_CHART_METRICS = new Set(['deaths']);
 
 const formatDpsAverage = (value: number | null) => (value === null ? null : formatThousands(value, 2));
 
@@ -226,8 +239,28 @@ const avgIoSubtitle = bestKey
       <SummaryCard title="Erros Mecânicos" value={coreAverages.mechanicErrors} subtitle="Média · última run" icon="⚠" accent="gold" />
     </div>
 
+    <HailScoreCard
+      valor={hailScoreAtual}
+      anterior={hailScoreAnterior}
+      nightDate={hailScoreData}
+    />
+
     <CorePerformanceChart
       metrics={[
+        {
+          id: 'hail-score',
+          label: 'Hail Score',
+          direction: 'higher',
+          series: [
+            {
+              playerId: 'core',
+              playerName: 'Core',
+              playerClass: null,
+              playerSlug: undefined,
+              data: hailScore,
+            },
+          ],
+        },
         {
           id: 'dps',
           label: 'DPS',

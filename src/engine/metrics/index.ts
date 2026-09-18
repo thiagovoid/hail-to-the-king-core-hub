@@ -57,6 +57,11 @@ export interface PlayerSeasonAverage extends PlayerPerformance {
    * repetição: estar em três clears de Nek'zali conta três.
    */
   bossesMortos: number;
+  /**
+   * Total de mortes na temporada. Mortes não pontuam no Score Geral, mas o
+   * acumulado é um número que o core quer ver — por isso soma, não média.
+   */
+  mortesNaSeason: number;
 }
 
 export function buildPlayerSeasonAverage(
@@ -74,6 +79,7 @@ export function buildPlayerSeasonAverage(
     playerId,
     runs: history.length,
     bossesMortos: contarKills(history.map((run) => run.bossKills)),
+    mortesNaSeason: history.reduce((soma, run) => soma + run.deaths, 0),
     dps: average(defined(history.map((run) => run.dps))),
     hps: average(defined(history.map((run) => run.hps))),
     parse: average(defined(history.map((run) => run.parse))),
