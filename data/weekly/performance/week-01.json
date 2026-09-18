@@ -7,8 +7,10 @@
       "players": [
         {
           "playerId": "voidwar",
-          "dps": 48020,
+          "dps": 47189,
+          "parse": 37,
           "itemLevel": 290,
+          "preparation": 100,
           "deaths": 9,
           "mechanics": {
             "errors": 0.5,
@@ -31,8 +33,16 @@
         },
         {
           "playerId": "blackwatch",
-          "dps": 37606,
+          "dps": 34992,
+          "parse": 22,
           "itemLevel": 292,
+          "preparation": 62,
+          "preparationMissing": [
+            "Elmo",
+            "Peito",
+            "Botas",
+            "Colar"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.6,
@@ -61,7 +71,19 @@
         },
         {
           "playerId": "kams",
-          "hps": 107887,
+          "hps": 98880,
+          "parse": 74,
+          "preparation": 0,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma",
+            "Colar"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.4,
@@ -84,8 +106,16 @@
         },
         {
           "playerId": "bustgril",
-          "dps": 67209,
+          "dps": 63619,
+          "parse": 23,
           "itemLevel": 286,
+          "preparation": 75,
+          "preparationMissing": [
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.4,
@@ -108,8 +138,10 @@
         },
         {
           "playerId": "kroline",
-          "dps": 17352,
+          "dps": 16390,
+          "parse": 32,
           "itemLevel": 291,
+          "preparation": 100,
           "deaths": 6,
           "mechanics": {
             "errors": 0.3,
@@ -132,8 +164,10 @@
         },
         {
           "playerId": "jrxamã",
-          "dps": 99309,
+          "dps": 89958,
+          "parse": 35,
           "itemLevel": 290,
+          "preparation": 100,
           "deaths": 7,
           "mechanics": {
             "errors": 0.3,
@@ -150,8 +184,14 @@
         },
         {
           "playerId": "heracranosx",
-          "dps": 85671,
+          "dps": 81095,
+          "parse": 39,
           "itemLevel": 293,
+          "preparation": 88,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.6,
@@ -180,8 +220,20 @@
         },
         {
           "playerId": "nerlock",
-          "dps": 35285,
+          "dps": 24744,
+          "parse": 3,
           "itemLevel": 258,
+          "preparation": 0,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma",
+            "Colar"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.3,
@@ -204,8 +256,14 @@
         },
         {
           "playerId": "metallicä",
-          "dps": 45084,
+          "dps": 45735,
+          "parse": 4,
           "itemLevel": 290,
+          "preparation": 76,
+          "preparationMissing": [
+            "Botas",
+            "Colar"
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 0.5,
@@ -234,8 +292,10 @@
         },
         {
           "playerId": "xúliodk",
-          "dps": 59531,
+          "dps": 55041,
+          "parse": 14,
           "itemLevel": 293,
+          "preparation": 100,
           "deaths": 5,
           "mechanics": {
             "errors": 0.8,
@@ -264,6 +324,124 @@
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
+              "tries": 1
+            }
+          ]
+        },
+        {
+          "playerId": "youkaiqqz",
+          "dps": 76413,
+          "parse": 30,
+          "itemLevel": 293,
+          "deaths": 8,
+          "mechanics": {
+            "errors": 0.6,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tries": 1
+            }
+          ]
+        },
+        {
+          "playerId": "panicdeath",
+          "dps": 49034,
+          "parse": 4,
+          "itemLevel": 289,
+          "deaths": 7,
+          "mechanics": {
+            "errors": 0.4,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
+            }
+          ]
+        },
+        {
+          "playerId": "orthín",
+          "dps": 58591,
+          "parse": 13,
+          "itemLevel": 287,
+          "deaths": 5,
+          "mechanics": {
+            "errors": 0.8,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tries": 1
+            }
+          ]
+        },
+        {
+          "playerId": "soju",
+          "hps": 53307,
+          "parse": 33,
+          "itemLevel": 255,
+          "deaths": 9,
+          "mechanics": {
+            "errors": 0.9,
+            "tries": 7
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 3
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
               "tries": 1
             }
           ]

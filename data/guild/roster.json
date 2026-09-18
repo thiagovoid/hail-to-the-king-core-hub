@@ -668,5 +668,109 @@
       "attendance": 17,
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Naamt"
     }
+  },
+  {
+    "id": "youkaiqqz",
+    "name": "Youkaiqqz",
+    "class": "shaman",
+    "race": "Goblin",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/153/203352985-avatar.jpg?alt=/wow/static/images/2d/avatar/9-0.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/azralon/Youkaiqqz"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Youkaiqqz"
+    }
+  },
+  {
+    "id": "panicdeath",
+    "name": "Panicdeath",
+    "class": "hunter",
+    "race": "Elfo da Noite",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/122/111868026-avatar.jpg?alt=/wow/static/images/2d/avatar/4-0.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/nemesis/Panicdeath"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Panicdeath"
+    }
+  },
+  {
+    "id": "orthín",
+    "name": "Orthín",
+    "class": "paladin",
+    "race": "",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": null,
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/stormrage/Orth%C3%ADn"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Orth%C3%ADn"
+    }
+  },
+  {
+    "id": "soju",
+    "name": "Soju",
+    "class": "shaman",
+    "race": "Pandaren",
+    "spec": "",
+    "heroSpec": null,
+    "role": "healer",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/goldrinn/212/237715412-avatar.jpg?alt=/wow/static/images/2d/avatar/25-1.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/goldrinn/Soju"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/goldrinn/Soju"
+    }
   }
 ]
