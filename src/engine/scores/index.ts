@@ -9,6 +9,12 @@ export interface ScoreDimension {
   label: string;
   /** Peso da dimensão — os quatro somam exatamente 100. */
   weight: number;
+  /**
+   * O que o valor mede ("erros por try", "percentil"). Sem isto, 2,3 e 11
+   * na mesma tela pareciam grandezas do mesmo tipo — um é média por try, o
+   * outro é frequência entre trys.
+   */
+  unit: string;
   /** O que a métrica mede, pra explicar a nota na interface. */
   description: string;
   /** De onde o dado vem (ou por que ainda não vem). */
@@ -41,10 +47,14 @@ export interface OverallPerformanceScore {
  * importância original (Parse > Mecânicas > Cooldowns > Preparação), em vez
  * de deixar os quatro somando 85.
  */
-const DIMENSION_META: Record<ScoreDimensionKey, { label: string; weight: number; description: string; source: string }> = {
+const DIMENSION_META: Record<
+  ScoreDimensionKey,
+  { label: string; weight: number; unit: string; description: string; source: string }
+> = {
   parse: {
     label: "Parse",
     weight: 35,
+    unit: "percentil",
     description:
       "Percentil do seu dano (ou cura) comparado com jogadores da mesma spec no mesmo boss e dificuldade. 60 significa que você ficou acima de 60% deles.",
     source:
@@ -53,18 +63,21 @@ const DIMENSION_META: Record<ScoreDimensionKey, { label: string; weight: number;
   mechanics: {
     label: "Mecânicas",
     weight: 30,
+    unit: "erros por try",
     description: "Erros de execução de mecânica ao longo da noite — dano evitável tomado, soak perdido, etc.",
     source: "Wipefest. Coleta ainda não rodou com dado real, por isso aparece sem dado.",
   },
   cooldowns: {
     label: "Cooldowns",
     weight: 25,
+    unit: "% de uso",
     description: "Percentual de uso correto dos seus cooldowns ao longo da noite.",
     source: "WoW Analyzer. Sem coleta hoje: o site bloqueia automação via Cloudflare.",
   },
   preparation: {
     label: "Preparação",
     weight: 10,
+    unit: "% pronto",
     description:
       "Quanto do equipamento está encantado e gemado, comparado ao que o guia da sua spec recomenda. Vale a presença, não o item exato: encanto ou gema fora do BIS conta igual. Consumíveis ainda não entram na conta.",
     source: "Warcraft Logs (gear do log) + Wowhead (quantos encantos e gemas se espera na sua spec).",

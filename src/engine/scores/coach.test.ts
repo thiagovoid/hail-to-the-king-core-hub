@@ -22,6 +22,7 @@ function score(scores: Partial<Record<ScoreDimensionKey, number | null>>): Overa
     key,
     label: LABELS[key],
     weight: WEIGHTS[key],
+    unit: `unidade de ${key}`,
     score: scores[key] ?? null,
     value: scores[key] ?? null,
     description: `descrição de ${key}`,

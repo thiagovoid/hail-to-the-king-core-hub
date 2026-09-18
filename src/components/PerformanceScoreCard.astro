@@ -148,17 +148,21 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                 </span>
               </span>
 
-              {/* Valor real e meta lado a lado, como no card de Objetivos: "87"
-                  sozinho parecia um valor, mas é percentual de caminho andado —
-                  e ninguém reconhecia a própria métrica nele. */}
+              {/* Valor com unidade e meta ao lado. "87" sozinho parecia um
+                  valor, mas é percentual de caminho andado — e sem unidade o
+                  2,3 (média por try) e o 11 (frequência entre trys) pareciam
+                  grandezas do mesmo tipo. */}
               <span class="flex items-baseline gap-2">
                 {dimension.value !== null ? (
                   <>
                     <span class={`font-semibold ${corDaDimensao(dimension).texto}`}>
                       {formatarValor(dimension.value)}
                     </span>
-                    <span class="text-slate-600">meta {formatarValor(dimension.target.target)}</span>
-                    {dimension.score !== null && <span class="text-slate-600">&middot; {dimension.score}%</span>}
+                    <span class="text-slate-500">{dimension.unit}</span>
+                    <span class="text-slate-600">&middot; meta {formatarValor(dimension.target.target)}</span>
+                    {dimension.score !== null && (
+                      <span class="text-slate-600">&middot; {dimension.score}% da meta</span>
+                    )}
                   </>
                 ) : (
                   <span class="text-slate-600">sem dado</span>
@@ -184,17 +188,17 @@ const directionLabel = (direction: 'higher' | 'lower') =>
               </p>
             )}
 
-            {/* Mesma ideia da Preparação: o número diz quanto, a lista diz
-                onde treinar. Soma da temporada, igual ao número da dimensão. */}
+            {/* "x11" fazia o número parecer quantidade da habilidade. É
+                frequência: em quantas trys ela foi errada. O denominador
+                responde "de quantas?" sem a pessoa procurar, e deixa a conta
+                visível — a soma dessas trys, dividida pelo total, é a nota. */}
             {dimension.key === 'mechanics' && mechanicsDetail.length > 0 && (
               <ul class="mt-1.5 space-y-0.5">
                 {mechanicsDetail.map((item) => (
                   <li class="text-[11px] text-slate-500 leading-relaxed">
-                    {/* O rótulo vem do log, no idioma de quem gravou: quem raida
-                        em português conhece "Peçonha Sanguínea", não "Blood
-                        Venom", e não reconhecia a própria mecânica. */}
                     <span class="text-slate-400">{item.label ?? item.mechanic.replace('Damage from ', '')}</span>
-                    {' '}&times;{item.tries}
+                    {' '}
+                    {nightTries !== null ? `em ${item.tries} de ${nightTries} trys` : `em ${item.tries} trys`}
                     <span class="text-slate-600"> &middot; {item.boss}</span>
                   </li>
                 ))}
