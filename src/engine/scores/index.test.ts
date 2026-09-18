@@ -9,6 +9,7 @@ const TARGETS: CorePerformanceTargets = {
   mechanics: { target: 2, direction: "lower" },
   attack: { target: 70, direction: "higher" },
   defense: { target: 60, direction: "higher" },
+  healing: { target: 80, direction: "higher" },
   preparation: { target: 60, direction: "higher" },
 };
 
@@ -73,6 +74,7 @@ describe("calculateOverallScore", () => {
       "mechanics",
       "attack",
       "defense",
+      "healing",
       "preparation",
     ]);
     expect(result.overall).toBe(100);

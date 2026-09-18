@@ -7,6 +7,7 @@ const WEIGHTS: Record<ScoreDimensionKey, number> = {
   mechanics: 30,
   attack: 15,
   defense: 10,
+  healing: 20,
   preparation: 10,
 };
 
@@ -15,6 +16,7 @@ const LABELS: Record<ScoreDimensionKey, string> = {
   mechanics: "Mecânicas",
   attack: "Atacar",
   defense: "Defender",
+  healing: "Curar",
   preparation: "Preparação",
 };
 

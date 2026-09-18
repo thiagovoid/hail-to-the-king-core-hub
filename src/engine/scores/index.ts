@@ -2,7 +2,13 @@ import type { PlayerPerformance } from "../../types/performance";
 import type { CorePerformanceTargets, CoreTarget } from "../../types/index";
 import { calculateGoalProgress } from "../metrics";
 
-export type ScoreDimensionKey = "parse" | "mechanics" | "attack" | "defense" | "preparation";
+export type ScoreDimensionKey =
+  | "parse"
+  | "mechanics"
+  | "attack"
+  | "defense"
+  | "healing"
+  | "preparation";
 
 export interface ScoreDimension {
   key: ScoreDimensionKey;
@@ -42,10 +48,16 @@ export interface OverallPerformanceScore {
 }
 
 /**
- * Pesos das quatro dimensões. Somam 100 — quando Mortes (peso 15) saiu da
- * contabilização, os 15 pontos foram redistribuídos mantendo a ordem de
- * importância original (Parse > Mecânicas > Cooldowns > Preparação), em vez
- * de deixar os quatro somando 85.
+ * Peso de cada dimensão.
+ *
+ * As cinco que valem pra todo mundo somam 100 (Parse 35, Mecânicas 30,
+ * Atacar 15, Defender 10, Preparação 10). "Curar" fica FORA dessa soma de
+ * propósito: ela só existe pra quem curou, e a média é renormalizada pelas
+ * dimensões disponíveis de cada um — então o healer é avaliado com ela
+ * dentro, e o dps nem vê que ela existe.
+ *
+ * O peso 20 põe "Curar" acima de Atacar e Defender e abaixo de Mecânicas:
+ * pro healer é o ofício principal, mas não apaga o resto.
  */
 const DIMENSION_META: Record<
   ScoreDimensionKey,
@@ -86,6 +98,15 @@ const DIMENSION_META: Record<
       "Quanto do tempo seus cooldowns defensivos ficaram em recarga. Dano recebido e mitigação aparecem ao lado como contexto, mas não entram na nota: a mitigação ficou entre 38% e 48% pro raide inteiro, com os tanks por último — ela mede armadura e buff, não decisão.",
     source:
       "Warcraft Logs (eventos de cast e dano recebido) + Wowhead (recarga de cada magia).",
+  },
+  healing: {
+    label: "Curar",
+    weight: 20,
+    unit: "% de execução",
+    description:
+      "Quanto do dano que o raide tomou passou pelas suas mãos, medido contra o quinhão que caberia a você, mais o quanto da sua cura NÃO caiu em quem já estava cheio. Curar mais não é curar melhor: quem cura muito costuma estar num raide que apanhou muito.",
+    source:
+      "Warcraft Logs (cura efetiva, overheal e dano recebido pelo raide). Só existe pra quem a WCL registrou curando na noite — não pro que está escrito no roster.",
   },
   preparation: {
     label: "Preparação",
@@ -157,6 +178,13 @@ export function calculateOverallScore(
       target: targets.defense,
       value: performance.defense?.score ?? null,
       score: progress(performance.defense?.score ?? undefined, targets.defense),
+    },
+    {
+      key: "healing",
+      ...DIMENSION_META.healing,
+      target: targets.healing,
+      value: performance.healing?.score ?? null,
+      score: progress(performance.healing?.score, targets.healing),
     },
     {
       key: "preparation",

@@ -32,6 +32,11 @@
         "target": 30,
         "direction": "higher",
         "description": "Tempo médio em recarga dos cooldowns defensivos na noite. Calibrado sobre o log de 15/09: tanks entre 43 e 55, dps entre 4 e 36 — 60 seria inalcançável pra todo mundo. Mitigação e dano recebido são coletados e exibidos, mas não pontuam."
+      },
+      "healing": {
+        "target": 80,
+        "direction": "higher",
+        "description": "Nota de cura: metade quinhão do dano coberto, metade aproveitamento. Calibrado sobre o log de 15/09, em que os quatro healers ficaram entre 81,6 e 85."
       }
     },
     "nextRaid": {

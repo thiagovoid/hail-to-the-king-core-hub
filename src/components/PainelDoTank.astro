@@ -1,0 +1,116 @@
+---
+/**
+ * Painel do tank.
+ *
+ * Tank não compete com tank: guerreiro e death knight compensam dano de
+ * formas completamente diferentes, e o número de um não diz nada sobre o
+ * outro. No log de 15/09, Voidwar repôs 27% do que tomou com a própria cura
+ * e Apocalïpse repôs 50% — não existe "melhor" aí, existe estilo.
+ *
+ * O que existe é o tank contra ele mesmo ao longo do tempo. Por isso cada
+ * número aparece ao lado da PRÓPRIA média da temporada, e não de um
+ * ranking.
+ */
+import { formatCompact } from '@/utils/format';
+
+interface Props {
+  atual?: { dtps: number; mitigation: number; selfSustain?: number } | null;
+  media?: { dtps?: number; mitigation?: number; selfSustain?: number } | null;
+  nights?: number;
+}
+
+const { atual = null, media = null, nights = 0 } = Astro.props;
+
+const numeros =
+  atual === null
+    ? []
+    : [
+        {
+          label: 'Dano recebido',
+          valor: formatCompact(atual.dtps),
+          unidade: 'por segundo',
+          bruto: atual.dtps,
+          referencia: media?.dtps,
+          /** Tomar menos é melhor — mas não necessariamente mérito seu. */
+          menorMelhor: true,
+          nota: 'Depende do boss e de quem estava com a marcação; leia junto com os outros dois.',
+        },
+        {
+          label: 'Mitigação',
+          valor: `${atual.mitigation}%`,
+          unidade: 'do que vinha',
+          bruto: atual.mitigation,
+          referencia: media?.mitigation,
+          menorMelhor: false,
+          nota: 'Quanto foi cortado antes de entrar. Armadura e buff pesam muito aqui.',
+        },
+        ...(atual.selfSustain !== undefined
+          ? [
+              {
+                label: 'Auto-sustento',
+                valor: `${atual.selfSustain}%`,
+                unidade: 'do dano reposto',
+                bruto: atual.selfSustain,
+                referencia: media?.selfSustain,
+                menorMelhor: false,
+                nota: 'Quanto do que você tomou voltou pela sua própria cura.',
+              },
+            ]
+          : []),
+      ];
+---
+
+{
+  numeros.length > 0 && (
+    <section class="mb-10">
+      <div class="mb-4">
+        <h2 class="text-xl font-bold text-white">Como você segurou</h2>
+
+        <p class="text-sm text-slate-400 mt-1">
+          Última noite, comparada com a <strong class="text-slate-300">sua própria média</strong> em
+          {' '}{nights} noite(s). Não compare com outro tank: estilos de compensação de dano são
+          diferentes demais pra isso significar alguma coisa.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {numeros.map((numero) => {
+          const variacao =
+            numero.referencia !== undefined && numero.referencia > 0
+              ? Math.round(((numero.bruto - numero.referencia) / numero.referencia) * 100)
+              : null;
+
+          // "Melhorou" depende da direção de cada número: tomar menos dano é
+          // bom, mitigar menos não é.
+          const melhorou =
+            variacao === null || variacao === 0
+              ? null
+              : numero.menorMelhor
+                ? variacao < 0
+                : variacao > 0;
+
+          return (
+            <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wide text-slate-500">{numero.label}</p>
+
+              <div class="flex items-baseline gap-2 mt-1">
+                <strong class="text-2xl font-bold text-white">{numero.valor}</strong>
+                <span class="text-xs text-slate-500">{numero.unidade}</span>
+              </div>
+
+              {variacao !== null && variacao !== 0 && (
+                <p
+                  class={melhorou ? 'text-xs text-emerald-400 mt-1' : 'text-xs text-amber-400 mt-1'}
+                >
+                  {variacao > 0 ? '↑' : '↓'} {Math.abs(variacao)}% vs sua média
+                </p>
+              )}
+
+              <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">{numero.nota}</p>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  )
+}

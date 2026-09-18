@@ -1,0 +1,88 @@
+---
+/**
+ * O que a pessoa entregou FORA do ofício dela: o tank que soma dano, o dps
+ * que segura o próprio HP, o healer que ainda acha espaço pra bater.
+ *
+ * Fica numa seção própria, e não no gráfico principal, porque a grandeza
+ * não divide eixo com nada: o healer com 3,5k de dano ao lado do mago com
+ * 96k não é uma comparação, é um erro de leitura.
+ *
+ * Quem decide o que é "fora de função" é o log, não o cadastro — ver
+ * normalize.ts.
+ */
+import { formatCompact } from '@/utils/format';
+
+interface Props {
+  /** Última noite. Null quando a pessoa não teve contribuição fora de função. */
+  atual?: { dps?: number; hps?: number } | null;
+  /** Média das noites em que houve contribuição, pra dar régua ao número. */
+  media?: { dps?: number; hps?: number } | null;
+  nights?: number;
+}
+
+const { atual = null, media = null, nights = 0 } = Astro.props;
+
+const cartoes = [
+  atual?.dps !== undefined
+    ? {
+        label: 'Dano fora de função',
+        valor: atual.dps,
+        media: media?.dps,
+        nota: 'Dano que você entregou sem ser essa a sua função na noite.',
+      }
+    : null,
+  atual?.hps !== undefined
+    ? {
+        label: 'Cura fora de função',
+        valor: atual.hps,
+        media: media?.hps,
+        nota: 'Cura efetiva sua — em você ou em quem estava perto.',
+      }
+    : null,
+].filter((cartao): cartao is NonNullable<typeof cartao> => cartao !== null);
+---
+
+{
+  cartoes.length > 0 && (
+    <section class="mb-10">
+      <div class="mb-4">
+        <h2 class="text-xl font-bold text-white">Contribuição fora de função</h2>
+
+        <p class="text-sm text-slate-400 mt-1">
+          Última noite. Não entra no Score Geral e não deve ser comparada com quem tem essa
+          função — é o extra que você somou além do seu ofício.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {cartoes.map((cartao) => {
+          const variacao =
+            cartao.media !== undefined && cartao.media > 0
+              ? Math.round(((cartao.valor - cartao.media) / cartao.media) * 100)
+              : null;
+
+          return (
+            <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wide text-slate-500">{cartao.label}</p>
+
+              <div class="flex items-baseline gap-3 mt-1">
+                <strong class="text-2xl font-bold text-white">{formatCompact(cartao.valor)}</strong>
+
+                {variacao !== null && variacao !== 0 && (
+                  <span
+                    class={variacao > 0 ? 'text-xs text-emerald-400' : 'text-xs text-slate-500'}
+                    title={`Contra a sua média de ${formatCompact(cartao.media!)} em ${nights} noite(s)`}
+                  >
+                    {variacao > 0 ? '↑' : '↓'} {Math.abs(variacao)}% vs sua média
+                  </span>
+                )}
+              </div>
+
+              <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">{cartao.nota}</p>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  )
+}

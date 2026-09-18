@@ -21,6 +21,7 @@ const RECOMMENDATIONS: Record<ScoreDimensionKey, string> = {
   mechanics: "Mecânicas estão custando pontos. Reveja os guias dos bosses atuais focando nos erros mais recorrentes do seu personagem.",
   attack: "Sobrou tempo sem atacar ou cooldown guardado na mão. Planeje antes do pull em que momento cada cooldown entra — segurar pro final conta como não ter usado.",
   defense: "Cooldown defensivo guardado é dano que você tomou à toa. Veja quais mecânicas do boss doem em você e combine antes do pull qual defensivo entra em cada uma.",
+  healing: "A cura está deixando a desejar — ou você cobriu menos do que cabia a você, ou boa parte do que lançou caiu em quem já estava cheio. Olhe o desperdício antes do volume: curar mais raramente é a resposta.",
   preparation: "Preparação (consumíveis, ready checks) está deixando performance na mesa — é o jeito mais fácil de ganhar pontos sem mudar a execução.",
 };
 

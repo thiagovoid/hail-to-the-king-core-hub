@@ -9,6 +9,8 @@ import PerformanceSummary from '@/components/PerformanceSummary.astro';
 import PerformanceGoals from '@/components/PerformanceGoals.astro';
 import PerformanceScoreCard from '@/components/PerformanceScoreCard.astro';
 import PerformanceChart from '@/components/PerformanceChart.astro';
+import ContribuicaoForaDeFuncao from '@/components/ContribuicaoForaDeFuncao.astro';
+import PainelDoTank from '@/components/PainelDoTank.astro';
 
 import {
   buildPlayerSeasonAverage,
@@ -70,7 +72,45 @@ const attackParts = ultimaNoite?.attack
 
 const defenseDetail = (ultimaNoite?.defenseDetail ?? []).slice(0, 3);
 const defenseContext = ultimaNoite?.defense
-  ? { mitigation: ultimaNoite.defense.mitigation, dtps: ultimaNoite.defense.dtps }
+  ? {
+      mitigation: ultimaNoite.defense.mitigation,
+      dtps: ultimaNoite.defense.dtps,
+      selfSustain: ultimaNoite.defense.selfSustain,
+    }
+  : null;
+
+/** Média das noites em que o número existe — a régua é a pessoa, não o core. */
+const mediaDe = <T,>(valores: Array<T | undefined>): number | undefined => {
+  const definidos = valores.filter((valor): valor is T => valor !== undefined).map(Number);
+  if (definidos.length === 0) return undefined;
+  return Math.round(definidos.reduce((soma, valor) => soma + valor, 0) / definidos.length);
+};
+
+const foraDeFuncaoAtual = ultimaNoite?.offRole ?? null;
+const foraDeFuncaoMedia = {
+  dps: mediaDe(history.map((run) => run.offRole?.dps)),
+  hps: mediaDe(history.map((run) => run.offRole?.hps)),
+};
+const noitesForaDeFuncao = history.filter((run) => run.offRole !== undefined).length;
+
+// O painel só aparece pra quem a WCL registrou tankando — o cadastro pode
+// estar desatualizado, e quem trocou de função no meio da season veria um
+// painel que não é dela.
+const eTank = player.role === 'tank';
+const tankAtual = eTank && ultimaNoite?.defense ? ultimaNoite.defense : null;
+const tankMedia = {
+  dtps: mediaDe(history.map((run) => run.defense?.dtps)),
+  mitigation: mediaDe(history.map((run) => run.defense?.mitigation)),
+  selfSustain: mediaDe(history.map((run) => run.defense?.selfSustain)),
+};
+const noitesComoTank = history.filter((run) => run.defense !== undefined).length;
+
+const healingParts = ultimaNoite?.healing
+  ? {
+      coverage: ultimaNoite.healing.coverage,
+      share: ultimaNoite.healing.share,
+      overheal: ultimaNoite.healing.overheal,
+    }
   : null;
 
 const hasData = history.length > 0;
@@ -256,6 +296,7 @@ const attendance = calculateAttendance(weeks, player.id);
           attackParts={attackParts}
           defenseDetail={defenseDetail}
           defenseContext={defenseContext}
+          healingParts={healingParts}
         />
       )
     }
@@ -285,6 +326,14 @@ const attendance = calculateAttendance(weeks, player.id);
         />
       )
     }
+
+    <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
+
+    <ContribuicaoForaDeFuncao
+      atual={foraDeFuncaoAtual}
+      media={foraDeFuncaoMedia}
+      nights={noitesForaDeFuncao}
+    />
 
     {
       history.length > 0 && (

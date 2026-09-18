@@ -167,6 +167,8 @@ export interface CorePerformanceTargets {
   attack: CoreTarget;
   /** % de execução defensiva — cooldowns defensivos. */
   defense: CoreTarget;
+  /** Nota de cura. Só se aplica a quem curou na noite. */
+  healing: CoreTarget;
   /** % dos itens de preparação prontos. */
   preparation: CoreTarget;
 }
