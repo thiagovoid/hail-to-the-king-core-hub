@@ -7,6 +7,7 @@ import { saveRaw } from "../../src/services/RawStorage";
 import type { DataProvider } from "../../src/providers/types";
 import { RaiderIoProvider } from "../../src/providers/raiderio/RaiderIoProvider";
 import { buildPlayerPerformance } from "../../src/normalization/buildPlayerPerformance";
+import { buildParseByPlayer } from "../../src/providers/warcraftlogs/reportRankings";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
   buildChecklistFromReference,
@@ -494,6 +495,22 @@ async function main() {
 
   const runsByReportCode = new Map<string, { date: string; reportCode: string; players: PlayerPerformance[] }>();
 
+  // Percentis calculados pelo próprio relatório — uma chamada por log,
+  // contra uma por jogador por encontro do caminho antigo. É o que faz a
+  // dimensão de parse sair de "sem dado": o ranking global do personagem
+  // não inclui os logs do core.
+  const parsePorReport = new Map<string, Awaited<ReturnType<typeof buildParseByPlayer>>>();
+  for (const ctx of reportContexts) {
+    try {
+      const rankings = await wcl.fetchReportRankings(ctx.report.code);
+      const porJogador = buildParseByPlayer(rankings ?? undefined);
+      parsePorReport.set(ctx.report.code, porJogador);
+      console.log(`Parse do report ${ctx.report.code}: ${porJogador.size} jogador(es) com percentil.`);
+    } catch (error) {
+      console.warn(`Falha ao buscar parse do report ${ctx.report.code}: ${error instanceof Error ? error.message : error}`);
+    }
+  }
+
   for (const [index, ctx] of reportContexts.entries()) {
     const rankingOutcome = rankingOutcomes[index];
     const rankings = rankingOutcome.status === "ok" ? rankingOutcome.result.raw.rankings : [];
@@ -508,6 +525,7 @@ async function main() {
       aggregateTables: ctx.aggregateTables,
       fullTables: ctx.fullTables,
       rankings,
+      parseByPlayer: parsePorReport.get(ctx.report.code),
       players: rosterProfiles,
       resolvePreparationChecklist,
     });

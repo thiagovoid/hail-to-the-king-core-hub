@@ -6,6 +6,7 @@
  */
 
 import { calculatePreparation, type PreparationChecklist, type WclCombatantInfo } from "./preparation";
+import { findParse } from "./reportRankings";
 
 export interface WclProfile {
   region: string;
@@ -188,6 +189,14 @@ export interface BuildRunPlayersInput {
   aggregateTables: WclFightTables;
   fullTables: WclFightTables;
   rankings: WclRankingEntry[];
+  /**
+   * Parse por personagem, vindo dos rankings do próprio relatório.
+   *
+   * Substitui o cruzamento com o ranking global do personagem, que nunca
+   * batia: os logs do core não aparecem lá, então o filtro por reportCode
+   * resultava sempre vazio e a dimensão de maior peso ficava sem dado.
+   */
+  parseByPlayer?: Map<string, { parse: number; kills: number }>;
   players: Array<{ id: string; role: "tank" | "healer" | "dps"; profile: WclProfile }>;
   /**
    * Checklist de preparação **daquele jogador** — a recomendação é por spec,
@@ -245,6 +254,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     fullTables,
     rankings,
     players,
+    parseByPlayer,
     resolvePreparationChecklist,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
@@ -268,19 +278,29 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     const value = calculateMetricValue(entry.total, aggregateDurationMs);
     const deaths = countDeaths(deathEvents, player.profile.name);
 
-    // A WCL só rankeia kill — wipe não tem percentil. Então mesmo com o
-    // agregado cobrindo a noite toda, o parse é o melhor rank entre os
-    // bosses efetivamente mortos (os ranks já vêm só desses fights).
-    let bestRankPercent: number | undefined;
-    for (const ranking of rankings) {
-      if (ranking.metric !== metricKey) continue;
-      if (!sameCharacterName(ranking.characterName, player.profile.name)) continue;
+    // A WCL só calcula percentil pra kill — wipe não tem. Então mesmo com o
+    // agregado cobrindo a noite toda, o parse é o melhor entre os bosses
+    // efetivamente mortos.
+    //
+    // A fonte é `report.rankings` (percentis DESTE relatório), não o ranking
+    // global do personagem: conferido no CI, nenhum dos oito logs do core
+    // aparece no ranking global, então o cruzamento por reportCode resultava
+    // sempre vazio e a dimensão de maior peso nunca tinha dado.
+    let bestRankPercent = findParse(parseByPlayer ?? new Map(), player.profile.name)?.parse;
 
-      for (const rank of ranking.ranks) {
-        if (rank.report.code !== reportCode) continue;
-        if (!aggregateFightIds.includes(rank.report.fightID)) continue;
-        if (bestRankPercent === undefined || rank.rankPercent > bestRankPercent) {
-          bestRankPercent = rank.rankPercent;
+    // Caminho antigo, mantido como reserva: se algum dia os logs passarem a
+    // ser rankeados globalmente, ele ainda encontra o parse.
+    if (bestRankPercent === undefined) {
+      for (const ranking of rankings) {
+        if (ranking.metric !== metricKey) continue;
+        if (!sameCharacterName(ranking.characterName, player.profile.name)) continue;
+
+        for (const rank of ranking.ranks) {
+          if (rank.report.code !== reportCode) continue;
+          if (!aggregateFightIds.includes(rank.report.fightID)) continue;
+          if (bestRankPercent === undefined || rank.rankPercent > bestRankPercent) {
+            bestRankPercent = rank.rankPercent;
+          }
         }
       }
     }

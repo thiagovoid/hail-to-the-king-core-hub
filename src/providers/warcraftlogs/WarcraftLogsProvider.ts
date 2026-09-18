@@ -2,6 +2,7 @@ import type { DataProvider, ProviderResult } from "../types";
 import { wclGraphql } from "./client";
 import { selectAggregateFights } from "./normalize";
 import type { WclFight, WclFightTables, WclProfile, WclRankingEntry } from "./normalize";
+import type { WclReportRankings } from "./reportRankings";
 
 export interface WclReportRef {
   code: string;
@@ -198,6 +199,28 @@ export class WarcraftLogsProvider
       { code, fightIDs }
     );
     return data.reportData.report;
+  }
+
+  /**
+   * Percentis calculados para ESTE relatório — o que a página da WCL mostra.
+   *
+   * Diferente de `fetchEncounterRankings`, que é o ranking global do
+   * personagem e não inclui os logs do core (conferido no CI: nenhum dos oito
+   * relatórios da temporada aparece lá). É também uma chamada por relatório,
+   * contra uma por jogador por encontro.
+   */
+  async fetchReportRankings(reportCode: string): Promise<WclReportRankings | null> {
+    const data = await wclGraphql<{ reportData: { report: { rankings?: WclReportRankings } | null } }>(
+      `query($code: String!) {
+        reportData {
+          report(code: $code) {
+            rankings
+          }
+        }
+      }`,
+      { code: reportCode }
+    );
+    return data.reportData.report?.rankings ?? null;
   }
 
   async fetchEncounterRankings(
