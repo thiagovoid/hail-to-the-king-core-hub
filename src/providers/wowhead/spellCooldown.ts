@@ -1,7 +1,7 @@
 /**
  * Lê o tooltip de uma magia no Wowhead e extrai o que a métrica de
  * "Atacar corretamente" precisa: quanto tempo a habilidade fica em recarga,
- * quantas cargas ela tem e se é ofensiva ou defensiva.
+ * quantas cargas ela tem e se é ofensiva, defensiva ou nenhuma das duas.
  *
  * Por que o tooltip e não o WoW Analyzer: o WoW Analyzer tem exatamente
  * esses dados curados por spec, mas está atrás de proteção anti-bot. O
@@ -14,8 +14,16 @@
  * de sumir dentro de um cálculo.
  */
 
-/** Ofensivo x defensivo é decidido pelo efeito descrito, não pela escola de dano. */
-export type TipoDeCooldown = "offensive" | "defensive";
+/**
+ * Ofensivo, defensivo, ou nenhum dos dois.
+ *
+ * "utility" existe porque a maior parte das habilidades com recarga não é
+ * nem uma coisa nem outra: stun, silêncio, battle res, invocação de pet,
+ * deslocamento. Sem essa terceira gaveta elas caíam em "ofensivo" por
+ * descarte e afundavam a média — na primeira coleta real, Hammer of Justice
+ * usado uma vez na noite entrava valendo o mesmo que Avatar.
+ */
+export type TipoDeCooldown = "offensive" | "defensive" | "utility";
 
 export interface CooldownDaMagia {
   spellId: number;
@@ -42,8 +50,28 @@ export interface WowheadTooltip {
 export const COOLDOWN_MINIMO_MS = 30_000;
 
 /**
- * Frases que só aparecem em habilidade defensiva. Mitigação, absorção,
- * imunidade e cura própria — o efeito é sobre o dano que VOCÊ toma.
+ * Causa dano, ou aumenta o dano que você causa. É o sinal mais confiável:
+ * buff puro de dano (Avatar, Metamorphosis) não aparece na tabela de dano
+ * da WCL, então olhar o dano causado no log não resolveria.
+ *
+ * O `[^.]{0,80}` é pra não atravessar frase: "causing them to wander
+ * disoriented ... Damage may cancel the effect" (Blinding Sleet) tem as duas
+ * palavras, mas em orações diferentes — e a habilidade não dá dano nenhum.
+ */
+const SINAIS_OFENSIVOS = [
+  /causing[^.]{0,80}damage/i,
+  /dealing[^.]{0,80}damage/i,
+  /deals?[^.]{0,80}damage/i,
+  /inflict/i,
+  /damage\s+you\s+deal/i,
+  /damage\s+dealt/i,
+  /increas\w+[^.]{0,40}damage/i,
+];
+
+/**
+ * Mitiga, absorve, cura ou dá vida temporária — o efeito é sobre o dano que
+ * você (ou o grupo) toma. `\bheals?\b` com fronteira de palavra de propósito:
+ * sem ela, "Healthstone" casaria com "heal".
  */
 const SINAIS_DEFENSIVOS = [
   /damage\s+taken/i,
@@ -52,7 +80,10 @@ const SINAIS_DEFENSIVOS = [
   /absorb/i,
   /immune/i,
   /invulnerab/i,
-  /heals?\s+you/i,
+  /\bheals?\b/i,
+  /restor\w+[^.]{0,40}health/i,
+  /temporary[^.]{0,40}health/i,
+  /maximum\s+health/i,
 ];
 
 function limparHtml(html: string): string {
@@ -89,13 +120,13 @@ export function extractCharges(texto: string): number {
 }
 
 /**
- * Defensivo quando o texto fala em reduzir/absorver dano recebido ou curar
- * a si mesmo. O resto é ofensivo — inclui os buffs puros de dano (Avatar,
- * Metamorphosis), que não causam dano direto e por isso não dá pra
- * classificar olhando a tabela de dano da WCL.
+ * Dano primeiro: habilidade híbrida (Shield Charge dá dano E concede Shield
+ * Block) é, na prática, decisão de quando apertar pra atacar.
  */
 export function classifyCooldown(texto: string): TipoDeCooldown {
-  return SINAIS_DEFENSIVOS.some((sinal) => sinal.test(texto)) ? "defensive" : "offensive";
+  if (SINAIS_OFENSIVOS.some((sinal) => sinal.test(texto))) return "offensive";
+  if (SINAIS_DEFENSIVOS.some((sinal) => sinal.test(texto))) return "defensive";
+  return "utility";
 }
 
 /**

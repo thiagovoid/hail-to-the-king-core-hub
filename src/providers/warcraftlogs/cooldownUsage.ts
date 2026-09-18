@@ -46,6 +46,12 @@ export interface UsoDeCooldown {
 
 export interface CooldownsDoJogador {
   sourceID: number;
+  /**
+   * Tempo de luta em que o jogador esteve presente — só as trys em que ele
+   * aparece. Também serve de denominador do uptime: quem jogou 4 de 12 trys
+   * não pode ser medido contra a noite inteira.
+   */
+  possibleMs: number;
   abilities: UsoDeCooldown[];
   /** Média simples das eficiências das habilidades usadas. Null sem nenhuma. */
   offensive: number | null;
@@ -163,6 +169,10 @@ export function buildCooldownUsage(
     }
 
     const abilities: UsoDeCooldown[] = [...acumulado.entries()]
+      // "utility" fica de fora: stun, silêncio, battle res e invocação de
+      // pet não são decisão de atacar nem de se defender, e entravam na
+      // média afundando a nota (ver classifyCooldown).
+      .filter(([spellId]) => catalogo.get(spellId)!.kind !== "utility")
       .map(([spellId, dados]) => {
         const magia = catalogo.get(spellId)!;
         return {
@@ -179,6 +189,7 @@ export function buildCooldownUsage(
 
     resultado.push({
       sourceID,
+      possibleMs,
       abilities,
       offensive: media(abilities.filter((a) => a.kind === "offensive").map((a) => a.efficiency)),
       defensive: media(abilities.filter((a) => a.kind === "defensive").map((a) => a.efficiency)),

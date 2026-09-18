@@ -21,7 +21,15 @@ const BLUR: CooldownDaMagia = {
 
 const DUAS_CARGAS: CooldownDaMagia = { ...AVATAR, spellId: 999, name: "Duas Cargas", charges: 2 };
 
-const catalogo = new Map([AVATAR, BLUR, DUAS_CARGAS].map((m) => [m.spellId, m]));
+const STUN: CooldownDaMagia = {
+  spellId: 853,
+  name: "Hammer of Justice",
+  cooldownMs: 45_000,
+  charges: 1,
+  kind: "utility",
+};
+
+const catalogo = new Map([AVATAR, BLUR, DUAS_CARGAS, STUN].map((m) => [m.spellId, m]));
 
 describe("tempoEmRecarga", () => {
   const luta = { startTime: 0, endTime: 600_000 };
@@ -153,7 +161,36 @@ describe("buildCooldownUsage", () => {
     expect(jogador.abilities[0].possibleMs).toBe(1_200_000);
   });
 
-  it("ignora evento de try que não está na lista de janelas", () => {
+  // Stun, silêncio, battle res e invocação de pet não são decisão de atacar
+  // nem de se defender. Na primeira coleta real eles caíam em "ofensivo" por
+  // descarte e afundavam a média.
+  it("deixa habilidade de utilidade fora da conta e do detalhe", () => {
+    const [jogador] = buildCooldownUsage(
+      [evento(5, AVATAR.spellId, 0), evento(5, STUN.spellId, 0)],
+      janelas,
+      catalogo
+    );
+
+    expect(jogador.abilities.map((a) => a.spellId)).toEqual([AVATAR.spellId]);
+    expect(jogador.offensive).toBe(15);
+  });
+
+  it("informa o tempo de presença, que serve de denominador do uptime", () => {
+    const duasTrys = [
+      { id: 1, startTime: 0, endTime: 600_000 },
+      { id: 2, startTime: 600_000, endTime: 1_200_000 },
+    ];
+
+    const [jogador] = buildCooldownUsage(
+      [{ sourceID: 5, abilityGameID: AVATAR.spellId, timestamp: 0, fight: 1 }],
+      duasTrys,
+      catalogo
+    );
+
+    expect(jogador.possibleMs).toBe(600_000);
+  });
+
+    it("ignora evento de try que não está na lista de janelas", () => {
     const fora = { sourceID: 5, abilityGameID: AVATAR.spellId, timestamp: 0, fight: 99 };
     expect(buildCooldownUsage([fora], janelas, catalogo)).toEqual([]);
   });

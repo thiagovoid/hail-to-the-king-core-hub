@@ -8,7 +8,13 @@ const cooldowns = (abilities: CooldownsDoJogador["abilities"]): CooldownsDoJogad
     const filtradas = abilities.filter((a) => a.kind === kind);
     return filtradas.length ? filtradas.reduce((s, a) => s + a.efficiency, 0) / filtradas.length : null;
   };
-  return { sourceID: 1, abilities, offensive: media("offensive"), defensive: media("defensive") };
+  return {
+    sourceID: 1,
+    possibleMs: 600_000,
+    abilities,
+    offensive: media("offensive"),
+    defensive: media("defensive"),
+  };
 };
 
 const uso = (

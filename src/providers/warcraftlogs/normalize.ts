@@ -341,11 +341,16 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     // cooldowns de duas specs diferentes misturados na mesma média, e a
     // nota não significaria nada. Some com a dimensão em vez de publicar
     // um número diluído.
+    // O denominador do uptime é o tempo em que a pessoa esteve presente,
+    // não a noite inteira: quem entrou na metade da raide teria uptime pela
+    // metade sem ter feito nada errado. Sem a coleta de eventos não dá pra
+    // saber em que trys ela estava, e aí a noite toda é o melhor palpite.
+    const cooldownsDoJogador = cooldownsByPlayer?.get(player.id);
     const ataque = trocouDeFuncao
       ? undefined
       : buildAttack(
-          calculateUptime(entry.activeTime, aggregateDurationMs),
-          cooldownsByPlayer?.get(player.id)
+          calculateUptime(entry.activeTime, cooldownsDoJogador?.possibleMs ?? aggregateDurationMs),
+          cooldownsDoJogador
         );
 
     result.push({

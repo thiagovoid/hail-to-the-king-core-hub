@@ -90,6 +90,10 @@ describe("classifyCooldown", () => {
   it("não confunde dano causado com dano recebido", () => {
     expect(classifyCooldown("Deals 400 Fire damage to all enemies.")).toBe("offensive");
   });
+
+  it("não classifica como ataque o que não causa nem previne dano", () => {
+    expect(classifyCooldown("Teleports you a short distance forward.")).toBe("utility");
+  });
 });
 
 describe("parseSpellTooltip", () => {
@@ -128,5 +132,78 @@ describe("parseSpellTooltip", () => {
 
   it("descarta tooltip vazio em vez de inventar habilidade", () => {
     expect(parseSpellTooltip(1, {})).toBeUndefined();
+  });
+});
+
+// Casos tirados da primeira coleta real (log de 15/09), em que a
+// classificação de duas vias mandou todos eles pra "ofensivo".
+describe("classifyCooldown — casos que a coleta real errou", () => {
+  const caso = (texto: string) => classifyCooldown(texto);
+
+  it("cura própria de item é defensiva, não ofensiva", () => {
+    expect(caso("Healthstone Item Effect Instant 1 min cooldown Instantly restores 25% health")).toBe(
+      "defensive"
+    );
+  });
+
+  it("vida temporária de raide é defensiva", () => {
+    expect(
+      caso("Lets loose a rallying cry, granting all party or raid members 10% temporary and maximum health")
+    ).toBe("defensive");
+  });
+
+  it("cura em aliado é defensiva", () => {
+    expect(caso("Heals a friendly target for an amount equal to 100% your maximum health.")).toBe(
+      "defensive"
+    );
+  });
+
+  it("battle res não é cooldown de ataque nem de defesa", () => {
+    expect(
+      caso("Petition the Light on behalf of a fallen ally, restoring spirit to body and allowing them to reenter battle")
+    ).toBe("utility");
+  });
+
+  it("stun puro não é cooldown de ataque", () => {
+    expect(caso("Stuns the target for 6 sec.")).toBe("utility");
+  });
+
+  it("invocação de pet não é cooldown de ataque", () => {
+    expect(caso("Raises a ghoul to fight by your side.")).toBe("utility");
+  });
+
+  it("controle de grupo sem dano não é cooldown de ataque", () => {
+    expect(
+      caso("Shadowy tendrils coil around all enemies within 15 yards, pulling them to the target's location and Silencing them")
+    ).toBe("utility");
+  });
+
+  // "causing them to wander disoriented ... Damage may cancel the effect":
+  // as duas palavras aparecem, mas em orações diferentes, e a habilidade não
+  // dá dano nenhum.
+  it("não confunde 'dano cancela o efeito' com habilidade que causa dano", () => {
+    expect(
+      caso("Targets in a cone in front of you are blinded, causing them to wander disoriented for 5 sec. Damage may cancel the effect.")
+    ).toBe("utility");
+  });
+
+  it("stun que também causa dano é ofensivo", () => {
+    expect(
+      caso("Sends a wave of force in a frontal cone, causing (20% of Attack Power) damage and stunning all enemies")
+    ).toBe("offensive");
+  });
+
+  // Shield Charge dá dano E concede Shield Block. Na prática é decisão de
+  // quando apertar pra atacar.
+  it("híbrida que causa dano conta como ofensiva", () => {
+    expect(
+      caso("Charge to an enemy with your shield, granting you Shield Block and dealing (840% of Attack Power) Physical damage")
+    ).toBe("offensive");
+  });
+
+  it("dano em área sobre o chão é ofensivo", () => {
+    expect(caso("Corrupts the targeted ground, causing Shadow damage over 10 sec to targets")).toBe(
+      "offensive"
+    );
   });
 });
