@@ -9,6 +9,7 @@ import { calculatePreparation, type PreparationChecklist, type WclCombatantInfo 
 import { findParse } from "./reportRankings";
 import type { CooldownsDoJogador } from "./cooldownUsage";
 import { buildAttack, calculateUptime } from "../../normalization/buildAttack";
+import { buildDefense, type DanoRecebido } from "../../normalization/buildDefense";
 import type { PlayerPerformance } from "../../types/performance";
 
 export interface WclProfile {
@@ -181,6 +182,9 @@ export interface NormalizedRunPlayer {
   /** "Atacar corretamente": uptime + cooldowns ofensivos. Ver buildAttack. */
   attack?: PlayerPerformance["attack"];
   attackDetail?: PlayerPerformance["attackDetail"];
+  /** "Defender corretamente": cooldowns defensivos. Ver buildDefense. */
+  defense?: PlayerPerformance["defense"];
+  defenseDetail?: PlayerPerformance["defenseDetail"];
   /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
   preparationMissing?: string[];
   /**
@@ -227,6 +231,8 @@ export interface BuildRunPlayersInput {
    * fica só com o uptime, em vez de sumir.
    */
   cooldownsByPlayer?: Map<string, CooldownsDoJogador>;
+  /** Dano recebido na noite, por id do roster. Ver buildDefense. */
+  damageTakenByPlayer?: Map<string, DanoRecebido>;
 }
 
 /**
@@ -280,6 +286,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     parseByPlayer,
     resolvePreparationChecklist,
     cooldownsByPlayer,
+    damageTakenByPlayer,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
   const playerDetails = fullTables.summary.data.playerDetails;
@@ -357,6 +364,15 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
           cooldownsDoJogador
         );
 
+    // Mesmo denominador do uptime: o tempo em que a pessoa esteve na luta,
+    // pra o DTPS de quem jogou meia noite não sair pela metade.
+    const tempoNaLuta = cooldownsDoJogador?.possibleMs ?? aggregateDurationMs;
+    const defesa = buildDefense(
+      damageTakenByPlayer?.get(player.id),
+      tempoNaLuta,
+      cooldownsDoJogador
+    );
+
     result.push({
       playerId: player.id,
       ...(trocouDeFuncao ? {} : { [metricKey]: Math.round(value) }),
@@ -367,6 +383,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ...(preparationMissing?.length ? { preparationMissing } : {}),
       ...(preparationChecks ? { preparationChecks } : {}),
       ...(ataque ? { attack: ataque.attack, attackDetail: ataque.attackDetail } : {}),
+      ...(defesa ? { defense: defesa.defense, defenseDetail: defesa.defenseDetail } : {}),
     });
   }
 

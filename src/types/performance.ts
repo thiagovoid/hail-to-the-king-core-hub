@@ -104,6 +104,32 @@ export interface PlayerPerformance {
   }>;
 
   /**
+   * "Defender corretamente" — o que a pessoa fez pra não morrer.
+   *
+   * A nota vem SÓ dos cooldowns defensivos. Mitigação e dano recebido são
+   * contexto: no log de 15/09 a mitigação ficou entre 38% e 48% pro raide
+   * inteiro, com os três tanks nas três últimas posições. Ela mede armadura
+   * e buff de raide, não decisão de quem se defende. Ver buildDefense.
+   */
+  defense?: {
+    /** 0-100, média dos cooldowns defensivos. Null quando nenhum foi medido. */
+    score: number | null;
+    /** % do dano que vinha e não chegou a entrar. Informativo. */
+    mitigation: number;
+    /** Dano recebido por segundo de luta. Informativo. */
+    dtps: number;
+  };
+
+  /** Cooldown a cooldown, do pior aproveitado pro melhor. */
+  defenseDetail?: Array<{
+    spellId: number;
+    name: string;
+    casts: number;
+    /** 0-100: tempo em recarga sobre o tempo de luta. */
+    efficiency: number;
+  }>;
+
+  /**
    * WoW Analyzer's "Always Be Casting" percentage for the run (0-100) —
    * Active Time for a DPS spec, Ability/Healing Uptime for a healer. There
    * is no single 0-100 score like Wipefest's on WoW Analyzer (confirmed

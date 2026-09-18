@@ -165,6 +165,8 @@ export interface CorePerformanceTargets {
   mechanics: CoreTarget;
   /** % de execução ofensiva — uptime + cooldowns ofensivos. */
   attack: CoreTarget;
+  /** % de execução defensiva — cooldowns defensivos. */
+  defense: CoreTarget;
   /** % dos itens de preparação prontos. */
   preparation: CoreTarget;
 }

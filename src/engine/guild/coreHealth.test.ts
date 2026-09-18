@@ -8,6 +8,7 @@ const TARGETS: CorePerformanceTargets = {
   parse: { target: 60, direction: "higher" },
   mechanics: { target: 2, direction: "lower" },
   attack: { target: 70, direction: "higher" },
+  defense: { target: 60, direction: "higher" },
   preparation: { target: 60, direction: "higher" },
 };
 

@@ -8,6 +8,7 @@ const TARGETS: CorePerformanceTargets = {
   parse: { target: 60, direction: "higher" },
   mechanics: { target: 2, direction: "lower" },
   attack: { target: 70, direction: "higher" },
+  defense: { target: 60, direction: "higher" },
   preparation: { target: 60, direction: "higher" },
 };
 
@@ -67,7 +68,13 @@ describe("calculateOverallScore", () => {
   it("não pontua mortes — elas saíram da contabilização", () => {
     const result = calculateOverallScore({ playerId: "voidwar", parse: 60, deaths: 16 }, TARGETS);
 
-    expect(result.dimensions.map((d) => d.key)).toEqual(["parse", "mechanics", "attack", "preparation"]);
+    expect(result.dimensions.map((d) => d.key)).toEqual([
+      "parse",
+      "mechanics",
+      "attack",
+      "defense",
+      "preparation",
+    ]);
     expect(result.overall).toBe(100);
   });
 

@@ -2,7 +2,7 @@ import type { PlayerPerformance } from "../../types/performance";
 import type { CorePerformanceTargets, CoreTarget } from "../../types/index";
 import { calculateGoalProgress } from "../metrics";
 
-export type ScoreDimensionKey = "parse" | "mechanics" | "attack" | "preparation";
+export type ScoreDimensionKey = "parse" | "mechanics" | "attack" | "defense" | "preparation";
 
 export interface ScoreDimension {
   key: ScoreDimensionKey;
@@ -69,12 +69,21 @@ const DIMENSION_META: Record<
   },
   attack: {
     label: "Atacar",
-    weight: 25,
+    weight: 15,
     unit: "% de execução",
     description:
       "Quanto da luta você passou atacando (uptime) e quanto do tempo seus cooldowns ofensivos ficaram em recarga. Cooldown guardado é dano que não aconteceu: a régua é tempo em recarga, não quantidade de usos.",
     source:
       "Warcraft Logs (tempo ativo e eventos de cast) + Wowhead (recarga de cada magia). Substitui o WoW Analyzer, que bloqueia automação via Cloudflare.",
+  },
+  defense: {
+    label: "Defender",
+    weight: 10,
+    unit: "% de execução",
+    description:
+      "Quanto do tempo seus cooldowns defensivos ficaram em recarga. Dano recebido e mitigação aparecem ao lado como contexto, mas não entram na nota: a mitigação ficou entre 38% e 48% pro raide inteiro, com os tanks por último — ela mede armadura e buff, não decisão.",
+    source:
+      "Warcraft Logs (eventos de cast e dano recebido) + Wowhead (recarga de cada magia).",
   },
   preparation: {
     label: "Preparação",
@@ -135,6 +144,13 @@ export function calculateOverallScore(
       target: targets.attack,
       value: performance.attack?.score ?? null,
       score: progress(performance.attack?.score, targets.attack),
+    },
+    {
+      key: "defense",
+      ...DIMENSION_META.defense,
+      target: targets.defense,
+      value: performance.defense?.score ?? null,
+      score: progress(performance.defense?.score ?? undefined, targets.defense),
     },
     {
       key: "preparation",

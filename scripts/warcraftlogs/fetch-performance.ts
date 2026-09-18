@@ -21,6 +21,7 @@ import {
   type CooldownCatalogFile,
 } from "../../src/providers/wowhead/cooldownCatalog";
 import { fetchSpellCooldowns } from "../../src/providers/wowhead/spellTooltip";
+import type { DanoRecebido } from "../../src/normalization/buildDefense";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
   buildChecklistFromReference,
@@ -550,6 +551,7 @@ async function main() {
   }
 
   const cooldownsPorReport = new Map<string, Map<string, CooldownsDoJogador>>();
+  const danoRecebidoPorReport = new Map<string, Map<string, DanoRecebido>>();
 
   for (const ctx of reportContexts) {
     try {
@@ -607,6 +609,23 @@ async function main() {
         const perfil = rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome));
         if (perfil) porJogador.set(perfil.id, uso);
       }
+
+      // Dano recebido: a metade informativa de "Defender". Vem da tabela
+      // agregada mesmo — aqui só interessa o total por jogador, não a quebra
+      // por habilidade, então a truncagem em 5 não atrapalha.
+      const recebidoPorJogador = new Map<string, DanoRecebido>();
+      for (const entrada of await wcl.fetchDamageTaken(ctx.report.code, ctx.aggregateFightIds)) {
+        if (!entrada.name) continue;
+        const perfil = rosterProfiles.find((jogador) =>
+          sameCharacterName(jogador.profile.name, entrada.name!)
+        );
+        if (!perfil) continue;
+        recebidoPorJogador.set(perfil.id, {
+          total: entrada.total ?? 0,
+          totalReduced: entrada.totalReduced ?? 0,
+        });
+      }
+      danoRecebidoPorReport.set(ctx.report.code, recebidoPorJogador);
 
       cooldownsPorReport.set(ctx.report.code, porJogador);
       console.log(
@@ -667,6 +686,7 @@ async function main() {
       players: rosterProfiles,
       resolvePreparationChecklist,
       cooldownsByPlayer: cooldownsPorReport.get(ctx.report.code),
+      damageTakenByPlayer: danoRecebidoPorReport.get(ctx.report.code),
     });
 
     // Passa pela Normalization Layer explícita mesmo só com a WCL contribuindo

@@ -32,6 +32,7 @@ function season(overrides: Partial<SeasonConfigFile> = {}): SeasonConfigFile {
         parse: { target: 60, direction: "higher", description: "Parse mínimo" },
         mechanics: { target: 2, direction: "lower", description: "Erros mecânicos" },
         attack: { target: 70, direction: "higher", description: "Uso de cooldowns" },
+        defense: { target: 60, direction: "higher", description: "Cooldowns defensivos" },
         preparation: { target: 60, direction: "higher", description: "Itens de preparação" },
       },
       nextRaid: { date: "2026-09-01", time: "21:30", objective: "Progressão" },

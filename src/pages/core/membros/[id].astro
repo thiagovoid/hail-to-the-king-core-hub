@@ -67,6 +67,11 @@ const attackParts = ultimaNoite?.attack
   ? { uptime: ultimaNoite.attack.uptime, cooldowns: ultimaNoite.attack.cooldowns }
   : null;
 
+const defenseDetail = (ultimaNoite?.defenseDetail ?? []).slice(0, 3);
+const defenseContext = ultimaNoite?.defense
+  ? { mitigation: ultimaNoite.defense.mitigation, dtps: ultimaNoite.defense.dtps }
+  : null;
+
 const hasData = history.length > 0;
 
 const dpsHistory = history
@@ -108,6 +113,20 @@ const attackHistory = history
         ? `Cooldowns — ${performance.attack!.cooldowns}% do tempo em recarga`
         : 'Cooldowns — sem cooldown ofensivo medido',
       ...(performance.attackDetail ?? [])
+        .slice(0, 3)
+        .map((item) => `${item.name} — ${item.efficiency}% (${item.casts} uso${item.casts === 1 ? '' : 's'})`),
+    ],
+  }));
+
+const defenseHistory = history
+  .filter((performance) => performance.defense?.score != null)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.defense!.score!,
+    detail: [
+      `${performance.defense!.dtps} de dano recebido por segundo`,
+      `${performance.defense!.mitigation}% mitigado`,
+      ...(performance.defenseDetail ?? [])
         .slice(0, 3)
         .map((item) => `${item.name} — ${item.efficiency}% (${item.casts} uso${item.casts === 1 ? '' : 's'})`),
     ],
@@ -232,6 +251,8 @@ const attendance = calculateAttendance(weeks, player.id);
           mechanicsDetail={mechanicsDetail}
           attackDetail={attackDetail}
           attackParts={attackParts}
+          defenseDetail={defenseDetail}
+          defenseContext={defenseContext}
         />
       )
     }
@@ -285,6 +306,14 @@ const attendance = calculateAttendance(weeks, player.id);
               // individual de execução ofensiva no roster.
               target: seasonJson.config.performanceTargets.attack.target,
               current: ultimaNoite?.attack?.score ?? null,
+              direction: 'higher',
+            },
+            {
+              id: 'defense',
+              label: 'Defender',
+              data: defenseHistory,
+              target: seasonJson.config.performanceTargets.defense.target,
+              current: ultimaNoite?.defense?.score ?? null,
               direction: 'higher',
             },
             {

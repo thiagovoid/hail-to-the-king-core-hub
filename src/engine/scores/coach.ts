@@ -20,6 +20,7 @@ const RECOMMENDATIONS: Record<ScoreDimensionKey, string> = {
   parse: "Seu parse está abaixo da meta. Revise prioridade de dano, rotação e uso de consumíveis antes da próxima raid.",
   mechanics: "Mecânicas estão custando pontos. Reveja os guias dos bosses atuais focando nos erros mais recorrentes do seu personagem.",
   attack: "Sobrou tempo sem atacar ou cooldown guardado na mão. Planeje antes do pull em que momento cada cooldown entra — segurar pro final conta como não ter usado.",
+  defense: "Cooldown defensivo guardado é dano que você tomou à toa. Veja quais mecânicas do boss doem em você e combine antes do pull qual defensivo entra em cada uma.",
   preparation: "Preparação (consumíveis, ready checks) está deixando performance na mesa — é o jeito mais fácil de ganhar pontos sem mudar a execução.",
 };
 

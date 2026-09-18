@@ -30,6 +30,10 @@ interface Props {
   attackDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
   /** As duas metades da nota de Atacar, pra tela não esconder de onde ela veio. */
   attackParts?: { uptime: number; cooldowns: number | null } | null;
+  /** Cooldowns defensivos da noite, do pior aproveitado pro melhor. */
+  defenseDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
+  /** Dano recebido e mitigação — contexto da nota de Defender, não entram nela. */
+  defenseContext?: { mitigation: number; dtps: number } | null;
 }
 
 const {
@@ -42,6 +46,8 @@ const {
   mechanicsDetail = [],
   attackDetail = [],
   attackParts = null,
+  defenseDetail = [],
+  defenseContext = null,
 } = Astro.props;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
@@ -233,6 +239,34 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                   ? `cooldowns ${formatarValor(attackParts.cooldowns)}% do tempo em recarga`
                   : 'sem cooldown ofensivo medido na noite'}
               </p>
+            )}
+
+            {/* Contexto, não nota: a mitigação ficou entre 38% e 48% pro
+                raide inteiro no log de 15/09, com os tanks nas três últimas
+                posições. Mede armadura e buff, não decisão — por isso
+                aparece, mas não pontua. */}
+            {dimension.key === 'defense' && defenseContext !== null && (
+              <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
+                <span class="text-slate-400">
+                  {formatarValor(defenseContext.dtps)} de dano recebido por segundo
+                </span>
+                {' · '}
+                {formatarValor(defenseContext.mitigation)}% mitigado
+                <span class="text-slate-600"> &middot; contexto, não entra na nota</span>
+              </p>
+            )}
+
+            {dimension.key === 'defense' && defenseDetail.length > 0 && (
+              <ul class="mt-1.5 space-y-0.5">
+                {defenseDetail.map((item) => (
+                  <li class="text-[11px] text-slate-500 leading-relaxed">
+                    <span class="text-slate-400">{item.name}</span>
+                    {' '}
+                    {formatarValor(item.efficiency)}% do tempo em recarga
+                    <span class="text-slate-600"> &middot; {item.casts} uso{item.casts === 1 ? '' : 's'}</span>
+                  </li>
+                ))}
+              </ul>
             )}
 
             {dimension.key === 'attack' && attackDetail.length > 0 && (

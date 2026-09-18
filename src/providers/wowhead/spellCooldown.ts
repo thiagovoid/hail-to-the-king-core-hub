@@ -91,7 +91,10 @@ const SINAIS_DEFENSIVOS = [
   /damage\s+you\s+take/i,
   /avoid\s+(?:all\s+)?damage/i,
   /absorb/i,
-  /immune/i,
+  // "immunity", não "immune": Divine Shield diz "Grants immunity to all
+  // damage" e Blessing of Protection "granting immunity to Physical
+  // damage". As duas caíam em utilidade por causa da letra final.
+  /immun/i,
   /invulnerab/i,
   /\bheals?\b/i,
   naMesmaFrase("restor[a-z]+", "health", 40),

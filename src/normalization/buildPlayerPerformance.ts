@@ -16,7 +16,15 @@ export interface PlayerPerformanceContributions {
 
   warcraftLogs?: Pick<
     PlayerPerformance,
-    "dps" | "hps" | "parse" | "itemLevel" | "preparation" | "attack" | "attackDetail"
+    | "dps"
+    | "hps"
+    | "parse"
+    | "itemLevel"
+    | "preparation"
+    | "attack"
+    | "attackDetail"
+    | "defense"
+    | "defenseDetail"
   >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
   wowAnalyzer?: Pick<PlayerPerformance, "uptime">;
