@@ -61,3 +61,27 @@ for (const e of cura.sort((a, b) => Number(b.total ?? 0) - Number(a.total ?? 0))
     `${String(e.name).padEnd(16)} ${curou.toLocaleString("pt-BR").padStart(12)} ${over.toLocaleString("pt-BR").padStart(12)} ${desperdicio.toFixed(1).padStart(8)}% ${cobertura.toFixed(1).padStart(9)}% ${causou.toLocaleString("pt-BR").padStart(14)}`
   );
 }
+
+// ----- auto-cura: dá pra separar cura em si mesmo da cura nos outros? -----
+console.log("");
+console.log("campo 'targets' da tabela de cura:");
+for (const nome of ["Voidwar", "Cowsadeer", "Blackwatch"]) {
+  const entrada = cura.find((e) => String(e.name) === nome) as
+    | { name?: string; total?: number; targets?: Array<Record<string, unknown>> }
+    | undefined;
+  if (!entrada) continue;
+
+  const alvos = entrada.targets ?? [];
+  console.log("");
+  console.log(`  ${nome}: ${alvos.length} alvo(s) | campos: ${Object.keys(alvos[0] ?? {}).join(", ")}`);
+
+  const emSiMesmo = alvos.find((a) => String(a.name) === nome);
+  const total = Number(entrada.total ?? 0);
+  console.log(
+    `  curou em si: ${emSiMesmo ? Number(emSiMesmo.total ?? 0).toLocaleString("pt-BR") : "não aparece"} de ${total.toLocaleString("pt-BR")}` +
+      (emSiMesmo && total > 0 ? ` (${((Number(emSiMesmo.total ?? 0) / total) * 100).toFixed(1)}%)` : "")
+  );
+  for (const alvo of alvos.slice(0, 4)) {
+    console.log(`      ${String(alvo.name).padEnd(16)} ${Number(alvo.total ?? 0).toLocaleString("pt-BR")}`);
+  }
+}
