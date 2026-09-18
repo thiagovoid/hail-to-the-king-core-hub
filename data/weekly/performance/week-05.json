@@ -1328,11 +1328,18 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 92.7,
+            "score": 91.5,
             "uptime": 92.7,
-            "cooldowns": null
+            "cooldowns": 90.2
           },
-          "attackDetail": [],
+          "attackDetail": [
+            {
+              "spellId": 43265,
+              "name": "Death and Decay",
+              "casts": 50,
+              "efficiency": 90.2
+            }
+          ],
           "deaths": 3,
           "mechanics": {
             "errors": 1.3,
@@ -1768,16 +1775,28 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 75.9,
+            "score": 69.8,
             "uptime": 89.1,
-            "cooldowns": 62.8
+            "cooldowns": 50.5
           },
           "attackDetail": [
+            {
+              "spellId": 120644,
+              "name": "Halo",
+              "casts": 21,
+              "efficiency": 16.7
+            },
             {
               "spellId": 15286,
               "name": "Vampiric Embrace",
               "casts": 14,
               "efficiency": 38.6
+            },
+            {
+              "spellId": 263165,
+              "name": "Void Torrent",
+              "casts": 68,
+              "efficiency": 59.8
             },
             {
               "spellId": 228260,
@@ -1826,11 +1845,17 @@
           "preparation": 68,
           "preparationChecks": 2,
           "attack": {
-            "score": 83.8,
+            "score": 72.4,
             "uptime": 96.6,
-            "cooldowns": 71
+            "cooldowns": 48.2
           },
           "attackDetail": [
+            {
+              "spellId": 51490,
+              "name": "Thunderstorm",
+              "casts": 3,
+              "efficiency": 2.7
+            },
             {
               "spellId": 443454,
               "name": "Ancestral Swiftness",
@@ -1892,11 +1917,17 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 82.4,
+            "score": 75.7,
             "uptime": 91.8,
-            "cooldowns": 72.9
+            "cooldowns": 59.7
           },
           "attackDetail": [
+            {
+              "spellId": 179057,
+              "name": "Chaos Nova",
+              "casts": 5,
+              "efficiency": 6.7
+            },
             {
               "spellId": 452497,
               "name": "Abyssal Gaze",
@@ -1975,11 +2006,18 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 97.1,
+            "score": 52.6,
             "uptime": 97.1,
-            "cooldowns": null
+            "cooldowns": 8
           },
-          "attackDetail": [],
+          "attackDetail": [
+            {
+              "spellId": 196884,
+              "name": "Feral Lunge",
+              "casts": 9,
+              "efficiency": 8
+            }
+          ],
           "deaths": 11,
           "mechanics": {
             "errors": 1.8,
@@ -2032,11 +2070,17 @@
           "preparation": 65,
           "preparationChecks": 2,
           "attack": {
-            "score": 72.6,
+            "score": 67.7,
             "uptime": 81.1,
-            "cooldowns": 64.2
+            "cooldowns": 54.2
           },
           "attackDetail": [
+            {
+              "spellId": 107570,
+              "name": "Storm Bolt",
+              "casts": 5,
+              "efficiency": 4.5
+            },
             {
               "spellId": 384110,
               "name": "Wrecking Throw",
@@ -2112,9 +2156,9 @@
           "preparation": 83,
           "preparationChecks": 2,
           "attack": {
-            "score": 80.9,
+            "score": 81,
             "uptime": 89.5,
-            "cooldowns": 72.3
+            "cooldowns": 72.5
           },
           "attackDetail": [
             {
@@ -2128,6 +2172,12 @@
               "name": "Divine Toll",
               "casts": 40,
               "efficiency": 71.8
+            },
+            {
+              "spellId": 255937,
+              "name": "Wake of Ashes",
+              "casts": 82,
+              "efficiency": 73.1
             },
             {
               "spellId": 31884,
@@ -2179,9 +2229,9 @@
           "preparation": 62,
           "preparationChecks": 2,
           "attack": {
-            "score": 81.1,
+            "score": 80.3,
             "uptime": 84.3,
-            "cooldowns": 77.8
+            "cooldowns": 76.3
           },
           "attackDetail": [
             {
@@ -2189,6 +2239,12 @@
               "name": "Divine Toll",
               "casts": 37,
               "efficiency": 59.5
+            },
+            {
+              "spellId": 255937,
+              "name": "Wake of Ashes",
+              "casts": 83,
+              "efficiency": 71.7
             },
             {
               "spellId": 343527,
@@ -2297,11 +2353,17 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 77.7,
+            "score": 72.5,
             "uptime": 91.5,
-            "cooldowns": 63.8
+            "cooldowns": 53.4
           },
           "attackDetail": [
+            {
+              "spellId": 179057,
+              "name": "Chaos Nova",
+              "casts": 9,
+              "efficiency": 11.8
+            },
             {
               "spellId": 452497,
               "name": "Abyssal Gaze",
