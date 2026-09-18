@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T06:45:25.543Z",
+  "generatedAt": "2026-09-18T06:47:49.187Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -121,6 +121,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "20549": {
+      "name": "War Stomp",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "20707": {
       "name": "Soulstone",
       "cooldownMs": 600000,
@@ -228,6 +234,12 @@
       "cooldownMs": 120000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "48020": {
+      "name": "Demonic Circle: Teleport",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
     },
     "48265": {
       "name": "Death's Advance",
@@ -613,6 +625,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "258860": {
+      "name": "Essence Break",
+      "cooldownMs": 40000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "258920": {
       "name": "Immolation Aura",
       "cooldownMs": 30000,
@@ -642,6 +660,12 @@
       "cooldownMs": 60000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "267402": {
+      "name": "Noxious Venom Gland",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "offensive"
     },
     "279302": {
       "name": "Frostwyrm's Fury",
@@ -742,6 +766,12 @@
     "427917": {
       "name": "Immolation Aura",
       "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "431932": {
+      "name": "Tempered Potion",
+      "cooldownMs": 300000,
       "charges": 1,
       "kind": "utility"
     },
@@ -889,6 +919,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1250580": {
+      "name": "Seed of the Devouring Wild",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "1257052": {
       "name": "Dark Harvest",
       "cooldownMs": 60000,
@@ -925,6 +961,12 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "1273401": {
+      "name": "Corewarden's Hearthstone",
+      "cooldownMs": 1800000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1293316": {
       "name": "Empowering Venom",
       "cooldownMs": 120000,
@@ -942,6 +984,18 @@
       "cooldownMs": 300000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "1297145": {
+      "name": "Spirit-Rending Poison",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "1306743": {
+      "name": "Ophidian Bone Whistle",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "offensive"
     }
   },
   "ignored": [
@@ -957,7 +1011,9 @@
     585,
     589,
     686,
+    688,
     691,
+    697,
     702,
     772,
     781,
@@ -968,6 +1024,7 @@
     1064,
     1459,
     1464,
+    1706,
     2061,
     2139,
     2565,
@@ -995,12 +1052,14 @@
     30449,
     30455,
     31935,
+    32223,
     32379,
     34026,
     34914,
     47528,
     47540,
     47541,
+    48018,
     48181,
     49020,
     49143,
@@ -1035,6 +1094,7 @@
     111771,
     115356,
     117014,
+    119905,
     119910,
     121536,
     126664,
@@ -1078,6 +1138,7 @@
     210152,
     213243,
     213634,
+    213644,
     217200,
     228537,
     232698,
@@ -1116,6 +1177,7 @@
     450983,
     452201,
     454351,
+    457481,
     458128,
     461867,
     462620,
@@ -1131,7 +1193,9 @@
     1248829,
     1253593,
     1259790,
+    1263768,
     1264359,
+    1264426,
     1265384,
     1269383,
     1295735,
