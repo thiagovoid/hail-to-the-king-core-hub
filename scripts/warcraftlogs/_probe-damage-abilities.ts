@@ -36,6 +36,18 @@ console.log(`sourceIDs nos eventos: ${sourceIDs.slice(0, 25).join(", ")}`);
 const emComum = sourceIDs.filter((id) => shares.has(id));
 console.log(`ids em comum: ${emComum.length} de ${sourceIDs.length}`);
 
+console.log("
+quantas habilidades cada entrada tem:");
+for (const e of entries as unknown as Array<Record<string, unknown>>) {
+  const abilities = (e.abilities ?? []) as unknown[];
+  const damageAbilities = (e.damageAbilities ?? []) as unknown[];
+  console.log(
+    `  id ${String(e.id).padEnd(4)} ${String(e.name).padEnd(16)} abilities=${abilities.length} damageAbilities=${damageAbilities.length} total=${e.total}`
+  );
+  if (abilities.length > 0) console.log(`     amostra: ${JSON.stringify(abilities[0])}`);
+  if (damageAbilities.length > 0) console.log(`     amostra dmgAb: ${JSON.stringify(damageAbilities[0])}`);
+}
+
 const alvo = emComum[0] ?? sourceIDs[0];
 console.log(`\nhabilidades na tabela de dano do ator ${alvo}:`);
 for (const [nome, parte] of [...(shares.get(alvo) ?? [])].sort((a, b) => b[1] - a[1]).slice(0, 12)) {
