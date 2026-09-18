@@ -40,7 +40,15 @@ async function main() {
   const fights = await wcl.fetchReportFights(reportCode);
   const kills = fights.filter((f) => validEncounterIds.has(f.encounterID) && f.kill);
 
+  // A WCL só rankeia log público: se estes forem unlisted/private, parse é
+  // impossível a partir deles, e o problema não está na nossa query.
+  const meta = await wclGraphql<{ reportData: { report: { visibility?: string; guild?: { name?: string } | null } | null } }>(
+    `query($code: String!) { reportData { report(code: $code) { visibility guild { name } } } }`,
+    { code: reportCode }
+  ).catch((e) => { console.log(`  (visibility indisponível: ${e instanceof Error ? e.message.slice(0,80) : e})`); return null; });
+
   console.log(`Report ${reportCode}: ${kills.length} kill(s) de raid.`);
+  if (meta) console.log(`  visibilidade=${meta.reportData.report?.visibility ?? "?"}  guild=${meta.reportData.report?.guild?.name ?? "(nenhuma)"}`);
   for (const k of kills) {
     console.log(`  fight ${k.id}  encounter ${k.encounterID}  dificuldade ${k.difficulty}`);
   }
