@@ -41,6 +41,15 @@ interface Props {
   healingParts?: { coverage: number; share: number; overheal: number } | null;
   /** Nome da função usada pra escolher os pesos ("tank", "healer", "dps"). */
   funcao?: string | null;
+  /**
+   * As regras do core sobre como ler estes números.
+   *
+   * Vêm de fora, do mesmo rules.json que alimenta a página de regras: quem
+   * abre a própria página e vê um score não necessariamente passou por lá, e
+   * é justamente aqui que o contrato importa. Duplicar o texto faria as duas
+   * telas divergirem no primeiro ajuste.
+   */
+  regrasDoCore?: string[];
 }
 
 const {
@@ -57,6 +66,7 @@ const {
   defenseContext = null,
   healingParts = null,
   funcao = null,
+  regrasDoCore = [],
 } = Astro.props;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
@@ -136,7 +146,35 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 <section class="mb-10">
   <div class="mb-4">
     <h2 class="text-xl font-bold text-white">
-      Performance da última run
+      <span class="inline-flex items-center gap-2 flex-wrap">
+        Performance da última run
+
+        {regrasDoCore.length > 0 && (
+          <InfoTooltip label="Como o core lê estes números" largura="larga" direcao="baixo">
+            <span class="block text-slate-200 text-[11px] font-semibold">
+              Como a gente lê estes números
+            </span>
+
+            <span class="block mt-2 space-y-1.5">
+              {regrasDoCore.map((regra) => (
+                <span class="flex gap-2 text-[11px] text-slate-400 leading-relaxed">
+                  <span class="text-[#f0a500] shrink-0">▸</span>
+                  <span>{regra}</span>
+                </span>
+              ))}
+            </span>
+          </InfoTooltip>
+        )}
+
+        {regrasDoCore.length > 0 && (
+          <a
+            href="/regras/#cat-core"
+            class="text-xs font-normal text-slate-500 hover:text-[#f0a500] transition-colors"
+          >
+            regras do core
+          </a>
+        )}
+      </span>
     </h2>
 
     <p class="text-sm text-slate-400 mt-1">

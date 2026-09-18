@@ -4,6 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 import roster from '../../../../data/guild/roster.json';
 import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
+import rulesJson from '../../../../data/guild/rules.json';
 import { performanceWeeks } from '../../../../data/weekly/performance/index';
 import PerformanceSummary from '@/components/PerformanceSummary.astro';
 import PerformanceGoals from '@/components/PerformanceGoals.astro';
@@ -274,6 +275,12 @@ const conquistasDoJogador = contarConquistas(
   (playerId) => roster.find((jogador) => jogador.id === playerId)?.role
 ).get(player.id);
 
+// Mesma fonte da página de regras — sem cópia, pra não divergirem.
+const regrasDoCore =
+  (rulesJson as Array<{ category: string; rules: string[] }>).find(
+    (categoria) => categoria.category === 'core'
+  )?.rules ?? [];
+
 const overallScore = hasData
   ? calculateOverallScore(
       ultimaNoite ?? seasonAverage,
@@ -370,6 +377,7 @@ const attendance = calculateAttendance(weeks, player.id);
           defenseContext={defenseContext}
           healingParts={healingParts}
           funcao={ultimaNoite?.healing ? 'healer' : player.role === 'tank' ? 'tank' : 'dps'}
+          regrasDoCore={regrasDoCore}
         />
       )
     }
