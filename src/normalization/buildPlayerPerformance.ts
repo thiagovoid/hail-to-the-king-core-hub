@@ -28,11 +28,10 @@ export interface PlayerPerformanceContributions {
     | "bossKills"
   >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
-  wowAnalyzer?: Pick<PlayerPerformance, "uptime">;
 }
 
 export function buildPlayerPerformance(contributions: PlayerPerformanceContributions): PlayerPerformance {
-  const { playerId, deaths, warcraftLogs, wipefest, wowAnalyzer } = contributions;
+  const { playerId, deaths, warcraftLogs, wipefest } = contributions;
 
   // `deaths` goes last: matches the key order the WCL-only pipeline already
   // wrote to data/weekly/performance/week-NN.json, so wiring this normalization
@@ -41,7 +40,6 @@ export function buildPlayerPerformance(contributions: PlayerPerformanceContribut
     playerId,
     ...warcraftLogs,
     ...wipefest,
-    ...wowAnalyzer,
     deaths,
   };
 }

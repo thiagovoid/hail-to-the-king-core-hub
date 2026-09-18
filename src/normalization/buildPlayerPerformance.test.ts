@@ -25,22 +25,21 @@ describe("buildPlayerPerformance", () => {
     });
   });
 
-  it("merges Wipefest and WoW Analyzer contributions alongside WarcraftLogs", () => {
+  it("junta a contribuição do Wipefest com a da WarcraftLogs", () => {
     const result = buildPlayerPerformance({
       playerId: "voidwar",
       deaths: 1,
-      warcraftLogs: { dps: 69768 },
+      warcraftLogs: { dps: 69768, attack: { score: 78, uptime: 81, cooldowns: 75 } },
       wipefest: { wipefestScore: 92, mechanics: { errors: 1 } },
-      wowAnalyzer: { uptime: 97 },
     });
 
     expect(result).toEqual({
       playerId: "voidwar",
       deaths: 1,
       dps: 69768,
+      attack: { score: 78, uptime: 81, cooldowns: 75 },
       wipefestScore: 92,
       mechanics: { errors: 1 },
-      uptime: 97,
     });
   });
 });

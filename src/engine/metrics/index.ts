@@ -79,7 +79,6 @@ export function buildPlayerSeasonAverage(
     parse: average(defined(history.map((run) => run.parse))),
     deaths: average(history.map((run) => run.deaths)) ?? 0,
     mechanics: mechanicErrors === undefined ? undefined : { errors: mechanicErrors },
-    uptime: average(defined(history.map((run) => run.uptime))),
     // Preparação é estado, não desempenho: é o que o jogador está usando
     // AGORA. Média não faz sentido — quem arrumou o gear esta semana
     // continuaria penalizado pelas semanas em que estava sem encanto. Vale

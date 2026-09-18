@@ -15,7 +15,6 @@
     "raidbots:update-goals": "vite-node -c vitest.config.ts scripts/raidbots/update-performance-goals.ts",
     "wipefest:fetch-scores": "vite-node -c vitest.config.ts scripts/wipefest/fetch-scores.ts",
     "wipefest:fetch-boss-insights": "vite-node -c vitest.config.ts scripts/wipefest/fetch-boss-insights.ts",
-    "wowanalyzer:fetch-scores": "vite-node -c vitest.config.ts scripts/wowanalyzer/fetch-scores.ts",
     "wcl:inspect-preparation": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-preparation.ts",
     "wowhead:fetch-preparation": "vite-node -c vitest.config.ts scripts/wowhead/fetch-preparation.ts",
     "raiderio:check-guild-membership": "vite-node -c vitest.config.ts scripts/raiderio/check-guild-membership.ts",
@@ -23,7 +22,6 @@
     "wcl:inspect-roles": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-roles.ts",
     "wipefest:fetch-mechanics": "vite-node -c vitest.config.ts scripts/wipefest/fetch-mechanics.ts",
     "wcl:inspect-parse": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-parse.ts",
-    "wcl:_probe-parse": "vite-node -c vitest.config.ts scripts/warcraftlogs/_probe-parse.ts",
     "wcl:inspect-cooldowns": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-cooldowns.ts",
     "wcl:inspect-healing": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-healing.ts"
   },

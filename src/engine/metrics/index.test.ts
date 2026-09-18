@@ -268,7 +268,6 @@ describe('buildPlayerSeasonAverage', () => {
 
     expect(average.hps).toBeUndefined();
     expect(average.mechanics).toBeUndefined();
-    expect(average.uptime).toBeUndefined();
     expect(average.preparation).toBeUndefined();
   });
 
