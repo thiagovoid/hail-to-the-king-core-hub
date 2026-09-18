@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T06:47:49.187Z",
+  "generatedAt": "2026-09-18T06:50:18.255Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -49,11 +49,29 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1856": {
+      "name": "Vanish",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "2825": {
       "name": "Bloodlust",
       "cooldownMs": 300000,
       "charges": 1,
       "kind": "utility"
+    },
+    "2983": {
+      "name": "Sprint",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "5277": {
+      "name": "Evasion",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "5394": {
       "name": "Healing Stream Totem",
@@ -90,6 +108,18 @@
       "cooldownMs": 30000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "13750": {
+      "name": "Adrenaline Rush",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "13877": {
+      "name": "Blade Flurry",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
     },
     "15286": {
       "name": "Vampiric Embrace",
@@ -301,6 +331,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "51690": {
+      "name": "Killing Spree",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "55233": {
       "name": "Vampiric Blood",
       "cooldownMs": 90000,
@@ -334,6 +370,12 @@
     "64800": {
       "name": "Wrathstone",
       "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "73325": {
+      "name": "Leap of Faith",
+      "cooldownMs": 90000,
       "charges": 1,
       "kind": "utility"
     },
@@ -487,6 +529,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "185311": {
+      "name": "Crimson Vial",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "186257": {
       "name": "Aspect of the Cheetah",
       "cooldownMs": 180000,
@@ -526,6 +574,12 @@
     "192077": {
       "name": "Wind Rush Totem",
       "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "195457": {
+      "name": "Grappling Hook",
+      "cooldownMs": 45000,
       "charges": 1,
       "kind": "utility"
     },
@@ -673,6 +727,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "315341": {
+      "name": "Between the Eyes",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "333889": {
       "name": "Fel Domination",
       "cooldownMs": 180000,
@@ -712,6 +772,12 @@
     "378081": {
       "name": "Nature's Swiftness",
       "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "381989": {
+      "name": "Keep It Rolling",
+      "cooldownMs": 360000,
       "charges": 1,
       "kind": "utility"
     },
@@ -847,6 +913,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1214909": {
+      "name": "Roll the Bones",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1233448": {
       "name": "Dark Transformation",
       "cooldownMs": 45000,
@@ -955,6 +1027,12 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "1271802": {
+      "name": "Blight of Tongues",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1272460": {
       "name": "Ultradon Cuirass",
       "cooldownMs": 150000,
@@ -964,6 +1042,12 @@
     "1273401": {
       "name": "Corewarden's Hearthstone",
       "cooldownMs": 1800000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1277933": {
+      "name": "Preparation",
+      "cooldownMs": 240000,
       "charges": 1,
       "kind": "utility"
     },
@@ -1025,7 +1109,10 @@
     1459,
     1464,
     1706,
+    1766,
+    1966,
     2061,
+    2098,
     2139,
     2565,
     2645,
@@ -1037,6 +1124,7 @@
     7384,
     8004,
     8092,
+    8676,
     12294,
     15407,
     17364,
@@ -1105,6 +1193,7 @@
     183752,
     184575,
     185123,
+    185763,
     186263,
     187874,
     188196,
@@ -1114,6 +1203,7 @@
     190456,
     192063,
     192106,
+    193315,
     193455,
     194509,
     194913,
@@ -1165,6 +1255,7 @@
     408385,
     415091,
     415388,
+    426586,
     427453,
     431398,
     433895,
@@ -1173,6 +1264,7 @@
     440839,
     441424,
     441426,
+    441776,
     444995,
     450983,
     452201,
