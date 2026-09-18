@@ -4,6 +4,13 @@ import { formatDate } from '@/utils/format';
 interface DataPoint {
   date: string;
   value: number;
+  /**
+   * Linhas que explicam o ponto naquela noite, uma por mecânica.
+   *
+   * Existe porque o detalhe do card mostra só a última noite: sem isto, o
+   * que explicou cada ponto se perde a cada log novo que chega.
+   */
+  detail?: string[];
 }
 
 function formatShortDate(iso: string): string {
@@ -343,13 +350,30 @@ const charts = series.map((item) => {
                     scale
                   );
 
+                  const linhas = point.detail ?? [];
+                  const larguraCaixa = 250;
+                  const alturaLinha = 16;
+                  const alturaCaixa = 26 + linhas.length * alturaLinha;
+
+                  // Perto da borda direita a caixa abre pra esquerda, senão
+                  // sai da área visível do gráfico.
+                  const abreParaEsquerda = x > width - larguraCaixa - paddingRight;
+                  const caixaX = abreParaEsquerda ? x - larguraCaixa - 10 : x + 10;
+
+                  // E perto do topo ela desce, pelo mesmo motivo.
+                  const caixaY = Math.max(paddingTop, Math.min(y - alturaCaixa / 2, height - paddingBottom - alturaCaixa));
+
                   return (
-                    <g>
+                    <g class="group">
+                      {/* Alvo generoso: acertar um círculo de 6px com o mouse
+                          é frustrante, e ele fica invisível. */}
+                      <circle cx={x} cy={y} r="16" class="fill-transparent" />
+
                       <circle
                         cx={x}
                         cy={y}
                         r="6"
-                        class="fill-cyan-400 stroke-slate-950"
+                        class="fill-cyan-400 stroke-slate-950 transition-colors group-hover:fill-amber-400"
                         stroke-width="3"
                       />
 
@@ -370,6 +394,38 @@ const charts = series.map((item) => {
                       >
                         {formatShortDate(point.date)}
                       </text>
+
+                      {linhas.length > 0 && (
+                        <g class="pointer-events-none opacity-0 transition-opacity group-hover:opacity-100">
+                          <rect
+                            x={caixaX}
+                            y={caixaY}
+                            width={larguraCaixa}
+                            height={alturaCaixa}
+                            rx="8"
+                            class="fill-[#141b2d] stroke-white/10"
+                            stroke-width="1"
+                          />
+
+                          <text
+                            x={caixaX + 12}
+                            y={caixaY + 18}
+                            class="fill-slate-300 text-[11px] font-semibold"
+                          >
+                            {formatShortDate(point.date)}
+                          </text>
+
+                          {linhas.map((linha, linhaIndex) => (
+                            <text
+                              x={caixaX + 12}
+                              y={caixaY + 18 + (linhaIndex + 1) * alturaLinha}
+                              class="fill-slate-400 text-[11px]"
+                            >
+                              {linha}
+                            </text>
+                          ))}
+                        </g>
+                      )}
                     </g>
                   );
                 })

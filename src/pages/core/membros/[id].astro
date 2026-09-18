@@ -81,6 +81,13 @@ const mechanicsHistory = history
   .map((performance) => ({
     date: performance.date,
     value: performance.mechanics!.errors,
+    // O que explicou aquele ponto, pra não se perder quando chegar log novo.
+    detail: [...(performance.mechanicsDetail ?? [])]
+      .sort((a, b) => b.tries - a.tries)
+      .slice(0, 4)
+      .map((item) =>
+        `${item.label ?? item.mechanic.replace('Damage from ', '')} — ${item.tries} de ${performance.mechanics?.tries ?? '?'} trys`
+      ),
   }));
 
 const deathsHistory = history
