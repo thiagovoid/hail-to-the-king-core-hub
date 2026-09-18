@@ -125,35 +125,51 @@ export const PARTICIPACAO_MINIMA_NO_DANO = 2;
 /**
  * Se a habilidade entra na nota da sua categoria.
  *
- * Defensivo nunca é filtrado por dano — mitigação não aparece na tabela de
- * dano. Buff ofensivo também não: Avatar e Avenging Wrath não causam dano
- * próprio, e o filtro jogaria fora justamente os maiores cooldowns do jogo.
+ * "Não aparece na tabela de dano" é a definição observável de buff puro:
+ * Avatar e Avenging Wrath não causam dano próprio, só aumentam o que você
+ * causa. Isso substituiu uma tentativa de detectar buff pelo texto do
+ * tooltip, que marcava Shattering Throw — habilidade que causa dano — como
+ * buff e a isentava do filtro.
+ *
+ * Defensivo nunca é filtrado: mitigação não aparece na tabela de dano, e
+ * filtrar apagaria a categoria inteira.
  */
-export function contaParaNota(uso: UsoDeCooldown, magia: CooldownDaMagia): boolean {
+export function contaParaNota(uso: UsoDeCooldown, temTabelaDeDano: boolean): boolean {
   if (uso.kind === "defensive") return true;
-  if (magia.buff) return true;
+  if (!temTabelaDeDano) return true;
   if (uso.damageShare === undefined) return true;
   return uso.damageShare >= PARTICIPACAO_MINIMA_NO_DANO;
+}
+
+/** Nomes vêm de fontes diferentes (Wowhead e WCL); compara sem depender de caixa. */
+function chaveDeNome(nome: string): string {
+  return nome.trim().toLowerCase();
 }
 
 /**
  * Participação de cada habilidade no dano de cada jogador, a partir da
  * tabela de DamageDone da WCL. A chave externa é o id do ator, que é o
  * mesmo `sourceID` dos eventos de cast.
+ *
+ * A chave interna é o NOME, não o id da magia: em boa parte das habilidades
+ * o id que aparece no cast é diferente do id que aparece no dano (Eye Beam
+ * é lançada com um id e causa dano com outro). Cruzar por id não casava
+ * quase nada, e o filtro de relevância simplesmente não rodava.
  */
 export function buildDamageShares(
-  entries: Array<{ id?: number; total?: number; abilities?: Array<{ guid?: number; total?: number }> }>
-): Map<number, Map<number, number>> {
-  const porJogador = new Map<number, Map<number, number>>();
+  entries: Array<{ id?: number; total?: number; abilities?: Array<{ name?: string; total?: number }> }>
+): Map<number, Map<string, number>> {
+  const porJogador = new Map<number, Map<string, number>>();
 
   for (const entry of entries) {
     if (entry.id === undefined || !entry.total) continue;
 
-    const porHabilidade = new Map<number, number>();
+    const porHabilidade = new Map<string, number>();
     for (const habilidade of entry.abilities ?? []) {
-      if (habilidade.guid === undefined || habilidade.total === undefined) continue;
-      const anterior = porHabilidade.get(habilidade.guid) ?? 0;
-      porHabilidade.set(habilidade.guid, anterior + (habilidade.total / entry.total) * 100);
+      if (!habilidade.name || habilidade.total === undefined) continue;
+      const chave = chaveDeNome(habilidade.name);
+      const anterior = porHabilidade.get(chave) ?? 0;
+      porHabilidade.set(chave, anterior + (habilidade.total / entry.total) * 100);
     }
 
     porJogador.set(entry.id, porHabilidade);
@@ -178,7 +194,7 @@ export function buildCooldownUsage(
   janelas: JanelaDeLuta[],
   catalogo: Map<number, CooldownDaMagia>,
   /** Ver buildDamageShares. Sem isto, nenhuma habilidade é filtrada. */
-  damageShares?: Map<number, Map<number, number>>
+  damageShares?: Map<number, Map<string, number>>
 ): CooldownsDoJogador[] {
   const porJanela = new Map(janelas.map((j) => [j.id, j]));
 
@@ -215,6 +231,7 @@ export function buildCooldownUsage(
     }, 0);
     if (possibleMs <= 0) continue;
 
+    const sharesDoJogador = damageShares?.get(sourceID);
     const acumulado = new Map<number, { casts: number; tempo: number }>();
     for (const [fightId, porHabilidade] of castsPorJogador.get(sourceID) ?? []) {
       const janela = porJanela.get(fightId)!;
@@ -234,7 +251,7 @@ export function buildCooldownUsage(
       .filter(([spellId]) => catalogo.get(spellId)!.kind !== "utility")
       .map(([spellId, dados]) => {
         const magia = catalogo.get(spellId)!;
-        const share = damageShares?.get(sourceID)?.get(spellId);
+        const share = sharesDoJogador?.get(chaveDeNome(magia.name));
         return {
           spellId,
           name: magia.name,
@@ -246,7 +263,7 @@ export function buildCooldownUsage(
           ...(share === undefined ? {} : { damageShare: Math.round(share * 10) / 10 }),
         };
       })
-      .filter((uso) => contaParaNota(uso, catalogo.get(uso.spellId)!))
+      .filter((uso) => contaParaNota(uso, sharesDoJogador !== undefined))
       .sort((a, b) => a.efficiency - b.efficiency);
 
     resultado.push({

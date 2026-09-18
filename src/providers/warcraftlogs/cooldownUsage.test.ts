@@ -14,7 +14,6 @@ const AVATAR: CooldownDaMagia = {
   cooldownMs: 90_000,
   charges: 1,
   kind: "offensive",
-  buff: false,
 };
 
 const BLUR: CooldownDaMagia = {
@@ -23,7 +22,6 @@ const BLUR: CooldownDaMagia = {
   cooldownMs: 60_000,
   charges: 1,
   kind: "defensive",
-  buff: false,
 };
 
 const DUAS_CARGAS: CooldownDaMagia = { ...AVATAR, spellId: 999, name: "Duas Cargas", charges: 2 };
@@ -34,7 +32,6 @@ const STUN: CooldownDaMagia = {
   cooldownMs: 45_000,
   charges: 1,
   kind: "utility",
-  buff: false,
 };
 
 const catalogo = new Map([AVATAR, BLUR, DUAS_CARGAS, STUN].map((m) => [m.spellId, m]));
@@ -220,15 +217,15 @@ describe("buildCooldownUsage", () => {
 describe("buildDamageShares", () => {
   it("converte dano por habilidade em percentual do total do jogador", () => {
     const shares = buildDamageShares([
-      { id: 5, total: 1000, abilities: [{ guid: 10, total: 250 }, { guid: 20, total: 750 }] },
+      { id: 5, total: 1000, abilities: [{ name: "Eye Beam", total: 250 }, { name: "Chaos Strike", total: 750 }] },
     ]);
 
-    expect(shares.get(5)?.get(10)).toBe(25);
-    expect(shares.get(5)?.get(20)).toBe(75);
+    expect(shares.get(5)?.get("eye beam")).toBe(25);
+    expect(shares.get(5)?.get("chaos strike")).toBe(75);
   });
 
   it("ignora jogador sem dano, em vez de dividir por zero", () => {
-    expect(buildDamageShares([{ id: 5, total: 0, abilities: [{ guid: 10, total: 0 }] }]).size).toBe(0);
+    expect(buildDamageShares([{ id: 5, total: 0, abilities: [{ name: "Eye Beam", total: 0 }] }]).size).toBe(0);
   });
 });
 
@@ -243,7 +240,6 @@ describe("buildCooldownUsage — relevância por participação no dano", () => 
     cooldownMs: 30_000,
     charges: 1,
     kind: "offensive",
-    buff: false,
   };
   const comGapCloser = new Map([...catalogo, [GAP_CLOSER.spellId, GAP_CLOSER]]);
 
@@ -255,7 +251,7 @@ describe("buildCooldownUsage — relevância por participação no dano", () => 
   });
 
   it("descarta habilidade que quase não participa do dano", () => {
-    const shares = new Map([[5, new Map([[GAP_CLOSER.spellId, 0.4]])]]);
+    const shares = new Map([[5, new Map([["feral lunge", 0.4]])]]);
     const [jogador] = buildCooldownUsage([cast(GAP_CLOSER.spellId, 0)], janelas, comGapCloser, shares);
 
     expect(jogador.abilities).toEqual([]);
@@ -263,7 +259,7 @@ describe("buildCooldownUsage — relevância por participação no dano", () => 
   });
 
   it("mantém habilidade que representa dano de verdade", () => {
-    const shares = new Map([[5, new Map([[GAP_CLOSER.spellId, 18]])]]);
+    const shares = new Map([[5, new Map([["feral lunge", 18]])]]);
     const [jogador] = buildCooldownUsage([cast(GAP_CLOSER.spellId, 0)], janelas, comGapCloser, shares);
 
     expect(jogador.abilities.map((a) => a.spellId)).toEqual([GAP_CLOSER.spellId]);
@@ -274,11 +270,12 @@ describe("buildCooldownUsage — relevância por participação no dano", () => 
   // de dano. Sem a exceção, o filtro jogaria fora os maiores cooldowns
   // ofensivos do jogo.
   it("mantém buff de dano, que não aparece na tabela de dano", () => {
-    const BUFF: CooldownDaMagia = { ...AVATAR, buff: true };
-    const comBuff = new Map([[BUFF.spellId, BUFF]]);
-    const shares = new Map([[5, new Map<number, number>()]]);
+    const comBuff = new Map([[AVATAR.spellId, AVATAR]]);
+    // Avatar não tem entrada própria: o jogador causou dano, mas nenhum
+    // deles saiu dela. É assim que um buff puro se apresenta no log.
+    const shares = new Map([[5, new Map([["chaos strike", 100]])]]);
 
-    const [jogador] = buildCooldownUsage([cast(BUFF.spellId, 0)], janelas, comBuff, shares);
+    const [jogador] = buildCooldownUsage([cast(AVATAR.spellId, 0)], janelas, comBuff, shares);
 
     expect(jogador.abilities.map((a) => a.name)).toEqual(["Avatar"]);
   });
@@ -286,7 +283,7 @@ describe("buildCooldownUsage — relevância por participação no dano", () => 
   // Mitigação não aparece na tabela de dano: filtrar defensivo por dano
   // apagaria a categoria inteira.
   it("nunca filtra cooldown defensivo por participação no dano", () => {
-    const shares = new Map([[5, new Map<number, number>()]]);
+    const shares = new Map([[5, new Map<string, number>()]]);
     const [jogador] = buildCooldownUsage([cast(BLUR.spellId, 0)], janelas, catalogo, shares);
 
     expect(jogador.defensive).toBe(10);
