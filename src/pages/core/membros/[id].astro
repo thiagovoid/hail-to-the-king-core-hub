@@ -269,10 +269,18 @@ function ordenarPorFuncao<T extends { id: string }>(series: T[]): T[] {
 
 // Recontado do histórico inteiro a cada build: assim uma recoleta que
 // corrige uma noite antiga corrige o placar junto.
+const nomeDoBoss = new Map(
+  [...seasonJson.bossesNormal, ...seasonJson.bossesHeroic].map((boss) => [
+    boss.encounterID,
+    boss.name,
+  ])
+);
+
 const conquistasDoJogador = contarConquistas(
   performanceWeeks,
   seasonJson.config.performanceTargets,
-  (playerId) => roster.find((jogador) => jogador.id === playerId)?.role
+  (playerId) => roster.find((jogador) => jogador.id === playerId)?.role,
+  (encounterID) => nomeDoBoss.get(encounterID)
 ).get(player.id);
 
 // Mesma fonte da página de regras — sem cópia, pra não divergirem.
