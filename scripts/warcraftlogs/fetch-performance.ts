@@ -558,6 +558,17 @@ async function main() {
         wcl.fetchCastEvents(ctx.report.code, ctx.raidFights),
       ]);
 
+      // Só quem aparece nos eventos: buscar o dano de ator que não lançou
+      // nada é ida de rede à toa.
+      const atoresComCast = [...new Set(eventos.map((evento) => evento.sourceID))].filter((id) =>
+        atores.has(id)
+      );
+      const danoPorHabilidade = await wcl.fetchDamageAbilities(
+        ctx.report.code,
+        ctx.aggregateFightIds,
+        atoresComCast
+      );
+
       // Toda magia nova do log é consultada uma vez no Wowhead e o veredito
       // fica gravado — inclusive "não é cooldown". Sem esse registro, as
       // ~180 magias de rotação de cada noite seriam reconsultadas toda
@@ -576,7 +587,7 @@ async function main() {
         eventos,
         ctx.raidFights,
         catalogToMap(catalogo),
-        buildDamageShares(ctx.aggregateTables.damage.data.entries)
+        buildDamageShares(danoPorHabilidade)
       );
 
       // Os eventos só trazem sourceID; o roster só conhece nome.

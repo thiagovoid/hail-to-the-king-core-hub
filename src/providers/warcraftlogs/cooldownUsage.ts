@@ -157,22 +157,22 @@ function chaveDeNome(nome: string): string {
  * quase nada, e o filtro de relevância simplesmente não rodava.
  */
 export function buildDamageShares(
-  entries: Array<{ id?: number; total?: number; abilities?: Array<{ name?: string; total?: number }> }>
+  porJogadorCru: Array<{ sourceID: number; abilities: Array<{ name?: string; total?: number }> }>
 ): Map<number, Map<string, number>> {
   const porJogador = new Map<number, Map<string, number>>();
 
-  for (const entry of entries) {
-    if (entry.id === undefined || !entry.total) continue;
+  for (const jogador of porJogadorCru) {
+    const total = jogador.abilities.reduce((soma, h) => soma + (h.total ?? 0), 0);
+    if (total <= 0) continue;
 
     const porHabilidade = new Map<string, number>();
-    for (const habilidade of entry.abilities ?? []) {
+    for (const habilidade of jogador.abilities) {
       if (!habilidade.name || habilidade.total === undefined) continue;
       const chave = chaveDeNome(habilidade.name);
-      const anterior = porHabilidade.get(chave) ?? 0;
-      porHabilidade.set(chave, anterior + (habilidade.total / entry.total) * 100);
+      porHabilidade.set(chave, (porHabilidade.get(chave) ?? 0) + (habilidade.total / total) * 100);
     }
 
-    porJogador.set(entry.id, porHabilidade);
+    porJogador.set(jogador.sourceID, porHabilidade);
   }
 
   return porJogador;

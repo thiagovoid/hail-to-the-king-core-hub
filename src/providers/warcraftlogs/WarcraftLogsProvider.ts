@@ -350,6 +350,53 @@ export class WarcraftLogsProvider
     return eventos;
   }
 
+  /**
+   * Dano por habilidade de cada jogador, sem truncar.
+   *
+   * A tabela agregada de DamageDone traz só as 5 maiores habilidades de
+   * cada um — a mesma truncagem da tabela de Casts. Justamente as
+   * situacionais ficam de fora, que são as que o filtro de relevância
+   * existe pra descartar: Feral Lunge é 0,00% do dano do jogador e não
+   * aparecia na lista, então passava como se não causasse dano nenhum.
+   *
+   * `sourceID` + `viewBy: Ability` devolve a lista inteira daquele jogador
+   * (26 habilidades no lugar de 5). Uma consulta por jogador, agrupadas em
+   * lotes por apelido pra não virar uma ida por pessoa.
+   */
+  async fetchDamageAbilities(
+    reportCode: string,
+    fightIDs: number[],
+    sourceIDs: number[]
+  ): Promise<Array<{ sourceID: number; abilities: Array<{ name?: string; total?: number }> }>> {
+    const resultado: Array<{ sourceID: number; abilities: Array<{ name?: string; total?: number }> }> = [];
+    const TAMANHO_DO_LOTE = 8;
+
+    for (let i = 0; i < sourceIDs.length; i += TAMANHO_DO_LOTE) {
+      const lote = sourceIDs.slice(i, i + TAMANHO_DO_LOTE);
+      const campos = lote
+        .map((id) => `  j${id}: table(fightIDs: $fightIDs, dataType: DamageDone, sourceID: ${id}, viewBy: Ability)`)
+        .join("\n");
+
+      const data = await wclGraphql<{ reportData: { report: Record<string, unknown> | null } }>(
+        `query($code: String!, $fightIDs: [Int]!) {
+          reportData { report(code: $code) {
+${campos}
+          } }
+        }`,
+        { code: reportCode, fightIDs }
+      );
+
+      for (const id of lote) {
+        const tabela = (data.reportData.report?.[`j${id}`] ?? {}) as {
+          data?: { entries?: Array<{ name?: string; total?: number }> };
+        };
+        resultado.push({ sourceID: id, abilities: tabela.data?.entries ?? [] });
+      }
+    }
+
+    return resultado;
+  }
+
   /** Points-based rate limit status — see AUTOMACAO.md / DataCollector's minDelayMs for why this matters. */
   async fetchRateLimitData(): Promise<{ limitPerHour: number; pointsSpentThisHour: number; pointsResetIn: number }> {
     const data = await wclGraphql<{

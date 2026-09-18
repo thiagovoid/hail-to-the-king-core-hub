@@ -217,7 +217,7 @@ describe("buildCooldownUsage", () => {
 describe("buildDamageShares", () => {
   it("converte dano por habilidade em percentual do total do jogador", () => {
     const shares = buildDamageShares([
-      { id: 5, total: 1000, abilities: [{ name: "Eye Beam", total: 250 }, { name: "Chaos Strike", total: 750 }] },
+      { sourceID: 5, abilities: [{ name: "Eye Beam", total: 250 }, { name: "Chaos Strike", total: 750 }] },
     ]);
 
     expect(shares.get(5)?.get("eye beam")).toBe(25);
@@ -225,7 +225,20 @@ describe("buildDamageShares", () => {
   });
 
   it("ignora jogador sem dano, em vez de dividir por zero", () => {
-    expect(buildDamageShares([{ id: 5, total: 0, abilities: [{ name: "Eye Beam", total: 0 }] }]).size).toBe(0);
+    expect(buildDamageShares([{ sourceID: 5, abilities: [{ name: "Eye Beam", total: 0 }] }]).size).toBe(0);
+  });
+
+  // O caso concreto: Feral Lunge é 0,00% do dano do Gunst. Precisa aparecer
+  // com participação zero, não sumir — sumir é indistinguível de buff puro.
+  it("registra com zero a habilidade que aparece sem dano nenhum", () => {
+    const shares = buildDamageShares([
+      {
+        sourceID: 12,
+        abilities: [{ name: "Crash Lightning", total: 1000 }, { name: "Feral Lunge", total: 0 }],
+      },
+    ]);
+
+    expect(shares.get(12)?.get("feral lunge")).toBe(0);
   });
 });
 
