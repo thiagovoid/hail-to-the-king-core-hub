@@ -108,6 +108,7 @@
             }
           ],
           "offRole": {
+            "dps": 43161,
             "hps": 55448
           },
           "deaths": 8,
@@ -293,6 +294,7 @@
             }
           ],
           "offRole": {
+            "dps": 48319,
             "hps": 65731
           },
           "deaths": 7,
@@ -2418,6 +2420,7 @@
             }
           ],
           "offRole": {
+            "dps": 44172,
             "hps": 28485
           },
           "deaths": 9,
@@ -2535,6 +2538,7 @@
             }
           ],
           "offRole": {
+            "dps": 29179,
             "hps": 42537
           },
           "deaths": 3,
@@ -2666,6 +2670,7 @@
             }
           ],
           "offRole": {
+            "dps": 47057,
             "hps": 66546
           },
           "deaths": 11,
@@ -2764,9 +2769,9 @@
             }
           ],
           "healing": {
-            "score": 50.9,
-            "coverage": 3.7,
-            "share": 21.6,
+            "score": 81.6,
+            "coverage": 17,
+            "share": 83,
             "overheal": 19.8
           },
           "offRole": {
@@ -2927,7 +2932,7 @@
           "healing": {
             "score": 85,
             "coverage": 21.1,
-            "share": 123,
+            "share": 103.1,
             "overheal": 30.1
           },
           "offRole": {
@@ -3053,7 +3058,7 @@
           "healing": {
             "score": 82.2,
             "coverage": 25.3,
-            "share": 147.5,
+            "share": 123.6,
             "overheal": 35.7
           },
           "offRole": {
@@ -4223,13 +4228,10 @@
             }
           ],
           "healing": {
-            "score": 86.7,
+            "score": 81.9,
             "coverage": 18.5,
-            "share": 107.9,
+            "share": 90.4,
             "overheal": 26.7
-          },
-          "offRole": {
-            "hps": 153863
           },
           "deaths": 8,
           "mechanics": {
