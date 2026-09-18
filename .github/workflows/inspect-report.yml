@@ -21,6 +21,7 @@ on:
           - preparation
           - parse
           - parse-report
+          - cooldowns
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -82,3 +83,14 @@ jobs:
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
         run: npm run wcl:_probe-parse
 
+      - name: Inspecionar cooldowns (por que a habilidade entrou ou saiu)
+        if: inputs.tool == 'cooldowns'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: |
+          ARGS=(--report="${{ inputs.report }}")
+          if [ -n "${{ inputs.player }}" ]; then
+            ARGS+=(--player="${{ inputs.player }}")
+          fi
+          npm run wcl:inspect-cooldowns -- "${ARGS[@]}"
