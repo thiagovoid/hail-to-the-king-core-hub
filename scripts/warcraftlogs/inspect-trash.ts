@@ -83,7 +83,10 @@ const mortes = await wclGraphql<{
       events(dataType: Deaths, startTime: $start, endTime: $end, limit: 500) { data nextPageTimestamp }
     } }
   }`,
-  { code, start: reportData.report.startTime, end: reportData.report.endTime }
+  // `events` trabalha em tempo RELATIVO ao início do log; `report.startTime`
+  // é epoch. Passar o epoch aqui devolve zero eventos, sem erro nenhum —
+  // mesma armadilha que já pegou a coleta de casts.
+  { code, start: 0, end: reportData.report.endTime - reportData.report.startTime }
 );
 const eventos = mortes.reportData.report.events.data;
 console.log(`  ${eventos.length} mortes, próxima página: ${mortes.reportData.report.events.nextPageTimestamp ?? "não tem"}`);
