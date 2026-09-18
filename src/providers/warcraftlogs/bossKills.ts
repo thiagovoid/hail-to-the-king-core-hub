@@ -5,9 +5,10 @@
  * baixa: quem lançou alguma coisa naquela try estava nela. Não custa
  * requisição nenhuma a mais — é cruzamento de dado que já está em mãos.
  *
- * Dificuldade entra na chave porque Nek'zali no Normal e no Heroico são dois
- * kills diferentes, e é assim que o jogo trata. Quem contar "bosses da
- * season" somando as duas está contando outra coisa.
+ * A conta é de KILLS, não de bosses distintos: se o core derrubar Nek'zali
+ * em três semanas seguidas, quem esteve nas três tem três kills. A
+ * dificuldade fica guardada junto porque distingue Normal de Heroico na hora
+ * de mostrar quais foram — mas não deduplica nada.
  */
 
 import type { EventoDeCast, JanelaDeLuta } from "./cooldownUsage";
@@ -23,58 +24,48 @@ export interface TryDeKill extends JanelaDeLuta {
   difficulty: number;
 }
 
-/** Identidade de um kill. Mesmo boss em dificuldades diferentes não colide. */
-export function chaveDoKill(kill: BossMorto): string {
-  return `${kill.encounterID}-${kill.difficulty}`;
-}
-
 /**
- * Por ator do relatório, os bosses que ele viu morrer.
+ * Por ator do relatório, um registro por try de kill em que ele estava.
  *
- * Sem repetição dentro do mesmo relatório: matar o mesmo boss duas vezes na
- * mesma noite continua sendo um boss.
+ * A chave é a TRY, não o boss: se o mesmo boss cair duas vezes na mesma
+ * noite, são dois kills. O que não pode repetir é a mesma try, e por isso o
+ * conjunto guarda ids de try.
  */
 export function buildBossKills(
   eventos: EventoDeCast[],
   killsDaNoite: TryDeKill[]
 ): Map<number, BossMorto[]> {
   const porTry = new Map(killsDaNoite.map((kill) => [kill.id, kill]));
-  const porAtor = new Map<number, Map<string, BossMorto>>();
+  const trysPorAtor = new Map<number, Set<number>>();
 
   for (const evento of eventos) {
-    const kill = porTry.get(evento.fight);
-    if (!kill) continue;
+    if (!porTry.has(evento.fight)) continue;
 
-    let meus = porAtor.get(evento.sourceID);
-    if (!meus) porAtor.set(evento.sourceID, (meus = new Map()));
-
-    const morto: BossMorto = { encounterID: kill.encounterID, difficulty: kill.difficulty };
-    meus.set(chaveDoKill(morto), morto);
+    let minhas = trysPorAtor.get(evento.sourceID);
+    if (!minhas) trysPorAtor.set(evento.sourceID, (minhas = new Set()));
+    minhas.add(evento.fight);
   }
 
   return new Map(
-    [...porAtor.entries()].map(([sourceID, mortos]) => [
+    [...trysPorAtor.entries()].map(([sourceID, trys]) => [
       sourceID,
-      [...mortos.values()].sort(
-        (a, b) => a.difficulty - b.difficulty || a.encounterID - b.encounterID
-      ),
+      [...trys]
+        .sort((a, b) => a - b)
+        .map((fightId) => {
+          const kill = porTry.get(fightId)!;
+          return { encounterID: kill.encounterID, difficulty: kill.difficulty };
+        }),
     ])
   );
 }
 
 /**
- * Quantos bosses distintos o jogador matou no conjunto de runs.
+ * Quantos bosses o jogador ajudou a derrubar no conjunto de runs.
  *
- * Distintos, não kills: matar Nek'zali Normal em três semanas seguidas é um
- * boss da season, não três. É a pergunta "quantos bosses você já derrubou",
- * não "quantas vezes você apertou".
+ * Total de kills, com repetição: estar em três clears de Nek'zali conta
+ * três. Mede participação em kill, não progressão — quem quiser "até onde o
+ * core chegou" olha a barra de progressão, que é outra coisa.
  */
-export function contarBossesDistintos(runs: Array<BossMorto[] | undefined>): number {
-  const vistos = new Set<string>();
-
-  for (const run of runs) {
-    for (const kill of run ?? []) vistos.add(chaveDoKill(kill));
-  }
-
-  return vistos.size;
+export function contarKills(runs: Array<BossMorto[] | undefined>): number {
+  return runs.reduce((total, run) => total + (run?.length ?? 0), 0);
 }

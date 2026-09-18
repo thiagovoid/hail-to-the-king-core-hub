@@ -31,13 +31,11 @@ export interface PlayerPerformance {
   itemLevel?: number;
 
   /**
-   * Bosses que o jogador viu morrer nesta run.
+   * Um registro por try de kill em que o jogador estava, nesta run.
    *
-   * Guardamos a identidade, não a contagem, porque o total da temporada é de
-   * bosses DISTINTOS: matar Nek'zali Normal em três semanas seguidas é um
-   * boss, não três. Sem saber qual era, não dá pra deduplicar depois.
-   *
-   * A dificuldade entra na identidade: Normal e Heroico são dois kills.
+   * Guardamos qual boss era, e não só a contagem, pra conseguir mostrar
+   * QUAIS bosses foram sem ter que rebuscar o log. A dificuldade vem junto
+   * porque distingue Normal de Heroico na hora de exibir.
    */
   bossKills?: Array<{ encounterID: number; difficulty: number }>;
 
