@@ -19,6 +19,11 @@
 import type { CooldownsDoJogador, UsoDeCooldown } from "../providers/warcraftlogs/cooldownUsage";
 import type { PlayerPerformance } from "../types/performance";
 
+/** Cura que o jogador lançou em si mesmo, no total da noite. */
+export interface AutoCura {
+  effective: number;
+}
+
 export interface DanoRecebido {
   /** Dano que efetivamente entrou. */
   total: number;
@@ -60,10 +65,25 @@ function arredondar(valor: number): number {
  * tenha nenhum reconhecido. Null sai da média ponderada em vez de virar
  * zero — a regra do Score Engine pra dimensão sem dado.
  */
+/**
+ * Fatia do dano recebido que o próprio jogador repôs, 0-100.
+ *
+ * Para tank é o número que descreve o estilo de sustentação; para os demais
+ * costuma ser quase zero e por isso fica ausente em vez de virar ruído.
+ */
+export function calculateAutoSustento(
+  autoCura: number,
+  danoRecebido: number
+): number | undefined {
+  if (danoRecebido <= 0 || autoCura <= 0) return undefined;
+  return Math.round((autoCura / danoRecebido) * 1000) / 10;
+}
+
 export function buildDefense(
   dano: DanoRecebido | undefined,
   durationMs: number,
-  cooldowns: CooldownsDoJogador | undefined
+  cooldowns: CooldownsDoJogador | undefined,
+  autoCura = 0
 ): DefesaDoJogador | undefined {
   if (!dano) return undefined;
 
@@ -83,6 +103,10 @@ export function buildDefense(
       score: notaCooldowns === null ? null : arredondar(notaCooldowns),
       mitigation,
       dtps,
+      ...(() => {
+        const sustento = calculateAutoSustento(autoCura, dano.total);
+        return sustento === undefined ? {} : { selfSustain: sustento };
+      })(),
     },
     // Do pior aproveitado pro melhor: o topo da lista é o que treinar.
     defenseDetail: defensivos

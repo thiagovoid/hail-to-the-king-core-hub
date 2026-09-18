@@ -554,6 +554,9 @@ async function main() {
   const cooldownsPorReport = new Map<string, Map<string, CooldownsDoJogador>>();
   const danoRecebidoPorReport = new Map<string, Map<string, DanoRecebido>>();
   const bossKillsPorReport = new Map<string, Map<string, BossMorto[]>>();
+  // Denominador da cobertura de cura: sem ele, "curou muito" e "curou bem"
+  // ficam indistinguíveis.
+  const danoDoRaidePorReport = new Map<string, number>();
 
   for (const ctx of reportContexts) {
     try {
@@ -628,6 +631,10 @@ async function main() {
         });
       }
       danoRecebidoPorReport.set(ctx.report.code, recebidoPorJogador);
+      danoDoRaidePorReport.set(
+        ctx.report.code,
+        [...recebidoPorJogador.values()].reduce((soma, dano) => soma + dano.total, 0)
+      );
 
       // Bosses mortos com a pessoa presente. Sai dos MESMOS eventos de cast
       // já baixados: quem lançou algo na try do kill estava nela. Zero
@@ -716,6 +723,7 @@ async function main() {
       cooldownsByPlayer: cooldownsPorReport.get(ctx.report.code),
       damageTakenByPlayer: danoRecebidoPorReport.get(ctx.report.code),
       bossKillsByPlayer: bossKillsPorReport.get(ctx.report.code),
+      raidDamageTaken: danoDoRaidePorReport.get(ctx.report.code),
     });
 
     // Passa pela Normalization Layer explícita mesmo só com a WCL contribuindo

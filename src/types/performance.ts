@@ -113,6 +113,35 @@ export interface PlayerPerformance {
   }>;
 
   /**
+   * "Curar corretamente" — só existe pra quem curou de verdade na noite.
+   *
+   * A régua não é HPS: curar mais costuma significar que o raide apanhou
+   * mais, e isso não é mérito do healer. Ver buildHealing.
+   */
+  healing?: {
+    /** 0-100: média do quinhão puxado (teto 100) com o aproveitamento. */
+    score: number;
+    /** % do dano do raide que passou pelas mãos deste healer. */
+    coverage: number;
+    /** % do que caberia a ele, dado quantos healers a noite teve. */
+    share: number;
+    /** % da cura lançada que caiu em quem já estava cheio. */
+    overheal: number;
+  };
+
+  /**
+   * Dano e cura FORA da função — o tank que contribui com dano, o dps que
+   * segura o próprio HP. Guardado separado do dps/hps principal porque a
+   * comparação só faz sentido entre quem está fora de função.
+   */
+  offRole?: {
+    /** Dano por segundo de quem não é dps. */
+    dps?: number;
+    /** Cura efetiva por segundo de quem não é healer. */
+    hps?: number;
+  };
+
+  /**
    * "Defender corretamente" — o que a pessoa fez pra não morrer.
    *
    * A nota vem SÓ dos cooldowns defensivos. Mitigação e dano recebido são
@@ -127,6 +156,14 @@ export interface PlayerPerformance {
     mitigation: number;
     /** Dano recebido por segundo de luta. Informativo. */
     dtps: number;
+    /**
+     * Quanto do dano que você tomou foi reposto pela SUA própria cura.
+     *
+     * É a métrica que separa estilos de tank sem colocá-los pra competir:
+     * no log de 15/09, Voidwar repôs 27% e Blackwatch 41%. Não dá pra dizer
+     * qual é melhor — dá pra dizer se cada um está melhorando.
+     */
+    selfSustain?: number;
   };
 
   /** Cooldown a cooldown, do pior aproveitado pro melhor. */

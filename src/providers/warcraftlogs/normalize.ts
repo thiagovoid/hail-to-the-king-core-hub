@@ -11,6 +11,7 @@ import type { CooldownsDoJogador } from "./cooldownUsage";
 import type { BossMorto } from "./bossKills";
 import { buildAttack, calculateUptime } from "../../normalization/buildAttack";
 import { buildDefense, type DanoRecebido } from "../../normalization/buildDefense";
+import { buildHealing, calculateCobertura } from "../../normalization/buildHealing";
 import type { PlayerPerformance } from "../../types/performance";
 
 export interface WclProfile {
@@ -159,6 +160,14 @@ export interface WclTableEntry {
   id?: number;
   /** Quebra do dano por habilidade. Ver buildDamageShares. */
   abilities?: Array<{ name?: string; total?: number }>;
+  /** Só na tabela de cura: o que caiu em quem já estava cheio. */
+  overheal?: number;
+  /**
+   * Quem recebeu a cura. Truncado nos 5 maiores, como todo o resto — o que
+   * basta pra auto-cura, porque num tank ele mesmo é sempre o primeiro
+   * (Voidwar: 99,9% da cura dele é nele).
+   */
+  targets?: Array<{ name?: string; total?: number }>;
 }
 
 export interface WclPlayerDetail {
@@ -188,6 +197,10 @@ export interface NormalizedRunPlayer {
   defenseDetail?: PlayerPerformance["defenseDetail"];
   /** Bosses que o jogador viu morrer na noite. Ver bossKills.ts. */
   bossKills?: BossMorto[];
+  /** "Curar corretamente" — só pra quem curou. Ver buildHealing. */
+  healing?: PlayerPerformance["healing"];
+  /** Dano/cura fora da função. Ver o tipo em performance.ts. */
+  offRole?: PlayerPerformance["offRole"];
   /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
   preparationMissing?: string[];
   /**
@@ -238,6 +251,11 @@ export interface BuildRunPlayersInput {
   damageTakenByPlayer?: Map<string, DanoRecebido>;
   /** Bosses mortos com o jogador presente, por id do roster. */
   bossKillsByPlayer?: Map<string, BossMorto[]>;
+  /**
+   * Dano que o raide inteiro tomou na noite. É o denominador da cobertura
+   * de cura: sem ele, "curou muito" e "curou bem" ficam indistinguíveis.
+   */
+  raidDamageTaken?: number;
 }
 
 /**
@@ -293,9 +311,27 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     cooldownsByPlayer,
     damageTakenByPlayer,
     bossKillsByPlayer,
+    raidDamageTaken = 0,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
   const playerDetails = fullTables.summary.data.playerDetails;
+  // Quem curou de fato na noite, pelo balde da WCL — não pelo roster. A
+  // Ligiaf está cadastrada como dps e passou a noite de 15/09 curando; usar
+  // o cadastro daria a ela um quinhão que não é dela.
+  const curaDoRaide = players
+    .map((player) => {
+      const papeis = findPlayerRoles(playerDetails, player.profile.name);
+      if (!papeis.includes('healers')) return null;
+
+      const entrada = aggregateTables.healing.data.entries.find((item) =>
+        sameCharacterName(item.name, player.profile.name)
+      );
+      if (!entrada) return null;
+
+      const cobertura = calculateCobertura(entrada.total, raidDamageTaken);
+      return cobertura === undefined ? null : cobertura;
+    })
+    .filter((valor): valor is number => valor !== null);
   const result: NormalizedRunPlayer[] = [];
 
   for (const player of players) {
@@ -363,6 +399,9 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     // metade sem ter feito nada errado. Sem a coleta de eventos não dá pra
     // saber em que trys ela estava, e aí a noite toda é o melhor palpite.
     const cooldownsDoJogador = cooldownsByPlayer?.get(player.id);
+    // Mesmo denominador do uptime: o tempo em que a pessoa esteve na luta,
+    // pra o DTPS de quem jogou meia noite não sair pela metade.
+    const tempoNaLuta = cooldownsDoJogador?.possibleMs ?? aggregateDurationMs;
     const ataque = trocouDeFuncao
       ? undefined
       : buildAttack(
@@ -370,14 +409,51 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
           cooldownsDoJogador
         );
 
-    // Mesmo denominador do uptime: o tempo em que a pessoa esteve na luta,
-    // pra o DTPS de quem jogou meia noite não sair pela metade.
-    const tempoNaLuta = cooldownsDoJogador?.possibleMs ?? aggregateDurationMs;
+    // ----- cura e contribuição fora de função -----
+    const entradaDeCura = aggregateTables.healing.data.entries.find((item) =>
+      sameCharacterName(item.name, player.profile.name)
+    );
+    const entradaDeDano = aggregateTables.damage.data.entries.find((item) =>
+      sameCharacterName(item.name, player.profile.name)
+    );
+
+    // Auto-cura sai do campo `targets` da tabela de cura. Ele vem truncado
+    // nos 5 maiores, o que basta: num tank ele mesmo é sempre o primeiro.
+    const autoCura =
+      entradaDeCura?.targets?.find((alvo) =>
+        sameCharacterName(alvo.name ?? '', player.profile.name)
+      )?.total ?? 0;
+
     const defesa = buildDefense(
       damageTakenByPlayer?.get(player.id),
       tempoNaLuta,
-      cooldownsDoJogador
+      cooldownsDoJogador,
+      autoCura
     );
+
+    const cura = roles.includes('healers')
+      ? buildHealing(
+          { effective: entradaDeCura?.total ?? 0, overheal: entradaDeCura?.overheal ?? 0 },
+          raidDamageTaken,
+          curaDoRaide
+        )
+      : undefined;
+
+    // Dano de quem não é dps e cura de quem não é healer: a comparação só
+    // faz sentido entre quem também está fora de função, por isso mora num
+    // campo separado do dps/hps principal.
+    const segundos = tempoNaLuta / 1000;
+    const offRole =
+      segundos > 0
+        ? {
+            ...(metricKey === 'hps' && entradaDeDano?.total
+              ? { dps: Math.round(entradaDeDano.total / segundos) }
+              : {}),
+            ...(metricKey === 'dps' && entradaDeCura?.total
+              ? { hps: Math.round(entradaDeCura.total / segundos) }
+              : {}),
+          }
+        : {};
 
     result.push({
       playerId: player.id,
@@ -393,6 +469,8 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ...(bossKillsByPlayer?.get(player.id)?.length
         ? { bossKills: bossKillsByPlayer.get(player.id) }
         : {}),
+      ...(cura ? { healing: cura.healing } : {}),
+      ...(Object.keys(offRole).length > 0 ? { offRole } : {}),
     });
   }
 

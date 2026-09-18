@@ -26,6 +26,8 @@ export interface PlayerPerformanceContributions {
     | "defense"
     | "defenseDetail"
     | "bossKills"
+    | "healing"
+    | "offRole"
   >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
 }
