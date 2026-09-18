@@ -817,13 +817,15 @@ const serializedMetrics = metrics.map((metric) => ({
       }
       trechos.push(atual);
 
+      const nomeEscapado = escapeHtml(series.playerName);
+
       let linhasSvg = '';
       for (const trecho of trechos) {
         if (trecho.length < 2) continue;
-        linhasSvg += `<polyline points="${trecho.map((ponto) => `${ponto.x},${ponto.y}`).join(' ')}" fill="none" stroke="currentColor" class="${series.playerColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+        const coordenadas = trecho.map((ponto) => `${ponto.x},${ponto.y}`).join(' ');
+        linhasSvg += faixaDeAlcance(coordenadas);
+        linhasSvg += `<polyline points="${coordenadas}" fill="none" stroke="currentColor" class="${series.playerColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
       }
-
-      const nomeEscapado = escapeHtml(series.playerName);
       let marcasSvg = '';
       for (const ponto of pontos) {
         marcasSvg += `<circle cx="${ponto.x}" cy="${ponto.y}" r="4.5" class="${series.playerColor} stroke-slate-950" fill="currentColor" stroke-width="2"><title>${nomeEscapado} — ${ponto.posicao}º em ${formatShortDate(ponto.date)} · ${formatValue(ponto.valor)}</title></circle>`;
@@ -835,7 +837,7 @@ const serializedMetrics = metrics.map((metric) => ({
       const ultimo = pontos[pontos.length - 1];
       const rotulos = `<text x="${ultimo.x + 8}" y="${ultimo.y + 4}" class="fill-slate-200 text-[10px]">${nomeEscapado}</text>`;
 
-      seriesSvg += `<g>${linhasSvg}${marcasSvg}${rotulos}</g>`;
+      seriesSvg += `<g class="serie" data-jogador="${nomeEscapado}">${linhasSvg}${marcasSvg}${rotulos}</g>`;
     }
 
     let labelsSvg = '';
@@ -844,6 +846,17 @@ const serializedMetrics = metrics.map((metric) => ({
     }
 
     return `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[600px]" role="img" aria-label="Ranking de ${escapeHtml(metric.label)} do core">${gridSvg}${seriesSvg}<g>${labelsSvg}</g></svg>`;
+  }
+
+/**
+   * Faixa invisível e grossa por baixo da linha.
+   *
+   * Uma linha de 2px é um alvo de mouse frustrante — o ECharts resolve do
+   * mesmo jeito. Sem ela, o realce só dispara quando o cursor acerta o
+   * traço, e na prática quase nunca acerta.
+   */
+  function faixaDeAlcance(points: string): string {
+    return `<polyline points="${points}" fill="none" stroke="transparent" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>`;
   }
 
   function buildMetricMarkup(
@@ -887,17 +900,20 @@ const serializedMetrics = metrics.map((metric) => ({
       const labelY = getY(lastPoint.value, scale);
       const points = createPoints(playerSeries.data, scale, dates);
 
+      const nameEscaped = escapeHtml(playerSeries.playerName);
+
+      // O valor saiu de cima de cada ponto: eram 17 jogadores x 8 datas =
+      // 136 números empilhados, e nenhum deles legível. Agora ele mora no
+      // hover, junto de quem é e de quando foi.
       let pointsSvg = '';
       playerSeries.data.forEach((point, pointIndex) => {
         const isLast = pointIndex === playerSeries.data.length - 1;
         const x = getX(point.date, dates);
         const y = getY(point.value, scale);
-        pointsSvg += `<g><circle cx="${x}" cy="${y}" r="${isLast ? 6 : 5}" class="${playerSeries.playerColor} stroke-slate-950" fill="currentColor" stroke-width="${isLast ? '2.5' : '2'}"/><text x="${x}" y="${y - 11}" text-anchor="middle" class="fill-slate-400 text-[10px]">${formatValue(point.value)}</text></g>`;
+        pointsSvg += `<circle cx="${x}" cy="${y}" r="${isLast ? 6 : 5}" class="${playerSeries.playerColor} stroke-slate-950" fill="currentColor" stroke-width="${isLast ? '2.5' : '2'}"><title>${nameEscaped} — ${formatShortDate(point.date)} · ${formatValue(point.value)}</title></circle>`;
       });
 
-      const nameEscaped = escapeHtml(playerSeries.playerName);
-
-      seriesSvg += `<g><polyline points="${points}" fill="none" stroke="currentColor" class="${playerSeries.playerColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${pointsSvg}<text x="${width - paddingRight + 5}" y="${labelY + 4}" class="fill-slate-200 text-[10px]">${nameEscaped}</text></g>`;
+      seriesSvg += `<g class="serie" data-jogador="${nameEscaped}">${faixaDeAlcance(points)}<polyline points="${points}" fill="none" stroke="currentColor" class="${playerSeries.playerColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${pointsSvg}<text x="${width - paddingRight + 5}" y="${labelY + 4}" class="fill-slate-200 text-[10px]">${nameEscaped}</text></g>`;
 
       const trendHtml = trend
         ? `<span class="${trend.positive === true ? 'text-emerald-400' : trend.positive === false ? 'text-red-400' : 'text-slate-500'}">${trend.symbol} ${trend.value}</span>`
@@ -907,7 +923,7 @@ const serializedMetrics = metrics.map((metric) => ({
         ? `<a href="/core/membros/${playerSeries.playerSlug}/" class="text-slate-300 hover:text-white hover:underline transition-colors">${nameEscaped}</a>`
         : `<span class="text-slate-300">${nameEscaped}</span>`;
 
-      legendHtml += `<div class="flex items-center gap-2 text-xs"><span class="w-2 h-2 rounded-full ${playerSeries.playerColor}" style="background-color: currentColor;"></span>${nameHtml}${trendHtml}</div>`;
+      legendHtml += `<div class="legenda-item flex items-center gap-2 text-xs" data-jogador="${nameEscaped}"><span class="w-2 h-2 rounded-full ${playerSeries.playerColor}" style="background-color: currentColor;"></span>${nameHtml}${trendHtml}</div>`;
     }
 
     let axisSvg = '';
@@ -1010,4 +1026,80 @@ const serializedMetrics = metrics.map((metric) => ({
       });
     });
   }
+
+  /**
+   * Passar o mouse num nome da legenda realça a linha dele.
+   *
+   * Delegação num container que sobrevive ao re-render: o innerHTML do
+   * gráfico é trocado a cada mudança de filtro ou de modo, e listener preso
+   * na legenda morreria junto.
+   */
+  function ligarRealceDaLegenda(container: Element) {
+    container.addEventListener('mouseover', (evento) => {
+      const item = (evento.target as Element).closest?.('.legenda-item');
+      if (!item) return;
+
+      const jogador = item.getAttribute('data-jogador');
+      container.classList.add('destacando');
+      container.querySelectorAll('.serie').forEach((serie) => {
+        serie.classList.toggle('destacada', serie.getAttribute('data-jogador') === jogador);
+      });
+    });
+
+    container.addEventListener('mouseout', (evento) => {
+      if ((evento.target as Element).closest?.('.legenda-item')) {
+        container.classList.remove('destacando');
+      }
+    });
+  }
+
+  document.querySelectorAll('[data-metric-chart]').forEach(ligarRealceDaLegenda);
+
+  // Troca o desenho do servidor pela versão interativa. O do servidor segue
+  // servindo de reserva pra quem estiver sem JS — só não tem realce.
+  renderizar();
 </script>
+
+<style is:global>
+  /*
+   * Realce de série no hover — é o `emphasis: { focus: 'series' }` do
+   * ECharts: a linha sob o cursor fica cheia e o resto desbota. Com 17
+   * linhas cruzando, é o que permite seguir uma delas com o olho.
+   *
+   * Precisa ser global: o SVG é injetado por innerHTML, e estilo com escopo
+   * do Astro só casa com elementos que existiam no build.
+   */
+  [data-metric-chart] .serie {
+    transition: opacity 120ms ease;
+  }
+
+  /*
+   * :has() e não :hover no <svg>. Com "svg:hover .serie", o cursor entrando
+   * na área do gráfico sem tocar em linha nenhuma desbotava as dezessete e
+   * não destacava nenhuma — o gráfico inteiro lavava. O esmaecimento só
+   * pode existir quando há alguma série de fato em foco.
+   */
+  [data-metric-chart] svg:has(.serie:hover) .serie {
+    opacity: 0.16;
+  }
+
+  /* Mesma especificidade da regra acima, declarada depois: quem está sob o
+     cursor volta a 100%. */
+  [data-metric-chart] svg:has(.serie:hover) .serie:hover {
+    opacity: 1;
+  }
+
+  /* Realce disparado pela legenda, que é como se acha um jogador específico
+     no meio de dezessete linhas. */
+  [data-metric-chart].destacando .serie {
+    opacity: 0.16;
+  }
+
+  [data-metric-chart].destacando .serie.destacada {
+    opacity: 1;
+  }
+
+  [data-metric-chart] .legenda-item {
+    cursor: default;
+  }
+</style>
