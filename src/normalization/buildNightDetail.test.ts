@@ -59,6 +59,31 @@ describe("buildNightDetail", () => {
     expect(detalhe.get(10)?.tries.idle).toBe(1);
   });
 
+  // Em 27/08 isso dava "ocioso" pros 14 jogadores da noite: a try não tinha
+  // tabela de dano nenhuma. Raide inteiro parado não acontece — try sem dado
+  // acontece.
+  it("não conta ociosidade numa try em que ninguém bateu", () => {
+    const detalhe = buildNightDetail(
+      [luta(1, [10, 20]), luta(2, [10, 20])],
+      [],
+      dano({ 1: { 10: 5000, 20: 3000 }, 2: {} })
+    );
+
+    expect(detalhe.get(10)?.tries.idle).toBe(0);
+    expect(detalhe.get(20)?.tries.idle).toBe(0);
+  });
+
+  it("conta ociosidade quando os outros bateram e você não", () => {
+    const detalhe = buildNightDetail(
+      [luta(1, [10, 20])],
+      [],
+      dano({ 1: { 10: 5000, 20: 0 } })
+    );
+
+    expect(detalhe.get(20)?.tries.idle).toBe(1);
+    expect(detalhe.get(10)?.tries.idle).toBe(0);
+  });
+
   it("conta quem morreu e ainda foi o maior dano da try", () => {
     const detalhe = buildNightDetail(
       [luta(1, [10, 20])],

@@ -103,7 +103,12 @@ export function buildNightDetail(
     let topDamageDead = 0;
 
     for (const luta of presentes) {
-      if ((danoPorTry.get(luta.id)?.get(actorId) ?? 0) === 0) idle += 1;
+      // Só conta ociosidade numa try em que ALGUÉM bateu. Try sem dano
+      // nenhum na tabela é try sem dado — um pull cancelado em dois
+      // segundos, uma luta que a WCL não tabelou — e não uma em que o raide
+      // inteiro ficou parado. Em 27/08 isso dava "ocioso" pros 14.
+      const teveAtividade = (lideresDaTry.get(luta.id)?.size ?? 0) > 0;
+      if (teveAtividade && (danoPorTry.get(luta.id)?.get(actorId) ?? 0) === 0) idle += 1;
 
       const morreu = morreuNaTry.has(`${luta.id}:${actorId}`);
       if (morreu && lideresDaTry.get(luta.id)?.has(actorId)) topDamageDead += 1;

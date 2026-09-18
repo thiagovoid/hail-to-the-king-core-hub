@@ -231,6 +231,46 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
     tipo: "boa",
     disputada: false,
   },
+  {
+    id: "invicto",
+    nome: "Invicto",
+    como: "Derrubar um boss que NÃO caiu de primeira, sem morrer em nenhuma try dele.",
+    simbolo: "coracao",
+    tipo: "boa",
+    disputada: false,
+  },
+  {
+    id: "paciencia-de-jo",
+    nome: "Paciência de Jó",
+    como: "Bater no mesmo boss dez vezes ou mais numa noite — e vê-lo cair.",
+    simbolo: "ampulheta",
+    tipo: "boa",
+    disputada: false,
+  },
+  {
+    id: "coringa",
+    nome: "Coringa",
+    como: "Cobrir uma vaga fora da sua função pra fechar o raide.",
+    simbolo: "coringa",
+    tipo: "boa",
+    disputada: false,
+  },
+  {
+    id: "dois-oficios",
+    nome: "Dois ofícios",
+    como: "Jogar de duas specs diferentes ao longo da temporada.",
+    simbolo: "bifurcacao",
+    tipo: "boa",
+    disputada: false,
+  },
+  {
+    id: "severino",
+    nome: "Severino",
+    como: "Jogar de três specs diferentes ao longo da temporada.",
+    simbolo: "tridente",
+    tipo: "boa",
+    disputada: false,
+  },
 
   // ----- zoeira -----
   {
@@ -313,6 +353,62 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
     tipo: "zoeira",
     disputada: false,
   },
+  {
+    id: "pacifista",
+    nome: "Pacifista",
+    como: "Atravessar o trash da noite sem causar dano nenhum. Estava admirando a arquitetura.",
+    simbolo: "pomba",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "fominha-de-trash",
+    nome: "Fominha de trash",
+    como: "Estar no pódio de dano do trash e fora do pódio no boss.",
+    simbolo: "garfo",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "chegou-atrasado",
+    nome: "Chegou atrasado",
+    como: "Perder a primeira pull da noite e aparecer da segunda em diante.",
+    simbolo: "porta",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "lagou-aqui",
+    nome: "Lagou aqui",
+    como: "Estar nas primeiras trys e sumir antes da última. Culpa da internet, sempre.",
+    simbolo: "raio",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "turista",
+    nome: "Turista",
+    como: "Atravessar uma try inteira sem causar dano nenhum.",
+    simbolo: "camera",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "meter-do-alem",
+    nome: "Meter do além",
+    como: "Morrer na try e ainda assim fechá-la como o maior dano.",
+    simbolo: "fantasma",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "vai-de-novo",
+    nome: "Vai de novo",
+    como: "Bater no mesmo boss dez vezes numa noite e ir dormir sem derrubá-lo.",
+    simbolo: "ciclo",
+    tipo: "zoeira",
+    disputada: false,
+  },
 ];
 
 /** Uma conquista levada, com o texto que explica aquela vez específica. */
@@ -374,13 +470,60 @@ function mecanicaMaisRepetida(player: PlayerPerformance): { nome: string; tries:
   return { nome: nomeDaMecanica(pior), tries: pior.tries };
 }
 
+/**
+ * A noite somada por PESSOA, só no que depende de presença.
+ *
+ * Em 15/09 a mesma pessoa aparece como Voidsurge nas primeiras trys e como
+ * Voidwar nas últimas. Olhando personagem por personagem, um "saiu cedo" e
+ * o outro "chegou tarde" — duas medalhas de zoeira para quem, na prática,
+ * não saiu do lugar. Aqui só é atraso se NENHUM personagem dela estava na
+ * primeira pull.
+ */
+interface PresencaDaPessoa {
+  /** Alguma noite dela tem o dado try a try. Sem isso não se apura nada. */
+  comDado: boolean;
+  lateStart: boolean;
+  earlyExit: boolean;
+  /** Soma do que ela fez no trash com todos os personagens. */
+  trashShare?: number;
+}
+
+function presencaPorPessoa(
+  run: PerformanceRun,
+  pessoa: (playerId: string) => string
+): Map<string, PresencaDaPessoa> {
+  const porPessoa = new Map<string, PresencaDaPessoa>();
+
+  for (const player of run.players) {
+    const id = pessoa(player.playerId);
+    const anterior = porPessoa.get(id);
+    const trys = player.tries;
+
+    porPessoa.set(id, {
+      comDado: (anterior?.comDado ?? false) || trys !== undefined,
+      // Vale o melhor dos personagens: basta um ter estado na pull.
+      lateStart: (anterior?.lateStart ?? true) && (trys?.lateStart ?? true),
+      earlyExit: (anterior?.earlyExit ?? true) && (trys?.earlyExit ?? true),
+      trashShare:
+        player.trashShare === undefined
+          ? anterior?.trashShare
+          : (anterior?.trashShare ?? 0) + player.trashShare,
+    });
+  }
+
+  return porPessoa;
+}
+
 function vencedoresDaRun(
   run: PerformanceRun,
   targets: CorePerformanceTargets,
-  funcaoDe?: (playerId: string) => FuncaoDoJogador | undefined
+  funcaoDe?: (playerId: string) => FuncaoDoJogador | undefined,
+  pessoaDe?: (playerId: string) => string
 ): Map<string, Vitoria[]> {
   const porConquista = new Map<string, Vitoria[]>();
   const simples = (ids: string[]): Vitoria[] => ids.map((playerId) => ({ playerId }));
+  const pessoa = (playerId: string) => pessoaDe?.(playerId) ?? playerId;
+  const presenca = presencaPorPessoa(run, pessoa);
 
   /**
    * Empate entrega a todos os empatados. Desempatar por ordem de array daria
@@ -581,6 +724,136 @@ function vencedoresDaRun(
     })
   );
 
+  // ----- o que só existe com a noite try a try (ver buildNightDetail) -----
+
+  porConquista.set(
+    "chegou-atrasado",
+    comDetalhe((p) => {
+      const dela = presenca.get(pessoa(p.playerId));
+      return dela?.comDado && dela.lateStart ? "faltou na primeira pull da noite" : null;
+    })
+  );
+
+  porConquista.set(
+    "lagou-aqui",
+    comDetalhe((p) => {
+      const dela = presenca.get(pessoa(p.playerId));
+      return dela?.comDado && dela.earlyExit ? "sumiu antes da última try" : null;
+    })
+  );
+
+  porConquista.set(
+    "turista",
+    comDetalhe((p) =>
+      p.tries && p.tries.idle > 0
+        ? `${p.tries.idle} de ${p.tries.present} trys sem causar dano`
+        : null
+    )
+  );
+
+  porConquista.set(
+    "meter-do-alem",
+    comDetalhe((p) =>
+      p.tries && p.tries.topDamageDead > 0
+        ? `maior dano da try mesmo morto, ${p.tries.topDamageDead}x`
+        : null
+    )
+  );
+
+  /**
+   * Boss que caiu de primeira não conta.
+   *
+   * Das 221 lutas atravessadas sem morte na temporada, TODAS foram kills de
+   * uma try só — atravessar dois minutos de boss fácil não é invencibilidade,
+   * é a luta ter sido curta. Com o piso de duas trys ninguém tem a medalha
+   * ainda, e é exatamente esse o ponto dela.
+   */
+  porConquista.set(
+    "invicto",
+    comDetalhe((p) => {
+      const impecaveis = (p.bossTries ?? []).filter((boss) => boss.flawless && boss.tries >= 2);
+      return impecaveis.length > 0
+        ? `${impecaveis.length} boss${impecaveis.length > 1 ? "es" : ""} de progressão sem morrer uma vez`
+        : null;
+    })
+  );
+
+  /**
+   * Dez trys no mesmo boss. Com kill é teimosia premiada; sem kill é a
+   * noite que todo mundo lembra. A mesma régua, dois lados.
+   */
+  const INSISTENCIA = 10;
+
+  porConquista.set(
+    "paciencia-de-jo",
+    comDetalhe((p) => {
+      const insistiu = (p.bossTries ?? []).find(
+        (boss) => boss.tries >= INSISTENCIA && boss.killed
+      );
+      return insistiu ? `caiu na ${insistiu.tries}ª try` : null;
+    })
+  );
+
+  porConquista.set(
+    "vai-de-novo",
+    comDetalhe((p) => {
+      const apanhou = (p.bossTries ?? []).find(
+        (boss) => boss.tries >= INSISTENCIA && !boss.killed
+      );
+      return apanhou ? `${apanhou.tries} trys, nenhum kill` : null;
+    })
+  );
+
+  porConquista.set(
+    "pacifista",
+    comDetalhe((p) => {
+      const dela = presenca.get(pessoa(p.playerId));
+      // Sem `tries` a pessoa não esteve em pull nenhuma — e zero dano de
+      // quem não desceu não é a mesma coisa que zero dano de quem estava lá.
+      return p.tries && dela?.trashShare === 0 ? "0% do dano no trash" : null;
+    })
+  );
+
+  /**
+   * Bate muito no trash e some no boss. Pódio dos dois lados porque o que
+   * tem graça é a troca de posição, não o número solto.
+   */
+  const podio = (valorDe: (p: PlayerPerformance) => number | undefined): Set<string> =>
+    new Set(
+      run.players
+        .filter((p) => valorDe(p) !== undefined)
+        .sort((a, b) => valorDe(b)! - valorDe(a)!)
+        .slice(0, 3)
+        .map((p) => p.playerId)
+    );
+
+  const podioDoTrash = podio((p) => p.trashShare);
+  const podioDoBoss = podio((p) => p.dps);
+
+  porConquista.set(
+    "fominha-de-trash",
+    comDetalhe((p) =>
+      podioDoTrash.has(p.playerId) && !podioDoBoss.has(p.playerId) && p.dps !== undefined
+        ? `${p.trashShare}% do dano no trash`
+        : null
+    )
+  );
+
+  /**
+   * Cobriu uma função que não é a dela. A do log manda: quem está cadastrado
+   * como dps e passou a noite curando cobriu vaga de healer.
+   */
+  porConquista.set(
+    "coringa",
+    comDetalhe((p) => {
+      const cadastrada = funcaoDe?.(p.playerId);
+      if (!cadastrada || !p.specs?.length) return null;
+
+      const cobriu = p.specs.find((item) => item.role !== cadastrada);
+      return cobriu ? `cobriu ${cobriu.role} de ${cobriu.spec}` : null;
+    })
+  );
+
   return porConquista;
 }
 
@@ -629,6 +902,9 @@ function vencedoresDaTemporada(
 
   // --- Pagando promessa: a mesma mecânica, noite após noite ---
   const mecanicasPorJogador = new Map<string, Map<string, number>>();
+
+  // --- Dois ofícios / Severino: de quantas specs a pessoa jogou ---
+  const specsPorJogador = new Map<string, Set<string>>();
 
   for (const run of runs) {
     const estreias = new Set<number>();
@@ -696,6 +972,12 @@ function vencedoresDaTemporada(
       );
       for (const nome of daNoiteDele) doJogador.set(nome, (doJogador.get(nome) ?? 0) + 1);
       mecanicasPorJogador.set(id, doJogador);
+
+      // Spec conta por pessoa: quem tem um Frost DK de alt tocou outra spec,
+      // mesmo que o main nunca tenha saído da dele.
+      const specs = specsPorJogador.get(id) ?? new Set<string>();
+      for (const item of personagens.flatMap((p) => p.specs ?? [])) specs.add(item.spec);
+      specsPorJogador.set(id, specs);
     }
 
     for (const encounterID of estreias) jaDerrubados.add(encounterID);
@@ -738,6 +1020,20 @@ function vencedoresDaTemporada(
         detalhe: `${runs.length} de ${runs.length} noites`,
       }))
   );
+
+  // Duas specs já é raro; três é o Severino. Cada uma vale uma vez só — o
+  // que se está reconhecendo é a versatilidade, não a repetição dela.
+  const oficios = (minimo: number): VitoriaDaTemporada[] =>
+    [...specsPorJogador]
+      .filter(([, specs]) => specs.size >= minimo)
+      .map(([playerId, specs]) => ({
+        playerId,
+        vezes: 1,
+        detalhe: [...specs].join(", "),
+      }));
+
+  porConquista.set("dois-oficios", oficios(2));
+  porConquista.set("severino", oficios(3));
 
   const promessas: VitoriaDaTemporada[] = [];
   for (const [playerId, mecanicas] of mecanicasPorJogador) {
@@ -795,7 +1091,12 @@ export function contarConquistas(
     .sort((a, b) => a.date.localeCompare(b.date));
 
   for (const run of runs) {
-    for (const [conquistaId, vitorias] of vencedoresDaRun(run, targets, contexto.funcaoDe)) {
+    for (const [conquistaId, vitorias] of vencedoresDaRun(
+      run,
+      targets,
+      contexto.funcaoDe,
+      contexto.pessoaDe
+    )) {
       // Quem jogou com dois personagens na mesma noite leva a medalha uma
       // vez só: ela é da pessoa, e a noite foi uma.
       const jaContados = new Set<string>();
