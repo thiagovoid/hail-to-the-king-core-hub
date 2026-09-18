@@ -1206,17 +1206,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 76,
+            "score": 97.8,
             "uptime": 97.9,
-            "cooldowns": 54.1
+            "cooldowns": 97.6
           },
           "attackDetail": [
-            {
-              "spellId": 198103,
-              "name": "Earth Elemental",
-              "casts": 2,
-              "efficiency": 10.6
-            },
             {
               "spellId": 114051,
               "name": "Ascendance",
@@ -2814,17 +2808,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 68.3,
+            "score": 89.3,
             "uptime": 86.5,
-            "cooldowns": 50.2
+            "cooldowns": 92
           },
           "attackDetail": [
-            {
-              "spellId": 198103,
-              "name": "Earth Elemental",
-              "casts": 2,
-              "efficiency": 8.3
-            },
             {
               "spellId": 114051,
               "name": "Ascendance",
