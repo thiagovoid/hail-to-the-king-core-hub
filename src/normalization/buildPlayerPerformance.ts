@@ -25,6 +25,7 @@ export interface PlayerPerformanceContributions {
     | "attackDetail"
     | "defense"
     | "defenseDetail"
+    | "bossKills"
   >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
   wowAnalyzer?: Pick<PlayerPerformance, "uptime">;

@@ -8,6 +8,7 @@
 import { calculatePreparation, type PreparationChecklist, type WclCombatantInfo } from "./preparation";
 import { findParse } from "./reportRankings";
 import type { CooldownsDoJogador } from "./cooldownUsage";
+import type { BossMorto } from "./bossKills";
 import { buildAttack, calculateUptime } from "../../normalization/buildAttack";
 import { buildDefense, type DanoRecebido } from "../../normalization/buildDefense";
 import type { PlayerPerformance } from "../../types/performance";
@@ -185,6 +186,8 @@ export interface NormalizedRunPlayer {
   /** "Defender corretamente": cooldowns defensivos. Ver buildDefense. */
   defense?: PlayerPerformance["defense"];
   defenseDetail?: PlayerPerformance["defenseDetail"];
+  /** Bosses que o jogador viu morrer na noite. Ver bossKills.ts. */
+  bossKills?: BossMorto[];
   /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
   preparationMissing?: string[];
   /**
@@ -233,6 +236,8 @@ export interface BuildRunPlayersInput {
   cooldownsByPlayer?: Map<string, CooldownsDoJogador>;
   /** Dano recebido na noite, por id do roster. Ver buildDefense. */
   damageTakenByPlayer?: Map<string, DanoRecebido>;
+  /** Bosses mortos com o jogador presente, por id do roster. */
+  bossKillsByPlayer?: Map<string, BossMorto[]>;
 }
 
 /**
@@ -287,6 +292,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     resolvePreparationChecklist,
     cooldownsByPlayer,
     damageTakenByPlayer,
+    bossKillsByPlayer,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
   const playerDetails = fullTables.summary.data.playerDetails;
@@ -384,6 +390,9 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ...(preparationChecks ? { preparationChecks } : {}),
       ...(ataque ? { attack: ataque.attack, attackDetail: ataque.attackDetail } : {}),
       ...(defesa ? { defense: defesa.defense, defenseDetail: defesa.defenseDetail } : {}),
+      ...(bossKillsByPlayer?.get(player.id)?.length
+        ? { bossKills: bossKillsByPlayer.get(player.id) }
+        : {}),
     });
   }
 

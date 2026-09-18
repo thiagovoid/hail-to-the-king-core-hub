@@ -15,11 +15,14 @@ interface Props {
 
 const { average } = Astro.props;
 
+// Mortes por run saiu: ela já não pontua no Score Geral, segue no
+// histórico run a run, e o espaço vale mais pra "quantos bosses eu derrubei"
+// — que é a pergunta que o jogador realmente faz.
 const cards = [
   average.dps !== undefined ? { label: 'DPS médio', value: formatPerformanceValue(average.dps) } : null,
   average.hps !== undefined ? { label: 'HPS médio', value: formatPerformanceValue(average.hps) } : null,
+  { label: 'Bosses mortos', value: String(average.bossesMortos) },
   average.parse !== undefined ? { label: 'Parse médio', value: String(average.parse) } : null,
-  { label: 'Mortes por run', value: String(average.deaths) },
   average.mechanics !== undefined
     ? { label: 'Erros mecânicos', value: String(average.mechanics.errors) }
     : null,
@@ -35,7 +38,8 @@ const cards = [
 
     <p class="text-sm text-slate-400 mt-1">
       Média de {average.runs} run(s) registrada(s). Item Level é o último
-      registrado, não uma média.
+      registrado, não uma média. Bosses mortos conta bosses distintos com
+      você presente na try do kill — Normal e Heroico contam separado.
     </p>
   </div>
 

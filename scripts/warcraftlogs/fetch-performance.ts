@@ -22,6 +22,7 @@ import {
 } from "../../src/providers/wowhead/cooldownCatalog";
 import { fetchSpellCooldowns } from "../../src/providers/wowhead/spellTooltip";
 import type { DanoRecebido } from "../../src/normalization/buildDefense";
+import { buildBossKills, type BossMorto } from "../../src/providers/warcraftlogs/bossKills";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
   buildChecklistFromReference,
@@ -552,6 +553,7 @@ async function main() {
 
   const cooldownsPorReport = new Map<string, Map<string, CooldownsDoJogador>>();
   const danoRecebidoPorReport = new Map<string, Map<string, DanoRecebido>>();
+  const bossKillsPorReport = new Map<string, Map<string, BossMorto[]>>();
 
   for (const ctx of reportContexts) {
     try {
@@ -627,6 +629,32 @@ async function main() {
       }
       danoRecebidoPorReport.set(ctx.report.code, recebidoPorJogador);
 
+      // Bosses mortos com a pessoa presente. Sai dos MESMOS eventos de cast
+      // já baixados: quem lançou algo na try do kill estava nela. Zero
+      // requisição a mais.
+      // Dificuldade nula existe no dado da WCL e não dá pra contar: sem ela
+      // não dá pra dizer se o boss caiu no Normal ou no Heroico, e os dois
+      // são kills diferentes.
+      const killsDaNoite = ctx.raidFights
+        .filter((fight) => fight.kill && fight.difficulty !== null)
+        .map((fight) => ({
+          difficulty: fight.difficulty as number,
+          id: fight.id,
+          startTime: fight.startTime,
+          endTime: fight.endTime,
+          encounterID: fight.encounterID,
+        }));
+
+      const killsPorAtor = buildBossKills(eventos, killsDaNoite);
+      const killsPorJogador = new Map<string, BossMorto[]>();
+      for (const [sourceID, mortos] of killsPorAtor) {
+        const nome = atores.get(sourceID);
+        if (!nome) continue;
+        const perfil = rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome));
+        if (perfil) killsPorJogador.set(perfil.id, mortos);
+      }
+      bossKillsPorReport.set(ctx.report.code, killsPorJogador);
+
       cooldownsPorReport.set(ctx.report.code, porJogador);
       console.log(
         `Cooldowns do report ${ctx.report.code}: ${eventos.length} casts, ${porJogador.size} jogador(es) do roster.`
@@ -687,6 +715,7 @@ async function main() {
       resolvePreparationChecklist,
       cooldownsByPlayer: cooldownsPorReport.get(ctx.report.code),
       damageTakenByPlayer: danoRecebidoPorReport.get(ctx.report.code),
+      bossKillsByPlayer: bossKillsPorReport.get(ctx.report.code),
     });
 
     // Passa pela Normalization Layer explícita mesmo só com a WCL contribuindo

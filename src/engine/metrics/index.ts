@@ -1,4 +1,5 @@
 import { formatCompact } from "../../utils/format";
+import { contarBossesDistintos } from "../../providers/warcraftlogs/bossKills";
 import type {
   PlayerPerformance,
   PlayerRunPerformance,
@@ -51,6 +52,11 @@ export function getPlayerHistory(
 export interface PlayerSeasonAverage extends PlayerPerformance {
   /** Quantas runs entraram na média — o "rastro" do número. */
   runs: number;
+  /**
+   * Bosses DISTINTOS que o jogador viu morrer na temporada. Não é média nem
+   * soma de kills: matar Nek'zali Normal em três semanas é um boss.
+   */
+  bossesMortos: number;
 }
 
 export function buildPlayerSeasonAverage(
@@ -67,6 +73,7 @@ export function buildPlayerSeasonAverage(
   return {
     playerId,
     runs: history.length,
+    bossesMortos: contarBossesDistintos(history.map((run) => run.bossKills)),
     dps: average(defined(history.map((run) => run.dps))),
     hps: average(defined(history.map((run) => run.hps))),
     parse: average(defined(history.map((run) => run.parse))),
