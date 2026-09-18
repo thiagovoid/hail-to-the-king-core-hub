@@ -134,12 +134,17 @@ export interface NightPreparation {
  * estado varia dentro da mesma noite — diferente de encanto e gema, que são
  * foto do começo.
  *
- * Um item entra em `missing` quando fica abaixo de 100 em média. Não é rigor
- * exagerado: o Wipefest já dá crédito parcial (usou poção em metade das
- * trys = 54), então 100 significa "fez em todas".
+ * Um item entra em `missing` quando fica abaixo da meta do core — a mesma
+ * régua que a nota usa.
+ *
+ * O corte era 100 e acusava todo mundo: no log de 15/09 ninguém atinge 100
+ * em nenhum consumível (poção tem mediana 32, pedra de vida 34), então a
+ * lista saía idêntica pros 17 e não orientava ninguém.
  */
 export function aggregateNightPreparation(
-  fights: Array<{ players: PlayerFightPreparation[] }>
+  fights: Array<{ players: PlayerFightPreparation[] }>,
+  /** Meta do core pra preparação — abaixo disto o item aparece como pendência. */
+  meta = 60
 ): Record<string, NightPreparation> {
   const porJogador = new Map<string, Map<string, { soma: number; trys: number }>>();
 
@@ -170,7 +175,7 @@ export function aggregateNightPreparation(
 
     const score = Math.round(medias.reduce((total, m) => total + m.media, 0) / medias.length);
     const missing = medias
-      .filter((m) => Math.round(m.media) < 100)
+      .filter((m) => Math.round(m.media) < meta)
       .sort((a, b) => a.media - b.media)
       .map((m) => ROTULOS_DE_CONSUMIVEL[m.item] ?? m.item);
 

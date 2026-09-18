@@ -127,7 +127,7 @@ describe("aggregateNightPreparation", () => {
           {
             player: "Kams",
             itens: [
-              { nome: "Ready Check (Flask, Gear, etc.)", value: 60 },
+              { nome: "Ready Check (Flask, Gear, etc.)", value: 30 },
               { nome: "Potions", value: 10 },
             ],
           },
