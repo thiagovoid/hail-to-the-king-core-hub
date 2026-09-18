@@ -22,6 +22,7 @@ on:
           - parse
           - parse-report
           - cooldowns
+          - healing
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -94,3 +95,10 @@ jobs:
             ARGS+=(--player="${{ inputs.player }}")
           fi
           npm run wcl:inspect-cooldowns -- "${ARGS[@]}"
+
+      - name: Inspecionar cura e dano recebido do raide
+        if: inputs.tool == 'healing'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: npm run wcl:inspect-healing -- --report="${{ inputs.report }}"
