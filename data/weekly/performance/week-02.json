@@ -126,6 +126,59 @@
             "dps": 45820,
             "hps": 53859
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 6.2,
+          "specs": [
+            {
+              "spec": "Blood",
+              "role": "tank"
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 3.1,
@@ -365,6 +418,59 @@
             "dps": 33022,
             "hps": 41765
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 5.4,
+          "specs": [
+            {
+              "spec": "Protection",
+              "role": "tank"
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -531,6 +637,59 @@
           "offRole": {
             "dps": 3094
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0.5,
+          "specs": [
+            {
+              "spec": "Restoration",
+              "role": "healer"
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 2.2,
@@ -752,6 +911,59 @@
           "offRole": {
             "dps": 9115
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 1.6,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 2.3,
@@ -943,6 +1155,59 @@
           "offRole": {
             "hps": 5598
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 10.5,
+          "specs": [
+            {
+              "spec": "Frost",
+              "role": "dps"
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.8,
@@ -1115,6 +1380,59 @@
           "offRole": {
             "hps": 16365
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 12.6,
+          "specs": [
+            {
+              "spec": "Affliction",
+              "role": "dps"
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 2,
@@ -1291,6 +1609,59 @@
           "offRole": {
             "hps": 20115
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 12.5,
+          "specs": [
+            {
+              "spec": "Shadow",
+              "role": "dps"
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.4,
@@ -1464,6 +1835,59 @@
           "offRole": {
             "hps": 7633
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 4
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 15.7,
+          "specs": [
+            {
+              "spec": "Elemental",
+              "role": "dps"
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.6,
@@ -1637,6 +2061,59 @@
           "offRole": {
             "hps": 18095
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 11.6,
+          "specs": [
+            {
+              "spec": "Havoc",
+              "role": "dps"
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -1787,6 +2264,59 @@
           "offRole": {
             "hps": 6172
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 10.5,
+          "specs": [
+            {
+              "spec": "Enhancement",
+              "role": "dps"
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.7,
@@ -1973,6 +2503,59 @@
           "offRole": {
             "hps": 6804
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 3.4,
+          "specs": [
+            {
+              "spec": "Arms",
+              "role": "dps"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.9,
@@ -2161,6 +2744,59 @@
           "offRole": {
             "hps": 11867
           },
+          "tries": {
+            "present": 10,
+            "total": 10,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3445,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3455,
+              "tries": 1,
+              "killed": true,
+              "flawless": true
+            },
+            {
+              "encounterID": 3497,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3420,
+              "tries": 2,
+              "killed": true,
+              "flawless": false
+            },
+            {
+              "encounterID": 3421,
+              "tries": 3,
+              "killed": true,
+              "flawless": false
+            }
+          ],
+          "trashShare": 9.5,
+          "specs": [
+            {
+              "spec": "Unholy",
+              "role": "dps"
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 2,
@@ -2343,6 +2979,29 @@
             "dps": 20583,
             "hps": 54982
           },
+          "tries": {
+            "present": 6,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": true,
+            "idle": 2,
+            "topDamageDead": 1
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 6,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0,
+          "specs": [
+            {
+              "spec": "Blood",
+              "role": "tank"
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.3,
@@ -2472,6 +3131,29 @@
             "dps": 20536,
             "hps": 36097
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 8.1,
+          "specs": [
+            {
+              "spec": "Protection",
+              "role": "tank"
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 1.3,
@@ -2563,6 +3245,29 @@
           "offRole": {
             "dps": 3683
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0.1,
+          "specs": [
+            {
+              "spec": "Restoration",
+              "role": "healer"
+            }
+          ],
           "deaths": 18,
           "mechanics": {
             "errors": 1.9,
@@ -2667,6 +3372,33 @@
             "share": 78.8,
             "overheal": 35.1
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 1.7,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            },
+            {
+              "spec": "Retribution",
+              "role": "dps"
+            }
+          ],
           "deaths": 14,
           "mechanics": {
             "errors": 0.9,
@@ -2773,6 +3505,29 @@
           "offRole": {
             "dps": 4100
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0.4,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            }
+          ],
           "deaths": 12,
           "mechanics": {
             "errors": 0.9,
@@ -2879,6 +3634,29 @@
           "offRole": {
             "hps": 3588
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 21,
+          "specs": [
+            {
+              "spec": "Frost",
+              "role": "dps"
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 1.9,
@@ -2978,6 +3756,29 @@
           "offRole": {
             "hps": 8854
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 9.7,
+          "specs": [
+            {
+              "spec": "Affliction",
+              "role": "dps"
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 2.3,
@@ -3099,6 +3900,29 @@
           "offRole": {
             "hps": 14189
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 3
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 13.7,
+          "specs": [
+            {
+              "spec": "Shadow",
+              "role": "dps"
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 1.4,
@@ -3209,6 +4033,29 @@
           "offRole": {
             "hps": 7195
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 10
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0,
+          "specs": [
+            {
+              "spec": "Elemental",
+              "role": "dps"
+            }
+          ],
           "deaths": 17,
           "mechanics": {
             "errors": 1.2,
@@ -3333,6 +4180,29 @@
           "offRole": {
             "hps": 13350
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 14.1,
+          "specs": [
+            {
+              "spec": "Havoc",
+              "role": "dps"
+            }
+          ],
           "deaths": 14,
           "mechanics": {
             "errors": 1.4,
@@ -3427,6 +4297,29 @@
           "offRole": {
             "hps": 5681
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 15.7,
+          "specs": [
+            {
+              "spec": "Enhancement",
+              "role": "dps"
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 1.6,
@@ -3544,6 +4437,29 @@
           "offRole": {
             "hps": 2631
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 4.5,
+          "specs": [
+            {
+              "spec": "Arms",
+              "role": "dps"
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 1.4,
@@ -3652,6 +4568,33 @@
           "offRole": {
             "hps": 20926
           },
+          "tries": {
+            "present": 14,
+            "total": 14,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 14,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 11,
+          "specs": [
+            {
+              "spec": "Retribution",
+              "role": "dps"
+            },
+            {
+              "spec": "Protection",
+              "role": "tank"
+            }
+          ],
           "deaths": 12,
           "mechanics": {
             "errors": 1.6,
@@ -3760,6 +4703,29 @@
           "offRole": {
             "hps": 10565
           },
+          "tries": {
+            "present": 8,
+            "total": 14,
+            "lateStart": true,
+            "earlyExit": true,
+            "idle": 1,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3429,
+              "tries": 8,
+              "killed": false,
+              "flawless": false
+            }
+          ],
+          "trashShare": 0,
+          "specs": [
+            {
+              "spec": "Retribution",
+              "role": "dps"
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.6,
