@@ -10,12 +10,30 @@
           "dps": 47189,
           "parse": 37,
           "itemLevel": 290,
-          "preparation": 100,
+          "preparation": 69,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 96.1,
+            "uptime": 98.1,
+            "cooldowns": 94
+          },
+          "attackDetail": [
+            {
+              "spellId": 107574,
+              "name": "Avatar",
+              "casts": 45,
+              "efficiency": 94
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 0.5,
             "tries": 8
           },
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção"
+          ],
           "mechanicsDetail": [
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -36,12 +54,47 @@
           "dps": 34992,
           "parse": 22,
           "itemLevel": 292,
-          "preparation": 62,
+          "preparation": 39,
           "preparationMissing": [
             "Elmo",
             "Peito",
             "Botas",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 77.1,
+            "uptime": 96.5,
+            "cooldowns": 57.7
+          },
+          "attackDetail": [
+            {
+              "spellId": 1238443,
+              "name": "Potion of Zealotry",
+              "casts": 1,
+              "efficiency": 9
+            },
+            {
+              "spellId": 439843,
+              "name": "Reaper's Mark",
+              "casts": 46,
+              "efficiency": 59.3
+            },
+            {
+              "spellId": 46585,
+              "name": "Raise Dead",
+              "casts": 24,
+              "efficiency": 67.6
+            },
+            {
+              "spellId": 43265,
+              "name": "Death and Decay",
+              "casts": 248,
+              "efficiency": 94.9
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -73,7 +126,7 @@
           "playerId": "kams",
           "hps": 98880,
           "parse": 74,
-          "preparation": 0,
+          "preparation": 8,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -82,7 +135,30 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 73.6,
+            "uptime": 88.1,
+            "cooldowns": 59.1
+          },
+          "attackDetail": [
+            {
+              "spellId": 31884,
+              "name": "Avenging Wrath",
+              "casts": 18,
+              "efficiency": 53.8
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 45,
+              "efficiency": 64.4
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -109,12 +185,45 @@
           "dps": 63619,
           "parse": 23,
           "itemLevel": 286,
-          "preparation": 75,
+          "preparation": 70,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
             "Pernas",
-            "Botas"
+            "Botas",
+            "Flask/comida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 79.8,
+            "uptime": 85.3,
+            "cooldowns": 74.3
+          },
+          "attackDetail": [
+            {
+              "spellId": 55342,
+              "name": "Mirror Image",
+              "casts": 9,
+              "efficiency": 26.6
+            },
+            {
+              "spellId": 205021,
+              "name": "Ray of Frost",
+              "casts": 70,
+              "efficiency": 88
+            },
+            {
+              "spellId": 84714,
+              "name": "Frozen Orb",
+              "casts": 81,
+              "efficiency": 90.8
+            },
+            {
+              "spellId": 44614,
+              "name": "Flurry",
+              "casts": 246,
+              "efficiency": 91.9
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -141,12 +250,35 @@
           "dps": 16390,
           "parse": 32,
           "itemLevel": 291,
-          "preparation": 100,
+          "preparation": 84,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 70,
+            "uptime": 95.8,
+            "cooldowns": 44.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 421453,
+              "name": "Ultimate Penitence",
+              "casts": 8,
+              "efficiency": 19.4
+            },
+            {
+              "spellId": 1258283,
+              "name": "Beacon of Lightblind Wrath",
+              "casts": 28,
+              "efficiency": 69
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.3,
             "tries": 8
           },
+          "preparationMissing": [
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -167,12 +299,35 @@
           "dps": 89958,
           "parse": 35,
           "itemLevel": 290,
-          "preparation": 100,
+          "preparation": 73,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 85.9,
+            "uptime": 93.4,
+            "cooldowns": 78.5
+          },
+          "attackDetail": [
+            {
+              "spellId": 443454,
+              "name": "Ancestral Swiftness",
+              "casts": 73,
+              "efficiency": 64.4
+            },
+            {
+              "spellId": 191634,
+              "name": "Stormkeeper",
+              "casts": 112,
+              "efficiency": 92.5
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 0.3,
             "tries": 8
           },
+          "preparationMissing": [
+            "Poção"
+          ],
           "mechanicsDetail": [
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -187,10 +342,43 @@
           "dps": 81095,
           "parse": 39,
           "itemLevel": 293,
-          "preparation": 88,
+          "preparation": 75,
           "preparationMissing": [
             "Elmo",
-            "Ombreiras"
+            "Ombreiras",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 84.8,
+            "uptime": 96.1,
+            "cooldowns": 73.6
+          },
+          "attackDetail": [
+            {
+              "spellId": 452497,
+              "name": "Abyssal Gaze",
+              "casts": 42,
+              "efficiency": 32.8
+            },
+            {
+              "spellId": 198013,
+              "name": "Eye Beam",
+              "casts": 113,
+              "efficiency": 80.2
+            },
+            {
+              "spellId": 258920,
+              "name": "Immolation Aura",
+              "casts": 139,
+              "efficiency": 82.7
+            },
+            {
+              "spellId": 370965,
+              "name": "The Hunt",
+              "casts": 104,
+              "efficiency": 98.6
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -223,7 +411,7 @@
           "dps": 24744,
           "parse": 3,
           "itemLevel": 258,
-          "preparation": 0,
+          "preparation": 8,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -232,7 +420,30 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 77.4,
+            "uptime": 75.5,
+            "cooldowns": 79.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 107574,
+              "name": "Avatar",
+              "casts": 36,
+              "efficiency": 78.3
+            },
+            {
+              "spellId": 446035,
+              "name": "Bladestorm",
+              "casts": 42,
+              "efficiency": 80.1
+            }
           ],
           "deaths": 6,
           "mechanics": {
@@ -259,10 +470,31 @@
           "dps": 45735,
           "parse": 4,
           "itemLevel": 290,
-          "preparation": 76,
+          "preparation": 69,
           "preparationMissing": [
             "Botas",
-            "Colar"
+            "Colar",
+            "Pedra de vida"
+          ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 83.9,
+            "uptime": 98.3,
+            "cooldowns": 69.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 1247378,
+              "name": "Putrefy",
+              "casts": 107,
+              "efficiency": 65
+            },
+            {
+              "spellId": 42650,
+              "name": "Army of the Dead",
+              "casts": 30,
+              "efficiency": 73.8
+            }
           ],
           "deaths": 5,
           "mechanics": {
@@ -295,12 +527,48 @@
           "dps": 55041,
           "parse": 14,
           "itemLevel": 293,
-          "preparation": 100,
+          "preparation": 69,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 87,
+            "uptime": 98.5,
+            "cooldowns": 75.5
+          },
+          "attackDetail": [
+            {
+              "spellId": 46585,
+              "name": "Raise Dead",
+              "casts": 10,
+              "efficiency": 30.8
+            },
+            {
+              "spellId": 279302,
+              "name": "Frostwyrm's Fury",
+              "casts": 33,
+              "efficiency": 83.5
+            },
+            {
+              "spellId": 1249658,
+              "name": "Breath of Sindragosa",
+              "casts": 35,
+              "efficiency": 88.6
+            },
+            {
+              "spellId": 47568,
+              "name": "Empower Rune Weapon",
+              "casts": 287,
+              "efficiency": 99.1
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 0.8,
             "tries": 8
           },
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção"
+          ],
           "mechanicsDetail": [
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -324,124 +592,6 @@
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "tries": 1
-            }
-          ]
-        },
-        {
-          "playerId": "youkaiqqz",
-          "dps": 76413,
-          "parse": 30,
-          "itemLevel": 293,
-          "deaths": 8,
-          "mechanics": {
-            "errors": 0.6,
-            "tries": 8
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tries": 2
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Soul Transfer",
-              "label": "Transferência de Alma",
-              "tries": 1
-            }
-          ]
-        },
-        {
-          "playerId": "panicdeath",
-          "dps": 49034,
-          "parse": 4,
-          "itemLevel": 289,
-          "deaths": 7,
-          "mechanics": {
-            "errors": 0.4,
-            "tries": 8
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tries": 1
-            }
-          ]
-        },
-        {
-          "playerId": "orthín",
-          "dps": 58591,
-          "parse": 13,
-          "itemLevel": 287,
-          "deaths": 5,
-          "mechanics": {
-            "errors": 0.8,
-            "tries": 8
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tries": 3
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Anguished Echoes",
-              "label": "Ecos Angustiados",
-              "tries": 1
-            }
-          ]
-        },
-        {
-          "playerId": "soju",
-          "hps": 53307,
-          "parse": 33,
-          "itemLevel": 255,
-          "deaths": 9,
-          "mechanics": {
-            "errors": 0.9,
-            "tries": 7
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tries": 3
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Anguished Echoes",
-              "label": "Ecos Angustiados",
               "tries": 1
             }
           ]
