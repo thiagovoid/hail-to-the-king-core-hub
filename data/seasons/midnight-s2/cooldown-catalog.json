@@ -1,0 +1,862 @@
+{
+  "generatedAt": "2026-09-18T06:43:25.781Z",
+  "cooldowns": {
+    "498": {
+      "name": "Divine Protection",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "586": {
+      "name": "Fade",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "633": {
+      "name": "Lay on Hands",
+      "cooldownMs": 600000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "642": {
+      "name": "Divine Shield",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "853": {
+      "name": "Hammer of Justice",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "871": {
+      "name": "Shield Wall",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "1160": {
+      "name": "Demoralizing Shout",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "2825": {
+      "name": "Bloodlust",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "5394": {
+      "name": "Healing Stream Totem",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "6940": {
+      "name": "Blessing of Sacrifice",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "8122": {
+      "name": "Psychic Scream",
+      "cooldownMs": 40000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "10060": {
+      "name": "Power Infusion",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "11426": {
+      "name": "Ice Barrier",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "19236": {
+      "name": "Desperate Prayer",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "19574": {
+      "name": "Bestial Wrath",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "19577": {
+      "name": "Intimidation",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "21169": {
+      "name": "Reincarnation",
+      "cooldownMs": 1800000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "31821": {
+      "name": "Aura Mastery",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "31884": {
+      "name": "Avenging Wrath",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "32182": {
+      "name": "Heroism",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "32375": {
+      "name": "Mass Dispel",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "33206": {
+      "name": "Pain Suppression",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "42650": {
+      "name": "Army of the Dead",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "43265": {
+      "name": "Death and Decay",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "44614": {
+      "name": "Flurry",
+      "cooldownMs": 30000,
+      "charges": 2,
+      "kind": "utility"
+    },
+    "46585": {
+      "name": "Raise Dead",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "46968": {
+      "name": "Shockwave",
+      "cooldownMs": 40000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "47568": {
+      "name": "Empower Rune Weapon",
+      "cooldownMs": 30000,
+      "charges": 2,
+      "kind": "offensive"
+    },
+    "48265": {
+      "name": "Death's Advance",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "48707": {
+      "name": "Anti-Magic Shell",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "48743": {
+      "name": "Death Pact",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "48792": {
+      "name": "Icebound Fortitude",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "49028": {
+      "name": "Dancing Rune Weapon",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "49039": {
+      "name": "Lichborne",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "51052": {
+      "name": "Anti-Magic Zone",
+      "cooldownMs": 240000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "51271": {
+      "name": "Pillar of Frost",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "51485": {
+      "name": "Earthgrab Totem",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "51490": {
+      "name": "Thunderstorm",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "55233": {
+      "name": "Vampiric Blood",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "55342": {
+      "name": "Mirror Image",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "61999": {
+      "name": "Raise Ally",
+      "cooldownMs": 600000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "62618": {
+      "name": "Power Word: Barrier",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "79206": {
+      "name": "Spiritwalker's Grace",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "80353": {
+      "name": "Time Warp",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "84714": {
+      "name": "Frozen Orb",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "97462": {
+      "name": "Rallying Cry",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "98008": {
+      "name": "Spirit Link Totem",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "107570": {
+      "name": "Storm Bolt",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "107574": {
+      "name": "Avatar",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "108199": {
+      "name": "Gorefiend's Grasp",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "108271": {
+      "name": "Astral Shift",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "108280": {
+      "name": "Healing Tide Totem",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "109248": {
+      "name": "Binding Shot",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "109304": {
+      "name": "Exhilaration",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "110959": {
+      "name": "Greater Invisibility",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "114050": {
+      "name": "Ascendance",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "115750": {
+      "name": "Blinding Light",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "118038": {
+      "name": "Die by the Sword",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "157980": {
+      "name": "Supernova",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "167105": {
+      "name": "Colossus Smash",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "179057": {
+      "name": "Chaos Nova",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "186257": {
+      "name": "Aspect of the Cheetah",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "186265": {
+      "name": "Aspect of the Turtle",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "187650": {
+      "name": "Freezing Trap",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "190784": {
+      "name": "Divine Steed",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "191634": {
+      "name": "Stormkeeper",
+      "cooldownMs": 60000,
+      "charges": 50,
+      "kind": "offensive"
+    },
+    "192058": {
+      "name": "Capacitor Totem",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "192077": {
+      "name": "Wind Rush Totem",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "196718": {
+      "name": "Darkness",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "198013": {
+      "name": "Eye Beam",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "198589": {
+      "name": "Blur",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "205021": {
+      "name": "Ray of Frost",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "207167": {
+      "name": "Blinding Sleet",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "207684": {
+      "name": "Sigil of Misery",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "212552": {
+      "name": "Wraith Walk",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "212653": {
+      "name": "Shimmer",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "221562": {
+      "name": "Asphyxiate",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "255937": {
+      "name": "Wake of Ashes",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "258920": {
+      "name": "Immolation Aura",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "260708": {
+      "name": "Sweeping Strikes",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "264735": {
+      "name": "Survival of the Fittest",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "279302": {
+      "name": "Frostwyrm's Fury",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "342245": {
+      "name": "Alter Time",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "343527": {
+      "name": "Execution Sentence",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "370965": {
+      "name": "The Hunt",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "375576": {
+      "name": "Divine Toll",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "378081": {
+      "name": "Nature's Swiftness",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "383781": {
+      "name": "Algeth'ar Puzzle",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "384110": {
+      "name": "Wrecking Throw",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "385952": {
+      "name": "Shield Charge",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "391054": {
+      "name": "Intercession",
+      "cooldownMs": 600000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "403876": {
+      "name": "Divine Protection",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "414658": {
+      "name": "Ice Cold",
+      "cooldownMs": 240000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "421453": {
+      "name": "Ultimate Penitence",
+      "cooldownMs": 240000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "427917": {
+      "name": "Immolation Aura",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "439843": {
+      "name": "Reaper's Mark",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "443454": {
+      "name": "Ancestral Swiftness",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "444347": {
+      "name": "Death Charge",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "446035": {
+      "name": "Bladestorm",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "452487": {
+      "name": "Consuming Fire",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "452497": {
+      "name": "Abyssal Gaze",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "456640": {
+      "name": "Consuming Fire",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "472433": {
+      "name": "Evangelism",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1233448": {
+      "name": "Dark Transformation",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1234768": {
+      "name": "Silvermoon Health Potion",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "1236616": {
+      "name": "Light's Potential",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1236648": {
+      "name": "Lightfused Mana Potion",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1236994": {
+      "name": "Potion of Recklessness",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1238443": {
+      "name": "Potion of Zealotry",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "1247378": {
+      "name": "Putrefy",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1249658": {
+      "name": "Breath of Sindragosa",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "1250508": {
+      "name": "Emberwing Heatwave",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1250533": {
+      "name": "Freightrunner's Flask",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1258283": {
+      "name": "Beacon of Lightblind Wrath",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "1260459": {
+      "name": "Nullsight",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1262857": {
+      "name": "Potent Healing Potion",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "1267068": {
+      "name": "Stormstream Totem",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "1272460": {
+      "name": "Ultradon Cuirass",
+      "cooldownMs": 150000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "1295247": {
+      "name": "Concentrated Silvermoon Health Potion",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    }
+  },
+  "ignored": [
+    17,
+    100,
+    116,
+    120,
+    355,
+    527,
+    585,
+    589,
+    772,
+    781,
+    845,
+    974,
+    1044,
+    1064,
+    1459,
+    1464,
+    2061,
+    2565,
+    2645,
+    4987,
+    6343,
+    6572,
+    6673,
+    7384,
+    8004,
+    8092,
+    12294,
+    19750,
+    20271,
+    20473,
+    23920,
+    23922,
+    24275,
+    30449,
+    30455,
+    32379,
+    34026,
+    47528,
+    47540,
+    47541,
+    49020,
+    49143,
+    49184,
+    49576,
+    49998,
+    50842,
+    51505,
+    52174,
+    53385,
+    55090,
+    56222,
+    57755,
+    61295,
+    73685,
+    77130,
+    77472,
+    77575,
+    82326,
+    83245,
+    85222,
+    85673,
+    85948,
+    108287,
+    110960,
+    117014,
+    121536,
+    126664,
+    131347,
+    156322,
+    162794,
+    163201,
+    183752,
+    184575,
+    185123,
+    186263,
+    188196,
+    188389,
+    188443,
+    188499,
+    190456,
+    192063,
+    192106,
+    193455,
+    194509,
+    194913,
+    195072,
+    195182,
+    195292,
+    198137,
+    198793,
+    199786,
+    200025,
+    200166,
+    200829,
+    201427,
+    202168,
+    206930,
+    207230,
+    207317,
+    209693,
+    210152,
+    213243,
+    217200,
+    228537,
+    232893,
+    257284,
+    272790,
+    275773,
+    278326,
+    281000,
+    318038,
+    342247,
+    343294,
+    370966,
+    383269,
+    383328,
+    408385,
+    415091,
+    415388,
+    427453,
+    431398,
+    435222,
+    440839,
+    441424,
+    441426,
+    444995,
+    458128,
+    461867,
+    462620,
+    462854,
+    470057,
+    470411,
+    1236942,
+    1241413,
+    1242174,
+    1248829,
+    1253593,
+    1264359,
+    1265384,
+    1269383,
+    1308188
+  ]
+}
