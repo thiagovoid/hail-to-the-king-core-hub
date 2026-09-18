@@ -29,9 +29,9 @@
         "description": "Itens de preparação prontos (gemas, encantos, flask, comida, poções, runa, óleo)"
       },
       "defense": {
-        "target": 60,
+        "target": 30,
         "direction": "higher",
-        "description": "Tempo médio em recarga dos cooldowns defensivos na noite. Mitigação e dano recebido são coletados, mas não pontuam."
+        "description": "Tempo médio em recarga dos cooldowns defensivos na noite. Calibrado sobre o log de 15/09: tanks entre 43 e 55, dps entre 4 e 36 — 60 seria inalcançável pra todo mundo. Mitigação e dano recebido são coletados e exibidos, mas não pontuam."
       }
     },
     "nextRaid": {

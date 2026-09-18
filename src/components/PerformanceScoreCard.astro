@@ -248,7 +248,7 @@ const directionLabel = (direction: 'higher' | 'lower') =>
             {dimension.key === 'defense' && defenseContext !== null && (
               <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
                 <span class="text-slate-400">
-                  {formatarValor(defenseContext.dtps)} de dano recebido por segundo
+                  {defenseContext.dtps.toLocaleString('pt-BR')} de dano recebido por segundo
                 </span>
                 {' · '}
                 {formatarValor(defenseContext.mitigation)}% mitigado
