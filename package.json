@@ -23,7 +23,8 @@
     "wcl:inspect-roles": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-roles.ts",
     "wipefest:fetch-mechanics": "vite-node -c vitest.config.ts scripts/wipefest/fetch-mechanics.ts",
     "wcl:inspect-parse": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-parse.ts",
-    "wcl:_probe-parse": "vite-node -c vitest.config.ts scripts/warcraftlogs/_probe-parse.ts"
+    "wcl:_probe-parse": "vite-node -c vitest.config.ts scripts/warcraftlogs/_probe-parse.ts",
+    "wcl:_probe-casts": "vite-node -c vitest.config.ts scripts/warcraftlogs/_probe-casts.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
