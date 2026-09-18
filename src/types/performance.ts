@@ -175,6 +175,54 @@ export interface PlayerPerformance {
     efficiency: number;
   }>;
 
+  /**
+   * A noite try a try — presença, ociosidade e o que aconteceu em cada pull.
+   *
+   * O agregado responde "quanto você fez na noite"; isto responde se você
+   * estava na primeira pull e se atravessou alguma try sem bater em nada.
+   * Ausente nas noites coletadas antes desta coleta existir.
+   */
+  tries?: {
+    /** Trys de boss em que o jogador estava no raide. */
+    present: number;
+    /** Trys de boss que a noite teve. */
+    total: number;
+    /** Faltou na primeira try e apareceu depois. */
+    lateStart: boolean;
+    /** Estava em alguma try e faltou na última. */
+    earlyExit: boolean;
+    /** Trys em que estava presente e não causou dano nenhum. */
+    idle: number;
+    /** Trys em que morreu e ainda assim foi o maior dano da try. */
+    topDamageDead: number;
+  };
+
+  /** Quantas trys de cada boss, e se caiu — base de "Paciência de Jó". */
+  bossTries?: Array<{
+    encounterID: number;
+    tries: number;
+    killed: boolean;
+    /** Derrubou o boss sem morrer em nenhuma try dele naquela noite. */
+    flawless: boolean;
+  }>;
+
+  /**
+   * Participação no dano das lutas de TRASH da noite, em %.
+   *
+   * Ausente quando o log não gravou trash — num log que começa na pull do
+   * boss todo mundo tem zero, e zero ali não quer dizer que a pessoa estava
+   * de bobeira.
+   */
+  trashShare?: number;
+
+  /**
+   * Spec(s) que a WCL registrou pro jogador na noite, com a função de cada.
+   *
+   * Mais de uma significa que a pessoa trocou de spec entre as trys. Vem do
+   * `composition` da tabela de resumo — o `specs` do `playerDetails` volta
+   * vazio nos reports reais.
+   */
+  specs?: Array<{ spec: string; role: "tank" | "healer" | "dps" }>;
 }
 
 /**

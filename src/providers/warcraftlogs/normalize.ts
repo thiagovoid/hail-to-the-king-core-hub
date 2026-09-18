@@ -12,6 +12,7 @@ import type { BossMorto } from "./bossKills";
 import { buildAttack, calculateUptime } from "../../normalization/buildAttack";
 import { buildDefense, type DanoRecebido } from "../../normalization/buildDefense";
 import { buildHealing, calculateCobertura } from "../../normalization/buildHealing";
+import type { DetalheDaNoite } from "../../normalization/buildNightDetail";
 import type { PlayerPerformance } from "../../types/performance";
 
 export interface WclProfile {
@@ -75,6 +76,14 @@ export interface WclFight {
   difficulty: number | null;
   startTime: number;
   endTime: number;
+  /**
+   * `actorId` de quem estava no raide NESTA try.
+   *
+   * É o que separa "não jogou a noite" de "não estava nesta pull" — a base
+   * de quem chegou atrasado e de quem lagou no meio. Opcional porque os logs
+   * arquivados antes desta coleta não têm o campo.
+   */
+  friendlyPlayers?: number[] | null;
 }
 
 /**
@@ -147,6 +156,20 @@ export interface WclFightTables {
     data: {
       deathEvents?: WclDeathEvent[];
       playerDetails?: Record<string, WclPlayerDetail[]>;
+      /**
+       * Quem estava no raide, com spec E função de cada um.
+       *
+       * É a única fonte confiável de spec no relatório: o `specs` do
+       * `playerDetails` volta vazio nos reports reais. Daqui saem as
+       * medalhas de quem jogou de duas ou três specs na temporada, e a de
+       * quem cobriu uma vaga fora da própria função.
+       */
+      composition?: Array<{
+        name: string;
+        id: number;
+        type: string;
+        specs?: Array<{ spec: string; role: string }>;
+      }>;
     };
   };
 }
@@ -201,6 +224,13 @@ export interface NormalizedRunPlayer {
   healing?: PlayerPerformance["healing"];
   /** Dano/cura fora da função. Ver o tipo em performance.ts. */
   offRole?: PlayerPerformance["offRole"];
+  /** A noite try a try. Ver buildNightDetail. */
+  tries?: PlayerPerformance["tries"];
+  bossTries?: PlayerPerformance["bossTries"];
+  /** % do dano do raide nas lutas de trash. */
+  trashShare?: PlayerPerformance["trashShare"];
+  /** Spec(s) da noite, com a função de cada. */
+  specs?: PlayerPerformance["specs"];
   /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
   preparationMissing?: string[];
   /**
@@ -251,6 +281,17 @@ export interface BuildRunPlayersInput {
   damageTakenByPlayer?: Map<string, DanoRecebido>;
   /** Bosses mortos com o jogador presente, por id do roster. */
   bossKillsByPlayer?: Map<string, BossMorto[]>;
+  /**
+   * A noite try a try, por id do roster. Ver buildNightDetail.
+   *
+   * Ausente nos relatórios coletados antes desta coleta existir — é por isso
+   * que tudo o que sai daqui é opcional do outro lado.
+   */
+  nightDetailByPlayer?: Map<string, DetalheDaNoite>;
+  /** % do dano no trash, por id do roster. Ausente quando o log não gravou trash. */
+  trashShareByPlayer?: Map<string, number>;
+  /** Spec(s) da noite, por id do roster. */
+  specsByPlayer?: Map<string, NonNullable<PlayerPerformance["specs"]>>;
   /**
    * Dano que o raide inteiro tomou na noite. É o denominador da cobertura
    * de cura: sem ele, "curou muito" e "curou bem" ficam indistinguíveis.
@@ -311,6 +352,9 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     cooldownsByPlayer,
     damageTakenByPlayer,
     bossKillsByPlayer,
+    nightDetailByPlayer,
+    trashShareByPlayer,
+    specsByPlayer,
     raidDamageTaken = 0,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
@@ -471,6 +515,8 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
           }
         : {};
 
+    const noite = nightDetailByPlayer?.get(player.id);
+
     result.push({
       playerId: player.id,
       ...(trocouDeFuncao ? {} : { [metricKey]: Math.round(value) }),
@@ -487,6 +533,11 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
         : {}),
       ...(cura ? { healing: cura.healing } : {}),
       ...(Object.keys(offRole).length > 0 ? { offRole } : {}),
+      ...(noite ? { tries: noite.tries, bossTries: noite.bossTries } : {}),
+      ...(trashShareByPlayer?.has(player.id)
+        ? { trashShare: trashShareByPlayer.get(player.id) }
+        : {}),
+      ...(specsByPlayer?.get(player.id)?.length ? { specs: specsByPlayer.get(player.id) } : {}),
     });
   }
 

@@ -28,6 +28,10 @@ export interface PlayerPerformanceContributions {
     | "bossKills"
     | "healing"
     | "offRole"
+    | "tries"
+    | "bossTries"
+    | "trashShare"
+    | "specs"
   >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
 }

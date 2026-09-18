@@ -22,6 +22,11 @@ import {
 } from "../../src/providers/wowhead/cooldownCatalog";
 import { fetchSpellCooldowns } from "../../src/providers/wowhead/spellTooltip";
 import type { DanoRecebido } from "../../src/normalization/buildDefense";
+import {
+  buildNightDetail,
+  buildTrashShare,
+  type DetalheDaNoite,
+} from "../../src/normalization/buildNightDetail";
 import { buildBossKills, type BossMorto } from "../../src/providers/warcraftlogs/bossKills";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
@@ -128,7 +133,8 @@ interface RosterPlayer {
   spec: string;
   heroSpec: string | null;
   role: "tank" | "healer" | "dps";
-  type: "main" | "alt";
+  type: "main" | "alt" | "replace";
+  pertenceA?: string | null;
   status: "trial" | "member" | "veteran" | "inactive";
   discord: string | null;
   avatar: string | null;
@@ -418,6 +424,12 @@ async function main() {
     fullTables: Awaited<ReturnType<WarcraftLogsProvider["fetchFightTables"]>>;
     /** Todo fight (kill ou wipe) de boss válido, pra detectar progressão. */
     raidFights: WclFight[];
+    /** Tabelas das lutas de trash. Null quando o log não gravou trash. */
+    trashTables: Awaited<ReturnType<WarcraftLogsProvider["fetchFightTables"]>> | null;
+    /** Toda morte da noite, com a try em que aconteceu. */
+    deathEvents: Array<{ fight: number; targetID: number; timestamp: number }>;
+    /** Dano por ator em cada try, como pares (o arquivo bruto não guarda Map). */
+    damagePerFight: Array<{ fightId: number; entries: Array<{ actorId: number; total: number }> }>;
   }
 
   const reportContexts: ReportContext[] = [];
@@ -468,6 +480,12 @@ async function main() {
       aggregateTables: tables.aggregateTables,
       fullTables: tables.fullTables,
       raidFights: tables.raidFights,
+      // Default vazio: relatório arquivado antes desta coleta existir não
+      // tem esses campos, e recoletar tudo de novo não pode ser condição
+      // pra build passar.
+      trashTables: tables.trashTables ?? null,
+      deathEvents: tables.deathEvents ?? [],
+      damagePerFight: tables.damagePerFight ?? [],
     });
   }
 
@@ -557,6 +575,10 @@ async function main() {
   // Denominador da cobertura de cura: sem ele, "curou muito" e "curou bem"
   // ficam indistinguíveis.
   const danoDoRaidePorReport = new Map<string, number>();
+  // A noite try a try, o trash e a spec de cada um. Ver buildNightDetail.
+  const noitePorReport = new Map<string, Map<string, DetalheDaNoite>>();
+  const trashPorReport = new Map<string, Map<string, number>>();
+  const specsPorReport = new Map<string, Map<string, NonNullable<PlayerPerformance["specs"]>>>();
 
   for (const ctx of reportContexts) {
     try {
@@ -662,6 +684,78 @@ async function main() {
       }
       bossKillsPorReport.set(ctx.report.code, killsPorJogador);
 
+      /**
+       * A noite try a try: presença, ociosidade, mortes por boss, trash.
+       *
+       * Reaproveita o mapa de atores que os cooldowns já baixaram — a
+       * tradução de `actorId` pra id do roster é a mesma.
+       */
+      const doRoster = (actorId: number): string | undefined => {
+        const nome = atores.get(actorId);
+        if (!nome) return undefined;
+        return rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome))?.id;
+      };
+
+      const detalhePorAtor = buildNightDetail(
+        ctx.raidFights.map((fight) => ({
+          id: fight.id,
+          encounterID: fight.encounterID,
+          kill: fight.kill,
+          friendlyPlayers: fight.friendlyPlayers ?? [],
+        })),
+        ctx.deathEvents,
+        new Map(
+          ctx.damagePerFight.map((luta) => [
+            luta.fightId,
+            new Map(luta.entries.map((entrada) => [entrada.actorId, entrada.total])),
+          ])
+        )
+      );
+
+      const detalhePorJogador = new Map<string, DetalheDaNoite>();
+      for (const [actorId, detalhe] of detalhePorAtor) {
+        const id = doRoster(actorId);
+        if (id) detalhePorJogador.set(id, detalhe);
+      }
+      noitePorReport.set(ctx.report.code, detalhePorJogador);
+
+      const sharePorAtor = buildTrashShare(
+        new Map(
+          (ctx.trashTables?.damage.data.entries ?? [])
+            .filter((entrada) => entrada.id !== undefined)
+            .map((entrada) => [entrada.id!, entrada.total ?? 0])
+        ),
+        ctx.trashTables !== null
+      );
+
+      if (sharePorAtor) {
+        const sharePorJogador = new Map<string, number>();
+        // Quem esteve em alguma try e não aparece na tabela do trash fez
+        // zero — e zero aqui é o dado, não a ausência dele.
+        for (const actorId of detalhePorAtor.keys()) {
+          const id = doRoster(actorId);
+          if (id) sharePorJogador.set(id, sharePorAtor.get(actorId) ?? 0);
+        }
+        trashPorReport.set(ctx.report.code, sharePorJogador);
+      }
+
+      // Spec e função vêm do `composition` da tabela de resumo — o `specs`
+      // do playerDetails volta vazio nos reports reais.
+      const specsPorJogador = new Map<string, NonNullable<PlayerPerformance["specs"]>>();
+      for (const membro of ctx.fullTables.summary.data.composition ?? []) {
+        const perfil = rosterProfiles.find((jogador) =>
+          sameCharacterName(jogador.profile.name, membro.name)
+        );
+        if (!perfil) continue;
+
+        const specs = (membro.specs ?? [])
+          .filter((item) => item.role === "tank" || item.role === "healer" || item.role === "dps")
+          .map((item) => ({ spec: item.spec, role: item.role as "tank" | "healer" | "dps" }));
+
+        if (specs.length > 0) specsPorJogador.set(perfil.id, specs);
+      }
+      specsPorReport.set(ctx.report.code, specsPorJogador);
+
       cooldownsPorReport.set(ctx.report.code, porJogador);
       console.log(
         `Cooldowns do report ${ctx.report.code}: ${eventos.length} casts, ${porJogador.size} jogador(es) do roster.`
@@ -723,6 +817,9 @@ async function main() {
       cooldownsByPlayer: cooldownsPorReport.get(ctx.report.code),
       damageTakenByPlayer: danoRecebidoPorReport.get(ctx.report.code),
       bossKillsByPlayer: bossKillsPorReport.get(ctx.report.code),
+      nightDetailByPlayer: noitePorReport.get(ctx.report.code),
+      trashShareByPlayer: trashPorReport.get(ctx.report.code),
+      specsByPlayer: specsPorReport.get(ctx.report.code),
       raidDamageTaken: danoDoRaidePorReport.get(ctx.report.code),
     });
 

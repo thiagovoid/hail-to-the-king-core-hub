@@ -30,6 +30,14 @@ export interface WarcraftLogsRawReportTables {
   allFightIds: number[];
   aggregateTables: WclFightTables;
   fullTables: WclFightTables;
+  /** Lutas sem boss — o caminho entre um encontro e outro. */
+  trashFights?: WclFight[];
+  /** Tabelas do trash somado. Null quando o log não gravou trash nenhum. */
+  trashTables?: WclFightTables | null;
+  /** Toda morte da noite, com a try em que aconteceu. */
+  deathEvents?: Array<{ fight: number; targetID: number; timestamp: number }>;
+  /** Dano por ator em CADA try, como pares (Map não sobrevive ao JSON). */
+  damagePerFight?: Array<{ fightId: number; entries: Array<{ actorId: number; total: number }> }>;
 }
 
 /**
@@ -176,7 +184,7 @@ export class WarcraftLogsProvider
       `query($code: String!) {
         reportData {
           report(code: $code) {
-            fights { id encounterID name kill difficulty startTime endTime }
+            fights { id encounterID name kill difficulty startTime endTime friendlyPlayers }
           }
         }
       }`,
@@ -210,6 +218,99 @@ export class WarcraftLogsProvider
    * relatórios da temporada aparece lá). É também uma chamada por relatório,
    * contra uma por jogador por encontro.
    */
+  /**
+   * Toda morte do relatório, com a try em que aconteceu.
+   *
+   * `events` trabalha em tempo RELATIVO ao início do log. Passar o epoch de
+   * `report.startTime` aqui devolve zero eventos — sem erro nenhum, o que
+   * faz a coleta parecer bem-sucedida e vazia. Mesma armadilha que já pegou
+   * a coleta de casts.
+   */
+  async fetchDeathEvents(
+    code: string,
+    duracaoDoLogMs: number
+  ): Promise<Array<{ fight: number; targetID: number; timestamp: number }>> {
+    const mortes: Array<{ fight: number; targetID: number; timestamp: number }> = [];
+    let inicio = 0;
+
+    // A WCL pagina por timestamp, não por offset: a próxima página começa
+    // onde `nextPageTimestamp` aponta. O teto de voltas evita laço infinito
+    // se a API devolver sempre o mesmo ponteiro.
+    for (let pagina = 0; pagina < 20; pagina += 1) {
+      const data = await wclGraphql<{
+        reportData: {
+          report: {
+            events: {
+              data: Array<{ fight: number; targetID: number; timestamp: number }>;
+              nextPageTimestamp: number | null;
+            };
+          };
+        };
+      }>(
+        `query($code: String!, $start: Float!, $end: Float!) {
+          reportData { report(code: $code) {
+            events(dataType: Deaths, startTime: $start, endTime: $end, limit: 500) {
+              data nextPageTimestamp
+            }
+          } }
+        }`,
+        { code, start: inicio, end: duracaoDoLogMs }
+      );
+
+      const pagina_ = data.reportData.report.events;
+      mortes.push(...pagina_.data);
+
+      if (pagina_.nextPageTimestamp === null || pagina_.nextPageTimestamp <= inicio) break;
+      inicio = pagina_.nextPageTimestamp;
+    }
+
+    return mortes;
+  }
+
+  /**
+   * Dano por jogador em CADA try, separado — e não somado como no agregado.
+   *
+   * Vai tudo numa requisição só, com uma alias de tabela por luta: doze
+   * tabelas de uma noite típica custaram 188ms e uns poucos pontos do limite
+   * de 3600/h. Somar as trys aqui perderia justamente o que interessa, que é
+   * a try em que alguém não fez nada.
+   */
+  async fetchDamagePerFight(
+    code: string,
+    fightIDs: number[]
+  ): Promise<Map<number, Map<number, number>>> {
+    const porTry = new Map<number, Map<number, number>>();
+    if (fightIDs.length === 0) return porTry;
+
+    // Lotes pra não montar uma query gigante num log de muitas trys.
+    const LOTE = 15;
+
+    for (let inicio = 0; inicio < fightIDs.length; inicio += LOTE) {
+      const lote = fightIDs.slice(inicio, inicio + LOTE);
+      const aliases = lote
+        .map((id, indice) => `t${indice}: table(fightIDs: [${id}], dataType: DamageDone)`)
+        .join("\n            ");
+
+      const data = await wclGraphql<{
+        reportData: {
+          report: Record<string, { data: { entries: Array<{ id: number; total: number }> } }>;
+        };
+      }>(`query($code: String!) { reportData { report(code: $code) {
+            ${aliases}
+      } } }`, { code });
+
+      lote.forEach((fightId, indice) => {
+        const tabela = data.reportData.report[`t${indice}`];
+        porTry.set(
+          fightId,
+          new Map((tabela?.data.entries ?? []).map((entry) => [entry.id, entry.total ?? 0]))
+        );
+      });
+    }
+
+    return porTry;
+  }
+
   async fetchReportRankings(reportCode: string): Promise<WclReportRankings | null> {
     const data = await wclGraphql<{ reportData: { report: { rankings?: WclReportRankings } | null } }>(
       `query($code: String!) {
@@ -458,10 +559,44 @@ ${campos}
     const aggregateTables = await this.fetchFightTables(context.reportCode, aggregateFightIds);
     const fullTables = aggregateTables;
 
+    /**
+     * O trash é o que o coletor sempre jogou fora — `encounterID: 0`. São
+     * poucos minutos da noite (4 de 97 em 27/08), mas é a única janela em
+     * que dá pra ver quem ajuda na limpeza e quem espera passar.
+     */
+    const trashFights = fights.filter((fight) => fight.encounterID === 0);
+    const trashTables =
+      trashFights.length > 0
+        ? await this.fetchFightTables(context.reportCode, trashFights.map((fight) => fight.id))
+        : null;
+
+    // Try a try: presença vem de graça com os fights, mortes e dano custam
+    // uma query cada. Ver buildNightDetail.
+    const duracaoDoLogMs = Math.max(...fights.map((fight) => fight.endTime), 0);
+    const deathEvents = await this.fetchDeathEvents(context.reportCode, duracaoDoLogMs);
+    const damagePerFight = await this.fetchDamagePerFight(context.reportCode, allFightIds);
+
     return {
       provider: this.name,
       fetchedAt: new Date().toISOString(),
-      raw: { fights, raidFights, killedFights, aggregateFightIds, allFightIds, aggregateTables, fullTables },
+      raw: {
+        fights,
+        raidFights,
+        killedFights,
+        aggregateFightIds,
+        allFightIds,
+        aggregateTables,
+        fullTables,
+        trashFights,
+        trashTables,
+        deathEvents,
+        // Map não sobrevive ao JSON.stringify do arquivo bruto — vai como
+        // lista de pares, que é o que o arquivo em data/raw/ precisa guardar.
+        damagePerFight: [...damagePerFight].map(([fightId, porAtor]) => ({
+          fightId,
+          entries: [...porAtor].map(([actorId, total]) => ({ actorId, total })),
+        })),
+      },
     };
   }
 
