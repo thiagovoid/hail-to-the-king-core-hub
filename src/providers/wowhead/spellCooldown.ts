@@ -50,22 +50,35 @@ export interface WowheadTooltip {
 export const COOLDOWN_MINIMO_MS = 30_000;
 
 /**
+ * Trecho que não atravessa fim de frase — mas aceita ponto decimal.
+ *
+ * Os tooltips vêm cheios de número quebrado: "causing [(8.3% of Attack
+ * Power) * 11] Shadow damage". Com um `[^.]` simples, o ponto do 8.3 cortava
+ * o casamento e Death and Decay era classificada como utilidade. Aqui o
+ * ponto só bloqueia quando NÃO é seguido de dígito.
+ */
+const MESMA_FRASE = "(?:[^.]|[.](?=[0-9]))";
+
+const naMesmaFrase = (antes: string, depois: string, limite = 80) =>
+  new RegExp(`${antes}${MESMA_FRASE}{0,${limite}}${depois}`, "i");
+
+/**
  * Causa dano, ou aumenta o dano que você causa. É o sinal mais confiável:
  * buff puro de dano (Avatar, Metamorphosis) não aparece na tabela de dano
  * da WCL, então olhar o dano causado no log não resolveria.
  *
- * O `[^.]{0,80}` é pra não atravessar frase: "causing them to wander
- * disoriented ... Damage may cancel the effect" (Blinding Sleet) tem as duas
- * palavras, mas em orações diferentes — e a habilidade não dá dano nenhum.
+ * Não atravessar frase importa: "causing them to wander disoriented for 5
+ * sec. Damage may cancel the effect" (Blinding Sleet) tem as duas palavras,
+ * mas em orações diferentes — e a habilidade não dá dano nenhum.
  */
 const SINAIS_OFENSIVOS = [
-  /causing[^.]{0,80}damage/i,
-  /dealing[^.]{0,80}damage/i,
-  /deals?[^.]{0,80}damage/i,
+  naMesmaFrase("causing", "damage"),
+  naMesmaFrase("dealing", "damage"),
+  naMesmaFrase("deals?", "damage"),
   /inflict/i,
   /damage\s+you\s+deal/i,
   /damage\s+dealt/i,
-  /increas\w+[^.]{0,40}damage/i,
+  naMesmaFrase("increas[a-z]+", "damage", 40),
 ];
 
 /**
@@ -81,9 +94,15 @@ const SINAIS_DEFENSIVOS = [
   /immune/i,
   /invulnerab/i,
   /\bheals?\b/i,
-  /restor\w+[^.]{0,40}health/i,
-  /temporary[^.]{0,40}health/i,
+  naMesmaFrase("restor[a-z]+", "health", 40),
+  naMesmaFrase("temporary", "health", 40),
   /maximum\s+health/i,
+  // Esquiva e aparo: sem isso nenhum cooldown de tank era reconhecido como
+  // defensivo. Dancing Rune Weapon não usa a palavra "damage" em lugar
+  // nenhum — fala em "bolsters your defenses" e "parry chance".
+  /\bparry\b/i,
+  /\bdodge\b/i,
+  /\bdefenses\b/i,
 ];
 
 function limparHtml(html: string): string {

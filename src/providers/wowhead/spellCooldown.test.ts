@@ -207,3 +207,31 @@ describe("classifyCooldown — casos que a coleta real errou", () => {
     );
   });
 });
+
+// Death and Decay caiu em "utility" na segunda coleta real porque o guarda
+// de fim de frase (`[^.]`) barrava o ponto decimal de "8.3% of Attack Power".
+describe("classifyCooldown — ponto decimal no meio da frase", () => {
+  it("enxerga o dano mesmo com número quebrado no meio", () => {
+    expect(
+      classifyCooldown("Corrupts the targeted ground, causing [(8.3% of Attack Power) * 11] Shadow damage over 10 sec")
+    ).toBe("offensive");
+  });
+
+  it("continua barrando quando o ponto é fim de frase de verdade", () => {
+    expect(classifyCooldown("Stuns the target for 6 sec. Damage may cancel the effect.")).toBe("utility");
+  });
+});
+
+// Sem esquiva e aparo, nenhum cooldown de tank era reconhecido como
+// defensivo: Dancing Rune Weapon não usa a palavra "damage" em lugar nenhum.
+describe("classifyCooldown — cooldowns de evasão", () => {
+  it("trata aparo como defensivo", () => {
+    expect(
+      classifyCooldown("Summons a rune weapon that mirrors your melee attacks and bolsters your defenses. While active, you gain 30% parry chance.")
+    ).toBe("defensive");
+  });
+
+  it("trata esquiva como defensiva", () => {
+    expect(classifyCooldown("Increases your dodge chance by 100% for 8 sec.")).toBe("defensive");
+  });
+});
