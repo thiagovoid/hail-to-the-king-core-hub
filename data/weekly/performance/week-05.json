@@ -1255,7 +1255,7 @@
           "dps": 34466,
           "parse": 12,
           "itemLevel": 290,
-          "preparation": 21,
+          "preparation": 44,
           "preparationChecks": 2,
           "deaths": 9,
           "mechanics": {
@@ -1287,7 +1287,7 @@
           "dps": 6412,
           "parse": 13,
           "itemLevel": 317,
-          "preparation": 23,
+          "preparation": 41,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1327,12 +1327,10 @@
           "dps": 47057,
           "parse": 30,
           "itemLevel": 316,
-          "preparation": 58,
+          "preparation": 68,
           "preparationMissing": [
             "Botas",
-            "Poção",
-            "Pedra de vida",
-            "Flask/comida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "deaths": 11,
@@ -1378,7 +1376,7 @@
           "hps": 31074,
           "parse": 47,
           "itemLevel": 314,
-          "preparation": 26,
+          "preparation": 47,
           "preparationChecks": 2,
           "deaths": 2,
           "mechanics": {
@@ -1428,7 +1426,7 @@
           "hps": 175882,
           "parse": 90,
           "itemLevel": 316,
-          "preparation": 19,
+          "preparation": 29,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1478,12 +1476,11 @@
           "hps": 210628,
           "parse": 18,
           "itemLevel": 320,
-          "preparation": 54,
+          "preparation": 65,
           "preparationMissing": [
             "Pernas",
             "Poção",
-            "Pedra de vida",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "deaths": 9,
@@ -1529,14 +1526,13 @@
           "dps": 96868,
           "parse": 51,
           "itemLevel": 316,
-          "preparation": 55,
+          "preparation": 62,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Botas",
             "Flask/comida",
-            "Pedra de vida",
-            "Poção"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "deaths": 10,
@@ -1576,7 +1572,7 @@
           "dps": 90323,
           "parse": 23,
           "itemLevel": 316,
-          "preparation": 32,
+          "preparation": 25,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -1586,8 +1582,7 @@
             "Arma",
             "Colar",
             "Flask/comida",
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "deaths": 11,
@@ -1621,13 +1616,11 @@
           "dps": 106288,
           "parse": 46,
           "itemLevel": 319,
-          "preparation": 70,
+          "preparation": 75,
           "preparationMissing": [
             "Elmo",
             "Botas",
-            "Pedra de vida",
-            "Poção",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "deaths": 9,
@@ -1667,7 +1660,7 @@
           "dps": 129010,
           "parse": 69,
           "itemLevel": 322,
-          "preparation": 55,
+          "preparation": 68,
           "preparationChecks": 2,
           "deaths": 10,
           "mechanics": {
@@ -1676,8 +1669,7 @@
           },
           "preparationMissing": [
             "Pedra de vida",
-            "Poção",
-            "Flask/comida"
+            "Poção"
           ],
           "mechanicsDetail": [
             {
@@ -1711,12 +1703,10 @@
           "dps": 109362,
           "parse": 48,
           "itemLevel": 320,
-          "preparation": 70,
+          "preparation": 77,
           "preparationMissing": [
             "Elmo",
-            "Pedra de vida",
-            "Poção",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "deaths": 10,
@@ -1762,15 +1752,13 @@
           "dps": 106196,
           "parse": 31,
           "itemLevel": 321,
-          "preparation": 64,
+          "preparation": 69,
           "preparationMissing": [
             "Elmo",
             "Cintura",
             "Botas",
             "Braçadeiras",
-            "Pedra de vida",
-            "Poção",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "deaths": 11,
@@ -1822,7 +1810,7 @@
           "dps": 55444,
           "parse": 7,
           "itemLevel": 304,
-          "preparation": 51,
+          "preparation": 65,
           "preparationChecks": 2,
           "deaths": 10,
           "mechanics": {
@@ -1831,8 +1819,7 @@
           },
           "preparationMissing": [
             "Pedra de vida",
-            "Poção",
-            "Flask/comida"
+            "Poção"
           ],
           "mechanicsDetail": [
             {
@@ -1866,7 +1853,7 @@
           "dps": 105695,
           "parse": 33,
           "itemLevel": 321,
-          "preparation": 76,
+          "preparation": 83,
           "preparationChecks": 2,
           "deaths": 10,
           "mechanics": {
@@ -1874,9 +1861,7 @@
             "tries": 12
           },
           "preparationMissing": [
-            "Pedra de vida",
-            "Poção",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "mechanicsDetail": [
             {
@@ -1910,7 +1895,7 @@
           "dps": 76783,
           "parse": 12,
           "itemLevel": 315,
-          "preparation": 47,
+          "preparation": 62,
           "preparationChecks": 2,
           "deaths": 12,
           "mechanics": {
@@ -1919,8 +1904,7 @@
           },
           "preparationMissing": [
             "Poção",
-            "Pedra de vida",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "mechanicsDetail": [
             {
@@ -1952,13 +1936,12 @@
         {
           "playerId": "ligiaf",
           "parse": 81,
-          "preparation": 49,
+          "preparation": 60,
           "preparationMissing": [
             "Elmo",
             "Peito",
             "Poção",
-            "Flask/comida",
-            "Pedra de vida"
+            "Flask/comida"
           ],
           "preparationChecks": 2,
           "deaths": 8,
@@ -1998,7 +1981,7 @@
           "dps": 66751,
           "parse": 9,
           "itemLevel": 303,
-          "preparation": 38,
+          "preparation": 52,
           "preparationMissing": [
             "Peito",
             "Botas",
