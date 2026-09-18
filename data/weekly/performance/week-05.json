@@ -1258,29 +1258,11 @@
           "preparation": 44,
           "preparationChecks": 2,
           "attack": {
-            "score": 68.9,
+            "score": 97.4,
             "uptime": 95.8,
-            "cooldowns": 42
+            "cooldowns": 99
           },
           "attackDetail": [
-            {
-              "spellId": 384110,
-              "name": "Wrecking Throw",
-              "casts": 11,
-              "efficiency": 17.6
-            },
-            {
-              "spellId": 46968,
-              "name": "Shockwave",
-              "casts": 14,
-              "efficiency": 20.4
-            },
-            {
-              "spellId": 385952,
-              "name": "Shield Charge",
-              "casts": 18,
-              "efficiency": 31.1
-            },
             {
               "spellId": 107574,
               "name": "Avatar",
@@ -1378,9 +1360,9 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 79.3,
+            "score": 74.4,
             "uptime": 95.4,
-            "cooldowns": 63.2
+            "cooldowns": 53.3
           },
           "attackDetail": [
             {
@@ -1394,12 +1376,6 @@
               "name": "Divine Toll",
               "casts": 34,
               "efficiency": 57
-            },
-            {
-              "spellId": 1297761,
-              "name": "Voracious Heart of Ula'tek",
-              "casts": 33,
-              "efficiency": 83.1
             }
           ],
           "deaths": 11,
@@ -1775,17 +1751,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 69.8,
+            "score": 75.4,
             "uptime": 89.1,
-            "cooldowns": 50.5
+            "cooldowns": 61.8
           },
           "attackDetail": [
-            {
-              "spellId": 120644,
-              "name": "Halo",
-              "casts": 21,
-              "efficiency": 16.7
-            },
             {
               "spellId": 15286,
               "name": "Vampiric Embrace",
@@ -1845,17 +1815,11 @@
           "preparation": 68,
           "preparationChecks": 2,
           "attack": {
-            "score": 72.4,
+            "score": 83.8,
             "uptime": 96.6,
-            "cooldowns": 48.2
+            "cooldowns": 71
           },
           "attackDetail": [
-            {
-              "spellId": 51490,
-              "name": "Thunderstorm",
-              "casts": 3,
-              "efficiency": 2.7
-            },
             {
               "spellId": 443454,
               "name": "Ancestral Swiftness",
@@ -1917,17 +1881,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 75.7,
+            "score": 82.4,
             "uptime": 91.8,
-            "cooldowns": 59.7
+            "cooldowns": 72.9
           },
           "attackDetail": [
-            {
-              "spellId": 179057,
-              "name": "Chaos Nova",
-              "casts": 5,
-              "efficiency": 6.7
-            },
             {
               "spellId": 452497,
               "name": "Abyssal Gaze",
@@ -2006,18 +1964,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 52.6,
+            "score": 97.1,
             "uptime": 97.1,
-            "cooldowns": 8
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 196884,
-              "name": "Feral Lunge",
-              "casts": 9,
-              "efficiency": 8
-            }
-          ],
+          "attackDetail": [],
           "deaths": 11,
           "mechanics": {
             "errors": 1.8,
@@ -2070,29 +2021,11 @@
           "preparation": 65,
           "preparationChecks": 2,
           "attack": {
-            "score": 67.7,
+            "score": 78.8,
             "uptime": 81.1,
-            "cooldowns": 54.2
+            "cooldowns": 76.4
           },
           "attackDetail": [
-            {
-              "spellId": 107570,
-              "name": "Storm Bolt",
-              "casts": 5,
-              "efficiency": 4.5
-            },
-            {
-              "spellId": 384110,
-              "name": "Wrecking Throw",
-              "casts": 16,
-              "efficiency": 21.5
-            },
-            {
-              "spellId": 167105,
-              "name": "Colossus Smash",
-              "casts": 62,
-              "efficiency": 70.1
-            },
             {
               "spellId": 1297145,
               "name": "Spirit-Rending Poison",
@@ -2353,17 +2286,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 72.5,
+            "score": 77.7,
             "uptime": 91.5,
-            "cooldowns": 53.4
+            "cooldowns": 63.8
           },
           "attackDetail": [
-            {
-              "spellId": 179057,
-              "name": "Chaos Nova",
-              "casts": 9,
-              "efficiency": 11.8
-            },
             {
               "spellId": 452497,
               "name": "Abyssal Gaze",
