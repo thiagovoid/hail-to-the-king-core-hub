@@ -6,7 +6,14 @@ const luta = (
   id: number,
   presentes: number[],
   extras: Partial<LutaDeBoss> = {}
-): LutaDeBoss => ({ id, encounterID: 100, kill: false, friendlyPlayers: presentes, ...extras });
+): LutaDeBoss => ({
+  id,
+  encounterID: 100,
+  kill: false,
+  durationMs: 200_000,
+  friendlyPlayers: presentes,
+  ...extras,
+});
 
 const dano = (porTry: Record<number, Record<number, number>>) =>
   new Map(
@@ -84,6 +91,34 @@ describe("buildNightDetail", () => {
 
     expect(detalhe.get(20)?.tries.idle).toBe(1);
     expect(detalhe.get(10)?.tries.idle).toBe(0);
+  });
+
+  /**
+   * Em 27/08 uma try durou 20 segundos com treze dentro e uma só batendo:
+   * alguém puxou errado e o grupo resetou. Contada como luta, ela dava
+   * "atravessou uma try sem bater em nada" pra doze pessoas de uma vez.
+   */
+  it("não conta pull cancelada em segundos como try", () => {
+    const detalhe = buildNightDetail(
+      [luta(1, [10, 20, 30], { durationMs: 20_000 })],
+      [],
+      dano({ 1: { 10: 5000, 20: 0, 30: 0 } })
+    );
+
+    expect(detalhe.get(20)?.tries.idle).toBe(0);
+    expect(detalhe.get(30)?.tries.idle).toBe(0);
+  });
+
+  // O reset visto pelo outro lado: durou o bastante, mas quase ninguém
+  // chegou a bater.
+  it("não conta try longa em que quase ninguém bateu", () => {
+    const detalhe = buildNightDetail(
+      [luta(1, [10, 20, 30, 40])],
+      [],
+      dano({ 1: { 10: 5000, 20: 0, 30: 0, 40: 0 } })
+    );
+
+    expect(detalhe.get(20)?.tries.idle).toBe(0);
   });
 
   it("conta quem morreu e ainda foi o maior dano da try", () => {

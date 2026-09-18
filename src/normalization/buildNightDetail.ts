@@ -14,9 +14,21 @@ export interface LutaDeBoss {
   id: number;
   encounterID: number;
   kill: boolean;
+  /** Duração da try, em ms. Separa luta de pull cancelada. */
+  durationMs: number;
   /** `actorId` de quem estava no raide nesta try. */
   friendlyPlayers: number[];
 }
+
+/**
+ * Abaixo disto a try é pull cancelada, não luta.
+ *
+ * Em 27/08 uma try durou 20 segundos com treze pessoas dentro e uma só
+ * causando dano — alguém puxou errado e o grupo resetou. Contada como luta,
+ * ela dava "atravessou uma try sem bater em nada" pra doze pessoas de uma
+ * vez. As trys de verdade daquela noite foram de 75 a 382 segundos.
+ */
+export const TRY_MINIMA_MS = 30_000;
 
 export interface MorteNaTry {
   /** `id` da luta em que a morte aconteceu. */
@@ -66,6 +78,23 @@ export interface DetalheDaNoite {
  * @param mortes eventos de morte do log inteiro
  * @param danoPorTry dano por `actorId` em cada try, pela `id` da luta
  */
+/**
+ * A try foi luta de verdade, e não pull cancelada nem try sem dado?
+ *
+ * Duas formas de falso positivo, dois guardas. A curta demais é o reset; a
+ * que quase ninguém bateu é o reset também, visto pelo outro lado — e a sem
+ * tabela nenhuma é buraco de coleta. Nenhuma delas é gente parada, e é só
+ * disso que "Turista" deveria falar.
+ */
+function valeComoLuta(luta: LutaDeBoss, danoPorTry: Map<number, Map<number, number>>): boolean {
+  if (luta.durationMs < TRY_MINIMA_MS) return false;
+
+  const bateram = [...(danoPorTry.get(luta.id)?.values() ?? [])].filter((total) => total > 0).length;
+  if (bateram === 0) return false;
+
+  return bateram * 2 >= luta.friendlyPlayers.length;
+}
+
 export function buildNightDetail(
   bosses: LutaDeBoss[],
   mortes: MorteNaTry[],
@@ -103,12 +132,12 @@ export function buildNightDetail(
     let topDamageDead = 0;
 
     for (const luta of presentes) {
-      // Só conta ociosidade numa try em que ALGUÉM bateu. Try sem dano
-      // nenhum na tabela é try sem dado — um pull cancelado em dois
-      // segundos, uma luta que a WCL não tabelou — e não uma em que o raide
-      // inteiro ficou parado. Em 27/08 isso dava "ocioso" pros 14.
-      const teveAtividade = (lideresDaTry.get(luta.id)?.size ?? 0) > 0;
-      if (teveAtividade && (danoPorTry.get(luta.id)?.get(actorId) ?? 0) === 0) idle += 1;
+      if (
+        valeComoLuta(luta, danoPorTry) &&
+        (danoPorTry.get(luta.id)?.get(actorId) ?? 0) === 0
+      ) {
+        idle += 1;
+      }
 
       const morreu = morreuNaTry.has(`${luta.id}:${actorId}`);
       if (morreu && lideresDaTry.get(luta.id)?.has(actorId)) topDamageDead += 1;

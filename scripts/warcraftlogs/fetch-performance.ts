@@ -701,6 +701,7 @@ async function main() {
           id: fight.id,
           encounterID: fight.encounterID,
           kill: fight.kill,
+          durationMs: fight.endTime - fight.startTime,
           friendlyPlayers: fight.friendlyPlayers ?? [],
         })),
         ctx.deathEvents,
