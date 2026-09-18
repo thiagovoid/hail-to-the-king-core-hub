@@ -20,6 +20,7 @@ on:
           - roles
           - preparation
           - parse
+          - parse-report
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -73,3 +74,10 @@ jobs:
           WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
         run: npm run wcl:inspect-parse -- --report="${{ inputs.report }}"
+
+      - name: Testar rankings do proprio relatorio
+        if: inputs.tool == 'parse-report'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: npm run wcl:_probe-parse
