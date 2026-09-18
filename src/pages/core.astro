@@ -59,19 +59,26 @@ const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
   healer: 'Healers',
   dps: 'DPS',
 };
-const TYPE_ORDER: Record<Player['type'], number> = { main: 0, alt: 1 };
 
-const rosterGroups = ROLE_ORDER.map((role) => ({
-  label: ROLE_LABEL[role],
-  players: players
-    .filter((player) => player.role === role)
-    .sort((a, b) => TYPE_ORDER[a.type] - TYPE_ORDER[b.type])
-    .map((player) => ({
-      name: player.name,
-      slug: encodeURIComponent(player.name.toLowerCase()),
-      colorClass: getClassColor(player.class),
-    })),
-})).filter((grupo) => grupo.players.length > 0);
+const comoAtalho = (player: Player) => ({
+  name: player.name,
+  slug: encodeURIComponent(player.name.toLowerCase()),
+  colorClass: getClassColor(player.class),
+});
+
+// Alt vira grupo próprio, embaixo do dps: misturado dentro da função ele
+// aparecia como se fosse mais um dps do core, quando é o segundo
+// personagem de alguém que já está numa das linhas acima.
+const rosterGroups = [
+  ...ROLE_ORDER.map((role) => ({
+    label: ROLE_LABEL[role],
+    players: players.filter((player) => player.role === role && player.type === 'main').map(comoAtalho),
+  })),
+  {
+    label: 'Alts',
+    players: players.filter((player) => player.type === 'alt').map(comoAtalho),
+  },
+].filter((grupo) => grupo.players.length > 0);
 
 const dpsSeries = getCorePerformanceSeries(
   performanceWeeks,

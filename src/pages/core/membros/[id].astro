@@ -11,6 +11,7 @@ import PerformanceScoreCard from '@/components/PerformanceScoreCard.astro';
 import PerformanceChart from '@/components/PerformanceChart.astro';
 import ContribuicaoForaDeFuncao from '@/components/ContribuicaoForaDeFuncao.astro';
 import PainelDoTank from '@/components/PainelDoTank.astro';
+import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
 
 import {
   buildPlayerSeasonAverage,
@@ -318,6 +319,12 @@ const attendance = calculateAttendance(weeks, player.id);
         <p class="text-sm text-slate-500 mt-1 capitalize">
           {player.role}
         </p>
+      </div>
+
+      {/* Do mesmo tamanho do avatar e do outro lado: o emblema é a segunda
+          coisa que se olha, não um enfeite grudado no nome. */}
+      <div class="ml-auto">
+        <EmblemaDeRank score={overallScore?.overall ?? null} />
       </div>
     </header>
 

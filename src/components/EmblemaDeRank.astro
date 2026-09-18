@@ -1,0 +1,188 @@
+---
+/**
+ * O emblema da faixa em que o jogador está, na mesma escada do Hail Score:
+ * Escudeiro → Cavaleiro → Nobre → Regente → Rei.
+ *
+ * SVG inline e não imagem: fica nítido em qualquer tamanho, pesa pouco mais
+ * de um kilobyte, acompanha o tema e não precisa de pipeline de asset. Cada
+ * faixa muda o metal E o símbolo — só a cor não bastaria pra quem não
+ * distingue bem ouro de bronze.
+ */
+import { tituloDoHailScore, TITULOS_DO_HAIL_SCORE } from '@/engine/team/hailScore';
+
+interface Props {
+  /** Score Geral do jogador. Null mostra o emblema travado. */
+  score: number | null;
+  /** Lado do quadrado, em px. O padrão casa com o avatar da página. */
+  size?: number;
+}
+
+const { score, size = 96 } = Astro.props;
+
+const titulo = score === null ? null : tituloDoHailScore(score);
+const nome = titulo?.nome ?? null;
+
+/** Metal de cada faixa: escuro no fundo, claro na borda. */
+const METAIS: Record<string, { claro: string; escuro: string; borda: string; brilho: string }> = {
+  Escudeiro: { claro: '#64748b', escuro: '#1e293b', borda: '#94a3b8', brilho: '#cbd5e1' },
+  Cavaleiro: { claro: '#b45309', escuro: '#451a03', borda: '#d97706', brilho: '#fbbf24' },
+  Nobre: { claro: '#94a3b8', escuro: '#334155', borda: '#e2e8f0', brilho: '#f8fafc' },
+  Regente: { claro: '#eab308', escuro: '#713f12', borda: '#fbbf24', brilho: '#fef08a' },
+  Rei: { claro: '#fde047', escuro: '#a16207', borda: '#fef9c3', brilho: '#ffffff' },
+};
+
+const metal = METAIS[nome ?? 'Escudeiro'] ?? METAIS.Escudeiro;
+const travado = nome === null;
+
+// `find` devolve undefined, não null — quem já é Rei não tem próxima faixa.
+const proximo =
+  score === null ? undefined : TITULOS_DO_HAIL_SCORE.find((faixa) => faixa.minimo > score);
+
+/**
+ * As descrições da escada falam do CORE ("o core cumpre o combinado"), que
+ * soa errado colado no nome de uma pessoa. A faixa é a mesma; o texto é
+ * escrito na segunda pessoa.
+ */
+const DESCRICAO_DO_JOGADOR: Record<string, string> = {
+  Escudeiro: 'Você está aprendendo o tier.',
+  Cavaleiro: 'Execução firme, com arestas visíveis.',
+  Nobre: 'Você cumpre o combinado na maior parte das noites.',
+  Regente: 'Pouca coisa separa você do topo.',
+  Rei: 'Hail to the King.',
+};
+
+const falta = !proximo || score === null ? null : proximo.minimo - score;
+
+const descricao = travado
+  ? 'Sem dados suficientes pra definir o emblema'
+  : `${nome} — ${DESCRICAO_DO_JOGADOR[nome!] ?? titulo!.descricao}${
+      falta === null || !proximo
+        ? ''
+        : falta === 1
+          ? ` Falta 1 ponto pra ${proximo.nome}.`
+          : ` Faltam ${falta} pontos pra ${proximo.nome}.`
+    }`;
+
+const id = `emblema-${nome ?? 'travado'}`;
+---
+
+<div class="relative group shrink-0" style={`width:${size}px;height:${size}px`}>
+  <svg
+    viewBox="0 0 96 96"
+    width={size}
+    height={size}
+    role="img"
+    aria-label={descricao}
+    class={travado ? 'opacity-40' : ''}
+  >
+    <defs>
+      <linearGradient id={`${id}-metal`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color={metal.claro} />
+        <stop offset="100%" stop-color={metal.escuro} />
+      </linearGradient>
+
+      {/* O lustro é uma faixa diagonal clara no topo: é o que faz o escudo
+          parecer metal e não um polígono chapado. */}
+      <linearGradient id={`${id}-lustro`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+        <stop offset="45%" stop-color="#ffffff" stop-opacity="0.06" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+
+    {/* Escudo heráldico: ombros retos, ponta arredondada. */}
+    <path
+      d="M48 5 L86 17 V47 C86 70 69 85 48 92 C27 85 10 70 10 47 V17 Z"
+      fill={`url(#${id}-metal)`}
+      stroke={metal.borda}
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M48 5 L86 17 V47 C86 70 69 85 48 92 C27 85 10 70 10 47 V17 Z"
+      fill={`url(#${id}-lustro)`}
+    />
+
+    {/* Filete interno: separa o símbolo da borda e dá profundidade. */}
+    <path
+      d="M48 13 L79 23 V46 C79 65 65 78 48 84 C31 78 17 65 17 46 V23 Z"
+      fill="none"
+      stroke={metal.borda}
+      stroke-width="1.5"
+      stroke-opacity="0.45"
+    />
+
+    {/* O símbolo muda por faixa, não só a cor: ouro e bronze são difíceis de
+        separar de relance, e impossível pra quem não distingue as duas. */}
+    {nome === 'Escudeiro' && (
+      <path
+        d="M48 34 L64 52 H56 V64 H40 V52 H32 Z"
+        fill={metal.brilho}
+        fill-opacity="0.9"
+      />
+    )}
+
+    {nome === 'Cavaleiro' && (
+      <g fill={metal.brilho} fill-opacity="0.95">
+        <path d="M46 26 H50 L52 58 H44 Z" />
+        <rect x="35" y="56" width="26" height="5" rx="2" />
+        <rect x="45" y="60" width="6" height="12" rx="2" />
+      </g>
+    )}
+
+    {nome === 'Nobre' && (
+      <path
+        d="M48 26 L54 44 H73 L57.5 55 L63.5 73 L48 62 L32.5 73 L38.5 55 L23 44 H42 Z"
+        fill={metal.brilho}
+        fill-opacity="0.95"
+      />
+    )}
+
+    {nome === 'Regente' && (
+      <g fill={metal.brilho} fill-opacity="0.95">
+        <path d="M30 60 L26 36 L38 46 L48 30 L58 46 L70 36 L66 60 Z" />
+        <rect x="29" y="63" width="38" height="6" rx="2" />
+      </g>
+    )}
+
+    {nome === 'Rei' && (
+      <g>
+        {/* Louros dos dois lados, e a coroa maior e mais alta. */}
+        <path
+          d="M26 70 C18 62 18 48 24 40 M70 70 C78 62 78 48 72 40"
+          fill="none"
+          stroke={metal.brilho}
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-opacity="0.75"
+        />
+        <g fill={metal.brilho}>
+          <path d="M28 58 L23 30 L37 42 L48 24 L59 42 L73 30 L68 58 Z" />
+          <rect x="27" y="61" width="42" height="7" rx="2.5" />
+          <circle cx="48" cy="20" r="4" />
+          <circle cx="23" cy="26" r="3" />
+          <circle cx="73" cy="26" r="3" />
+        </g>
+      </g>
+    )}
+
+    {travado && (
+      <path
+        d="M40 46 V40 A8 8 0 0 1 56 40 V46 M36 46 H60 V66 H36 Z"
+        fill="none"
+        stroke={metal.brilho}
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+    )}
+  </svg>
+
+  {/* O emblema sozinho não diz o que é nem como se sobe de faixa. */}
+  <span
+    role="tooltip"
+    class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-2 z-20 w-56 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity shadow-xl"
+  >
+    <span class="block text-slate-200 text-[11px] leading-relaxed">{descricao}</span>
+  </span>
+</div>
