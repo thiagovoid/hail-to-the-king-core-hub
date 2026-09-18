@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import { CONQUISTAS, contarConquistas } from "./conquistas";
 import type { CorePerformanceTargets } from "../../types/index";
-import type { WeeklyPerformance } from "../../types/performance";
+import type { PlayerPerformance, WeeklyPerformance } from "../../types/performance";
+
+type PlayerPerformanceDeTeste = PlayerPerformance;
 
 const TARGETS: CorePerformanceTargets = {
   parse: { target: 60, direction: "higher" },
@@ -370,6 +372,187 @@ describe("conquistas de uma noite só", () => {
     expect(quantas(weeks, "economico", "sem-sobra")).toBe(1);
     expect(detalheDe(weeks, "economico", "sem-sobra")).toBe("19.8% de desperdício");
     expect(quantas(weeks, "esbanjador", "sem-sobra")).toBe(0);
+  });
+});
+
+describe("conquistas da noite try a try", () => {
+  const trys = (extras: Partial<NonNullable<PlayerPerformanceDeTeste["tries"]>> = {}) => ({
+    present: 10,
+    total: 10,
+    lateStart: false,
+    earlyExit: false,
+    idle: 0,
+    topDamageDead: 0,
+    ...extras,
+  });
+
+  it("marca quem perdeu a primeira pull e quem sumiu antes do fim", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        { playerId: "atrasado", deaths: 1, tries: trys({ lateStart: true }) },
+        { playerId: "sumiu", deaths: 1, tries: trys({ earlyExit: true }) },
+        { playerId: "inteiro", deaths: 1, tries: trys() },
+      ]),
+    ];
+
+    expect(quantas(weeks, "atrasado", "chegou-atrasado")).toBe(1);
+    expect(quantas(weeks, "sumiu", "lagou-aqui")).toBe(1);
+    expect(quantas(weeks, "inteiro", "chegou-atrasado")).toBe(0);
+    expect(quantas(weeks, "inteiro", "lagou-aqui")).toBe(0);
+  });
+
+  /**
+   * Aconteceu em 15/09: a pessoa começou de Voidsurge e terminou de Voidwar.
+   * Personagem por personagem, um "saiu cedo" e o outro "chegou tarde" —
+   * duas medalhas de zoeira pra quem não saiu do lugar.
+   */
+  it("não pune troca de personagem no meio da noite como atraso nem como fuga", () => {
+    const pessoaDe = (id: string) => (id === "voidwar" ? "voidsurge" : id);
+    const weeks = [
+      semana("2026-09-15", [
+        { playerId: "voidsurge", deaths: 1, tries: trys({ earlyExit: true }) },
+        { playerId: "voidwar", deaths: 1, tries: trys({ lateStart: true }) },
+      ]),
+    ];
+
+    const apurado = contarConquistas(weeks, TARGETS, { pessoaDe });
+    expect(apurado.get("voidsurge")?.get("lagou-aqui")).toBeUndefined();
+    expect(apurado.get("voidsurge")?.get("chegou-atrasado")).toBeUndefined();
+  });
+
+  it("não apura presença em noite sem o dado try a try", () => {
+    const weeks = [semana("2026-09-01", [{ playerId: "antigo", deaths: 1 }])];
+
+    expect(quantas(weeks, "antigo", "chegou-atrasado")).toBe(0);
+    expect(quantas(weeks, "antigo", "lagou-aqui")).toBe(0);
+    expect(quantas(weeks, "antigo", "pacifista")).toBe(0);
+  });
+
+  it("dá Turista a quem atravessou uma try sem bater em nada", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        { playerId: "a", deaths: 1, tries: trys({ idle: 1, present: 14 }) },
+        { playerId: "b", deaths: 1, tries: trys() },
+      ]),
+    ];
+
+    expect(quantas(weeks, "a", "turista")).toBe(1);
+    expect(detalheDe(weeks, "a", "turista")).toBe("1 de 14 trys sem causar dano");
+    expect(quantas(weeks, "b", "turista")).toBe(0);
+  });
+
+  it("dá Meter do além a quem morreu liderando o dano", () => {
+    const weeks = [
+      semana("2026-09-01", [{ playerId: "a", deaths: 3, tries: trys({ topDamageDead: 2 }) }]),
+    ];
+
+    expect(quantas(weeks, "a", "meter-do-alem")).toBe(1);
+    expect(detalheDe(weeks, "a", "meter-do-alem")).toBe("maior dano da try mesmo morto, 2x");
+  });
+
+  // As 221 lutas atravessadas sem morte na temporada vieram TODAS de boss
+  // morto na primeira try — sobreviver a dois minutos de boss fácil não é
+  // invencibilidade.
+  it("não dá Invicto por boss que caiu de primeira", () => {
+    const facil = [
+      semana("2026-09-01", [
+        {
+          playerId: "a",
+          deaths: 0,
+          bossTries: [{ encounterID: 100, tries: 1, killed: true, flawless: true }],
+        },
+      ]),
+    ];
+    expect(quantas(facil, "a", "invicto")).toBe(0);
+
+    const progressao = [
+      semana("2026-09-01", [
+        {
+          playerId: "a",
+          deaths: 0,
+          bossTries: [{ encounterID: 100, tries: 6, killed: true, flawless: true }],
+        },
+      ]),
+    ];
+    expect(quantas(progressao, "a", "invicto")).toBe(1);
+  });
+
+  it("separa a teimosia premiada da noite perdida", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        {
+          playerId: "venceu",
+          deaths: 1,
+          bossTries: [{ encounterID: 100, tries: 11, killed: true, flawless: false }],
+        },
+        {
+          playerId: "apanhou",
+          deaths: 1,
+          bossTries: [{ encounterID: 100, tries: 14, killed: false, flawless: false }],
+        },
+        {
+          playerId: "pouco",
+          deaths: 1,
+          bossTries: [{ encounterID: 100, tries: 9, killed: false, flawless: false }],
+        },
+      ]),
+    ];
+
+    expect(quantas(weeks, "venceu", "paciencia-de-jo")).toBe(1);
+    expect(detalheDe(weeks, "venceu", "paciencia-de-jo")).toBe("caiu na 11ª try");
+    expect(quantas(weeks, "venceu", "vai-de-novo")).toBe(0);
+
+    expect(quantas(weeks, "apanhou", "vai-de-novo")).toBe(1);
+    expect(quantas(weeks, "apanhou", "paciencia-de-jo")).toBe(0);
+
+    expect(quantas(weeks, "pouco", "vai-de-novo")).toBe(0);
+  });
+
+  it("dá Pacifista a quem esteve no raide e não bateu no trash", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        { playerId: "parado", deaths: 1, tries: trys(), trashShare: 0 },
+        { playerId: "ajudou", deaths: 1, tries: trys(), trashShare: 12.5 },
+        // Reserva que nunca desceu: zero dele não é o mesmo zero.
+        { playerId: "reserva", deaths: 0, trashShare: 0 },
+      ]),
+    ];
+
+    expect(quantas(weeks, "parado", "pacifista")).toBe(1);
+    expect(quantas(weeks, "ajudou", "pacifista")).toBe(0);
+    expect(quantas(weeks, "reserva", "pacifista")).toBe(0);
+  });
+
+  it("dá Fominha a quem sobe no pódio do trash e não no do boss", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        { playerId: "fominha", deaths: 1, tries: trys(), trashShare: 40, dps: 10_000 },
+        { playerId: "t2", deaths: 1, tries: trys(), trashShare: 30, dps: 90_000 },
+        { playerId: "t3", deaths: 1, tries: trys(), trashShare: 20, dps: 80_000 },
+        { playerId: "t4", deaths: 1, tries: trys(), trashShare: 10, dps: 70_000 },
+      ]),
+    ];
+
+    expect(quantas(weeks, "fominha", "fominha-de-trash")).toBe(1);
+    expect(detalheDe(weeks, "fominha", "fominha-de-trash")).toBe("40% do dano no trash");
+    // Está no pódio dos dois: não é fominha, é bom.
+    expect(quantas(weeks, "t2", "fominha-de-trash")).toBe(0);
+    expect(quantas(weeks, "t4", "fominha-de-trash")).toBe(0);
+  });
+
+  it("dá Coringa a quem cobriu função diferente da cadastrada", () => {
+    const funcaoDe = () => "dps" as const;
+    const weeks = [
+      semana("2026-09-15", [
+        { playerId: "cobriu", deaths: 1, specs: [{ spec: "Discipline", role: "healer" }] },
+        { playerId: "normal", deaths: 1, specs: [{ spec: "Shadow", role: "dps" }] },
+      ]),
+    ];
+
+    const apurado = contarConquistas(weeks, TARGETS, { funcaoDe });
+    expect(apurado.get("cobriu")?.get("coringa")?.vezes).toBe(1);
+    expect(apurado.get("cobriu")?.get("coringa")?.detalhe).toBe("cobriu healer de Discipline");
+    expect(apurado.get("normal")?.get("coringa")).toBeUndefined();
   });
 });
 

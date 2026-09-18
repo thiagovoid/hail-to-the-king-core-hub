@@ -109,10 +109,9 @@ const entradaDeDano = tabelaDaNoite.damage.data.entries[0] as unknown as Record<
 console.log(`  campos de uma entrada da tabela de dano: ${Object.keys(entradaDeDano).join(", ")}`);
 console.log(`  icon/spec: ${JSON.stringify({ icon: entradaDeDano.icon, type: entradaDeDano.type, specs: entradaDeDano.specs })}`);
 
-console.log("\n=== 5. CUSTO DE UMA TABELA POR TRY ===");
+console.log("\n=== 5. TRY A TRY: duração, presença e quem bateu ===");
 const inicio = Date.now();
 const aliases = bosses
-  .slice(0, 6)
   .map((f, i) => `f${i}: table(fightIDs: [${f.id}], dataType: DamageDone)`)
   .join("\n        ");
 const porTry = await wclGraphql<{ reportData: { report: Record<string, { data: { entries: Array<{ name: string; total: number }> } }> } }>(
@@ -121,9 +120,17 @@ const porTry = await wclGraphql<{ reportData: { report: Record<string, { data: {
   } } }`,
   { code }
 );
-const tabelasPorTry = Object.values(porTry.reportData.report);
-console.log(`  6 tabelas numa query só: ${Date.now() - inicio}ms`);
-console.log(`  jogadores com dano em cada try: ${tabelasPorTry.map((t) => t.data.entries.length).join(", ")}`);
+
+console.log(`  ${bosses.length} tabelas numa query só: ${Date.now() - inicio}ms`);
+console.log("  try   seg  presentes  comDano  zerados  kill  boss");
+bosses.forEach((luta, indice) => {
+  const entradas = porTry.reportData.report[`f${indice}`]?.data.entries ?? [];
+  const bateram = entradas.filter((e) => (e.total ?? 0) > 0).length;
+  const presentes = (luta.friendlyPlayers ?? []).length;
+  console.log(
+    `  ${String(luta.id).padStart(3)} ${String(Math.round((luta.endTime - luta.startTime) / 1000)).padStart(5)} ${String(presentes).padStart(10)} ${String(bateram).padStart(8)} ${String(presentes - bateram).padStart(8)} ${String(luta.kill).padStart(5)}  ${luta.name}`
+  );
+});
 
 const depois = await wcl.fetchRateLimitData();
 console.log(
