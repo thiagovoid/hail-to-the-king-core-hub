@@ -92,6 +92,20 @@
               "efficiency": 97.2
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2.1,
@@ -259,6 +273,20 @@
               "efficiency": 96.9
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 2,
@@ -381,6 +409,20 @@
               "name": "Healing Stream Totem",
               "casts": 120,
               "efficiency": 67.4
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 8,
@@ -544,6 +586,20 @@
               "efficiency": 48.7
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 2.1,
@@ -698,6 +754,20 @@
               "efficiency": 77.5
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.4,
@@ -837,6 +907,20 @@
               "efficiency": 63.5
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 0.8,
@@ -940,6 +1024,20 @@
               "name": "Desperate Prayer",
               "casts": 25,
               "efficiency": 58.8
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 9,
@@ -1047,6 +1145,20 @@
               "name": "Astral Shift",
               "casts": 8,
               "efficiency": 19.2
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 9,
@@ -1180,6 +1292,20 @@
               "name": "Blur",
               "casts": 48,
               "efficiency": 63.7
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 8,
@@ -1319,6 +1445,20 @@
               "efficiency": 36.9
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 2.1,
@@ -1442,6 +1582,20 @@
               "name": "Rallying Cry",
               "casts": 5,
               "efficiency": 23.5
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 10,
@@ -1598,6 +1752,20 @@
               "efficiency": 44.2
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2,
@@ -1743,6 +1911,16 @@
               "efficiency": 50.3
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.7,
@@ -1855,6 +2033,20 @@
               "name": "Desperate Prayer",
               "casts": 36,
               "efficiency": 79.7
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 7,
@@ -2001,6 +2193,20 @@
               "efficiency": 16.3
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3492,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2.3,
@@ -2126,6 +2332,12 @@
               "efficiency": 85.9
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1,
@@ -2231,6 +2443,12 @@
               "name": "Dancing Rune Weapon",
               "casts": 7,
               "efficiency": 98.6
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 3,
@@ -2350,6 +2568,16 @@
               "efficiency": 98.5
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 11,
           "mechanics": {
             "errors": 1.5,
@@ -2436,6 +2664,12 @@
               "name": "Healing Stream Totem",
               "casts": 29,
               "efficiency": 79.1
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 2,
@@ -2579,6 +2813,16 @@
               "efficiency": 63.8
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 11,
           "mechanics": {
             "errors": 2.3,
@@ -2683,6 +2927,16 @@
               "name": "Aura Mastery",
               "casts": 16,
               "efficiency": 58.5
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 9,
@@ -2793,6 +3047,16 @@
               "efficiency": 55.6
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 1,
@@ -2893,6 +3157,16 @@
               "efficiency": 33.1
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 11,
           "mechanics": {
             "errors": 0.8,
@@ -2987,6 +3261,16 @@
               "efficiency": 45.8
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1.4,
@@ -3074,6 +3358,16 @@
               "name": "Astral Shift",
               "casts": 5,
               "efficiency": 10
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 10,
@@ -3191,6 +3485,16 @@
               "efficiency": 64.6
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 2.3,
@@ -3273,6 +3577,16 @@
               "name": "Astral Shift",
               "casts": 13,
               "efficiency": 30.8
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 11,
@@ -3386,6 +3700,16 @@
               "name": "Berserker Rage",
               "casts": 4,
               "efficiency": 6.9
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 10,
@@ -3505,6 +3829,16 @@
               "efficiency": 46.4
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -3615,6 +3949,16 @@
               "efficiency": 46.3
             }
           ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
+            }
+          ],
           "deaths": 12,
           "mechanics": {
             "errors": 1.8,
@@ -3709,6 +4053,16 @@
               "name": "Desperate Prayer",
               "casts": 32,
               "efficiency": 73.9
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 8,
@@ -3811,6 +4165,16 @@
               "name": "Blur",
               "casts": 13,
               "efficiency": 18.4
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 4
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 4
             }
           ],
           "deaths": 10,
