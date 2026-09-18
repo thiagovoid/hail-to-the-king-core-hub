@@ -9,6 +9,7 @@
  */
 import type { ScoreDimension } from '@/engine/scores';
 import { formatDecimalBr } from '@/utils/format';
+import InfoTooltip from '@/components/InfoTooltip.astro';
 
 interface Props {
   dimension: ScoreDimension;
@@ -16,9 +17,15 @@ interface Props {
   temDetalhe?: boolean;
   /** Quantos itens o detalhe tem, quando faz sentido contar. */
   itensDetalhe?: number;
+  /**
+   * O que o detalhe mostra ("Ver quais mecânicas"). Só pra leitor de tela:
+   * na tela a seta e a contagem bastam, mas sem isto quem navega por áudio
+   * ouviria um botão sem nome.
+   */
+  rotuloDetalhe?: string;
 }
 
-const { dimension, temDetalhe = false, itensDetalhe = 0 } = Astro.props;
+const { dimension, temDetalhe = false, itensDetalhe = 0, rotuloDetalhe = '' } = Astro.props;
 
 const bateuAMeta =
   dimension.value !== null &&
@@ -72,29 +79,16 @@ const direcao = dimension.target.direction === 'higher' ? 'quanto maior, melhor'
     <span class="text-slate-300 font-medium">{dimension.label}</span>
     <span class="text-slate-600 text-[10px]">{dimension.weight}%</span>
 
-    <span class="relative group inline-flex">
-      <button
-        type="button"
-        class="w-3.5 h-3.5 rounded-full border border-slate-700 text-slate-500 text-[9px] leading-none flex items-center justify-center hover:border-[#f0a500] hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
-        aria-label={`O que é ${dimension.label}`}
-      >
-        i
-      </button>
-
-      <span
-        role="tooltip"
-        class="pointer-events-none absolute left-0 bottom-full mb-2 z-20 w-64 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity shadow-xl normal-case"
-      >
-        <span class="block text-slate-200 text-[11px] leading-relaxed">{dimension.description}</span>
-        <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
-          <span class="text-slate-500 font-semibold">Fonte:</span> {dimension.source}
-        </span>
-        <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
-          <span class="text-slate-500 font-semibold">Meta do core:</span>{' '}
-          {formatDecimalBr(dimension.target.target)} ({direcao})
-        </span>
+    <InfoTooltip label={`O que é ${dimension.label}`}>
+      <span class="block text-slate-200 text-[11px] leading-relaxed">{dimension.description}</span>
+      <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
+        <span class="text-slate-500 font-semibold">Fonte:</span> {dimension.source}
       </span>
-    </span>
+      <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
+        <span class="text-slate-500 font-semibold">Meta do core:</span>{' '}
+        {formatDecimalBr(dimension.target.target)} ({direcao})
+      </span>
+    </InfoTooltip>
   </div>
 
   {dimension.value !== null ? (
@@ -126,6 +120,7 @@ const direcao = dimension.target.direction === 'higher' ? 'quanto maior, melhor'
           <path d="M0 0l8 5-8 5z" />
         </svg>
         {itensDetalhe > 0 && <span class="text-[10px] text-slate-600">{itensDetalhe}</span>}
+        {rotuloDetalhe && <span class="sr-only">{rotuloDetalhe}</span>}
       </span>
     )}
   </div>

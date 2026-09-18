@@ -2,6 +2,7 @@
 import type { OverallPerformanceScore } from '@/engine/scores';
 import { formatDecimalBr, formatThousands } from '@/utils/format';
 import ScoreDimensionRow from '@/components/ScoreDimensionRow.astro';
+import InfoTooltip from '@/components/InfoTooltip.astro';
 
 interface Props {
   score: OverallPerformanceScore;
@@ -96,6 +97,9 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
     defenseContext !== null || defenseDetail.length > 0
       ? { rotulo: 'Ver dano recebido e cooldowns', itens: defenseDetail.length }
       : undefined,
+  preparation: preparationMissing.length
+    ? { rotulo: 'Ver o que falta arrumar', itens: preparationMissing.length }
+    : undefined,
 };
 ---
 
@@ -159,6 +163,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                   dimension={dimension}
                   temDetalhe
                   itensDetalhe={detalhe.itens}
+                  rotuloDetalhe={detalhe.rotulo}
                 />
               </summary>
 
@@ -236,7 +241,28 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
   <div class="grid grid-cols-2 gap-4 mt-4">
     <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
       <p class="text-xs uppercase tracking-wide text-slate-500">
-        Tendência
+        <span class="inline-flex items-center gap-1.5">
+          Tendência
+          <InfoTooltip label="O que é Tendência">
+            <span class="block text-slate-200 text-[11px] leading-relaxed">
+              Se o seu dano (ou cura) vem subindo ou caindo ao longo de <strong>todas</strong> as
+              runs do histórico. Não é a última noite contra a anterior.
+            </span>
+            <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
+              O cálculo traça a reta que melhor acompanha os seus números e mede o quanto ela sobe
+              do começo ao fim, comparado à sua própria média. +75% quer dizer que a reta subiu o
+              equivalente a 75% do seu dps médio.
+            </span>
+            <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
+              Por ser uma reta, e não dois pontos comparados, uma noite ruim isolada não derruba o
+              número — mas várias seguidas, sim.
+            </span>
+            <span class="block text-slate-500 text-[11px] leading-relaxed mt-2">
+              Compara você com você mesmo, nunca com o resto do core. Precisa de pelo menos duas
+              runs pra existir.
+            </span>
+          </InfoTooltip>
+        </span>
       </p>
 
       <strong class={`block text-2xl font-bold mt-1 ${trendColor}`}>
@@ -244,7 +270,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
       </strong>
 
       <p class="text-[11px] text-slate-500 mt-1">
-        Evolução do seu dps/hps ao longo das runs
+        Subida ou queda do seu dps/hps ao longo de todas as runs
       </p>
     </article>
 

@@ -64,8 +64,10 @@ const DIMENSION_META: Record<
     label: "Mecânicas",
     weight: 30,
     unit: "erros por try",
-    description: "Erros de execução de mecânica ao longo da noite — dano evitável tomado, soak perdido, etc.",
-    source: "Wipefest. Coleta ainda não rodou com dado real, por isso aparece sem dado.",
+    description:
+      "Média de mecânicas DISTINTAS erradas por try — dano evitável tomado, soak perdido. Errar a mesma mecânica cinco vezes na mesma try conta uma: a régua é quantas coisas diferentes deram errado, não quantas pancadas você levou.",
+    source:
+      "Wipefest, todas as trys da noite (kill ou wipe). A curadoria deles é que decide o que conta: dano de soak dividido entre o grupo não é erro, tomar uma habilidade que dava pra desviar é.",
   },
   attack: {
     label: "Atacar",
@@ -74,7 +76,7 @@ const DIMENSION_META: Record<
     description:
       "Quanto da luta você passou atacando (uptime) e quanto do tempo seus cooldowns ofensivos ficaram em recarga. Cooldown guardado é dano que não aconteceu: a régua é tempo em recarga, não quantidade de usos.",
     source:
-      "Warcraft Logs (tempo ativo e eventos de cast) + Wowhead (recarga de cada magia). Substitui o WoW Analyzer, que bloqueia automação via Cloudflare.",
+      "Warcraft Logs (tempo ativo e cada cast da noite) + Wowhead (recarga e cargas de cada magia). Cooldown que quase não representa dano seu — um gap closer, por exemplo — fica de fora da conta.",
   },
   defense: {
     label: "Defender",
@@ -90,8 +92,9 @@ const DIMENSION_META: Record<
     weight: 10,
     unit: "% pronto",
     description:
-      "Quanto do equipamento está encantado e gemado, comparado ao que o guia da sua spec recomenda. Vale a presença, não o item exato: encanto ou gema fora do BIS conta igual. Consumíveis ainda não entram na conta.",
-    source: "Warcraft Logs (gear do log) + Wowhead (quantos encantos e gemas se espera na sua spec).",
+      "Encantos e gemas do equipamento, mais os consumíveis da noite (flask, comida, poção, pedra de vida). Vale a presença, não o item exato: encanto ou gema fora do BIS conta igual.",
+    source:
+      "Warcraft Logs (gear do log) + Wowhead (quantos encantos e gemas a sua spec espera) + Wipefest (o que o ready check flagrou faltando).",
   },
 };
 
@@ -112,9 +115,12 @@ function progress(value: number | undefined, target: CoreTarget): number | null 
  * sendo o melhor parse entre os bosses mortos na noite.
  *
  * Mortes saíram da contabilização por hora (segue coletado, aparece no
- * histórico, mas não pontua). Cooldowns e Preparação ainda não têm coleta:
- * Cooldowns depende do WoW Analyzer (bloqueado pela Cloudflare) e
- * Preparação de um passe novo na WCL sobre gear/consumíveis.
+ * histórico, mas não pontua).
+ *
+ * As cinco dimensões têm coleta rodando. "Cooldowns" era uma só e virou
+ * duas — Atacar e Defender — quando ficou claro que a régua é diferente
+ * pros dois lados: cooldown ofensivo guardado é dano perdido, defensivo
+ * guardado muitas vezes é a decisão certa.
  *
  * Dimensão sem dado é descartada e seu peso é redistribuído entre as que
  * têm — em vez de assumir um denominador fixo de 100 pontos.

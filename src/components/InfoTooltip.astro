@@ -1,0 +1,36 @@
+---
+/**
+ * O "i" redondo que abre uma explicação no hover ou no foco.
+ *
+ * Existe porque o mesmo bloco estava escrito em dois lugares e ia pro
+ * terceiro. O conteúdo vem por slot: cada uso escreve a sua explicação.
+ */
+interface Props {
+  /** O que o leitor de tela anuncia no botão ("O que é Tendência"). */
+  label: string;
+  /** Lado pra onde a caixa abre. À direita da tela, `direita` evita o corte. */
+  alinhamento?: 'esquerda' | 'direita';
+}
+
+const { label, alinhamento = 'esquerda' } = Astro.props;
+---
+
+<span class="relative group inline-flex align-middle">
+  <button
+    type="button"
+    class="w-3.5 h-3.5 rounded-full border border-slate-700 text-slate-500 text-[9px] leading-none flex items-center justify-center hover:border-[#f0a500] hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
+    aria-label={label}
+  >
+    i
+  </button>
+
+  <span
+    role="tooltip"
+    class:list={[
+      'pointer-events-none absolute bottom-full mb-2 z-20 w-64 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity shadow-xl normal-case',
+      alinhamento === 'direita' ? 'right-0' : 'left-0',
+    ]}
+  >
+    <slot />
+  </span>
+</span>
