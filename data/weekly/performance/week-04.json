@@ -10,10 +10,19 @@
           "dps": 45912,
           "parse": 53,
           "itemLevel": 313,
-          "preparation": 93,
+          "preparation": 61,
           "preparationMissing": [
-            "Elmo"
+            "Elmo",
+            "Poção",
+            "Flask/comida"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 98.4,
+            "uptime": 98.4,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 7,
           "mechanics": {
             "errors": 1.8,
@@ -146,11 +155,19 @@
           "playerId": "apocalipse",
           "dps": 52684,
           "parse": 70,
-          "preparation": 77,
+          "preparation": 63,
           "preparationMissing": [
             "Botas",
-            "Colar"
+            "Colar",
+            "Poção"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 97.4,
+            "uptime": 97.4,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 6,
           "mechanics": {
             "errors": 1.4,
@@ -266,7 +283,7 @@
           "hps": 117293,
           "parse": 72,
           "itemLevel": 310,
-          "preparation": 17,
+          "preparation": 19,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -274,8 +291,18 @@
             "Pernas",
             "Botas",
             "Anel",
-            "Arma"
+            "Arma",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 98,
+            "uptime": 98,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 8,
           "mechanics": {
             "errors": 1.8,
@@ -385,7 +412,7 @@
           "hps": 150324,
           "parse": 90,
           "itemLevel": 310,
-          "preparation": 29,
+          "preparation": 31,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -393,8 +420,17 @@
             "Pernas",
             "Botas",
             "Anel",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 98.5,
+            "uptime": 98.5,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 6,
           "mechanics": {
             "errors": 1.2,
@@ -485,12 +521,23 @@
           "playerId": "cowsadeer",
           "hps": 168264,
           "parse": 72,
-          "preparation": 100,
+          "preparation": 75,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 96.3,
+            "uptime": 96.3,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 8,
           "mechanics": {
             "errors": 1.5,
             "tries": 12
           },
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
@@ -595,12 +642,19 @@
           "dps": 109261,
           "parse": 87,
           "itemLevel": 314,
-          "preparation": 81,
+          "preparation": 83,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Botas"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 87.7,
+            "uptime": 87.7,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 7,
           "mechanics": {
             "errors": 1.5,
@@ -704,7 +758,7 @@
           "dps": 88620,
           "parse": 72,
           "itemLevel": 312,
-          "preparation": 6,
+          "preparation": 38,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -712,8 +766,16 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 83.4,
+            "uptime": 83.4,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 7,
           "mechanics": {
             "errors": 1.5,
@@ -810,6 +872,13 @@
             "Elmo",
             "Botas"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 93.5,
+            "uptime": 93.5,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -919,7 +988,14 @@
           "dps": 137433,
           "parse": 93,
           "itemLevel": 320,
-          "preparation": 100,
+          "preparation": 92,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 94.3,
+            "uptime": 94.3,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 7,
           "mechanics": {
             "errors": 1.3,
@@ -1011,10 +1087,17 @@
           "dps": 106090,
           "parse": 63,
           "itemLevel": 318,
-          "preparation": 94,
+          "preparation": 89,
           "preparationMissing": [
             "Elmo"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 95.4,
+            "uptime": 95.4,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 6,
           "mechanics": {
             "errors": 1.2,
@@ -1100,12 +1183,19 @@
           "dps": 125830,
           "parse": 76,
           "itemLevel": 318,
-          "preparation": 86,
+          "preparation": 87,
           "preparationMissing": [
             "Elmo",
             "Cintura",
             "Braçadeiras"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 99,
+            "uptime": 99,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 6,
           "mechanics": {
             "errors": 1.8,
@@ -1227,12 +1317,23 @@
           "dps": 70023,
           "parse": 16,
           "itemLevel": 302,
-          "preparation": 100,
+          "preparation": 81,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 87.3,
+            "uptime": 87.3,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 7,
           "mechanics": {
             "errors": 1.5,
             "tries": 12
           },
+          "preparationMissing": [
+            "Flask/comida",
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
@@ -1343,7 +1444,14 @@
           "dps": 97729,
           "parse": 68,
           "itemLevel": 316,
-          "preparation": 100,
+          "preparation": 90,
+          "preparationChecks": 2,
+          "attack": {
+            "score": 89.1,
+            "uptime": 89.1,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 5,
           "mechanics": {
             "errors": 1.6,
@@ -1441,10 +1549,19 @@
           "dps": 61142,
           "parse": 22,
           "itemLevel": 310,
-          "preparation": 94,
+          "preparation": 61,
           "preparationMissing": [
-            "Ombreiras"
+            "Ombreiras",
+            "Poção",
+            "Flask/comida"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 85.2,
+            "uptime": 85.2,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 7,
           "mechanics": {
             "errors": 1.8,
@@ -1554,12 +1671,21 @@
           "dps": 96295,
           "parse": 61,
           "itemLevel": 302,
-          "preparation": 81,
+          "preparation": 68,
           "preparationMissing": [
             "Elmo",
             "Peito",
-            "Botas"
+            "Botas",
+            "Flask/comida",
+            "Poção"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 98,
+            "uptime": 98,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 5,
           "mechanics": {
             "errors": 1.3,
@@ -1657,11 +1783,20 @@
           "dps": 46527,
           "parse": 32,
           "itemLevel": 303,
-          "preparation": 88,
+          "preparation": 57,
           "preparationMissing": [
             "Peito",
-            "Botas"
+            "Botas",
+            "Poção",
+            "Flask/comida"
           ],
+          "preparationChecks": 2,
+          "attack": {
+            "score": 58.1,
+            "uptime": 58.1,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 5,
           "mechanics": {
             "errors": 1.5,
@@ -1752,11 +1887,23 @@
           "playerId": "naamt",
           "dps": 37870,
           "parse": 9,
+          "attack": {
+            "score": 67,
+            "uptime": 67,
+            "cooldowns": null
+          },
+          "attackDetail": [],
           "deaths": 10,
           "mechanics": {
             "errors": 2.1,
             "tries": 12
           },
+          "preparation": 13,
+          "preparationMissing": [
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
