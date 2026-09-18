@@ -3,6 +3,8 @@ export type GoalMetric =
   | 'hps'
   | 'parse'
   | 'mechanics'
+  | 'attack'
+  | 'defense'
   | 'deaths';
 
 export type GoalDirection =

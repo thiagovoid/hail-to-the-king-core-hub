@@ -65,6 +65,22 @@ export function formatDate(iso: string | null): string {
  * Formata um número grande em milhares com casas decimais fixas,
  * ex: 100340 → "100.34k" (2 casas). Abaixo de 1000 devolve o número inteiro.
  */
+/**
+ * O número como a tela mostra: "400.43k" a partir de mil, o valor exato
+ * abaixo disso.
+ *
+ * Existia em três lugares com casas decimais diferentes — o gráfico e a
+ * tabela usavam uma casa ("120.3k"), o painel do core usava duas. Aqui vira
+ * um só.
+ *
+ * O corte em mil não é enfeite: abaixo dele ficam grandezas que NÃO podem
+ * ser arredondadas, como "1,4 erros por try". Delegar tudo pro
+ * formatThousands transformaria esse 1,4 em "1".
+ */
+export function formatCompact(value: number): string {
+  return Math.abs(value) >= 1000 ? formatThousands(value) : String(value);
+}
+
 export function formatThousands(value: number, decimals = 2): string {
   if (!Number.isFinite(value)) {
     return "—";

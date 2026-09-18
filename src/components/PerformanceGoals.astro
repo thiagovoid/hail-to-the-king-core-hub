@@ -11,6 +11,10 @@ interface Props {
    * à parte, e não dentro de `goals`.
    */
   coreMechanicsTarget?: number | null;
+  /** Meta de execução ofensiva do core. Mesma lógica de coreMechanicsTarget. */
+  coreAttackTarget?: number | null;
+  /** Meta de execução defensiva do core. */
+  coreDefenseTarget?: number | null;
   current: {
     dps?: number;
     hps?: number;
@@ -18,11 +22,20 @@ interface Props {
     mechanics?: {
       errors: number;
     };
+    attack?: { score: number };
+    /** score é null quando nenhum cooldown defensivo foi medido. */
+    defense?: { score: number | null };
     deaths?: number;
   };
 }
 
-const { goals, current, coreMechanicsTarget = null } = Astro.props;
+const {
+  goals,
+  current,
+  coreMechanicsTarget = null,
+  coreAttackTarget = null,
+  coreDefenseTarget = null,
+} = Astro.props;
 
 // Parse e mortes seguem escondidos: parse só existe pra boss morto e mortes
 // saíram do score. Erros mecânicos voltou quando a coleta do Wipefest passou
@@ -51,6 +64,38 @@ const cards = [
           source: 'Wipefest (meta do core)',
         },
         actual: current.mechanics.errors,
+        format: 'number' as const,
+      }
+    : null,
+  coreAttackTarget !== null && current.attack !== undefined
+    ? {
+        key: 'attack',
+        label: 'Atacar',
+        goal: {
+          metric: 'attack' as const,
+          target: coreAttackTarget,
+          direction: 'higher' as const,
+          description: 'Uptime e cooldowns ofensivos, na média da última noite',
+          source: 'Warcraft Logs + Wowhead (meta do core)',
+        },
+        actual: current.attack.score,
+        format: 'number' as const,
+      }
+    : null,
+  // Nota nula = nenhum cooldown defensivo medido. Sem caixa, em vez de uma
+  // barra zerada que pareceria "você não se defendeu".
+  coreDefenseTarget !== null && current.defense?.score != null
+    ? {
+        key: 'defense',
+        label: 'Defender',
+        goal: {
+          metric: 'defense' as const,
+          target: coreDefenseTarget,
+          direction: 'higher' as const,
+          description: 'Tempo em recarga dos cooldowns defensivos, na última noite',
+          source: 'Warcraft Logs + Wowhead (meta do core)',
+        },
+        actual: current.defense.score,
         format: 'number' as const,
       }
     : null,

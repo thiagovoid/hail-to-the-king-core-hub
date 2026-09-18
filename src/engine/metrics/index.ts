@@ -1,3 +1,4 @@
+import { formatCompact } from "../../utils/format";
 import type {
   PlayerPerformance,
   PlayerRunPerformance,
@@ -207,11 +208,7 @@ export function formatPerformanceValue(
     return "-";
   }
 
-  if (value >= 1000) {
-    return `${(value / 1000).toFixed(1)}k`;
-  }
-
-  return value.toString();
+  return formatCompact(value);
 }
 
 /**

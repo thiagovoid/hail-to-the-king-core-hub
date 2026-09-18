@@ -175,7 +175,7 @@ describe('formatPercent', () => {
   });
 });
 
-import { formatThousands } from './format';
+import { formatCompact, formatThousands } from './format';
 
 describe('formatThousands', () => {
   it('formats with 2 decimals and a k suffix by default', () => {
@@ -195,5 +195,23 @@ describe('formatThousands', () => {
   it('returns "—" for non-finite input', () => {
     expect(formatThousands(NaN)).toBe('—');
     expect(formatThousands(Infinity)).toBe('—');
+  });
+});
+
+describe('formatCompact', () => {
+  it('usa notação k a partir de mil, com duas casas', () => {
+    expect(formatCompact(400430)).toBe('400.43k');
+    expect(formatCompact(103825)).toBe('103.83k');
+  });
+
+  // Abaixo de mil ficam grandezas que não podem ser arredondadas: "1,4 erros
+  // por try" viraria "1" se delegasse tudo pro formatThousands.
+  it('preserva a casa decimal abaixo de mil', () => {
+    expect(formatCompact(1.4)).toBe('1.4');
+    expect(formatCompact(54.8)).toBe('54.8');
+  });
+
+  it('não mexe em inteiro pequeno', () => {
+    expect(formatCompact(87)).toBe('87');
   });
 });

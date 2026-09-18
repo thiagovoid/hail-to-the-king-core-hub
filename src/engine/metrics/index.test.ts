@@ -74,7 +74,10 @@ describe("calculateDpsEvolution / calculateHpsEvolution / calculateParseEvolutio
 
 describe("formatPerformanceValue", () => {
   it("formats values >= 1000 in k notation", () => {
-    expect(formatPerformanceValue(82000)).toBe("82.0k");
+    // Duas casas: era uma só aqui e duas no painel do core, com o mesmo
+    // número saindo diferente em duas telas.
+    expect(formatPerformanceValue(82000)).toBe("82.00k");
+    expect(formatPerformanceValue(400430)).toBe("400.43k");
   });
 
   it("leaves small values as-is", () => {

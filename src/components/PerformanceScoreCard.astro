@@ -1,5 +1,6 @@
 ---
 import type { OverallPerformanceScore } from '@/engine/scores';
+import { formatThousands } from '@/utils/format';
 
 interface Props {
   score: OverallPerformanceScore;
@@ -91,6 +92,26 @@ const formatarNoite = (iso: string) => {
 
 const formatarValor = (valor: number) =>
   Number.isInteger(valor) ? String(valor) : valor.toFixed(1).replace('.', ',');
+
+/**
+ * O detalhe explica a nota, mas são até sete linhas por dimensão — cinco
+ * dimensões abertas de uma vez viravam parede de texto e escondiam o próprio
+ * score. Fica recolhido, com um rótulo que diz o que tem dentro: "Detalhes"
+ * sozinho não dá motivo pra ninguém clicar.
+ */
+const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number }>> = {
+  mechanics: mechanicsDetail.length
+    ? { rotulo: 'Ver quais mecânicas', itens: mechanicsDetail.length }
+    : undefined,
+  attack:
+    attackParts !== null || attackDetail.length > 0
+      ? { rotulo: 'Ver uptime e cooldowns', itens: attackDetail.length }
+      : undefined,
+  defense:
+    defenseContext !== null || defenseDetail.length > 0
+      ? { rotulo: 'Ver dano recebido e cooldowns', itens: defenseDetail.length }
+      : undefined,
+};
 
 const directionLabel = (direction: 'higher' | 'lower') =>
   direction === 'higher' ? 'quanto maior, melhor' : 'quanto menor, melhor';
@@ -208,6 +229,27 @@ const directionLabel = (direction: 'higher' | 'lower') =>
               </p>
             )}
 
+            {detalheDaDimensao[dimension.key] && (
+              <details class="detalhe mt-1.5">
+                {/* list-none + marker escondido: o triângulo nativo não dá
+                    pra estilizar, então a seta é nossa e gira ao abrir. */}
+                <summary class="cursor-pointer list-none inline-flex items-center gap-1 text-[11px] text-slate-500 hover:text-slate-300 transition-colors select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500] rounded">
+                  <svg
+                    class="seta w-2.5 h-2.5 shrink-0"
+                    viewBox="0 0 8 10"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 0l8 5-8 5z" />
+                  </svg>
+
+                  <span>{detalheDaDimensao[dimension.key]!.rotulo}</span>
+
+                  {detalheDaDimensao[dimension.key]!.itens > 0 && (
+                    <span class="text-slate-600">({detalheDaDimensao[dimension.key]!.itens})</span>
+                  )}
+                </summary>
+
             {/* "x11" fazia o número parecer quantidade da habilidade. É
                 frequência: em quantas trys ela foi errada. O denominador
                 responde "de quantas?" sem a pessoa procurar, e deixa a conta
@@ -248,7 +290,7 @@ const directionLabel = (direction: 'higher' | 'lower') =>
             {dimension.key === 'defense' && defenseContext !== null && (
               <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
                 <span class="text-slate-400">
-                  {defenseContext.dtps.toLocaleString('pt-BR')} de dano recebido por segundo
+                  {formatThousands(defenseContext.dtps)} de dano recebido por segundo
                 </span>
                 {' · '}
                 {formatarValor(defenseContext.mitigation)}% mitigado
@@ -280,6 +322,8 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                   </li>
                 ))}
               </ul>
+            )}
+              </details>
             )}
           </div>
         ))
@@ -317,3 +361,16 @@ const directionLabel = (direction: 'higher' | 'lower') =>
     </article>
   </div>
 </section>
+
+<style>
+  /* A seta é nossa: o triângulo nativo do <summary> não é estilizável de
+     forma confiável entre navegadores, e o group-open nomeado do Tailwind
+     gerou um seletor que não casava com nada. */
+  .detalhe > summary .seta {
+    transition: transform 150ms ease;
+  }
+
+  .detalhe[open] > summary .seta {
+    transform: rotate(90deg);
+  }
+</style>

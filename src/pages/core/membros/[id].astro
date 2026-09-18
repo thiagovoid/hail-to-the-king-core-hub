@@ -270,8 +270,15 @@ const attendance = calculateAttendance(weeks, player.id);
       hasData && player.performanceGoals && (
         <PerformanceGoals
           goals={player.performanceGoals}
-          current={{ ...seasonAverage, mechanics: ultimaNoite?.mechanics }}
+          current={{
+            ...seasonAverage,
+            mechanics: ultimaNoite?.mechanics,
+            attack: ultimaNoite?.attack,
+            defense: ultimaNoite?.defense,
+          }}
           coreMechanicsTarget={seasonJson.config.performanceTargets.mechanics.target}
+          coreAttackTarget={seasonJson.config.performanceTargets.attack.target}
+          coreDefenseTarget={seasonJson.config.performanceTargets.defense.target}
         />
       )
     }

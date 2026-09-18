@@ -1,4 +1,5 @@
 ---
+import { formatCompact } from '@/utils/format';
 import { formatDate } from '@/utils/format';
 
 interface DataPoint {
@@ -45,13 +46,7 @@ const paddingRight = 30;
 const paddingTop = 25;
 const paddingBottom = 35;
 
-function formatValue(value: number): string {
-  if (value >= 1000) {
-    return `${(value / 1000).toFixed(1)}k`;
-  }
-
-  return value.toString();
-}
+const formatValue = formatCompact;
 
 /**
  * Passo "redondo" mais próximo acima de um valor bruto.
