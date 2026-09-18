@@ -7,9 +7,13 @@
       "players": [
         {
           "playerId": "blackwatch",
-          "dps": 52055,
+          "dps": 45912,
           "parse": 53,
           "itemLevel": 313,
+          "preparation": 93,
+          "preparationMissing": [
+            "Elmo"
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.8,
@@ -140,8 +144,13 @@
         },
         {
           "playerId": "apocalipse",
-          "dps": 58372,
-          "parse": 72,
+          "dps": 52684,
+          "parse": 70,
+          "preparation": 77,
+          "preparationMissing": [
+            "Botas",
+            "Colar"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.4,
@@ -254,9 +263,19 @@
         },
         {
           "playerId": "voidsurge",
-          "hps": 118166,
-          "parse": 62,
+          "hps": 117293,
+          "parse": 72,
           "itemLevel": 310,
+          "preparation": 17,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma"
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.8,
@@ -363,9 +382,19 @@
         },
         {
           "playerId": "kams",
-          "hps": 137720,
-          "parse": 64,
+          "hps": 150324,
+          "parse": 90,
           "itemLevel": 310,
+          "preparation": 29,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Colar"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.2,
@@ -454,8 +483,9 @@
         },
         {
           "playerId": "cowsadeer",
-          "hps": 164642,
-          "parse": 84,
+          "hps": 168264,
+          "parse": 72,
+          "preparation": 100,
           "deaths": 8,
           "mechanics": {
             "errors": 1.5,
@@ -562,9 +592,15 @@
         },
         {
           "playerId": "bustgril",
-          "dps": 135512,
-          "parse": 89,
+          "dps": 109261,
+          "parse": 87,
           "itemLevel": 314,
+          "preparation": 81,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Botas"
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.5,
@@ -665,9 +701,19 @@
         },
         {
           "playerId": "hysillens",
-          "dps": 116498,
-          "parse": 74,
+          "dps": 88620,
+          "parse": 72,
           "itemLevel": 312,
+          "preparation": 6,
+          "preparationMissing": [
+            "Elmo",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma",
+            "Colar"
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.5,
@@ -756,8 +802,14 @@
         },
         {
           "playerId": "kroline",
-          "dps": 129740,
+          "dps": 109276,
+          "parse": 67,
           "itemLevel": 315,
+          "preparation": 88,
+          "preparationMissing": [
+            "Elmo",
+            "Botas"
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -864,8 +916,10 @@
         },
         {
           "playerId": "jrxamã",
-          "dps": 161644,
+          "dps": 137433,
+          "parse": 93,
           "itemLevel": 320,
+          "preparation": 100,
           "deaths": 7,
           "mechanics": {
             "errors": 1.3,
@@ -954,9 +1008,13 @@
         },
         {
           "playerId": "heracranosx",
-          "dps": 115179,
-          "parse": 65,
+          "dps": 106090,
+          "parse": 63,
           "itemLevel": 318,
+          "preparation": 94,
+          "preparationMissing": [
+            "Elmo"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.2,
@@ -1039,8 +1097,15 @@
         },
         {
           "playerId": "gunst",
-          "dps": 141530,
+          "dps": 125830,
+          "parse": 76,
           "itemLevel": 318,
+          "preparation": 86,
+          "preparationMissing": [
+            "Elmo",
+            "Cintura",
+            "Braçadeiras"
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.8,
@@ -1159,9 +1224,10 @@
         },
         {
           "playerId": "nerlock",
-          "dps": 87340,
-          "parse": 17,
+          "dps": 70023,
+          "parse": 16,
           "itemLevel": 302,
+          "preparation": 100,
           "deaths": 7,
           "mechanics": {
             "errors": 1.5,
@@ -1274,9 +1340,10 @@
         },
         {
           "playerId": "xúlio",
-          "dps": 118039,
-          "parse": 70,
+          "dps": 97729,
+          "parse": 68,
           "itemLevel": 316,
+          "preparation": 100,
           "deaths": 5,
           "mechanics": {
             "errors": 1.6,
@@ -1371,9 +1438,13 @@
         },
         {
           "playerId": "dagom",
-          "dps": 68734,
-          "parse": 23,
+          "dps": 61142,
+          "parse": 22,
           "itemLevel": 310,
+          "preparation": 94,
+          "preparationMissing": [
+            "Ombreiras"
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.8,
@@ -1480,9 +1551,15 @@
         },
         {
           "playerId": "ligiaf",
-          "dps": 112255,
+          "dps": 96295,
           "parse": 61,
           "itemLevel": 302,
+          "preparation": 81,
+          "preparationMissing": [
+            "Elmo",
+            "Peito",
+            "Botas"
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.3,
@@ -1577,9 +1654,14 @@
         },
         {
           "playerId": "minort",
-          "dps": 56297,
-          "parse": 33,
+          "dps": 46527,
+          "parse": 32,
           "itemLevel": 303,
+          "preparation": 88,
+          "preparationMissing": [
+            "Peito",
+            "Botas"
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.5,
@@ -1668,7 +1750,7 @@
         },
         {
           "playerId": "naamt",
-          "dps": 47372,
+          "dps": 37870,
           "parse": 9,
           "deaths": 10,
           "mechanics": {
