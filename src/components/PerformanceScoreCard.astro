@@ -39,6 +39,8 @@ interface Props {
   defenseContext?: { mitigation: number; dtps: number; selfSustain?: number } | null;
   /** As duas metades da nota de Curar, mais a cobertura crua. */
   healingParts?: { coverage: number; share: number; overheal: number } | null;
+  /** Nome da função usada pra escolher os pesos ("tank", "healer", "dps"). */
+  funcao?: string | null;
 }
 
 const {
@@ -54,6 +56,7 @@ const {
   defenseDetail = [],
   defenseContext = null,
   healingParts = null,
+  funcao = null,
 } = Astro.props;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
@@ -83,6 +86,29 @@ const formatarNoite = (iso: string) => {
 };
 
 /**
+ * A conta do Score geral, linha a linha, com os números DESTA pessoa.
+ *
+ * Explicar a fórmula em texto ("média ponderada das dimensões disponíveis")
+ * não responde a pergunta que as pessoas fazem, que é "por que o MEU deu
+ * 61". Mostrar peso × nota de cada dimensão e o divisor responde — e deixa
+ * visível o que é fácil de duvidar: o divisor encolhe quando falta dado, em
+ * vez de a dimensão entrar como zero.
+ */
+const dimensoesComDado = score.dimensions.filter(
+  (dimension): dimension is typeof dimension & { score: number } => dimension.score !== null
+);
+
+const contaDoScore = dimensoesComDado.map((dimension) => ({
+  label: dimension.label,
+  weight: dimension.weight,
+  score: dimension.score,
+  produto: Math.round(dimension.weight * dimension.score),
+}));
+
+const pesoDisponivel = dimensoesComDado.reduce((soma, dimension) => soma + dimension.weight, 0);
+const somaDosProdutos = contaDoScore.reduce((soma, linha) => soma + linha.produto, 0);
+
+/**
  * O detalhe explica a nota, mas são até sete linhas por dimensão — cinco
  * dimensões abertas de uma vez viravam parede de texto e escondiam o próprio
  * score. Fica recolhido, com um rótulo que diz o que tem dentro: "Detalhes"
@@ -110,7 +136,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 <section class="mb-10">
   <div class="mb-4">
     <h2 class="text-xl font-bold text-white">
-      Performance geral
+      Performance da última run
     </h2>
 
     <p class="text-sm text-slate-400 mt-1">
@@ -125,8 +151,47 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 
   <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
     <div class="flex items-center justify-between gap-4 mb-5">
-      <span class="text-sm font-semibold text-slate-300">
+      <span class="text-sm font-semibold text-slate-300 inline-flex items-center gap-1.5">
         Score geral
+
+        <InfoTooltip label="Como o Score geral é calculado" largura="larga">
+          <span class="block text-slate-200 text-[11px] leading-relaxed">
+            Cada dimensão vira uma nota de 0 a 100 — o quanto do caminho até a meta do core você
+            andou. O Score geral é a média dessas notas, com peso
+            {funcao ? ` da régua de ${funcao}` : ''}.
+          </span>
+
+          {contaDoScore.length > 0 ? (
+            <>
+              <span class="block mt-2 pt-2 border-t border-white/10">
+                {contaDoScore.map((linha) => (
+                  <span class="flex justify-between gap-3 text-[11px] text-slate-400 tabular-nums">
+                    <span>{linha.label}</span>
+                    <span>
+                      {linha.weight}% × {linha.score} = {linha.produto}
+                    </span>
+                  </span>
+                ))}
+              </span>
+
+              <span class="flex justify-between gap-3 text-[11px] text-slate-200 font-semibold mt-1.5 pt-1.5 border-t border-white/10 tabular-nums">
+                <span>{somaDosProdutos} ÷ {pesoDisponivel}%</span>
+                <span>= {score.overall}</span>
+              </span>
+            </>
+          ) : (
+            <span class="block text-slate-400 text-[11px] mt-2">
+              Nenhuma dimensão tem dado nesta run.
+            </span>
+          )}
+
+          {pesoDisponivel < 100 && (
+            <span class="block text-slate-500 text-[11px] leading-relaxed mt-2">
+              Falta dado em {100 - pesoDisponivel}% dos pesos. Dimensão sem dado é descartada e o
+              divisor encolhe junto — ela nunca conta como zero.
+            </span>
+          )}
+        </InfoTooltip>
       </span>
 
       {

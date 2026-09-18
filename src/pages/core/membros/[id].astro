@@ -352,6 +352,7 @@ const attendance = calculateAttendance(weeks, player.id);
           defenseDetail={defenseDetail}
           defenseContext={defenseContext}
           healingParts={healingParts}
+          funcao={ultimaNoite?.healing ? 'healer' : player.role === 'tank' ? 'tank' : 'dps'}
         />
       )
     }
