@@ -22,6 +22,7 @@ on:
           - parse
           - parse-report
           - casts
+          - cooldowns
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
