@@ -8,8 +8,10 @@
  * A média considera só as trys em que o jogador esteve — quem chegou atrasado
  * não é medido pelas trys que perdeu.
  *
- * O detalhe, ao contrário, é **somado**: pra dizer "Peçonha Sanguínea ×15 nos
- * Sentinelas" interessa o total da noite, não a média.
+ * O detalhe conta em quantas trys cada mecânica foi errada — "Peçonha
+ * Sanguínea em 11 trys". Mostrar hits não ajudava: 62 ticks não dizem em
+ * quantas vezes a pessoa errou a decisão, e o número não conversava com a
+ * nota.
  *
  * Puro: recebe o que os providers leram, devolve estrutura. Sem rede.
  */
@@ -26,8 +28,14 @@ export interface FightMechanics {
 export interface MechanicOccurrence {
   boss: string;
   mechanic: string;
-  /** Total de ocorrências na noite. */
-  hits: number;
+  /**
+   * Em quantas trys da noite essa mecânica foi errada.
+   *
+   * Não é contagem de hits: 62 ticks de uma poça em 11 trys viram 11, não
+   * 62. Assim o detalhe fecha com a nota — a soma das trys de todas as
+   * mecânicas, dividida pelo total de trys, é exatamente `errors`.
+   */
+  tries: number;
 }
 
 export interface NightMechanics {
@@ -69,14 +77,15 @@ export function aggregateNightMechanics(fights: FightMechanics[]): Record<string
       for (const erro of jogador.errors) {
         const chave = `${fight.boss}|${erro.mechanic}`;
         const existente = atual.detalhe.get(chave);
-        const hits = erro.count ?? 1;
-        if (existente) existente.hits += hits;
+        // Uma try, um ponto: o erro aconteceu naquela try, quantas vezes
+        // doeu é outra grandeza.
+        if (existente) existente.tries += 1;
         else
           atual.detalhe.set(chave, {
             boss: fight.boss,
             mechanic: erro.mechanic,
             ...(erro.label ? { label: erro.label } : {}),
-            hits,
+            tries: 1,
           });
       }
 
@@ -93,7 +102,7 @@ export function aggregateNightMechanics(fights: FightMechanics[]): Record<string
       // pra inteiro juntaria os dois em 2 — some justamente a distinção.
       errors: Math.round((dados.totalErros / dados.tries) * 10) / 10,
       tries: dados.tries,
-      byMechanic: [...dados.detalhe.values()].sort((a, b) => b.hits - a.hits),
+      byMechanic: [...dados.detalhe.values()].sort((a, b) => b.tries - a.tries),
     };
   }
 

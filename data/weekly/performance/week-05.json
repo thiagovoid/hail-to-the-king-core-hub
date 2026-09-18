@@ -15,80 +15,81 @@
           ],
           "deaths": 8,
           "mechanics": {
-            "errors": 2.1
+            "errors": 2.1,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 37
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 21
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Falling Debris",
               "label": "Destroços em Queda",
-              "hits": 8
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 4
+              "tries": 3
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 3
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Volatile Purge",
               "label": "Expurgo Volátil",
-              "hits": 2
+              "tries": 2
             },
             {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 2
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 2
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 1
             }
           ]
         },
@@ -103,62 +104,63 @@
           ],
           "deaths": 7,
           "mechanics": {
-            "errors": 2
+            "errors": 2,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
-              "mechanic": "Damage from Warden's Protection",
-              "label": "Doomscale Warden's",
-              "hits": 33
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
-              "mechanic": "Damage from Caustic Waves",
-              "label": "Ondas Cáusticas",
-              "hits": 12
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 6
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 5
+              "tries": 3
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Falling Debris",
               "label": "Destroços em Queda",
-              "hits": 3
-            },
-            {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Virulent Spit",
-              "label": "Cusparada Virulenta",
-              "hits": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Volatile Purge",
               "label": "Expurgo Volátil",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 1
+              "tries": 1
             }
           ]
         },
@@ -178,68 +180,69 @@
           ],
           "deaths": 8,
           "mechanics": {
-            "errors": 1.7
+            "errors": 1.7,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 38
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 8
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 8
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 6
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 3
+              "tries": 3
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
-              "hits": 2
+              "tries": 1
             },
             {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Virulent Spit",
-              "label": "Cusparada Virulenta",
-              "hits": 2
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -259,86 +262,87 @@
           ],
           "deaths": 7,
           "mechanics": {
-            "errors": 2.1
+            "errors": 2.1,
+            "tries": 9
           },
           "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 9
-            },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 8
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 7
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 5
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "hits": 3
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 3
+              "tries": 3
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tries": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Circling Prey",
               "label": "Rondando a Presa",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Desperate Thrash",
               "label": "Weakened Doomscale's",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Volatile Purge",
               "label": "Expurgo Volátil",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -348,74 +352,75 @@
           "preparation": 100,
           "deaths": 7,
           "mechanics": {
-            "errors": 1.4
+            "errors": 1.4,
+            "tries": 9
           },
           "mechanicsDetail": [
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 9
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 6
-            },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 3
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 3
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Circling Prey",
               "label": "Rondando a Presa",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Desperate Thrash",
               "label": "Weakened Doomscale's",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -431,44 +436,45 @@
           ],
           "deaths": 8,
           "mechanics": {
-            "errors": 0.8
+            "errors": 0.8,
+            "tries": 9
           },
           "mechanicsDetail": [
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 6
-            },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 4
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Circling Prey",
               "label": "Rondando a Presa",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -483,56 +489,57 @@
           ],
           "deaths": 9,
           "mechanics": {
-            "errors": 1.3
+            "errors": 1.3,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 7
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 5
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 5
+              "tries": 2
             },
             {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Caustic Waves",
-              "label": "Ondas Cáusticas",
-              "hits": 4
-            },
-            {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Volatile Purge",
-              "label": "Expurgo Volátil",
-              "hits": 2
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tries": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
               "label": "Soul Fragments",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Circling Prey",
               "label": "Rondando a Presa",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -543,56 +550,57 @@
           "preparation": 100,
           "deaths": 9,
           "mechanics": {
-            "errors": 1.3
+            "errors": 1.3,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
-              "mechanic": "Damage from Caustic Waves",
-              "label": "Ondas Cáusticas",
-              "hits": 6
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 5
-            },
-            {
-              "boss": "Ula'tek",
               "mechanic": "Damage from Desperate Thrash",
               "label": "Weakened Doomscale's",
-              "hits": 4
+              "tries": 3
             },
             {
               "boss": "Ula'tek",
-              "mechanic": "Damage from Warden's Protection",
-              "label": "Doomscale Warden's",
-              "hits": 2
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Circling Prey",
               "label": "Rondando a Presa",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Volatile Purge",
               "label": "Expurgo Volátil",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
             }
           ]
         },
@@ -606,92 +614,93 @@
           ],
           "deaths": 8,
           "mechanics": {
-            "errors": 3
+            "errors": 3,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
-              "mechanic": "Damage from Warden's Protection",
-              "label": "Doomscale Warden's",
-              "hits": 32
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 9
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 8
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 6
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 5
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
-              "mechanic": "Damage from Virulent Spit",
-              "label": "Cusparada Virulenta",
-              "hits": 5
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 5
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 3
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 3
-            },
-            {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Desperate Thrash",
-              "label": "Weakened Doomscale's",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Volatile Purge",
               "label": "Expurgo Volátil",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Mephitic Thrash",
               "label": "Gore Rattle",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -707,74 +716,75 @@
           ],
           "deaths": 9,
           "mechanics": {
-            "errors": 2.1
+            "errors": 2.1,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 34
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 6
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 4
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "hits": 2
-            },
-            {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Falling Debris",
-              "label": "Destroços em Queda",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Desperate Thrash",
               "label": "Weakened Doomscale's",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 2
+              "tries": 2
             },
             {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 2
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tries": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Widow's Kiss",
               "label": "50y",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "label": "Destroços em Queda",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -785,86 +795,87 @@
           "preparation": 100,
           "deaths": 10,
           "mechanics": {
-            "errors": 2.4
+            "errors": 2.4,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
-              "mechanic": "Damage from Warden's Protection",
-              "label": "Doomscale Warden's",
-              "hits": 25
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 10
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 7
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 6
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "hits": 5
-            },
-            {
-              "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 4
+              "tries": 3
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Falling Debris",
               "label": "Destroços em Queda",
-              "hits": 4
+              "tries": 3
             },
             {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 4
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tries": 1
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Gravebound",
               "label": "Soul Fragments",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Volatile Purge",
               "label": "Expurgo Volátil",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -875,74 +886,75 @@
           "preparation": 100,
           "deaths": 8,
           "mechanics": {
-            "errors": 2
+            "errors": 2,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 8
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "hits": 3
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 3
-            },
-            {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Desperate Thrash",
-              "label": "Weakened Doomscale's",
-              "hits": 3
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 3
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 3
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Anguished Echoes",
-              "label": "Ecos Angustiados",
-              "hits": 2
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Circling Prey",
               "label": "Rondando a Presa",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -955,50 +967,51 @@
           ],
           "deaths": 6,
           "mechanics": {
-            "errors": 1.7
+            "errors": 1.7,
+            "tries": 6
           },
           "mechanicsDetail": [
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 8
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 6
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 5
-            },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Desperate Thrash",
               "label": "Weakened Doomscale's",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -1014,68 +1027,69 @@
           ],
           "deaths": 7,
           "mechanics": {
-            "errors": 1.7
+            "errors": 1.7,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 8
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 7
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 5
-            },
-            {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Desperate Thrash",
-              "label": "Weakened Doomscale's",
-              "hits": 3
-            },
-            {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Caustic Waves",
-              "label": "Ondas Cáusticas",
-              "hits": 2
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 2
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Volatile Purge",
               "label": "Expurgo Volátil",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 1
             }
           ]
         },
@@ -1090,74 +1104,75 @@
           ],
           "deaths": 8,
           "mechanics": {
-            "errors": 2.3
+            "errors": 2.3,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Warden's Protection",
               "label": "Doomscale Warden's",
-              "hits": 24
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 11
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 7
+              "tries": 4
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Caustic Waves",
               "label": "Ondas Cáusticas",
-              "hits": 6
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 5
+              "tries": 3
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Virulent Spit",
               "label": "Cusparada Virulenta",
-              "hits": 4
+              "tries": 3
             },
             {
-              "boss": "Ula'tek",
-              "mechanic": "Damage from Falling Debris",
-              "label": "Destroços em Queda",
-              "hits": 2
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 3
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Desperate Thrash",
               "label": "Weakened Doomscale's",
-              "hits": 2
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "label": "Destroços em Queda",
+              "tries": 1
             },
             {
               "boss": "Ula'tek",
               "mechanic": "Damage from Mephitic Thrash",
               "label": "Gore Rattle",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 1
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 1
             }
           ]
         }
@@ -1174,20 +1189,21 @@
           "preparation": 100,
           "deaths": 9,
           "mechanics": {
-            "errors": 1
+            "errors": 1,
+            "tries": 9
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 40
+              "tries": 5
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 25
+              "tries": 4
             }
           ]
         },
@@ -1202,26 +1218,27 @@
           ],
           "deaths": 3,
           "mechanics": {
-            "errors": 1.3
+            "errors": 1.3,
+            "tries": 3
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 8
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 7
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 3
+              "tries": 1
             }
           ]
         },
@@ -1235,38 +1252,39 @@
           ],
           "deaths": 11,
           "mechanics": {
-            "errors": 1.5
+            "errors": 1.5,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 56
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 33
+              "tries": 7
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 10
+              "tries": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 6
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Cremation",
               "label": "Chama Serpeante",
-              "hits": 3
+              "tries": 1
             }
           ]
         },
@@ -1277,38 +1295,39 @@
           "preparation": 100,
           "deaths": 2,
           "mechanics": {
-            "errors": 2
+            "errors": 2,
+            "tries": 3
           },
           "mechanicsDetail": [
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 8
-            },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 8
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 5
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 1
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 1
+              "tries": 1
             }
           ]
         },
@@ -1327,32 +1346,33 @@
           ],
           "deaths": 11,
           "mechanics": {
-            "errors": 2.3
+            "errors": 2.3,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 80
+              "tries": 11
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 58
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 23
+              "tries": 8
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 5
+              "tries": 1
             }
           ]
         },
@@ -1366,38 +1386,39 @@
           ],
           "deaths": 9,
           "mechanics": {
-            "errors": 2.1
+            "errors": 2.1,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 105
+              "tries": 11
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 69
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 9
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 2
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
             }
           ]
         },
@@ -1413,32 +1434,33 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 1
+            "errors": 1,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 25
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 4
             },
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 18
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 4
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 4
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 2
+              "tries": 1
             }
           ]
         },
@@ -1458,26 +1480,27 @@
           ],
           "deaths": 11,
           "mechanics": {
-            "errors": 0.8
+            "errors": 0.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 19
+              "tries": 5
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 7
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 3
+              "tries": 1
             }
           ]
         },
@@ -1492,32 +1515,33 @@
           ],
           "deaths": 9,
           "mechanics": {
-            "errors": 1.4
+            "errors": 1.4,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 24
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 7
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 18
+              "tries": 5
             },
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 15
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 3
+              "tries": 1
             }
           ]
         },
@@ -1528,32 +1552,33 @@
           "preparation": 100,
           "deaths": 10,
           "mechanics": {
-            "errors": 1.4
+            "errors": 1.4,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 20
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 15
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 8
+              "tries": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 5
+              "tries": 1
             }
           ]
         },
@@ -1567,38 +1592,39 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 2.3
+            "errors": 2.3,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 62
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tries": 11
             },
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "hits": 62
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 37
+              "tries": 6
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 8
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 1
+              "tries": 1
             }
           ]
         },
@@ -1615,44 +1641,45 @@
           ],
           "deaths": 11,
           "mechanics": {
-            "errors": 1.8
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 55
+              "tries": 10
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 35
+              "tries": 7
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 8
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 4
+              "tries": 2
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 1
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 1
+              "tries": 1
             }
           ]
         },
@@ -1663,32 +1690,33 @@
           "preparation": 100,
           "deaths": 10,
           "mechanics": {
-            "errors": 1.8
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 53
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 36
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 16
+              "tries": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 6
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 5
+              "tries": 1
             }
           ]
         },
@@ -1699,32 +1727,33 @@
           "preparation": 100,
           "deaths": 10,
           "mechanics": {
-            "errors": 1.8
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "hits": 68
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 10
             },
             {
               "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 53
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 9
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 6
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
             }
           ]
         },
@@ -1735,32 +1764,33 @@
           "preparation": 100,
           "deaths": 12,
           "mechanics": {
-            "errors": 1.8
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 41
+              "tries": 10
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 30
+              "tries": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 15
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 6
+              "tries": 1
             }
           ]
         },
@@ -1773,32 +1803,33 @@
           ],
           "deaths": 8,
           "mechanics": {
-            "errors": 1.8
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 70
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "hits": 31
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 24
+              "tries": 7
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 6
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Latent Cultist",
               "label": "Sectário Latente",
-              "hits": 5
+              "tries": 1
             }
           ]
         },
@@ -1813,44 +1844,45 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 1.8
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "hits": 29
+              "tries": 9
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "hits": 28
+              "tries": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "hits": 22
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "hits": 6
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Anguished Echoes",
               "label": "Ecos Angustiados",
-              "hits": 2
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tries": 1
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
               "mechanic": "Damage from Soul Transfer",
               "label": "Transferência de Alma",
-              "hits": 1
+              "tries": 1
             }
           ]
         }

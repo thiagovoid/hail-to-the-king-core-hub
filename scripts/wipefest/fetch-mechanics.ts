@@ -119,7 +119,10 @@ async function main() {
       const existente = run.players.find((player) => player.playerId === playerId);
       if (!existente) continue;
 
-      existente.mechanics = { errors: resumo.errors };
+      // Guarda em quantas trys a média foi calculada: quando um fight falha
+      // na API (acontece), a média sai de menos trys e sem isto ninguém
+      // saberia.
+      existente.mechanics = { errors: resumo.errors, tries: resumo.tries };
       if (resumo.byMechanic.length > 0) existente.mechanicsDetail = resumo.byMechanic;
       gravados++;
     }

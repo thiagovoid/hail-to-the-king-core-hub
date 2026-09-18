@@ -53,14 +53,17 @@ export interface PlayerPerformance {
    * Not tracked automatically; filled in manually when available.
    */
   mechanics?: {
+    /** Média de mecânicas distintas erradas por try. */
     errors: number;
+    /** Em quantas trys a média foi calculada — deixa o número rastreável. */
+    tries?: number;
   };
 
   /**
    * Onde os erros mecânicos aconteceram na noite, do mais frequente pro
    * menos. É o que explica o número — a nota sozinha não diz o que treinar.
    */
-  mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; hits: number }>;
+  mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; tries: number }>;
 
   /**
    * Wipefest's overall mechanics score (0-100) for the run.

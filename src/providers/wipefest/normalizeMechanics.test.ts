@@ -20,14 +20,45 @@ describe("aggregateNightMechanics", () => {
     expect(aggregateNightMechanics(noite).Heracranosx.errors).toBe(1);
   });
 
-  it("guarda os hits no detalhe — lá severidade é o que interessa", () => {
+  it("conta em quantas trys a mecânica foi errada, não hits", () => {
+    // 62 ticks numa try e 9 noutra: a mecânica falhou em 2 trys, não 71 vezes.
     const noite = [
+      fight("Sentinelas", false, [
+        { player: "Xúlio", score: 50, errors: [{ mechanic: "Blood Venom", value: 0, count: 62 }] },
+      ]),
       fight("Sentinelas", true, [
-        { player: "Heracranosx", score: 54, errors: [{ mechanic: "Blood Venom", value: 0, count: 62 }] },
+        { player: "Xúlio", score: 50, errors: [{ mechanic: "Blood Venom", value: 0, count: 9 }] },
       ]),
     ];
 
-    expect(aggregateNightMechanics(noite).Heracranosx.byMechanic[0].hits).toBe(62);
+    expect(aggregateNightMechanics(noite).Xúlio.byMechanic).toEqual([
+      { boss: "Sentinelas", mechanic: "Blood Venom", tries: 2 },
+    ]);
+  });
+
+  it("o detalhe fecha com a nota: soma das trys dividida pelo total dá errors", () => {
+    // É o que torna as duas informações legíveis juntas — antes o detalhe
+    // falava em hits e não conversava com o número da dimensão.
+    const noite = [
+      fight("Sentinelas", false, [
+        {
+          player: "Kams",
+          score: 40,
+          errors: [
+            { mechanic: "Blood Venom", value: 0, count: 30 },
+            { mechanic: "Living Venom", value: 0, count: 5 },
+          ],
+        },
+      ]),
+      fight("Sentinelas", true, [
+        { player: "Kams", score: 80, errors: [{ mechanic: "Blood Venom", value: 50, count: 2 }] },
+      ]),
+    ];
+
+    const resultado = aggregateNightMechanics(noite).Kams;
+    const somaDasTrys = resultado.byMechanic.reduce((total, item) => total + item.tries, 0);
+
+    expect(somaDasTrys / resultado.tries).toBe(resultado.errors);
   });
 
   it("tira média por try, não soma — noite longa não pode parecer pior", () => {
@@ -102,14 +133,14 @@ describe("aggregateNightMechanics", () => {
     expect(resultado.Kroline).toMatchObject({ errors: 1, tries: 1 });
   });
 
-  it("soma o detalhe em vez de mediar — 'x15 na noite' é o que interessa", () => {
+  it("acumula as trys entre fights do mesmo boss", () => {
     const noite = [
       fight("Sentinelas", false, [{ player: "Xúlio", score: 50, errors: [{ mechanic: "Blood Venom", value: 0, count: 6 }] }]),
       fight("Sentinelas", true, [{ player: "Xúlio", score: 50, errors: [{ mechanic: "Blood Venom", value: 0, count: 9 }] }]),
     ];
 
     expect(aggregateNightMechanics(noite).Xúlio.byMechanic).toEqual([
-      { boss: "Sentinelas", mechanic: "Blood Venom", hits: 15 },
+      { boss: "Sentinelas", mechanic: "Blood Venom", tries: 2 },
     ]);
   });
 
@@ -121,7 +152,10 @@ describe("aggregateNightMechanics", () => {
 
     const detalhe = aggregateNightMechanics(noite).Ligiaf.byMechanic;
     expect(detalhe).toHaveLength(2);
-    expect(detalhe[0]).toMatchObject({ boss: "Nek'zali", hits: 3 });
+    // Ambas falharam em 1 try, então a ordem entre elas não é significativa:
+    // o que importa é que o boss separa, e não que uma venha antes.
+    expect(detalhe.map((item) => item.boss).sort()).toEqual(["Nek'zali", "Sentinelas"]);
+    expect(detalhe.every((item) => item.tries === 1)).toBe(true);
   });
 
   it("mecânica sem contagem vale 1 — não fechou 100, só não sabemos quantas vezes", () => {

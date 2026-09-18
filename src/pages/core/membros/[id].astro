@@ -55,7 +55,7 @@ const ultimaNoite = history.at(-1);
 // Detalhe da MESMA noite que o Score Geral mede. Antes isto somava a
 // temporada inteira, e aparecia erro de boss que nem foi jogado na semana.
 const mechanicsDetail = [...(ultimaNoite?.mechanicsDetail ?? [])]
-  .sort((a, b) => b.hits - a.hits)
+  .sort((a, b) => b.tries - a.tries)
   .slice(0, 3);
 
 const preparationMissing = ultimaNoite?.preparationMissing ?? [];
