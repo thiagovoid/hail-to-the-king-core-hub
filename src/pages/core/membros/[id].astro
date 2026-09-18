@@ -197,6 +197,7 @@ const attendance = calculateAttendance(weeks, player.id);
           trend={trend}
           attendance={attendance}
           nightDate={ultimaNoite?.date ?? null}
+          nightTries={ultimaNoite?.mechanics?.tries ?? null}
           preparationMissing={preparationMissing}
           mechanicsDetail={mechanicsDetail}
         />

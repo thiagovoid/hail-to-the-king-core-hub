@@ -9,6 +9,13 @@ interface Props {
   /** Data da noite medida — deixa a nota rastreável. */
   nightDate?: string | null;
   /**
+   * Em quantas trys o jogador esteve naquela noite. Aparece porque duas
+   * notas não são comparáveis sem isso: 2,0 em 3 trys e 2,0 em 12 dizem
+   * coisas diferentes, e um fight que falhe na coleta encolhe a base sem
+   * nada na tela avisar.
+   */
+  nightTries?: number | null;
+  /**
    * Slots sem encanto ou sem gema na última noite. Mostrado sob a barra de
    * Preparação: a nota sozinha não diz o que fazer, a lista diz.
    */
@@ -21,7 +28,7 @@ interface Props {
   mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; tries: number }>;
 }
 
-const { score, trend, attendance, nightDate = null, preparationMissing = [], mechanicsDetail = [] } = Astro.props;
+const { score, trend, attendance, nightDate = null, nightTries = null, preparationMissing = [], mechanicsDetail = [] } = Astro.props;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
 // não tendência — não vale pintar de verde nem de vermelho.
@@ -76,7 +83,8 @@ const directionLabel = (direction: 'higher' | 'lower') =>
     </h2>
 
     <p class="text-sm text-slate-400 mt-1">
-      {nightDate ? `Noite de ${formatarNoite(nightDate)}` : 'Última noite de raid'} —
+      {nightDate ? `Noite de ${formatarNoite(nightDate)}` : 'Última noite de raid'}
+      {nightTries !== null && ` · ${nightTries} ${nightTries === 1 ? 'try' : 'trys'}`} —
       a raid inteira, todas as trys, não só os kills, comparada às metas do core.
       É a foto de agora, não a média da temporada: a evolução está no gráfico
       abaixo. Dimensão sem dado tem o peso redistribuído entre as demais, em vez
