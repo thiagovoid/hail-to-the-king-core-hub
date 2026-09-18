@@ -22,79 +22,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 96,
+            "score": 99.9,
             "uptime": 99.9,
-            "cooldowns": 92.1
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 46585,
-              "name": "Raise Dead",
-              "casts": 30,
-              "efficiency": 87
-            },
-            {
-              "spellId": 43265,
-              "name": "Death and Decay",
-              "casts": 291,
-              "efficiency": 97.1
-            }
-          ],
-          "defense": {
-            "score": 40.7,
-            "mitigation": 33.5,
-            "dtps": 79937
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 2,
-              "efficiency": 3.3
-            },
-            {
-              "spellId": 265946,
-              "name": "Ritual Wraps",
-              "casts": 8,
-              "efficiency": 11.6
-            },
-            {
-              "spellId": 51052,
-              "name": "Anti-Magic Zone",
-              "casts": 3,
-              "efficiency": 17.6
-            },
-            {
-              "spellId": 48792,
-              "name": "Icebound Fortitude",
-              "casts": 13,
-              "efficiency": 39.7
-            },
-            {
-              "spellId": 48265,
-              "name": "Death's Advance",
-              "casts": 56,
-              "efficiency": 51.8
-            },
-            {
-              "spellId": 48707,
-              "name": "Anti-Magic Shell",
-              "casts": 38,
-              "efficiency": 54.8
-            },
-            {
-              "spellId": 55233,
-              "name": "Vampiric Blood",
-              "casts": 33,
-              "efficiency": 55.2
-            },
-            {
-              "spellId": 49028,
-              "name": "Dancing Rune Weapon",
-              "casts": 37,
-              "efficiency": 91.7
-            }
-          ],
+          "attackDetail": [],
           "deaths": 4,
           "mechanics": {
             "errors": 3.1,
@@ -230,79 +162,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 73.1,
+            "score": 96.3,
             "uptime": 96.3,
-            "cooldowns": 50
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 375576,
-              "name": "Divine Toll",
-              "casts": 32,
-              "efficiency": 49.5
-            },
-            {
-              "spellId": 432472,
-              "name": "Sacred Weapon",
-              "casts": 33,
-              "efficiency": 50.4
-            }
-          ],
-          "defense": {
-            "score": 54.2,
-            "mitigation": 43.5,
-            "dtps": 58259
-          },
-          "defenseDetail": [
-            {
-              "spellId": 633,
-              "name": "Lay on Hands",
-              "casts": 1,
-              "efficiency": 7.9
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 8,
-              "efficiency": 11.8
-            },
-            {
-              "spellId": 642,
-              "name": "Divine Shield",
-              "casts": 11,
-              "efficiency": 48
-            },
-            {
-              "spellId": 432459,
-              "name": "Holy Bulwark",
-              "casts": 34,
-              "efficiency": 54.1
-            },
-            {
-              "spellId": 212641,
-              "name": "Guardian of Ancient Kings",
-              "casts": 26,
-              "efficiency": 62
-            },
-            {
-              "spellId": 265946,
-              "name": "Ritual Wraps",
-              "casts": 50,
-              "efficiency": 75.8
-            },
-            {
-              "spellId": 31850,
-              "name": "Ardent Defender",
-              "casts": 40,
-              "efficiency": 76.5
-            },
-            {
-              "spellId": 389539,
-              "name": "Sentinel",
-              "casts": 54,
-              "efficiency": 97.2
-            }
-          ],
+          "attackDetail": [],
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -390,49 +254,6 @@
             "cooldowns": null
           },
           "attackDetail": [],
-          "defense": {
-            "score": 48.5,
-            "mitigation": 48.2,
-            "dtps": 40543
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 1.6
-            },
-            {
-              "spellId": 98008,
-              "name": "Spirit Link Totem",
-              "casts": 13,
-              "efficiency": 45.8
-            },
-            {
-              "spellId": 108271,
-              "name": "Astral Shift",
-              "casts": 21,
-              "efficiency": 49.3
-            },
-            {
-              "spellId": 1267068,
-              "name": "Stormstream Totem",
-              "casts": 83,
-              "efficiency": 51.2
-            },
-            {
-              "spellId": 114052,
-              "name": "Ascendance",
-              "casts": 19,
-              "efficiency": 70.9
-            },
-            {
-              "spellId": 5394,
-              "name": "Healing Stream Totem",
-              "casts": 141,
-              "efficiency": 72.5
-            }
-          ],
           "deaths": 5,
           "mechanics": {
             "errors": 2.2,
@@ -545,79 +366,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 83.4,
+            "score": 98.4,
             "uptime": 98.4,
-            "cooldowns": 68.4
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 31884,
-              "name": "Avenging Wrath",
-              "casts": 18,
-              "efficiency": 53.3
-            },
-            {
-              "spellId": 375576,
-              "name": "Divine Toll",
-              "casts": 81,
-              "efficiency": 83.6
-            }
-          ],
-          "defense": {
-            "score": 24.7,
-            "mitigation": 47.4,
-            "dtps": 35685
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 1,
-              "efficiency": 1.1
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 1.6
-            },
-            {
-              "spellId": 1022,
-              "name": "Blessing of Protection",
-              "casts": 1,
-              "efficiency": 4
-            },
-            {
-              "spellId": 642,
-              "name": "Divine Shield",
-              "casts": 6,
-              "efficiency": 15.3
-            },
-            {
-              "spellId": 6940,
-              "name": "Blessing of Sacrifice",
-              "casts": 14,
-              "efficiency": 39.3
-            },
-            {
-              "spellId": 498,
-              "name": "Divine Protection",
-              "casts": 28,
-              "efficiency": 40.4
-            },
-            {
-              "spellId": 633,
-              "name": "Lay on Hands",
-              "casts": 5,
-              "efficiency": 42.8
-            },
-            {
-              "spellId": 31821,
-              "name": "Aura Mastery",
-              "casts": 17,
-              "efficiency": 53.3
-            }
-          ],
+          "attackDetail": [],
           "deaths": 5,
           "mechanics": {
             "errors": 2.3,
@@ -730,55 +483,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 73.4,
+            "score": 70.3,
             "uptime": 70.3,
-            "cooldowns": 76.5
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 205021,
-              "name": "Ray of Frost",
-              "casts": 67,
-              "efficiency": 73.7
-            },
-            {
-              "spellId": 84714,
-              "name": "Frozen Orb",
-              "casts": 73,
-              "efficiency": 77.6
-            },
-            {
-              "spellId": 44614,
-              "name": "Flurry",
-              "casts": 267,
-              "efficiency": 78.3
-            }
-          ],
-          "defense": {
-            "score": 33.3,
-            "mitigation": 43.2,
-            "dtps": 26395
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 8,
-              "efficiency": 11.9
-            },
-            {
-              "spellId": 11426,
-              "name": "Ice Barrier",
-              "casts": 54,
-              "efficiency": 33.4
-            },
-            {
-              "spellId": 414658,
-              "name": "Ice Cold",
-              "casts": 18,
-              "efficiency": 54.7
-            }
-          ],
+          "attackDetail": [],
           "deaths": 7,
           "mechanics": {
             "errors": 1.8,
@@ -878,49 +587,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 90.6,
+            "score": 99,
             "uptime": 99,
-            "cooldowns": 82.2
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 1257052,
-              "name": "Dark Harvest",
-              "casts": 59,
-              "efficiency": 81.6
-            },
-            {
-              "spellId": 205180,
-              "name": "Summon Darkglare",
-              "casts": 28,
-              "efficiency": 82.7
-            }
-          ],
-          "defense": {
-            "score": 32.8,
-            "mitigation": 41.3,
-            "dtps": 39317
-          },
-          "defenseDetail": [
-            {
-              "spellId": 452930,
-              "name": "Demonic Healthstone",
-              "casts": 15,
-              "efficiency": 22
-            },
-            {
-              "spellId": 104773,
-              "name": "Unending Resolve",
-              "casts": 10,
-              "efficiency": 33.5
-            },
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 7,
-              "efficiency": 43
-            }
-          ],
+          "attackDetail": [],
           "deaths": 6,
           "mechanics": {
             "errors": 2,
@@ -1012,61 +683,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 80.2,
+            "score": 88.2,
             "uptime": 88.2,
-            "cooldowns": 72.2
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 15286,
-              "name": "Vampiric Embrace",
-              "casts": 20,
-              "efficiency": 58.3
-            },
-            {
-              "spellId": 120644,
-              "name": "Halo",
-              "casts": 109,
-              "efficiency": 73.6
-            },
-            {
-              "spellId": 228260,
-              "name": "Voidform",
-              "casts": 58,
-              "efficiency": 84.8
-            }
-          ],
-          "defense": {
-            "score": 34.8,
-            "mitigation": 47.2,
-            "dtps": 32449
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 6,
-              "efficiency": 9.8
-            },
-            {
-              "spellId": 47585,
-              "name": "Dispersion",
-              "casts": 10,
-              "efficiency": 31.5
-            },
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 9,
-              "efficiency": 43.1
-            },
-            {
-              "spellId": 19236,
-              "name": "Desperate Prayer",
-              "casts": 26,
-              "efficiency": 54.9
-            }
-          ],
+          "attackDetail": [],
           "deaths": 6,
           "mechanics": {
             "errors": 1.4,
@@ -1161,55 +782,11 @@
           "preparation": 84,
           "preparationChecks": 2,
           "attack": {
-            "score": 90.6,
+            "score": 99,
             "uptime": 99,
-            "cooldowns": 82.2
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 443454,
-              "name": "Ancestral Swiftness",
-              "casts": 87,
-              "efficiency": 69.6
-            },
-            {
-              "spellId": 191634,
-              "name": "Stormkeeper",
-              "casts": 138,
-              "efficiency": 94.8
-            }
-          ],
-          "defense": {
-            "score": 10.9,
-            "mitigation": 49,
-            "dtps": 34267
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1295247,
-              "name": "Concentrated Silvermoon Health Potion",
-              "casts": 1,
-              "efficiency": 0.3
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 3,
-              "efficiency": 3.8
-            },
-            {
-              "spellId": 5394,
-              "name": "Healing Stream Totem",
-              "casts": 14,
-              "efficiency": 11.4
-            },
-            {
-              "spellId": 108271,
-              "name": "Astral Shift",
-              "casts": 13,
-              "efficiency": 28.1
-            }
-          ],
+          "attackDetail": [],
           "deaths": 5,
           "mechanics": {
             "errors": 1.6,
@@ -1298,61 +875,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 86.6,
+            "score": 98.2,
             "uptime": 98.2,
-            "cooldowns": 75
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 452497,
-              "name": "Abyssal Gaze",
-              "casts": 46,
-              "efficiency": 32.4
-            },
-            {
-              "spellId": 198013,
-              "name": "Eye Beam",
-              "casts": 124,
-              "efficiency": 84.3
-            },
-            {
-              "spellId": 258920,
-              "name": "Immolation Aura",
-              "casts": 161,
-              "efficiency": 84.8
-            },
-            {
-              "spellId": 370965,
-              "name": "The Hunt",
-              "casts": 121,
-              "efficiency": 98.6
-            }
-          ],
-          "defense": {
-            "score": 43.7,
-            "mitigation": 45.1,
-            "dtps": 32696
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 6,
-              "efficiency": 9.8
-            },
-            {
-              "spellId": 196718,
-              "name": "Darkness",
-              "casts": 15,
-              "efficiency": 54.6
-            },
-            {
-              "spellId": 198589,
-              "name": "Blur",
-              "casts": 56,
-              "efficiency": 66.6
-            }
-          ],
+          "attackDetail": [],
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -1436,43 +963,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 98.2,
+            "score": 98.1,
             "uptime": 98.1,
-            "cooldowns": 98.3
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 114051,
-              "name": "Ascendance",
-              "casts": 32,
-              "efficiency": 98.3
-            }
-          ],
-          "defense": {
-            "score": 21.9,
-            "mitigation": 48.9,
-            "dtps": 33879
-          },
-          "defenseDetail": [
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 1,
-              "efficiency": 4.3
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 5,
-              "efficiency": 8.2
-            },
-            {
-              "spellId": 108271,
-              "name": "Astral Shift",
-              "casts": 21,
-              "efficiency": 53.1
-            }
-          ],
+          "attackDetail": [],
           "deaths": 5,
           "mechanics": {
             "errors": 1.7,
@@ -1580,55 +1075,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 87.3,
+            "score": 85.3,
             "uptime": 85.3,
-            "cooldowns": 89.2
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 446035,
-              "name": "Bladestorm",
-              "casts": 53,
-              "efficiency": 87.4
-            },
-            {
-              "spellId": 107574,
-              "name": "Avatar",
-              "casts": 46,
-              "efficiency": 91
-            }
-          ],
-          "defense": {
-            "score": 9.6,
-            "mitigation": 48.3,
-            "dtps": 32468
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 2,
-              "efficiency": 3.3
-            },
-            {
-              "spellId": 118038,
-              "name": "Die by the Sword",
-              "casts": 1,
-              "efficiency": 3.3
-            },
-            {
-              "spellId": 97462,
-              "name": "Rallying Cry",
-              "casts": 4,
-              "efficiency": 15.2
-            },
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 5,
-              "efficiency": 16.8
-            }
-          ],
+          "attackDetail": [],
           "deaths": 8,
           "mechanics": {
             "errors": 1.9,
@@ -1720,73 +1171,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 83.7,
+            "score": 88.9,
             "uptime": 88.9,
-            "cooldowns": 78.5
+            "cooldowns": null
           },
-          "attackDetail": [
-            {
-              "spellId": 1247378,
-              "name": "Putrefy",
-              "casts": 123,
-              "efficiency": 73.5
-            },
-            {
-              "spellId": 42650,
-              "name": "Army of the Dead",
-              "casts": 37,
-              "efficiency": 83.4
-            }
-          ],
-          "defense": {
-            "score": 29.9,
-            "mitigation": 41.6,
-            "dtps": 33616
-          },
-          "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 4,
-              "efficiency": 6.5
-            },
-            {
-              "spellId": 49039,
-              "name": "Lichborne",
-              "casts": 5,
-              "efficiency": 14.6
-            },
-            {
-              "spellId": 48743,
-              "name": "Death Pact",
-              "casts": 8,
-              "efficiency": 22.6
-            },
-            {
-              "spellId": 48792,
-              "name": "Icebound Fortitude",
-              "casts": 9,
-              "efficiency": 24.1
-            },
-            {
-              "spellId": 51052,
-              "name": "Anti-Magic Zone",
-              "casts": 8,
-              "efficiency": 37
-            },
-            {
-              "spellId": 444347,
-              "name": "Death Charge",
-              "casts": 45,
-              "efficiency": 44.4
-            },
-            {
-              "spellId": 48707,
-              "name": "Anti-Magic Shell",
-              "casts": 45,
-              "efficiency": 60.3
-            }
-          ],
+          "attackDetail": [],
           "deaths": 6,
           "mechanics": {
             "errors": 2,
