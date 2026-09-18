@@ -57,5 +57,10 @@ jobs:
             echo "Nada para commitar."
           else
             git commit -m "chore(data): atualiza stats do roster (Raider.IO / WarcraftLogs)"
+            # Rebase antes do push: se alguém empurrou pra master enquanto
+            # o job rodava, o push é rejeitado e o commit de dados morre com
+            # o runner — o job falha DEPOIS de já ter coletado tudo. Foi o
+            # que aconteceu na coleta de 18/09.
+            git pull --rebase origin master
             git push
           fi
