@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest";
 
 import type { CooldownDaMagia } from "../wowhead/spellCooldown";
-import { buildCooldownUsage, tempoEmRecarga, type EventoDeCast } from "./cooldownUsage";
+import {
+  buildCooldownUsage,
+  buildDamageShares,
+  tempoEmRecarga,
+  type EventoDeCast,
+} from "./cooldownUsage";
 
 const AVATAR: CooldownDaMagia = {
   spellId: 107574,
@@ -9,6 +14,7 @@ const AVATAR: CooldownDaMagia = {
   cooldownMs: 90_000,
   charges: 1,
   kind: "offensive",
+  buff: false,
 };
 
 const BLUR: CooldownDaMagia = {
@@ -17,6 +23,7 @@ const BLUR: CooldownDaMagia = {
   cooldownMs: 60_000,
   charges: 1,
   kind: "defensive",
+  buff: false,
 };
 
 const DUAS_CARGAS: CooldownDaMagia = { ...AVATAR, spellId: 999, name: "Duas Cargas", charges: 2 };
@@ -27,6 +34,7 @@ const STUN: CooldownDaMagia = {
   cooldownMs: 45_000,
   charges: 1,
   kind: "utility",
+  buff: false,
 };
 
 const catalogo = new Map([AVATAR, BLUR, DUAS_CARGAS, STUN].map((m) => [m.spellId, m]));
@@ -206,5 +214,87 @@ describe("buildCooldownUsage", () => {
     const [jogador] = buildCooldownUsage(casts, luta, catalogo);
 
     expect(jogador.offensive).toBeCloseTo(84.6, 0);
+  });
+});
+
+describe("buildDamageShares", () => {
+  it("converte dano por habilidade em percentual do total do jogador", () => {
+    const shares = buildDamageShares([
+      { id: 5, total: 1000, abilities: [{ guid: 10, total: 250 }, { guid: 20, total: 750 }] },
+    ]);
+
+    expect(shares.get(5)?.get(10)).toBe(25);
+    expect(shares.get(5)?.get(20)).toBe(75);
+  });
+
+  it("ignora jogador sem dano, em vez de dividir por zero", () => {
+    expect(buildDamageShares([{ id: 5, total: 0, abilities: [{ guid: 10, total: 0 }] }]).size).toBe(0);
+  });
+});
+
+// O caso que motivou o filtro: na coleta de 15/09 um jogador com 97% de
+// uptime ficou com nota 52 porque o único "cooldown ofensivo" detectado foi
+// um gap closer que causa dano incidental (Feral Lunge, 8%).
+describe("buildCooldownUsage — relevância por participação no dano", () => {
+  const janelas = [{ id: 1, startTime: 0, endTime: 600_000 }];
+  const GAP_CLOSER: CooldownDaMagia = {
+    spellId: 777,
+    name: "Feral Lunge",
+    cooldownMs: 30_000,
+    charges: 1,
+    kind: "offensive",
+    buff: false,
+  };
+  const comGapCloser = new Map([...catalogo, [GAP_CLOSER.spellId, GAP_CLOSER]]);
+
+  const cast = (spellId: number, timestamp: number): EventoDeCast => ({
+    sourceID: 5,
+    abilityGameID: spellId,
+    timestamp,
+    fight: 1,
+  });
+
+  it("descarta habilidade que quase não participa do dano", () => {
+    const shares = new Map([[5, new Map([[GAP_CLOSER.spellId, 0.4]])]]);
+    const [jogador] = buildCooldownUsage([cast(GAP_CLOSER.spellId, 0)], janelas, comGapCloser, shares);
+
+    expect(jogador.abilities).toEqual([]);
+    expect(jogador.offensive).toBeNull();
+  });
+
+  it("mantém habilidade que representa dano de verdade", () => {
+    const shares = new Map([[5, new Map([[GAP_CLOSER.spellId, 18]])]]);
+    const [jogador] = buildCooldownUsage([cast(GAP_CLOSER.spellId, 0)], janelas, comGapCloser, shares);
+
+    expect(jogador.abilities.map((a) => a.spellId)).toEqual([GAP_CLOSER.spellId]);
+    expect(jogador.abilities[0].damageShare).toBe(18);
+  });
+
+  // Avatar e Avenging Wrath não causam dano próprio: não aparecem na tabela
+  // de dano. Sem a exceção, o filtro jogaria fora os maiores cooldowns
+  // ofensivos do jogo.
+  it("mantém buff de dano, que não aparece na tabela de dano", () => {
+    const BUFF: CooldownDaMagia = { ...AVATAR, buff: true };
+    const comBuff = new Map([[BUFF.spellId, BUFF]]);
+    const shares = new Map([[5, new Map<number, number>()]]);
+
+    const [jogador] = buildCooldownUsage([cast(BUFF.spellId, 0)], janelas, comBuff, shares);
+
+    expect(jogador.abilities.map((a) => a.name)).toEqual(["Avatar"]);
+  });
+
+  // Mitigação não aparece na tabela de dano: filtrar defensivo por dano
+  // apagaria a categoria inteira.
+  it("nunca filtra cooldown defensivo por participação no dano", () => {
+    const shares = new Map([[5, new Map<number, number>()]]);
+    const [jogador] = buildCooldownUsage([cast(BLUR.spellId, 0)], janelas, catalogo, shares);
+
+    expect(jogador.defensive).toBe(10);
+  });
+
+  it("não filtra nada quando a tabela de dano não foi passada", () => {
+    const [jogador] = buildCooldownUsage([cast(GAP_CLOSER.spellId, 0)], janelas, comGapCloser);
+
+    expect(jogador.abilities.map((a) => a.spellId)).toEqual([GAP_CLOSER.spellId]);
   });
 });

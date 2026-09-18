@@ -104,6 +104,10 @@ describe("parseSpellTooltip", () => {
       cooldownMs: 90_000,
       charges: 1,
       kind: "offensive",
+      // Avatar não causa dano próprio: só aumenta o que você causa. Sem essa
+      // marca, o filtro de participação no dano jogaria fora o maior
+      // cooldown ofensivo do guerreiro.
+      buff: true,
     });
   });
 
@@ -114,6 +118,7 @@ describe("parseSpellTooltip", () => {
       cooldownMs: 60_000,
       charges: 1,
       kind: "defensive",
+      buff: false,
     });
   });
 

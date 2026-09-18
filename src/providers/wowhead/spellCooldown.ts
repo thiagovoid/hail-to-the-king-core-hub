@@ -33,6 +33,14 @@ export interface CooldownDaMagia {
   /** Cargas simultâneas. 1 quando o tooltip não menciona cargas. */
   charges: number;
   kind: TipoDeCooldown;
+  /**
+   * Cooldown que só aumenta o dano, sem causar dano próprio (Avatar,
+   * Avenging Wrath, Colossus Smash). Precisa ser marcado porque ele não
+   * aparece na tabela de dano da WCL: sem a flag, o filtro de relevância
+   * por participação no dano jogaria fora justamente os maiores cooldowns
+   * ofensivos do jogo.
+   */
+  buff: boolean;
 }
 
 /** Resposta do endpoint de tooltip do Wowhead — só os campos que usamos. */
@@ -71,6 +79,15 @@ const naMesmaFrase = (antes: string, depois: string, limite = 80) =>
  * sec. Damage may cancel the effect" (Blinding Sleet) tem as duas palavras,
  * mas em orações diferentes — e a habilidade não dá dano nenhum.
  */
+/**
+ * Aumenta o dano em vez de causar dano. Subconjunto dos sinais ofensivos.
+ */
+const SINAIS_DE_BUFF = [
+  /damage\s+you\s+deal/i,
+  /damage\s+dealt/i,
+  naMesmaFrase("increas[a-z]+", "damage", 40),
+];
+
 const SINAIS_OFENSIVOS = [
   naMesmaFrase("causing", "damage"),
   naMesmaFrase("dealing", "damage"),
@@ -167,5 +184,6 @@ export function parseSpellTooltip(spellId: number, tooltip: WowheadTooltip): Coo
     cooldownMs,
     charges: extractCharges(texto),
     kind: classifyCooldown(texto),
+    buff: SINAIS_DE_BUFF.some((sinal) => sinal.test(texto)),
   };
 }

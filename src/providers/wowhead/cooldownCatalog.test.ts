@@ -9,11 +9,12 @@ const AVATAR: CooldownDaMagia = {
   cooldownMs: 90_000,
   charges: 1,
   kind: "offensive",
+  buff: false,
 };
 
 const base: CooldownCatalogFile = {
   generatedAt: "2026-09-01T00:00:00.000Z",
-  cooldowns: { "107574": { name: "Avatar", cooldownMs: 90_000, charges: 1, kind: "offensive" } },
+  cooldowns: { "107574": { name: "Avatar", cooldownMs: 90_000, charges: 1, kind: "offensive", buff: false } },
   ignored: [344862],
 };
 
@@ -67,7 +68,7 @@ describe("mergeCatalog", () => {
   it("preserva correção feita à mão no arquivo", () => {
     const corrigido: CooldownCatalogFile = {
       ...base,
-      cooldowns: { "107574": { name: "Avatar", cooldownMs: 90_000, charges: 1, kind: "defensive" } },
+      cooldowns: { "107574": { name: "Avatar", cooldownMs: 90_000, charges: 1, kind: "defensive", buff: false } },
     };
 
     const resultado = mergeCatalog(corrigido, [{ spellId: 107574, cooldown: AVATAR }], agora);

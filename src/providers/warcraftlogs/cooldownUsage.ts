@@ -42,6 +42,11 @@ export interface UsoDeCooldown {
   possibleMs: number;
   /** 0-100. timeOnCooldownMs / possibleMs. */
   efficiency: number;
+  /**
+   * Quanto do dano do jogador na noite saiu desta habilidade, 0-100.
+   * Ausente quando a tabela de dano não foi passada.
+   */
+  damageShare?: number;
 }
 
 export interface CooldownsDoJogador {
@@ -105,6 +110,58 @@ export function tempoEmRecarga(
   return acumulado;
 }
 
+/**
+ * Piso de participação no dano pra um cooldown ofensivo entrar na nota.
+ *
+ * Existe porque a média desarmada deixava uma habilidade situacional
+ * definir o número: na coleta de 15/09, um jogador com 97% de uptime ficou
+ * com nota 52 porque o único "cooldown ofensivo" detectado foi um gap
+ * closer que causa dano incidental (Feral Lunge, 8% de aproveitamento).
+ * Um gap closer não é decisão de dano; Eye Beam é. A diferença entre os
+ * dois está no dano que cada um representa, não no texto do tooltip.
+ */
+export const PARTICIPACAO_MINIMA_NO_DANO = 2;
+
+/**
+ * Se a habilidade entra na nota da sua categoria.
+ *
+ * Defensivo nunca é filtrado por dano — mitigação não aparece na tabela de
+ * dano. Buff ofensivo também não: Avatar e Avenging Wrath não causam dano
+ * próprio, e o filtro jogaria fora justamente os maiores cooldowns do jogo.
+ */
+export function contaParaNota(uso: UsoDeCooldown, magia: CooldownDaMagia): boolean {
+  if (uso.kind === "defensive") return true;
+  if (magia.buff) return true;
+  if (uso.damageShare === undefined) return true;
+  return uso.damageShare >= PARTICIPACAO_MINIMA_NO_DANO;
+}
+
+/**
+ * Participação de cada habilidade no dano de cada jogador, a partir da
+ * tabela de DamageDone da WCL. A chave externa é o id do ator, que é o
+ * mesmo `sourceID` dos eventos de cast.
+ */
+export function buildDamageShares(
+  entries: Array<{ id?: number; total?: number; abilities?: Array<{ guid?: number; total?: number }> }>
+): Map<number, Map<number, number>> {
+  const porJogador = new Map<number, Map<number, number>>();
+
+  for (const entry of entries) {
+    if (entry.id === undefined || !entry.total) continue;
+
+    const porHabilidade = new Map<number, number>();
+    for (const habilidade of entry.abilities ?? []) {
+      if (habilidade.guid === undefined || habilidade.total === undefined) continue;
+      const anterior = porHabilidade.get(habilidade.guid) ?? 0;
+      porHabilidade.set(habilidade.guid, anterior + (habilidade.total / entry.total) * 100);
+    }
+
+    porJogador.set(entry.id, porHabilidade);
+  }
+
+  return porJogador;
+}
+
 function media(valores: number[]): number | null {
   if (valores.length === 0) return null;
   return valores.reduce((soma, v) => soma + v, 0) / valores.length;
@@ -119,7 +176,9 @@ function media(valores: number[]): number | null {
 export function buildCooldownUsage(
   eventos: EventoDeCast[],
   janelas: JanelaDeLuta[],
-  catalogo: Map<number, CooldownDaMagia>
+  catalogo: Map<number, CooldownDaMagia>,
+  /** Ver buildDamageShares. Sem isto, nenhuma habilidade é filtrada. */
+  damageShares?: Map<number, Map<number, number>>
 ): CooldownsDoJogador[] {
   const porJanela = new Map(janelas.map((j) => [j.id, j]));
 
@@ -175,6 +234,7 @@ export function buildCooldownUsage(
       .filter(([spellId]) => catalogo.get(spellId)!.kind !== "utility")
       .map(([spellId, dados]) => {
         const magia = catalogo.get(spellId)!;
+        const share = damageShares?.get(sourceID)?.get(spellId);
         return {
           spellId,
           name: magia.name,
@@ -183,8 +243,10 @@ export function buildCooldownUsage(
           timeOnCooldownMs: Math.round(dados.tempo),
           possibleMs,
           efficiency: Math.round((dados.tempo / possibleMs) * 1000) / 10,
+          ...(share === undefined ? {} : { damageShare: Math.round(share * 10) / 10 }),
         };
       })
+      .filter((uso) => contaParaNota(uso, catalogo.get(uso.spellId)!))
       .sort((a, b) => a.efficiency - b.efficiency);
 
     resultado.push({

@@ -19,7 +19,10 @@ import type { CooldownDaMagia, TipoDeCooldown } from "./spellCooldown";
 export interface CooldownCatalogFile {
   generatedAt: string;
   /** Chave é o spellId em texto — é o que o JSON permite. */
-  cooldowns: Record<string, { name: string; cooldownMs: number; charges: number; kind: TipoDeCooldown }>;
+  cooldowns: Record<
+    string,
+    { name: string; cooldownMs: number; charges: number; kind: TipoDeCooldown; buff: boolean }
+  >;
   /** Magias já consultadas que não são cooldown. Evita reconsulta. */
   ignored: number[];
 }
@@ -36,7 +39,8 @@ export function catalogToMap(file: CooldownCatalogFile): Map<number, CooldownDaM
   for (const [chave, dados] of Object.entries(file.cooldowns ?? {})) {
     const spellId = Number(chave);
     if (!Number.isFinite(spellId)) continue;
-    mapa.set(spellId, { spellId, ...dados });
+    // `buff` chegou depois; catálogo antigo não tem o campo.
+    mapa.set(spellId, { spellId, ...dados, buff: dados.buff ?? false });
   }
 
   return mapa;
@@ -84,6 +88,7 @@ export function mergeCatalog(
       cooldownMs: cooldown.cooldownMs,
       charges: cooldown.charges,
       kind: cooldown.kind,
+      buff: cooldown.buff,
     };
     else ignored.add(spellId);
   }

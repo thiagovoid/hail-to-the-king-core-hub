@@ -153,6 +153,10 @@ export interface WclTableEntry {
   total: number;
   activeTime: number;
   itemLevel: number;
+  /** Id do ator — o mesmo `sourceID` dos eventos de cast. */
+  id?: number;
+  /** Quebra do dano por habilidade. Ver buildDamageShares. */
+  abilities?: Array<{ guid?: number; name?: string; total?: number }>;
 }
 
 export interface WclPlayerDetail {

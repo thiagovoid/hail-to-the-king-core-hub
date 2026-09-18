@@ -10,6 +10,7 @@ import { buildPlayerPerformance } from "../../src/normalization/buildPlayerPerfo
 import { buildParseByPlayer } from "../../src/providers/warcraftlogs/reportRankings";
 import {
   buildCooldownUsage,
+  buildDamageShares,
   type CooldownsDoJogador,
 } from "../../src/providers/warcraftlogs/cooldownUsage";
 import {
@@ -568,7 +569,15 @@ async function main() {
         catalogo = mergeCatalog(catalogo, vereditos, new Date().toISOString());
       }
 
-      const usos = buildCooldownUsage(eventos, ctx.raidFights, catalogToMap(catalogo));
+      // Sem a participação no dano, uma habilidade situacional define a
+      // nota: na coleta de 15/09 um jogador com 97% de uptime ficou com 52
+      // porque o único "cooldown ofensivo" detectado foi um gap closer.
+      const usos = buildCooldownUsage(
+        eventos,
+        ctx.raidFights,
+        catalogToMap(catalogo),
+        buildDamageShares(ctx.aggregateTables.damage.data.entries)
+      );
 
       // Os eventos só trazem sourceID; o roster só conhece nome.
       const porJogador = new Map<string, CooldownsDoJogador>();
