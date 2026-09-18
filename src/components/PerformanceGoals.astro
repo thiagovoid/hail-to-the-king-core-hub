@@ -4,7 +4,13 @@ import type { PlayerPerformanceGoals } from '@/types/goals';
 import PerformanceGoalCard from '@/components/PerformanceGoalCard.astro';
 
 interface Props {
-  goals: PlayerPerformanceGoals;
+  /**
+   * Metas individuais do roster. Opcional de propósito: cinco jogadores não
+   * têm nenhuma cadastrada, e as metas do CORE (erros, atacar, defender,
+   * curar) não dependem disso — elas vinham da temporada o tempo todo.
+   * Enquanto a seção exigia `goals`, esses cinco não viam objetivo nenhum.
+   */
+  goals?: PlayerPerformanceGoals;
   /**
    * Meta de erros mecânicos do core — igual pra todo mundo, diferente das
    * metas individuais (a de dps vem do Raidbots, por jogador). Por isso vem
@@ -15,6 +21,8 @@ interface Props {
   coreAttackTarget?: number | null;
   /** Meta de execução defensiva do core. */
   coreDefenseTarget?: number | null;
+  /** Meta de cura do core. Só rende caixa pra quem curou na noite. */
+  coreHealingTarget?: number | null;
   current: {
     dps?: number;
     hps?: number;
@@ -23,6 +31,7 @@ interface Props {
       errors: number;
     };
     attack?: { score: number };
+    healing?: { score: number };
     /** score é null quando nenhum cooldown defensivo foi medido. */
     defense?: { score: number | null };
     deaths?: number;
@@ -30,11 +39,12 @@ interface Props {
 }
 
 const {
-  goals,
+  goals = {},
   current,
   coreMechanicsTarget = null,
   coreAttackTarget = null,
   coreDefenseTarget = null,
+  coreHealingTarget = null,
 } = Astro.props;
 
 // Parse e mortes seguem escondidos: parse só existe pra boss morto e mortes
@@ -96,6 +106,21 @@ const cards = [
           source: 'Warcraft Logs + Wowhead (meta do core)',
         },
         actual: current.defense.score,
+        format: 'number' as const,
+      }
+    : null,
+  coreHealingTarget !== null && current.healing !== undefined
+    ? {
+        key: 'healing',
+        label: 'Curar',
+        goal: {
+          metric: 'healing' as const,
+          target: coreHealingTarget,
+          direction: 'higher' as const,
+          description: 'Quinhão do dano coberto e aproveitamento da cura, na última noite',
+          source: 'Warcraft Logs (meta do core)',
+        },
+        actual: current.healing.score,
         format: 'number' as const,
       }
     : null,

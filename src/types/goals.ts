@@ -5,6 +5,7 @@ export type GoalMetric =
   | 'mechanics'
   | 'attack'
   | 'defense'
+  | 'healing'
   | 'deaths';
 
 export type GoalDirection =

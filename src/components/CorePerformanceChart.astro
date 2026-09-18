@@ -304,19 +304,19 @@ const serializedMetrics = metrics.map((metric) => ({
 
       <button
         type="button"
-        data-modo="valor"
+        data-modo="ranking"
         class="px-2.5 py-1 rounded-md text-xs transition-colors bg-slate-700 text-white"
+        title="Mostra a posição de cada jogador em vez do número. Aguenta muito mais linhas juntas, mas some com a magnitude — o valor aparece ao passar o mouse."
       >
-        Valor
+        Ranking
       </button>
 
       <button
         type="button"
-        data-modo="ranking"
+        data-modo="valor"
         class="px-2.5 py-1 rounded-md text-xs transition-colors text-slate-400 hover:text-white hover:bg-slate-800"
-        title="Mostra a posição de cada jogador em vez do número. Aguenta muito mais linhas juntas, mas some com a magnitude — o valor aparece ao passar o mouse."
       >
-        Ranking
+        Valor
       </button>
     </div>
   </div>
@@ -1036,7 +1036,16 @@ const serializedMetrics = metrics.map((metric) => ({
   // legenda e a meta seguem lendo a série completa.
   let metricaAtiva = metricsData[0]?.id ?? '';
   let mesAtivo = 'todos';
-  let modoAtivo: 'valor' | 'ranking' = 'valor';
+
+  /**
+   * O modo que a pessoa escolheu — não necessariamente o que está na tela.
+   *
+   * Métrica de uma linha só (o Hail Score) não tem o que ranquear e cai pra
+   * valor. Guardar a escolha separada do que é exibido é o que faz a
+   * preferência sobreviver: sem isso, passar pelo Hail Score rebaixava todo
+   * mundo pra valor e a escolha da pessoa se perdia no caminho.
+   */
+  let modoPreferido: 'valor' | 'ranking' = 'ranking';
 
   function marcarAtivo(botoes: NodeListOf<Element>, ativo: Element) {
     botoes.forEach((botao) => {
@@ -1057,15 +1066,8 @@ const serializedMetrics = metrics.map((metric) => ({
     // devolveria uma faixa única.
     const daPraRanquear = metric.series.length > 1;
     barraDeModo?.classList.toggle('hidden', !daPraRanquear);
-    if (!daPraRanquear && modoAtivo === 'ranking') {
-      modoAtivo = 'valor';
-      barraDeModo?.querySelectorAll('[data-modo]').forEach((botao) => {
-        const ativo = botao.getAttribute('data-modo') === 'valor';
-        botao.classList.toggle('bg-slate-700', ativo);
-        botao.classList.toggle('text-white', ativo);
-        botao.classList.toggle('text-slate-400', !ativo);
-      });
-    }
+
+    const modoAtivo = daPraRanquear ? modoPreferido : 'valor';
 
     // A série COMPLETA vai junto: buildMetricMarkup usa o recorte pra
     // desenhar e o completo pra calcular tendência.
@@ -1107,7 +1109,7 @@ const serializedMetrics = metrics.map((metric) => ({
 
     botoesDeModo.forEach((botao) => {
       botao.addEventListener('click', () => {
-        modoAtivo = botao.getAttribute('data-modo') === 'ranking' ? 'ranking' : 'valor';
+        modoPreferido = botao.getAttribute('data-modo') === 'ranking' ? 'ranking' : 'valor';
         marcarAtivo(botoesDeModo, botao);
         renderizar();
       });

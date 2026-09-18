@@ -311,7 +311,7 @@ const attendance = calculateAttendance(weeks, player.id);
     -->
 
     {
-      hasData && player.performanceGoals && (
+      hasData && (
         <PerformanceGoals
           goals={player.performanceGoals}
           current={{
@@ -319,10 +319,12 @@ const attendance = calculateAttendance(weeks, player.id);
             mechanics: ultimaNoite?.mechanics,
             attack: ultimaNoite?.attack,
             defense: ultimaNoite?.defense,
+            healing: ultimaNoite?.healing,
           }}
           coreMechanicsTarget={seasonJson.config.performanceTargets.mechanics.target}
           coreAttackTarget={seasonJson.config.performanceTargets.attack.target}
           coreDefenseTarget={seasonJson.config.performanceTargets.defense.target}
+          coreHealingTarget={seasonJson.config.performanceTargets.healing.target}
         />
       )
     }
