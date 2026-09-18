@@ -167,6 +167,11 @@ const defenseHistory = history
     detail: [
       `${formatCompact(performance.defense!.dtps)} de dano recebido por segundo`,
       `${performance.defense!.mitigation}% mitigado`,
+      // Pro tank é o número que descreve o estilo de sustentação, e é o que
+      // dá sentido a seguir a linha ao longo do tempo.
+      ...(performance.defense!.selfSustain !== undefined
+        ? [`${performance.defense!.selfSustain}% reposto pela sua própria cura`]
+        : []),
       ...(performance.defenseDetail ?? [])
         .slice(0, 3)
         .map((item) => `${item.name} — ${item.efficiency}% (${item.casts} uso${item.casts === 1 ? '' : 's'})`),
@@ -186,6 +191,23 @@ const healingHistory = history
       `${performance.healing!.share}% do seu quinhão`,
       `${performance.healing!.overheal}% caiu em quem já estava cheio`,
     ],
+  }));
+
+// Fora de função vira DUAS séries, não uma: dano e cura são grandezas
+// diferentes e não dividem eixo. Um tank costuma ter as duas; healer só
+// dano; dps só cura.
+const offRoleDpsHistory = history
+  .filter((performance) => performance.offRole?.dps !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.offRole!.dps!,
+  }));
+
+const offRoleHpsHistory = history
+  .filter((performance) => performance.offRole?.hps !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.offRole!.hps!,
   }));
 
 const deathsHistory = history
@@ -226,6 +248,20 @@ const primaryMetricSeries = player.role === 'healer'
 // Mortes virou indicador de temporada, ao lado de Bosses mortos. Parse
 // voltou: sete das oito noites têm percentil pra 100% dos presentes.
 const HIDDEN_CHART_SERIES = new Set(['deaths']);
+
+/**
+ * Põe o ofício da pessoa na frente.
+ *
+ * Pro tank, "como você segurou" é a leitura principal — o dps dele existe e
+ * importa, mas não é por ele que se avalia um tank. Healer já entra com
+ * Curar primeiro e dps com DPS, então só a defesa precisa ser promovida.
+ */
+function ordenarPorFuncao<T extends { id: string }>(series: T[]): T[] {
+  if (player.role !== 'tank') return series;
+
+  const defesa = series.filter((item) => item.id === 'defense');
+  return [...defesa, ...series.filter((item) => item.id !== 'defense')];
+}
 
 const overallScore = hasData
   ? calculateOverallScore(ultimaNoite ?? seasonAverage, seasonJson.config.performanceTargets)
@@ -355,7 +391,7 @@ const attendance = calculateAttendance(weeks, player.id);
     {
       history.length > 0 && (
         <PerformanceChart
-          series={[
+          series={ordenarPorFuncao([
             // Curar na frente quando existe: pro healer é o ofício, e o
             // volume (HPS) logo atrás explica o número.
             ...(healingHistory.length > 0
@@ -406,6 +442,29 @@ const attendance = calculateAttendance(weeks, player.id);
               current: ultimaNoite?.defense?.score ?? null,
               direction: 'higher',
             },
+            ...(offRoleDpsHistory.length > 0
+              ? [
+                  {
+                    id: 'off-role-dps',
+                    label: 'Dano fora de função',
+                    data: offRoleDpsHistory,
+                    // Sem meta de propósito: é contribuição extra, não
+                    // obrigação — uma linha de META aqui viraria cobrança
+                    // por algo que não é o ofício da pessoa.
+                    direction: 'higher' as const,
+                  },
+                ]
+              : []),
+            ...(offRoleHpsHistory.length > 0
+              ? [
+                  {
+                    id: 'off-role-hps',
+                    label: 'Cura fora de função',
+                    data: offRoleHpsHistory,
+                    direction: 'higher' as const,
+                  },
+                ]
+              : []),
             {
               id: 'deaths',
               label: 'Mortes',
@@ -413,7 +472,7 @@ const attendance = calculateAttendance(weeks, player.id);
               target: player.performanceGoals?.deaths?.target,
               direction: 'lower',
             },
-          ].filter((item) => !HIDDEN_CHART_SERIES.has(item.id))}
+          ].filter((item) => !HIDDEN_CHART_SERIES.has(item.id)))}
         />
       )
     }
