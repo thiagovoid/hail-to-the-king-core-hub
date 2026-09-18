@@ -10,7 +10,7 @@
           "dps": 43161,
           "parse": 34,
           "itemLevel": 314,
-          "preparation": 27,
+          "preparation": 46,
           "preparationMissing": [
             "Elmo",
             "Poção",
@@ -46,7 +46,8 @@
           "defense": {
             "score": 53.7,
             "mitigation": 40,
-            "dtps": 111257
+            "dtps": 111257,
+            "selfSustain": 48.4
           },
           "defenseDetail": [
             {
@@ -106,6 +107,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 55448
+          },
           "deaths": 8,
           "mechanics": {
             "errors": 2.1,
@@ -191,7 +195,7 @@
           "dps": 48319,
           "parse": 62,
           "itemLevel": 312,
-          "preparation": 41,
+          "preparation": 51,
           "preparationMissing": [
             "Botas",
             "Colar",
@@ -221,7 +225,8 @@
           "defense": {
             "score": 41,
             "mitigation": 39.6,
-            "dtps": 92974
+            "dtps": 92974,
+            "selfSustain": 55.9
           },
           "defenseDetail": [
             {
@@ -287,6 +292,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 65731
+          },
           "deaths": 7,
           "mechanics": {
             "errors": 2,
@@ -354,7 +362,7 @@
           "hps": 126133,
           "parse": 73,
           "itemLevel": 310,
-          "preparation": 10,
+          "preparation": 12,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -377,7 +385,8 @@
           "defense": {
             "score": 52.4,
             "mitigation": 46.5,
-            "dtps": 48322
+            "dtps": 48322,
+            "selfSustain": 47
           },
           "defenseDetail": [
             {
@@ -425,6 +434,15 @@
               "difficulty": 4
             }
           ],
+          "healing": {
+            "score": 78.5,
+            "coverage": 15.7,
+            "share": 73,
+            "overheal": 16.1
+          },
+          "offRole": {
+            "dps": 7116
+          },
           "deaths": 8,
           "mechanics": {
             "errors": 1.7,
@@ -498,7 +516,7 @@
           "hps": 172454,
           "parse": 96,
           "itemLevel": 310,
-          "preparation": 17,
+          "preparation": 21,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -534,7 +552,8 @@
           "defense": {
             "score": 19.4,
             "mitigation": 45.9,
-            "dtps": 46502
+            "dtps": 46502,
+            "selfSustain": 51.7
           },
           "defenseDetail": [
             {
@@ -600,6 +619,15 @@
               "difficulty": 4
             }
           ],
+          "healing": {
+            "score": 82.8,
+            "coverage": 21.5,
+            "share": 100,
+            "overheal": 34.4
+          },
+          "offRole": {
+            "dps": 9912
+          },
           "deaths": 7,
           "mechanics": {
             "errors": 2.1,
@@ -690,7 +718,7 @@
           "playerId": "cowsadeer",
           "hps": 219039,
           "parse": 59,
-          "preparation": 71,
+          "preparation": 79,
           "preparationChecks": 2,
           "attack": {
             "score": 91.1,
@@ -714,7 +742,8 @@
           "defense": {
             "score": 27.3,
             "mitigation": 46.4,
-            "dtps": 47081
+            "dtps": 47081,
+            "selfSustain": 45.9
           },
           "defenseDetail": [
             {
@@ -768,6 +797,15 @@
               "difficulty": 4
             }
           ],
+          "healing": {
+            "score": 82.9,
+            "coverage": 27.3,
+            "share": 127,
+            "overheal": 34.2
+          },
+          "offRole": {
+            "dps": 4062
+          },
           "deaths": 7,
           "mechanics": {
             "errors": 1.4,
@@ -850,7 +888,7 @@
           "dps": 102428,
           "parse": 78,
           "itemLevel": 314,
-          "preparation": 75,
+          "preparation": 77,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -885,7 +923,8 @@
           "defense": {
             "score": 40.1,
             "mitigation": 44.4,
-            "dtps": 44777
+            "dtps": 44777,
+            "selfSustain": 8.9
           },
           "defenseDetail": [
             {
@@ -921,6 +960,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 3968
+          },
           "deaths": 8,
           "mechanics": {
             "errors": 0.8,
@@ -970,7 +1012,7 @@
           "dps": 107453,
           "parse": 63,
           "itemLevel": 318,
-          "preparation": 83,
+          "preparation": 84,
           "preparationMissing": [
             "Elmo",
             "Botas"
@@ -1004,7 +1046,8 @@
           "defense": {
             "score": 35.6,
             "mitigation": 47.2,
-            "dtps": 56110
+            "dtps": 56110,
+            "selfSustain": 25.7
           },
           "defenseDetail": [
             {
@@ -1040,6 +1083,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 21915
+          },
           "deaths": 9,
           "mechanics": {
             "errors": 1.3,
@@ -1101,7 +1147,7 @@
           "dps": 131483,
           "parse": 86,
           "itemLevel": 321,
-          "preparation": 60,
+          "preparation": 71,
           "preparationChecks": 2,
           "attack": {
             "score": 83,
@@ -1125,7 +1171,8 @@
           "defense": {
             "score": 10.2,
             "mitigation": 47.8,
-            "dtps": 47174
+            "dtps": 47174,
+            "selfSustain": 9.6
           },
           "defenseDetail": [
             {
@@ -1161,6 +1208,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 4746
+          },
           "deaths": 9,
           "mechanics": {
             "errors": 1.3,
@@ -1226,7 +1276,7 @@
           "dps": 104464,
           "parse": 60,
           "itemLevel": 319,
-          "preparation": 74,
+          "preparation": 80,
           "preparationMissing": [
             "Elmo",
             "Pedra de vida"
@@ -1272,7 +1322,8 @@
           "defense": {
             "score": 42.4,
             "mitigation": 46.2,
-            "dtps": 43449
+            "dtps": 43449,
+            "selfSustain": 34.9
           },
           "defenseDetail": [
             {
@@ -1308,6 +1359,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 17524
+          },
           "deaths": 8,
           "mechanics": {
             "errors": 3,
@@ -1405,7 +1459,7 @@
           "dps": 107740,
           "parse": 61,
           "itemLevel": 318,
-          "preparation": 73,
+          "preparation": 77,
           "preparationMissing": [
             "Elmo",
             "Cintura",
@@ -1429,7 +1483,8 @@
           "defense": {
             "score": 20,
             "mitigation": 47.8,
-            "dtps": 49215
+            "dtps": 49215,
+            "selfSustain": 11.2
           },
           "defenseDetail": [
             {
@@ -1459,6 +1514,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 5506
+          },
           "deaths": 9,
           "mechanics": {
             "errors": 2.1,
@@ -1538,7 +1596,7 @@
           "dps": 50924,
           "parse": 10,
           "itemLevel": 302,
-          "preparation": 39,
+          "preparation": 56,
           "preparationChecks": 2,
           "attack": {
             "score": 86.2,
@@ -1568,7 +1626,8 @@
           "defense": {
             "score": 15.8,
             "mitigation": 47,
-            "dtps": 46959
+            "dtps": 46959,
+            "selfSustain": 13.4
           },
           "defenseDetail": [
             {
@@ -1598,6 +1657,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 6310
+          },
           "deaths": 10,
           "mechanics": {
             "errors": 2.4,
@@ -1692,9 +1754,9 @@
         {
           "playerId": "xúlio",
           "dps": 100635,
-          "parse": 71,
+          "parse": 70,
           "itemLevel": 316,
-          "preparation": 72,
+          "preparation": 80,
           "preparationChecks": 2,
           "attack": {
             "score": 79.9,
@@ -1730,7 +1792,8 @@
           "defense": {
             "score": 23.5,
             "mitigation": 46.2,
-            "dtps": 46309
+            "dtps": 46309,
+            "selfSustain": 10.5
           },
           "defenseDetail": [
             {
@@ -1766,6 +1829,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 9302
+          },
           "deaths": 8,
           "mechanics": {
             "errors": 2,
@@ -1847,7 +1913,7 @@
           "playerId": "dagom",
           "dps": 40453,
           "parse": 8,
-          "preparation": 24,
+          "preparation": 44,
           "preparationMissing": [
             "Ombreiras",
             "Poção",
@@ -1877,7 +1943,8 @@
           "defense": {
             "score": 28.5,
             "mitigation": 44.8,
-            "dtps": 54671
+            "dtps": 54671,
+            "selfSustain": 17.2
           },
           "defenseDetail": [
             {
@@ -1921,6 +1988,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 14799
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 1.7,
@@ -1976,7 +2046,7 @@
           "dps": 89333,
           "parse": 54,
           "itemLevel": 304,
-          "preparation": 45,
+          "preparation": 55,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -2013,7 +2083,8 @@
           "defense": {
             "score": 38.5,
             "mitigation": 45.8,
-            "dtps": 43857
+            "dtps": 43857,
+            "selfSustain": 24.3
           },
           "defenseDetail": [
             {
@@ -2049,6 +2120,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 16879
+          },
           "deaths": 7,
           "mechanics": {
             "errors": 1.7,
@@ -2122,7 +2196,7 @@
           "dps": 74597,
           "parse": 35,
           "itemLevel": 303,
-          "preparation": 39,
+          "preparation": 53,
           "preparationMissing": [
             "Peito",
             "Botas",
@@ -2171,7 +2245,8 @@
           "defense": {
             "score": 12.6,
             "mitigation": 45,
-            "dtps": 39727
+            "dtps": 39727,
+            "selfSustain": 26.2
           },
           "defenseDetail": [
             {
@@ -2207,6 +2282,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 10937
+          },
           "deaths": 8,
           "mechanics": {
             "errors": 2.3,
@@ -2310,7 +2388,8 @@
           "defense": {
             "score": 54.8,
             "mitigation": 41.9,
-            "dtps": 103825
+            "dtps": 103825,
+            "selfSustain": 27.4
           },
           "defenseDetail": [
             {
@@ -2338,6 +2417,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 28485
+          },
           "deaths": 9,
           "mechanics": {
             "errors": 1,
@@ -2366,7 +2448,7 @@
         {
           "playerId": "blackwatch",
           "dps": 6412,
-          "parse": 12,
+          "parse": 13,
           "itemLevel": 317,
           "preparation": 41,
           "preparationMissing": [
@@ -2399,7 +2481,8 @@
           "defense": {
             "score": 43.3,
             "mitigation": 38.4,
-            "dtps": 101886
+            "dtps": 101886,
+            "selfSustain": 41.3
           },
           "defenseDetail": [
             {
@@ -2451,6 +2534,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 42537
+          },
           "deaths": 3,
           "mechanics": {
             "errors": 1.3,
@@ -2516,7 +2602,8 @@
           "defense": {
             "score": 50.7,
             "mitigation": 42.6,
-            "dtps": 103325
+            "dtps": 103325,
+            "selfSustain": 50.2
           },
           "defenseDetail": [
             {
@@ -2578,6 +2665,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 66546
+          },
           "deaths": 11,
           "mechanics": {
             "errors": 1.5,
@@ -2632,7 +2722,8 @@
           "defense": {
             "score": 57.7,
             "mitigation": 45.7,
-            "dtps": 49729
+            "dtps": 49729,
+            "selfSustain": 51.9
           },
           "defenseDetail": [
             {
@@ -2672,6 +2763,15 @@
               "difficulty": 4
             }
           ],
+          "healing": {
+            "score": 50.9,
+            "coverage": 3.7,
+            "share": 21.6,
+            "overheal": 19.8
+          },
+          "offRole": {
+            "dps": 6508
+          },
           "deaths": 2,
           "mechanics": {
             "errors": 2,
@@ -2755,7 +2855,8 @@
           "defense": {
             "score": 31.8,
             "mitigation": 45.5,
-            "dtps": 50243
+            "dtps": 50243,
+            "selfSustain": 57.7
           },
           "defenseDetail": [
             {
@@ -2823,6 +2924,15 @@
               "difficulty": 4
             }
           ],
+          "healing": {
+            "score": 85,
+            "coverage": 21.1,
+            "share": 123,
+            "overheal": 30.1
+          },
+          "offRole": {
+            "dps": 11761
+          },
           "deaths": 11,
           "mechanics": {
             "errors": 2.3,
@@ -2889,7 +2999,8 @@
           "defense": {
             "score": 30,
             "mitigation": 45.7,
-            "dtps": 55229
+            "dtps": 55229,
+            "selfSustain": 58.5
           },
           "defenseDetail": [
             {
@@ -2939,6 +3050,15 @@
               "difficulty": 4
             }
           ],
+          "healing": {
+            "score": 82.2,
+            "coverage": 25.3,
+            "share": 147.5,
+            "overheal": 35.7
+          },
+          "offRole": {
+            "dps": 3534
+          },
           "deaths": 9,
           "mechanics": {
             "errors": 2.1,
@@ -3019,7 +3139,8 @@
           "defense": {
             "score": 30.3,
             "mitigation": 45.3,
-            "dtps": 39548
+            "dtps": 39548,
+            "selfSustain": 8.3
           },
           "defenseDetail": [
             {
@@ -3057,6 +3178,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 3282
+          },
           "deaths": 10,
           "mechanics": {
             "errors": 1,
@@ -3129,7 +3253,8 @@
           "defense": {
             "score": 22,
             "mitigation": 42,
-            "dtps": 45848
+            "dtps": 45848,
+            "selfSustain": 26.1
           },
           "defenseDetail": [
             {
@@ -3167,6 +3292,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 13617
+          },
           "deaths": 11,
           "mechanics": {
             "errors": 0.8,
@@ -3233,7 +3361,8 @@
           "defense": {
             "score": 21.5,
             "mitigation": 46,
-            "dtps": 48149
+            "dtps": 48149,
+            "selfSustain": 36.4
           },
           "defenseDetail": [
             {
@@ -3271,6 +3400,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 15785
+          },
           "deaths": 9,
           "mechanics": {
             "errors": 1.4,
@@ -3332,7 +3464,8 @@
           "defense": {
             "score": 3.8,
             "mitigation": 47.6,
-            "dtps": 49943
+            "dtps": 49943,
+            "selfSustain": 10.1
           },
           "defenseDetail": [
             {
@@ -3370,6 +3503,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 5148
+          },
           "deaths": 10,
           "mechanics": {
             "errors": 1.4,
@@ -3457,7 +3593,8 @@
           "defense": {
             "score": 32,
             "mitigation": 45.2,
-            "dtps": 44043
+            "dtps": 44043,
+            "selfSustain": 35.9
           },
           "defenseDetail": [
             {
@@ -3495,6 +3632,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 17525
+          },
           "deaths": 10,
           "mechanics": {
             "errors": 2.3,
@@ -3563,7 +3703,8 @@
           "defense": {
             "score": 16.6,
             "mitigation": 47.2,
-            "dtps": 52142
+            "dtps": 52142,
+            "selfSustain": 11.2
           },
           "defenseDetail": [
             {
@@ -3589,6 +3730,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 5860
+          },
           "deaths": 11,
           "mechanics": {
             "errors": 1.8,
@@ -3668,7 +3812,8 @@
           "defense": {
             "score": 3.9,
             "mitigation": 46.8,
-            "dtps": 41247
+            "dtps": 41247,
+            "selfSustain": 19.3
           },
           "defenseDetail": [
             {
@@ -3712,6 +3857,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 7957
+          },
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -3789,7 +3937,8 @@
           "defense": {
             "score": 20.4,
             "mitigation": 46.3,
-            "dtps": 48135
+            "dtps": 48135,
+            "selfSustain": 14.4
           },
           "defenseDetail": [
             {
@@ -3839,6 +3988,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 10398
+          },
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -3915,7 +4067,8 @@
           "defense": {
             "score": 27.7,
             "mitigation": 45.6,
-            "dtps": 44304
+            "dtps": 44304,
+            "selfSustain": 19
           },
           "defenseDetail": [
             {
@@ -3959,6 +4112,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 13436
+          },
           "deaths": 12,
           "mechanics": {
             "errors": 1.8,
@@ -4009,7 +4165,8 @@
           "defense": {
             "score": 36.4,
             "mitigation": 46.2,
-            "dtps": 57114
+            "dtps": 57114,
+            "selfSustain": 45.8
           },
           "defenseDetail": [
             {
@@ -4065,6 +4222,15 @@
               "difficulty": 4
             }
           ],
+          "healing": {
+            "score": 86.7,
+            "coverage": 18.5,
+            "share": 107.9,
+            "overheal": 26.7
+          },
+          "offRole": {
+            "hps": 153863
+          },
           "deaths": 8,
           "mechanics": {
             "errors": 1.8,
@@ -4151,7 +4317,8 @@
           "defense": {
             "score": 16.7,
             "mitigation": 45.1,
-            "dtps": 39179
+            "dtps": 39179,
+            "selfSustain": 25
           },
           "defenseDetail": [
             {
@@ -4177,6 +4344,9 @@
               "difficulty": 4
             }
           ],
+          "offRole": {
+            "hps": 10435
+          },
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
