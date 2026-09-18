@@ -123,6 +123,7 @@
             }
           ],
           "offRole": {
+            "dps": 45820,
             "hps": 53859
           },
           "deaths": 4,
@@ -361,6 +362,7 @@
             }
           ],
           "offRole": {
+            "dps": 33022,
             "hps": 41765
           },
           "deaths": 4,
@@ -2338,6 +2340,7 @@
             }
           ],
           "offRole": {
+            "dps": 20583,
             "hps": 54982
           },
           "deaths": 6,
@@ -2466,6 +2469,7 @@
             }
           ],
           "offRole": {
+            "dps": 20536,
             "hps": 36097
           },
           "deaths": 16,
@@ -2662,9 +2666,6 @@
             "coverage": 12.4,
             "share": 78.8,
             "overheal": 35.1
-          },
-          "offRole": {
-            "dps": 20136
           },
           "deaths": 14,
           "mechanics": {
