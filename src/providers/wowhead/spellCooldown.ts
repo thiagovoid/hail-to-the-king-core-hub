@@ -103,6 +103,10 @@ const SINAIS_DEFENSIVOS = [
   /\bparry\b/i,
   /\bdodge\b/i,
   /\bdefenses\b/i,
+  // "taking 40% less damage for 12 sec" (Astral Shift): a construção não
+  // usa "damage taken" nem "damage you take", e a habilidade caía em
+  // utilidade — sem defensivo nenhum medido pro xamã.
+  naMesmaFrase("taking", "less\\s+damage", 30),
 ];
 
 function limparHtml(html: string): string {

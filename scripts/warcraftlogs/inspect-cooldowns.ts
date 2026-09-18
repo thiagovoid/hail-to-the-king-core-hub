@@ -16,7 +16,8 @@ import { WarcraftLogsProvider } from "../../src/providers/warcraftlogs/WarcraftL
 import {
   buildDamageShares,
   categoriaEfetiva,
-  PARTICIPACAO_MINIMA_NO_DANO,
+  contaParaNota,
+  type UsoDeCooldown,
 } from "../../src/providers/warcraftlogs/cooldownUsage";
 import {
   CATALOGO_VAZIO,
@@ -40,6 +41,17 @@ const filtro = String(args.player ?? "").toLowerCase();
 if (!code) throw new Error("Informe --report=CODE");
 
 const wcl = new WarcraftLogsProvider();
+
+/** Só os campos que contaParaNota olha importam aqui. */
+const vazio: UsoDeCooldown = {
+  spellId: 0,
+  name: "",
+  kind: "offensive",
+  casts: 0,
+  timeOnCooldownMs: 0,
+  possibleMs: 0,
+  efficiency: 0,
+};
 
 let catalogo: CooldownCatalogFile = CATALOGO_VAZIO;
 try {
@@ -87,10 +99,11 @@ for (const [sourceID, nome] of alvos) {
     }
 
     const share = meusShares?.get(magia.name.trim().toLowerCase());
-    const efetiva = categoriaEfetiva(magia.kind, share);
+    const efetiva = categoriaEfetiva(magia.kind, magia.cooldownMs, share);
     const entra =
       efetiva === "defensive" ||
-      (efetiva === "offensive" && (share === undefined || share >= PARTICIPACAO_MINIMA_NO_DANO));
+      (efetiva === "offensive" &&
+        contaParaNota({ ...vazio, kind: efetiva, damageShare: share }, magia.cooldownMs, true));
 
     const veredito = !entra
       ? efetiva === "utility"

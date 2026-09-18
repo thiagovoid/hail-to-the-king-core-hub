@@ -123,6 +123,22 @@ export function tempoEmRecarga(
 export const PARTICIPACAO_MINIMA_NO_DANO = 2;
 
 /**
+ * A partir daqui, a habilidade é decisão planejada, não reflexo.
+ *
+ * Existe porque participação no dano sozinha não separa dois casos que
+ * parecem iguais: Feral Lunge (gap closer, 30s, 0,00% do dano) e Ascendance
+ * (o cooldown do xamã Aperfeiçoamento, 3 min, 0,24%). As duas causam quase
+ * nada de dano próprio — a de Ascendance sai com o nome de OUTRAS
+ * habilidades, porque ela transforma seus ataques.
+ *
+ * O que separa as duas é a recarga. Ninguém tem uma habilidade de 3 minutos
+ * que aperta sem pensar. Usar a quantidade de usos pra decidir seria pior:
+ * quem nunca aperta o cooldown o veria sair da conta e ganharia nota por
+ * isso — exatamente o contrário do que a métrica mede.
+ */
+export const COOLDOWN_MAIOR_MS = 90_000;
+
+/**
  * A categoria que vale pra pontuação DESTE jogador.
  *
  * O tooltip nem sempre diz que a habilidade é ofensiva. Doom Winds, o
@@ -137,10 +153,14 @@ export const PARTICIPACAO_MINIMA_NO_DANO = 2;
  */
 export function categoriaEfetiva(
   kind: TipoDeCooldown,
+  cooldownMs: number,
   damageShare: number | undefined
 ): TipoDeCooldown {
   if (kind !== "utility") return kind;
-  if (damageShare === undefined) return "utility";
+  // Sem dano nenhum: stun, battle res, invocação, deslocamento. Fica fora
+  // por mais longa que seja a recarga (Reincarnation tem 30 minutos).
+  if (damageShare === undefined || damageShare <= 0) return "utility";
+  if (cooldownMs >= COOLDOWN_MAIOR_MS) return "offensive";
   return damageShare >= PARTICIPACAO_MINIMA_NO_DANO ? "offensive" : "utility";
 }
 
@@ -156,10 +176,19 @@ export function categoriaEfetiva(
  * Defensivo nunca é filtrado: mitigação não aparece na tabela de dano, e
  * filtrar apagaria a categoria inteira.
  */
-export function contaParaNota(uso: UsoDeCooldown, temTabelaDeDano: boolean): boolean {
+export function contaParaNota(
+  uso: UsoDeCooldown,
+  cooldownMs: number,
+  temTabelaDeDano: boolean
+): boolean {
   if (uso.kind === "defensive") return true;
   if (!temTabelaDeDano) return true;
+  // Não aparece na tabela de dano = não causa dano próprio, só aumenta o
+  // seu. É assim que Avatar e Avenging Wrath se apresentam no log.
   if (uso.damageShare === undefined) return true;
+  // Recarga longa é decisão planejada: entra mesmo representando pouco dano
+  // direto (Shattering Throw, 3 min).
+  if (cooldownMs >= COOLDOWN_MAIOR_MS) return true;
   return uso.damageShare >= PARTICIPACAO_MINIMA_NO_DANO;
 }
 
@@ -254,38 +283,57 @@ export function buildCooldownUsage(
     if (possibleMs <= 0) continue;
 
     const sharesDoJogador = damageShares?.get(sourceID);
-    const acumulado = new Map<number, { casts: number; tempo: number }>();
+
+    // Agrupado por NOME, não por id: a mesma habilidade aparece com ids
+    // diferentes conforme o talento (Immolation Aura saía duas vezes no
+    // detalhe do mesmo jogador, com aproveitamentos diferentes). Pra quem lê
+    // a tela é uma habilidade só, e contá-la duas vezes distorce a média.
+    const acumulado = new Map<string, { magia: CooldownDaMagia; casts: number; tempo: number }>();
     for (const [fightId, porHabilidade] of castsPorJogador.get(sourceID) ?? []) {
       const janela = porJanela.get(fightId)!;
+
+      // Junta os ids do mesmo nome ANTES de calcular: senão cada id entra
+      // com a recarga cheia e o tempo sai inflado.
+      const porNome = new Map<string, { magia: CooldownDaMagia; timestamps: number[] }>();
       for (const [spellId, timestamps] of porHabilidade) {
         const magia = catalogo.get(spellId)!;
-        const atual = acumulado.get(spellId) ?? { casts: 0, tempo: 0 };
+        const chave = chaveDeNome(magia.name);
+        const atual = porNome.get(chave);
+        if (atual) atual.timestamps.push(...timestamps);
+        else porNome.set(chave, { magia, timestamps: [...timestamps] });
+      }
+
+      for (const [chave, { magia, timestamps }] of porNome) {
+        const atual = acumulado.get(chave) ?? { magia, casts: 0, tempo: 0 };
         atual.casts += timestamps.length;
         atual.tempo += tempoEmRecarga(timestamps, janela, magia.cooldownMs, magia.charges);
-        acumulado.set(spellId, atual);
+        acumulado.set(chave, atual);
       }
     }
 
     const abilities: UsoDeCooldown[] = [...acumulado.entries()]
-      .map(([spellId, dados]) => {
-        const magia = catalogo.get(spellId)!;
-        const share = sharesDoJogador?.get(chaveDeNome(magia.name));
+      .map(([chave, dados]) => {
+        const share = sharesDoJogador?.get(chave);
         return {
-          spellId,
-          name: magia.name,
-          // Pode virar "offensive" aqui: ver categoriaEfetiva.
-          kind: categoriaEfetiva(magia.kind, share),
-          casts: dados.casts,
-          timeOnCooldownMs: Math.round(dados.tempo),
-          possibleMs,
-          efficiency: Math.round((dados.tempo / possibleMs) * 1000) / 10,
-          ...(share === undefined ? {} : { damageShare: Math.round(share * 10) / 10 }),
+          magia: dados.magia,
+          uso: {
+            spellId: dados.magia.spellId,
+            name: dados.magia.name,
+            // Pode virar "offensive" aqui: ver categoriaEfetiva.
+            kind: categoriaEfetiva(dados.magia.kind, dados.magia.cooldownMs, share),
+            casts: dados.casts,
+            timeOnCooldownMs: Math.round(dados.tempo),
+            possibleMs,
+            efficiency: Math.round((dados.tempo / possibleMs) * 1000) / 10,
+            ...(share === undefined ? {} : { damageShare: Math.round(share * 100) / 100 }),
+          } satisfies UsoDeCooldown,
         };
       })
       // Stun, silêncio, battle res e invocação de pet não são decisão de
       // atacar nem de se defender, e entravam na média afundando a nota.
-      .filter((uso) => uso.kind !== "utility")
-      .filter((uso) => contaParaNota(uso, sharesDoJogador !== undefined))
+      .filter(({ uso }) => uso.kind !== "utility")
+      .filter(({ uso, magia }) => contaParaNota(uso, magia.cooldownMs, sharesDoJogador !== undefined))
+      .map(({ uso }) => uso)
       .sort((a, b) => a.efficiency - b.efficiency);
 
     resultado.push({

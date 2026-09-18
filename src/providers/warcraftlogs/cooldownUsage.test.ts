@@ -5,8 +5,10 @@ import {
   buildCooldownUsage,
   buildDamageShares,
   categoriaEfetiva,
+  contaParaNota,
   tempoEmRecarga,
   type EventoDeCast,
+  type UsoDeCooldown,
 } from "./cooldownUsage";
 
 const AVATAR: CooldownDaMagia = {
@@ -314,23 +316,35 @@ describe("buildCooldownUsage — relevância por participação no dano", () => 
 // "damage" no tooltip — fala em Windfury — e caía em "utility". O jogador
 // ficava com "sem cooldown ofensivo medido na noite" tendo 97% de uptime.
 describe("categoriaEfetiva", () => {
+  const CURTO = 30_000;
+  const LONGO = 180_000;
+
   it("promove utilidade que responde por parte relevante do dano", () => {
-    expect(categoriaEfetiva("utility", 3.3)).toBe("offensive");
+    expect(categoriaEfetiva("utility", CURTO, 3.3)).toBe("offensive");
   });
 
-  it("mantém como utilidade o que quase não causa dano", () => {
-    expect(categoriaEfetiva("utility", 0.2)).toBe("utility");
+  it("mantém como utilidade a habilidade curta que quase não causa dano", () => {
+    expect(categoriaEfetiva("utility", CURTO, 0.2)).toBe("utility");
   });
 
-  // Ausente da tabela de dano = não causou dano nenhum. Aqui isso é o
-  // contrário de buff puro: a habilidade já era utilidade pelo texto.
-  it("mantém como utilidade o que não aparece na tabela de dano", () => {
-    expect(categoriaEfetiva("utility", undefined)).toBe("utility");
+  // Ascendance é o cooldown do xamã Aperfeiçoamento, mas o dano dela sai com
+  // o nome de outras habilidades: só 0,24% fica no nome dela. Feral Lunge é
+  // um gap closer com 0,00%. Participação no dano não separa as duas; a
+  // recarga separa.
+  it("promove utilidade de recarga longa com qualquer dano próprio", () => {
+    expect(categoriaEfetiva("utility", LONGO, 0.24)).toBe("offensive");
+  });
+
+  // Reincarnation tem 30 minutos de recarga e nenhum dano. Recarga longa
+  // sozinha não pode promover, senão battle res vira cooldown de ataque.
+  it("não promove recarga longa sem dano nenhum", () => {
+    expect(categoriaEfetiva("utility", LONGO, 0)).toBe("utility");
+    expect(categoriaEfetiva("utility", LONGO, undefined)).toBe("utility");
   });
 
   it("não mexe em quem o tooltip já classificou", () => {
-    expect(categoriaEfetiva("offensive", 0)).toBe("offensive");
-    expect(categoriaEfetiva("defensive", 50)).toBe("defensive");
+    expect(categoriaEfetiva("offensive", CURTO, 0)).toBe("offensive");
+    expect(categoriaEfetiva("defensive", CURTO, 50)).toBe("defensive");
   });
 });
 
@@ -365,5 +379,80 @@ describe("buildCooldownUsage — promoção de utilidade", () => {
 
     expect(jogador.abilities).toEqual([]);
     expect(jogador.offensive).toBeNull();
+  });
+});
+
+describe("contaParaNota — recarga longa é decisão planejada", () => {
+  const uso = (kind: "offensive" | "defensive", damageShare?: number): UsoDeCooldown => ({
+    spellId: 1,
+    name: "x",
+    kind,
+    casts: 1,
+    timeOnCooldownMs: 0,
+    possibleMs: 0,
+    efficiency: 0,
+    ...(damageShare === undefined ? {} : { damageShare }),
+  });
+
+  // Shattering Throw causa 600% de Attack Power mas representa pouco do dano
+  // total. Com 3 minutos de recarga, quando usar é decisão, não reflexo.
+  it("mantém cooldown longo com pouco dano direto", () => {
+    expect(contaParaNota(uso("offensive", 0.9), 180_000, true)).toBe(true);
+  });
+
+  // Storm Bolt tem 30s: aperta no meio da rotação, o dano é incidental.
+  it("descarta cooldown curto com pouco dano direto", () => {
+    expect(contaParaNota(uso("offensive", 0.9), 30_000, true)).toBe(false);
+  });
+
+  it("mantém quem não aparece na tabela de dano, em qualquer recarga", () => {
+    expect(contaParaNota(uso("offensive"), 30_000, true)).toBe(true);
+  });
+});
+
+// Immolation Aura saía duas vezes no detalhe do mesmo jogador, com
+// aproveitamentos diferentes: são dois spell IDs conforme o talento. Pra
+// quem lê a tela é uma habilidade só.
+describe("buildCooldownUsage — mesma habilidade com ids diferentes", () => {
+  const janelas = [{ id: 1, startTime: 0, endTime: 600_000 }];
+  const base = { name: "Immolation Aura", cooldownMs: 30_000, charges: 1, kind: "offensive" as const };
+  const A: CooldownDaMagia = { spellId: 258920, ...base };
+  const B: CooldownDaMagia = { spellId: 427917, ...base };
+  const doisIds = new Map([
+    [A.spellId, A],
+    [B.spellId, B],
+  ]);
+  const cast = (spellId: number, timestamp: number): EventoDeCast => ({
+    sourceID: 7,
+    abilityGameID: spellId,
+    timestamp,
+    fight: 1,
+  });
+
+  it("junta os dois ids numa entrada só", () => {
+    const shares = new Map([[7, new Map([["immolation aura", 12]])]]);
+    const [jogador] = buildCooldownUsage(
+      [cast(A.spellId, 0), cast(B.spellId, 30_000)],
+      janelas,
+      doisIds,
+      shares
+    );
+
+    expect(jogador.abilities).toHaveLength(1);
+    expect(jogador.abilities[0].casts).toBe(2);
+  });
+
+  // Se cada id entrasse com a recarga cheia, o tempo sairia inflado: dois
+  // casts no mesmo instante contariam 60s em vez de 30s.
+  it("não conta a recarga em dobro pelo id repetido", () => {
+    const shares = new Map([[7, new Map([["immolation aura", 12]])]]);
+    const [jogador] = buildCooldownUsage(
+      [cast(A.spellId, 0), cast(B.spellId, 0)],
+      janelas,
+      doisIds,
+      shares
+    );
+
+    expect(jogador.abilities[0].timeOnCooldownMs).toBe(30_000);
   });
 });
