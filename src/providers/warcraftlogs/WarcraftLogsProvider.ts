@@ -1,5 +1,6 @@
 import type { DataProvider, ProviderResult } from "../types";
 import { wclGraphql } from "./client";
+import type { EventoDeCast } from "./cooldownUsage";
 import { selectAggregateFights } from "./normalize";
 import type { WclFight, WclFightTables, WclProfile, WclRankingEntry } from "./normalize";
 import type { WclReportRankings } from "./reportRankings";
@@ -275,6 +276,78 @@ export class WarcraftLogsProvider
     } catch {
       return null;
     }
+  }
+
+  /**
+   * Nome de cada ator do relatório, por id. Os eventos só trazem
+   * `sourceID` — sem esse mapa não dá pra ligar um cast a um jogador.
+   */
+  async fetchActorNames(reportCode: string): Promise<Map<number, string>> {
+    const data = await wclGraphql<{
+      reportData: { report: { masterData?: { actors?: Array<{ id: number; name: string; type: string }> } } | null };
+    }>(
+      `query($code: String!) {
+        reportData { report(code: $code) { masterData { actors(type: "Player") { id name type } } } }
+      }`,
+      { code: reportCode }
+    );
+
+    const atores = data.reportData.report?.masterData?.actors ?? [];
+    return new Map(atores.map((ator) => [ator.id, ator.name]));
+  }
+
+  /**
+   * Todo cast de jogador nas trys informadas.
+   *
+   * Eventos, não tabela: a tabela de Casts vem truncada em 5 habilidades por
+   * jogador (conferido no CI) e nenhum cooldown aparece nela. São ~53 mil
+   * eventos numa noite de 12 trys, a 14 pontos de API — 0,4% do limite por
+   * hora, medido antes de entrar no cron.
+   *
+   * `endTime` é obrigatório junto com `startTime`: sem ele a WCL devolve a
+   * janela vazia, sem erro nenhum.
+   */
+  async fetchCastEvents(
+    reportCode: string,
+    fights: Array<{ id: number; startTime: number; endTime: number }>
+  ): Promise<EventoDeCast[]> {
+    const eventos: EventoDeCast[] = [];
+
+    for (const fight of fights) {
+      let cursor: number | undefined = fight.startTime;
+
+      // A WCL pagina em 10 mil eventos. Sem o laço, try longa voltaria
+      // truncada e o tempo em recarga sairia menor do que foi.
+      while (cursor !== undefined) {
+        const pagina: {
+          reportData: {
+            report: {
+              events?: { data?: EventoDeCast[]; nextPageTimestamp?: number | null };
+            } | null;
+          };
+        } = await wclGraphql(
+          `query($code: String!, $fightIDs: [Int]!, $start: Float!, $end: Float!) {
+            reportData { report(code: $code) {
+              events(fightIDs: $fightIDs, dataType: Casts, startTime: $start, endTime: $end, limit: 10000) {
+                data
+                nextPageTimestamp
+              }
+            } }
+          }`,
+          { code: reportCode, fightIDs: [fight.id], start: cursor, end: fight.endTime }
+        );
+
+        for (const evento of pagina.reportData.report?.events?.data ?? []) {
+          // `fight` vem no evento, mas nem todo dataType preenche — como a
+          // busca é try a try, o id da try é sabido aqui de qualquer jeito.
+          eventos.push({ ...evento, fight: fight.id });
+        }
+
+        cursor = pagina.reportData.report?.events?.nextPageTimestamp ?? undefined;
+      }
+    }
+
+    return eventos;
   }
 
   /** Points-based rate limit status — see AUTOMACAO.md / DataCollector's minDelayMs for why this matters. */

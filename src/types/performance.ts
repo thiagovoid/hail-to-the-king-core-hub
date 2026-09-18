@@ -75,6 +75,35 @@ export interface PlayerPerformance {
   wipefestScore?: number;
 
   /**
+   * "Atacar corretamente" — execução ofensiva da noite, 0-100.
+   *
+   * Duas metades: quanto da luta a pessoa passou atacando (uptime) e quanto
+   * do tempo os cooldowns ofensivos ficaram em recarga. A segunda parte é
+   * tempo em recarga, NÃO quantidade de usos: quem guarda o cooldown pro
+   * final da luta gastou o uso, mas deixou a habilidade parada.
+   */
+  attack?: {
+    /** Média das duas metades. É o que vira nota da dimensão. */
+    score: number;
+    /** % da luta com o jogador ativo (activeTime / duração da noite). */
+    uptime: number;
+    /** % médio de tempo em recarga dos cooldowns ofensivos. Null sem nenhum usado. */
+    cooldowns: number | null;
+  };
+
+  /**
+   * Cooldown a cooldown, do pior aproveitado pro melhor — é o que explica a
+   * nota. "Atacar: 61%" sozinho não diz o que treinar; "Avatar 45%" diz.
+   */
+  attackDetail?: Array<{
+    spellId: number;
+    name: string;
+    casts: number;
+    /** 0-100: tempo em recarga sobre o tempo de luta. */
+    efficiency: number;
+  }>;
+
+  /**
    * WoW Analyzer's "Always Be Casting" percentage for the run (0-100) —
    * Active Time for a DPS spec, Ability/Healing Uptime for a healer. There
    * is no single 0-100 score like Wipefest's on WoW Analyzer (confirmed

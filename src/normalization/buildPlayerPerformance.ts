@@ -14,7 +14,10 @@ export interface PlayerPerformanceContributions {
   /** Deaths always come from the raid log (currently WarcraftLogs), never optional. */
   deaths: number;
 
-  warcraftLogs?: Pick<PlayerPerformance, "dps" | "hps" | "parse" | "itemLevel" | "preparation">;
+  warcraftLogs?: Pick<
+    PlayerPerformance,
+    "dps" | "hps" | "parse" | "itemLevel" | "preparation" | "attack" | "attackDetail"
+  >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
   wowAnalyzer?: Pick<PlayerPerformance, "uptime">;
 }

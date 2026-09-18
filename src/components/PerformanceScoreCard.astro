@@ -26,9 +26,23 @@ interface Props {
    * o que treinar.
    */
   mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; tries: number }>;
+  /** Cooldowns ofensivos da noite, do pior aproveitado pro melhor. */
+  attackDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
+  /** As duas metades da nota de Atacar, pra tela não esconder de onde ela veio. */
+  attackParts?: { uptime: number; cooldowns: number | null } | null;
 }
 
-const { score, trend, attendance, nightDate = null, nightTries = null, preparationMissing = [], mechanicsDetail = [] } = Astro.props;
+const {
+  score,
+  trend,
+  attendance,
+  nightDate = null,
+  nightTries = null,
+  preparationMissing = [],
+  mechanicsDetail = [],
+  attackDetail = [],
+  attackParts = null,
+} = Astro.props;
 
 // Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
 // não tendência — não vale pintar de verde nem de vermelho.
@@ -200,6 +214,35 @@ const directionLabel = (direction: 'higher' | 'lower') =>
                     {' '}
                     {nightTries !== null ? `em ${item.tries} de ${nightTries} trys` : `em ${item.tries} trys`}
                     <span class="text-slate-600"> &middot; {item.boss}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {/* A nota de Atacar é a média de duas metades que se escondem
+                uma atrás da outra: dá pra ter uptime cheio sem nunca gastar
+                o cooldown grande. Mostrar as duas evita "61%" sem resposta.
+
+                Depois, cooldown a cooldown: a régua é quanto do tempo de
+                luta a habilidade ficou em recarga, não quantos usos — quem
+                guarda pro final gastou o uso e deixou a habilidade parada. */}
+            {dimension.key === 'attack' && attackParts !== null && (
+              <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
+                <span class="text-slate-400">Uptime {formatarValor(attackParts.uptime)}%</span>
+                {' · '}
+                {attackParts.cooldowns !== null
+                  ? `cooldowns ${formatarValor(attackParts.cooldowns)}% do tempo em recarga`
+                  : 'sem cooldown ofensivo medido na noite'}
+              </p>
+            )}
+
+            {dimension.key === 'attack' && attackDetail.length > 0 && (
+              <ul class="mt-1.5 space-y-0.5">
+                {attackDetail.map((item) => (
+                  <li class="text-[11px] text-slate-500 leading-relaxed">
+                    <span class="text-slate-400">{item.name}</span>
+                    {' '}
+                    {formatarValor(item.efficiency)}% do tempo em recarga
+                    <span class="text-slate-600"> &middot; {item.casts} uso{item.casts === 1 ? '' : 's'}</span>
                   </li>
                 ))}
               </ul>

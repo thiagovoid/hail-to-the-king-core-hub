@@ -163,8 +163,8 @@ export interface CorePerformanceTargets {
   parse: CoreTarget;
   /** Máximo de erros mecânicos por noite. */
   mechanics: CoreTarget;
-  /** % de uso correto de cooldowns. */
-  cooldowns: CoreTarget;
+  /** % de execução ofensiva — uptime + cooldowns ofensivos. */
+  attack: CoreTarget;
   /** % dos itens de preparação prontos. */
   preparation: CoreTarget;
 }

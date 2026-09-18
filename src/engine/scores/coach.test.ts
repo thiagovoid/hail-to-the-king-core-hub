@@ -5,14 +5,14 @@ import type { OverallPerformanceScore, ScoreDimension, ScoreDimensionKey } from 
 const WEIGHTS: Record<ScoreDimensionKey, number> = {
   parse: 35,
   mechanics: 30,
-  cooldowns: 25,
+  attack: 25,
   preparation: 10,
 };
 
 const LABELS: Record<ScoreDimensionKey, string> = {
   parse: "Parse",
   mechanics: "Mecânicas",
-  cooldowns: "Cooldowns",
+  attack: "Atacar",
   preparation: "Preparação",
 };
 

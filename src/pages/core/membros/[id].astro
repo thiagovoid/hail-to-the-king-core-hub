@@ -60,6 +60,13 @@ const mechanicsDetail = [...(ultimaNoite?.mechanicsDetail ?? [])]
 
 const preparationMissing = ultimaNoite?.preparationMissing ?? [];
 
+// Mesma noite do Score Geral. Os três piores: a lista inteira vira parede de
+// texto e o que importa é o que treinar primeiro.
+const attackDetail = (ultimaNoite?.attackDetail ?? []).slice(0, 3);
+const attackParts = ultimaNoite?.attack
+  ? { uptime: ultimaNoite.attack.uptime, cooldowns: ultimaNoite.attack.cooldowns }
+  : null;
+
 const hasData = history.length > 0;
 
 const dpsHistory = history
@@ -88,6 +95,22 @@ const mechanicsHistory = history
       .map((item) =>
         `${item.label ?? item.mechanic.replace('Damage from ', '')} — ${item.tries} de ${performance.mechanics?.tries ?? '?'} trys`
       ),
+  }));
+
+const attackHistory = history
+  .filter((performance) => performance.attack !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.attack!.score,
+    detail: [
+      `Uptime — ${performance.attack!.uptime}%`,
+      performance.attack!.cooldowns !== null
+        ? `Cooldowns — ${performance.attack!.cooldowns}% do tempo em recarga`
+        : 'Cooldowns — sem cooldown ofensivo medido',
+      ...(performance.attackDetail ?? [])
+        .slice(0, 3)
+        .map((item) => `${item.name} — ${item.efficiency}% (${item.casts} uso${item.casts === 1 ? '' : 's'})`),
+    ],
   }));
 
 const deathsHistory = history
@@ -207,6 +230,8 @@ const attendance = calculateAttendance(weeks, player.id);
           nightTries={ultimaNoite?.mechanics?.tries ?? null}
           preparationMissing={preparationMissing}
           mechanicsDetail={mechanicsDetail}
+          attackDetail={attackDetail}
+          attackParts={attackParts}
         />
       )
     }
@@ -251,6 +276,16 @@ const attendance = calculateAttendance(weeks, player.id);
               target: seasonJson.config.performanceTargets.mechanics.target,
               current: ultimaNoite?.mechanics?.errors ?? null,
               direction: 'lower',
+            },
+            {
+              id: 'attack',
+              label: 'Atacar',
+              data: attackHistory,
+              // Meta do core, igual pra todo mundo — não existe objetivo
+              // individual de execução ofensiva no roster.
+              target: seasonJson.config.performanceTargets.attack.target,
+              current: ultimaNoite?.attack?.score ?? null,
+              direction: 'higher',
             },
             {
               id: 'deaths',

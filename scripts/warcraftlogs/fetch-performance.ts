@@ -8,6 +8,18 @@ import type { DataProvider } from "../../src/providers/types";
 import { RaiderIoProvider } from "../../src/providers/raiderio/RaiderIoProvider";
 import { buildPlayerPerformance } from "../../src/normalization/buildPlayerPerformance";
 import { buildParseByPlayer } from "../../src/providers/warcraftlogs/reportRankings";
+import {
+  buildCooldownUsage,
+  type CooldownsDoJogador,
+} from "../../src/providers/warcraftlogs/cooldownUsage";
+import {
+  CATALOGO_VAZIO,
+  catalogToMap,
+  mergeCatalog,
+  spellsFaltando,
+  type CooldownCatalogFile,
+} from "../../src/providers/wowhead/cooldownCatalog";
+import { fetchSpellCooldowns } from "../../src/providers/wowhead/spellTooltip";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
   buildChecklistFromReference,
@@ -522,6 +534,69 @@ async function main() {
 
   const runsByReportCode = new Map<string, { date: string; reportCode: string; players: PlayerPerformance[] }>();
 
+  // ----- "Atacar corretamente": cooldowns ofensivos -----
+  //
+  // Precisa de EVENTOS, não de tabela agregada: a tabela de Casts vem
+  // truncada em 5 habilidades por jogador e nenhum cooldown aparece nela.
+  // São ~53 mil eventos por noite a 14 pontos de API (0,4% do limite por
+  // hora) — medido antes de entrar no cron.
+  const catalogPath = path.join(ROOT, "data/seasons", SEASON_SLUG, "cooldown-catalog.json");
+  let catalogo: CooldownCatalogFile = CATALOGO_VAZIO;
+  try {
+    catalogo = JSON.parse(await readFile(catalogPath, "utf8")) as CooldownCatalogFile;
+  } catch {
+    console.log("Catálogo de cooldowns ainda não existe — será criado nesta coleta.");
+  }
+
+  const cooldownsPorReport = new Map<string, Map<string, CooldownsDoJogador>>();
+
+  for (const ctx of reportContexts) {
+    try {
+      const [atores, eventos] = await Promise.all([
+        wcl.fetchActorNames(ctx.report.code),
+        wcl.fetchCastEvents(ctx.report.code, ctx.raidFights),
+      ]);
+
+      // Toda magia nova do log é consultada uma vez no Wowhead e o veredito
+      // fica gravado — inclusive "não é cooldown". Sem esse registro, as
+      // ~180 magias de rotação de cada noite seriam reconsultadas toda
+      // semana pra chegar sempre à mesma conclusão.
+      const faltando = spellsFaltando(catalogo, eventos.map((evento) => evento.abilityGameID));
+      if (faltando.length > 0) {
+        console.log(`Consultando ${faltando.length} magia(s) nova(s) no Wowhead...`);
+        const vereditos = await fetchSpellCooldowns(faltando);
+        catalogo = mergeCatalog(catalogo, vereditos, new Date().toISOString());
+      }
+
+      const usos = buildCooldownUsage(eventos, ctx.raidFights, catalogToMap(catalogo));
+
+      // Os eventos só trazem sourceID; o roster só conhece nome.
+      const porJogador = new Map<string, CooldownsDoJogador>();
+      for (const uso of usos) {
+        const nome = atores.get(uso.sourceID);
+        if (!nome) continue;
+        const perfil = rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome));
+        if (perfil) porJogador.set(perfil.id, uso);
+      }
+
+      cooldownsPorReport.set(ctx.report.code, porJogador);
+      console.log(
+        `Cooldowns do report ${ctx.report.code}: ${eventos.length} casts, ${porJogador.size} jogador(es) do roster.`
+      );
+    } catch (error) {
+      // Falha aqui não pode derrubar a coleta inteira: sem cooldowns, a
+      // nota de Atacar fica só com o uptime, e o resto do log segue.
+      console.warn(
+        `Falha ao coletar cooldowns do report ${ctx.report.code}: ${error instanceof Error ? error.message : error}`
+      );
+    }
+  }
+
+  await writeFile(catalogPath, JSON.stringify(catalogo, null, 2) + "\n", "utf8");
+  console.log(
+    `Catálogo de cooldowns: ${Object.keys(catalogo.cooldowns).length} cooldown(s), ${catalogo.ignored.length} magia(s) descartada(s).`
+  );
+
   // Percentis calculados pelo próprio relatório — uma chamada por log,
   // contra uma por jogador por encontro do caminho antigo. É o que faz a
   // dimensão de parse sair de "sem dado": o ranking global do personagem
@@ -555,6 +630,7 @@ async function main() {
       parseByPlayer: parsePorReport.get(ctx.report.code),
       players: rosterProfiles,
       resolvePreparationChecklist,
+      cooldownsByPlayer: cooldownsPorReport.get(ctx.report.code),
     });
 
     // Passa pela Normalization Layer explícita mesmo só com a WCL contribuindo

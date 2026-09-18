@@ -2,7 +2,7 @@ import type { PlayerPerformance } from "../../types/performance";
 import type { CorePerformanceTargets, CoreTarget } from "../../types/index";
 import { calculateGoalProgress } from "../metrics";
 
-export type ScoreDimensionKey = "parse" | "mechanics" | "cooldowns" | "preparation";
+export type ScoreDimensionKey = "parse" | "mechanics" | "attack" | "preparation";
 
 export interface ScoreDimension {
   key: ScoreDimensionKey;
@@ -67,12 +67,14 @@ const DIMENSION_META: Record<
     description: "Erros de execução de mecânica ao longo da noite — dano evitável tomado, soak perdido, etc.",
     source: "Wipefest. Coleta ainda não rodou com dado real, por isso aparece sem dado.",
   },
-  cooldowns: {
-    label: "Cooldowns",
+  attack: {
+    label: "Atacar",
     weight: 25,
-    unit: "% de uso",
-    description: "Percentual de uso correto dos seus cooldowns ao longo da noite.",
-    source: "WoW Analyzer. Sem coleta hoje: o site bloqueia automação via Cloudflare.",
+    unit: "% de execução",
+    description:
+      "Quanto da luta você passou atacando (uptime) e quanto do tempo seus cooldowns ofensivos ficaram em recarga. Cooldown guardado é dano que não aconteceu: a régua é tempo em recarga, não quantidade de usos.",
+    source:
+      "Warcraft Logs (tempo ativo e eventos de cast) + Wowhead (recarga de cada magia). Substitui o WoW Analyzer, que bloqueia automação via Cloudflare.",
   },
   preparation: {
     label: "Preparação",
@@ -128,11 +130,11 @@ export function calculateOverallScore(
       score: progress(performance.mechanics?.errors, targets.mechanics),
     },
     {
-      key: "cooldowns",
-      ...DIMENSION_META.cooldowns,
-      target: targets.cooldowns,
-      value: performance.uptime ?? null,
-      score: progress(performance.uptime, targets.cooldowns),
+      key: "attack",
+      ...DIMENSION_META.attack,
+      target: targets.attack,
+      value: performance.attack?.score ?? null,
+      score: progress(performance.attack?.score, targets.attack),
     },
     {
       key: "preparation",

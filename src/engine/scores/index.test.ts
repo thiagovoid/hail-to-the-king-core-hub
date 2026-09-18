@@ -7,7 +7,7 @@ import type { CorePerformanceTargets } from "../../types/index";
 const TARGETS: CorePerformanceTargets = {
   parse: { target: 60, direction: "higher" },
   mechanics: { target: 2, direction: "lower" },
-  cooldowns: { target: 70, direction: "higher" },
+  attack: { target: 70, direction: "higher" },
   preparation: { target: 60, direction: "higher" },
 };
 
@@ -20,7 +20,7 @@ describe("calculateOverallScore", () => {
       playerId: "voidwar",
       parse: 30,
       mechanics: { errors: 4 },
-      uptime: 35,
+      attack: { score: 35, uptime: 35, cooldowns: null },
       preparation: 30,
       deaths: 0,
     };
@@ -30,14 +30,21 @@ describe("calculateOverallScore", () => {
     // metade da meta em todas → 50 em todas
     expect(dimension(result, "parse")?.score).toBe(50);
     expect(dimension(result, "mechanics")?.score).toBe(50);
-    expect(dimension(result, "cooldowns")?.score).toBe(50);
+    expect(dimension(result, "attack")?.score).toBe(50);
     expect(dimension(result, "preparation")?.score).toBe(50);
     expect(result.overall).toBe(50);
   });
 
   it("dá 100 pra quem bate exatamente a meta, inclusive nas de 'quanto menor melhor'", () => {
     const result = calculateOverallScore(
-      { playerId: "voidwar", parse: 60, mechanics: { errors: 2 }, uptime: 70, preparation: 60, deaths: 0 },
+      {
+        playerId: "voidwar",
+        parse: 60,
+        mechanics: { errors: 2 },
+        attack: { score: 70, uptime: 70, cooldowns: null },
+        preparation: 60,
+        deaths: 0,
+      },
       TARGETS
     );
 
@@ -51,7 +58,7 @@ describe("calculateOverallScore", () => {
       TARGETS
     );
 
-    expect(dimension(result, "cooldowns")?.score).toBeNull();
+    expect(dimension(result, "attack")?.score).toBeNull();
     expect(dimension(result, "preparation")?.score).toBeNull();
     // (100*30 + 50*25) / 55 = 77.27 → 77
     expect(result.overall).toBe(77);
@@ -60,7 +67,7 @@ describe("calculateOverallScore", () => {
   it("não pontua mortes — elas saíram da contabilização", () => {
     const result = calculateOverallScore({ playerId: "voidwar", parse: 60, deaths: 16 }, TARGETS);
 
-    expect(result.dimensions.map((d) => d.key)).toEqual(["parse", "mechanics", "cooldowns", "preparation"]);
+    expect(result.dimensions.map((d) => d.key)).toEqual(["parse", "mechanics", "attack", "preparation"]);
     expect(result.overall).toBe(100);
   });
 

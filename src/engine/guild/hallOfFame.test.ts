@@ -6,7 +6,7 @@ import type { CorePerformanceTargets } from "../../types/index";
 const TARGETS: CorePerformanceTargets = {
   parse: { target: 60, direction: "higher" },
   mechanics: { target: 2, direction: "lower" },
-  cooldowns: { target: 70, direction: "higher" },
+  attack: { target: 70, direction: "higher" },
   preparation: { target: 60, direction: "higher" },
 };
 

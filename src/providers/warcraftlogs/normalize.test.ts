@@ -208,8 +208,19 @@ describe("buildRunPlayers", () => {
       ],
     });
 
+    // `attack` entra sem coleta de cooldowns: o uptime sozinho já dá nota,
+    // e a metade que falta fica explicitamente null em vez de zero.
     expect(result).toEqual([
-      { playerId: "voidwar", dps: 48_020, parse: 92, itemLevel: 290, deaths: 1 },
+      {
+        playerId: "voidwar",
+        dps: 48_020,
+        parse: 92,
+        itemLevel: 290,
+        deaths: 1,
+        preparation: undefined,
+        attack: { score: 100, uptime: 100, cooldowns: null },
+        attackDetail: [],
+      },
     ]);
   });
 });

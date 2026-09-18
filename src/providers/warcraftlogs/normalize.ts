@@ -7,6 +7,9 @@
 
 import { calculatePreparation, type PreparationChecklist, type WclCombatantInfo } from "./preparation";
 import { findParse } from "./reportRankings";
+import type { CooldownsDoJogador } from "./cooldownUsage";
+import { buildAttack, calculateUptime } from "../../normalization/buildAttack";
+import type { PlayerPerformance } from "../../types/performance";
 
 export interface WclProfile {
   region: string;
@@ -171,6 +174,9 @@ export interface NormalizedRunPlayer {
   deaths: number;
   /** 0-100; undefined quando o checklist não está configurado ou o log não trouxe combatantInfo. */
   preparation?: number;
+  /** "Atacar corretamente": uptime + cooldowns ofensivos. Ver buildAttack. */
+  attack?: PlayerPerformance["attack"];
+  attackDetail?: PlayerPerformance["attackDetail"];
   /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
   preparationMissing?: string[];
   /**
@@ -211,6 +217,12 @@ export interface BuildRunPlayersInput {
    * calculada e fica undefined, em vez de sair zerada.
    */
   resolvePreparationChecklist?: (playerId: string) => PreparationChecklist | undefined;
+  /**
+   * Tempo em recarga dos cooldowns do jogador na noite, por id do roster.
+   * Ausente quando a coleta de eventos não rodou — a nota de Atacar então
+   * fica só com o uptime, em vez de sumir.
+   */
+  cooldownsByPlayer?: Map<string, CooldownsDoJogador>;
 }
 
 /**
@@ -263,6 +275,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     players,
     parseByPlayer,
     resolvePreparationChecklist,
+    cooldownsByPlayer,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
   const playerDetails = fullTables.summary.data.playerDetails;
@@ -324,6 +337,17 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ? [...new Set(resultadoPreparacao.checks.flatMap((check) => check.missing ?? []))]
       : undefined;
 
+    // Mesma regra do dps/hps: quem trocou de função entre as trys tem
+    // cooldowns de duas specs diferentes misturados na mesma média, e a
+    // nota não significaria nada. Some com a dimensão em vez de publicar
+    // um número diluído.
+    const ataque = trocouDeFuncao
+      ? undefined
+      : buildAttack(
+          calculateUptime(entry.activeTime, aggregateDurationMs),
+          cooldownsByPlayer?.get(player.id)
+        );
+
     result.push({
       playerId: player.id,
       ...(trocouDeFuncao ? {} : { [metricKey]: Math.round(value) }),
@@ -333,6 +357,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       preparation,
       ...(preparationMissing?.length ? { preparationMissing } : {}),
       ...(preparationChecks ? { preparationChecks } : {}),
+      ...(ataque ? { attack: ataque.attack, attackDetail: ataque.attackDetail } : {}),
     });
   }
 

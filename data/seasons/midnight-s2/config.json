@@ -18,10 +18,10 @@
         "direction": "lower",
         "description": "Máximo de mecânicas distintas erradas por try, na média da noite. Calibrado sobre o log de 15/09: faixa de 0,8 a 2,3."
       },
-      "cooldowns": {
+      "attack": {
         "target": 70,
         "direction": "higher",
-        "description": "Uso correto dos cooldowns"
+        "description": "Execução ofensiva na média da noite: metade uptime, metade tempo em recarga dos cooldowns ofensivos."
       },
       "preparation": {
         "target": 60,
