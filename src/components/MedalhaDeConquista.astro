@@ -1,0 +1,150 @@
+---
+/**
+ * Uma medalha de conquista.
+ *
+ * A arte é UMA só por conquista: a quantidade entra como contador sobreposto
+ * no canto, do jeito que aplicativo faz com notificação não lida. Desenhar
+ * uma variante por número seria seis vezes mais arte pra dizer a mesma coisa.
+ *
+ * Medalha é redonda e o emblema de rank é escudo, de propósito: são coisas
+ * diferentes na mesma página e precisam se distinguir de longe.
+ */
+import type { DefinicaoDeConquista } from '@/engine/guild/conquistas';
+
+interface Props {
+  conquista: DefinicaoDeConquista;
+  /** Quantas vezes o jogador levou. Zero mostra a medalha travada. */
+  vezes: number;
+  size?: number;
+}
+
+const { conquista, vezes, size = 64 } = Astro.props;
+
+const conquistada = vezes > 0;
+const id = `medalha-${conquista.id}`;
+
+/** Cada conquista tem seu metal; a travada é chumbo. */
+const METAIS: Record<string, { claro: string; escuro: string; borda: string }> = {
+  mvp: { claro: '#fde047', escuro: '#a16207', borda: '#fef08a' },
+  'maior-dano': { claro: '#f87171', escuro: '#7f1d1d', borda: '#fca5a5' },
+  'maior-cura': { claro: '#4ade80', escuro: '#14532d', borda: '#86efac' },
+  'maior-defesa': { claro: '#60a5fa', escuro: '#1e3a8a', borda: '#93c5fd' },
+  'nota-maxima': { claro: '#fb923c', escuro: '#7c2d12', borda: '#fdba74' },
+  'noite-limpa': { claro: '#e2e8f0', escuro: '#475569', borda: '#f8fafc' },
+  'mecanicas-impecaveis': { claro: '#c084fc', escuro: '#4c1d95', borda: '#d8b4fe' },
+};
+
+const metal = conquistada
+  ? METAIS[conquista.id] ?? METAIS.mvp
+  : { claro: '#475569', escuro: '#1e293b', borda: '#64748b' };
+
+const titulo = conquistada
+  ? `${conquista.nome}${vezes > 1 ? ` — ${vezes} vezes` : ''}. ${conquista.como}`
+  : `${conquista.nome} (ainda não conquistada). ${conquista.como}`;
+---
+
+<div class="relative group shrink-0" style={`width:${size}px;height:${size}px`}>
+  <svg
+    viewBox="0 0 64 64"
+    width={size}
+    height={size}
+    role="img"
+    aria-label={titulo}
+    class={conquistada ? '' : 'opacity-45 saturate-0'}
+  >
+    <defs>
+      <linearGradient id={`${id}-metal`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color={metal.claro} />
+        <stop offset="100%" stop-color={metal.escuro} />
+      </linearGradient>
+    </defs>
+
+    <circle cx="32" cy="32" r="28" fill={`url(#${id}-metal)`} stroke={metal.borda} stroke-width="2.5" />
+    <circle cx="32" cy="32" r="22" fill="none" stroke={metal.borda} stroke-width="1" stroke-opacity="0.4" />
+
+    <g fill="#0b1020" fill-opacity="0.82">
+      {conquista.simbolo === 'coroa' && (
+        <>
+          <path d="M20 40 L16 22 L25 30 L32 18 L39 30 L48 22 L44 40 Z" />
+          <rect x="19" y="42" width="26" height="4" rx="1.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'espada' && (
+        <>
+          <path d="M30 14 H34 L35.5 38 H28.5 Z" />
+          <rect x="22" y="37" width="20" height="4" rx="1.5" />
+          <rect x="29.5" y="40" width="5" height="10" rx="2" />
+        </>
+      )}
+
+      {conquista.simbolo === 'calice' && (
+        <>
+          <path d="M20 16 H44 C44 30 38 36 32 36 C26 36 20 30 20 16 Z" />
+          <rect x="29.5" y="35" width="5" height="10" />
+          <rect x="22" y="45" width="20" height="4" rx="1.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'escudo' && (
+        <path d="M32 14 L47 19 V33 C47 42 40 48 32 51 C24 48 17 42 17 33 V19 Z" />
+      )}
+
+      {conquista.simbolo === 'estrela' && (
+        <path d="M32 13 L37 27 H51 L40 35.5 L44 50 L32 41 L20 50 L24 35.5 L13 27 H27 Z" />
+      )}
+
+      {conquista.simbolo === 'pluma' && (
+        <>
+          <path d="M44 16 C30 18 20 28 19 42 C30 41 41 32 44 16 Z" />
+          <rect x="16" y="42" width="22" height="3.5" rx="1.75" transform="rotate(-38 16 42)" />
+        </>
+      )}
+
+      {conquista.simbolo === 'engrenagem' && (
+        <>
+          <path d="M32 13 L36 19 H43 L44 26 L50 30 L46 36 L48 43 L41 45 L37 51 L32 48 L27 51 L23 45 L16 43 L18 36 L14 30 L20 26 L21 19 H28 Z" />
+          <circle cx="32" cy="32" r="7" fill="#e2e8f0" />
+        </>
+      )}
+    </g>
+
+    {!conquistada && (
+      <path
+        d="M27 32 V28 A5 5 0 0 1 37 28 V32 M24.5 32 H39.5 V44 H24.5 Z"
+        fill="none"
+        stroke="#0b1020"
+        stroke-opacity="0.85"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+    )}
+  </svg>
+
+  {/* Contador sobreposto, como notificação não lida. Só a partir de 2: "1"
+      num canto não acrescenta nada a uma medalha que já está acesa. */}
+  {vezes > 1 && (
+    <span
+      class="absolute -top-1 -right-1 min-w-[22px] h-[22px] px-1.5 rounded-full bg-[#f0a500] text-[#0b1020] text-[11px] font-bold flex items-center justify-center border-2 border-[#0b1020] tabular-nums"
+      aria-hidden="true"
+    >
+      {vezes}
+    </span>
+  )}
+
+  <span
+    role="tooltip"
+    class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-2 z-20 w-52 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity shadow-xl"
+  >
+    <span class="block text-slate-200 text-[11px] font-semibold">
+      {conquista.nome}
+      {vezes > 1 && <span class="text-[#f0a500]"> · {vezes}×</span>}
+    </span>
+
+    <span class="block text-slate-400 text-[11px] leading-relaxed mt-1">{conquista.como}</span>
+
+    {!conquistada && (
+      <span class="block text-slate-500 text-[11px] mt-1.5">Ainda não conquistada.</span>
+    )}
+  </span>
+</div>

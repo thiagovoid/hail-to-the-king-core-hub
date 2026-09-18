@@ -12,6 +12,8 @@ import PerformanceChart from '@/components/PerformanceChart.astro';
 import ContribuicaoForaDeFuncao from '@/components/ContribuicaoForaDeFuncao.astro';
 import PainelDoTank from '@/components/PainelDoTank.astro';
 import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
+import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
+import { contarConquistas } from '@/engine/guild/conquistas';
 
 import {
   buildPlayerSeasonAverage,
@@ -264,6 +266,14 @@ function ordenarPorFuncao<T extends { id: string }>(series: T[]): T[] {
   return [...defesa, ...series.filter((item) => item.id !== 'defense')];
 }
 
+// Recontado do histórico inteiro a cada build: assim uma recoleta que
+// corrige uma noite antiga corrige o placar junto.
+const conquistasDoJogador = contarConquistas(
+  performanceWeeks,
+  seasonJson.config.performanceTargets,
+  (playerId) => roster.find((jogador) => jogador.id === playerId)?.role
+).get(player.id);
+
 const overallScore = hasData
   ? calculateOverallScore(
       ultimaNoite ?? seasonAverage,
@@ -391,6 +401,8 @@ const attendance = calculateAttendance(weeks, player.id);
         />
       )
     }
+
+    <ConquistasDoJogador vezesPorConquista={conquistasDoJogador} />
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
 

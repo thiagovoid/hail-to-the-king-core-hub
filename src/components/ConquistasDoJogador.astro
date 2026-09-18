@@ -1,0 +1,61 @@
+---
+/**
+ * As conquistas do jogador na temporada.
+ *
+ * As que ele não tem aparecem esmaecidas e trancadas, com o texto de como se
+ * consegue — é o que transforma a lista em objetivo em vez de placar. Uma
+ * grade só com o que já foi ganho não dá motivo pra ninguém ir atrás de
+ * nada.
+ */
+import { CONQUISTAS } from '@/engine/guild/conquistas';
+import MedalhaDeConquista from '@/components/MedalhaDeConquista.astro';
+
+interface Props {
+  /** Quantas vezes cada conquista foi levada, por id. */
+  vezesPorConquista?: Map<string, number>;
+}
+
+const { vezesPorConquista = new Map<string, number>() } = Astro.props;
+
+const medalhas = CONQUISTAS.map((conquista) => ({
+  conquista,
+  vezes: vezesPorConquista.get(conquista.id) ?? 0,
+}));
+
+// Conquistadas primeiro, e entre elas as mais repetidas na frente. As
+// travadas ficam juntas no fim, onde leem como "o que falta".
+const ordenadas = [...medalhas].sort((a, b) => b.vezes - a.vezes);
+
+const conquistadas = medalhas.filter((item) => item.vezes > 0).length;
+const totalGanho = medalhas.reduce((soma, item) => soma + item.vezes, 0);
+---
+
+<section class="mb-10">
+  <div class="mb-4">
+    <h2 class="text-xl font-bold text-white">Conquistas</h2>
+
+    <p class="text-sm text-slate-400 mt-1">
+      {conquistadas} de {CONQUISTAS.length} desbloqueadas
+      {totalGanho > conquistadas && ` · ${totalGanho} no total da temporada`}. As esmaecidas ainda
+      não foram conquistadas — passe o mouse pra ver como se consegue.
+    </p>
+  </div>
+
+  <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+    <div class="flex flex-wrap gap-5">
+      {ordenadas.map((item) => (
+        <div class="flex flex-col items-center gap-2 w-24">
+          <MedalhaDeConquista conquista={item.conquista} vezes={item.vezes} />
+
+          <span
+            class={`text-[11px] text-center leading-tight ${
+              item.vezes > 0 ? 'text-slate-300' : 'text-slate-600'
+            }`}
+          >
+            {item.conquista.nome}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
