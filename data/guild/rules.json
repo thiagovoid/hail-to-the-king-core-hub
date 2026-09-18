@@ -1,11 +1,24 @@
 [
   {
+    "category": "core",
+    "label": "Core Nemesis — métricas, badges e zoeira",
+    "rules": [
+      "As métricas existem pra você competir com você mesmo. O gráfico compara a sua noite de hoje com as suas anteriores, e o painel de tank mostra a sua própria média — não a de outro tank.",
+      "Cada função é medida pelo próprio ofício: healer por cura, tank por defesa, dps por dano. Comparar o número bruto de um tank com o de um dps não diz nada sobre nenhum dos dois.",
+      "Nenhuma nota decide quem fica ou quem sai. Score baixo é assunto de conversa e de ajuda, nunca sentença — e quase sempre o que ele aponta é uma mecânica específica pra treinar, não falta de esforço.",
+      "As badges de zoeira são zoeira. \"Poção? Que poção?\" e \"Chão é lava\" existem porque todo mundo esquece a poção e todo mundo morre pro chão. Rir de si mesmo faz parte do grupo; usar a medalha de outra pessoa pra alfinetar, não.",
+      "Trial não tem badge nem entra em ranking. Quem está chegando é avaliado por comportamento, presença e vontade de aprender — medalha é coisa de quem já é de casa.",
+      "Se um número não bater com o seu log, avise. O sistema é novo, já teve erro de cálculo corrigido e vai ter outros — desconfiar em voz alta ajuda mais do que desconfiar em silêncio.",
+      "Buscar a sua melhor versão é o objetivo; ranking interno é só a forma de enxergar movimento. Ninguém aqui está disputando vaga com colega."
+    ]
+  },
+  {
     "category": "behavior",
     "label": "Comportamento",
     "rules": [
       "Trate todos os membros com respeito. Comentários depreciativos, xingamentos e atitudes tóxicas não serão tolerados, independentemente do contexto.",
       "Críticas ao desempenho de outros membros devem ser construtivas e feitas em privado. Feedback negativo em público durante a raid é proibido.",
-      "O chat de voz durante a raid é restrito a comunicações de jogo. Conversas paralelas que atrapalhem o foco da liderança devem ser evitadas.",
+      "Críticas ao desempenho de outros membros são construtivas e feitas em privado. Feedback negativo em público durante a raid é proibido — o resto da conversa é livre.",
       "Conflitos entre membros devem ser resolvidos diretamente ou levados à liderança. Drama público no Discord ou no jogo prejudica o grupo e será investigado.",
       "A inclusão é um valor do core. Nenhum membro será discriminado por raça, gênero, orientação sexual, religião ou qualquer outra característica pessoal."
     ]
@@ -17,7 +30,7 @@
       "Todos os membros devem chegar ao lobby da raid com pelo menos 10 minutos de antecedência em relação ao horário de início oficial.",
       "É obrigatório o uso de consumíveis de alto nível (pré-pots, flasks de raid e comida de 100 stats) em todos os bosses de progressão.",
       "Leia e assista as estratégias de cada boss antes da raid. Não é responsabilidade da liderança explicar mecânicas básicas durante a progressão.",
-      "Durante os pulls, apenas a liderança pode falar no canal de voz principal. Exceções são permitidas para alertas críticos de mecânica.",
+      "O canal de voz é livre — conversa e zoeira fazem parte. Quando alguém chamar uma mecânica ou pedir silêncio pra um pull, a call tem prioridade até o pull acabar.",
       "O afk durante os pulls é proibido. Notifique a liderança antes da raid caso precise de uma pausa planejada.",
       "Todos os personagens devem estar com o item level mínimo exigido para o nível de dificuldade da raid antes de participar."
     ]

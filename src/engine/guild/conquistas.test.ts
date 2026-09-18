@@ -19,7 +19,10 @@ const semana = (date: string, players: WeeklyPerformance["runs"][number]["player
 });
 
 const quantas = (weeks: WeeklyPerformance[], playerId: string, conquista: string) =>
-  contarConquistas(weeks, TARGETS).get(playerId)?.get(conquista) ?? 0;
+  contarConquistas(weeks, TARGETS).get(playerId)?.get(conquista)?.vezes ?? 0;
+
+const detalheDe = (weeks: WeeklyPerformance[], playerId: string, conquista: string) =>
+  contarConquistas(weeks, TARGETS).get(playerId)?.get(conquista)?.detalhe;
 
 describe("contarConquistas", () => {
   it("acumula a mesma conquista ao longo das noites", () => {
@@ -109,5 +112,53 @@ describe("contarConquistas", () => {
       expect(conquista.nome.length).toBeGreaterThan(0);
       expect(conquista.como.length).toBeGreaterThan(0);
     }
+  });
+
+  // "Colecionador — Peçonha Sanguínea, em 11 de 12 trys" conta uma história
+  // que "12 erros mecânicos" não conta.
+  it("batiza a zoeira com a mecânica que mais pegou", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        {
+          playerId: "a",
+          deaths: 1,
+          mechanics: { errors: 2, tries: 12 },
+          mechanicsDetail: [
+            { boss: "Sentinelas", mechanic: "Damage from Blood Venom", label: "Peçonha Sanguínea", tries: 11 },
+            { boss: "Sentinelas", mechanic: "Damage from Toxic", label: "Gotículas", tries: 2 },
+          ],
+        },
+      ]),
+    ];
+
+    expect(quantas(weeks, "a", "colecionador")).toBe(1);
+    expect(detalheDe(weeks, "a", "colecionador")).toBe("Peçonha Sanguínea, em 11 de 12 trys");
+  });
+
+  // Abaixo de 70% das trys não é coleção, é azar.
+  it("não dá Colecionador quando a mecânica pegou pouco", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        {
+          playerId: "a",
+          deaths: 1,
+          mechanics: { errors: 1, tries: 12 },
+          mechanicsDetail: [
+            { boss: "Sentinelas", mechanic: "Damage from Blood Venom", label: "Peçonha", tries: 4 },
+          ],
+        },
+      ]),
+    ];
+
+    expect(quantas(weeks, "a", "colecionador")).toBe(0);
+  });
+
+  it("separa mérito de zoeira", () => {
+    const boas = CONQUISTAS.filter((c) => c.tipo === "boa");
+    const zoeira = CONQUISTAS.filter((c) => c.tipo === "zoeira");
+
+    expect(boas.length).toBeGreaterThan(0);
+    expect(zoeira.length).toBeGreaterThan(0);
+    expect(boas.length + zoeira.length).toBe(CONQUISTAS.length);
   });
 });

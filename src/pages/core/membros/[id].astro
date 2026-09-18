@@ -402,7 +402,10 @@ const attendance = calculateAttendance(weeks, player.id);
       )
     }
 
-    <ConquistasDoJogador vezesPorConquista={conquistasDoJogador} />
+    <ConquistasDoJogador
+      ganhas={conquistasDoJogador}
+      elegivel={player.status === 'member' || player.status === 'veteran'}
+    />
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
 

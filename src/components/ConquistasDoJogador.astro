@@ -2,60 +2,110 @@
 /**
  * As conquistas do jogador na temporada.
  *
+ * Mérito e zoeira ficam em prateleiras separadas porque são coisas
+ * diferentes: uma é o que a pessoa conquistou, a outra é o que o grupo acha
+ * engraçado nela. Misturadas, "Chão é lava" ao lado de "MVP da noite" lê
+ * como se as duas fossem julgamento.
+ *
  * As que ele não tem aparecem esmaecidas e trancadas, com o texto de como se
- * consegue — é o que transforma a lista em objetivo em vez de placar. Uma
- * grade só com o que já foi ganho não dá motivo pra ninguém ir atrás de
- * nada.
+ * consegue — é o que transforma a lista em objetivo em vez de placar.
  */
-import { CONQUISTAS } from '@/engine/guild/conquistas';
+import { CONQUISTAS, type ConquistaGanha } from '@/engine/guild/conquistas';
 import MedalhaDeConquista from '@/components/MedalhaDeConquista.astro';
 
 interface Props {
-  /** Quantas vezes cada conquista foi levada, por id. */
-  vezesPorConquista?: Map<string, number>;
+  /** O que o jogador levou, por id de conquista. */
+  ganhas?: Map<string, ConquistaGanha>;
+  /**
+   * Trial não tem badge. Chegar num grupo novo e encontrar uma parede de
+   * medalhas travadas é o contrário de acolhedor, e conquista é coisa de
+   * quem já é de casa.
+   */
+  elegivel?: boolean;
 }
 
-const { vezesPorConquista = new Map<string, number>() } = Astro.props;
+const { ganhas = new Map<string, ConquistaGanha>(), elegivel = true } = Astro.props;
 
 const medalhas = CONQUISTAS.map((conquista) => ({
   conquista,
-  vezes: vezesPorConquista.get(conquista.id) ?? 0,
+  ganha: ganhas.get(conquista.id),
 }));
 
 // Conquistadas primeiro, e entre elas as mais repetidas na frente. As
 // travadas ficam juntas no fim, onde leem como "o que falta".
-const ordenadas = [...medalhas].sort((a, b) => b.vezes - a.vezes);
+const ordenar = (lista: typeof medalhas) =>
+  [...lista].sort((a, b) => (b.ganha?.vezes ?? 0) - (a.ganha?.vezes ?? 0));
 
-const conquistadas = medalhas.filter((item) => item.vezes > 0).length;
-const totalGanho = medalhas.reduce((soma, item) => soma + item.vezes, 0);
+const prateleiras = [
+  {
+    titulo: 'Conquistas',
+    nota: 'O que você fez de melhor na temporada.',
+    itens: ordenar(medalhas.filter((item) => item.conquista.tipo === 'boa')),
+  },
+  {
+    titulo: 'Pra rir de si mesmo',
+    nota: 'Todo mundo tem. Se alguém usar isso pra alfinetar, o problema é dela.',
+    itens: ordenar(medalhas.filter((item) => item.conquista.tipo === 'zoeira')),
+  },
+];
+
+const desbloqueadas = medalhas.filter((item) => (item.ganha?.vezes ?? 0) > 0).length;
+const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 0), 0);
 ---
 
-<section class="mb-10">
-  <div class="mb-4">
-    <h2 class="text-xl font-bold text-white">Conquistas</h2>
+{
+  elegivel ? (
+    <section class="mb-10">
+      <div class="mb-4">
+        <h2 class="text-xl font-bold text-white">Medalhas</h2>
 
-    <p class="text-sm text-slate-400 mt-1">
-      {conquistadas} de {CONQUISTAS.length} desbloqueadas
-      {totalGanho > conquistadas && ` · ${totalGanho} no total da temporada`}. As esmaecidas ainda
-      não foram conquistadas — passe o mouse pra ver como se consegue.
-    </p>
-  </div>
+        <p class="text-sm text-slate-400 mt-1">
+          {desbloqueadas} de {CONQUISTAS.length} desbloqueadas
+          {totalGanho > desbloqueadas && ` · ${totalGanho} no total da temporada`}. As esmaecidas
+          ainda não foram conquistadas — passe o mouse pra ver como se consegue.
+        </p>
+      </div>
 
-  <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
-    <div class="flex flex-wrap gap-5">
-      {ordenadas.map((item) => (
-        <div class="flex flex-col items-center gap-2 w-24">
-          <MedalhaDeConquista conquista={item.conquista} vezes={item.vezes} />
+      <div class="space-y-4">
+        {prateleiras.map((prateleira) => (
+          <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+            <div class="mb-4">
+              <p class="text-sm font-semibold text-slate-300">{prateleira.titulo}</p>
+              <p class="text-[11px] text-slate-500 mt-0.5">{prateleira.nota}</p>
+            </div>
 
-          <span
-            class={`text-[11px] text-center leading-tight ${
-              item.vezes > 0 ? 'text-slate-300' : 'text-slate-600'
-            }`}
-          >
-            {item.conquista.nome}
-          </span>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+            <div class="flex flex-wrap gap-5">
+              {prateleira.itens.map((item) => (
+                <div class="flex flex-col items-center gap-2 w-24">
+                  <MedalhaDeConquista
+                    conquista={item.conquista}
+                    vezes={item.ganha?.vezes ?? 0}
+                    detalhe={item.ganha?.detalhe ?? null}
+                  />
+
+                  <span
+                    class={`text-[11px] text-center leading-tight ${
+                      (item.ganha?.vezes ?? 0) > 0 ? 'text-slate-300' : 'text-slate-600'
+                    }`}
+                  >
+                    {item.conquista.nome}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  ) : (
+    <section class="mb-10">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+        <p class="text-sm font-semibold text-slate-300">Medalhas</p>
+        <p class="text-sm text-slate-400 mt-1">
+          As medalhas começam quando o trial vira membro. Até lá o que conta é presença,
+          comportamento e vontade de aprender — e ninguém é medido por número.
+        </p>
+      </div>
+    </section>
+  )
+}

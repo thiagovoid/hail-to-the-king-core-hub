@@ -15,10 +15,12 @@ interface Props {
   conquista: DefinicaoDeConquista;
   /** Quantas vezes o jogador levou. Zero mostra a medalha travada. */
   vezes: number;
+  /** Texto da vez mais recente, quando a conquista tem nome próprio. */
+  detalhe?: string | null;
   size?: number;
 }
 
-const { conquista, vezes, size = 64 } = Astro.props;
+const { conquista, vezes, detalhe = null, size = 64 } = Astro.props;
 
 const conquistada = vezes > 0;
 const id = `medalha-${conquista.id}`;
@@ -32,6 +34,14 @@ const METAIS: Record<string, { claro: string; escuro: string; borda: string }> =
   'nota-maxima': { claro: '#fb923c', escuro: '#7c2d12', borda: '#fdba74' },
   'noite-limpa': { claro: '#e2e8f0', escuro: '#475569', borda: '#f8fafc' },
   'mecanicas-impecaveis': { claro: '#c084fc', escuro: '#4c1d95', borda: '#d8b4fe' },
+  relojoeiro: { claro: '#22d3ee', escuro: '#164e63', borda: '#67e8f9' },
+  escoteiro: { claro: '#a3e635', escuro: '#365314', borda: '#bef264' },
+  // As de zoeira ficam num tom mais terroso, pra ler como "outra
+  // prateleira" mesmo quando estão fora da seção delas.
+  'pocao-que-pocao': { claro: '#fbbf24', escuro: '#78350f', borda: '#fcd34d' },
+  descalco: { claro: '#d6d3d1', escuro: '#44403c', borda: '#e7e5e4' },
+  colecionador: { claro: '#fb7185', escuro: '#881337', borda: '#fda4af' },
+  'chao-e-lava': { claro: '#a8a29e', escuro: '#292524', borda: '#d6d3d1' },
 };
 
 const metal = conquistada
@@ -90,6 +100,49 @@ const titulo = conquistada
         <path d="M32 14 L47 19 V33 C47 42 40 48 32 51 C24 48 17 42 17 33 V19 Z" />
       )}
 
+      {conquista.simbolo === 'folha' && (
+        <>
+          <path d="M46 14 C28 14 17 25 17 42 C17 46 18 49 20 51 C34 50 47 38 46 14 Z" />
+          <path d="M20 51 L44 20" fill="none" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+        </>
+      )}
+
+      {conquista.simbolo === 'frasco' && (
+        <>
+          <path d="M27 14 H37 V26 L45 44 A4 4 0 0 1 41 50 H23 A4 4 0 0 1 19 44 L27 26 Z" />
+          <rect x="25" y="11" width="14" height="4" rx="1.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'bota' && (
+        <path d="M22 14 H31 V33 C31 36 33 38 38 39 L46 42 A4 4 0 0 1 48 46 V50 H18 V14 Z" />
+      )}
+
+      {conquista.simbolo === 'alvo' && (
+        <>
+          <circle cx="32" cy="32" r="18" fill="none" stroke="#0b1020" stroke-width="4" />
+          <circle cx="32" cy="32" r="10" fill="none" stroke="#0b1020" stroke-width="4" />
+          <circle cx="32" cy="32" r="3.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'relogio' && (
+        <>
+          <circle cx="32" cy="33" r="18" fill="none" stroke="#0b1020" stroke-width="4" />
+          <path d="M32 22 V33 L40 38" fill="none" stroke="#0b1020" stroke-width="4" stroke-linecap="round" />
+          <rect x="28" y="10" width="8" height="4" rx="1.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'caveira' && (
+        <>
+          <path d="M32 14 C22 14 16 21 16 30 C16 36 19 39 22 41 V47 H42 V41 C45 39 48 36 48 30 C48 21 42 14 32 14 Z" />
+          <circle cx="26" cy="31" r="4.5" fill="#e2e8f0" />
+          <circle cx="38" cy="31" r="4.5" fill="#e2e8f0" />
+          <rect x="29.5" y="38" width="5" height="6" rx="2" fill="#e2e8f0" />
+        </>
+      )}
+
       {conquista.simbolo === 'estrela' && (
         <path d="M32 13 L37 27 H51 L40 35.5 L44 50 L32 41 L20 50 L24 35.5 L13 27 H27 Z" />
       )}
@@ -140,6 +193,10 @@ const titulo = conquistada
       {conquista.nome}
       {vezes > 1 && <span class="text-[#f0a500]"> · {vezes}×</span>}
     </span>
+
+    {detalhe && (
+      <span class="block text-[#f0a500] text-[11px] leading-relaxed mt-1">{detalhe}</span>
+    )}
 
     <span class="block text-slate-400 text-[11px] leading-relaxed mt-1">{conquista.como}</span>
 

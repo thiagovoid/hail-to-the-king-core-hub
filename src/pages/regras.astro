@@ -18,8 +18,15 @@ const categories = allCategories.filter((cat) => cat.rules.length > 0);
 
 const totalRules = categories.reduce((sum, cat) => sum + cat.rules.length, 0);
 
+// O core é separado das regras gerais da guilda: métrica e badge são
+// contrato de convivência, não regulamento, e misturados no meio de loot e
+// recrutamento ninguém leria.
+const doCore = categories.filter((cat) => cat.category === 'core');
+const daGuilda = categories.filter((cat) => cat.category !== 'core');
+
 // Icon map per category id
 const categoryIcons: Record<string, string> = {
+  core:        '🛡',
   behavior:    '🤝',
   raid:        '⚔',
   attendance:  '📅',
@@ -64,8 +71,60 @@ const categoryIcons: Record<string, string> = {
   </section>
 
   <!-- Rule categories — Req 10.1, 10.2, 10.3 -->
+  {
+    doCore.length > 0 && (
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        {doCore.map((cat) => (
+          <section
+            aria-labelledby={`cat-${cat.category}`}
+            class="bg-[#f0a500]/[0.04] border border-[#f0a500]/25 rounded-xl p-6"
+          >
+            <div class="flex items-center gap-3 pb-3 mb-5 border-b border-[#f0a500]/20">
+              <span class="text-2xl" aria-hidden="true">{categoryIcons[cat.category] ?? '📌'}</span>
+
+              <div>
+                <h2 id={`cat-${cat.category}`} class="text-xl font-bold text-[#f0a500]">
+                  {cat.label}
+                </h2>
+                <p class="text-slate-400 text-sm mt-0.5">
+                  Como a gente lê os números e as medalhas aqui dentro.
+                </p>
+              </div>
+
+              <span class="ml-auto text-xs text-slate-400 font-medium tabular-nums">
+                {cat.rules.length} {cat.rules.length !== 1 ? 'regras' : 'regra'}
+              </span>
+            </div>
+
+            <ul class="space-y-3" role="list" aria-label={`Regras de ${cat.label}`}>
+              {cat.rules.map((rule) => (
+                <li
+                  role="listitem"
+                  class="flex items-start gap-3 bg-slate-900/50 border border-[#f0a500]/15 rounded-lg px-4 py-3 text-slate-300 text-sm leading-relaxed"
+                >
+                  <span class="mt-0.5 text-[#f0a500] shrink-0" aria-hidden="true">▸</span>
+                  <span>{rule}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    )
+  }
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
-    {categories.map((cat) => (
+    {daGuilda.length > 0 && (
+      <div class="flex items-center gap-3">
+        <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+        <h2 class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2">
+          Regras gerais da guilda
+        </h2>
+        <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+      </div>
+    )}
+
+    {daGuilda.map((cat) => (
       <section aria-labelledby={`cat-${cat.category}`}>
 
         <!-- Category heading — Req 10.1 -->
