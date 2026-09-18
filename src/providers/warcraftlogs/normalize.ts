@@ -328,7 +328,14 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       );
       if (!entrada) return null;
 
-      const cobertura = calculateCobertura(entrada.total, raidDamageTaken);
+      // Proporcional ao tempo em que a pessoa esteve na luta. Sem isso,
+      // quem jogou 1 de 12 trys aparece cobrindo quase nada e ainda dilui o
+      // quinhão dos outros — foi o que aconteceu com o voidsurge em 15/09.
+      const presenca = cooldownsByPlayer?.get(player.id)?.possibleMs ?? aggregateDurationMs;
+      const danoNoTempoDele =
+        aggregateDurationMs > 0 ? raidDamageTaken * (presenca / aggregateDurationMs) : raidDamageTaken;
+
+      const cobertura = calculateCobertura(entrada.total, danoNoTempoDele);
       return cobertura === undefined ? null : cobertura;
     })
     .filter((valor): valor is number => valor !== null);
@@ -431,25 +438,34 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       autoCura
     );
 
+    const danoDoRaideNoTempoDele =
+      aggregateDurationMs > 0
+        ? raidDamageTaken * (tempoNaLuta / aggregateDurationMs)
+        : raidDamageTaken;
+
     const cura = roles.includes('healers')
       ? buildHealing(
           { effective: entradaDeCura?.total ?? 0, overheal: entradaDeCura?.overheal ?? 0 },
-          raidDamageTaken,
+          danoDoRaideNoTempoDele,
           curaDoRaide
         )
       : undefined;
 
-    // Dano de quem não é dps e cura de quem não é healer: a comparação só
-    // faz sentido entre quem também está fora de função, por isso mora num
-    // campo separado do dps/hps principal.
+    // "Fora de função" é decidido pelo BALDE DA WCL, não pelo cadastro. A
+    // Ligiaf está cadastrada como dps e curou a noite de 15/09 inteira: pelo
+    // cadastro, os 153k de HPS dela virariam "contribuição fora de função",
+    // quando eram o trabalho dela. Quem aparece nos dois baldes não tem
+    // nada fora de função — fez as duas coisas de verdade.
+    // Sem papel no log não há "fora de função": ausência de informação não
+    // pode virar afirmação.
     const segundos = tempoNaLuta / 1000;
     const offRole =
-      segundos > 0
+      segundos > 0 && roles.length > 0
         ? {
-            ...(metricKey === 'hps' && entradaDeDano?.total
+            ...(!roles.includes('dps') && entradaDeDano?.total
               ? { dps: Math.round(entradaDeDano.total / segundos) }
               : {}),
-            ...(metricKey === 'dps' && entradaDeCura?.total
+            ...(!roles.includes('healers') && entradaDeCura?.total
               ? { hps: Math.round(entradaDeCura.total / segundos) }
               : {}),
           }
