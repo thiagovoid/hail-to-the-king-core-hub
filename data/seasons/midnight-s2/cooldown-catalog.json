@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T05:58:25.351Z",
+  "generatedAt": "2026-09-18T06:00:21.263Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -49,11 +49,23 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1719": {
+      "name": "Recklessness",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1856": {
       "name": "Vanish",
       "cooldownMs": 120000,
       "charges": 1,
       "kind": "utility"
+    },
+    "2050": {
+      "name": "Holy Word: Serenity",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "2825": {
       "name": "Bloodlust",
@@ -82,6 +94,12 @@
     "6262": {
       "name": "Healthstone",
       "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "6789": {
+      "name": "Mortal Coil",
+      "cooldownMs": 45000,
       "charges": 1,
       "kind": "defensive"
     },
@@ -130,6 +148,12 @@
     "15487": {
       "name": "Silence",
       "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "18499": {
+      "name": "Berserker Rage",
+      "cooldownMs": 60000,
       "charges": 1,
       "kind": "utility"
     },
@@ -265,6 +289,12 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "47788": {
+      "name": "Guardian Spirit",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "48020": {
       "name": "Demonic Circle: Teleport",
       "cooldownMs": 30000,
@@ -349,6 +379,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "58984": {
+      "name": "Shadowmeld",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "59752": {
       "name": "Will to Survive",
       "cooldownMs": 180000,
@@ -372,6 +408,12 @@
       "cooldownMs": 120000,
       "charges": 1,
       "kind": "utility"
+    },
+    "64843": {
+      "name": "Divine Hymn",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "73325": {
       "name": "Leap of Faith",
@@ -402,6 +444,12 @@
       "cooldownMs": 180000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "88625": {
+      "name": "Holy Word: Chastise",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
     },
     "97462": {
       "name": "Rallying Cry",
@@ -613,6 +661,12 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "200183": {
+      "name": "Apotheosis",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "205021": {
       "name": "Ray of Frost",
       "cooldownMs": 60000,
@@ -781,6 +835,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "383013": {
+      "name": "Poison Cleansing Totem",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "383781": {
       "name": "Algeth'ar Puzzle",
       "cooldownMs": 120000,
@@ -858,6 +918,12 @@
       "cooldownMs": 45000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "442726": {
+      "name": "Malevolence",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
     },
     "443454": {
       "name": "Ancestral Swiftness",
@@ -1051,6 +1117,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1291894": {
+      "name": "Soulcoiler Ritual Vessel",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "1293316": {
       "name": "Empowering Venom",
       "cooldownMs": 120000,
@@ -1072,6 +1144,12 @@
     "1297145": {
       "name": "Spirit-Rending Poison",
       "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "1297761": {
+      "name": "Voracious Heart of Ula'tek",
+      "cooldownMs": 90000,
       "charges": 1,
       "kind": "offensive"
     },
@@ -1118,7 +1196,9 @@
     2645,
     3714,
     4987,
+    5308,
     6343,
+    6552,
     6572,
     6673,
     7384,
@@ -1126,12 +1206,14 @@
     8092,
     8676,
     12294,
+    14914,
     15407,
     17364,
     19750,
     20271,
     20473,
     21562,
+    23881,
     23920,
     23922,
     24275,
@@ -1142,6 +1224,8 @@
     31935,
     32223,
     32379,
+    33076,
+    33757,
     34026,
     34914,
     47528,
@@ -1166,6 +1250,7 @@
     60103,
     61295,
     62124,
+    64844,
     73685,
     77130,
     77472,
@@ -1173,6 +1258,7 @@
     82326,
     83245,
     85222,
+    85288,
     85673,
     85948,
     96231,
@@ -1187,10 +1273,12 @@
     121536,
     126664,
     131347,
+    132157,
     156322,
     162794,
     163201,
     183752,
+    184367,
     184575,
     185123,
     185763,
@@ -1200,6 +1288,7 @@
     188389,
     188443,
     188499,
+    190411,
     190456,
     192063,
     192106,
@@ -1243,6 +1332,8 @@
     281000,
     317920,
     318038,
+    335096,
+    335097,
     335467,
     341263,
     342247,
@@ -1265,7 +1356,9 @@
     441424,
     441426,
     441776,
+    442804,
     444995,
+    445468,
     450983,
     452201,
     454351,
@@ -1285,6 +1378,8 @@
     1248829,
     1253593,
     1259790,
+    1261153,
+    1262763,
     1263768,
     1264359,
     1264426,
