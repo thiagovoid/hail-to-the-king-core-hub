@@ -59,13 +59,51 @@ export interface OverallPerformanceScore {
  * O peso 20 põe "Curar" acima de Atacar e Defender e abaixo de Mecânicas:
  * pro healer é o ofício principal, mas não apaga o resto.
  */
+/** Função que a régua usa. Não é o cargo no roster — ver funcaoEfetiva. */
+export type FuncaoDoJogador = "dps" | "tank" | "healer";
+
+/**
+ * Peso de cada dimensão POR FUNÇÃO. Cada coluna soma 100.
+ *
+ * Healer cura, tank segura, dps bate — e a nota tem que refletir isso. Medir
+ * um tank com Parse valendo 35 é avaliá-lo pelo dano, que não é o ofício
+ * dele; medir um healer por Atacar é pior ainda.
+ *
+ * Mecânicas fica em 25 pras três de propósito: errar mecânica custa wipe
+ * independente da função, e um tank que segura muito bem ignorando mecânica
+ * precisa cair mesmo assim.
+ *
+ * Preparação é 15 no tank contra 10 nos outros: consumível de tank é
+ * sobrevivência, não só número.
+ */
+const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
+  dps: { parse: 35, mechanics: 25, attack: 20, defense: 10, healing: 0, preparation: 10 },
+  tank: { parse: 15, mechanics: 25, attack: 15, defense: 30, healing: 0, preparation: 15 },
+  healer: { parse: 20, mechanics: 25, attack: 5, defense: 10, healing: 30, preparation: 10 },
+};
+
+/**
+ * A função pela qual a pessoa é medida NESTA noite.
+ *
+ * Ter nota de cura significa que a WCL registrou a pessoa no balde de
+ * healers, e isso vale mais que o cadastro: a Ligiaf está no roster como dps
+ * e passou a noite de 15/09 curando. Medi-la com os pesos de dps daria peso
+ * 20 a "Atacar", que ela nem tem, e zero ao que ela realmente fez.
+ */
+export function funcaoEfetiva(
+  performance: PlayerPerformance,
+  funcaoDoRoster?: FuncaoDoJogador
+): FuncaoDoJogador {
+  if (performance.healing !== undefined) return "healer";
+  return funcaoDoRoster ?? "dps";
+}
+
 const DIMENSION_META: Record<
   ScoreDimensionKey,
-  { label: string; weight: number; unit: string; description: string; source: string }
+  { label: string; unit: string; description: string; source: string }
 > = {
   parse: {
     label: "Parse",
-    weight: 35,
     unit: "percentil",
     description:
       "Percentil do seu dano (ou cura) comparado com jogadores da mesma spec no mesmo boss e dificuldade. 60 significa que você ficou acima de 60% deles.",
@@ -74,7 +112,6 @@ const DIMENSION_META: Record<
   },
   mechanics: {
     label: "Mecânicas",
-    weight: 30,
     unit: "erros por try",
     description:
       "Média de mecânicas DISTINTAS erradas por try — dano evitável tomado, soak perdido. Errar a mesma mecânica cinco vezes na mesma try conta uma: a régua é quantas coisas diferentes deram errado, não quantas pancadas você levou.",
@@ -83,7 +120,6 @@ const DIMENSION_META: Record<
   },
   attack: {
     label: "Atacar",
-    weight: 15,
     unit: "% de execução",
     description:
       "Quanto da luta você passou atacando (uptime) e quanto do tempo seus cooldowns ofensivos ficaram em recarga. Cooldown guardado é dano que não aconteceu: a régua é tempo em recarga, não quantidade de usos.",
@@ -92,7 +128,6 @@ const DIMENSION_META: Record<
   },
   defense: {
     label: "Defender",
-    weight: 10,
     unit: "% de execução",
     description:
       "Quanto do tempo seus cooldowns defensivos ficaram em recarga. Dano recebido e mitigação aparecem ao lado como contexto, mas não entram na nota: a mitigação ficou entre 38% e 48% pro raide inteiro, com os tanks por último — ela mede armadura e buff, não decisão.",
@@ -101,7 +136,6 @@ const DIMENSION_META: Record<
   },
   healing: {
     label: "Curar",
-    weight: 20,
     unit: "% de execução",
     description:
       "Quanto do dano que o raide tomou passou pelas suas mãos, medido contra o quinhão que caberia a você, mais o quanto da sua cura NÃO caiu em quem já estava cheio. Curar mais não é curar melhor: quem cura muito costuma estar num raide que apanhou muito.",
@@ -110,7 +144,6 @@ const DIMENSION_META: Record<
   },
   preparation: {
     label: "Preparação",
-    weight: 10,
     unit: "% pronto",
     description:
       "Encantos e gemas do equipamento, mais os consumíveis da noite (flask, comida, poção, pedra de vida). Vale a presença, não o item exato: encanto ou gema fora do BIS conta igual.",
@@ -148,12 +181,16 @@ function progress(value: number | undefined, target: CoreTarget): number | null 
  */
 export function calculateOverallScore(
   performance: PlayerPerformance,
-  targets: CorePerformanceTargets
+  targets: CorePerformanceTargets,
+  funcaoDoRoster?: FuncaoDoJogador
 ): OverallPerformanceScore {
+  const pesos = PESOS_POR_FUNCAO[funcaoEfetiva(performance, funcaoDoRoster)];
+
   const dimensions: ScoreDimension[] = [
     {
       key: "parse",
       ...DIMENSION_META.parse,
+      weight: pesos.parse,
       target: targets.parse,
       value: performance.parse ?? null,
       score: progress(performance.parse, targets.parse),
@@ -161,6 +198,7 @@ export function calculateOverallScore(
     {
       key: "mechanics",
       ...DIMENSION_META.mechanics,
+      weight: pesos.mechanics,
       target: targets.mechanics,
       value: performance.mechanics?.errors ?? null,
       score: progress(performance.mechanics?.errors, targets.mechanics),
@@ -168,6 +206,7 @@ export function calculateOverallScore(
     {
       key: "attack",
       ...DIMENSION_META.attack,
+      weight: pesos.attack,
       target: targets.attack,
       value: performance.attack?.score ?? null,
       score: progress(performance.attack?.score, targets.attack),
@@ -175,6 +214,7 @@ export function calculateOverallScore(
     {
       key: "defense",
       ...DIMENSION_META.defense,
+      weight: pesos.defense,
       target: targets.defense,
       value: performance.defense?.score ?? null,
       score: progress(performance.defense?.score ?? undefined, targets.defense),
@@ -182,6 +222,7 @@ export function calculateOverallScore(
     {
       key: "healing",
       ...DIMENSION_META.healing,
+      weight: pesos.healing,
       target: targets.healing,
       value: performance.healing?.score ?? null,
       score: progress(performance.healing?.score, targets.healing),
@@ -189,6 +230,7 @@ export function calculateOverallScore(
     {
       key: "preparation",
       ...DIMENSION_META.preparation,
+      weight: pesos.preparation,
       target: targets.preparation,
       value: performance.preparation ?? null,
       score: progress(performance.preparation, targets.preparation),

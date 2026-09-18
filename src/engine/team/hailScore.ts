@@ -12,7 +12,14 @@
 
 import type { PerformanceRun, WeeklyPerformance } from "../../types/performance";
 import type { CorePerformanceTargets } from "../../types/index";
-import { calculateOverallScore } from "../scores";
+import { calculateOverallScore, type FuncaoDoJogador } from "../scores";
+
+/**
+ * Diz a função de cada jogador. Vem de fora porque o week-NN.json guarda
+ * desempenho, não cadastro — e sem isso o Hail Score mediria tank e healer
+ * com a régua de dps.
+ */
+export type FuncaoPorJogador = (playerId: string) => FuncaoDoJogador | undefined;
 
 export interface TituloDoHailScore {
   /** Piso da faixa, 0-100. */
@@ -44,9 +51,13 @@ export function tituloDoHailScore(valor: number): TituloDoHailScore {
  * noite sem dado não vira zero, pela mesma razão que uma dimensão sem dado
  * sai da média em vez de pesar contra.
  */
-export function hailScoreDaRun(run: PerformanceRun, targets: CorePerformanceTargets): number | null {
+export function hailScoreDaRun(
+  run: PerformanceRun,
+  targets: CorePerformanceTargets,
+  funcaoDe?: FuncaoPorJogador
+): number | null {
   const notas = run.players
-    .map((player) => calculateOverallScore(player, targets).overall)
+    .map((player) => calculateOverallScore(player, targets, funcaoDe?.(player.playerId)).overall)
     .filter((nota): nota is number => nota !== null);
 
   if (notas.length === 0) return null;
@@ -62,11 +73,12 @@ export interface PontoDoHailScore {
 /** A série do Hail Score ao longo da temporada, em ordem cronológica. */
 export function serieDoHailScore(
   weeks: WeeklyPerformance[],
-  targets: CorePerformanceTargets
+  targets: CorePerformanceTargets,
+  funcaoDe?: FuncaoPorJogador
 ): PontoDoHailScore[] {
   return weeks
     .flatMap((week) => week.runs)
-    .map((run) => ({ date: run.date, nota: hailScoreDaRun(run, targets) }))
+    .map((run) => ({ date: run.date, nota: hailScoreDaRun(run, targets, funcaoDe) }))
     .filter((ponto): ponto is { date: string; nota: number } => ponto.nota !== null)
     .sort((a, b) => a.date.localeCompare(b.date))
     .map((ponto) => ({ date: ponto.date, value: ponto.nota }));

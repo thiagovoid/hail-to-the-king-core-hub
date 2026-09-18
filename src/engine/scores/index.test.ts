@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { calculateOverallScore } from "./index";
+import { calculateOverallScore, funcaoEfetiva } from "./index";
 import type { PlayerPerformance } from "../../types/performance";
 import type { CorePerformanceTargets } from "../../types/index";
+
+const HEALING = { score: 80, coverage: 20, share: 100, overheal: 25 };
 
 /** Mesmas metas do core em data/seasons/midnight-s2/config.json. */
 const TARGETS: CorePerformanceTargets = {
@@ -54,7 +56,8 @@ describe("calculateOverallScore", () => {
   });
 
   it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
-    // Só parse (peso 30) e mecânicas (peso 25) têm dado → denominador 55.
+    // Sem função informada, vale a régua de dps: parse 35 e mecânicas 25 têm
+    // dado → denominador 60.
     const result = calculateOverallScore(
       { playerId: "voidwar", parse: 60, mechanics: { errors: 4 }, deaths: 0 },
       TARGETS
@@ -62,8 +65,8 @@ describe("calculateOverallScore", () => {
 
     expect(dimension(result, "attack")?.score).toBeNull();
     expect(dimension(result, "preparation")?.score).toBeNull();
-    // (100*30 + 50*25) / 55 = 77.27 → 77
-    expect(result.overall).toBe(77);
+    // (100*35 + 50*25) / 60 = 79.16 → 79
+    expect(result.overall).toBe(79);
   });
 
   it("não pontua mortes — elas saíram da contabilização", () => {
@@ -92,5 +95,71 @@ describe("calculateOverallScore", () => {
 
     expect(dimension(result, "parse")?.target).toEqual({ target: 60, direction: "higher" });
     expect(dimension(result, "mechanics")?.target).toEqual({ target: 2, direction: "lower" });
+  });
+});
+
+// Healer cura, tank segura, dps bate — e a nota tem que refletir isso.
+describe("pesos por função", () => {
+  const base: PlayerPerformance = {
+    playerId: "x",
+    deaths: 0,
+    parse: 30,
+    mechanics: { errors: 2 },
+    attack: { score: 70, uptime: 70, cooldowns: null },
+    defense: { score: 30, mitigation: 40, dtps: 50_000 },
+    preparation: 60,
+  };
+
+  const peso = (result: ReturnType<typeof calculateOverallScore>, chave: string) =>
+    result.dimensions.find((d) => d.key === chave)?.weight;
+
+  it("dá o maior peso a Defender no tank", () => {
+    const r = calculateOverallScore(base, TARGETS, "tank");
+    expect(peso(r, "defense")).toBe(30);
+    expect(peso(r, "parse")).toBe(15);
+  });
+
+  it("dá o maior peso a Parse no dps", () => {
+    const r = calculateOverallScore(base, TARGETS, "dps");
+    expect(peso(r, "parse")).toBe(35);
+    expect(peso(r, "defense")).toBe(10);
+  });
+
+  it("dá o maior peso a Curar no healer", () => {
+    const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "healer");
+    expect(peso(r, "healing")).toBe(30);
+    expect(peso(r, "attack")).toBe(5);
+  });
+
+  it("mantém Mecânicas em 25 nas três funções", () => {
+    for (const funcao of ["dps", "tank", "healer"] as const) {
+      expect(peso(calculateOverallScore(base, TARGETS, funcao), "mechanics")).toBe(25);
+    }
+  });
+
+  it("cada função soma 100 entre as dimensões que se aplicam a ela", () => {
+    const somaDe = (funcao: "dps" | "tank" | "healer", performance: typeof base) =>
+      calculateOverallScore(performance, TARGETS, funcao).dimensions.reduce(
+        (soma, d) => soma + d.weight,
+        0
+      );
+
+    // Curar tem peso 0 em dps e tank, então a soma das seis dá 100 do mesmo
+    // jeito que a das cinco que se aplicam.
+    expect(somaDe("dps", base)).toBe(100);
+    expect(somaDe("tank", base)).toBe(100);
+    expect(somaDe("healer", { ...base, healing: HEALING })).toBe(100);
+  });
+
+  // A Ligiaf está cadastrada como dps e passou a noite de 15/09 curando.
+  // Medi-la com a régua de dps daria peso 20 ao que ela não fez.
+  it("mede como healer quem curou, mesmo cadastrado como dps", () => {
+    const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "dps");
+    expect(peso(r, "healing")).toBe(30);
+    expect(funcaoEfetiva({ ...base, healing: HEALING }, "dps")).toBe("healer");
+  });
+
+  it("cai na régua de dps quando ninguém informa a função", () => {
+    expect(funcaoEfetiva(base)).toBe("dps");
   });
 });

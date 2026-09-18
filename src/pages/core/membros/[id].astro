@@ -264,7 +264,11 @@ function ordenarPorFuncao<T extends { id: string }>(series: T[]): T[] {
 }
 
 const overallScore = hasData
-  ? calculateOverallScore(ultimaNoite ?? seasonAverage, seasonJson.config.performanceTargets)
+  ? calculateOverallScore(
+      ultimaNoite ?? seasonAverage,
+      seasonJson.config.performanceTargets,
+      player.role
+    )
   : undefined;
 
 const coachRecommendation = overallScore

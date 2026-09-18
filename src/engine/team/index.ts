@@ -1,6 +1,6 @@
 import type { PlayerPerformance, PerformanceRun, WeeklyPerformance } from "../../types/performance";
 import type { CorePerformanceTargets } from "../../types/index";
-import { calculateOverallScore } from "../scores";
+import { calculateOverallScore, type FuncaoDoJogador } from "../scores";
 
 export interface CoreAverages {
   dps: number | null;
@@ -65,7 +65,7 @@ export function calculateCoreAverages(weeks: WeeklyPerformance[]): CoreAverages 
  */
 export function buildCoreRanking(
   weeks: WeeklyPerformance[],
-  players: Array<{ id: string; name: string }>,
+  players: Array<{ id: string; name: string; role?: FuncaoDoJogador }>,
   targets: CorePerformanceTargets
 ): CoreRankingEntry[] {
   const run = getLatestRun(weeks);
@@ -75,7 +75,7 @@ export function buildCoreRanking(
       (entry) => entry.playerId === player.id
     );
     const overall = performance
-      ? calculateOverallScore(performance, targets).overall
+      ? calculateOverallScore(performance, targets, player.role).overall
       : null;
 
     return { playerId: player.id, playerName: player.name, overall };

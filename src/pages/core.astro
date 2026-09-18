@@ -42,7 +42,10 @@ const coreHealth = calculateCoreHealth(performanceWeeks, players, targets, bosse
 
 // Hail Score: a nota do core inteiro, noite a noite. Entra como a primeira
 // aba do gráfico porque é a leitura de cima — as outras explicam ela.
-const hailScore = serieDoHailScore(performanceWeeks, targets);
+const funcaoDoJogador = (playerId: string) =>
+  players.find((jogador) => jogador.id === playerId)?.role;
+
+const hailScore = serieDoHailScore(performanceWeeks, targets, funcaoDoJogador);
 const hailScoreAtual = hailScore.at(-1)?.value ?? null;
 const hailScoreAnterior = hailScore.at(-2)?.value ?? null;
 const hailScoreData = hailScore.at(-1)?.date ?? null;
