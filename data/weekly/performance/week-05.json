@@ -137,17 +137,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 61,
+            "score": 66.8,
             "uptime": 88.4,
-            "cooldowns": 33.6
+            "cooldowns": 45.2
           },
           "attackDetail": [
-            {
-              "spellId": 1250580,
-              "name": "Seed of the Devouring Wild",
-              "casts": 4,
-              "efficiency": 10.5
-            },
             {
               "spellId": 432472,
               "name": "Sacred Weapon",
@@ -955,17 +949,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 72.3,
+            "score": 94.5,
             "uptime": 89.7,
-            "cooldowns": 55
+            "cooldowns": 99.3
           },
           "attackDetail": [
-            {
-              "spellId": 198103,
-              "name": "Earth Elemental",
-              "casts": 6,
-              "efficiency": 10.6
-            },
             {
               "spellId": 114051,
               "name": "Ascendance",
@@ -1609,7 +1597,7 @@
           "dps": 34466,
           "parse": 12,
           "itemLevel": 290,
-          "preparation": 45,
+          "preparation": 44,
           "preparationChecks": 2,
           "attack": {
             "score": 97.4,
@@ -1627,7 +1615,7 @@
           "deaths": 9,
           "mechanics": {
             "errors": 1,
-            "tries": 7
+            "tries": 9
           },
           "preparationMissing": [
             "Flask/comida",
@@ -1639,13 +1627,13 @@
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 4
+              "tries": 5
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 3
+              "tries": 4
             }
           ]
         },
@@ -1713,11 +1701,10 @@
           "dps": 47057,
           "parse": 30,
           "itemLevel": 316,
-          "preparation": 67,
+          "preparation": 68,
           "preparationMissing": [
             "Botas",
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "attack": {
@@ -1747,27 +1734,27 @@
           ],
           "deaths": 11,
           "mechanics": {
-            "errors": 1.3,
-            "tries": 10
+            "errors": 1.5,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 5
+              "tries": 7
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 4
+              "tries": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 2
+              "tries": 3
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -1844,7 +1831,7 @@
           "hps": 175882,
           "parse": 90,
           "itemLevel": 316,
-          "preparation": 30,
+          "preparation": 29,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1879,26 +1866,26 @@
           "deaths": 11,
           "mechanics": {
             "errors": 2.3,
-            "tries": 10
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 9
+              "tries": 11
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 7
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 6
+              "tries": 8
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -1913,7 +1900,7 @@
           "hps": 210628,
           "parse": 18,
           "itemLevel": 320,
-          "preparation": 66,
+          "preparation": 65,
           "preparationMissing": [
             "Pernas",
             "Poção",
@@ -1941,27 +1928,27 @@
           ],
           "deaths": 9,
           "mechanics": {
-            "errors": 2,
-            "tries": 10
+            "errors": 2.1,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 9
+              "tries": 11
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 6
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 3
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -1982,7 +1969,7 @@
           "dps": 96868,
           "parse": 51,
           "itemLevel": 316,
-          "preparation": 65,
+          "preparation": 62,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -2018,21 +2005,21 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 1.1,
-            "tries": 10
+            "errors": 1,
+            "tries": 12
           },
           "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 4
+            },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
               "tries": 4
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "tries": 3
             },
             {
               "boss": "Sentinelas Sepultados",
@@ -2053,7 +2040,7 @@
           "dps": 90323,
           "parse": 23,
           "itemLevel": 316,
-          "preparation": 26,
+          "preparation": 25,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -2087,21 +2074,21 @@
           ],
           "deaths": 11,
           "mechanics": {
-            "errors": 0.7,
-            "tries": 10
+            "errors": 0.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 3
+              "tries": 5
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 3
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -2116,7 +2103,7 @@
           "dps": 106288,
           "parse": 46,
           "itemLevel": 319,
-          "preparation": 76,
+          "preparation": 75,
           "preparationMissing": [
             "Elmo",
             "Botas",
@@ -2150,27 +2137,27 @@
           ],
           "deaths": 9,
           "mechanics": {
-            "errors": 1.3,
-            "tries": 10
+            "errors": 1.4,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 6
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Blood Venom",
-              "label": "Peçonha Sanguínea",
-              "tries": 3
+              "tries": 7
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 3
+              "tries": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -2185,7 +2172,7 @@
           "dps": 129010,
           "parse": 69,
           "itemLevel": 322,
-          "preparation": 69,
+          "preparation": 68,
           "preparationChecks": 2,
           "attack": {
             "score": 83.8,
@@ -2208,8 +2195,8 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 1.5,
-            "tries": 10
+            "errors": 1.4,
+            "tries": 12
           },
           "preparationMissing": [
             "Pedra de vida",
@@ -2220,13 +2207,13 @@
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 7
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 4
+              "tries": 5
             },
             {
               "boss": "Sentinelas Sepultados",
@@ -2247,7 +2234,7 @@
           "dps": 109362,
           "parse": 48,
           "itemLevel": 320,
-          "preparation": 78,
+          "preparation": 77,
           "preparationMissing": [
             "Elmo",
             "Pedra de vida"
@@ -2292,27 +2279,27 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 2.2,
-            "tries": 10
+            "errors": 2.3,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 9
+              "tries": 11
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 6
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 5
+              "tries": 6
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -2333,7 +2320,7 @@
           "dps": 106196,
           "parse": 31,
           "itemLevel": 321,
-          "preparation": 71,
+          "preparation": 69,
           "preparationMissing": [
             "Elmo",
             "Cintura",
@@ -2343,17 +2330,11 @@
           ],
           "preparationChecks": 2,
           "attack": {
-            "score": 74.9,
+            "score": 97.8,
             "uptime": 97.1,
-            "cooldowns": 52.7
+            "cooldowns": 98.5
           },
           "attackDetail": [
-            {
-              "spellId": 198103,
-              "name": "Earth Elemental",
-              "casts": 2,
-              "efficiency": 6.8
-            },
             {
               "spellId": 114051,
               "name": "Ascendance",
@@ -2364,20 +2345,20 @@
           "deaths": 11,
           "mechanics": {
             "errors": 1.8,
-            "tries": 10
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 8
+              "tries": 10
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 5
+              "tries": 7
             },
             {
               "boss": "Sentinelas Sepultados",
@@ -2410,7 +2391,7 @@
           "dps": 55444,
           "parse": 7,
           "itemLevel": 304,
-          "preparation": 68,
+          "preparation": 65,
           "preparationChecks": 2,
           "attack": {
             "score": 78.8,
@@ -2439,8 +2420,8 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 1.6,
-            "tries": 10
+            "errors": 1.8,
+            "tries": 12
           },
           "preparationMissing": [
             "Pedra de vida",
@@ -2451,19 +2432,19 @@
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
               "tries": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 5
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Living Venom",
-              "label": "Peçonha Viva",
-              "tries": 4
+              "tries": 6
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -2514,7 +2495,7 @@
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
-            "tries": 10
+            "tries": 12
           },
           "preparationMissing": [
             "Pedra de vida"
@@ -2524,13 +2505,13 @@
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 8
+              "tries": 10
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 6
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
@@ -2551,7 +2532,7 @@
           "dps": 76783,
           "parse": 12,
           "itemLevel": 315,
-          "preparation": 63,
+          "preparation": 62,
           "preparationChecks": 2,
           "attack": {
             "score": 80.3,
@@ -2587,7 +2568,7 @@
           "deaths": 12,
           "mechanics": {
             "errors": 1.8,
-            "tries": 10
+            "tries": 12
           },
           "preparationMissing": [
             "Poção",
@@ -2598,19 +2579,19 @@
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 9
+              "tries": 10
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 5
+              "tries": 6
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 3
+              "tries": 4
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -2623,7 +2604,7 @@
         {
           "playerId": "ligiaf",
           "parse": 81,
-          "preparation": 59,
+          "preparation": 60,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -2633,27 +2614,27 @@
           "preparationChecks": 2,
           "deaths": 8,
           "mechanics": {
-            "errors": 1.7,
-            "tries": 10
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Toxic Droplets",
               "label": "Gotículas Tóxicas",
-              "tries": 6
+              "tries": 8
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 6
+              "tries": 7
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 4
+              "tries": 6
             },
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -2668,13 +2649,13 @@
           "dps": 66751,
           "parse": 9,
           "itemLevel": 303,
-          "preparation": 51,
+          "preparation": 52,
           "preparationMissing": [
             "Peito",
             "Botas",
+            "Pedra de vida",
             "Flask/comida",
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "attack": {
@@ -2716,21 +2697,21 @@
           ],
           "deaths": 10,
           "mechanics": {
-            "errors": 1.7,
-            "tries": 10
+            "errors": 1.8,
+            "tries": 12
           },
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Living Venom",
               "label": "Peçonha Viva",
-              "tries": 7
+              "tries": 9
             },
             {
               "boss": "Sentinelas Sepultados",
               "mechanic": "Damage from Blood Venom",
               "label": "Peçonha Sanguínea",
-              "tries": 4
+              "tries": 6
             },
             {
               "boss": "Sentinelas Sepultados",
