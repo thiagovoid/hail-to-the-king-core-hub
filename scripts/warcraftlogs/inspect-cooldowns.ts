@@ -71,6 +71,12 @@ const eventos = await wcl.fetchCastEvents(code, fights);
 const alvos = [...atores.entries()].filter(([, nome]) => !filtro || nome.toLowerCase().includes(filtro));
 if (alvos.length === 0) throw new Error(`Nenhum jogador casa com "${filtro}"`);
 
+const danoRecebido = new Map(
+  (await wcl.fetchDamageTaken(code, fights.map((f) => f.id))).map((e) => [e.id ?? -1, e])
+);
+
+const duracaoMs = fights.reduce((soma, f) => soma + (f.endTime - f.startTime), 0);
+
 const shares = buildDamageShares(
   await wcl.fetchDamageAbilities(code, fights.map((f) => f.id), alvos.map(([id]) => id))
 );
@@ -128,6 +134,19 @@ for (const [sourceID, nome] of alvos) {
 
   const semRecarga = linhas.filter(([v]) => v === "sem recarga").length;
   console.log(`   (${semRecarga} magia(s) sem recarga suficiente pro Wowhead considerar cooldown)`);
+
+  const recebido = danoRecebido.get(sourceID);
+  if (recebido) {
+    const tomado = recebido.total ?? 0;
+    const cortado = recebido.totalReduced ?? 0;
+    const vinha = tomado + cortado;
+    console.log("");
+    console.log(
+      `   dano recebido: ${tomado.toLocaleString("pt-BR")} tomado | ${cortado.toLocaleString("pt-BR")} cortado` +
+        ` | ${vinha > 0 ? ((cortado / vinha) * 100).toFixed(1) : "0"}% mitigado` +
+        ` | ${Math.round(tomado / (duracaoMs / 1000)).toLocaleString("pt-BR")} DTPS`
+    );
+  }
 
   console.log("");
   console.log("   maiores fontes de dano do jogador:");

@@ -397,6 +397,31 @@ ${campos}
     return resultado;
   }
 
+  /**
+   * Dano recebido por jogador na noite.
+   *
+   * `totalReduced` é o insumo da metade de mitigação de "Defender": quanto
+   * do dano que vinha na sua direção foi cortado por armadura, absorção e
+   * cooldown. Diferente de dano causado, aqui a tabela agregada serve — só
+   * precisamos do total por jogador, não da quebra por habilidade.
+   */
+  async fetchDamageTaken(
+    reportCode: string,
+    fightIDs: number[]
+  ): Promise<Array<{ id?: number; name?: string; total?: number; totalReduced?: number }>> {
+    const data = await wclGraphql<{ reportData: { report: { table?: unknown } | null } }>(
+      `query($code: String!, $fightIDs: [Int]!) {
+        reportData { report(code: $code) { table(fightIDs: $fightIDs, dataType: DamageTaken) } }
+      }`,
+      { code: reportCode, fightIDs }
+    );
+
+    const tabela = (data.reportData.report?.table ?? {}) as {
+      data?: { entries?: Array<{ id?: number; name?: string; total?: number; totalReduced?: number }> };
+    };
+    return tabela.data?.entries ?? [];
+  }
+
   /** Points-based rate limit status — see AUTOMACAO.md / DataCollector's minDelayMs for why this matters. */
   async fetchRateLimitData(): Promise<{ limitPerHour: number; pointsSpentThisHour: number; pointsResetIn: number }> {
     const data = await wclGraphql<{
