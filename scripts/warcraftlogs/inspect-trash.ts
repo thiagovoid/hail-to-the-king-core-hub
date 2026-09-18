@@ -102,7 +102,7 @@ const composicao = (tabelaDaNoite.summary.data as Record<string, unknown>).compo
 console.log(`  summary.composition: ${Array.isArray(composicao) ? `${composicao.length} entradas` : "AUSENTE"}`);
 if (Array.isArray(composicao)) console.log(`  exemplo: ${JSON.stringify(composicao[0])}`);
 console.log(`  masterData.actors.subType (spec?): ${masterData.actors.slice(0, 4).map((a) => `${a.name}=${a.subType}`).join(", ")}`);
-const entradaDeDano = tabelaDaNoite.damage.data.entries[0] as Record<string, unknown>;
+const entradaDeDano = tabelaDaNoite.damage.data.entries[0] as unknown as Record<string, unknown>;
 console.log(`  campos de uma entrada da tabela de dano: ${Object.keys(entradaDeDano).join(", ")}`);
 console.log(`  icon/spec: ${JSON.stringify({ icon: entradaDeDano.icon, type: entradaDeDano.type, specs: entradaDeDano.specs })}`);
 
