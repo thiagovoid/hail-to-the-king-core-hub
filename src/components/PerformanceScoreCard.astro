@@ -1,6 +1,7 @@
 ---
 import type { OverallPerformanceScore } from '@/engine/scores';
-import { formatThousands } from '@/utils/format';
+import { formatDecimalBr, formatThousands } from '@/utils/format';
+import ScoreDimensionRow from '@/components/ScoreDimensionRow.astro';
 
 interface Props {
   score: OverallPerformanceScore;
@@ -70,28 +71,12 @@ const scoreTextColor = (value: number) =>
  * verde, com a meta estourada. Agora verde é só quem cumpre; âmbar é quem
  * está perto (80% do caminho); vermelho, longe.
  */
-const metaCumprida = (dimension: (typeof score.dimensions)[number]) => {
-  if (dimension.value === null) return false;
-  return dimension.target.direction === 'lower'
-    ? dimension.value <= dimension.target.target
-    : dimension.value >= dimension.target.target;
-};
-
-const corDaDimensao = (dimension: (typeof score.dimensions)[number]) => {
-  if (metaCumprida(dimension)) return { barra: 'bg-emerald-500', texto: 'text-emerald-400' };
-  if ((dimension.score ?? 0) >= 80) return { barra: 'bg-amber-500', texto: 'text-amber-400' };
-  return { barra: 'bg-red-500', texto: 'text-red-400' };
-};
-
 /** 2.3 fica 2,3; 34 fica 34 — sem casa decimal inventada. */
 /** 2026-09-15 -> 15/09/2026, pra dizer qual noite a nota mede. */
 const formatarNoite = (iso: string) => {
   const [ano, mes, dia] = iso.split("-");
   return `${dia}/${mes}/${ano}`;
 };
-
-const formatarValor = (valor: number) =>
-  Number.isInteger(valor) ? String(valor) : valor.toFixed(1).replace('.', ',');
 
 /**
  * O detalhe explica a nota, mas são até sete linhas por dimensão — cinco
@@ -112,9 +97,6 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
       ? { rotulo: 'Ver dano recebido e cooldowns', itens: defenseDetail.length }
       : undefined,
 };
-
-const directionLabel = (direction: 'higher' | 'lower') =>
-  direction === 'higher' ? 'quanto maior, melhor' : 'quanto menor, melhor';
 ---
 
 <section class="mb-10">
@@ -155,178 +137,98 @@ const directionLabel = (direction: 'higher' | 'lower') =>
 
     <div class="space-y-3">
       {
-        score.dimensions.map((dimension) => (
-          <div>
-            <div class="flex justify-between text-xs mb-1">
-              <span class="text-slate-400 flex items-center gap-1.5">
-                {dimension.label}
-                <span class="text-slate-600">({dimension.weight}%)</span>
+        score.dimensions.map((dimension) => {
+          const detalhe = detalheDaDimensao[dimension.key];
 
-                <span class="relative group inline-flex">
-                  <button
-                    type="button"
-                    class="w-3.5 h-3.5 rounded-full border border-slate-600 text-slate-500 text-[9px] leading-none flex items-center justify-center hover:border-[#f0a500] hover:text-[#f0a500] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500]"
-                    aria-label={`O que é ${dimension.label}`}
-                  >
-                    i
-                  </button>
+          // Quem não tem o que detalhar não vira <details>: seta sem conteúdo
+          // é promessa que a interface não cumpre.
+          if (!detalhe) {
+            return (
+              <div class="dimensao">
+                <ScoreDimensionRow dimension={dimension} />
+              </div>
+            );
+          }
 
-                  <span
-                    role="tooltip"
-                    class="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-20 w-64 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity shadow-xl"
-                  >
-                    <span class="block text-slate-200 text-[11px] leading-relaxed">
-                      {dimension.description}
-                    </span>
-                    <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
-                      <span class="text-slate-500 font-semibold">Fonte:</span> {dimension.source}
-                    </span>
-                    <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
-                      <span class="text-slate-500 font-semibold">Meta do core:</span>{' '}
-                      {dimension.target.target} ({directionLabel(dimension.target.direction)})
-                    </span>
-                  </span>
-                </span>
-              </span>
-
-              {/* Valor com unidade e meta ao lado. "87" sozinho parecia um
-                  valor, mas é percentual de caminho andado — e sem unidade o
-                  2,3 (média por try) e o 11 (frequência entre trys) pareciam
-                  grandezas do mesmo tipo. */}
-              <span class="flex items-baseline gap-2">
-                {dimension.value !== null ? (
-                  <>
-                    <span class={`font-semibold ${corDaDimensao(dimension).texto}`}>
-                      {formatarValor(dimension.value)}
-                    </span>
-                    <span class="text-slate-500">{dimension.unit}</span>
-                    <span class="text-slate-600">&middot; meta {formatarValor(dimension.target.target)}</span>
-                    {dimension.score !== null && (
-                      <span class="text-slate-600">&middot; {dimension.score}% da meta</span>
-                    )}
-                  </>
-                ) : (
-                  <span class="text-slate-600">sem dado</span>
-                )}
-              </span>
-            </div>
-
-            <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-              {dimension.score !== null && (
-                <div
-                  class={`h-full rounded-full ${corDaDimensao(dimension).barra}`}
-                  style={`width: ${dimension.score}%`}
+          return (
+            <details class="dimensao">
+              {/* A linha inteira é o gatilho, não só a seta: alvo de clique
+                  maior e o teclado alcança com um Tab só. */}
+              <summary class="gatilho">
+                <ScoreDimensionRow
+                  dimension={dimension}
+                  temDetalhe
+                  itensDetalhe={detalhe.itens}
                 />
-              )}
-            </div>
+              </summary>
 
-            {/* A nota sozinha não diz o que fazer. Só aparece quando há o que
-                arrumar — quem está com tudo pronto não vê lista vazia. */}
-            {dimension.key === 'preparation' && preparationMissing.length > 0 && (
-              <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
-                <span class="text-slate-400">Falta arrumar:</span>{' '}
-                {preparationMissing.join(', ')}
-              </p>
-            )}
+              <div class="conteudo">
+                {dimension.key === 'preparation' && preparationMissing.length > 0 && (
+                  <p class="text-[11px] text-slate-500 leading-relaxed">
+                    <span class="text-slate-400">Falta arrumar:</span> {preparationMissing.join(', ')}
+                  </p>
+                )}
 
-            {detalheDaDimensao[dimension.key] && (
-              <details class="detalhe mt-1.5">
-                {/* list-none + marker escondido: o triângulo nativo não dá
-                    pra estilizar, então a seta é nossa e gira ao abrir. */}
-                <summary class="cursor-pointer list-none inline-flex items-center gap-1 text-[11px] text-slate-500 hover:text-slate-300 transition-colors select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#f0a500] rounded">
-                  <svg
-                    class="seta w-2.5 h-2.5 shrink-0"
-                    viewBox="0 0 8 10"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M0 0l8 5-8 5z" />
-                  </svg>
+                {/* "x11" fazia o número parecer quantidade da habilidade. É
+                    frequência: em quantas trys ela foi errada. O denominador
+                    responde "de quantas?" sem a pessoa procurar. */}
+                {dimension.key === 'mechanics' && mechanicsDetail.length > 0 && (
+                  <ul class="space-y-0.5">
+                    {mechanicsDetail.map((item) => (
+                      <li class="text-[11px] text-slate-500 leading-relaxed">
+                        <span class="text-slate-400">
+                          {item.label ?? item.mechanic.replace('Damage from ', '')}
+                        </span>{' '}
+                        {nightTries !== null ? `em ${item.tries} de ${nightTries} trys` : `em ${item.tries} trys`}
+                        <span class="text-slate-600"> &middot; {item.boss}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-                  <span>{detalheDaDimensao[dimension.key]!.rotulo}</span>
+                {/* A nota de Atacar é a média de duas metades que se escondem
+                    uma atrás da outra: dá pra ter uptime cheio sem nunca
+                    gastar o cooldown grande. */}
+                {dimension.key === 'attack' && attackParts !== null && (
+                  <p class="text-[11px] text-slate-500 leading-relaxed">
+                    <span class="text-slate-400">Uptime {formatDecimalBr(attackParts.uptime)}%</span>
+                    {' · '}
+                    {attackParts.cooldowns !== null
+                      ? `cooldowns ${formatDecimalBr(attackParts.cooldowns)}% do tempo em recarga`
+                      : 'sem cooldown ofensivo medido na noite'}
+                  </p>
+                )}
 
-                  {detalheDaDimensao[dimension.key]!.itens > 0 && (
-                    <span class="text-slate-600">({detalheDaDimensao[dimension.key]!.itens})</span>
-                  )}
-                </summary>
+                {/* Contexto, não nota: a mitigação ficou entre 38% e 48% pro
+                    raide inteiro, com os tanks nas três últimas posições. */}
+                {dimension.key === 'defense' && defenseContext !== null && (
+                  <p class="text-[11px] text-slate-500 leading-relaxed">
+                    <span class="text-slate-400">
+                      {formatThousands(defenseContext.dtps)} de dano recebido por segundo
+                    </span>
+                    {' · '}
+                    {formatDecimalBr(defenseContext.mitigation)}% mitigado
+                    <span class="text-slate-600"> &middot; contexto, não entra na nota</span>
+                  </p>
+                )}
 
-            {/* "x11" fazia o número parecer quantidade da habilidade. É
-                frequência: em quantas trys ela foi errada. O denominador
-                responde "de quantas?" sem a pessoa procurar, e deixa a conta
-                visível — a soma dessas trys, dividida pelo total, é a nota. */}
-            {dimension.key === 'mechanics' && mechanicsDetail.length > 0 && (
-              <ul class="mt-1.5 space-y-0.5">
-                {mechanicsDetail.map((item) => (
-                  <li class="text-[11px] text-slate-500 leading-relaxed">
-                    <span class="text-slate-400">{item.label ?? item.mechanic.replace('Damage from ', '')}</span>
-                    {' '}
-                    {nightTries !== null ? `em ${item.tries} de ${nightTries} trys` : `em ${item.tries} trys`}
-                    <span class="text-slate-600"> &middot; {item.boss}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {/* A nota de Atacar é a média de duas metades que se escondem
-                uma atrás da outra: dá pra ter uptime cheio sem nunca gastar
-                o cooldown grande. Mostrar as duas evita "61%" sem resposta.
-
-                Depois, cooldown a cooldown: a régua é quanto do tempo de
-                luta a habilidade ficou em recarga, não quantos usos — quem
-                guarda pro final gastou o uso e deixou a habilidade parada. */}
-            {dimension.key === 'attack' && attackParts !== null && (
-              <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
-                <span class="text-slate-400">Uptime {formatarValor(attackParts.uptime)}%</span>
-                {' · '}
-                {attackParts.cooldowns !== null
-                  ? `cooldowns ${formatarValor(attackParts.cooldowns)}% do tempo em recarga`
-                  : 'sem cooldown ofensivo medido na noite'}
-              </p>
-            )}
-
-            {/* Contexto, não nota: a mitigação ficou entre 38% e 48% pro
-                raide inteiro no log de 15/09, com os tanks nas três últimas
-                posições. Mede armadura e buff, não decisão — por isso
-                aparece, mas não pontua. */}
-            {dimension.key === 'defense' && defenseContext !== null && (
-              <p class="mt-1.5 text-[11px] text-slate-500 leading-relaxed">
-                <span class="text-slate-400">
-                  {formatThousands(defenseContext.dtps)} de dano recebido por segundo
-                </span>
-                {' · '}
-                {formatarValor(defenseContext.mitigation)}% mitigado
-                <span class="text-slate-600"> &middot; contexto, não entra na nota</span>
-              </p>
-            )}
-
-            {dimension.key === 'defense' && defenseDetail.length > 0 && (
-              <ul class="mt-1.5 space-y-0.5">
-                {defenseDetail.map((item) => (
-                  <li class="text-[11px] text-slate-500 leading-relaxed">
-                    <span class="text-slate-400">{item.name}</span>
-                    {' '}
-                    {formatarValor(item.efficiency)}% do tempo em recarga
-                    <span class="text-slate-600"> &middot; {item.casts} uso{item.casts === 1 ? '' : 's'}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {dimension.key === 'attack' && attackDetail.length > 0 && (
-              <ul class="mt-1.5 space-y-0.5">
-                {attackDetail.map((item) => (
-                  <li class="text-[11px] text-slate-500 leading-relaxed">
-                    <span class="text-slate-400">{item.name}</span>
-                    {' '}
-                    {formatarValor(item.efficiency)}% do tempo em recarga
-                    <span class="text-slate-600"> &middot; {item.casts} uso{item.casts === 1 ? '' : 's'}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-              </details>
-            )}
-          </div>
-        ))
+                {(dimension.key === 'attack' || dimension.key === 'defense') && (
+                  <ul class="space-y-0.5 mt-1">
+                    {(dimension.key === 'attack' ? attackDetail : defenseDetail).map((item) => (
+                      <li class="text-[11px] text-slate-500 leading-relaxed">
+                        <span class="text-slate-400">{item.name}</span>{' '}
+                        {formatDecimalBr(item.efficiency)}% do tempo em recarga
+                        <span class="text-slate-600">
+                          {' '}&middot; {item.casts} uso{item.casts === 1 ? '' : 's'}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </details>
+          );
+        })
       }
     </div>
   </div>
@@ -363,14 +265,48 @@ const directionLabel = (direction: 'higher' | 'lower') =>
 </section>
 
 <style>
-  /* A seta é nossa: o triângulo nativo do <summary> não é estilizável de
-     forma confiável entre navegadores, e o group-open nomeado do Tailwind
-     gerou um seletor que não casava com nada. */
-  .detalhe > summary .seta {
+  /* Um filete entre dimensões. Sem ele, o detalhe aberto de uma linha
+     encostava no rótulo da seguinte e parecia pertencer a ela. */
+  .dimensao + .dimensao {
+    border-top: 1px solid rgb(30 41 59 / 0.7);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  /* A linha inteira é o gatilho. O triângulo nativo do <summary> não é
+     estilizável de forma confiável entre navegadores, então é a nossa seta
+     que gira. */
+  .gatilho {
+    cursor: pointer;
+    list-style: none;
+    border-radius: 0.375rem;
+  }
+
+  .gatilho::-webkit-details-marker {
+    display: none;
+  }
+
+  .gatilho:hover {
+    background: rgb(148 163 184 / 0.04);
+  }
+
+  .gatilho:focus-visible {
+    outline: 1px solid #f0a500;
+    outline-offset: 2px;
+  }
+
+  :global(.gatilho .seta) {
     transition: transform 150ms ease;
   }
 
-  .detalhe[open] > summary .seta {
+  details[open] > .gatilho :global(.seta) {
     transform: rotate(90deg);
+  }
+
+  .conteudo {
+    padding: 0.5rem 0 0.125rem 0.75rem;
+    border-left: 1px solid rgb(30 41 59);
+    margin-left: 0.25rem;
+    margin-top: 0.375rem;
   }
 </style>

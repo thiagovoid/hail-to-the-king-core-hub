@@ -175,7 +175,7 @@ describe('formatPercent', () => {
   });
 });
 
-import { formatCompact, formatThousands } from './format';
+import { formatCompact, formatDecimalBr, formatThousands } from './format';
 
 describe('formatThousands', () => {
   it('formats with 2 decimals and a k suffix by default', () => {
@@ -213,5 +213,20 @@ describe('formatCompact', () => {
 
   it('não mexe em inteiro pequeno', () => {
     expect(formatCompact(87)).toBe('87');
+  });
+});
+
+describe('formatDecimalBr', () => {
+  it('usa vírgula como separador', () => {
+    expect(formatDecimalBr(2.3)).toBe('2,3');
+  });
+
+  // "2,0 erros por try" chama atenção pra uma precisão que não existe.
+  it('não inventa casa decimal em número inteiro', () => {
+    expect(formatDecimalBr(2)).toBe('2');
+  });
+
+  it('arredonda pra uma casa', () => {
+    expect(formatDecimalBr(57.74)).toBe('57,7');
   });
 });

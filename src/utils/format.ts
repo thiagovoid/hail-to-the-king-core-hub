@@ -66,6 +66,14 @@ export function formatDate(iso: string | null): string {
  * ex: 100340 → "100.34k" (2 casas). Abaixo de 1000 devolve o número inteiro.
  */
 /**
+ * Decimal como se escreve em português: vírgula, uma casa, e sem casa
+ * nenhuma quando o número é inteiro ("2" e não "2,0").
+ */
+export function formatDecimalBr(valor: number): string {
+  return Number.isInteger(valor) ? String(valor) : valor.toFixed(1).replace(".", ",");
+}
+
+/**
  * O número como a tela mostra: "400.43k" a partir de mil, o valor exato
  * abaixo disso.
  *
