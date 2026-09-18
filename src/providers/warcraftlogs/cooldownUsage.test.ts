@@ -456,3 +456,34 @@ describe("buildCooldownUsage — mesma habilidade com ids diferentes", () => {
     expect(jogador.abilities[0].timeOnCooldownMs).toBe(30_000);
   });
 });
+
+// Earth Elemental é invocação, não decisão de dano: tem 3 minutos de recarga
+// e uma fração de 0,00% do dano. Entrava valendo o mesmo que Ascendance
+// (0,24%) e derrubava o jogador de 98 pra 75.
+describe("piso de dano dos cooldowns longos", () => {
+  const LONGO = 180_000;
+
+  it("promove Ascendance, cujo dano sai com o nome de outras habilidades", () => {
+    expect(categoriaEfetiva("utility", LONGO, 0.24)).toBe("offensive");
+  });
+
+  it("não promove invocação cujo dano é só arredondamento", () => {
+    expect(categoriaEfetiva("utility", LONGO, 0.004)).toBe("utility");
+  });
+
+  it("aplica o mesmo piso a quem o tooltip já dizia ser ofensivo", () => {
+    const uso = (damageShare: number): UsoDeCooldown => ({
+      spellId: 1,
+      name: "x",
+      kind: "offensive",
+      casts: 1,
+      timeOnCooldownMs: 0,
+      possibleMs: 0,
+      efficiency: 0,
+      damageShare,
+    });
+
+    expect(contaParaNota(uso(0.9), LONGO, true)).toBe(true);
+    expect(contaParaNota(uso(0.004), LONGO, true)).toBe(false);
+  });
+});

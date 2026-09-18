@@ -139,6 +139,17 @@ export const PARTICIPACAO_MINIMA_NO_DANO = 2;
 export const COOLDOWN_MAIOR_MS = 90_000;
 
 /**
+ * Piso pra o dano próprio de um cooldown longo não ser só arredondamento.
+ *
+ * "Qualquer dano acima de zero" era permissivo demais: Earth Elemental, que
+ * é invocação e não decisão de dano, tem uma fração de 0,00% e entrava
+ * valendo o mesmo que Ascendance — derrubando o jogador de 98 pra 75.
+ * Ascendance tem 0,24%, sessenta vezes mais. O corte fica no meio, longe
+ * das duas.
+ */
+export const PARTICIPACAO_MINIMA_COOLDOWN_LONGO = 0.1;
+
+/**
  * A categoria que vale pra pontuação DESTE jogador.
  *
  * O tooltip nem sempre diz que a habilidade é ofensiva. Doom Winds, o
@@ -159,8 +170,10 @@ export function categoriaEfetiva(
   if (kind !== "utility") return kind;
   // Sem dano nenhum: stun, battle res, invocação, deslocamento. Fica fora
   // por mais longa que seja a recarga (Reincarnation tem 30 minutos).
-  if (damageShare === undefined || damageShare <= 0) return "utility";
-  if (cooldownMs >= COOLDOWN_MAIOR_MS) return "offensive";
+  if (damageShare === undefined) return "utility";
+  if (cooldownMs >= COOLDOWN_MAIOR_MS) {
+    return damageShare >= PARTICIPACAO_MINIMA_COOLDOWN_LONGO ? "offensive" : "utility";
+  }
   return damageShare >= PARTICIPACAO_MINIMA_NO_DANO ? "offensive" : "utility";
 }
 
@@ -187,8 +200,9 @@ export function contaParaNota(
   // seu. É assim que Avatar e Avenging Wrath se apresentam no log.
   if (uso.damageShare === undefined) return true;
   // Recarga longa é decisão planejada: entra mesmo representando pouco dano
-  // direto (Shattering Throw, 3 min).
-  if (cooldownMs >= COOLDOWN_MAIOR_MS) return true;
+  // direto (Shattering Throw, 3 min). Mas dano de arredondamento não conta
+  // como dano — ver PARTICIPACAO_MINIMA_COOLDOWN_LONGO.
+  if (cooldownMs >= COOLDOWN_MAIOR_MS) return uso.damageShare >= PARTICIPACAO_MINIMA_COOLDOWN_LONGO;
   return uso.damageShare >= PARTICIPACAO_MINIMA_NO_DANO;
 }
 
