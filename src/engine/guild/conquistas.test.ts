@@ -924,3 +924,61 @@ describe("conquistas de temporada", () => {
     expect(detalheDe(comN(5), "a", "pagando-promessa")).toBe('"Gotículas Tóxicas", em 5 noites');
   });
 });
+
+describe("as medalhas de prontidão", () => {
+  const noite = () => [
+    semana("2026-09-01", [
+      { playerId: "a", deaths: 1, dps: 100 },
+      { playerId: "b", deaths: 1, dps: 50 },
+    ]),
+  ];
+
+  const medalhas = (prontidaoDe: (id: string) => "normal" | "heroico" | "mitico" | null) =>
+    contarConquistas(noite(), TARGETS, { prontidaoDe });
+
+  // Tirar a de baixo apagaria o degrau que a pessoa subiu pra chegar ali.
+  it("são cumulativas: quem está no heroico leva a do normal também", () => {
+    const daPessoa = medalhas((id) => (id === "a" ? "heroico" : null)).get("a");
+
+    expect(daPessoa?.get("pronto-normal")?.vezes).toBe(1);
+    expect(daPessoa?.get("pronto-heroico")?.vezes).toBe(1);
+    expect(daPessoa?.get("pronto-mitico")).toBeUndefined();
+  });
+
+  it("não dá medalha nenhuma a quem não fecha nem o normal", () => {
+    const daPessoa = medalhas(() => null).get("a");
+
+    expect(daPessoa?.get("pronto-normal")).toBeUndefined();
+  });
+
+  /**
+   * Quem foi pra tank cobrir uma vaga não pode perder a medalha que o main
+   * dela já tinha: a troca de cadeira foi um favor ao grupo, não um passo
+   * atrás. Mesma regra que rege o resto das conquistas com alt.
+   */
+  it("vale o melhor personagem da pessoa, não o último", () => {
+    const weeks = [
+      semana("2026-09-01", [{ playerId: "main", deaths: 1, dps: 100 }]),
+      semana("2026-09-03", [{ playerId: "alt", deaths: 1, dps: 100 }]),
+    ];
+
+    const daPessoa = contarConquistas(weeks, TARGETS, {
+      pessoaDe: () => "main",
+      prontidaoDe: (id) => (id === "main" ? "heroico" : "normal"),
+    }).get("main");
+
+    expect(daPessoa?.get("pronto-heroico")?.vezes).toBe(1);
+  });
+
+  // Sem a função de contexto, a prontidão não é apurada — e uma medalha
+  // travada é honesta, uma medalha errada não.
+  it("fica de fora quando ninguém informa a prontidão", () => {
+    expect(contarConquistas(noite(), TARGETS).get("a")?.get("pronto-normal")).toBeUndefined();
+  });
+
+  it("tem definição pras três, pra aparecerem travadas na estante", () => {
+    for (const id of ["pronto-normal", "pronto-heroico", "pronto-mitico"]) {
+      expect(CONQUISTAS.find((c) => c.id === id)).toBeDefined();
+    }
+  });
+});

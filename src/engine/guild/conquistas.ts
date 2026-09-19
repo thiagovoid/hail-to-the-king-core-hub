@@ -21,6 +21,7 @@
 import type { PerformanceRun, PlayerPerformance, WeeklyPerformance } from "../../types/performance";
 import type { CorePerformanceTargets } from "../../types/index";
 import { calculateOverallScore, funcaoEfetiva, type FuncaoDoJogador } from "../scores";
+import { NIVEIS, type NivelDeConteudo } from "../scores/prontidao";
 
 export type SimboloDeConquista =
   | "coroa"
@@ -75,7 +76,10 @@ export type SimboloDeConquista =
   | "gargantilha"
   | "soquete"
   | "duas-laminas"
-  | "dois-aneis";
+  | "dois-aneis"
+  | "degrau-i"
+  | "degrau-ii"
+  | "degrau-iii";
 
 export interface DefinicaoDeConquista {
   id: string;
@@ -90,6 +94,39 @@ export interface DefinicaoDeConquista {
 }
 
 export const CONQUISTAS: DefinicaoDeConquista[] = [
+  // ----- prontidão de conteúdo -----
+  //
+  // As únicas da lista que NÃO são de noite: medem a média da temporada,
+  // porque prontidão é sobre consistência. Uma noite excelente não torna
+  // ninguém pronto pro mítico, e uma ruim não desfaz meses.
+  //
+  // São cumulativas de propósito — quem está no heroico leva as duas. Tirar
+  // a de baixo apagaria o degrau que a pessoa subiu.
+  {
+    id: "pronto-normal",
+    nome: "Pronto pro Normal",
+    como: "Segurar, na média da temporada, tudo que o Normal exige: parse, mecânicas, tempo morto em luta, preparação e o número do seu ofício.",
+    simbolo: "degrau-i",
+    tipo: "boa",
+    disputada: false,
+  },
+  {
+    id: "pronto-heroico",
+    nome: "Pronto pro Heroico",
+    como: "O mesmo, na régua do Heroico. É o degrau que o core inteiro está subindo.",
+    simbolo: "degrau-ii",
+    tipo: "boa",
+    disputada: false,
+  },
+  {
+    id: "pronto-mitico",
+    nome: "Pronto pro Mítico",
+    como: "O mesmo, na régua do Mítico. Ninguém alcançou ainda — e é isso que faz dela um objetivo, não um placar.",
+    simbolo: "degrau-iii",
+    tipo: "boa",
+    disputada: false,
+  },
+
   // ----- mérito -----
   {
     id: "mvp",
@@ -562,7 +599,22 @@ export interface ContextoDasConquistas {
    * conta, que é o comportamento de quem nunca configurou.
    */
   zoeiraDesde?: string;
+  /**
+   * O nível de conteúdo que o PERSONAGEM fecha na média da temporada
+   * (ver `prontidao.ts`). Ausente = as medalhas de prontidão não aparecem.
+   *
+   * Vem de fora porque a prontidão precisa do sim do Raidbots e do Raider.IO,
+   * que moram no roster — dado que a apuração de conquistas não tem.
+   */
+  prontidaoDe?: (playerId: string) => NivelDeConteudo | null;
 }
+
+/** As medalhas de prontidão, do degrau mais baixo pro mais alto. */
+const CONQUISTA_DO_NIVEL: Record<NivelDeConteudo, string> = {
+  normal: "pronto-normal",
+  heroico: "pronto-heroico",
+  mitico: "pronto-mitico",
+};
 
 /** Conquistas de zoeira, por id — usado pelo corte por data. */
 const E_ZOEIRA = new Set(CONQUISTAS.filter((c) => c.tipo === "zoeira").map((c) => c.id));
@@ -1397,6 +1449,37 @@ export function contarConquistas(
         registrar(vitoria.playerId, conquistaId, 0, undefined, personagem);
       }
       registrar(vitoria.playerId, conquistaId, vitoria.vezes, vitoria.detalhe);
+    }
+  }
+
+  // --- Prontidão: a única apuração que não é de noite ---
+  //
+  // Vale o MELHOR personagem da pessoa. Quem foi pra tank cobrir uma vaga
+  // não pode perder a medalha que o main dela já tinha: a troca de cadeira
+  // foi um favor ao grupo, não um passo atrás.
+  if (contexto.prontidaoDe) {
+    const melhorNivel = new Map<string, { nivel: NivelDeConteudo; personagem: string }>();
+
+    for (const run of runs) {
+      for (const player of run.players) {
+        const nivel = contexto.prontidaoDe(player.playerId);
+        if (nivel === null) continue;
+
+        const dono = pessoa(player.playerId);
+        const atual = melhorNivel.get(dono);
+        if (atual === undefined || NIVEIS.indexOf(nivel) > NIVEIS.indexOf(atual.nivel)) {
+          melhorNivel.set(dono, { nivel, personagem: player.playerId });
+        }
+      }
+    }
+
+    for (const [dono, { nivel, personagem }] of melhorNivel) {
+      // Cumulativa: quem está no heroico leva a do normal também. Tirar a de
+      // baixo apagaria o degrau que a pessoa subiu pra chegar ali.
+      for (const candidato of NIVEIS) {
+        registrar(dono, CONQUISTA_DO_NIVEL[candidato], 1, undefined, personagem);
+        if (candidato === nivel) break;
+      }
     }
   }
 

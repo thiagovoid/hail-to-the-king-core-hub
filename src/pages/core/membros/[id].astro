@@ -18,12 +18,11 @@ import { contarConquistas } from '@/engine/guild/conquistas';
 import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
 import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
 import {
-  avaliarProntidao,
-  mediasDaTemporada,
   degrausDaMetrica,
   EXIGENCIA,
   CRITERIO_DO_OFICIO,
 } from '@/engine/scores/prontidao';
+import { prontidaoDoRoster } from '@/engine/guild/prontidaoDoRoster';
 
 import {
   buildPlayerSeasonAverage,
@@ -298,6 +297,14 @@ const outrosPersonagens = alterEgosDe(roster, player.id)
   .map((id) => roster.find((jogador) => jogador.id === id))
   .filter((jogador): jogador is (typeof roster)[number] => jogador !== undefined);
 
+/**
+ * A prontidão de todo mundo, não só deste jogador: as medalhas de
+ * "Pronto pro ..." são apuradas pela mesma função que apura o resto, e ela
+ * precisa saber o nível de cada personagem que apareceu na temporada.
+ */
+const prontidaoPorPersonagem = prontidaoDoRoster(roster, weeks);
+const prontidaoDoPersonagem = prontidaoPorPersonagem.get(player.id) ?? null;
+
 const conquistasDoJogador = contarConquistas(
   performanceWeeks,
   seasonJson.config.performanceTargets,
@@ -306,26 +313,12 @@ const conquistasDoJogador = contarConquistas(
     nomeDoBoss: (encounterID) => nomeDoBoss.get(encounterID),
     pessoaDe: (playerId) => pessoas.get(playerId) ?? playerId,
     zoeiraDesde: seasonJson.config.zoeiraDesde,
+    prontidaoDe: (playerId) => prontidaoPorPersonagem.get(playerId)?.prontidao.nivel ?? null,
   }
 ).get(pessoaDoJogador);
 
-/**
- * Prontidão de conteúdo. A função vem do LOG quando ele discorda do
- * cadastro — quem curou a temporada inteira é medido por Curar.
- */
-const funcaoDaProntidao = history.some((noite) => noite.healing)
-  ? ('healer' as const)
-  : player.role === 'tank'
-    ? ('tank' as const)
-    : ('dps' as const);
-
-const prontidao = avaliarProntidao(
-  mediasDaTemporada(history, funcaoDaProntidao, {
-    io: player.raiderIo?.io ?? null,
-    simDeDps: player.performanceGoals?.dps?.target ?? null,
-  }),
-  funcaoDaProntidao
-);
+const prontidao = prontidaoDoPersonagem?.prontidao ?? null;
+const funcaoDaProntidao = prontidaoDoPersonagem?.funcao ?? 'dps';
 
 /**
  * As linhas de nível do gráfico: o piso que a pessoa segura e o degrau
@@ -334,17 +327,20 @@ const prontidao = avaliarProntidao(
  */
 const simDeDps = player.performanceGoals?.dps?.target ?? null;
 
-const degrausDoParse = degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].parse);
-const degrausDeMecanicas = degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].mechanics);
-const degrausDoOficio = degrausDaMetrica(
-  prontidao,
-  (nivel) => CRITERIO_DO_OFICIO[funcaoDaProntidao][nivel]
-);
+const degrausDoParse = prontidao
+  ? degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].parse)
+  : [];
+const degrausDeMecanicas = prontidao
+  ? degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].mechanics)
+  : [];
+const degrausDoOficio = prontidao
+  ? degrausDaMetrica(prontidao, (nivel) => CRITERIO_DO_OFICIO[funcaoDaProntidao][nivel])
+  : [];
 
 // Sem sim medido não há fração pra desenhar — e uma linha inventada aqui
 // seria uma meta que ninguém combinou.
 const degrausDoDps =
-  funcaoDaProntidao === 'dps' && simDeDps
+  prontidao && funcaoDaProntidao === 'dps' && simDeDps
     ? degrausDaMetrica(prontidao, (nivel) =>
         Math.round((CRITERIO_DO_OFICIO.dps[nivel] / 100) * simDeDps)
       )
@@ -485,7 +481,9 @@ const attendance = calculateAttendance(weeks, player.id);
       )
     }
 
-    {hasData && <CartaoDeProntidao prontidao={prontidao} noites={history.length} />}
+    {hasData && prontidao && (
+      <CartaoDeProntidao prontidao={prontidao} noites={history.length} />
+    )}
 
     <ConquistasDoJogador
       ganhas={conquistasDoJogador}
