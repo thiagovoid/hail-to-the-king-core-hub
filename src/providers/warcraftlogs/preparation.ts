@@ -28,6 +28,14 @@ export interface WclGearItem {
   permanentEnchantName?: string;
   /** Nome do item no idioma do cliente de quem subiu o log — não usar na tela. */
   name?: string;
+  /**
+   * Ex.: "inv_shield_1h_dungeonharronir_c_01.jpg".
+   *
+   * É a única pista do TIPO do item que a WCL manda junto com o gear — não
+   * existe campo de classe nem subclasse. É o que separa escudo de arma na
+   * mão secundária (ver `temArmaNaSecundaria`).
+   */
+  icon?: string;
   gems?: Array<{ id: number }>;
 }
 
@@ -89,6 +97,14 @@ export interface PreparationResult {
    */
   score?: number;
   checks: PreparationCheck[];
+  /**
+   * Peça a peça, com o slot da WCL junto.
+   *
+   * É o que permite dizer "anel sem encanto" e "anel sem gema" separados,
+   * e enxergar quem encantou UMA das duas armas — coisas que a lista de
+   * nomes não distingue.
+   */
+  slots: SlotDePreparacao[];
 }
 
 const CONSUMABLE_LABELS: Record<keyof PreparationChecklist["consumables"], string> = {
@@ -101,6 +117,42 @@ const CONSUMABLE_LABELS: Record<keyof PreparationChecklist["consumables"], strin
 
 function hasAura(auras: WclAura[], spellIds: number[]): boolean {
   return auras.some((aura) => aura.ability !== undefined && spellIds.includes(aura.ability));
+}
+
+/**
+ * Uma peça avaliada, dita por slot em vez de por lista de nomes.
+ *
+ * A lista de nomes que existia antes ("Elmo", "Anel", "Anel") não distingue
+ * encanto de gema nem um anel do outro — e as duas coisas viraram medalha.
+ */
+export interface SlotDePreparacao {
+  /** Número de slot da WCL. 10 e 11 são os dois anéis, 15 e 16 as duas mãos. */
+  slot: number;
+  /** Nome em português, repetido entre os pares (os dois anéis são "Anel"). */
+  label: string;
+  tipo: "encanto" | "gema";
+  ok: boolean;
+}
+
+/**
+ * A mão secundária é arma de verdade?
+ *
+ * O `icon` é a única pista do tipo que a WCL manda junto com o gear, e ela
+ * basta: escudo vem como `inv_shield_*` e item de off-hand como
+ * `inv_offhand_*`, nenhum dos dois recebe encanto. Cobrar encanto de escudo
+ * seria inventar um erro que não existe — conferido no log de 15/09, onde
+ * seis pessoas carregam escudo e as três que empunham duas armas encantam
+ * as duas.
+ */
+export function temArmaNaSecundaria(gear: WclGearItem[]): boolean {
+  const secundaria = gear.find((item) => item.slot === 16 && item.id);
+  if (!secundaria) return false;
+
+  const icon = (secundaria.icon ?? "").toLowerCase();
+  // Sem icon não dá pra afirmar que é arma — e na dúvida não se cobra.
+  if (!icon) return false;
+
+  return !icon.startsWith("inv_shield") && !icon.startsWith("inv_offhand");
 }
 
 /**
@@ -138,12 +190,13 @@ export function calculatePreparation(
 ): PreparationResult {
   // Sem combatantInfo não dá pra afirmar nada — nota ausente, não nota zero.
   if (!combatantInfo) {
-    return { score: undefined, checks: [] };
+    return { score: undefined, checks: [], slots: [] };
   }
 
   const gear = combatantInfo.gear ?? [];
   const auras = combatantInfo.auras ?? [];
   const checks: PreparationCheck[] = [];
+  const porSlot: SlotDePreparacao[] = [];
 
   // Acha a peça equipada num slot. Usa o campo `slot` da WCL, nunca a
   // posição no array — o array é esparso e repete slot de berloque.
@@ -156,16 +209,27 @@ export function calculatePreparation(
 
   // Encantos — basta ter algum encanto no slot. Qual encanto é indiferente:
   // o guia publica BIS, e escolher o mais barato é decisão legítima.
-  if (checklist.enchantedSlots.length > 0) {
+  //
+  // A mão secundária entra por conta própria, e só quando é ARMA de verdade:
+  // o guia lista "Weapon" uma vez e o coletor mapeia isso pro slot 15, mas
+  // quem empunha duas tem dois encantos a fazer. Conferido no log de 15/09 —
+  // os três que usam duas armas encantam as duas.
+  const slotsDeEncanto = [...checklist.enchantedSlots];
+  if (slotsDeEncanto.includes(15) && !slotsDeEncanto.includes(16) && temArmaNaSecundaria(gear)) {
+    slotsDeEncanto.push(16);
+  }
+
+  if (slotsDeEncanto.length > 0) {
     const avaliados: string[] = [];
     const faltando: string[] = [];
 
-    for (const slot of checklist.enchantedSlots) {
+    for (const slot of slotsDeEncanto) {
       const peca = pecaNoSlot(slot);
       // Slot vazio (arma de duas mãos não tem secundária) não entra na conta:
       // não dá pra encantar o que não existe.
       if (!peca) continue;
       avaliados.push(nomeDoSlot(slot));
+      porSlot.push({ slot, label: nomeDoSlot(slot), tipo: "encanto", ok: Boolean(peca.permanentEnchant) });
       if (!peca.permanentEnchant) faltando.push(nomeDoSlot(slot));
     }
 
@@ -195,6 +259,12 @@ export function calculatePreparation(
       const peca = pecaNoSlot(slot);
       if (!peca) continue;
       avaliados.push(nomeDoSlot(slot));
+      porSlot.push({
+        slot,
+        label: nomeDoSlot(slot),
+        tipo: "gema",
+        ok: Boolean(peca.gems && peca.gems.length > 0),
+      });
       if (!peca.gems || peca.gems.length === 0) faltando.push(nomeDoSlot(slot));
     }
 
@@ -233,11 +303,11 @@ export function calculatePreparation(
 
   const avaliaveis = checks.filter((check) => check.ratio !== undefined);
   if (avaliaveis.length === 0) {
-    return { score: undefined, checks };
+    return { score: undefined, checks, slots: porSlot };
   }
 
   const media = avaliaveis.reduce((sum, check) => sum + (check.ratio ?? 0), 0) / avaliaveis.length;
-  return { score: Math.round(media * 100), checks };
+  return { score: Math.round(media * 100), checks, slots: porSlot };
 }
 
 /**

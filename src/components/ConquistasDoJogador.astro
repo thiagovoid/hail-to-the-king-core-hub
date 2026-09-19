@@ -32,6 +32,11 @@ interface Props {
   remeteAo?: { id: string; nome: string };
   /** Os outros personagens da mesma pessoa, pra nomear o que está somado. */
   tambemJoga?: string[];
+  /**
+   * `id` do personagem -> nome de exibição, pra dizer em qual deles cada
+   * medalha foi conquistada.
+   */
+  nomeDoPersonagem?: Record<string, string>;
 }
 
 const {
@@ -39,7 +44,20 @@ const {
   elegivel = true,
   remeteAo = undefined,
   tambemJoga = [],
+  nomeDoPersonagem = {},
 } = Astro.props;
+
+/**
+ * Em qual personagem a medalha foi conquistada.
+ *
+ * Só vale a pena dizer pra quem tem mais de um: "MVP — Kroline" na ficha da
+ * Kroline não acrescenta nada. Quem tem alt, sim — o Severino do Xúlio só
+ * existe por causa do DK dele.
+ */
+const temMaisDeUm = tambemJoga.length > 0;
+
+const nomesDosPersonagens = (ids?: string[]): string[] =>
+  temMaisDeUm && ids?.length ? ids.map((id) => nomeDoPersonagem[id] ?? id) : [];
 
 const medalhas = CONQUISTAS.map((conquista) => ({
   conquista,
@@ -69,21 +87,7 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
 ---
 
 {
-  remeteAo ? (
-    <section class="mb-10">
-      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
-        <p class="text-sm font-semibold text-slate-300">Medalhas</p>
-        <p class="text-sm text-slate-400 mt-1">
-          Este é um personagem alternativo. As medalhas são do jogador, não do personagem — o que
-          você faz aqui está somado na ficha do{' '}
-          <a href={`/core/membros/${remeteAo.id}/`} class="text-[#f0a500] hover:underline">
-            {remeteAo.nome}
-          </a>
-          . Trocar de cadeira pra compor o raide não é falta.
-        </p>
-      </div>
-    </section>
-  ) : elegivel ? (
+  elegivel ? (
     <section class="mb-10">
       <div class="mb-4">
         <h2 class="text-xl font-bold text-white">Medalhas</h2>
@@ -94,7 +98,17 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
           ainda não foram conquistadas — passe o mouse pra ver como se consegue.
         </p>
 
-        {tambemJoga.length > 0 && (
+        {remeteAo && (
+          <p class="text-[11px] text-slate-500 mt-1.5">
+            Estas medalhas são do jogador, não do personagem: são as mesmas da ficha do{' '}
+            <a href={`/core/membros/${remeteAo.id}/`} class="text-[#f0a500] hover:underline">
+              {remeteAo.nome}
+            </a>
+            . Trocar de cadeira pra compor o raide não é falta.
+          </p>
+        )}
+
+        {!remeteAo && tambemJoga.length > 0 && (
           <p class="text-[11px] text-slate-500 mt-1.5">
             Inclui o que você fez como {tambemJoga.join(', ')}.
           </p>
@@ -116,6 +130,7 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
                     conquista={item.conquista}
                     vezes={item.ganha?.vezes ?? 0}
                     detalhe={item.ganha?.detalhe ?? null}
+                    personagens={nomesDosPersonagens(item.ganha?.personagens)}
                   />
 
                   <span

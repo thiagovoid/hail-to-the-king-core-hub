@@ -63,7 +63,19 @@ export type SimboloDeConquista =
   | "raio"
   | "camera"
   | "fantasma"
-  | "ciclo";
+  | "ciclo"
+  | "capacete"
+  | "ombreira"
+  | "couraca"
+  | "cinto"
+  | "calca"
+  | "bracelete"
+  | "anel"
+  | "lamina"
+  | "gargantilha"
+  | "soquete"
+  | "duas-laminas"
+  | "dois-aneis";
 
 export interface DefinicaoDeConquista {
   id: string;
@@ -130,7 +142,7 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
   {
     id: "lenda",
     nome: "Lenda",
-    como: "Tirar parse 95 ou mais numa noite.",
+    como: "Tirar parse 90 ou mais numa noite.",
     simbolo: "chama",
     tipo: "boa",
     disputada: false,
@@ -289,11 +301,108 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
     tipo: "zoeira",
     disputada: false,
   },
+  // ----- uma por peça vazia. Ver `semNoSlot`. -----
   {
     id: "descalco",
     nome: "Descalço",
     como: "Ir pro raide sem encanto na bota.",
     simbolo: "bota",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "cabeca-oca",
+    nome: "Cabeça oca",
+    como: "Ir pro raide sem encanto no elmo.",
+    simbolo: "capacete",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "ombro-frio",
+    nome: "Ombro frio",
+    como: "Ir pro raide sem encanto nas ombreiras.",
+    simbolo: "ombreira",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "peito-aberto",
+    nome: "Peito aberto",
+    como: "Ir pro raide sem encanto no peitoral.",
+    simbolo: "couraca",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "cintura-solta",
+    nome: "Cintura solta",
+    como: "Ir pro raide sem encanto na cintura.",
+    simbolo: "cinto",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "perna-de-fora",
+    nome: "Perna de fora",
+    como: "Ir pro raide sem encanto nas pernas.",
+    simbolo: "calca",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "punho-livre",
+    nome: "Punho livre",
+    como: "Ir pro raide sem encanto nas braçadeiras.",
+    simbolo: "bracelete",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "anel-sem-graca",
+    nome: "Anel sem graça",
+    como: "Ir pro raide com anel sem encanto.",
+    simbolo: "anel",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "lamina-cega",
+    nome: "Lâmina cega",
+    como: "Ir pro raide com arma sem encanto.",
+    simbolo: "lamina",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "gargantilha-vazia",
+    nome: "Gargantilha vazia",
+    como: "Ir pro raide com o colar sem gema. O soquete sempre vem, a gema é que não.",
+    simbolo: "gargantilha",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "soquete-vago",
+    nome: "Soquete vago",
+    como: "Ir pro raide com anel sem gema.",
+    simbolo: "soquete",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "meio-armado",
+    nome: "Meio armado",
+    como: "Empunhar duas armas e encantar só uma. Escudo e off-hand não contam — esses não encantam.",
+    simbolo: "duas-laminas",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "so-um-dedo",
+    nome: "Só um dedo",
+    como: "Encantar um anel e esquecer o outro.",
+    simbolo: "dois-aneis",
     tipo: "zoeira",
     disputada: false,
   },
@@ -416,6 +525,14 @@ export interface ConquistaGanha {
   vezes: number;
   /** Ex.: "Peçonha Sanguínea, em 11 de 12 trys". Só algumas preenchem. */
   detalhe?: string;
+  /**
+   * Com quais personagens ela foi conquistada, na ordem em que aconteceu.
+   *
+   * A medalha é da pessoa, mas quem tem alt quer saber de qual lado veio —
+   * "Severino" do Xúlio só existe por causa do DK dele. Quem só tem um
+   * personagem não precisa ver isso, e a tela esconde.
+   */
+  personagens: string[];
 }
 
 export type ConquistasPorJogador = Map<string, Map<string, ConquistaGanha>>;
@@ -602,10 +719,6 @@ function vencedoresDaRun(
     simples(cumpriram((p) => (p.preparationMissing ?? []).includes("Poção")))
   );
   porConquista.set(
-    "descalco",
-    simples(cumpriram((p) => (p.preparationMissing ?? []).includes("Botas")))
-  );
-  porConquista.set(
     "dieta",
     simples(
       cumpriram((p) => {
@@ -621,8 +734,67 @@ function vencedoresDaRun(
 
   porConquista.set(
     "lenda",
-    comDetalhe((p) => (p.parse !== undefined && p.parse >= 95 ? `parse ${p.parse}` : null))
+    comDetalhe((p) => (p.parse !== undefined && p.parse >= 90 ? `parse ${p.parse}` : null))
   );
+
+  /**
+   * As medalhas de peça vazia, uma por slot.
+   *
+   * Vêm de `preparationSlots`, não da lista de nomes: é o que separa "anel
+   * sem encanto" de "anel sem gema" e enxerga um anel do outro. O slot 16 só
+   * aparece quando a mão secundária é arma de verdade — escudo e off-hand
+   * não recebem encanto, e cobrar isso seria inventar um erro.
+   */
+  const semNoSlot = (tipo: "encanto" | "gema", slots: number[]) =>
+    comDetalhe((p) => {
+      const avaliados = (p.preparationSlots ?? []).filter(
+        (peca) => peca.tipo === tipo && slots.includes(peca.slot)
+      );
+      if (avaliados.length === 0) return null;
+
+      const vazios = avaliados.filter((peca) => !peca.ok);
+      if (vazios.length === 0) return null;
+
+      return avaliados.length > 1
+        ? `${vazios.length} de ${avaliados.length} sem ${tipo}`
+        : `sem ${tipo}`;
+    });
+
+  // Descalço é a primeira da família e continua sendo a bota — só passou a
+  // sair do mesmo lugar que as outras nove.
+  porConquista.set("descalco", semNoSlot("encanto", [7]));
+  porConquista.set("cabeca-oca", semNoSlot("encanto", [0]));
+  porConquista.set("ombro-frio", semNoSlot("encanto", [2]));
+  porConquista.set("peito-aberto", semNoSlot("encanto", [4]));
+  porConquista.set("cintura-solta", semNoSlot("encanto", [5]));
+  porConquista.set("perna-de-fora", semNoSlot("encanto", [6]));
+  porConquista.set("punho-livre", semNoSlot("encanto", [8]));
+  porConquista.set("anel-sem-graca", semNoSlot("encanto", [10, 11]));
+  porConquista.set("lamina-cega", semNoSlot("encanto", [15, 16]));
+  porConquista.set("gargantilha-vazia", semNoSlot("gema", [1]));
+  porConquista.set("soquete-vago", semNoSlot("gema", [10, 11]));
+
+  /**
+   * Encantou um do par e esqueceu o outro.
+   *
+   * Só existe quando os DOIS slots foram avaliados: quem usa arma de duas
+   * mãos, escudo ou off-hand tem um encanto só a fazer, e não há o que
+   * esquecer. Ninguém tinha isso em 15/09 — os três que empunham duas armas
+   * encantam as duas —, e é justamente por isso que tem graça quando cair.
+   */
+  const metadeDoPar = (slots: number[]) =>
+    comDetalhe((p) => {
+      const par = (p.preparationSlots ?? []).filter(
+        (peca) => peca.tipo === "encanto" && slots.includes(peca.slot)
+      );
+      if (par.length !== 2) return null;
+
+      const encantados = par.filter((peca) => peca.ok).length;
+      return encantados === 1 ? `encantou ${par[0].label.toLowerCase()}, mas só um` : null;
+    });
+
+  porConquista.set("meio-armado", metadeDoPar([15, 16]));
+  porConquista.set("so-um-dedo", metadeDoPar([10, 11]));
 
   porConquista.set(
     "muralha",
@@ -860,7 +1032,20 @@ function vencedoresDaRun(
 /** Uma conquista de temporada já vem contada — a apuração é o histórico inteiro. */
 interface VitoriaDaTemporada extends Vitoria {
   vezes: number;
+  /** Com quais personagens ela foi conquistada. */
+  personagens?: string[];
 }
+
+/**
+ * Noites seguidas de presença que valem uma Inabalável.
+ *
+ * "Todas as noites da temporada" não funcionava: quem entrou depois nunca
+ * alcançava, uma falta única trancava a medalha pra sempre, e não havia como
+ * reconquistá-la. Sequência resolve os três — quem chega hoje começa a
+ * contar hoje, quem falta zera a contagem mas NÃO perde o que já ganhou, e
+ * quem é constante há meses acumula.
+ */
+export const NOITES_PARA_INABALAVEL = 5;
 
 /**
  * As conquistas que só existem olhando várias noites: recorde pessoal,
@@ -884,6 +1069,19 @@ function vencedoresDaTemporada(
   const score = (player: PlayerPerformance) =>
     calculateOverallScore(player, targets, funcaoDe?.(player.playerId)).overall;
 
+  /** Quais personagens levaram cada conquista, por pessoa. */
+  const creditos = new Map<string, Map<string, Set<string>>>();
+  const creditar = (id: string, conquista: string, personagens: string[]) => {
+    const daPessoa = creditos.get(id) ?? new Map<string, Set<string>>();
+    const lista = daPessoa.get(conquista) ?? new Set<string>();
+    for (const personagem of personagens) lista.add(personagem);
+    daPessoa.set(conquista, lista);
+    creditos.set(id, daPessoa);
+  };
+  const creditoDe = (id: string, conquista: string) => [
+    ...(creditos.get(id)?.get(conquista) ?? []),
+  ];
+
   // --- Superação: quantas vezes bateu o próprio teto ---
   const recorde = new Map<string, number>();
   const superacoes = new Map<string, number>();
@@ -897,8 +1095,11 @@ function vencedoresDaTemporada(
   const jaDerrubados = new Set<number>();
   const fundacoes = new Map<string, string[]>();
 
-  // --- Inabalável: presença em todas as noites ---
-  const noitesJogadas = new Map<string, number>();
+  // --- Inabalável: noites seguidas sem faltar ---
+  const presencaSeguida = new Map<string, number>();
+  const maiorPresenca = new Map<string, number>();
+  const inabalaveis = new Map<string, number>();
+  const conhecidos = new Set<string>();
 
   // --- Pagando promessa: a mesma mecânica, noite após noite ---
   const mecanicasPorJogador = new Map<string, Map<string, number>>();
@@ -927,27 +1128,51 @@ function vencedoresDaTemporada(
       daNoite.set(id, [...(daNoite.get(id) ?? []), player]);
     }
 
+    // Quem já apareceu antes e não está nesta noite tem a sequência zerada.
+    // Quem ainda não estreou não é "ausente": a contagem dele começa do zero
+    // de qualquer jeito, e zerar zero não muda nada.
+    for (const id of conhecidos) {
+      if (!daNoite.has(id)) presencaSeguida.set(id, 0);
+    }
+
     for (const [id, personagens] of daNoite) {
-      noitesJogadas.set(id, (noitesJogadas.get(id) ?? 0) + 1);
+      conhecidos.add(id);
+      const nomes = personagens.map((p) => p.playerId);
+
+      const seguidasPresente = (presencaSeguida.get(id) ?? 0) + 1;
+      maiorPresenca.set(id, Math.max(maiorPresenca.get(id) ?? 0, seguidasPresente));
+      creditar(id, "inabalavel", nomes);
+
+      if (seguidasPresente >= NOITES_PARA_INABALAVEL) {
+        inabalaveis.set(id, (inabalaveis.get(id) ?? 0) + 1);
+        presencaSeguida.set(id, 0);
+      } else {
+        presencaSeguida.set(id, seguidasPresente);
+      }
 
       // Noite sem dimensão nenhuma coletada não tem nota — e nota que não
       // existe não é nota ruim. Passa reto por recorde e por sequência, do
       // mesmo jeito que uma ausência passa.
-      const notas = personagens
-        .map(score)
-        .filter((valor): valor is number => valor !== null);
-      const nota = notas.length > 0 ? Math.max(...notas) : null;
+      const comNota = personagens
+        .map((player) => ({ player, nota: score(player) }))
+        .filter((item): item is { player: PlayerPerformance; nota: number } => item.nota !== null);
+      const melhor = comNota.sort((a, b) => b.nota - a.nota)[0];
 
-      if (nota !== null) {
+      if (melhor) {
         const teto = recorde.get(id);
-        if (teto !== undefined && nota > teto) superacoes.set(id, (superacoes.get(id) ?? 0) + 1);
-        if (teto === undefined || nota > teto) recorde.set(id, nota);
+        if (teto !== undefined && melhor.nota > teto) {
+          superacoes.set(id, (superacoes.get(id) ?? 0) + 1);
+          creditar(id, "superacao", [melhor.player.playerId]);
+        }
+        if (teto === undefined || melhor.nota > teto) recorde.set(id, melhor.nota);
 
         // Sequência quebra com nota baixa, não com falta: quem não jogou não
         // errou nada. Punir ausência aqui seria cobrar presença duas vezes —
         // "Inabalável" já é a medalha de presença.
-        const seguidas = nota >= 90 ? (sequencia.get(id) ?? 0) + 1 : 0;
+        const seguidas = melhor.nota >= 90 ? (sequencia.get(id) ?? 0) + 1 : 0;
         maiorSequencia.set(id, Math.max(maiorSequencia.get(id) ?? 0, seguidas));
+        if (seguidas > 0) creditar(id, "constante", [melhor.player.playerId]);
+
         if (seguidas >= 3) {
           constancias.set(id, (constancias.get(id) ?? 0) + 1);
           sequencia.set(id, 0);
@@ -956,12 +1181,15 @@ function vencedoresDaTemporada(
         }
       }
 
-      for (const kill of personagens.flatMap((p) => p.bossKills ?? [])) {
-        if (!estreias.has(kill.encounterID)) continue;
-        const lista = fundacoes.get(id) ?? [];
-        const nome = nomeDoBoss?.(kill.encounterID) ?? `boss ${kill.encounterID}`;
-        if (!lista.includes(nome)) lista.push(nome);
-        fundacoes.set(id, lista);
+      for (const player of personagens) {
+        for (const kill of player.bossKills ?? []) {
+          if (!estreias.has(kill.encounterID)) continue;
+          const lista = fundacoes.get(id) ?? [];
+          const nome = nomeDoBoss?.(kill.encounterID) ?? `boss ${kill.encounterID}`;
+          if (!lista.includes(nome)) lista.push(nome);
+          fundacoes.set(id, lista);
+          creditar(id, "fundador", [player.playerId]);
+        }
       }
 
       // Uma noite conta UMA vez por mecânica, mesmo que a pessoa tenha
@@ -972,11 +1200,23 @@ function vencedoresDaTemporada(
       );
       for (const nome of daNoiteDele) doJogador.set(nome, (doJogador.get(nome) ?? 0) + 1);
       mecanicasPorJogador.set(id, doJogador);
+      if (daNoiteDele.size > 0) {
+        creditar(
+          id,
+          "pagando-promessa",
+          personagens.filter((p) => (p.mechanicsDetail ?? []).length > 0).map((p) => p.playerId)
+        );
+      }
 
       // Spec conta por pessoa: quem tem um Frost DK de alt tocou outra spec,
       // mesmo que o main nunca tenha saído da dele.
       const specs = specsPorJogador.get(id) ?? new Set<string>();
-      for (const item of personagens.flatMap((p) => p.specs ?? [])) specs.add(item.spec);
+      for (const player of personagens) {
+        for (const item of player.specs ?? []) {
+          specs.add(item.spec);
+          creditar(id, "oficios", [player.playerId]);
+        }
+      }
       specsPorJogador.set(id, specs);
     }
 
@@ -989,6 +1229,7 @@ function vencedoresDaTemporada(
       playerId,
       vezes,
       detalhe: `seu recorde: Score ${recorde.get(playerId)}`,
+      personagens: creditoDe(playerId, "superacao"),
     }))
   );
 
@@ -998,6 +1239,7 @@ function vencedoresDaTemporada(
       playerId,
       vezes,
       detalhe: `melhor sequência: ${maiorSequencia.get(playerId)} noites`,
+      personagens: creditoDe(playerId, "constante"),
     }))
   );
 
@@ -1007,18 +1249,18 @@ function vencedoresDaTemporada(
       playerId,
       vezes: bosses.length,
       detalhe: bosses.length <= 3 ? bosses.join(", ") : `${bosses.length} bosses, do primeiro dia`,
+      personagens: creditoDe(playerId, "fundador"),
     }))
   );
 
   porConquista.set(
     "inabalavel",
-    [...noitesJogadas]
-      .filter(([, noites]) => noites === runs.length)
-      .map(([playerId]) => ({
-        playerId,
-        vezes: 1,
-        detalhe: `${runs.length} de ${runs.length} noites`,
-      }))
+    [...inabalaveis].map(([playerId, vezes]) => ({
+      playerId,
+      vezes,
+      detalhe: `melhor sequência: ${maiorPresenca.get(playerId)} noites seguidas`,
+      personagens: creditoDe(playerId, "inabalavel"),
+    }))
   );
 
   // Duas specs já é raro; três é o Severino. Cada uma vale uma vez só — o
@@ -1030,6 +1272,7 @@ function vencedoresDaTemporada(
         playerId,
         vezes: 1,
         detalhe: [...specs].join(", "),
+        personagens: creditoDe(playerId, "oficios"),
       }));
 
   porConquista.set("dois-oficios", oficios(2));
@@ -1043,6 +1286,7 @@ function vencedoresDaTemporada(
       playerId,
       vezes: devotas.length,
       detalhe: `"${devotas[0][0]}", em ${devotas[0][1]} noites`,
+      personagens: creditoDe(playerId, "pagando-promessa"),
     });
   }
   porConquista.set("pagando-promessa", promessas);
@@ -1069,18 +1313,27 @@ export function contarConquistas(
   const total: ConquistasPorJogador = new Map();
   const pessoa = (playerId: string) => contexto.pessoaDe?.(playerId) ?? playerId;
 
-  const registrar = (playerId: string, conquistaId: string, vezes: number, detalhe?: string) => {
-    const doJogador = total.get(playerId) ?? new Map<string, ConquistaGanha>();
+  const registrar = (
+    pessoaId: string,
+    conquistaId: string,
+    vezes: number,
+    detalhe?: string,
+    personagem?: string
+  ) => {
+    const doJogador = total.get(pessoaId) ?? new Map<string, ConquistaGanha>();
     const anterior = doJogador.get(conquistaId);
+    const personagens = [...(anterior?.personagens ?? [])];
+    if (personagem && !personagens.includes(personagem)) personagens.push(personagem);
 
     doJogador.set(conquistaId, {
       vezes: (anterior?.vezes ?? 0) + vezes,
       // A mais recente manda: numa retrospectiva o que importa é a
       // mecânica que ainda está pegando, não a do primeiro mês.
       detalhe: detalhe ?? anterior?.detalhe,
+      personagens,
     });
 
-    total.set(playerId, doJogador);
+    total.set(pessoaId, doJogador);
   };
 
   // As de temporada dependem da ordem das noites, e o arquivo semanal não
@@ -1105,13 +1358,16 @@ export function contarConquistas(
         const dono = pessoa(vitoria.playerId);
         if (jaContados.has(dono)) continue;
         jaContados.add(dono);
-        registrar(dono, conquistaId, 1, vitoria.detalhe);
+        registrar(dono, conquistaId, 1, vitoria.detalhe, vitoria.playerId);
       }
     }
   }
 
   for (const [conquistaId, vitorias] of vencedoresDaTemporada(runs, targets, contexto)) {
     for (const vitoria of vitorias) {
+      for (const personagem of vitoria.personagens ?? []) {
+        registrar(vitoria.playerId, conquistaId, 0, undefined, personagem);
+      }
       registrar(vitoria.playerId, conquistaId, vitoria.vezes, vitoria.detalhe);
     }
   }

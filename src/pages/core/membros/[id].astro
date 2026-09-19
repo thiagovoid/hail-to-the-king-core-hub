@@ -440,6 +440,7 @@ const attendance = calculateAttendance(weeks, player.id);
       elegivel={player.status === 'member' || player.status === 'veteran'}
       remeteAo={mainDoJogador ? { id: mainDoJogador.id, nome: mainDoJogador.name } : undefined}
       tambemJoga={outrosPersonagens.map((jogador) => jogador.name)}
+      nomeDoPersonagem={Object.fromEntries(roster.map((jogador) => [jogador.id, jogador.name]))}
     />
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />

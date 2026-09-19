@@ -212,16 +212,16 @@ describe("conquistas de uma noite só", () => {
     expect(quantas(weeks, "errou", "zero-a-zero")).toBe(0);
   });
 
-  it("dá Lenda a partir de parse 95 e diz qual foi", () => {
+  it("dá Lenda a partir de parse 90 e diz qual foi", () => {
     const weeks = [
       semana("2026-09-01", [
-        { playerId: "a", deaths: 1, parse: 96 },
-        { playerId: "b", deaths: 1, parse: 94 },
+        { playerId: "a", deaths: 1, parse: 90 },
+        { playerId: "b", deaths: 1, parse: 89 },
       ]),
     ];
 
     expect(quantas(weeks, "a", "lenda")).toBe(1);
-    expect(detalheDe(weeks, "a", "lenda")).toBe("parse 96");
+    expect(detalheDe(weeks, "a", "lenda")).toBe("parse 90");
     expect(quantas(weeks, "b", "lenda")).toBe(0);
   });
 
@@ -618,15 +618,60 @@ describe("conquistas de temporada", () => {
     expect(quantas(weeks, "a", "constante")).toBe(1);
   });
 
-  it("dá Inabalável só a quem esteve em todas as noites", () => {
+  const datas = [
+    "2026-09-01",
+    "2026-09-03",
+    "2026-09-05",
+    "2026-09-08",
+    "2026-09-10",
+    "2026-09-12",
+  ];
+
+  it("fecha Inabalável a cada cinco noites seguidas de presença", () => {
+    const weeks = noites(datas.slice(0, 5).map((data) => [data, [{ playerId: "a", deaths: 1 }]]));
+
+    expect(quantas(weeks, "a", "inabalavel")).toBe(1);
+    expect(detalheDe(weeks, "a", "inabalavel")).toBe("melhor sequência: 5 noites seguidas");
+  });
+
+  it("não dá Inabalável antes das cinco", () => {
+    const weeks = noites(datas.slice(0, 4).map((data) => [data, [{ playerId: "a", deaths: 1 }]]));
+    expect(quantas(weeks, "a", "inabalavel")).toBe(0);
+  });
+
+  // Era o problema da versão antiga: uma falta trancava a medalha pra
+  // sempre, e quem entrou depois nunca alcançava.
+  it("zera a sequência na falta, mas deixa recomeçar", () => {
     const weeks = noites([
-      ["2026-09-01", [{ playerId: "sempre", deaths: 1 }, { playerId: "as-vezes", deaths: 1 }]],
-      ["2026-09-03", [{ playerId: "sempre", deaths: 1 }]],
+      ["2026-09-01", [{ playerId: "a", deaths: 1 }]],
+      ["2026-09-03", [{ playerId: "a", deaths: 1 }]],
+      // Faltou: só o outro jogou.
+      ["2026-09-05", [{ playerId: "b", deaths: 1 }]],
+      ["2026-09-08", [{ playerId: "a", deaths: 1 }]],
+      ["2026-09-10", [{ playerId: "a", deaths: 1 }]],
+      ["2026-09-12", [{ playerId: "a", deaths: 1 }]],
     ]);
 
-    expect(quantas(weeks, "sempre", "inabalavel")).toBe(1);
-    expect(detalheDe(weeks, "sempre", "inabalavel")).toBe("2 de 2 noites");
-    expect(quantas(weeks, "as-vezes", "inabalavel")).toBe(0);
+    // Duas antes da falta e três depois: nenhuma sequência chegou a cinco.
+    expect(quantas(weeks, "a", "inabalavel")).toBe(0);
+  });
+
+  it("deixa quem chegou depois alcançar a medalha", () => {
+    const weeks = noites([
+      ["2026-09-01", [{ playerId: "veterano", deaths: 1 }]],
+      ...datas.slice(1, 6).map(
+        (data) =>
+          [data, [{ playerId: "veterano", deaths: 1 }, { playerId: "novato", deaths: 1 }]] as [
+            string,
+            WeeklyPerformance["runs"][number]["players"],
+          ]
+      ),
+    ]);
+
+    // O novato entrou na segunda noite e fechou cinco seguidas.
+    expect(quantas(weeks, "novato", "inabalavel")).toBe(1);
+    // E o veterano acumula, sem perder nada por já ter uma.
+    expect(quantas(weeks, "veterano", "inabalavel")).toBe(1);
   });
 
   it("dá Fundador só na PRIMEIRA vez que o boss cai", () => {
@@ -678,17 +723,37 @@ describe("conquistas de temporada", () => {
   // compor o raide não abriu buraco na temporada.
   it("não abre buraco na presença de quem jogou de alt", () => {
     const pessoaDe = (id: string) => (id === "metallica" ? "gunst" : id);
+    // Cinco noites seguidas, uma delas de alt.
     const weeks = noites([
       ["2026-09-01", [{ playerId: "gunst", deaths: 1 }]],
-      ["2026-09-03", [{ playerId: "metallica", deaths: 1 }]],
+      ["2026-09-03", [{ playerId: "gunst", deaths: 1 }]],
+      ["2026-09-05", [{ playerId: "metallica", deaths: 1 }]],
+      ["2026-09-08", [{ playerId: "gunst", deaths: 1 }]],
+      ["2026-09-10", [{ playerId: "gunst", deaths: 1 }]],
     ]);
 
+    // Sem a identidade, a noite de alt abre um buraco e ninguém fecha cinco.
     const semIdentidade = contarConquistas(weeks, TARGETS);
     expect(semIdentidade.get("gunst")?.get("inabalavel")).toBeUndefined();
 
     const comIdentidade = contarConquistas(weeks, TARGETS, { pessoaDe });
     expect(comIdentidade.get("gunst")?.get("inabalavel")?.vezes).toBe(1);
     expect(comIdentidade.get("metallica")).toBeUndefined();
+  });
+
+  // A medalha é da pessoa, mas quem tem alt quer saber de qual lado veio.
+  it("credita os personagens que participaram da conquista", () => {
+    const pessoaDe = (id: string) => (id === "metallica" ? "gunst" : id);
+    const weeks = noites([
+      ["2026-09-01", [{ playerId: "gunst", deaths: 1 }]],
+      ["2026-09-03", [{ playerId: "gunst", deaths: 1 }]],
+      ["2026-09-05", [{ playerId: "metallica", deaths: 1 }]],
+      ["2026-09-08", [{ playerId: "gunst", deaths: 1 }]],
+      ["2026-09-10", [{ playerId: "gunst", deaths: 1 }]],
+    ]);
+
+    const ganha = contarConquistas(weeks, TARGETS, { pessoaDe }).get("gunst")?.get("inabalavel");
+    expect(ganha?.personagens).toEqual(["gunst", "metallica"]);
   });
 
   it("não quebra a sequência da Constante por troca de personagem", () => {
@@ -720,7 +785,8 @@ describe("conquistas de temporada", () => {
 
     const apurado = contarConquistas(weeks, TARGETS, { pessoaDe });
     expect(apurado.get("voidsurge")?.get("noite-limpa")?.vezes).toBe(1);
-    expect(apurado.get("voidsurge")?.get("inabalavel")?.detalhe).toBe("1 de 1 noites");
+    // Uma noite com dois personagens é UMA noite de presença, não duas.
+    expect(apurado.get("voidsurge")?.get("inabalavel")).toBeUndefined();
   });
 
   it("soma as kills dos dois personagens no mesmo Fundador", () => {

@@ -32,6 +32,7 @@ export interface PlayerPerformanceContributions {
     | "bossTries"
     | "trashShare"
     | "specs"
+    | "preparationSlots"
   >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
 }

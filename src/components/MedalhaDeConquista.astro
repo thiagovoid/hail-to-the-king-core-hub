@@ -17,10 +17,17 @@ interface Props {
   vezes: number;
   /** Texto da vez mais recente, quando a conquista tem nome próprio. */
   detalhe?: string | null;
+  /**
+   * Em quais personagens ela foi conquistada.
+   *
+   * Vazio pra quem só tem um: "MVP — Kroline" na ficha da Kroline não
+   * acrescenta nada. Quem tem alt, sim.
+   */
+  personagens?: string[];
   size?: number;
 }
 
-const { conquista, vezes, detalhe = null, size = 64 } = Astro.props;
+const { conquista, vezes, detalhe = null, personagens = [], size = 64 } = Astro.props;
 
 const conquistada = vezes > 0;
 const id = `medalha-${conquista.id}`;
@@ -70,6 +77,23 @@ const METAIS: Record<string, { claro: string; escuro: string; borda: string }> =
   turista: { claro: '#93c5fd', escuro: '#1e3a5f', borda: '#bfdbfe' },
   'meter-do-alem': { claro: '#cbd5e1', escuro: '#1e293b', borda: '#e2e8f0' },
   'vai-de-novo': { claro: '#f9a8d4', escuro: '#701a45', borda: '#fbcfe8' },
+  // A família de peça vazia divide o mesmo bronze empoeirado: são dez
+  // variações da mesma piada, e cor própria pra cada uma só confundiria.
+  // O símbolo é que as distingue.
+  'cabeca-oca': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  'ombro-frio': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  'peito-aberto': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  'cintura-solta': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  'perna-de-fora': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  'punho-livre': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  'anel-sem-graca': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  'lamina-cega': { claro: '#cbbba0', escuro: '#453a29', borda: '#e3d8c5' },
+  // As de gema puxam pro verde-pedra, pra separar de encanto na estante.
+  'gargantilha-vazia': { claro: '#a7c4b5', escuro: '#254034', borda: '#c9dcd2' },
+  'soquete-vago': { claro: '#a7c4b5', escuro: '#254034', borda: '#c9dcd2' },
+  // As duas do par são as mais difíceis da família: merecem destaque.
+  'meio-armado': { claro: '#fca5a5', escuro: '#6b1d1d', borda: '#fecaca' },
+  'so-um-dedo': { claro: '#fca5a5', escuro: '#6b1d1d', borda: '#fecaca' },
 };
 
 const metal = conquistada
@@ -445,6 +469,117 @@ const titulo = conquistada
           <path d="M26 10 L38 17 L26 24 Z" />
         </>
       )}
+
+      {conquista.simbolo === 'capacete' && (
+        <>
+          <path d="M32 12 C21 12 15 20 15 31 V43 H22 V33 H42 V43 H49 V31 C49 20 43 12 32 12 Z" />
+          <rect x="29" y="20" width="6" height="24" rx="2" fill="#e2e8f0" />
+        </>
+      )}
+
+      {conquista.simbolo === 'ombreira' && (
+        <>
+          <path d="M12 30 C12 21 19 15 27 15 L27 27 C21 27 18 31 18 37 V45 H12 Z" />
+          <path d="M52 30 C52 21 45 15 37 15 L37 27 C43 27 46 31 46 37 V45 H52 Z" />
+          <rect x="28" y="18" width="8" height="28" rx="2" fill="#e2e8f0" />
+        </>
+      )}
+
+      {conquista.simbolo === 'couraca' && (
+        <>
+          <path d="M22 13 L32 19 L42 13 L50 18 V38 C50 46 42 51 32 53 C22 51 14 46 14 38 V18 Z" />
+          <path d="M32 21 V48" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+          <path d="M18 30 H46" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'cinto' && (
+        <>
+          <rect x="10" y="25" width="44" height="14" rx="3" />
+          <rect x="25" y="21" width="14" height="22" rx="3" fill="#e2e8f0" />
+          <rect x="29" y="25" width="6" height="14" rx="2" />
+        </>
+      )}
+
+      {conquista.simbolo === 'calca' && (
+        <>
+          <path d="M19 12 H45 L43 52 H34 L32 30 L30 52 H21 Z" />
+          <path d="M19 20 H45" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'bracelete' && (
+        <>
+          <path
+            d="M32 17 A15 15 0 0 1 32 47"
+            fill="none"
+            stroke="#0b1020"
+            stroke-width="8"
+            stroke-linecap="round"
+          />
+          <path
+            d="M32 17 A15 15 0 0 0 32 47"
+            fill="none"
+            stroke="#0b1020"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-dasharray="6 7"
+          />
+        </>
+      )}
+
+      {conquista.simbolo === 'anel' && (
+        <>
+          <circle cx="32" cy="37" r="14" fill="none" stroke="#0b1020" stroke-width="6" />
+          <path d="M32 10 L38 20 H26 Z" />
+        </>
+      )}
+
+      {conquista.simbolo === 'lamina' && (
+        <>
+          <path d="M40 10 L46 16 L26 44 L20 38 Z" />
+          <rect x="15" y="39" width="12" height="5" rx="2" transform="rotate(45 21 41.5)" />
+          <rect x="12" y="45" width="10" height="7" rx="2.5" />
+        </>
+      )}
+
+      {conquista.simbolo === 'gargantilha' && (
+        <>
+          <path
+            d="M16 16 A18 18 0 0 0 32 36 A18 18 0 0 0 48 16"
+            fill="none"
+            stroke="#0b1020"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <path d="M32 34 L40 44 L32 54 L24 44 Z" fill="none" stroke="#0b1020" stroke-width="4" />
+        </>
+      )}
+
+      {conquista.simbolo === 'soquete' && (
+        <>
+          <circle cx="32" cy="32" r="18" fill="none" stroke="#0b1020" stroke-width="5" />
+          <path d="M32 21 L41 32 L32 43 L23 32 Z" fill="none" stroke="#0b1020" stroke-width="4" />
+        </>
+      )}
+
+      {conquista.simbolo === 'duas-laminas' && (
+        <>
+          <path d="M20 11 L26 15 L20 44 L14 40 Z" />
+          <rect x="12" y="43" width="11" height="6" rx="2.5" />
+          <path d="M44 11 L50 15 L44 44 L38 40 Z" fill="#e2e8f0" />
+          <rect x="36" y="43" width="11" height="6" rx="2.5" fill="#e2e8f0" />
+        </>
+      )}
+
+      {conquista.simbolo === 'dois-aneis' && (
+        <>
+          <circle cx="23" cy="34" r="11" fill="none" stroke="#0b1020" stroke-width="5" />
+          <circle cx="43" cy="34" r="11" fill="none" stroke="#e2e8f0" stroke-width="5" />
+          <path d="M23 14 L28 22 H18 Z" />
+          <path d="M43 14 L48 22 H38 Z" fill="#e2e8f0" />
+        </>
+      )}
     </g>
 
     {!conquistada && (
@@ -481,6 +616,12 @@ const titulo = conquistada
 
     {detalhe && (
       <span class="block text-[#f0a500] text-[11px] leading-relaxed mt-1">{detalhe}</span>
+    )}
+
+    {conquistada && personagens.length > 0 && (
+      <span class="block text-slate-300 text-[11px] leading-relaxed mt-1">
+        Como {personagens.join(' e ')}
+      </span>
     )}
 
     <span class="block text-slate-400 text-[11px] leading-relaxed mt-1">{conquista.como}</span>

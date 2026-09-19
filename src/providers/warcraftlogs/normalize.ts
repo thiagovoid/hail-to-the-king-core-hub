@@ -233,6 +233,8 @@ export interface NormalizedRunPlayer {
   specs?: PlayerPerformance["specs"];
   /** Slots sem encanto ou sem gema — o que a tela mostra pra pessoa agir. */
   preparationMissing?: string[];
+  /** Peça a peça, com o slot junto. Ver PlayerPerformance. */
+  preparationSlots?: PlayerPerformance["preparationSlots"];
   /**
    * Quantas checagens entraram na nota de preparação (encantos, gemas).
    *
@@ -440,6 +442,9 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     const preparationMissing = resultadoPreparacao
       ? [...new Set(resultadoPreparacao.checks.flatMap((check) => check.missing ?? []))]
       : undefined;
+    // Peça a peça, com o slot junto — é o que separa "anel sem encanto" de
+    // "anel sem gema", e o que enxerga quem encantou UMA das duas armas.
+    const preparationSlots = resultadoPreparacao?.slots;
 
     // Mesma regra do dps/hps: quem trocou de função entre as trys tem
     // cooldowns de duas specs diferentes misturados na mesma média, e a
@@ -526,6 +531,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       preparation,
       ...(preparationMissing?.length ? { preparationMissing } : {}),
       ...(preparationChecks ? { preparationChecks } : {}),
+      ...(preparationSlots?.length ? { preparationSlots } : {}),
       ...(ataque ? { attack: ataque.attack, attackDetail: ataque.attackDetail } : {}),
       ...(defesa ? { defense: defesa.defense, defenseDetail: defesa.defenseDetail } : {}),
       ...(bossKillsByPlayer?.get(player.id)?.length

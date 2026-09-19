@@ -58,6 +58,21 @@ export interface PlayerPerformance {
   preparationMissing?: string[];
   /** Quantas checagens formaram a nota — deixa a combinação com os consumíveis rastreável. */
   preparationChecks?: number;
+  /**
+   * Peça a peça, com o número de slot da WCL junto.
+   *
+   * `preparationMissing` é uma lista de nomes e não distingue encanto de
+   * gema nem um anel do outro — os dois anéis viram um "Anel" só. Aqui o
+   * slot vem junto, que é o que permite medalha por peça e a piada de quem
+   * encantou UMA das duas armas. Slot 16 só aparece quando a mão secundária
+   * é arma de verdade: escudo e off-hand não recebem encanto.
+   */
+  preparationSlots?: Array<{
+    slot: number;
+    label: string;
+    tipo: "encanto" | "gema";
+    ok: boolean;
+  }>;
 
   /**
    * Mechanics-related failures.
