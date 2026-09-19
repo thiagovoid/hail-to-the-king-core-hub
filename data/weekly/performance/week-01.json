@@ -184,6 +184,12 @@
               "role": "tank"
             }
           ],
+          "utility": {
+            "interrupts": 40,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 9,
           "mechanics": {
             "errors": 0.5,
@@ -435,6 +441,12 @@
               "role": "tank"
             }
           ],
+          "utility": {
+            "interrupts": 13,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 3
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 0.6,
@@ -688,6 +700,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 66,
+            "purges": 0,
+            "battleRez": 6
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 0.4,
@@ -907,6 +925,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 10,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 0.4,
@@ -1119,6 +1143,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 45,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 0.3,
@@ -1323,6 +1353,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 20,
+            "dispels": 2,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 7,
           "mechanics": {
             "errors": 0.3,
@@ -1547,6 +1583,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 18,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 0.6,
@@ -1783,6 +1825,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 5,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 0.3,
@@ -1998,6 +2046,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 1
+          },
           "deaths": 5,
           "mechanics": {
             "errors": 0.5,
@@ -2223,6 +2277,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 2
+          },
           "deaths": 5,
           "mechanics": {
             "errors": 0.8,
