@@ -36,6 +36,13 @@ export interface MechanicOccurrence {
    * mecânicas, dividida pelo total de trys, é exatamente `errors`.
    */
   tries: number;
+  /**
+   * Explicação visual da mecânica no MythicTrap, pronta pra iframe.
+   *
+   * Vem da Wipefest, que já incorpora o MythicTrap. É o que permite a
+   * pessoa VER o que errou em vez de só ler o nome.
+   */
+  tipEmbedUrl?: string;
 }
 
 export interface NightMechanics {
@@ -85,6 +92,7 @@ export function aggregateNightMechanics(fights: FightMechanics[]): Record<string
             boss: fight.boss,
             mechanic: erro.mechanic,
             ...(erro.label ? { label: erro.label } : {}),
+            ...(erro.tipEmbedUrl ? { tipEmbedUrl: erro.tipEmbedUrl } : {}),
             tries: 1,
           });
       }

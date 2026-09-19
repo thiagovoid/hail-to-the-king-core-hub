@@ -28,7 +28,14 @@ interface Props {
    * menos. Mesma ideia da lista de preparação: a nota diz quanto, isto diz
    * o que treinar.
    */
-  mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; tries: number }>;
+  mechanicsDetail?: Array<{
+    boss: string;
+    mechanic: string;
+    label?: string;
+    tries: number;
+    /** Explicação visual no MythicTrap, quando a Wipefest tem uma. */
+    tipEmbedUrl?: string;
+  }>;
   /** Cooldowns ofensivos da noite, do pior aproveitado pro melhor. */
   attackDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
   /** As duas metades da nota de Atacar, pra tela não esconder de onde ela veio. */
@@ -285,7 +292,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     frequência: em quantas trys ela foi errada. O denominador
                     responde "de quantas?" sem a pessoa procurar. */}
                 {dimension.key === 'mechanics' && mechanicsDetail.length > 0 && (
-                  <ul class="space-y-0.5">
+                  <ul class="space-y-1">
                     {mechanicsDetail.map((item) => (
                       <li class="text-[11px] text-slate-500 leading-relaxed">
                         <span class="text-slate-400">
@@ -293,6 +300,32 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                         </span>{' '}
                         {nightTries !== null ? `em ${item.tries} de ${nightTries} trys` : `em ${item.tries} trys`}
                         <span class="text-slate-600"> &middot; {item.boss}</span>
+
+                        {/* O MythicTrap carrega SÓ no clique: a página não pode
+                            depender do tempo de resposta deles pra abrir. */}
+                        {item.tipEmbedUrl && (
+                          <details class="mt-1 group/trap">
+                            <summary class="cursor-pointer text-[#f0a500] hover:underline list-none inline-flex items-center gap-1">
+                              <span class="inline-block transition-transform group-open/trap:rotate-90">&rsaquo;</span>
+                              ver a mecânica
+                            </summary>
+
+                            <div class="mt-2 rounded-lg overflow-hidden border border-slate-800 bg-[#0b1020]">
+                              <iframe
+                                src={item.tipEmbedUrl}
+                                loading="lazy"
+                                title={`MythicTrap — ${item.label ?? item.mechanic}`}
+                                class="w-full h-[320px]"
+                                referrerpolicy="no-referrer"
+                                sandbox="allow-scripts allow-same-origin"
+                              />
+                            </div>
+
+                            <p class="text-[10px] text-slate-600 mt-1">
+                              Explicação do MythicTrap, via Wipefest. Só existe em inglês.
+                            </p>
+                          </details>
+                        )}
                       </li>
                     ))}
                   </ul>

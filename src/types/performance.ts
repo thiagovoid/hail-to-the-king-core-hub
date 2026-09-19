@@ -99,7 +99,19 @@ export interface PlayerPerformance {
    * Onde os erros mecânicos aconteceram na noite, do mais frequente pro
    * menos. É o que explica o número — a nota sozinha não diz o que treinar.
    */
-  mechanicsDetail?: Array<{ boss: string; mechanic: string; label?: string; tries: number }>;
+  mechanicsDetail?: Array<{
+    boss: string;
+    mechanic: string;
+    label?: string;
+    tries: number;
+    /**
+     * Página do MythicTrap que explica a mecânica, pronta pra iframe.
+     *
+     * Vem da Wipefest, que já incorpora o MythicTrap — 32 das 39 mecânicas
+     * do tier têm uma. Só existe em inglês.
+     */
+    tipEmbedUrl?: string;
+  }>;
 
   /**
    * Wipefest's overall mechanics score (0-100) for the run.

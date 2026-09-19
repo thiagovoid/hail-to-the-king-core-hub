@@ -32,6 +32,16 @@ export interface WipefestApiInsightConfig {
   /** Nome canônico em inglês — não muda com o idioma do log. */
   name: string;
   statistics?: WipefestApiStatistic[];
+  /**
+   * Página do MythicTrap que explica a mecânica, pronta pra iframe.
+   *
+   * A Wipefest já incorpora o MythicTrap e entrega o endereço aqui — 32 das
+   * 39 mecânicas de encontro do tier têm um. É o que transforma "errou
+   * Peçonha Sanguínea em 10 de 12 trys" em algo que a pessoa consegue VER.
+   *
+   * Só existe em inglês: /pt/ devolve 500 e /pt-br/ redireciona quebrado.
+   */
+  tipEmbedUrl?: string;
 }
 
 export interface WipefestApiInsight {
@@ -171,6 +181,8 @@ export interface PlayerMechanicError {
   count?: number;
   /** De qual coluna a contagem saiu — mantém o número rastreável. */
   countColumn?: string;
+  /** Explicação visual da mecânica no MythicTrap, quando a Wipefest tem uma. */
+  tipEmbedUrl?: string;
 }
 
 export interface PlayerFightMechanics {
@@ -249,6 +261,9 @@ export function buildFightMechanics(api: WipefestApiFight): PlayerFightMechanics
         value: valor.value,
         ...(contagem?.byPlayer[nome] !== undefined ? { count: contagem.byPlayer[nome] } : {}),
         ...(contagem?.countColumn ? { countColumn: contagem.countColumn } : {}),
+        // A Wipefest já incorpora o MythicTrap e entrega o endereço junto da
+        // mecânica. Errar "Peçonha Sanguínea" vira algo que dá pra VER.
+        ...(config?.tipEmbedUrl ? { tipEmbedUrl: config.tipEmbedUrl } : {}),
       });
     }
 
