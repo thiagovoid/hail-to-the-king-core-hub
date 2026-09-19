@@ -25,6 +25,7 @@ on:
           - trash
           - gear
           - raw-size
+          - mortes
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -121,3 +122,11 @@ jobs:
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
           PROBE_REPORT: ${{ inputs.report }}
         run: npm run wcl:inspect-raw-size
+
+      - name: Separar morte que custa de call de wipe
+        if: inputs.tool == 'mortes'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          PROBE_REPORT: ${{ inputs.report }}
+        run: npm run wcl:inspect-mortes
