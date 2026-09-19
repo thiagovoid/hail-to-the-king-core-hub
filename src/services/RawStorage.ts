@@ -20,7 +20,10 @@ export async function saveRaw(
 ): Promise<string> {
   const filePath = path.join(RAW_ROOT, provider, `${key}.json`);
   await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`);
+  // Sem indentação: são snapshots de máquina, lidos por `loadRaw` e por `jq`,
+  // nunca a olho nu. Indentar dobrava o arquivo de uma noite — 12,3 MB contra
+  // 6,6 MB — pra enfeitar 53 mil eventos de cast que ninguém vai ler.
+  await writeFile(filePath, `${JSON.stringify(data)}\n`);
   return filePath;
 }
 
