@@ -1,6 +1,17 @@
 ---
 import { formatCompact } from '@/utils/format';
 import { formatDate } from '@/utils/format';
+import { ROTULO_DO_NIVEL, type DegrauDoGrafico } from '@/engine/scores/prontidao';
+
+/**
+ * A cor de cada degrau, igual à do cartão de prontidão — a mesma ideia tem
+ * que ter a mesma cor nas duas telas, senão viram dois sistemas.
+ */
+const COR_DO_NIVEL = {
+  normal: { linha: 'text-emerald-500', texto: 'fill-emerald-400' },
+  heroico: { linha: 'text-sky-500', texto: 'fill-sky-400' },
+  mitico: { linha: 'text-purple-500', texto: 'fill-purple-400' },
+} as const;
 
 interface DataPoint {
   date: string;
@@ -30,6 +41,13 @@ interface Series {
    * Score Geral olha a última noite. Sem isto, gráfico e card discordavam.
    */
   current?: number | null;
+  /**
+   * As linhas de NÍVEL DE CONTEÚDO: o piso que a pessoa já segura e o degrau
+   * seguinte. Quando existem, elas substituem a linha de META no desenho —
+   * duas réguas sobrepostas no mesmo gráfico não se leem. A meta individual
+   * continua no selo acima, com o número exato.
+   */
+  degraus?: DegrauDoGrafico[];
 }
 
 interface Props {
@@ -68,6 +86,12 @@ function getScale(item: Series) {
 
   if (item.target !== undefined) {
     values.push(item.target);
+  }
+
+  // Um degrau fora da escala vira uma linha colada no topo — ou some. A
+  // régua do próximo nível só informa se ela couber na tela.
+  for (const degrau of item.degraus ?? []) {
+    values.push(degrau.valor);
   }
 
   const maiorValor = Math.max(...values, 0);
@@ -343,7 +367,7 @@ const charts = series.map((item) => {
               }
 
               {
-                item.target !== undefined && (
+                item.target !== undefined && (item.degraus ?? []).length === 0 && (
                   <g>
                     <line
                       x1={paddingLeft}
@@ -366,6 +390,45 @@ const charts = series.map((item) => {
                     </text>
                   </g>
                 )
+              }
+
+              {
+                (item.degraus ?? []).map((degrau) => {
+                  const cor = COR_DO_NIVEL[degrau.nivel];
+                  const y = getY(degrau.valor, scale);
+
+                  return (
+                    <g>
+                      {/* O piso é contínuo e fino: é chão, não alvo. O degrau
+                          seguinte é tracejado e mais grosso — é pra onde se vai. */}
+                      <line
+                        x1={paddingLeft}
+                        y1={y}
+                        x2={width - paddingRight}
+                        y2={y}
+                        stroke="currentColor"
+                        class={cor.linha}
+                        stroke-width={degrau.atual ? '1.5' : '2'}
+                        stroke-dasharray={degrau.atual ? '2 5' : '6 6'}
+                        opacity={degrau.atual ? '0.55' : '1'}
+                      />
+
+                      {/* O piso rotula à esquerda e o próximo à direita: quando
+                          os dois números ficam perto, os rótulos não se cobrem. */}
+                      <text
+                        x={degrau.atual ? paddingLeft + 4 : width - paddingRight}
+                        y={y - 6}
+                        text-anchor={degrau.atual ? 'start' : 'end'}
+                        class={`${cor.texto} text-[11px]`}
+                        opacity={degrau.atual ? '0.7' : '1'}
+                      >
+                        {degrau.atual
+                          ? `${ROTULO_DO_NIVEL[degrau.nivel]} (seu nível)`
+                          : `PRA ${ROTULO_DO_NIVEL[degrau.nivel].toUpperCase()}`}
+                      </text>
+                    </g>
+                  );
+                })
               }
 
               <polyline

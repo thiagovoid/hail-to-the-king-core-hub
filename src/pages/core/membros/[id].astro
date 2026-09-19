@@ -17,7 +17,13 @@ import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
 import { contarConquistas } from '@/engine/guild/conquistas';
 import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
 import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
-import { avaliarProntidao, mediasDaTemporada } from '@/engine/scores/prontidao';
+import {
+  avaliarProntidao,
+  mediasDaTemporada,
+  degrausDaMetrica,
+  EXIGENCIA,
+  CRITERIO_DO_OFICIO,
+} from '@/engine/scores/prontidao';
 
 import {
   buildPlayerSeasonAverage,
@@ -321,6 +327,29 @@ const prontidao = avaliarProntidao(
   funcaoDaProntidao
 );
 
+/**
+ * As linhas de nível do gráfico: o piso que a pessoa segura e o degrau
+ * seguinte. Cada métrica lê a régua que é dela — parse e mecânicas saem da
+ * EXIGENCIA, e o dps é uma fração do PRÓPRIO sim, não um número fixo.
+ */
+const simDeDps = player.performanceGoals?.dps?.target ?? null;
+
+const degrausDoParse = degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].parse);
+const degrausDeMecanicas = degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].mechanics);
+const degrausDoOficio = degrausDaMetrica(
+  prontidao,
+  (nivel) => CRITERIO_DO_OFICIO[funcaoDaProntidao][nivel]
+);
+
+// Sem sim medido não há fração pra desenhar — e uma linha inventada aqui
+// seria uma meta que ninguém combinou.
+const degrausDoDps =
+  funcaoDaProntidao === 'dps' && simDeDps
+    ? degrausDaMetrica(prontidao, (nivel) =>
+        Math.round((CRITERIO_DO_OFICIO.dps[nivel] / 100) * simDeDps)
+      )
+    : [];
+
 // Mesma fonte da página de regras — sem cópia, pra não divergirem.
 const regrasDoCore =
   (rulesJson as Array<{ category: string; rules: string[] }>).find(
@@ -490,16 +519,23 @@ const attendance = calculateAttendance(weeks, player.id);
                     target: seasonJson.config.performanceTargets.healing.target,
                     current: ultimaNoite?.healing?.score ?? null,
                     direction: 'higher' as const,
+                    // Curar só é o OFÍCIO de quem curou a temporada. Pro dps
+                    // que cura de vez em quando, a régua de healer seria uma
+                    // cobrança por um trabalho que não é o dele.
+                    degraus: funcaoDaProntidao === 'healer' ? degrausDoOficio : [],
                   },
                 ]
               : []),
-            primaryMetricSeries,
+            // O degrau de dps é uma FRAÇÃO do próprio sim: a linha do mítico
+            // do jrxamã não é a do dagom, porque o potencial não é o mesmo.
+            { ...primaryMetricSeries, degraus: degrausDoDps },
             {
               id: 'parse',
               label: 'Parse',
               data: parseHistory,
               target: player.performanceGoals?.parse?.target,
               direction: 'higher',
+              degraus: degrausDoParse,
             },
             {
               id: 'mechanics',
@@ -510,6 +546,7 @@ const attendance = calculateAttendance(weeks, player.id);
               target: seasonJson.config.performanceTargets.mechanics.target,
               current: ultimaNoite?.mechanics?.errors ?? null,
               direction: 'lower',
+              degraus: degrausDeMecanicas,
             },
             {
               id: 'attack',
@@ -528,6 +565,8 @@ const attendance = calculateAttendance(weeks, player.id);
               target: seasonJson.config.performanceTargets.defense.target,
               current: ultimaNoite?.defense?.score ?? null,
               direction: 'higher',
+              // Mesma regra de Curar: Defender é a régua de quem tanka.
+              degraus: funcaoDaProntidao === 'tank' ? degrausDoOficio : [],
             },
             ...(offRoleDpsHistory.length > 0
               ? [

@@ -7,6 +7,7 @@ import {
   type MediasDoJogador,
   CRITERIO_DO_OFICIO,
   ROTULO_DO_OFICIO,
+  degrausDaMetrica,
 } from "./prontidao";
 
 /** Alguém que fecha o heroico com folga, mas não o mítico. */
@@ -189,5 +190,47 @@ describe("a régua é do ofício, não do dps", () => {
 
     expect(oficio?.rotulo).toBe("Defender");
     expect(oficio?.exigido).toBe(CRITERIO_DO_OFICIO.tank.mitico);
+  });
+});
+
+describe("as linhas do gráfico", () => {
+  // "O cara que está no limiar da normal não enxerga a mítica."
+  it("desenha o piso e o degrau seguinte, nunca dois à frente", () => {
+    const degraus = degrausDaMetrica(
+      { nivel: "normal", proximo: "heroico" },
+      (nivel) => EXIGENCIA[nivel].parse
+    );
+
+    expect(degraus.map((d) => d.nivel)).toEqual(["normal", "heroico"]);
+    expect(degraus.find((d) => d.atual)?.valor).toBe(EXIGENCIA.normal.parse);
+  });
+
+  it("não desenha piso pra quem ainda não fecha nenhum nível", () => {
+    const degraus = degrausDaMetrica(
+      { nivel: null, proximo: "normal" },
+      (nivel) => EXIGENCIA[nivel].parse
+    );
+
+    expect(degraus).toHaveLength(1);
+    expect(degraus[0]).toMatchObject({ nivel: "normal", atual: false });
+  });
+
+  it("não desenha degrau seguinte pra quem já está no topo", () => {
+    const degraus = degrausDaMetrica(
+      { nivel: "mitico", proximo: null },
+      (nivel) => EXIGENCIA[nivel].parse
+    );
+
+    expect(degraus).toEqual([{ nivel: "mitico", valor: EXIGENCIA.mitico.parse, atual: true }]);
+  });
+
+  /** Cada métrica lê a sua régua: dps é uma fração do próprio sim. */
+  it("aceita uma régua que não vem de EXIGENCIA", () => {
+    const sim = 1_000_000;
+    const degraus = degrausDaMetrica({ nivel: "normal", proximo: "heroico" }, (nivel) =>
+      Math.round((CRITERIO_DO_OFICIO.dps[nivel] / 100) * sim)
+    );
+
+    expect(degraus[1].valor).toBe(750_000);
   });
 });

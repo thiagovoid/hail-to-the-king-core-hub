@@ -299,3 +299,39 @@ export function mediasDaTemporada(
     oficio,
   };
 }
+
+/** Uma linha de nível desenhada no gráfico. */
+export interface DegrauDoGrafico {
+  nivel: NivelDeConteudo;
+  valor: number;
+  /** É o nível que a pessoa já segura (o piso), ou o degrau seguinte? */
+  atual: boolean;
+}
+
+/**
+ * As linhas que o gráfico desenha: o piso que a pessoa já segura e o degrau
+ * seguinte. Nunca dois à frente.
+ *
+ * "O cara que está no limiar da normal não enxerga a mítica" — e não precisa:
+ * o caminho passa pelo heroico de qualquer jeito. Mostrar a régua do mítico
+ * pra quem está começando informa zero e desanima.
+ *
+ * `valorDoNivel` vem de fora porque cada métrica lê a sua régua: parse e
+ * mecânicas saem de EXIGENCIA, enquanto dps é uma fração do próprio sim.
+ */
+export function degrausDaMetrica(
+  prontidao: Pick<ProntidaoDoJogador, "nivel" | "proximo">,
+  valorDoNivel: (nivel: NivelDeConteudo) => number
+): DegrauDoGrafico[] {
+  const degraus: DegrauDoGrafico[] = [];
+
+  if (prontidao.nivel !== null) {
+    degraus.push({ nivel: prontidao.nivel, valor: valorDoNivel(prontidao.nivel), atual: true });
+  }
+
+  if (prontidao.proximo !== null) {
+    degraus.push({ nivel: prontidao.proximo, valor: valorDoNivel(prontidao.proximo), atual: false });
+  }
+
+  return degraus;
+}
