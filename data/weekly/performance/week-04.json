@@ -79,6 +79,10 @@
               "ok": true
             }
           ],
+          "preparationGear": 93,
+          "preparationMissingGear": [
+            "Elmo"
+          ],
           "attack": {
             "score": 94,
             "uptime": 98.4,
@@ -456,6 +460,11 @@
               "ok": true
             }
           ],
+          "preparationGear": 77,
+          "preparationMissingGear": [
+            "Botas",
+            "Colar"
+          ],
           "attack": {
             "score": 70.2,
             "uptime": 97.4,
@@ -817,6 +826,16 @@
               "ok": false
             }
           ],
+          "preparationGear": 17,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma"
+          ],
           "attack": {
             "score": 98,
             "uptime": 98,
@@ -1151,6 +1170,16 @@
               "ok": false
             }
           ],
+          "preparationGear": 29,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Colar"
+          ],
           "attack": {
             "score": 87.9,
             "uptime": 98.5,
@@ -1468,6 +1497,7 @@
               "ok": true
             }
           ],
+          "preparationGear": 100,
           "attack": {
             "score": 86.8,
             "uptime": 96.3,
@@ -1618,6 +1648,7 @@
             "errors": 1.5,
             "tries": 12
           },
+          "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
             "Pedra de vida"
@@ -1800,6 +1831,12 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 81,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Botas"
           ],
           "attack": {
             "score": 89.3,
@@ -2123,6 +2160,16 @@
               "ok": false
             }
           ],
+          "preparationGear": 6,
+          "preparationMissingGear": [
+            "Elmo",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma",
+            "Colar"
+          ],
           "attack": {
             "score": 90.6,
             "uptime": 95.3,
@@ -2414,6 +2461,11 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 88,
+          "preparationMissingGear": [
+            "Elmo",
+            "Botas"
           ],
           "attack": {
             "score": 78.6,
@@ -2739,6 +2791,7 @@
               "ok": true
             }
           ],
+          "preparationGear": 100,
           "attack": {
             "score": 86.4,
             "uptime": 94.3,
@@ -2877,6 +2930,7 @@
             "errors": 1.3,
             "tries": 12
           },
+          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
@@ -3041,6 +3095,10 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 94,
+          "preparationMissingGear": [
+            "Elmo"
           ],
           "attack": {
             "score": 86.6,
@@ -3371,6 +3429,12 @@
               "ok": true
             }
           ],
+          "preparationGear": 86,
+          "preparationMissingGear": [
+            "Elmo",
+            "Cintura",
+            "Braçadeiras"
+          ],
           "attack": {
             "score": 98.3,
             "uptime": 99,
@@ -3683,6 +3747,7 @@
               "ok": true
             }
           ],
+          "preparationGear": 100,
           "attack": {
             "score": 87.4,
             "uptime": 87.3,
@@ -3827,6 +3892,7 @@
             "errors": 1.5,
             "tries": 12
           },
+          "preparationMissingGear": [],
           "preparationMissing": [
             "Flask/comida",
             "Pedra de vida"
@@ -4011,6 +4077,7 @@
               "ok": true
             }
           ],
+          "preparationGear": 100,
           "attack": {
             "score": 77.5,
             "uptime": 89.1,
@@ -4167,6 +4234,7 @@
             "errors": 1.6,
             "tries": 12
           },
+          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
@@ -4333,6 +4401,10 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 94,
+          "preparationMissingGear": [
+            "Ombreiras"
           ],
           "attack": {
             "score": 78.2,
@@ -4677,6 +4749,12 @@
               "ok": true
             }
           ],
+          "preparationGear": 81,
+          "preparationMissingGear": [
+            "Elmo",
+            "Peito",
+            "Botas"
+          ],
           "attack": {
             "score": 82.8,
             "uptime": 98,
@@ -5006,6 +5084,11 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 89,
+          "preparationMissingGear": [
+            "Peito",
+            "Botas"
           ],
           "attack": {
             "score": 69.9,

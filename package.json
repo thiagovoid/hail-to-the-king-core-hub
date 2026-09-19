@@ -29,7 +29,8 @@
     "wcl:inspect-raw-size": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-raw-size.ts",
     "wcl:inspect-mortes": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-mortes.ts",
     "wcl:collect": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts",
-    "wcl:build": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts -- --reuse"
+    "wcl:build": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts -- --reuse",
+    "wipefest:build": "vite-node -c vitest.config.ts scripts/wipefest/fetch-mechanics.ts -- --reuse"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

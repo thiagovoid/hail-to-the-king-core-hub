@@ -26,8 +26,14 @@ coverage/
 # nova virava uma recoleta de ~15 minutos por dado que já tinha passado por
 # aqui — e o site ficava com o campo vazio no meio-tempo.
 #
-# Custo medido: 495 KB comprimidos por noite, ~4 MB a temporada. O cache do
-# Wowhead que já mora aqui tem 1,4 MB.
+# Custo medido: 690 KB comprimidos por noite (a primeira estimativa, de 495
+# KB, saiu de uma sonda que rodou antes de o `fetch()` passar a trazer a
+# noite inteira). São ~5,5 MB nesta temporada de 8 noites e ~33 MB numa de
+# 48. O cache do Wowhead que já mora aqui tem 1,4 MB.
+# A da Wipefest NÃO entra: são 140 MB de árvore de trabalho por 9,8 MB
+# empacotados, e ela é API pública, rápida e sem limite de pontos — o que
+# doía era a WCL. O arquivo continua sendo gravado, e `--reuse` aproveita
+# quem já o tem em disco.
 data/raw/*
 !data/raw/warcraftlogs/
 

@@ -59,6 +59,16 @@ export interface PlayerPerformance {
   /** Quantas checagens formaram a nota — deixa a combinação com os consumíveis rastreável. */
   preparationChecks?: number;
   /**
+   * A nota de preparação SÓ do equipamento, antes de entrar o Wipefest.
+   *
+   * Existe pra que combinar seja idempotente: `preparation` já é o resultado
+   * da combinação, e recombiná-lo empurrava o número a cada execução do
+   * coletor de mecânicas. Ver `combinePreparation`.
+   */
+  preparationGear?: number;
+  /** O que falta de equipamento, antes de somar o que o ready check pegou. */
+  preparationMissingGear?: string[];
+  /**
    * Peça a peça, com o número de slot da WCL junto.
    *
    * `preparationMissing` é uma lista de nomes e não distingue encanto de

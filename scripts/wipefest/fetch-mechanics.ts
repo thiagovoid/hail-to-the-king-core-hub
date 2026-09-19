@@ -10,6 +10,9 @@ import {
   combinePreparation,
 } from "../../src/providers/wipefest/normalizeMechanics";
 import { computeWeekNumber } from "../../src/normalization/buildSeasonProgression";
+import { DataCollector } from "../../src/services/DataCollector";
+import { loadRaw, saveRaw } from "../../src/services/RawStorage";
+import type { WipefestApiReport } from "../../src/providers/wipefest/WipefestApiProvider";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -40,6 +43,10 @@ function parseArgs() {
   return {
     week: args.week ? Number(args.week) : undefined,
     season: String(args.season ?? "midnight-s2"),
+    // Mesma ideia do coletor da WCL: o que a Wipefest disse sobre uma noite
+    // que já acabou não muda, e reprocessar não pode custar uma ida à API por
+    // try. Ver DataCollector.reuseArchived.
+    reuse: Boolean(args.reuse),
   };
 }
 
@@ -60,7 +67,12 @@ function characterName(profileUrl: string): string {
  * e medir só o kill esconderia justamente a progressão.
  */
 async function main() {
-  const { week: weekArg, season } = parseArgs();
+  const { week: weekArg, season, reuse } = parseArgs();
+  const collector = new DataCollector();
+  if (reuse) {
+    collector.reuseArchivedFiles();
+    console.log("Modo --reuse: lendo o arquivo da Wipefest, sem ir à API pelo que já existe.");
+  }
   const seasonDir = path.join(ROOT, "data/seasons", season);
   const config = JSON.parse(await readFile(path.join(seasonDir, "config.json"), "utf-8"));
   const week = weekArg ?? computeWeekNumber(config.config.raidWeekAnchor, Date.now());
@@ -94,7 +106,10 @@ async function main() {
 
     console.log(`Run ${run.date} (${run.reportCode})...`);
 
-    const report = await fetchWipefestReport(run.reportCode);
+    const CHAVE_DO_REPORT = `${run.reportCode}/report`;
+    const arquivado = reuse ? await loadRaw<WipefestApiReport>("wipefest-api", CHAVE_DO_REPORT) : null;
+    const report = arquivado ?? (await fetchWipefestReport(run.reportCode));
+    if (!arquivado) await saveRaw("wipefest-api", CHAVE_DO_REPORT, report);
     // boss 0 = trash; a própria API separa.
     const fights = (report.fights ?? []).filter((fight) => fight.boss > 0);
     console.log(`  ${fights.length} try(s) de raid.`);
@@ -103,7 +118,13 @@ async function main() {
     const preparacaoPorFight: Array<{ players: ReturnType<typeof buildFightPreparation> }> = [];
     for (const fight of fights) {
       try {
-        const resposta = await provider.fetch({ reportCode: run.reportCode, fightId: fight.id });
+        const [saida] = await collector.run({
+          provider,
+          context: { reportCode: run.reportCode, fightId: fight.id },
+          rawKey: `${run.reportCode}/fight-${fight.id}`,
+        });
+        if (saida.status === "error") throw new Error(saida.error);
+        const resposta = saida.result;
         porFight.push({
           boss: bosses[fight.boss] ?? fight.name,
           kill: fight.kill,
@@ -136,13 +157,35 @@ async function main() {
       // fechava: o combatantInfo dos logs do core vem sem aura nenhuma.
       const doWipefest = consumiveis[nome];
       if (doWipefest) {
+        /**
+         * A base é SEMPRE a nota de gear, nunca o que está gravado.
+         *
+         * `preparation` já é o resultado de uma combinação anterior, e
+         * recombiná-lo empurrava o número a cada execução: rodar este script
+         * duas vezes na mesma semana levava o voidwar de 69 pra 57 sem nada
+         * ter mudado no log. No fluxo do CI passava batido porque a coleta da
+         * WCL roda antes e regrava a nota de gear — mas `wipefest:build`
+         * roda sozinho, direto na armadilha.
+         */
+        const gear =
+          (existente.preparationGear as number | undefined) ??
+          (existente.preparation as number | undefined);
+        existente.preparationGear = gear;
+
         const combinada = combinePreparation(
-          { score: existente.preparation as number | undefined, checks: existente.preparationChecks as number | undefined },
+          { score: gear, checks: existente.preparationChecks as number | undefined },
           { score: doWipefest.score, itens: doWipefest.itens }
         );
         if (combinada !== undefined) existente.preparation = combinada;
 
-        const faltando = [...((existente.preparationMissing as string[]) ?? []), ...doWipefest.missing];
+        // Idem: o que falta de gear já está gravado, e concatenar de novo
+        // só funciona por causa do Set. Refazer da base é mais honesto.
+        const faltandoGear = ((existente.preparationMissingGear as string[] | undefined) ??
+          (existente.preparationMissing as string[]) ??
+          []);
+        existente.preparationMissingGear = faltandoGear;
+
+        const faltando = [...faltandoGear, ...doWipefest.missing];
         if (faltando.length > 0) existente.preparationMissing = [...new Set(faltando)];
       }
       if (resumo.byMechanic.length > 0) existente.mechanicsDetail = resumo.byMechanic;

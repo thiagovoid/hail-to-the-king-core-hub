@@ -235,6 +235,9 @@ export interface NormalizedRunPlayer {
   preparationMissing?: string[];
   /** Peça a peça, com o slot junto. Ver PlayerPerformance. */
   preparationSlots?: PlayerPerformance["preparationSlots"];
+  /** A nota só do equipamento. Base fixa da combinação com o Wipefest. */
+  preparationGear?: number;
+  preparationMissingGear?: string[];
   /**
    * Quantas checagens entraram na nota de preparação (encantos, gemas).
    *
@@ -532,6 +535,10 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ...(preparationMissing?.length ? { preparationMissing } : {}),
       ...(preparationChecks ? { preparationChecks } : {}),
       ...(preparationSlots?.length ? { preparationSlots } : {}),
+      // Guardadas separadas pra que somar os consumíveis do Wipefest seja
+      // idempotente: sem base fixa, cada execução empurrava a nota.
+      ...(preparation !== undefined ? { preparationGear: preparation } : {}),
+      ...(preparationMissing?.length ? { preparationMissingGear: preparationMissing } : {}),
       ...(ataque ? { attack: ataque.attack, attackDetail: ataque.attackDetail } : {}),
       ...(defesa ? { defense: defesa.defense, defenseDetail: defesa.defenseDetail } : {}),
       ...(bossKillsByPlayer?.get(player.id)?.length

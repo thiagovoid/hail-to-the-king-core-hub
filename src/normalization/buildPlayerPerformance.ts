@@ -33,6 +33,8 @@ export interface PlayerPerformanceContributions {
     | "trashShare"
     | "specs"
     | "preparationSlots"
+    | "preparationGear"
+    | "preparationMissingGear"
   >;
   wipefest?: Pick<PlayerPerformance, "wipefestScore" | "mechanics">;
 }

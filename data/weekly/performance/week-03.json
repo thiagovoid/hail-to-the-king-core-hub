@@ -84,6 +84,15 @@
               "ok": false
             }
           ],
+          "preparationGear": 7,
+          "preparationMissingGear": [
+            "Elmo",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Colar"
+          ],
           "attack": {
             "score": 89.9,
             "uptime": 93.4,
@@ -419,6 +428,16 @@
               "ok": false
             }
           ],
+          "preparationGear": 6,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Colar"
+          ],
           "attack": {
             "score": 65.9,
             "uptime": 88.5,
@@ -744,6 +763,7 @@
               "ok": true
             }
           ],
+          "preparationGear": 100,
           "attack": {
             "score": 99.2,
             "uptime": 99.2,
@@ -887,6 +907,7 @@
             "errors": 2,
             "tries": 9
           },
+          "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
             "Flask/comida",
@@ -1064,6 +1085,16 @@
               "tipo": "gema",
               "ok": false
             }
+          ],
+          "preparationGear": 6,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Colar"
           ],
           "attack": {
             "score": 72.1,
@@ -1377,6 +1408,12 @@
               "ok": true
             }
           ],
+          "preparationGear": 81,
+          "preparationMissingGear": [
+            "Pernas",
+            "Botas",
+            "Anel"
+          ],
           "attack": {
             "score": 86.8,
             "uptime": 98.9,
@@ -1687,6 +1724,11 @@
               "ok": true
             }
           ],
+          "preparationGear": 88,
+          "preparationMissingGear": [
+            "Ombreiras",
+            "Botas"
+          ],
           "attack": {
             "score": 85,
             "uptime": 82.4,
@@ -1989,6 +2031,15 @@
               "ok": false
             }
           ],
+          "preparationGear": 13,
+          "preparationMissingGear": [
+            "Elmo",
+            "Peito",
+            "Pernas",
+            "Anel",
+            "Arma",
+            "Colar"
+          ],
           "attack": {
             "score": 92.8,
             "uptime": 98.1,
@@ -2273,6 +2324,10 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 94,
+          "preparationMissingGear": [
+            "Botas"
           ],
           "attack": {
             "score": 85.4,
@@ -2574,6 +2629,7 @@
               "ok": true
             }
           ],
+          "preparationGear": 100,
           "attack": {
             "score": 86.5,
             "uptime": 92.6,
@@ -2712,6 +2768,7 @@
             "errors": 1.6,
             "tries": 9
           },
+          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
@@ -2875,6 +2932,14 @@
               "tipo": "gema",
               "ok": false
             }
+          ],
+          "preparationGear": 33,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Pernas",
+            "Botas",
+            "Anel"
           ],
           "attack": {
             "score": 76.8,
@@ -3239,6 +3304,14 @@
               "ok": true
             }
           ],
+          "preparationGear": 77,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Cintura",
+            "Botas",
+            "Braçadeiras"
+          ],
           "attack": {
             "score": 97.8,
             "uptime": 97.9,
@@ -3529,6 +3602,17 @@
               "tipo": "gema",
               "ok": false
             }
+          ],
+          "preparationGear": 0,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma",
+            "Colar"
           ],
           "attack": {
             "score": 81.9,
@@ -3844,6 +3928,10 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 94,
+          "preparationMissingGear": [
+            "Botas"
           ],
           "attack": {
             "score": 90.3,
@@ -4201,6 +4289,13 @@
               "ok": true
             }
           ],
+          "preparationGear": 75,
+          "preparationMissingGear": [
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas"
+          ],
           "attack": {
             "score": 73.2,
             "uptime": 80.2,
@@ -4513,6 +4608,13 @@
               "ok": true
             }
           ],
+          "preparationGear": 75,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Pernas",
+            "Arma"
+          ],
           "attack": {
             "score": 65.2,
             "uptime": 79.1,
@@ -4812,6 +4914,18 @@
               "tipo": "gema",
               "ok": false
             }
+          ],
+          "preparationGear": 0,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Arma",
+            "Mão secundária",
+            "Colar"
           ],
           "attack": {
             "score": 69.9,
@@ -5136,6 +5250,15 @@
               "ok": false
             }
           ],
+          "preparationGear": 7,
+          "preparationMissingGear": [
+            "Elmo",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Colar"
+          ],
           "attack": {
             "score": 88.5,
             "uptime": 92.6,
@@ -5389,6 +5512,13 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 75,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Pernas",
+            "Botas"
           ],
           "attack": {
             "score": 61.3,
@@ -5668,6 +5798,13 @@
               "ok": false
             }
           ],
+          "preparationGear": 35,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Anel"
+          ],
           "attack": {
             "score": 95.2,
             "uptime": 95.2,
@@ -5905,6 +6042,16 @@
               "ok": false
             }
           ],
+          "preparationGear": 6,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Peito",
+            "Pernas",
+            "Botas",
+            "Anel",
+            "Colar"
+          ],
           "attack": {
             "score": 85.8,
             "uptime": 93.1,
@@ -6125,6 +6272,7 @@
               "ok": true
             }
           ],
+          "preparationGear": 100,
           "attack": {
             "score": 86.5,
             "uptime": 96.7,
@@ -6237,6 +6385,7 @@
             "errors": 0.6,
             "tries": 16
           },
+          "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
             "Pedra de vida"
@@ -6359,6 +6508,11 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 88,
+          "preparationMissingGear": [
+            "Ombreiras",
+            "Botas"
           ],
           "attack": {
             "score": 89.5,
@@ -6608,6 +6762,15 @@
               "ok": false
             }
           ],
+          "preparationGear": 13,
+          "preparationMissingGear": [
+            "Elmo",
+            "Peito",
+            "Pernas",
+            "Anel",
+            "Arma",
+            "Colar"
+          ],
           "attack": {
             "score": 84.3,
             "uptime": 91.4,
@@ -6838,6 +7001,10 @@
               "ok": true
             }
           ],
+          "preparationGear": 94,
+          "preparationMissingGear": [
+            "Botas"
+          ],
           "attack": {
             "score": 77.5,
             "uptime": 89.3,
@@ -7060,6 +7227,14 @@
               "tipo": "gema",
               "ok": false
             }
+          ],
+          "preparationGear": 33,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Pernas",
+            "Botas",
+            "Anel"
           ],
           "attack": {
             "score": 80.5,
@@ -7312,6 +7487,11 @@
               "ok": true
             }
           ],
+          "preparationGear": 91,
+          "preparationMissingGear": [
+            "Cintura",
+            "Braçadeiras"
+          ],
           "attack": {
             "score": 89.3,
             "uptime": 86.5,
@@ -7518,6 +7698,10 @@
               "tipo": "gema",
               "ok": true
             }
+          ],
+          "preparationGear": 94,
+          "preparationMissingGear": [
+            "Botas"
           ],
           "attack": {
             "score": 85.6,
@@ -7782,6 +7966,12 @@
               "ok": true
             }
           ],
+          "preparationGear": 81,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras",
+            "Pernas"
+          ],
           "attack": {
             "score": 87.7,
             "uptime": 90.6,
@@ -8012,6 +8202,15 @@
               "tipo": "gema",
               "ok": false
             }
+          ],
+          "preparationGear": 28,
+          "preparationMissingGear": [
+            "Elmo",
+            "Pernas",
+            "Botas",
+            "Mão secundária",
+            "Colar",
+            "Anel"
           ],
           "attack": {
             "score": 68.5,
