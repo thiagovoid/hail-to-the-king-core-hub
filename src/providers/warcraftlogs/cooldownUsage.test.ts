@@ -9,6 +9,7 @@ import {
   tempoEmRecarga,
   type EventoDeCast,
   type UsoDeCooldown,
+  ehUso,
 } from "./cooldownUsage";
 
 const AVATAR: CooldownDaMagia = {
@@ -485,5 +486,51 @@ describe("piso de dano dos cooldowns longos", () => {
 
     expect(contaParaNota(uso(0.9), LONGO, true)).toBe(true);
     expect(contaParaNota(uso(0.004), LONGO, true)).toBe(false);
+  });
+});
+
+describe("ehUso", () => {
+  /**
+   * Magia com tempo de conjuração emite begincast E cast. Contar os dois
+   * consumia duas cargas em vez de uma: o Stormkeeper do jrxamã aparecia com
+   * 94 usos numa noite de 47, e a eficiência saía inflada a favor dele.
+   */
+  it("não conta begincast como uso", () => {
+    expect(ehUso({ type: "begincast" })).toBe(false);
+    expect(ehUso({ type: "cast" })).toBe(true);
+  });
+
+  // Evento sem tipo é dado antigo, de antes desta checagem. Descartá-lo
+  // apagaria a nota de Atacar de noites inteiras.
+  it("conta evento sem tipo, por compatibilidade", () => {
+    expect(ehUso({})).toBe(true);
+  });
+});
+
+describe("buildCooldownUsage e o begincast", () => {
+  it("conta uma conjuração longa como um uso só", () => {
+    const catalogo = new Map<number, CooldownDaMagia>([
+      [100, { spellId: 100, name: "Conjuração Longa", cooldownMs: 60_000, charges: 1, kind: "offensive" }],
+    ]);
+    const janelas = [{ id: 1, startTime: 0, endTime: 300_000 }];
+
+    const comBegincast = buildCooldownUsage(
+      [
+        { timestamp: 10_000, sourceID: 5, abilityGameID: 100, fight: 1, type: "begincast" },
+        { timestamp: 12_000, sourceID: 5, abilityGameID: 100, fight: 1, type: "cast" },
+      ],
+      janelas,
+      catalogo
+    );
+
+    const soCast = buildCooldownUsage(
+      [{ timestamp: 12_000, sourceID: 5, abilityGameID: 100, fight: 1, type: "cast" }],
+      janelas,
+      catalogo
+    );
+
+    expect(comBegincast[0].abilities[0].casts).toBe(1);
+    expect(comBegincast[0].abilities[0].casts).toBe(soCast[0].abilities[0].casts);
+    expect(comBegincast[0].abilities[0].efficiency).toBe(soCast[0].abilities[0].efficiency);
   });
 });

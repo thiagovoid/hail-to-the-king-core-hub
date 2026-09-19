@@ -22,6 +22,30 @@ export interface EventoDeCast {
   sourceID: number;
   abilityGameID: number;
   fight: number;
+  /**
+   * "cast" ou "begincast".
+   *
+   * Magia com tempo de conjuração emite os DOIS, e contar os dois é contar o
+   * mesmo uso duas vezes — o Stormkeeper do jrxamã aparecia com 94 usos numa
+   * noite de 47. Ver `ehUso`.
+   */
+  type?: string;
+  /** Em quem. Só o `cast` traz o alvo de verdade; o `begincast` traz -1. */
+  targetID?: number;
+}
+
+/**
+ * O evento conta como USO da habilidade?
+ *
+ * Magia instantânea emite só `cast`. Magia com tempo de conjuração emite
+ * `begincast` e depois `cast` — e contar os dois consumia duas cargas em vez
+ * de uma, fazendo a habilidade parecer MAIS tempo em recarga do que ficou.
+ * A eficiência saía inflada a favor do jogador.
+ *
+ * Conjuração interrompida emite só `begincast`, e aí não houve uso mesmo.
+ */
+export function ehUso(evento: { type?: string }): boolean {
+  return evento.type !== "begincast";
 }
 
 export interface JanelaDeLuta {
@@ -269,6 +293,7 @@ export function buildCooldownUsage(
 
   for (const evento of eventos) {
     if (!porJanela.has(evento.fight)) continue;
+    if (!ehUso(evento)) continue;
 
     let trys = trysPorJogador.get(evento.sourceID);
     if (!trys) trysPorJogador.set(evento.sourceID, (trys = new Set()));
