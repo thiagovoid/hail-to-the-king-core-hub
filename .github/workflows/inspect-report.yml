@@ -23,6 +23,7 @@ on:
           - cooldowns
           - healing
           - trash
+          - gear
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -103,3 +104,11 @@ jobs:
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
           PROBE_REPORT: ${{ inputs.report }}
         run: npm run wcl:inspect-trash
+
+      - name: Inspecionar equipamento e encantos
+        if: inputs.tool == 'gear'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          PROBE_REPORT: ${{ inputs.report }}
+        run: npm run wcl:inspect-gear

@@ -24,7 +24,8 @@
     "wcl:inspect-parse": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-parse.ts",
     "wcl:inspect-cooldowns": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-cooldowns.ts",
     "wcl:inspect-healing": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-healing.ts",
-    "wcl:inspect-trash": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-trash.ts"
+    "wcl:inspect-trash": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-trash.ts",
+    "wcl:inspect-gear": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-gear.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
