@@ -8,7 +8,7 @@ const WEIGHTS: Record<ScoreDimensionKey, number> = {
   attack: 15,
   defense: 10,
   healing: 20,
-  preparation: 10,
+  survival: 15, preparation: 10,
 };
 
 const LABELS: Record<ScoreDimensionKey, string> = {
@@ -17,7 +17,7 @@ const LABELS: Record<ScoreDimensionKey, string> = {
   attack: "Atacar",
   defense: "Defender",
   healing: "Curar",
-  preparation: "Preparação",
+  survival: "Sobreviver", preparation: "Preparação",
 };
 
 /** Monta o score a partir de `{ dimensão: nota }`, preenchendo o resto do shape. */
@@ -47,14 +47,14 @@ function score(scores: Partial<Record<ScoreDimensionKey, number | null>>): Overa
 
 describe("buildCoachRecommendation", () => {
   it("escolhe a dimensão mais fraca entre as que têm dado", () => {
-    const result = buildCoachRecommendation(score({ parse: 90, mechanics: 40, preparation: 70 }));
+    const result = buildCoachRecommendation(score({ parse: 90, mechanics: 40, survival: 95, preparation: 70 }));
 
     expect(result.focusKey).toBe("mechanics");
     expect(result.message).toMatch(/Mecânicas/);
   });
 
   it("reconhece em vez de cobrar quando tudo que tem dado está forte", () => {
-    const result = buildCoachRecommendation(score({ parse: 85, mechanics: 100, preparation: 90 }));
+    const result = buildCoachRecommendation(score({ parse: 85, mechanics: 100, survival: 95, preparation: 90 }));
 
     expect(result.message).toBe("Performance sólida em todas as frentes disponíveis. Continue assim.");
   });

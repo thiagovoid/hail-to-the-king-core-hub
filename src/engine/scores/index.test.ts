@@ -12,6 +12,7 @@ const TARGETS: CorePerformanceTargets = {
   attack: { target: 70, direction: "higher" },
   defense: { target: 60, direction: "higher" },
   healing: { target: 80, direction: "higher" },
+  survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
 
@@ -56,8 +57,8 @@ describe("calculateOverallScore", () => {
   });
 
   it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
-    // Sem função informada, vale a régua de dps: parse 35 e mecânicas 25 têm
-    // dado → denominador 60.
+    // Sem função informada, vale a régua de dps: parse 30 e mecânicas 20 têm
+    // dado → denominador 50.
     const result = calculateOverallScore(
       { playerId: "voidwar", parse: 60, mechanics: { errors: 4 }, deaths: 0 },
       TARGETS
@@ -65,11 +66,17 @@ describe("calculateOverallScore", () => {
 
     expect(dimension(result, "attack")?.score).toBeNull();
     expect(dimension(result, "preparation")?.score).toBeNull();
-    // (100*35 + 50*25) / 60 = 79.16 → 79
-    expect(result.overall).toBe(79);
+    // (100*30 + 50*20) / 50 = 80
+    expect(result.overall).toBe(80);
   });
 
-  it("não pontua mortes — elas saíram da contabilização", () => {
+  /**
+   * Contagem de mortes continua fora. O que pontua é o CUSTO delas — quanto
+   * tempo o raide seguiu lutando sem você (ver deathCost). Dezesseis mortes
+   * na call de wipe custam quase nada; uma no começo da luta custa tudo que
+   * viria depois.
+   */
+  it("não pontua a contagem de mortes, só o custo", () => {
     const result = calculateOverallScore({ playerId: "voidwar", parse: 60, deaths: 16 }, TARGETS);
 
     expect(result.dimensions.map((d) => d.key)).toEqual([
@@ -78,9 +85,25 @@ describe("calculateOverallScore", () => {
       "attack",
       "defense",
       "healing",
+      "survival",
       "preparation",
     ]);
+    // Sem deathCost, Sobreviver não tem dado e o peso é redistribuído.
     expect(result.overall).toBe(100);
+  });
+
+  it("cobra o custo da morte, não o número dela", () => {
+    const caro = calculateOverallScore(
+      { playerId: "a", parse: 60, deaths: 2, deathCost: { seconds: 900, share: 30, inKills: 0 } },
+      TARGETS
+    );
+    const barato = calculateOverallScore(
+      { playerId: "b", parse: 60, deaths: 12, deathCost: { seconds: 40, share: 1.2, inKills: 0 } },
+      TARGETS
+    );
+
+    // Doze mortes na call de wipe valem mais que duas no meio da luta.
+    expect(barato.overall!).toBeGreaterThan(caro.overall!);
   });
 
   it("devolve overall null quando nenhuma dimensão tem dado", () => {
@@ -115,25 +138,36 @@ describe("pesos por função", () => {
 
   it("dá o maior peso a Defender no tank", () => {
     const r = calculateOverallScore(base, TARGETS, "tank");
-    expect(peso(r, "defense")).toBe(30);
-    expect(peso(r, "parse")).toBe(15);
+    expect(peso(r, "defense")).toBe(26);
+    expect(peso(r, "parse")).toBe(12);
   });
 
   it("dá o maior peso a Parse no dps", () => {
     const r = calculateOverallScore(base, TARGETS, "dps");
-    expect(peso(r, "parse")).toBe(35);
-    expect(peso(r, "defense")).toBe(10);
+    expect(peso(r, "parse")).toBe(30);
+    expect(peso(r, "defense")).toBe(7);
   });
 
   it("dá o maior peso a Curar no healer", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "healer");
-    expect(peso(r, "healing")).toBe(30);
-    expect(peso(r, "attack")).toBe(5);
+    expect(peso(r, "healing")).toBe(26);
+    expect(peso(r, "attack")).toBe(4);
   });
 
-  it("mantém Mecânicas em 25 nas três funções", () => {
+  it("mantém Mecânicas em 20 nas três funções", () => {
     for (const funcao of ["dps", "tank", "healer"] as const) {
-      expect(peso(calculateOverallScore(base, TARGETS, funcao), "mechanics")).toBe(25);
+      expect(peso(calculateOverallScore(base, TARGETS, funcao), "mechanics")).toBe(20);
+    }
+  });
+
+  /**
+   * Morrer custa ao raide a mesma coisa, quem quer que tenha morrido — por
+   * isso Sobreviver não muda de peso entre as funções, diferente de todas as
+   * outras dimensões.
+   */
+  it("dá o mesmo peso a Sobreviver nas três funções", () => {
+    for (const funcao of ["dps", "tank", "healer"] as const) {
+      expect(peso(calculateOverallScore(base, TARGETS, funcao), "survival")).toBe(15);
     }
   });
 
@@ -155,7 +189,7 @@ describe("pesos por função", () => {
   // Medi-la com a régua de dps daria peso 20 ao que ela não fez.
   it("mede como healer quem curou, mesmo cadastrado como dps", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "dps");
-    expect(peso(r, "healing")).toBe(30);
+    expect(peso(r, "healing")).toBe(26);
     expect(funcaoEfetiva({ ...base, healing: HEALING }, "dps")).toBe("healer");
   });
 

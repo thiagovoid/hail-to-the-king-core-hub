@@ -34,6 +34,11 @@
         "direction": "higher",
         "description": "Tempo médio em recarga dos cooldowns defensivos na noite. Calibrado sobre o log de 15/09: tanks entre 43 e 55, dps entre 4 e 36 — 60 seria inalcançável pra todo mundo. Mitigação e dano recebido são coletados e exibidos, mas não pontuam."
       },
+      "survival": {
+        "target": 10,
+        "direction": "lower",
+        "description": "Máximo do tempo de luta da noite passado morto ENQUANTO o raide ainda lutava. Calibrado sobre as 113 noites-jogador da temporada: mediana 11,2%, com tanks em 4,2% e dps em 13%."
+      },
       "healing": {
         "target": 80,
         "direction": "higher",

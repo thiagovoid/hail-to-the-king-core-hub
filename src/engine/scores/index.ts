@@ -8,6 +8,7 @@ export type ScoreDimensionKey =
   | "attack"
   | "defense"
   | "healing"
+  | "survival"
   | "preparation";
 
 export interface ScoreDimension {
@@ -76,10 +77,18 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
  * Preparação é 15 no tank contra 10 nos outros: consumível de tank é
  * sobrevivência, não só número.
  */
+/**
+ * Sobreviver entra com o MESMO peso pras três funções: morrer custa ao raide
+ * a mesma coisa, quem quer que tenha morrido.
+ *
+ * O peso sai principalmente de Mecânicas, que caiu de 25 pra 20 — as duas
+ * medem muito da mesma coisa (morrer costuma ser mecânica errada), e manter
+ * as duas cheias seria cobrar o mesmo erro duas vezes.
+ */
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
-  dps: { parse: 35, mechanics: 25, attack: 20, defense: 10, healing: 0, preparation: 10 },
-  tank: { parse: 15, mechanics: 25, attack: 15, defense: 30, healing: 0, preparation: 15 },
-  healer: { parse: 20, mechanics: 25, attack: 5, defense: 10, healing: 30, preparation: 10 },
+  dps: { parse: 30, mechanics: 20, attack: 18, defense: 7, healing: 0, survival: 15, preparation: 10 },
+  tank: { parse: 12, mechanics: 20, attack: 12, defense: 26, healing: 0, survival: 15, preparation: 15 },
+  healer: { parse: 17, mechanics: 20, attack: 4, defense: 8, healing: 26, survival: 15, preparation: 10 },
 };
 
 /**
@@ -141,6 +150,14 @@ const DIMENSION_META: Record<
       "Quanto do dano que o raide tomou passou pelas suas mãos, medido contra o quinhão que caberia a você, mais o quanto da sua cura NÃO caiu em quem já estava cheio. Curar mais não é curar melhor: quem cura muito costuma estar num raide que apanhou muito.",
     source:
       "Warcraft Logs (cura efetiva, overheal e dano recebido pelo raide). Só existe pra quem a WCL registrou curando na noite — não pro que está escrito no roster.",
+  },
+  survival: {
+    label: "Sobreviver",
+    unit: "% da noite morto",
+    description:
+      "Quanto do tempo de luta da noite você passou morto ENQUANTO o raide ainda lutava. Não é contagem de mortes: morrer três segundos antes do wipe custa três segundos, morrer no começo de uma luta de oito minutos custa oito minutos. Progressão de trezentas trys com call de wipe no fim sai perto de zero — resiliência não é punida, desperdício é.",
+    source:
+      "Warcraft Logs (eventos de morte, com a try em que aconteceram). Morte em try que virou kill aparece à parte: o boss caiu sem você.",
   },
   preparation: {
     label: "Preparação",
@@ -226,6 +243,14 @@ export function calculateOverallScore(
       target: targets.healing,
       value: performance.healing?.score ?? null,
       score: progress(performance.healing?.score, targets.healing),
+    },
+    {
+      key: "survival",
+      ...DIMENSION_META.survival,
+      weight: pesos.survival,
+      target: targets.survival,
+      value: performance.deathCost?.share ?? null,
+      score: progress(performance.deathCost?.share, targets.survival),
     },
     {
       key: "preparation",

@@ -169,6 +169,13 @@ export interface CorePerformanceTargets {
   defense: CoreTarget;
   /** Nota de cura. Só se aplica a quem curou na noite. */
   healing: CoreTarget;
+  /**
+   * Máximo do tempo de luta passado morto ENQUANTO o raide ainda lutava.
+   *
+   * Direção "lower": menos é melhor. Não é contagem de mortes — ver
+   * `deathCost` em PlayerPerformance.
+   */
+  survival: CoreTarget;
   /** % dos itens de preparação prontos. */
   preparation: CoreTarget;
 }

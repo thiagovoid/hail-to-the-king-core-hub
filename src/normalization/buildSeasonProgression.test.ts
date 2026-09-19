@@ -34,6 +34,7 @@ function season(overrides: Partial<SeasonConfigFile> = {}): SeasonConfigFile {
         attack: { target: 70, direction: "higher", description: "Uso de cooldowns" },
         defense: { target: 60, direction: "higher", description: "Cooldowns defensivos" },
         healing: { target: 80, direction: "higher", description: "Nota de cura" },
+        survival: { target: 10, direction: "lower" },
         preparation: { target: 60, direction: "higher", description: "Itens de preparação" },
       },
       nextRaid: { date: "2026-09-01", time: "21:30", objective: "Progressão" },
