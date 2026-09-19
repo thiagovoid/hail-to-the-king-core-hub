@@ -11,6 +11,7 @@ const luta = (
   encounterID: 100,
   kill: false,
   durationMs: 200_000,
+  endTime: 200_000,
   friendlyPlayers: presentes,
   ...extras,
 });
@@ -124,7 +125,7 @@ describe("buildNightDetail", () => {
   it("conta quem morreu e ainda foi o maior dano da try", () => {
     const detalhe = buildNightDetail(
       [luta(1, [10, 20])],
-      [{ fight: 1, targetID: 10 }],
+      [{ fight: 1, targetID: 10, timestamp: 0 }],
       dano({ 1: { 10: 9000, 20: 1000 } })
     );
 
@@ -135,7 +136,7 @@ describe("buildNightDetail", () => {
   it("não conta quem liderou o dano e sobreviveu", () => {
     const detalhe = buildNightDetail(
       [luta(1, [10, 20])],
-      [{ fight: 1, targetID: 20 }],
+      [{ fight: 1, targetID: 20, timestamp: 0 }],
       dano({ 1: { 10: 9000, 20: 1000 } })
     );
 
@@ -149,7 +150,7 @@ describe("buildNightDetail", () => {
         luta(2, [10], { encounterID: 100, kill: true }),
         luta(3, [10], { encounterID: 200, kill: true }),
       ],
-      [{ fight: 1, targetID: 10 }],
+      [{ fight: 1, targetID: 10, timestamp: 0 }],
       new Map()
     );
 
@@ -177,15 +178,71 @@ describe("buildNightDetail", () => {
   });
 
   it("devolve vazio quando a noite não teve try de boss", () => {
-    expect(buildNightDetail([], [{ fight: 1, targetID: 10 }], new Map()).size).toBe(0);
+    expect(buildNightDetail([], [{ fight: 1, targetID: 10, timestamp: 0 }], new Map()).size).toBe(0);
+  });
+
+  /**
+   * O ponto inteiro do custo de morte: "pode wipar, galera" não é erro de
+   * ninguém. Contar morte crua puniria quem cumpre a call.
+   */
+  it("não cobra nada pela morte colada no fim da try", () => {
+    const detalhe = buildNightDetail(
+      [luta(1, [10, 20], { durationMs: 200_000, endTime: 200_000 })],
+      [
+        // Morreu a 2 segundos do fim: a call de wipe.
+        { fight: 1, targetID: 10, timestamp: 198_000 },
+        // Morreu no começo: o raide lutou 190s sem ele.
+        { fight: 1, targetID: 20, timestamp: 10_000 },
+      ],
+      new Map()
+    );
+
+    expect(detalhe.get(10)?.deathCost).toMatchObject({ seconds: 2, share: 1 });
+    expect(detalhe.get(20)?.deathCost).toMatchObject({ seconds: 190, share: 95 });
+  });
+
+  // 300 trys de progressão com call de wipe no fim custam perto de zero.
+  it("mantém o custo baixo por muitas trys de progressão", () => {
+    const trys = Array.from({ length: 20 }, (_, i) =>
+      luta(i + 1, [10], { durationMs: 100_000, endTime: 100_000 })
+    );
+    const mortes = trys.map((t) => ({ fight: t.id, targetID: 10, timestamp: 97_000 }));
+
+    const detalhe = buildNightDetail(trys, mortes, new Map());
+
+    // Vinte mortes, e o custo é 3% da noite.
+    expect(detalhe.get(10)?.deathCost.seconds).toBe(60);
+    expect(detalhe.get(10)?.deathCost.share).toBe(3);
+  });
+
+  it("conta separado a morte em try que virou kill", () => {
+    const detalhe = buildNightDetail(
+      [
+        luta(1, [10], { kill: true, durationMs: 100_000, endTime: 100_000 }),
+        luta(2, [10], { durationMs: 100_000, endTime: 200_000 }),
+      ],
+      [
+        { fight: 1, targetID: 10, timestamp: 50_000 },
+        { fight: 2, targetID: 10, timestamp: 150_000 },
+      ],
+      new Map()
+    );
+
+    // O boss caiu sem ele uma vez.
+    expect(detalhe.get(10)?.deathCost.inKills).toBe(1);
+  });
+
+  it("zera o custo de quem não morreu", () => {
+    const detalhe = buildNightDetail([luta(1, [10])], [], new Map());
+    expect(detalhe.get(10)?.deathCost).toEqual({ seconds: 0, share: 0, inKills: 0 });
   });
 
   it("entrega o topo a todos os empatados", () => {
     const detalhe = buildNightDetail(
       [luta(1, [10, 20])],
       [
-        { fight: 1, targetID: 10 },
-        { fight: 1, targetID: 20 },
+        { fight: 1, targetID: 10, timestamp: 0 },
+        { fight: 1, targetID: 20, timestamp: 0 },
       ],
       dano({ 1: { 10: 5000, 20: 5000 } })
     );

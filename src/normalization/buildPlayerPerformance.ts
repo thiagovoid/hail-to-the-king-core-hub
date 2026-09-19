@@ -30,6 +30,7 @@ export interface PlayerPerformanceContributions {
     | "offRole"
     | "tries"
     | "bossTries"
+    | "deathCost"
     | "trashShare"
     | "specs"
     | "preparationSlots"

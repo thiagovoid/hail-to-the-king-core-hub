@@ -222,6 +222,23 @@ export interface PlayerPerformance {
     topDamageDead: number;
   };
 
+  /**
+   * O que as mortes custaram: quanto tempo o raide seguiu lutando sem você.
+   *
+   * Contar morte crua puniria resiliência — progressão em mítico é 200, 300
+   * trys, e "pode wipar, galera" produz morte que não é erro de ninguém.
+   * Medir o custo resolve sem limiar: a call de wipe sai perto de zero
+   * porque a try acaba logo depois, não porque alguém decidiu perdoar.
+   */
+  deathCost?: {
+    /** Segundos de luta que o raide seguiu sem você. */
+    seconds: number;
+    /** % do tempo de luta da noite. É a régua. */
+    share: number;
+    /** Mortes em try que virou kill — o boss caiu sem você. */
+    inKills: number;
+  };
+
   /** Quantas trys de cada boss, e se caiu — base de "Paciência de Jó". */
   bossTries?: Array<{
     encounterID: number;

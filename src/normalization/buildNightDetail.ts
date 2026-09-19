@@ -16,6 +16,8 @@ export interface LutaDeBoss {
   kill: boolean;
   /** Duração da try, em ms. Separa luta de pull cancelada. */
   durationMs: number;
+  /** Fim da try, no mesmo relógio dos eventos de morte. Ver `custoDaMorte`. */
+  endTime: number;
   /** `actorId` de quem estava no raide nesta try. */
   friendlyPlayers: number[];
 }
@@ -35,6 +37,33 @@ export interface MorteNaTry {
   fight: number;
   /** `actorId` de quem morreu. */
   targetID: number;
+  /** Quando aconteceu, no mesmo relógio do `endTime` da luta. */
+  timestamp: number;
+}
+
+/**
+ * O que uma morte custou: quanto tempo o raide seguiu lutando sem você.
+ *
+ * Contar morte crua puniria resiliência. Progressão em mítico é 200, 300
+ * trys, e "pode wipar, galera" produz um monte de morte que não é erro de
+ * ninguém — é cumprir a call e economizar tempo do grupo.
+ *
+ * Medir o custo em vez de classificar a morte resolve isso sem limiar e sem
+ * heurística: morrer três segundos antes do wipe custa três segundos, morrer
+ * no começo de uma luta de 500s custa 500. A call de wipe sai perto de zero
+ * por construção, não por exceção.
+ *
+ * Medido no log de 15/09: Apocalipse e Dagom morreram 11 e 12 vezes — custo
+ * real de 93s contra 1006s, porque nove das onze do Apocalipse foram nos
+ * últimos dez segundos da try.
+ */
+export interface CustoDasMortes {
+  /** Segundos que o raide seguiu lutando sem você. */
+  seconds: number;
+  /** % do tempo de luta da noite que você passou morto com a luta viva. */
+  share: number;
+  /** Mortes em try que virou kill — o boss caiu sem você. A mais cara que existe. */
+  inKills: number;
 }
 
 export interface TrysDoJogador {
@@ -65,6 +94,8 @@ export interface TrysDeUmBoss {
 export interface DetalheDaNoite {
   tries: TrysDoJogador;
   bossTries: TrysDeUmBoss[];
+  /** O que as mortes custaram de verdade. Ver `CustoDasMortes`. */
+  deathCost: CustoDasMortes;
 }
 
 /**
@@ -108,6 +139,9 @@ export function buildNightDetail(
 
   const morreuNaTry = new Set(mortes.map((morte) => `${morte.fight}:${morte.targetID}`));
 
+  /** O tempo de luta da noite — denominador do custo das mortes. */
+  const tempoDeLutaMs = bosses.reduce((soma, luta) => soma + luta.durationMs, 0);
+
   /** Quem liderou o dano de cada try. Empate entrega a todos os empatados. */
   const lideresDaTry = new Map<number, Set<number>>();
   for (const luta of bosses) {
@@ -123,6 +157,7 @@ export function buildNightDetail(
     );
   }
 
+  const porId = new Map(bosses.map((luta) => [luta.id, luta]));
   const participantes = new Set(bosses.flatMap((luta) => luta.friendlyPlayers));
 
   for (const actorId of participantes) {
@@ -157,7 +192,29 @@ export function buildNightDetail(
         lutas.every((luta) => !morreuNaTry.has(`${luta.id}:${actorId}`)),
     }));
 
+    /**
+     * O custo, morte a morte: o que sobrou de luta depois dela.
+     *
+     * Sem limiar. A call de wipe sai perto de zero porque a try acaba logo
+     * em seguida, não porque alguém decidiu que aquela morte "não conta".
+     */
+    let msMorto = 0;
+    let emKills = 0;
+    for (const morte of mortes) {
+      if (morte.targetID !== actorId) continue;
+      const luta = porId.get(morte.fight);
+      if (!luta) continue;
+
+      msMorto += Math.max(0, luta.endTime - morte.timestamp);
+      if (luta.kill) emKills += 1;
+    }
+
     detalhe.set(actorId, {
+      deathCost: {
+        seconds: Math.round(msMorto / 1000),
+        share: tempoDeLutaMs > 0 ? Math.round((msMorto / tempoDeLutaMs) * 1000) / 10 : 0,
+        inKills: emKills,
+      },
       tries: {
         present: presentes.length,
         total: bosses.length,
