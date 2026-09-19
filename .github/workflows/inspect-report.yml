@@ -26,6 +26,7 @@ on:
           - gear
           - raw-size
           - mortes
+          - utilidade
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -130,3 +131,11 @@ jobs:
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
           PROBE_REPORT: ${{ inputs.report }}
         run: npm run wcl:inspect-mortes
+
+      - name: Sondar interrupções, dispels e battle rez
+        if: inputs.tool == 'utilidade'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          PROBE_REPORT: ${{ inputs.report }}
+        run: npm run wcl:inspect-utilidade
