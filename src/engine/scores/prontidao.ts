@@ -249,3 +249,53 @@ export function avaliarProntidao(
     perfilDeChave: perfilDeChave(medias.io),
   };
 }
+
+/**
+ * As médias da temporada que a prontidão lê, montadas do histórico.
+ *
+ * Média, e não a última noite: prontidão é sobre consistência. Uma noite boa
+ * não torna ninguém pronto pra mítico, e uma ruim não desfaz meses.
+ *
+ * A exceção é o ofício do dps, que usa o MELHOR dps da temporada contra o
+ * sim. Ali a pergunta é de capacidade — "você já mostrou que consegue?" —, e
+ * a média puniria quem teve noite de boss fácil.
+ */
+export function mediasDaTemporada(
+  noites: Array<{
+    parse?: number;
+    dps?: number;
+    mechanics?: { errors: number };
+    deathCost?: { share: number };
+    preparation?: number;
+    defense?: { score: number | null };
+    healing?: { score: number };
+  }>,
+  funcao: FuncaoDaProntidao,
+  contexto: { io: number | null; simDeDps: number | null }
+): MediasDoJogador {
+  const media = (valores: Array<number | undefined | null>): number | null => {
+    const comValor = valores.filter((v): v is number => typeof v === "number");
+    if (comValor.length === 0) return null;
+    return Math.round((comValor.reduce((s, v) => s + v, 0) / comValor.length) * 10) / 10;
+  };
+
+  const melhorDps = Math.max(...noites.map((n) => n.dps ?? 0), 0);
+
+  const oficio =
+    funcao === "dps"
+      ? contexto.simDeDps && melhorDps
+        ? Math.round((melhorDps / contexto.simDeDps) * 100)
+        : null
+      : funcao === "tank"
+        ? media(noites.map((n) => n.defense?.score))
+        : media(noites.map((n) => n.healing?.score));
+
+  return {
+    parse: media(noites.map((n) => n.parse)),
+    mechanics: media(noites.map((n) => n.mechanics?.errors)),
+    deathShare: media(noites.map((n) => n.deathCost?.share)),
+    preparation: media(noites.map((n) => n.preparation)),
+    io: contexto.io,
+    oficio,
+  };
+}

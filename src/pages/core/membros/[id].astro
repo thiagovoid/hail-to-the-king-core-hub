@@ -16,6 +16,8 @@ import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
 import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
 import { contarConquistas } from '@/engine/guild/conquistas';
 import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
+import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
+import { avaliarProntidao, mediasDaTemporada } from '@/engine/scores/prontidao';
 
 import {
   buildPlayerSeasonAverage,
@@ -301,6 +303,24 @@ const conquistasDoJogador = contarConquistas(
   }
 ).get(pessoaDoJogador);
 
+/**
+ * Prontidão de conteúdo. A função vem do LOG quando ele discorda do
+ * cadastro — quem curou a temporada inteira é medido por Curar.
+ */
+const funcaoDaProntidao = history.some((noite) => noite.healing)
+  ? ('healer' as const)
+  : player.role === 'tank'
+    ? ('tank' as const)
+    : ('dps' as const);
+
+const prontidao = avaliarProntidao(
+  mediasDaTemporada(history, funcaoDaProntidao, {
+    io: player.raiderIo?.io ?? null,
+    simDeDps: player.performanceGoals?.dps?.target ?? null,
+  }),
+  funcaoDaProntidao
+);
+
 // Mesma fonte da página de regras — sem cópia, pra não divergirem.
 const regrasDoCore =
   (rulesJson as Array<{ category: string; rules: string[] }>).find(
@@ -435,6 +455,8 @@ const attendance = calculateAttendance(weeks, player.id);
         />
       )
     }
+
+    {hasData && <CartaoDeProntidao prontidao={prontidao} noites={history.length} />}
 
     <ConquistasDoJogador
       ganhas={conquistasDoJogador}
