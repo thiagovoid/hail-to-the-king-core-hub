@@ -12,7 +12,6 @@ import SummaryCard from '@/components/SummaryCard.astro';
 import CorePerformanceChart from '@/components/CorePerformanceChart.astro';
 import CoreRankingTable from '@/components/CoreRankingTable.astro';
 import CoreHealthPanel from '@/components/CoreHealthPanel.astro';
-import PainelDeComp from '@/components/PainelDeComp.astro';
 import type { SiteConfig, Boss, Player } from '@/types/index';
 import { computeProgression } from '@/utils/progression';
 import { computeMythicStats, getClassColor } from '@/utils/roster';
@@ -33,9 +32,6 @@ const weeklyHighlights = getLatestWeeklyHighlights();
 import { getCorePerformanceSeries } from '@/engine/metrics';
 import { buildCoreRanking, calculateCoreAverages } from '@/engine/team';
 import { calculateCoreHealth } from '@/engine/guild/coreHealth';
-import { avaliarComps } from '@/engine/guild/comp';
-import { prontidaoDoRoster, pessoasNaComp } from '@/engine/guild/prontidaoDoRoster';
-import { mapearPessoas } from '@/engine/guild/pessoas';
 import { serieDoHailScore } from '@/engine/team/hailScore';
 import HailScoreCard from '@/components/HailScoreCard.astro';
 
@@ -44,15 +40,15 @@ const targets = config.performanceTargets;
 const coreRanking = buildCoreRanking(performanceWeeks, players, targets);
 const coreHealth = calculateCoreHealth(performanceWeeks, players, targets, bossesNormal, bossesHeroic);
 
-// A COMP: pra qual conteúdo o GRUPO tem gente e nível. Mesma apuração que a
-// ficha do jogador usa — se cada tela calculasse do seu jeito, o site diria
-// duas coisas diferentes sobre a mesma pessoa.
-const pessoasDoCore = mapearPessoas(rosterJson as never);
-const comps = avaliarComps(
-  pessoasNaComp(prontidaoDoRoster(rosterJson as never, performanceWeeks), (id) =>
-    pessoasDoCore.get(id) ?? id
-  )
-);
+// A COMP: pra qual conteúdo o GRUPO tem gente e nível. Desligada aqui —
+// ver o comentário no corpo da página. Reativar é descomentar as duas
+// partes, sem mexer no motor.
+// const pessoasDoCore = mapearPessoas(rosterJson as never);
+// const comps = avaliarComps(
+//   pessoasNaComp(prontidaoDoRoster(rosterJson as never, performanceWeeks), (id) =>
+//     pessoasDoCore.get(id) ?? id
+//   )
+// );
 
 // Hail Score: a nota do core inteiro, noite a noite. Entra como a primeira
 // aba do gráfico porque é a leitura de cima — as outras explicam ela.
@@ -215,9 +211,14 @@ const avgIoSubtitle = bestKey
     <CoreHealthPanel health={coreHealth} />
   </div> */}
 
+  {/* O painel de COMP saiu do site público: ele diz, com nome e número, quem
+      do core ainda não segura a régua de cada conteúdo. Isso é conversa de
+      liderança, não vitrine — vai pra área de admin, atrás de login, quando
+      ela existir. O motor (engine/guild/comp.ts) e o componente seguem
+      prontos e testados; é só voltar a montar lá.
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
     <PainelDeComp comps={comps} />
-  </div>
+  </div> */}
 
   <section
     aria-label="Resumo da temporada"
