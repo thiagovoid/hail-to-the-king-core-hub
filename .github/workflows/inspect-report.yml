@@ -24,6 +24,7 @@ on:
           - healing
           - trash
           - gear
+          - raw-size
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -112,3 +113,11 @@ jobs:
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
           PROBE_REPORT: ${{ inputs.report }}
         run: npm run wcl:inspect-gear
+
+      - name: Medir o tamanho do dado bruto
+        if: inputs.tool == 'raw-size'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+          PROBE_REPORT: ${{ inputs.report }}
+        run: npm run wcl:inspect-raw-size
