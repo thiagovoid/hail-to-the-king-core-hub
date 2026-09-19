@@ -252,6 +252,24 @@ export interface PlayerPerformance {
   };
 
   /**
+   * COMO as mortes aconteceram — não quantas, nem quanto custaram.
+   *
+   * Separado do `deathCost` de propósito: o custo entra no Score e precisa
+   * ser justo com quem cumpre a call de wipe. Isto aqui é só zoeira, e um
+   * tombo é engraçado independente de ter sido caro. Ver buildNightDetail.
+   */
+  deathSignature?: {
+    /** Trys em que foi o primeiro a cair, com mais gente caindo depois. */
+    primeiroACair: number;
+    /** Trys em que morreu e a try acabou em até 10 segundos. */
+    efeitoDomino: number;
+    /** Trys em que morreu nos primeiros 30 segundos. */
+    speedrun: number;
+    /** Trys em que passou mais tempo morto do que vivo. */
+    fantasma: number;
+  };
+
+  /**
    * Utilidade: interromper, dissipar, levantar quem caiu.
    *
    * Não entra em dano nem em cura, não entra no Score hoje — e é o que
@@ -268,6 +286,8 @@ export interface PlayerPerformance {
     purges: number;
     /** Battle rez lançados. Sai dos casts, sem coleta nova. */
     battleRez: number;
+    /** Battle rez RECEBIDOS — o grupo gastando uma carga escassa em você. */
+    battleRezRecebidos: number;
   };
 
   /** Quantas trys de cada boss, e se caiu — base de "Paciência de Jó". */

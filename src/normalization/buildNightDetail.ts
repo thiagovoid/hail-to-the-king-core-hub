@@ -91,11 +91,45 @@ export interface TrysDeUmBoss {
   flawless: boolean;
 }
 
+/**
+ * Abaixo disto, entre a sua morte e o fim da try, a piada se escreve
+ * sozinha: você caiu e o raide inteiro veio junto.
+ *
+ * Dez segundos é curto de propósito. A call de wipe já derruba todo mundo
+ * junto o tempo todo, e o que se quer aqui é o caso em que a SUA morte foi
+ * o primeiro dominó — não o wipe combinado.
+ */
+export const DOMINO_MS = 10_000;
+
+/** Morrer antes disso, contado do início da try, é "nem deu tempo". */
+export const SPEEDRUN_MS = 30_000;
+
+/**
+ * O jeito como as mortes aconteceram — não quantas, nem quanto custaram.
+ *
+ * Tudo aqui é zoeira, e é por isso que existe separado do `deathCost`: o
+ * custo é o que entra no Score e precisa ser justo com quem cumpre a call
+ * de wipe. Isto aqui é o grupo rindo de um tombo, e um tombo é engraçado
+ * independente de ter sido caro.
+ */
+export interface AssinaturaDasMortes {
+  /** Trys em que você foi o primeiro do raide a cair, com mais gente caindo depois. */
+  primeiroACair: number;
+  /** Trys em que você morreu e a try acabou em até 10 segundos. */
+  efeitoDomino: number;
+  /** Trys em que morreu nos primeiros 30 segundos. */
+  speedrun: number;
+  /** Trys em que passou mais tempo morto do que vivo. */
+  fantasma: number;
+}
+
 export interface DetalheDaNoite {
   tries: TrysDoJogador;
   bossTries: TrysDeUmBoss[];
   /** O que as mortes custaram de verdade. Ver `CustoDasMortes`. */
   deathCost: CustoDasMortes;
+  /** Como elas aconteceram. Ver `AssinaturaDasMortes`. */
+  deathSignature: AssinaturaDasMortes;
 }
 
 /**
@@ -160,6 +194,25 @@ export function buildNightDetail(
   const porId = new Map(bosses.map((luta) => [luta.id, luta]));
   const participantes = new Set(bosses.flatMap((luta) => luta.friendlyPlayers));
 
+  /**
+   * Quem abriu o placar de cada try, quando houve placar pra abrir.
+   *
+   * Só conta com DUAS mortes ou mais: ser o primeiro de um só é ser também
+   * o último, e a piada é sobre ter puxado a fila. Empate no mesmo
+   * milissegundo entrega aos dois, como no resto das disputadas.
+   */
+  const primeirosACair = new Map<number, Set<number>>();
+  for (const luta of bosses) {
+    const daTry = mortes.filter((morte) => morte.fight === luta.id);
+    if (daTry.length < 2) continue;
+
+    const primeiro = Math.min(...daTry.map((morte) => morte.timestamp));
+    primeirosACair.set(
+      luta.id,
+      new Set(daTry.filter((morte) => morte.timestamp === primeiro).map((m) => m.targetID))
+    );
+  }
+
   for (const actorId of participantes) {
     const presentes = bosses.filter((luta) => luta.friendlyPlayers.includes(actorId));
 
@@ -200,6 +253,17 @@ export function buildNightDetail(
      */
     let msMorto = 0;
     let emKills = 0;
+
+    // A assinatura só olha try que vale como luta: numa pull cancelada de 20
+    // segundos todo mundo é "speedrun ao cemitério", e a piada perde a graça
+    // quando ela acusa o grupo inteiro.
+    const assinatura: AssinaturaDasMortes = {
+      primeiroACair: 0,
+      efeitoDomino: 0,
+      speedrun: 0,
+      fantasma: 0,
+    };
+
     for (const morte of mortes) {
       if (morte.targetID !== actorId) continue;
       const luta = porId.get(morte.fight);
@@ -207,6 +271,24 @@ export function buildNightDetail(
 
       msMorto += Math.max(0, luta.endTime - morte.timestamp);
       if (luta.kill) emKills += 1;
+
+      if (!valeComoLuta(luta, danoPorTry)) continue;
+
+      const inicio = luta.endTime - luta.durationMs;
+      const vivo = morte.timestamp - inicio;
+      const morto = luta.endTime - morte.timestamp;
+
+      const abriuOPlacar = primeirosACair.get(luta.id)?.has(actorId) ?? false;
+
+      if (vivo <= SPEEDRUN_MS) assinatura.speedrun += 1;
+      if (morto > vivo) assinatura.fantasma += 1;
+      if (abriuOPlacar) assinatura.primeiroACair += 1;
+
+      // O dominó exige as DUAS coisas: você caiu primeiro E o raide veio
+      // junto logo em seguida. Só "morreu perto do fim do wipe" disparava em
+      // 92 das 113 noites — todo wipe termina com todo mundo no chão, e a
+      // medalha estaria dizendo "você estava num wipe", o que não tem graça.
+      if (abriuOPlacar && morto <= DOMINO_MS && !luta.kill) assinatura.efeitoDomino += 1;
     }
 
     detalhe.set(actorId, {
@@ -215,6 +297,7 @@ export function buildNightDetail(
         share: tempoDeLutaMs > 0 ? Math.round((msMorto / tempoDeLutaMs) * 1000) / 10 : 0,
         inKills: emKills,
       },
+      deathSignature: assinatura,
       tries: {
         present: presentes.length,
         total: bosses.length,

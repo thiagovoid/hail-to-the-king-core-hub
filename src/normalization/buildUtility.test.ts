@@ -70,7 +70,13 @@ describe("buildUtility", () => {
       [lancar(7, RENASCIMENTO)]
     );
 
-    expect(util.get(7)).toEqual({ interrupts: 1, dispels: 1, purges: 1, battleRez: 1 });
+    expect(util.get(7)).toEqual({
+      interrupts: 1,
+      dispels: 1,
+      purges: 1,
+      battleRez: 1,
+      battleRezRecebidos: 0,
+    });
   });
 
   it("devolve vazio quando a noite não teve utilidade nenhuma", () => {
@@ -81,5 +87,57 @@ describe("buildUtility", () => {
     // Druida, DK, Bruxo, Paladino e o item de engenharia.
     expect(MAGIAS_DE_BATTLE_REZ.size).toBeGreaterThanOrEqual(5);
     expect(MAGIAS_DE_BATTLE_REZ.has(RENASCIMENTO)).toBe(true);
+  });
+});
+
+describe("battle rez recebido", () => {
+  it("credita quem levantou e quem foi levantado", () => {
+    const util = buildUtility([], [], [
+      { sourceID: 7, abilityGameID: RENASCIMENTO, type: "cast", targetID: 9 },
+    ]);
+
+    expect(util.get(7)?.battleRez).toBe(1);
+    expect(util.get(7)?.battleRezRecebidos).toBe(0);
+    expect(util.get(9)?.battleRezRecebidos).toBe(1);
+  });
+
+  /** Receber é um fato da noite dela, mesmo que ela não tenha feito mais nada. */
+  it("põe no mapa quem só recebeu", () => {
+    const util = buildUtility([], [], [
+      { sourceID: 7, abilityGameID: RENASCIMENTO, type: "cast", targetID: 9 },
+    ]);
+
+    expect(util.get(9)).toEqual({
+      interrupts: 0,
+      dispels: 0,
+      purges: 0,
+      battleRez: 0,
+      battleRezRecebidos: 1,
+    });
+  });
+
+  /** A conjuração interrompida não levantou ninguém — dos dois lados. */
+  it("não conta begincast", () => {
+    const util = buildUtility([], [], [
+      { sourceID: 7, abilityGameID: RENASCIMENTO, type: "begincast", targetID: 9 },
+    ]);
+
+    expect(util.get(9)).toBeUndefined();
+  });
+
+  it("ignora rez sem alvo no evento", () => {
+    const util = buildUtility([], [], [{ sourceID: 7, abilityGameID: RENASCIMENTO, type: "cast" }]);
+
+    expect(util.get(7)?.battleRez).toBe(1);
+    expect(util.size).toBe(1);
+  });
+
+  it("ignora o alvo -1, que é 'sem alvo' na WCL", () => {
+    const util = buildUtility([], [], [
+      { sourceID: 7, abilityGameID: RENASCIMENTO, type: "cast", targetID: -1 },
+    ]);
+
+    expect(util.get(-1)).toBeUndefined();
+    expect(util.get(7)?.battleRez).toBe(1);
   });
 });

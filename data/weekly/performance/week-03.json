@@ -249,6 +249,12 @@
             "share": 22.1,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 3,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 2
+          },
           "trashShare": 4.8,
           "specs": [
             {
@@ -260,7 +266,8 @@
             "interrupts": 14,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 3
           },
           "deaths": 5,
           "mechanics": {
@@ -631,6 +638,12 @@
             "share": 6.1,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
           "trashShare": 5.1,
           "specs": [
             {
@@ -642,7 +655,8 @@
             "interrupts": 35,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 1
+            "battleRez": 1,
+            "battleRezRecebidos": 0
           },
           "deaths": 3,
           "mechanics": {
@@ -948,6 +962,12 @@
             "share": 15.8,
             "inKills": 3
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
           "trashShare": 0.5,
           "specs": [
             {
@@ -959,7 +979,8 @@
             "interrupts": 9,
             "dispels": 36,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 1
           },
           "deaths": 6,
           "mechanics": {
@@ -1324,6 +1345,12 @@
             "share": 13.5,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
           "trashShare": 1.2,
           "specs": [
             {
@@ -1335,7 +1362,8 @@
             "interrupts": 0,
             "dispels": 64,
             "purges": 0,
-            "battleRez": 6
+            "battleRez": 6,
+            "battleRezRecebidos": 0
           },
           "deaths": 4,
           "mechanics": {
@@ -1658,6 +1686,12 @@
             "share": 0.8,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
           "trashShare": 0.7,
           "specs": [
             {
@@ -1669,7 +1703,8 @@
             "interrupts": 0,
             "dispels": 84,
             "purges": 0,
-            "battleRez": 1
+            "battleRez": 1,
+            "battleRezRecebidos": 0
           },
           "deaths": 2,
           "mechanics": {
@@ -1989,6 +2024,12 @@
             "share": 29.3,
             "inKills": 2
           },
+          "deathSignature": {
+            "primeiroACair": 2,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 2
+          },
           "trashShare": 12.1,
           "specs": [
             {
@@ -2000,7 +2041,8 @@
             "interrupts": 6,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 3
           },
           "deaths": 6,
           "mechanics": {
@@ -2310,6 +2352,12 @@
             "share": 1,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
           "trashShare": 9,
           "specs": [
             {
@@ -2321,7 +2369,8 @@
             "interrupts": 2,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 3,
           "mechanics": {
@@ -2633,6 +2682,12 @@
             "share": 17.6,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 2,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 2
+          },
           "trashShare": 12.2,
           "specs": [
             {
@@ -2644,7 +2699,8 @@
             "interrupts": 11,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 2
           },
           "deaths": 5,
           "mechanics": {
@@ -2945,6 +3001,12 @@
             "share": 12.8,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
           "trashShare": 15.7,
           "specs": [
             {
@@ -2956,7 +3018,8 @@
             "interrupts": 21,
             "dispels": 3,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 4,
           "mechanics": {
@@ -3291,6 +3354,12 @@
             "share": 12.3,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
           "trashShare": 7.6,
           "specs": [
             {
@@ -3302,7 +3371,8 @@
             "interrupts": 9,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 1
           },
           "deaths": 4,
           "mechanics": {
@@ -3647,6 +3717,12 @@
             "share": 11.2,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
           "trashShare": 4.3,
           "specs": [
             {
@@ -3658,7 +3734,8 @@
             "interrupts": 0,
             "dispels": 4,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 4,
           "mechanics": {
@@ -4007,6 +4084,12 @@
             "share": 16.3,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
           "trashShare": 3.5,
           "specs": [
             {
@@ -4018,7 +4101,8 @@
             "interrupts": 2,
             "dispels": 1,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 4,
           "mechanics": {
@@ -4377,6 +4461,12 @@
             "share": 1,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
           "trashShare": 8.8,
           "specs": [
             {
@@ -4388,7 +4478,8 @@
             "interrupts": 6,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 1
+            "battleRez": 1,
+            "battleRezRecebidos": 0
           },
           "deaths": 2,
           "mechanics": {
@@ -4748,6 +4839,12 @@
             "share": 12.8,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
           "trashShare": 3.4,
           "specs": [
             {
@@ -4759,7 +4856,8 @@
             "interrupts": 1,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 1
+            "battleRez": 1,
+            "battleRezRecebidos": 0
           },
           "deaths": 3,
           "mechanics": {
@@ -5099,6 +5197,12 @@
             "share": 21.7,
             "inKills": 2
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 2
+          },
           "trashShare": 5.5,
           "specs": [
             {
@@ -5110,7 +5214,8 @@
             "interrupts": 4,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 5,
           "mechanics": {
@@ -5425,6 +5530,12 @@
             "share": 17.7,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 2
+          },
           "trashShare": 5.3,
           "specs": [
             {
@@ -5436,7 +5547,8 @@
             "interrupts": 1,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 4,
           "mechanics": {
@@ -5764,6 +5876,12 @@
             "share": 5.1,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
           "trashShare": 2.3,
           "specs": [
             {
@@ -5775,7 +5893,8 @@
             "interrupts": 2,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 4
+            "battleRez": 4,
+            "battleRezRecebidos": 0
           },
           "deaths": 16,
           "mechanics": {
@@ -6047,6 +6166,12 @@
             "share": 6.1,
             "inKills": 2
           },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 1,
+            "fantasma": 0
+          },
           "trashShare": 10.8,
           "specs": [
             {
@@ -6058,7 +6183,8 @@
             "interrupts": 10,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 1
           },
           "deaths": 17,
           "mechanics": {
@@ -6319,6 +6445,12 @@
             "share": 6,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 1
+          },
           "trashShare": 0.9,
           "specs": [
             {
@@ -6330,7 +6462,8 @@
             "interrupts": 4,
             "dispels": 73,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 15,
           "mechanics": {
@@ -6603,6 +6736,12 @@
             "share": 7.3,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 2
+          },
           "trashShare": 1.2,
           "specs": [
             {
@@ -6614,7 +6753,8 @@
             "interrupts": 0,
             "dispels": 79,
             "purges": 0,
-            "battleRez": 5
+            "battleRez": 5,
+            "battleRezRecebidos": 1
           },
           "deaths": 15,
           "mechanics": {
@@ -6832,6 +6972,12 @@
             "share": 3.1,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 1
+          },
           "trashShare": 0.8,
           "specs": [
             {
@@ -6843,7 +6989,8 @@
             "interrupts": 0,
             "dispels": 72,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 1
           },
           "deaths": 15,
           "mechanics": {
@@ -7082,6 +7229,12 @@
             "share": 14.1,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 2,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 2
+          },
           "trashShare": 17.9,
           "specs": [
             {
@@ -7093,7 +7246,8 @@
             "interrupts": 8,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 1
           },
           "deaths": 16,
           "mechanics": {
@@ -7346,6 +7500,12 @@
             "share": 10.7,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 2
+          },
           "trashShare": 20.5,
           "specs": [
             {
@@ -7353,6 +7513,13 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 1
+          },
           "deaths": 16,
           "mechanics": {
             "errors": 0.9,
@@ -7605,6 +7772,12 @@
             "share": 9.8,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 1
+          },
           "trashShare": 12.1,
           "specs": [
             {
@@ -7850,6 +8023,12 @@
             "share": 7.1,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 1
+          },
           "trashShare": 5.6,
           "specs": [
             {
@@ -7861,7 +8040,8 @@
             "interrupts": 3,
             "dispels": 2,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 15,
           "mechanics": {
@@ -8092,6 +8272,12 @@
             "share": 14,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 3,
+            "efeitoDomino": 1,
+            "speedrun": 2,
+            "fantasma": 2
+          },
           "trashShare": 5.8,
           "specs": [
             {
@@ -8103,7 +8289,8 @@
             "interrupts": 1,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 0
           },
           "deaths": 17,
           "mechanics": {
@@ -8350,6 +8537,12 @@
             "share": 16.7,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 2,
+            "efeitoDomino": 1,
+            "speedrun": 2,
+            "fantasma": 2
+          },
           "trashShare": 8.4,
           "specs": [
             {
@@ -8361,7 +8554,8 @@
             "interrupts": 6,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 2
           },
           "deaths": 17,
           "mechanics": {
@@ -8639,6 +8833,12 @@
             "share": 12.8,
             "inKills": 0
           },
+          "deathSignature": {
+            "primeiroACair": 3,
+            "efeitoDomino": 1,
+            "speedrun": 2,
+            "fantasma": 2
+          },
           "trashShare": 7.3,
           "specs": [
             {
@@ -8650,7 +8850,8 @@
             "interrupts": 2,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 1
           },
           "deaths": 16,
           "mechanics": {
@@ -8887,6 +9088,12 @@
             "share": 25.8,
             "inKills": 1
           },
+          "deathSignature": {
+            "primeiroACair": 7,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 3
+          },
           "trashShare": 6.1,
           "specs": [
             {
@@ -8898,7 +9105,8 @@
             "interrupts": 1,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 0
+            "battleRez": 0,
+            "battleRezRecebidos": 1
           },
           "deaths": 17,
           "mechanics": {

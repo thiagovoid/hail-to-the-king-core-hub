@@ -29,6 +29,8 @@ export interface CastParaRez {
    * alguém que a conjuração interrompida nunca chegou a levantar.
    */
   type?: string;
+  /** Quem foi levantado. É o que permite contar do lado de quem RECEBE. */
+  targetID?: number;
 }
 
 /**
@@ -58,9 +60,23 @@ export interface UtilidadeDoJogador {
   purges: number;
   /** Battle rez lançados. */
   battleRez: number;
+  /**
+   * Battle rez RECEBIDOS — quantas vezes te levantaram no meio da luta.
+   *
+   * O outro lado do mesmo evento, contado separado porque diz outra coisa:
+   * um é serviço prestado ao grupo, o outro é o grupo gastando uma carga
+   * escassa em você.
+   */
+  battleRezRecebidos: number;
 }
 
-const VAZIO: UtilidadeDoJogador = { interrupts: 0, dispels: 0, purges: 0, battleRez: 0 };
+const VAZIO: UtilidadeDoJogador = {
+  interrupts: 0,
+  dispels: 0,
+  purges: 0,
+  battleRez: 0,
+  battleRezRecebidos: 0,
+};
 
 /**
  * Quanto de utilidade cada ator entregou na noite.
@@ -94,7 +110,18 @@ export function buildUtility(
     // Só o `cast` conta: o `begincast` é a conjuração começando, e ela pode
     // ser interrompida. No log de 15/09 foram 13 começos pra 11 rez de fato.
     if (!ehUso(cast)) continue;
-    if (MAGIAS_DE_BATTLE_REZ.has(cast.abilityGameID)) doAtor(cast.sourceID).battleRez += 1;
+    if (!MAGIAS_DE_BATTLE_REZ.has(cast.abilityGameID)) continue;
+
+    doAtor(cast.sourceID).battleRez += 1;
+
+    // Quem foi levantado entra no mapa mesmo sem ter feito nada: receber é
+    // um fato da noite dele, e sem isso ele simplesmente não apareceria.
+    // A WCL manda targetID -1 quando o evento não tem alvo (é o que aparece
+    // no begincast de Intercessão no log de 18/08). Creditar -1 criaria um
+    // "ator" que não existe.
+    if (cast.targetID !== undefined && cast.targetID > 0) {
+      doAtor(cast.targetID).battleRezRecebidos += 1;
+    }
   }
 
   return porAtor;

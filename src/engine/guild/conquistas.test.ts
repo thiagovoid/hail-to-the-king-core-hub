@@ -982,3 +982,139 @@ describe("as medalhas de prontidão", () => {
     }
   });
 });
+
+describe("as conquistas de utilidade", () => {
+  const comUtil = (playerId: string, utility: Record<string, number>) => ({
+    playerId,
+    deaths: 0,
+    utility: {
+      interrupts: 0,
+      dispels: 0,
+      purges: 0,
+      battleRez: 0,
+      battleRezRecebidos: 0,
+      ...utility,
+    },
+  });
+
+  it("entrega Sentinela a quem mais interrompeu", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        comUtil("a", { interrupts: 12 }),
+        comUtil("b", { interrupts: 3 }),
+      ]),
+    ];
+
+    expect(quantas(weeks, "a", "sentinela")).toBe(1);
+    expect(quantas(weeks, "b", "sentinela")).toBe(0);
+  });
+
+  it("separa dispel de purge: tirar debuff nosso e arrancar buff deles", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        comUtil("a", { dispels: 1, purges: 9 }),
+        comUtil("b", { dispels: 4 }),
+      ]),
+    ];
+
+    expect(quantas(weeks, "b", "faxineiro")).toBe(1);
+    expect(quantas(weeks, "a", "faxineiro")).toBe(0);
+  });
+
+  /**
+   * Sem isto, numa noite em que ninguém dissipou nada o raide inteiro
+   * empataria em zero e TODO MUNDO levaria a medalha.
+   */
+  it("não entrega disputada de utilidade quando ninguém fez nada", () => {
+    const weeks = [
+      semana("2026-09-01", [comUtil("a", {}), comUtil("b", {})]),
+    ];
+
+    expect(quantas(weeks, "a", "faxineiro")).toBe(0);
+    expect(quantas(weeks, "b", "faxineiro")).toBe(0);
+  });
+
+  it("separa quem DÁ battle rez de quem RECEBE", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        comUtil("druida", { battleRez: 3 }),
+        comUtil("teimoso", { battleRezRecebidos: 3 }),
+      ]),
+    ];
+
+    expect(quantas(weeks, "druida", "ressuscitador")).toBe(1);
+    expect(quantas(weeks, "druida", "vampiro")).toBe(0);
+    expect(quantas(weeks, "teimoso", "vampiro")).toBe(1);
+    expect(quantas(weeks, "teimoso", "ressuscitador")).toBe(0);
+  });
+});
+
+describe("as conquistas de tombo", () => {
+  const comTombo = (playerId: string, deathSignature: Record<string, number>) => ({
+    playerId,
+    deaths: 3,
+    deathSignature: {
+      primeiroACair: 0,
+      efeitoDomino: 0,
+      speedrun: 0,
+      fantasma: 0,
+      ...deathSignature,
+    },
+  });
+
+  // Sem zoeiraDesde, pra medir a apuração e não o corte por data.
+  const daNoite = (players: WeeklyPerformance["runs"][number]["players"], id: string, conquista: string) =>
+    contarConquistas([semana("2026-09-01", players)], TARGETS).get(id)?.get(conquista)?.vezes ?? 0;
+
+  it("disputa Primeiro a cair entre quem mais abriu o placar", () => {
+    const players = [comTombo("a", { primeiroACair: 4 }), comTombo("b", { primeiroACair: 1 })];
+
+    expect(daNoite(players, "a", "primeiro-a-cair")).toBe(1);
+    expect(daNoite(players, "b", "primeiro-a-cair")).toBe(0);
+  });
+
+  it("entrega Efeito dominó e Speedrun a todo mundo que fez", () => {
+    const players = [
+      comTombo("a", { efeitoDomino: 1, speedrun: 2 }),
+      comTombo("b", { efeitoDomino: 1 }),
+    ];
+
+    expect(daNoite(players, "a", "efeito-domino")).toBe(1);
+    expect(daNoite(players, "b", "efeito-domino")).toBe(1);
+    expect(daNoite(players, "a", "speedrun-ao-cemiterio")).toBe(1);
+    expect(daNoite(players, "b", "speedrun-ao-cemiterio")).toBe(0);
+  });
+
+  /** Uma try no chão acontece com todo mundo; duas já é currículo. */
+  it("exige duas trys pro Fantasma", () => {
+    const players = [comTombo("a", { fantasma: 2 }), comTombo("b", { fantasma: 1 })];
+
+    expect(daNoite(players, "a", "fantasma")).toBe(1);
+    expect(daNoite(players, "b", "fantasma")).toBe(0);
+  });
+
+  /**
+   * As de tombo COMENTAM um tropeço; o custo da morte é outra conta, e lá o
+   * Score já é justo com quem cumpre a call de wipe.
+   */
+  it("são todas zoeira, nenhuma entra como mérito", () => {
+    for (const id of ["vampiro", "primeiro-a-cair", "efeito-domino", "speedrun-ao-cemiterio", "fantasma"]) {
+      expect(CONQUISTAS.find((c) => c.id === id)?.tipo).toBe("zoeira");
+    }
+
+    for (const id of ["sentinela", "faxineiro", "ressuscitador"]) {
+      expect(CONQUISTAS.find((c) => c.id === id)?.tipo).toBe("boa");
+    }
+  });
+
+  /** Elas só passam a contar a partir da data da temporada. */
+  it("respeitam o corte de zoeira por data", () => {
+    const weeks = [semana("2026-09-01", [comTombo("a", { fantasma: 3 })])];
+
+    const antes = contarConquistas(weeks, TARGETS, { zoeiraDesde: "2026-09-22" });
+    expect(antes.get("a")?.get("fantasma")).toBeUndefined();
+
+    const depois = contarConquistas(weeks, TARGETS, { zoeiraDesde: "2026-08-01" });
+    expect(depois.get("a")?.get("fantasma")?.vezes).toBe(1);
+  });
+});

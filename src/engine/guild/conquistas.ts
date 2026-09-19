@@ -79,7 +79,15 @@ export type SimboloDeConquista =
   | "dois-aneis"
   | "degrau-i"
   | "degrau-ii"
-  | "degrau-iii";
+  | "degrau-iii"
+  | "torre"
+  | "vassoura"
+  | "mao-que-levanta"
+  | "presas"
+  | "pino"
+  | "domino"
+  | "cronometro"
+  | "lapide";
 
 /**
  * Os cortes das conquistas que dependem de um número.
@@ -144,6 +152,37 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
     simbolo: "degrau-iii",
     tipo: "boa",
     disputada: false,
+  },
+
+  // ----- utilidade -----
+  //
+  // O trabalho que não aparece em dano nem em cura e que não entra no Score:
+  // interromper o cast certo, tirar o debuff da pessoa certa, levantar quem
+  // caiu. Numa noite de 12 trys foram 22 interrupções e 79 dispels no raide
+  // inteiro — evento raro, alto impacto, e até aqui invisível na ficha.
+  {
+    id: "sentinela",
+    nome: "Sentinela",
+    como: "Ser quem mais interrompeu casts inimigos na noite.",
+    simbolo: "torre",
+    tipo: "boa",
+    disputada: true,
+  },
+  {
+    id: "faxineiro",
+    nome: "Faxineiro",
+    como: "Ser quem mais tirou debuff de cima do raide na noite.",
+    simbolo: "vassoura",
+    tipo: "boa",
+    disputada: true,
+  },
+  {
+    id: "ressuscitador",
+    nome: "Ressuscitador",
+    como: "Ser quem mais levantou gente no meio da luta na noite.",
+    simbolo: "mao-que-levanta",
+    tipo: "boa",
+    disputada: true,
   },
 
   // ----- mérito -----
@@ -558,6 +597,50 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
     tipo: "zoeira",
     disputada: false,
   },
+  // As quatro de tombo. Medem COMO a morte aconteceu, nunca quanto ela
+  // custou — o custo é assunto do Score, e lá ele já é justo com quem cumpre
+  // a call de wipe. Aqui é o grupo rindo de um tropeço, e tropeço é engraçado
+  // independente de ter sido caro.
+  {
+    id: "vampiro",
+    nome: "Vampiro",
+    como: "Ser quem mais recebeu battle rez na noite. Carga escassa, e ela foi sua.",
+    simbolo: "presas",
+    tipo: "zoeira",
+    disputada: true,
+  },
+  {
+    id: "primeiro-a-cair",
+    nome: "Primeiro a cair",
+    como: "Ser quem mais vezes abriu o placar de mortes da noite. Alguém tem que começar.",
+    simbolo: "pino",
+    tipo: "zoeira",
+    disputada: true,
+  },
+  {
+    id: "efeito-domino",
+    nome: "Efeito dominó",
+    como: "Cair primeiro e o raide inteiro vir junto em até 10 segundos. Coincidência, claro.",
+    simbolo: "domino",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "speedrun-ao-cemiterio",
+    nome: "Speedrun ao cemitério",
+    como: "Morrer nos primeiros 30 segundos de uma try. Nem deu tempo de esquentar.",
+    simbolo: "cronometro",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
+    id: "fantasma",
+    nome: "Fantasma",
+    como: "Passar mais tempo morto do que vivo em duas trys da mesma noite.",
+    simbolo: "lapide",
+    tipo: "zoeira",
+    disputada: false,
+  },
   {
     id: "meter-do-alem",
     nome: "Meter do além",
@@ -746,6 +829,21 @@ function vencedoresDaRun(
     return comValor.filter((item) => item.valor === teto).map((item) => item.id);
   };
 
+  /**
+   * Como `melhores`, mas o topo precisa ser maior que zero.
+   *
+   * Sem isso, numa noite em que ninguém dissipou nada o raide inteiro
+   * empataria em zero e TODO MUNDO levaria "Faxineiro" — a medalha diria o
+   * contrário do que ela existe pra dizer.
+   */
+  const melhoresAcimaDeZero = (valorDe: (p: PlayerPerformance) => number | null | undefined) => {
+    const vencedores = melhores(valorDe);
+    if (vencedores.length === 0) return [];
+
+    const teto = run.players.find((p) => p.playerId === vencedores[0]);
+    return teto !== undefined && (valorDe(teto) ?? 0) > 0 ? vencedores : [];
+  };
+
   const cumpriram = (condicao: (p: PlayerPerformance) => boolean): string[] =>
     run.players.filter(condicao).map((player) => player.playerId);
 
@@ -774,6 +872,35 @@ function vencedoresDaRun(
 
   porConquista.set("mvp", simples(campeoesDoScore));
   porConquista.set("maior-dano", simples(campeoesDoDano));
+
+  // --- Utilidade: o trabalho que não aparece em dano nem em cura ---
+  porConquista.set("sentinela", simples(melhoresAcimaDeZero((p) => p.utility?.interrupts)));
+  porConquista.set("faxineiro", simples(melhoresAcimaDeZero((p) => p.utility?.dispels)));
+  porConquista.set("ressuscitador", simples(melhoresAcimaDeZero((p) => p.utility?.battleRez)));
+  porConquista.set(
+    "vampiro",
+    simples(melhoresAcimaDeZero((p) => p.utility?.battleRezRecebidos))
+  );
+
+  // --- Como a morte aconteceu. Nunca quanto ela custou. ---
+  porConquista.set(
+    "primeiro-a-cair",
+    simples(melhoresAcimaDeZero((p) => p.deathSignature?.primeiroACair))
+  );
+  porConquista.set(
+    "efeito-domino",
+    simples(cumpriram((p) => (p.deathSignature?.efeitoDomino ?? 0) > 0))
+  );
+  porConquista.set(
+    "speedrun-ao-cemiterio",
+    simples(cumpriram((p) => (p.deathSignature?.speedrun ?? 0) > 0))
+  );
+  // Duas trys, não uma: passar meia try no chão acontece com todo mundo, e
+  // aos 60 de 113 a medalha virava rotina em vez de piada.
+  porConquista.set(
+    "fantasma",
+    simples(cumpriram((p) => (p.deathSignature?.fantasma ?? 0) >= 2))
+  );
   porConquista.set("maior-cura", simples(melhores((p) => p.healing?.coverage)));
   porConquista.set("maior-defesa", simples(melhores((p) => p.defense?.score)));
   porConquista.set("chao-e-lava", simples(melhores((p) => p.deaths)));

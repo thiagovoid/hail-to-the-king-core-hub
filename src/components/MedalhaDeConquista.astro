@@ -222,6 +222,71 @@ const titulo = conquistada
         </>
       )}
 
+      {/* --- utilidade --- */}
+      {conquista.simbolo === 'torre' && (
+        <>
+          <path d="M22 20 H42 V50 H22 Z" />
+          <path d="M20 12 H24 V20 H20 Z M30 12 H34 V20 H30 Z M40 12 H44 V20 H40 Z" />
+          <rect x="29" y="30" width="6" height="10" rx="1" fill="#e2e8f0" />
+        </>
+      )}
+
+      {conquista.simbolo === 'vassoura' && (
+        <>
+          <rect x="30" y="10" width="4" height="24" rx="2" />
+          <path d="M22 34 H42 L46 52 H18 Z" />
+          <path d="M27 38 V52 M32 38 V52 M37 38 V52" stroke="#e2e8f0" stroke-width="2" />
+        </>
+      )}
+
+      {conquista.simbolo === 'mao-que-levanta' && (
+        <>
+          <path d="M32 10 L38 20 H34 V30 H30 V20 H26 Z" />
+          <path d="M20 36 C20 32 24 32 24 36 V42 C24 48 28 52 34 52 C40 52 44 48 44 42 V34 C44 30 40 30 40 34 V40 M36 34 C36 30 32 30 32 34 V40 M32 36 C32 32 28 32 28 36 V42" fill="none" stroke="#0b1020" stroke-width="3" stroke-linecap="round" />
+        </>
+      )}
+
+      {conquista.simbolo === 'presas' && (
+        <>
+          <path d="M16 18 H48 V26 C48 30 44 32 40 32 H24 C20 32 16 30 16 26 Z" />
+          <path d="M24 32 L27 46 L30 32 Z" />
+          <path d="M34 32 L37 46 L40 32 Z" />
+        </>
+      )}
+
+      {/* --- como a morte aconteceu --- */}
+      {conquista.simbolo === 'pino' && (
+        <>
+          <path d="M32 10 C28 16 28 22 30 26 C26 30 26 40 28 50 H36 C38 40 38 30 34 26 C36 22 36 16 32 10 Z" />
+          <rect x="26" y="50" width="12" height="4" rx="2" />
+        </>
+      )}
+
+      {conquista.simbolo === 'domino' && (
+        <>
+          <rect x="12" y="16" width="12" height="34" rx="2" />
+          <rect x="28" y="16" width="12" height="34" rx="2" transform="rotate(14 34 33)" />
+          <rect x="46" y="16" width="12" height="34" rx="2" transform="rotate(28 52 33)" />
+        </>
+      )}
+
+      {conquista.simbolo === 'cronometro' && (
+        <>
+          <circle cx="32" cy="35" r="17" fill="none" stroke="#0b1020" stroke-width="4" />
+          <rect x="28" y="9" width="8" height="5" rx="1.5" />
+          <path d="M32 24 V35 H41" fill="none" stroke="#0b1020" stroke-width="4" stroke-linecap="round" />
+          <path d="M45 16 L51 22" stroke="#0b1020" stroke-width="4" stroke-linecap="round" />
+        </>
+      )}
+
+      {conquista.simbolo === 'lapide' && (
+        <>
+          <path d="M20 26 C20 16 44 16 44 26 V48 H20 Z" />
+          <rect x="15" y="48" width="34" height="5" rx="2" />
+          <path d="M32 26 V40 M26 32 H38" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
+        </>
+      )}
+
       {/* Os três degraus de prontidão: a mesma escada, um lance a mais em
           cada uma. O salto é visível de longe, que é o que uma medalha
           precisa fazer — ninguém lê o nome antes de ver o desenho. */}

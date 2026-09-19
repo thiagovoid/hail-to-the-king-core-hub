@@ -229,6 +229,8 @@ export interface NormalizedRunPlayer {
   bossTries?: PlayerPerformance["bossTries"];
   /** O que as mortes custaram. Ver buildNightDetail. */
   deathCost?: PlayerPerformance["deathCost"];
+  /** Como as mortes aconteceram. Ver buildNightDetail. */
+  deathSignature?: PlayerPerformance["deathSignature"];
   /** Interrupções, dispels e battle rez. Ver buildUtility. */
   utility?: PlayerPerformance["utility"];
   /** % do dano do raide nas lutas de trash. */
@@ -554,7 +556,12 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ...(cura ? { healing: cura.healing } : {}),
       ...(Object.keys(offRole).length > 0 ? { offRole } : {}),
       ...(noite
-        ? { tries: noite.tries, bossTries: noite.bossTries, deathCost: noite.deathCost }
+        ? {
+            tries: noite.tries,
+            bossTries: noite.bossTries,
+            deathCost: noite.deathCost,
+            deathSignature: noite.deathSignature,
+          }
         : {}),
       ...(trashShareByPlayer?.has(player.id)
         ? { trashShare: trashShareByPlayer.get(player.id) }

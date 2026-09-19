@@ -276,3 +276,113 @@ describe("buildTrashShare", () => {
     expect(buildTrashShare(new Map([[10, 0]]), true)).toBeUndefined();
   });
 });
+
+describe("a assinatura das mortes", () => {
+  /** Uma try de 200s, começando em 0 e terminando em 200_000. */
+  const trys = [luta(1, [1, 2, 3])];
+  const danoNormal = dano({ 1: { 1: 100, 2: 100, 3: 100 } });
+
+  const assinatura = (mortes: Array<{ fight: number; targetID: number; timestamp: number }>) =>
+    buildNightDetail(trys, mortes, danoNormal).get(1)?.deathSignature;
+
+  it("conta speedrun quando a morte vem nos primeiros 30 segundos", () => {
+    expect(
+      assinatura([
+        { fight: 1, targetID: 1, timestamp: 20_000 },
+        { fight: 1, targetID: 2, timestamp: 150_000 },
+      ])?.speedrun
+    ).toBe(1);
+  });
+
+  it("não conta speedrun quando a morte vem depois", () => {
+    expect(
+      assinatura([
+        { fight: 1, targetID: 1, timestamp: 90_000 },
+        { fight: 1, targetID: 2, timestamp: 150_000 },
+      ])?.speedrun
+    ).toBe(0);
+  });
+
+  it("conta fantasma quando o tempo morto passa do tempo vivo", () => {
+    const cedo = assinatura([
+      { fight: 1, targetID: 1, timestamp: 80_000 },
+      { fight: 1, targetID: 2, timestamp: 150_000 },
+    ]);
+    const tarde = assinatura([
+      { fight: 1, targetID: 1, timestamp: 150_000 },
+      { fight: 1, targetID: 2, timestamp: 160_000 },
+    ]);
+
+    expect(cedo?.fantasma).toBe(1);
+    expect(tarde?.fantasma).toBe(0);
+  });
+
+  /** Ser o primeiro de um só é ser também o último: a piada é a fila. */
+  it("não conta primeiro a cair quando a morte foi a única da try", () => {
+    expect(assinatura([{ fight: 1, targetID: 1, timestamp: 50_000 }])?.primeiroACair).toBe(0);
+  });
+
+  it("entrega primeiro a cair aos empatados no mesmo instante", () => {
+    const mortes = [
+      { fight: 1, targetID: 1, timestamp: 50_000 },
+      { fight: 1, targetID: 2, timestamp: 50_000 },
+      { fight: 1, targetID: 3, timestamp: 90_000 },
+    ];
+
+    const detalhe = buildNightDetail(trys, mortes, danoNormal);
+    expect(detalhe.get(1)?.deathSignature.primeiroACair).toBe(1);
+    expect(detalhe.get(2)?.deathSignature.primeiroACair).toBe(1);
+    expect(detalhe.get(3)?.deathSignature.primeiroACair).toBe(0);
+  });
+
+  /**
+   * Todo wipe termina com todo mundo no chão. Sem exigir que a pessoa tenha
+   * caído PRIMEIRO, a medalha disparava em 92 das 113 noites da temporada —
+   * dizendo só "você estava num wipe".
+   */
+  it("exige ter aberto o placar pro efeito dominó", () => {
+    const mortes = [
+      { fight: 1, targetID: 1, timestamp: 194_000 },
+      { fight: 1, targetID: 2, timestamp: 196_000 },
+    ];
+
+    const detalhe = buildNightDetail(trys, mortes, danoNormal);
+    expect(detalhe.get(1)?.deathSignature.efeitoDomino).toBe(1);
+    expect(detalhe.get(2)?.deathSignature.efeitoDomino).toBe(0);
+  });
+
+  it("não conta dominó quando o boss caiu", () => {
+    const kill = [luta(1, [1, 2, 3], { kill: true })];
+    const mortes = [
+      { fight: 1, targetID: 1, timestamp: 194_000 },
+      { fight: 1, targetID: 2, timestamp: 196_000 },
+    ];
+
+    expect(buildNightDetail(kill, mortes, danoNormal).get(1)?.deathSignature.efeitoDomino).toBe(0);
+  });
+
+  /**
+   * Numa pull cancelada de 20 segundos todo mundo vira "speedrun ao
+   * cemitério", e a piada perde a graça quando acusa o grupo inteiro.
+   */
+  it("ignora try que não vale como luta", () => {
+    const cancelada = [luta(1, [1, 2, 3], { durationMs: 20_000, endTime: 20_000 })];
+    const mortes = [
+      { fight: 1, targetID: 1, timestamp: 5_000 },
+      { fight: 1, targetID: 2, timestamp: 9_000 },
+    ];
+
+    const detalhe = buildNightDetail(cancelada, mortes, danoNormal).get(1)?.deathSignature;
+    expect(detalhe).toEqual({ primeiroACair: 0, efeitoDomino: 0, speedrun: 0, fantasma: 0 });
+  });
+
+  /** Quem atravessou a noite de pé não tem assinatura nenhuma. */
+  it("devolve tudo zerado pra quem não morreu", () => {
+    expect(assinatura([{ fight: 1, targetID: 2, timestamp: 50_000 }])).toEqual({
+      primeiroACair: 0,
+      efeitoDomino: 0,
+      speedrun: 0,
+      fantasma: 0,
+    });
+  });
+});
