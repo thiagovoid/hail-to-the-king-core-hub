@@ -22,6 +22,68 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 89.9,
             "uptime": 93.4,
@@ -289,6 +351,74 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 65.9,
             "uptime": 88.5,
@@ -546,6 +676,74 @@
           "itemLevel": 288,
           "preparation": 53,
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 99.2,
             "uptime": 99.2,
@@ -799,6 +997,74 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 72.1,
             "uptime": 87,
@@ -1043,6 +1309,74 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 86.8,
             "uptime": 98.9,
@@ -1285,6 +1619,74 @@
             "Botas"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 85,
             "uptime": 82.4,
@@ -1519,6 +1921,74 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 92.8,
             "uptime": 98.1,
@@ -1736,6 +2206,74 @@
             "Botas"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 85.4,
             "uptime": 98.7,
@@ -1968,6 +2506,74 @@
           "itemLevel": 313,
           "preparation": 95,
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 86.5,
             "uptime": 92.6,
@@ -2186,7 +2792,7 @@
           "dps": 79905,
           "parse": 46,
           "itemLevel": 313,
-          "preparation": 45,
+          "preparation": 46,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -2196,6 +2802,80 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 76.8,
             "uptime": 86.5,
@@ -2473,6 +3153,92 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 5,
+              "label": "Cintura",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 8,
+              "label": "Braçadeiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 97.8,
             "uptime": 97.9,
@@ -2696,6 +3462,74 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 81.9,
             "uptime": 82.6,
@@ -2943,6 +3777,74 @@
             "Botas"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 90.3,
             "uptime": 97.4,
@@ -3231,6 +4133,74 @@
             "Flask/comida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 73.2,
             "uptime": 80.2,
@@ -3475,6 +4445,74 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 65.2,
             "uptime": 79.1,
@@ -3695,11 +4733,86 @@
             "Botas",
             "Anel",
             "Arma",
+            "Mão secundária",
             "Colar",
             "Flask/comida",
             "Poção"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 69.9,
             "uptime": 81.7,
@@ -3961,6 +5074,68 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 88.5,
             "uptime": 92.6,
@@ -4147,6 +5322,74 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 61.3,
             "uptime": 90.1,
@@ -4357,6 +5600,74 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 95.2,
             "uptime": 95.2,
@@ -4526,6 +5837,74 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 85.8,
             "uptime": 93.1,
@@ -4674,10 +6053,78 @@
         {
           "playerId": "cowsadeer",
           "hps": 191210,
-          "parse": 44,
+          "parse": 45,
           "itemLevel": 314,
           "preparation": 62,
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 86.5,
             "uptime": 96.7,
@@ -4845,6 +6292,74 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 89.5,
             "uptime": 86.3,
@@ -5025,6 +6540,74 @@
             "Poção"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 84.3,
             "uptime": 91.4,
@@ -5187,6 +6770,74 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 77.5,
             "uptime": 89.3,
@@ -5325,7 +6976,7 @@
           "dps": 83502,
           "parse": 27,
           "itemLevel": 315,
-          "preparation": 31,
+          "preparation": 33,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -5336,6 +6987,80 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 80.5,
             "uptime": 90.2,
@@ -5501,6 +7226,92 @@
             "Poção"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 5,
+              "label": "Cintura",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 8,
+              "label": "Braçadeiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 89.3,
             "uptime": 86.5,
@@ -5640,6 +7451,74 @@
             "Poção"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 85.6,
             "uptime": 89,
@@ -5835,6 +7714,74 @@
             "Poção"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
           "attack": {
             "score": 87.7,
             "uptime": 90.6,
@@ -5979,11 +7926,12 @@
           "dps": 42227,
           "parse": 6,
           "itemLevel": 288,
-          "preparation": 14,
+          "preparation": 13,
           "preparationMissing": [
             "Elmo",
             "Pernas",
             "Botas",
+            "Mão secundária",
             "Colar",
             "Anel",
             "Flask/comida",
@@ -5991,6 +7939,80 @@
             "Pedra de vida"
           ],
           "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": false
+            }
+          ],
           "attack": {
             "score": 68.5,
             "uptime": 79.4,
