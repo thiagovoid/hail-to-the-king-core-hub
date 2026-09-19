@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { DataCollector } from "../../src/services/DataCollector";
-import { saveRaw } from "../../src/services/RawStorage";
+import { loadRaw, saveRaw } from "../../src/services/RawStorage";
 import type { DataProvider } from "../../src/providers/types";
 import { RaiderIoProvider } from "../../src/providers/raiderio/RaiderIoProvider";
 import { buildPlayerPerformance } from "../../src/normalization/buildPlayerPerformance";
@@ -343,23 +343,69 @@ async function main() {
     console.log(`--week não informado, calculado automaticamente: semana ${week}.`);
   }
 
-  const [guildId, validEncounterIds] = await Promise.all([
-    wcl.resolveGuildId(GUILD_NAME, GUILD_SERVER_SLUG, GUILD_SERVER_REGION),
-    wcl.fetchRaidEncounterIds(RAID_ZONE_ID),
-  ]);
+  /**
+   * Os encontros do tier. Muda uma vez por temporada, então fica arquivado —
+   * sem isso, `--reuse` ia à rede antes mesmo de chegar no bruto das noites,
+   * e a promessa de recalcular sem rede não se cumpria.
+   */
+  const CHAVE_DOS_ENCONTROS = `_zona/${RAID_ZONE_ID}-encontros`;
+  const encontrosArquivados = reuse
+    ? await loadRaw<number[]>(wcl.name, CHAVE_DOS_ENCONTROS)
+    : null;
 
-  const guildReports = includeGuildReports
+  const validEncounterIds = encontrosArquivados
+    ? new Set(encontrosArquivados)
+    : await wcl.fetchRaidEncounterIds(RAID_ZONE_ID);
+
+  if (!encontrosArquivados) {
+    await saveRaw(wcl.name, CHAVE_DOS_ENCONTROS, [...validEncounterIds]);
+  }
+
+  /**
+   * Descoberta de relatório é ida à rede que o `--reuse` não precisa fazer
+   * quando os códigos vieram na mão: reconstruir a semana 5 não depende de
+   * perguntar à WCL quais logs existem, e sim do bruto que já está no disco.
+   */
+  const pulaDescoberta = reuse && extraReportCodes.length > 0;
+
+  if (pulaDescoberta) {
+    console.log(`Descoberta pulada: ${extraReportCodes.length} relatório(s) informado(s) na mão.`);
+  }
+
+  const guildId = includeGuildReports && !pulaDescoberta
+    ? await wcl.resolveGuildId(GUILD_NAME, GUILD_SERVER_SLUG, GUILD_SERVER_REGION)
+    : 0;
+
+  const guildReports = includeGuildReports && !pulaDescoberta
     ? await wcl.fetchGuildReports(guildId, startTime, endTime, RAID_ZONE_ID)
     : [];
 
   const extraReports: WclReportRef[] = [];
   for (const code of extraReportCodes) {
     if (guildReports.some((report) => report.code === code)) continue;
+
+    // No modo reuse o bruto já diz tudo que o meta diria — e o `startTime`
+    // real vem de lá, não de uma consulta.
+    if (pulaDescoberta) {
+      const bruto = await loadRaw<{ reportStartTime?: number }>(wcl.name, code);
+      // Sem o epoch do relatório a noite inteira iria pro dia errado do
+      // histórico — melhor perguntar à WCL do que datar errado em silêncio.
+      if (bruto?.reportStartTime) {
+        extraReports.push({ code, startTime: bruto.reportStartTime, zone: { id: RAID_ZONE_ID } });
+        continue;
+      }
+      if (bruto) {
+        console.warn(
+          `Bruto de ${code} é anterior ao arquivamento da data — buscando o metadado na WCL.`
+        );
+      }
+    }
+
     const meta = await wcl.fetchReportMeta(code);
     if (meta?.zone?.id === RAID_ZONE_ID) extraReports.push(meta);
   }
 
-  const uploaderUserIds = getUploaderUserIds();
+  const uploaderUserIds = pulaDescoberta ? [] : getUploaderUserIds();
   const uploaderReports: WclReportRef[] = [];
   for (const userID of uploaderUserIds) {
     uploaderReports.push(...(await wcl.fetchUserReports(userID, startTime, endTime, RAID_ZONE_ID)));

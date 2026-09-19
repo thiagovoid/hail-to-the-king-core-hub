@@ -53,6 +53,14 @@ export interface WarcraftLogsRawReportTables {
   damageTaken?: Array<{ id?: number; name?: string; total?: number; totalReduced?: number }>;
   /** Percentis calculados PRA ESTE relatório — a fonte do parse. */
   reportRankings?: WclReportRankings | null;
+  /**
+   * Epoch de início do relatório. É o que vira a DATA da noite.
+   *
+   * Vinha do `fetchReportMeta` na descoberta, e sem ele no bruto a
+   * reconstrução saía com data de 1969 — o log inteiro estava lá e a noite
+   * ia parar no lugar errado do histórico.
+   */
+  reportStartTime?: number;
 }
 
 /**
@@ -639,6 +647,7 @@ ${campos}
     );
     const damageTaken = await this.fetchDamageTaken(context.reportCode, aggregateFightIds);
     const reportRankings = await this.fetchReportRankings(context.reportCode);
+    const meta = await this.fetchReportMeta(context.reportCode);
 
     return {
       provider: this.name,
@@ -665,6 +674,7 @@ ${campos}
         damageAbilities,
         damageTaken,
         reportRankings,
+        reportStartTime: meta?.startTime,
       },
     };
   }
