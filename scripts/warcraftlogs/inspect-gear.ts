@@ -28,7 +28,7 @@ const jogadores: WclPlayerDetail[] = [
 
 console.log(`=== CAMPOS DE UM ITEM (o que a WCL realmente manda) ===`);
 const primeiro = jogadores.find((j) => (j.combatantInfo?.gear ?? []).length > 0);
-const exemplo = (primeiro?.combatantInfo?.gear ?? [])[0] as Record<string, unknown> | undefined;
+const exemplo = (primeiro?.combatantInfo?.gear ?? [])[0] as unknown as Record<string, unknown> | undefined;
 console.log(`  ${Object.keys(exemplo ?? {}).join(", ")}`);
 console.log(`  exemplo: ${JSON.stringify(exemplo)}`);
 
@@ -36,7 +36,7 @@ console.log(`\n=== AS DUAS MÃOS, POR JOGADOR ===`);
 console.log("jogador         mão principal (slot 15)                 mão secundária (slot 16)");
 
 for (const jogador of jogadores) {
-  const gear = (jogador.combatantInfo?.gear ?? []) as Array<Record<string, unknown>>;
+  const gear = (jogador.combatantInfo?.gear ?? []) as unknown as Array<Record<string, unknown>>;
   const descreve = (slot: number) => {
     const peca = gear.find((item) => item.slot === slot);
     if (!peca) return "— (vazio)";
@@ -49,7 +49,7 @@ for (const jogador of jogadores) {
 
 console.log(`\n=== OS DOIS ANÉIS, POR JOGADOR ===`);
 for (const jogador of jogadores) {
-  const gear = (jogador.combatantInfo?.gear ?? []) as Array<Record<string, unknown>>;
+  const gear = (jogador.combatantInfo?.gear ?? []) as unknown as Array<Record<string, unknown>>;
   const aneis = gear.filter((item) => item.slot === 10 || item.slot === 11);
   const resumo = aneis
     .map((anel) => {
@@ -64,7 +64,7 @@ for (const jogador of jogadores) {
 console.log(`\n=== TODOS OS SLOTS DE UM JOGADOR (pra ver o que existe) ===`);
 if (primeiro) {
   console.log(`  ${primeiro.name}:`);
-  for (const peca of (primeiro.combatantInfo?.gear ?? []) as Array<Record<string, unknown>>) {
+  for (const peca of (primeiro.combatantInfo?.gear ?? []) as unknown as Array<Record<string, unknown>>) {
     console.log(
       `    slot ${String(peca.slot).padStart(2)}  id ${String(peca.id).padEnd(8)} ` +
         `encanto ${String(peca.permanentEnchant ?? 0).padEnd(8)} gemas ${((peca.gems as unknown[]) ?? []).length}`
