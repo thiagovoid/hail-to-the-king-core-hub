@@ -33,18 +33,23 @@ console.log(`  ${Object.keys(exemplo ?? {}).join(", ")}`);
 console.log(`  exemplo: ${JSON.stringify(exemplo)}`);
 
 console.log(`\n=== AS DUAS MÃOS, POR JOGADOR ===`);
-console.log("jogador         mão principal (slot 15)                 mão secundária (slot 16)");
+console.log("O icon é a única pista do TIPO do item: inv_shield_* e inv_offhand_*");
+console.log("não recebem encanto, e cobrar isso seria inventar um erro.\n");
+console.log("jogador         enc15  mão secundária: icon (o tipo) — encantada?");
 
 for (const jogador of jogadores) {
   const gear = (jogador.combatantInfo?.gear ?? []) as unknown as Array<Record<string, unknown>>;
-  const descreve = (slot: number) => {
-    const peca = gear.find((item) => item.slot === slot);
-    if (!peca) return "— (vazio)";
-    const encantada = Number(peca.permanentEnchant ?? 0) > 0;
-    return `#${peca.id} ${encantada ? "COM encanto" : "SEM encanto"}${peca.name ? ` "${peca.name}"` : ""}`;
-  };
+  const principal = gear.find((item) => item.slot === 15);
+  const secundaria = gear.find((item) => item.slot === 16);
 
-  console.log(`${jogador.name.padEnd(15)} ${descreve(15).padEnd(40)} ${descreve(16)}`);
+  const enc = (peca?: Record<string, unknown>) => (Number(peca?.permanentEnchant ?? 0) > 0 ? "sim" : "NÃO");
+
+  console.log(
+    `${jogador.name.padEnd(15)} ${enc(principal).padEnd(6)} ` +
+      (!secundaria || secundaria.id === 0
+        ? "— nenhuma (duas mãos ou sem off-hand)"
+        : `${String(secundaria.icon).padEnd(46)} ${enc(secundaria)}`)
+  );
 }
 
 console.log(`\n=== OS DOIS ANÉIS, POR JOGADOR ===`);
