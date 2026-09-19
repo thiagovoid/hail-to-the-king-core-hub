@@ -1,38 +1,118 @@
 ---
 /**
- * CoachCard.astro — Coach Virtual (doc "6.6 Coach Virtual")
- * Recomendação de desenvolvimento gerada a partir da dimensão mais fraca
- * do Score Geral do jogador. Ver engine/scores/coach.ts.
+ * O coach.
+ *
+ * Ficou escondido porque a primeira versão constatava em vez de ensinar —
+ * "seu parse está abaixo da meta" é algo que a pessoa já sabe. O que ela não
+ * sabe é o que fazer na terça que vem.
+ *
+ * A ordem da tela é a ordem das regras (ver `engine/scores/coach.ts`): o que
+ * melhorou primeiro, depois UMA coisa com nome próprio, a causa dela e
+ * quanto vale arrumar. Nada de lista de defeitos, nada de comparação com
+ * outro jogador — o coach nunca recebe o dado de mais ninguém.
  */
-import type { CoachRecommendation } from '@/engine/scores/coach';
+import type { RecomendacaoDoCoach } from '@/engine/scores/coach';
 
 interface Props {
-  recommendation: CoachRecommendation;
+  recomendacao: RecomendacaoDoCoach;
 }
 
-const { recommendation } = Astro.props;
-const isRecognition = recommendation.focusKey !== null && recommendation.message.startsWith('Performance sólida');
+const { recomendacao } = Astro.props;
+const { positivo, foco, semDados } = recomendacao;
 ---
 
 <section class="mb-10">
   <div class="mb-4">
-    <h2 class="text-xl font-bold text-white">Coach Virtual</h2>
+    <h2 class="text-xl font-bold text-white">Pra próxima terça</h2>
     <p class="text-sm text-slate-400 mt-1">
-      Recomendação de desenvolvimento baseada no seu Score Geral.
+      Uma coisa de cada vez, medida na sua própria noite. Nada aqui compara você com ninguém.
     </p>
   </div>
 
-  <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex items-start gap-4">
-    <span class="text-2xl shrink-0" aria-hidden="true">{isRecognition ? '✅' : '🎯'}</span>
-    <div>
-      {recommendation.focusLabel && (
-        <p class="text-xs uppercase tracking-wide text-slate-500 font-semibold mb-1">
-          {isRecognition ? 'Reconhecimento' : `Principal foco: ${recommendation.focusLabel}`}
+  {
+    semDados ? (
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+        <p class="text-sm text-slate-400">
+          Ainda não temos dado suficiente da sua noite pra apontar alguma coisa. A lacuna é nossa —
+          assim que a coleta cobrir, aparece aqui.
         </p>
-      )}
-      <p class="text-slate-200 leading-relaxed">
-        {recommendation.message}
-      </p>
-    </div>
-  </div>
+      </div>
+    ) : (
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+        {positivo && (
+          <div class="flex items-start gap-3 p-5 bg-emerald-500/5 border-b border-emerald-500/15">
+            <span class="text-emerald-400 text-sm mt-0.5 shrink-0" aria-hidden="true">
+              ✓
+            </span>
+
+            <div class="min-w-0">
+              <p class="text-[11px] uppercase tracking-wide text-emerald-400/80 font-semibold mb-1">
+                {positivo.tipo === 'avanco' ? 'Você melhorou' : 'O que está firme'}
+              </p>
+              <p class="text-sm text-slate-200 leading-relaxed">{positivo.texto}</p>
+            </div>
+          </div>
+        )}
+
+        {foco === null ? (
+          <div class="p-5">
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Nada abaixo da meta do core nesta noite. Daqui pra frente a régua é você contra você —
+              o gráfico acima mostra a linha do próximo degrau.
+            </p>
+          </div>
+        ) : (
+          <div class="p-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+              <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">
+                O maior ganho disponível · {foco.rotulo}
+              </p>
+
+              {foco.ganho > 0 && (
+                <span class="text-[11px] font-bold text-[#f0a500] bg-[#f0a500]/10 border border-[#f0a500]/25 rounded-md px-2 py-0.5">
+                  +{foco.ganho} no Score
+                </span>
+              )}
+            </div>
+
+            <p class="text-lg font-bold text-white leading-snug">{foco.nome}</p>
+
+            <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">{foco.causa}</p>
+
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed border-l-2 border-slate-700 pl-3">
+              {foco.acao}
+            </p>
+
+            {/* O MythicTrap carrega SÓ no clique: a página não pode depender
+                do tempo de resposta deles pra abrir. */}
+            {foco.tipEmbedUrl && (
+              <details class="mt-4 group/trap">
+                <summary class="cursor-pointer text-xs text-[#f0a500] hover:underline list-none inline-flex items-center gap-1">
+                  <span class="inline-block transition-transform group-open/trap:rotate-90">
+                    &rsaquo;
+                  </span>
+                  ver a mecânica
+                </summary>
+
+                <div class="mt-2 rounded-lg overflow-hidden border border-slate-800 bg-[#0b1020]">
+                  <iframe
+                    src={foco.tipEmbedUrl}
+                    loading="lazy"
+                    title={`MythicTrap — ${foco.nome}`}
+                    class="w-full h-[320px]"
+                    referrerpolicy="no-referrer"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
+                </div>
+
+                <p class="text-[10px] text-slate-600 mt-1">
+                  Explicação do MythicTrap, via Wipefest. Só existe em inglês.
+                </p>
+              </details>
+            )}
+          </div>
+        )}
+      </div>
+    )
+  }
 </section>

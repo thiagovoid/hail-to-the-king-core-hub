@@ -360,8 +360,16 @@ const overallScore = hasData
     )
   : undefined;
 
-const coachRecommendation = overallScore
-  ? buildCoachRecommendation(overallScore)
+// O coach lê a noite INTEIRA, não só a nota: é do detalhe dela que sai o
+// nome próprio da coisa a treinar. A penúltima entra pra ele poder abrir
+// pelo que melhorou — sem ela, sobra só o ponto forte.
+const coachRecommendation = ultimaNoite
+  ? buildCoachRecommendation(
+      ultimaNoite,
+      history.at(-2),
+      seasonJson.config.performanceTargets,
+      player.role
+    )
   : undefined;
 
 // Tendência olha pra métrica principal do jogador (dps ou hps, mesmo
@@ -453,14 +461,7 @@ const attendance = calculateAttendance(weeks, player.id);
       )
     }
 
-    <!-- Coach Virtual escondido por hora (vale pra todos os membros).
-         A engine e o componente seguem prontos — basta descomentar.
-    {
-      hasData && coachRecommendation && (
-        <CoachCard recommendation={coachRecommendation} />
-      )
-    }
-    -->
+    {hasData && coachRecommendation && <CoachCard recomendacao={coachRecommendation} />}
 
     {
       hasData && (
