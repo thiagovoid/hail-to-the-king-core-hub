@@ -10,11 +10,14 @@
 
 import type { WeeklyPerformance } from "../../types/performance";
 import { getPlayerHistory } from "../metrics";
+import type { PessoaNaComp } from "./comp";
 import {
   avaliarProntidao,
   mediasDaTemporada,
   type FuncaoDaProntidao,
   type ProntidaoDoJogador,
+  NIVEIS,
+  type NivelDeConteudo,
 } from "../scores/prontidao";
 
 /** O mínimo que a prontidão precisa saber do cadastro. */
@@ -76,4 +79,50 @@ export function prontidaoDoRoster(
   }
 
   return apurada;
+}
+
+/**
+ * O core reduzido a PESSOAS, pro painel de COMP.
+ *
+ * Alt não ocupa duas cadeiras: o Xúlio e o Xúliodk são um jogador só, e
+ * contá-los duas vezes faria o core parecer maior do que senta na raide.
+ *
+ * Mas cada pessoa entra com TODAS as cadeiras que ela ocupou na temporada,
+ * cada uma com o seu próprio nível. "Na ausência de alguém podemos trocar de
+ * cadeira pra compor" é como o core joga: o Voidwar tankando e o Voidsurge
+ * curando são a mesma pessoa oferecendo duas cadeiras ao grupo, e reduzir
+ * isso a uma função só apagaria justamente quem trocou pra ajudar.
+ *
+ * O nível é do PAPEL, não da pessoa: estar pronto tankando não torna
+ * ninguém pronto curando.
+ */
+export function pessoasNaComp(
+  apurada: Map<string, ProntidaoApurada>,
+  pessoaDe: (playerId: string) => string
+): PessoaNaComp[] {
+  const papeisDaPessoa = new Map<string, Map<FuncaoDaProntidao, NivelDeConteudo | null>>();
+
+  for (const [personagem, entrada] of apurada) {
+    const dono = pessoaDe(personagem);
+    const papeis = papeisDaPessoa.get(dono) ?? new Map<FuncaoDaProntidao, NivelDeConteudo | null>();
+    const atual = papeis.get(entrada.funcao);
+    const novo = entrada.prontidao.nivel;
+
+    // Dois personagens na mesma cadeira: vale o melhor deles. Quem subiu o
+    // alt de tank até o heroico não volta pro normal por ter um tank antigo.
+    if (atual === undefined || posicaoDoNivel(novo) > posicaoDoNivel(atual)) {
+      papeis.set(entrada.funcao, novo);
+    }
+
+    papeisDaPessoa.set(dono, papeis);
+  }
+
+  return [...papeisDaPessoa].map(([id, papeis]) => ({
+    id,
+    papeis: [...papeis].map(([funcao, nivel]) => ({ funcao, nivel })),
+  }));
+}
+
+function posicaoDoNivel(nivel: NivelDeConteudo | null): number {
+  return nivel === null ? -1 : NIVEIS.indexOf(nivel);
 }

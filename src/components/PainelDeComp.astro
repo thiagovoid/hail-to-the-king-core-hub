@@ -1,0 +1,152 @@
+---
+/**
+ * A COMP do core, nível a nível.
+ *
+ * Responde com número a pergunta que cobram da liderança — "o core dá pra
+ * mítico?" — separando as duas coisas que sempre se misturam: faltar GENTE
+ * é recrutamento, faltar NÍVEL é treino. Um "ainda não" sozinho não diria
+ * qual dos dois, e o grupo passaria a temporada treinando pra resolver um
+ * problema de headcount.
+ *
+ * A ressalva do rodapé não é decoração: o core limpa o heroico HOJE sem
+ * ninguém individualmente pronto pro heroico. Sem essa frase, o painel
+ * pareceria dizer que o grupo não pode fazer o que já faz toda terça.
+ */
+import { FUNCOES, type CompDoNivel } from '@/engine/guild/comp';
+import { ROTULO_DO_NIVEL } from '@/engine/scores/prontidao';
+import type { FuncaoDaProntidao } from '@/engine/scores/prontidao';
+
+interface Props {
+  comps: CompDoNivel[];
+}
+
+const { comps } = Astro.props;
+
+const CORES = {
+  normal: { texto: 'text-emerald-400', borda: 'border-emerald-500/30', barra: 'bg-emerald-500' },
+  heroico: { texto: 'text-sky-400', borda: 'border-sky-500/30', barra: 'bg-sky-500' },
+  mitico: { texto: 'text-purple-400', borda: 'border-purple-500/30', barra: 'bg-purple-500' },
+} as const;
+
+const NOME_DA_FUNCAO: Record<FuncaoDaProntidao, string> = {
+  tank: 'Tanks',
+  healer: 'Healers',
+  dps: 'DPS',
+};
+---
+
+<section aria-labelledby="comp-heading">
+  <div class="flex items-center gap-3 mb-3">
+    <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+    <h2
+      id="comp-heading"
+      class="text-slate-400 text-xs font-semibold uppercase tracking-widest px-2"
+    >
+      COMP por conteúdo
+    </h2>
+    <div class="h-px flex-1 bg-white/5" aria-hidden="true" />
+  </div>
+
+  <p class="text-center text-xs text-slate-500 mb-6 max-w-2xl mx-auto leading-relaxed">
+    Duas contas diferentes: <span class="text-slate-400">gente</span> pra ocupar cada cadeira e
+    <span class="text-slate-400">nível</span> pra segurar o conteúdo. Alt não conta duas vezes —
+    quem joga duas funções oferece duas cadeiras, mas senta numa só.
+  </p>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    {
+      comps.map((comp) => {
+        const cor = CORES[comp.nivel];
+
+        return (
+          <div
+            class={`bg-[#141b2d] border rounded-xl p-5 ${comp.fecha ? cor.borda : 'border-white/7'}`}
+          >
+            <div class="flex items-baseline justify-between gap-2 mb-4">
+              <h3 class={`text-base font-bold ${cor.texto}`}>{ROTULO_DO_NIVEL[comp.nivel]}</h3>
+
+              <span
+                class={`text-[11px] font-semibold uppercase tracking-wide ${
+                  comp.fecha ? 'text-emerald-400' : 'text-slate-500'
+                }`}
+              >
+                {comp.fecha ? 'COMP fecha' : comp.formacaoFecha ? 'Falta nível' : 'Falta gente'}
+              </span>
+            </div>
+
+            <ul class="space-y-2.5 mb-4">
+              {FUNCOES.map((funcao) => {
+                const cadeiras = comp.cadeiras[funcao];
+                const prontos = comp.pronto[funcao];
+                const temos = comp.disponivel[funcao];
+
+                // A barra mede quem está NA RÉGUA, não quem existe: o painel
+                // já diz quantos existem logo ao lado, e duas barras no mesmo
+                // espaço não se leem.
+                const fatia = cadeiras === 0 ? 0 : Math.min(100, (prontos / cadeiras) * 100);
+
+                return (
+                  <li>
+                    <div class="flex items-baseline justify-between gap-2 text-xs mb-1">
+                      <span class="text-slate-400">{NOME_DA_FUNCAO[funcao]}</span>
+
+                      <span class="tabular-nums">
+                        <span
+                          class={prontos >= cadeiras ? 'text-emerald-400' : 'text-slate-200'}
+                        >
+                          {prontos}
+                        </span>
+                        <span class="text-slate-600">
+                          {' '}
+                          na régua de {cadeiras} · {temos} no core
+                        </span>
+                      </span>
+                    </div>
+
+                    <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                      <div
+                        class={`h-full rounded-full ${cor.barra}`}
+                        style={`width: ${fatia}%`}
+                      />
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div class="pt-3 border-t border-white/5">
+              {comp.falta.length === 0 ? (
+                <p class="text-xs text-emerald-400">
+                  Tamanho, formação e nível — os três fecham.
+                </p>
+              ) : (
+                <>
+                  <p class="text-[11px] uppercase tracking-wide text-slate-500 mb-1.5">Falta</p>
+                  <ul class="space-y-1">
+                    {comp.falta.map((item) => (
+                      <li class="text-xs text-slate-300 flex gap-2">
+                        <span class="text-slate-600" aria-hidden="true">
+                          ·
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
+
+            <p class="text-[11px] text-slate-600 mt-3">
+              {comp.pessoasProntas} de {comp.pessoas} no core já seguram esta régua.
+            </p>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <p class="text-[11px] text-slate-500 text-center mt-4 max-w-2xl mx-auto leading-relaxed">
+    O core limpa o heroico hoje com este mesmo quadro — grupo carrega, é o que grupo faz. O que
+    muda no mítico é que ali a cadeira é fixa em 20 e o carrego não fecha a conta.
+  </p>
+</section>
