@@ -126,6 +126,25 @@ const pesoDisponivel = dimensoesComDado.reduce((soma, dimension) => soma + dimen
 const somaDosProdutos = contaDoScore.reduce((soma, linha) => soma + linha.produto, 0);
 
 /**
+ * O desconto por tempo morto, pronto pra tela.
+ *
+ * Null quando não há desconto nenhum — mostrar "× 1,00" só ocuparia espaço
+ * pra dizer que nada aconteceu. Ver `fatorDeSobrevivencia`.
+ */
+const dimensaoDeSobreviver = score.dimensions.find((d) => d.key === "survival");
+const descontoDeSobrevivencia =
+  score.survivalFactor !== null && score.survivalFactor < 1 && dimensaoDeSobreviver?.value !== null
+    ? {
+        fator: score.survivalFactor!.toFixed(2).replace(".", ","),
+        share: String(dimensaoDeSobreviver!.value).replace(".", ","),
+        meta: dimensaoDeSobreviver!.target.target,
+        excesso: `${(dimensaoDeSobreviver!.value! - dimensaoDeSobreviver!.target.target)
+          .toFixed(1)
+          .replace(".", ",")} pontos`,
+      }
+    : null;
+
+/**
  * O detalhe explica a nota, mas são até sete linhas por dimensão — cinco
  * dimensões abertas de uma vez viravam parede de texto e escondiam o próprio
  * score. Fica recolhido, com um rótulo que diz o que tem dentro: "Detalhes"
@@ -221,8 +240,33 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 
               <span class="flex justify-between gap-3 text-[11px] text-slate-200 font-semibold mt-1.5 pt-1.5 border-t border-white/10 tabular-nums">
                 <span>{somaDosProdutos} ÷ {pesoDisponivel}%</span>
-                <span>= {score.overall}</span>
+                <span>= {score.beforeSurvival}</span>
               </span>
+
+              {/* Sobreviver não é parcela, é multiplicador: a melhor
+                  preparação e o melhor dps não valem nada se o raide seguiu
+                  sem você. Aparece como linha separada porque a pessoa
+                  precisa ver de onde o desconto veio. */}
+              {descontoDeSobrevivencia !== null && (
+                <>
+                  <span class="flex justify-between gap-3 text-[11px] text-amber-400 mt-1 tabular-nums">
+                    <span>× sobrevivência</span>
+                    <span>× {descontoDeSobrevivencia.fator}</span>
+                  </span>
+
+                  <span class="flex justify-between gap-3 text-[11px] text-slate-200 font-semibold mt-1.5 pt-1.5 border-t border-white/10 tabular-nums">
+                    <span>Score geral</span>
+                    <span>= {score.overall}</span>
+                  </span>
+
+                  <span class="block text-slate-500 text-[11px] leading-relaxed mt-2">
+                    Você passou {descontoDeSobrevivencia.share}% do tempo de luta morto com o raide
+                    ainda lutando — {descontoDeSobrevivencia.excesso} acima da meta de{' '}
+                    {descontoDeSobrevivencia.meta}%. Dentro da meta não desconta nada: progressão
+                    tem morte, e morrer na call de wipe custa quase zero.
+                  </span>
+                </>
+              )}
             </>
           ) : (
             <span class="block text-slate-400 text-[11px] mt-2">

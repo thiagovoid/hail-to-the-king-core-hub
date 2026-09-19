@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateOverallScore, funcaoEfetiva } from "./index";
+import { calculateOverallScore, fatorDeSobrevivencia, funcaoEfetiva } from "./index";
 import type { PlayerPerformance } from "../../types/performance";
 import type { CorePerformanceTargets } from "../../types/index";
 
@@ -57,8 +57,8 @@ describe("calculateOverallScore", () => {
   });
 
   it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
-    // Sem função informada, vale a régua de dps: parse 30 e mecânicas 20 têm
-    // dado → denominador 50.
+    // Sem função informada, vale a régua de dps: parse 35 e mecânicas 25 têm
+    // dado → denominador 60.
     const result = calculateOverallScore(
       { playerId: "voidwar", parse: 60, mechanics: { errors: 4 }, deaths: 0 },
       TARGETS
@@ -66,8 +66,8 @@ describe("calculateOverallScore", () => {
 
     expect(dimension(result, "attack")?.score).toBeNull();
     expect(dimension(result, "preparation")?.score).toBeNull();
-    // (100*30 + 50*20) / 50 = 80
-    expect(result.overall).toBe(80);
+    // (100*35 + 50*25) / 60 = 79.16 → 79
+    expect(result.overall).toBe(79);
   });
 
   /**
@@ -138,36 +138,36 @@ describe("pesos por função", () => {
 
   it("dá o maior peso a Defender no tank", () => {
     const r = calculateOverallScore(base, TARGETS, "tank");
-    expect(peso(r, "defense")).toBe(26);
-    expect(peso(r, "parse")).toBe(12);
+    expect(peso(r, "defense")).toBe(30);
+    expect(peso(r, "parse")).toBe(15);
   });
 
   it("dá o maior peso a Parse no dps", () => {
     const r = calculateOverallScore(base, TARGETS, "dps");
-    expect(peso(r, "parse")).toBe(30);
-    expect(peso(r, "defense")).toBe(7);
+    expect(peso(r, "parse")).toBe(35);
+    expect(peso(r, "defense")).toBe(10);
   });
 
   it("dá o maior peso a Curar no healer", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "healer");
-    expect(peso(r, "healing")).toBe(26);
-    expect(peso(r, "attack")).toBe(4);
+    expect(peso(r, "healing")).toBe(30);
+    expect(peso(r, "attack")).toBe(5);
   });
 
-  it("mantém Mecânicas em 20 nas três funções", () => {
+  it("mantém Mecânicas em 25 nas três funções", () => {
     for (const funcao of ["dps", "tank", "healer"] as const) {
-      expect(peso(calculateOverallScore(base, TARGETS, funcao), "mechanics")).toBe(20);
+      expect(peso(calculateOverallScore(base, TARGETS, funcao), "mechanics")).toBe(25);
     }
   });
 
   /**
-   * Morrer custa ao raide a mesma coisa, quem quer que tenha morrido — por
-   * isso Sobreviver não muda de peso entre as funções, diferente de todas as
-   * outras dimensões.
+   * Sobreviver não é parcela: peso zero de propósito. Medido nas 113 noites
+   * da temporada, subir o peso de 15 pra 40 movia o Dagom de 70 pra 69 —
+   * as outras dimensões batem no teto e absorvem. Ver fatorDeSobrevivencia.
    */
-  it("dá o mesmo peso a Sobreviver nas três funções", () => {
+  it("não dá peso nenhum a Sobreviver — ela multiplica", () => {
     for (const funcao of ["dps", "tank", "healer"] as const) {
-      expect(peso(calculateOverallScore(base, TARGETS, funcao), "survival")).toBe(15);
+      expect(peso(calculateOverallScore(base, TARGETS, funcao), "survival")).toBe(0);
     }
   });
 
@@ -189,11 +189,73 @@ describe("pesos por função", () => {
   // Medi-la com a régua de dps daria peso 20 ao que ela não fez.
   it("mede como healer quem curou, mesmo cadastrado como dps", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "dps");
-    expect(peso(r, "healing")).toBe(26);
+    expect(peso(r, "healing")).toBe(30);
     expect(funcaoEfetiva({ ...base, healing: HEALING }, "dps")).toBe("healer");
   });
 
   it("cai na régua de dps quando ninguém informa a função", () => {
     expect(funcaoEfetiva(base)).toBe("dps");
+  });
+});
+
+describe("fatorDeSobrevivencia", () => {
+  /**
+   * Progressão tem morte. Dentro da meta do core não desconta nada — e a
+   * call de wipe já custa perto de zero por construção (ver deathCost).
+   */
+  it("não desconta nada dentro da meta", () => {
+    expect(fatorDeSobrevivencia(0, 10)).toBe(1);
+    expect(fatorDeSobrevivencia(10, 10)).toBe(1);
+  });
+
+  it("desconta o excesso, ponto a ponto", () => {
+    // 30% morto com meta 10% deixa a nota valendo 80% do que valia.
+    expect(fatorDeSobrevivencia(30, 10)).toBeCloseTo(0.8);
+    expect(fatorDeSobrevivencia(15, 10)).toBeCloseTo(0.95);
+  });
+});
+
+describe("Sobreviver multiplica, não soma", () => {
+  const cheio: PlayerPerformance = {
+    playerId: "a",
+    deaths: 0,
+    parse: 60,
+    mechanics: { errors: 2 },
+    attack: { score: 70, uptime: 70, cooldowns: 70 },
+    defense: { score: 60, mitigation: 40, dtps: 1000 },
+    preparation: 60,
+  };
+
+  it("deixa a nota intacta de quem ficou dentro da meta", () => {
+    const r = calculateOverallScore(
+      { ...cheio, deathCost: { seconds: 10, share: 3, inKills: 0 } },
+      TARGETS
+    );
+
+    expect(r.survivalFactor).toBe(1);
+    expect(r.overall).toBe(r.beforeSurvival);
+  });
+
+  /**
+   * O ponto da mudança. A melhor preparação, o melhor dps e tudo em dia não
+   * significam nada se a pessoa morreu no começo: o raide seguiu sem ela.
+   */
+  it("derruba a nota de quem passou a noite morto, mesmo com tudo em dia", () => {
+    const r = calculateOverallScore(
+      { ...cheio, deathCost: { seconds: 900, share: 30, inKills: 0 } },
+      TARGETS
+    );
+
+    expect(r.beforeSurvival).toBe(100);
+    expect(r.survivalFactor).toBeCloseTo(0.8);
+    expect(r.overall).toBe(80);
+  });
+
+  // Log antigo, sem o dado de morte: não dá pra descontar o que não se sabe.
+  it("não desconta quando a noite não tem o dado", () => {
+    const r = calculateOverallScore(cheio, TARGETS);
+
+    expect(r.survivalFactor).toBeNull();
+    expect(r.overall).toBe(r.beforeSurvival);
   });
 });

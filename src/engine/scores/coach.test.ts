@@ -42,7 +42,7 @@ function score(scores: Partial<Record<ScoreDimensionKey, number | null>>): Overa
       )
     : null;
 
-  return { overall, dimensions };
+  return { overall, dimensions , beforeSurvival: null, survivalFactor: null };
 }
 
 describe("buildCoachRecommendation", () => {

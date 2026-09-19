@@ -43,9 +43,30 @@ export interface ScoreDimension {
 }
 
 export interface OverallPerformanceScore {
-  /** Média ponderada das dimensões disponíveis, renormalizada pra 100. Null quando nenhuma tem dado. */
+  /** A nota final: as dimensões ponderadas, JÁ multiplicadas por sobrevivência. */
   overall: number | null;
+  /** A média ponderada antes do multiplicador — é o que o fator escala. */
+  beforeSurvival: number | null;
+  /**
+   * Quanto da nota sobrou depois de descontar o tempo morto. 1 = intacta.
+   *
+   * Null quando a noite não tem o dado de morte (log antigo).
+   */
+  survivalFactor: number | null;
   dimensions: ScoreDimension[];
+}
+
+/**
+ * O quanto a nota vale depois de descontar o tempo em que a pessoa não
+ * estava lá.
+ *
+ * Dentro da meta do core não desconta nada: progressão tem morte, e a call
+ * de wipe já custa perto de zero por construção (ver `deathCost`). Acima
+ * dela, desconta o EXCESSO, ponto a ponto — passar 30% da noite morto com a
+ * meta em 10% deixa a nota valendo 80% do que valia.
+ */
+export function fatorDeSobrevivencia(share: number, meta: number): number {
+  return 1 - Math.max(0, share - meta) / 100;
 }
 
 /**
@@ -78,17 +99,21 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
  * sobrevivência, não só número.
  */
 /**
- * Sobreviver entra com o MESMO peso pras três funções: morrer custa ao raide
- * a mesma coisa, quem quer que tenha morrido.
+ * Sobreviver tem peso ZERO de propósito: ela não é parcela, é multiplicador.
  *
- * O peso sai principalmente de Mecânicas, que caiu de 25 pra 20 — as duas
- * medem muito da mesma coisa (morrer costuma ser mecânica errada), e manter
- * as duas cheias seria cobrar o mesmo erro duas vezes.
+ * Peso não funcionaria. Medido nas 113 noites da temporada: subir o peso de
+ * Sobreviver de 15 pra 40 movia o Dagom de 70 pra 69. Um ponto — porque as
+ * outras dimensões batem no teto de 100% e absorvem a ruim.
+ *
+ * E parcela não é o que se quer dizer. Estar com a melhor preparação, o
+ * melhor dps e tudo em dia não significa nada se a pessoa morreu no começo
+ * da luta: o raide seguiu sem ela. Isso é invalidação, não desconto — ver
+ * `fatorDeSobrevivencia`.
  */
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
-  dps: { parse: 30, mechanics: 20, attack: 18, defense: 7, healing: 0, survival: 15, preparation: 10 },
-  tank: { parse: 12, mechanics: 20, attack: 12, defense: 26, healing: 0, survival: 15, preparation: 15 },
-  healer: { parse: 17, mechanics: 20, attack: 4, defense: 8, healing: 26, survival: 15, preparation: 10 },
+  dps: { parse: 35, mechanics: 25, attack: 20, defense: 10, healing: 0, survival: 0, preparation: 10 },
+  tank: { parse: 15, mechanics: 25, attack: 15, defense: 30, healing: 0, survival: 0, preparation: 15 },
+  healer: { parse: 20, mechanics: 25, attack: 5, defense: 10, healing: 30, survival: 0, preparation: 10 },
 };
 
 /**
@@ -267,11 +292,21 @@ export function calculateOverallScore(
   );
 
   if (available.length === 0) {
-    return { overall: null, dimensions };
+    return { overall: null, beforeSurvival: null, survivalFactor: null, dimensions };
   }
 
   const totalWeight = available.reduce((sum, dimension) => sum + dimension.weight, 0);
   const weightedSum = available.reduce((sum, dimension) => sum + dimension.weight * dimension.score, 0);
+  const beforeSurvival = Math.round(weightedSum / totalWeight);
 
-  return { overall: Math.round(weightedSum / totalWeight), dimensions };
+  const share = performance.deathCost?.share;
+  const survivalFactor =
+    share === undefined ? null : fatorDeSobrevivencia(share, targets.survival.target);
+
+  return {
+    overall: Math.round(beforeSurvival * (survivalFactor ?? 1)),
+    beforeSurvival,
+    survivalFactor,
+    dimensions,
+  };
 }
