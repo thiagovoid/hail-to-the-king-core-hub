@@ -155,6 +155,33 @@ describe("temArmaNaSecundaria", () => {
     expect(temArmaNaSecundaria(comOffHand("inv_offhand_1h_dungeonharronir_c_01.jpg"))).toBe(false);
   });
 
+  /**
+   * O escudo do Voidsurge em 25/08. Não começa com `inv_shield_`, então
+   * passava por arma numa checagem só de prefixo — e cobrava dele um encanto
+   * de escudo, derrubando a nota de Preparação junto.
+   */
+  it("não conta escudo que foge da convenção de nome", () => {
+    expect(temArmaNaSecundaria(comOffHand("inv_12al_armyoflight_defense_shield01.jpg"))).toBe(false);
+  });
+
+  // Família desconhecida não é cobrada: deixar de cobrar é piada que não
+  // acontece, cobrar errado é acusação falsa.
+  it("não cobra o que não reconhece como arma", () => {
+    expect(temArmaNaSecundaria(comOffHand("inv_misc_book_09.jpg"))).toBe(false);
+    expect(temArmaNaSecundaria(comOffHand("inv_enchant_essencearcanelarge.jpg"))).toBe(false);
+  });
+
+  it("reconhece as famílias de arma que aparecem nos logs do core", () => {
+    for (const icon of [
+      "inv_sword_1h_a.jpg",
+      "inv_mace_1h_outdooramaniloa_c_01.jpg",
+      "inv_hand_1h_dungeonharronir_c_01.jpg",
+      "inv_knife_1h_a.jpg",
+    ]) {
+      expect(temArmaNaSecundaria(comOffHand(icon))).toBe(true);
+    }
+  });
+
   it("não conta arma de duas mãos, que não tem secundária", () => {
     expect(temArmaNaSecundaria(comOffHand())).toBe(false);
   });

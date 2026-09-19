@@ -297,6 +297,7 @@ const conquistasDoJogador = contarConquistas(
     funcaoDe: (playerId) => roster.find((jogador) => jogador.id === playerId)?.role,
     nomeDoBoss: (encounterID) => nomeDoBoss.get(encounterID),
     pessoaDe: (playerId) => pessoas.get(playerId) ?? playerId,
+    zoeiraDesde: seasonJson.config.zoeiraDesde,
   }
 ).get(pessoaDoJogador);
 
@@ -441,6 +442,7 @@ const attendance = calculateAttendance(weeks, player.id);
       remeteAo={mainDoJogador ? { id: mainDoJogador.id, nome: mainDoJogador.name } : undefined}
       tambemJoga={outrosPersonagens.map((jogador) => jogador.name)}
       nomeDoPersonagem={Object.fromEntries(roster.map((jogador) => [jogador.id, jogador.name]))}
+      zoeiraDesde={seasonJson.config.zoeiraDesde}
     />
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />

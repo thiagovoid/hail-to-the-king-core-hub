@@ -556,6 +556,99 @@ describe("conquistas da noite try a try", () => {
   });
 });
 
+describe("corte de data da zoeira", () => {
+  const noite = (date: string): WeeklyPerformance => ({
+    week: 1,
+    runs: [
+      {
+        date,
+        players: [
+          {
+            playerId: "a",
+            deaths: 3,
+            parse: 60,
+            preparationMissing: ["Poção"],
+            preparationSlots: [{ slot: 7, label: "Botas", tipo: "encanto", ok: false }],
+          },
+        ],
+      },
+    ],
+  });
+
+  const ZOEIRA_DESDE = "2026-09-22";
+
+  it("não conta zoeira de antes da estreia", () => {
+    const antes = contarConquistas([noite("2026-09-15")], TARGETS, {
+      zoeiraDesde: ZOEIRA_DESDE,
+    }).get("a");
+
+    expect(antes?.get("pocao-que-pocao")).toBeUndefined();
+    expect(antes?.get("descalco")).toBeUndefined();
+    expect(antes?.get("chao-e-lava")).toBeUndefined();
+  });
+
+  // Mérito retroage porque REGISTRA algo que aconteceu. A zoeira COMENTA, e
+  // comentário retroativo é auditoria, não piada.
+  it("conta o mérito da mesma noite normalmente", () => {
+    const antes = contarConquistas([noite("2026-09-15")], TARGETS, {
+      zoeiraDesde: ZOEIRA_DESDE,
+    }).get("a");
+
+    expect(antes?.get("mvp")?.vezes).toBe(1);
+    expect(antes?.get("nota-maxima")?.vezes).toBe(1);
+  });
+
+  it("conta a zoeira a partir da data, inclusive no próprio dia", () => {
+    const naData = contarConquistas([noite(ZOEIRA_DESDE)], TARGETS, {
+      zoeiraDesde: ZOEIRA_DESDE,
+    }).get("a");
+
+    expect(naData?.get("pocao-que-pocao")?.vezes).toBe(1);
+    expect(naData?.get("descalco")?.vezes).toBe(1);
+  });
+
+  it("conta tudo quando a temporada não configurou data", () => {
+    const semCorte = contarConquistas([noite("2026-09-15")], TARGETS).get("a");
+    expect(semCorte?.get("pocao-que-pocao")?.vezes).toBe(1);
+  });
+
+  // "Pagando promessa" é de temporada E é zoeira: as noites de antes não
+  // podem entrar na contagem das cinco.
+  it("não conta noites antigas na Pagando promessa", () => {
+    const comMecanica = (date: string): WeeklyPerformance => ({
+      week: 1,
+      runs: [
+        {
+          date,
+          players: [
+            {
+              playerId: "a",
+              deaths: 1,
+              mechanics: { errors: 1, tries: 10 },
+              mechanicsDetail: [
+                { boss: "Ulatek", mechanic: "Damage from X", label: "Peçonha", tries: 3 },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    const cincoAntigas = ["2026-09-01", "2026-09-03", "2026-09-05", "2026-09-08", "2026-09-10"].map(
+      comMecanica
+    );
+
+    expect(
+      contarConquistas(cincoAntigas, TARGETS, { zoeiraDesde: ZOEIRA_DESDE })
+        .get("a")
+        ?.get("pagando-promessa")
+    ).toBeUndefined();
+
+    // Sem o corte, as mesmas cinco valem a medalha.
+    expect(contarConquistas(cincoAntigas, TARGETS).get("a")?.get("pagando-promessa")?.vezes).toBe(1);
+  });
+});
+
 describe("conquistas de temporada", () => {
   const noites = (
     datas: Array<[string, WeeklyPerformance["runs"][number]["players"]]>

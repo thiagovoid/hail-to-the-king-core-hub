@@ -135,14 +135,38 @@ export interface SlotDePreparacao {
 }
 
 /**
+ * Famílias de ícone que a Blizzard usa para ARMAS de uma mão.
+ *
+ * É lista de permissão, e não de bloqueio, por causa da assimetria dos dois
+ * erros: deixar de cobrar um encanto é uma piada que não acontece, cobrar
+ * encanto de escudo é acusar alguém de um erro que não existe. Família
+ * desconhecida não é cobrada.
+ */
+const FAMILIAS_DE_ARMA = [
+  "inv_sword",
+  "inv_axe",
+  "inv_mace",
+  "inv_knife",
+  "inv_dagger",
+  "inv_glaive",
+  "inv_hand_", // punho — "inv_hand_1h_dungeonharronir_c_01"
+  "inv_weapon",
+  "inv_staff",
+  "inv_polearm",
+];
+
+/**
  * A mão secundária é arma de verdade?
  *
- * O `icon` é a única pista do tipo que a WCL manda junto com o gear, e ela
- * basta: escudo vem como `inv_shield_*` e item de off-hand como
- * `inv_offhand_*`, nenhum dos dois recebe encanto. Cobrar encanto de escudo
- * seria inventar um erro que não existe — conferido no log de 15/09, onde
- * seis pessoas carregam escudo e as três que empunham duas armas encantam
- * as duas.
+ * O `icon` é a única pista do tipo que a WCL manda junto com o gear — não
+ * existe campo de classe nem subclasse. E ele não segue convenção única: o
+ * escudo do Voidsurge em 25/08 é `inv_12al_armyoflight_defense_shield01`,
+ * que não começa com `inv_shield_` e passava por arma numa checagem só de
+ * prefixo. Daí os dois filtros: precisa ser de uma família conhecida de arma
+ * E não pode se dizer escudo ou off-hand em lugar nenhum do nome.
+ *
+ * Conferido no log de 15/09: seis pessoas de escudo, uma de off-hand, e as
+ * três que empunham duas armas encantam as duas.
  */
 export function temArmaNaSecundaria(gear: WclGearItem[]): boolean {
   const secundaria = gear.find((item) => item.slot === 16 && item.id);
@@ -152,7 +176,9 @@ export function temArmaNaSecundaria(gear: WclGearItem[]): boolean {
   // Sem icon não dá pra afirmar que é arma — e na dúvida não se cobra.
   if (!icon) return false;
 
-  return !icon.startsWith("inv_shield") && !icon.startsWith("inv_offhand");
+  if (icon.includes("shield") || icon.includes("offhand")) return false;
+
+  return FAMILIAS_DE_ARMA.some((familia) => icon.startsWith(familia));
 }
 
 /**

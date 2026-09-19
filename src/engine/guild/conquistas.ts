@@ -548,7 +548,24 @@ export interface ContextoDasConquistas {
    * alt contar pro main. Sem isso, cada personagem é uma pessoa.
    */
   pessoaDe?: (playerId: string) => string;
+  /**
+   * Data (YYYY-MM-DD) a partir da qual a zoeira passa a valer.
+   *
+   * As de mérito retroagem porque REGISTRAM algo que aconteceu: o Xúlio
+   * jogou quatro specs, e apagar isso faria o sistema mentir sobre a própria
+   * história. As de zoeira COMENTAM, e comentário retroativo é outra coisa —
+   * "Dieta 7x" no dia da estreia diz "fomos atrás de cada noite em que você
+   * esqueceu o flask", que é auditoria, não piada. A partir da data, a pessoa
+   * sabe que está valendo, e aí tem graça.
+   *
+   * Cada temporada tem a sua (vem de `config.zoeiraDesde`). Ausente = tudo
+   * conta, que é o comportamento de quem nunca configurou.
+   */
+  zoeiraDesde?: string;
 }
+
+/** Conquistas de zoeira, por id — usado pelo corte por data. */
+const E_ZOEIRA = new Set(CONQUISTAS.filter((c) => c.tipo === "zoeira").map((c) => c.id));
 
 interface Vitoria {
   playerId: string;
@@ -1063,9 +1080,10 @@ function vencedoresDaTemporada(
   targets: CorePerformanceTargets,
   contexto: ContextoDasConquistas
 ): Map<string, VitoriaDaTemporada[]> {
-  const { funcaoDe, nomeDoBoss, pessoaDe } = contexto;
+  const { funcaoDe, nomeDoBoss, pessoaDe, zoeiraDesde } = contexto;
   const porConquista = new Map<string, VitoriaDaTemporada[]>();
   const pessoa = (playerId: string) => pessoaDe?.(playerId) ?? playerId;
+  const zoeiraVale = (date: string) => zoeiraDesde === undefined || date >= zoeiraDesde;
   const score = (player: PlayerPerformance) =>
     calculateOverallScore(player, targets, funcaoDe?.(player.playerId)).overall;
 
@@ -1194,9 +1212,14 @@ function vencedoresDaTemporada(
 
       // Uma noite conta UMA vez por mecânica, mesmo que a pessoa tenha
       // levado o mesmo tapa com dois personagens diferentes.
+      //
+      // "Pagando promessa" é zoeira, então obedece ao corte por data: noite
+      // anterior à estreia não entra na contagem das cinco.
       const doJogador = mecanicasPorJogador.get(id) ?? new Map<string, number>();
       const daNoiteDele = new Set(
-        personagens.flatMap((p) => (p.mechanicsDetail ?? []).map(nomeDaMecanica))
+        zoeiraVale(run.date)
+          ? personagens.flatMap((p) => (p.mechanicsDetail ?? []).map(nomeDaMecanica))
+          : []
       );
       for (const nome of daNoiteDele) doJogador.set(nome, (doJogador.get(nome) ?? 0) + 1);
       mecanicasPorJogador.set(id, doJogador);
@@ -1343,6 +1366,10 @@ export function contarConquistas(
     .flatMap((week) => week.runs)
     .sort((a, b) => a.date.localeCompare(b.date));
 
+  // Comparação de string funciona porque a data é sempre YYYY-MM-DD.
+  const valeAZoeira = (date: string) =>
+    contexto.zoeiraDesde === undefined || date >= contexto.zoeiraDesde;
+
   for (const run of runs) {
     for (const [conquistaId, vitorias] of vencedoresDaRun(
       run,
@@ -1350,6 +1377,7 @@ export function contarConquistas(
       contexto.funcaoDe,
       contexto.pessoaDe
     )) {
+      if (E_ZOEIRA.has(conquistaId) && !valeAZoeira(run.date)) continue;
       // Quem jogou com dois personagens na mesma noite leva a medalha uma
       // vez só: ela é da pessoa, e a noite foi uma.
       const jaContados = new Set<string>();

@@ -12,6 +12,7 @@
  */
 import { CONQUISTAS, type ConquistaGanha } from '@/engine/guild/conquistas';
 import MedalhaDeConquista from '@/components/MedalhaDeConquista.astro';
+import { formatDate } from '@/utils/format';
 
 interface Props {
   /** O que o jogador levou, por id de conquista. */
@@ -37,6 +38,13 @@ interface Props {
    * medalha foi conquistada.
    */
   nomeDoPersonagem?: Record<string, string>;
+  /**
+   * Data (YYYY-MM-DD) em que a zoeira passou a contar nesta temporada.
+   *
+   * A tela PRECISA dizer isso: um sistema que decide em silêncio que metade
+   * das medalhas não retroage é pior que qualquer uma das duas escolhas.
+   */
+  zoeiraDesde?: string;
 }
 
 const {
@@ -45,6 +53,7 @@ const {
   remeteAo = undefined,
   tambemJoga = [],
   nomeDoPersonagem = {},
+  zoeiraDesde = undefined,
 } = Astro.props;
 
 /**
@@ -77,7 +86,9 @@ const prateleiras = [
   },
   {
     titulo: 'Pra rir de si mesmo',
-    nota: 'Todo mundo tem. Se alguém usar isso pra alfinetar, o problema é dela.',
+    nota: zoeiraDesde
+      ? `Contam a partir de ${formatDate(zoeiraDesde)}, quando o sistema estreou — e zeram a cada temporada. Se alguém usar isso pra alfinetar, o problema é dela.`
+      : 'Todo mundo tem. Se alguém usar isso pra alfinetar, o problema é dela.',
     itens: ordenar(medalhas.filter((item) => item.conquista.tipo === 'zoeira')),
   },
 ];
