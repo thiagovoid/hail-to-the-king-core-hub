@@ -680,13 +680,7 @@
           "hps": 126969,
           "parse": 41,
           "itemLevel": 287,
-          "preparation": 51,
-          "preparationMissing": [
-            "Mão secundária",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
-          ],
+          "preparation": 54,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -736,12 +730,6 @@
               "label": "Arma",
               "tipo": "encanto",
               "ok": true
-            },
-            {
-              "slot": 16,
-              "label": "Mão secundária",
-              "tipo": "encanto",
-              "ok": false
             },
             {
               "slot": 1,
@@ -905,6 +893,11 @@
             "errors": 2.2,
             "tries": 10
           },
+          "preparationMissing": [
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -4155,13 +4148,7 @@
           "playerId": "voidsurge",
           "hps": 61682,
           "itemLevel": 287,
-          "preparation": 41,
-          "preparationMissing": [
-            "Mão secundária",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
-          ],
+          "preparation": 43,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -4211,12 +4198,6 @@
               "label": "Arma",
               "tipo": "encanto",
               "ok": true
-            },
-            {
-              "slot": 16,
-              "label": "Mão secundária",
-              "tipo": "encanto",
-              "ok": false
             },
             {
               "slot": 1,
@@ -4318,6 +4299,11 @@
             "errors": 1.9,
             "tries": 14
           },
+          "preparationMissing": [
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
           "mechanicsDetail": [
             {
               "boss": "O Altar Espiralado",
