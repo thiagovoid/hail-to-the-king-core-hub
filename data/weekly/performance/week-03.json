@@ -256,6 +256,12 @@
               "role": "tank"
             }
           ],
+          "utility": {
+            "interrupts": 14,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 5,
           "mechanics": {
             "errors": 1.7,
@@ -632,6 +638,12 @@
               "role": "tank"
             }
           ],
+          "utility": {
+            "interrupts": 35,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 2
+          },
           "deaths": 3,
           "mechanics": {
             "errors": 1.7,
@@ -943,6 +955,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 9,
+            "dispels": 36,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 2,
@@ -1313,6 +1331,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 64,
+            "purges": 0,
+            "battleRez": 12
+          },
           "deaths": 4,
           "mechanics": {
             "errors": 1.3,
@@ -1641,6 +1665,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 84,
+            "purges": 0,
+            "battleRez": 2
+          },
           "deaths": 2,
           "mechanics": {
             "errors": 1.4,
@@ -1966,6 +1996,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 6,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 6,
           "mechanics": {
             "errors": 1.2,
@@ -2281,6 +2317,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 1
+          },
           "deaths": 3,
           "mechanics": {
             "errors": 1.6,
@@ -2449,9 +2491,9 @@
             "Botas"
           ],
           "attack": {
-            "score": 85.4,
+            "score": 85.2,
             "uptime": 98.7,
-            "cooldowns": 72
+            "cooldowns": 71.7
           },
           "attackDetail": [
             {
@@ -2469,8 +2511,8 @@
             {
               "spellId": 228260,
               "name": "Voidform",
-              "casts": 58,
-              "efficiency": 89.8
+              "casts": 29,
+              "efficiency": 88.9
             }
           ],
           "defense": {
@@ -2598,6 +2640,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 11,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 5,
           "mechanics": {
             "errors": 1.4,
@@ -2767,9 +2815,9 @@
           ],
           "preparationGear": 100,
           "attack": {
-            "score": 86.5,
+            "score": 84.8,
             "uptime": 92.6,
-            "cooldowns": 80.4
+            "cooldowns": 77
           },
           "attackDetail": [
             {
@@ -2781,8 +2829,8 @@
             {
               "spellId": 191634,
               "name": "Stormkeeper",
-              "casts": 126,
-              "efficiency": 94
+              "casts": 64,
+              "efficiency": 87.2
             }
           ],
           "defense": {
@@ -2904,6 +2952,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 21,
+            "dispels": 3,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -3097,7 +3151,7 @@
           "attack": {
             "score": 76.8,
             "uptime": 86.5,
-            "cooldowns": 67.1
+            "cooldowns": 67
           },
           "attackDetail": [
             {
@@ -3121,8 +3175,8 @@
             {
               "spellId": 370965,
               "name": "The Hunt",
-              "casts": 105,
-              "efficiency": 91.3
+              "casts": 51,
+              "efficiency": 91.1
             }
           ],
           "defense": {
@@ -3244,6 +3298,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 9,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 4,
           "mechanics": {
             "errors": 2.3,
@@ -3594,6 +3654,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 4,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 4,
           "mechanics": {
             "errors": 2.6,
@@ -3948,6 +4014,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 1,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 4,
           "mechanics": {
             "errors": 1.9,
@@ -4312,6 +4384,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 6,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 2
+          },
           "deaths": 2,
           "mechanics": {
             "errors": 2.4,
@@ -4677,6 +4755,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 2
+          },
           "deaths": 3,
           "mechanics": {
             "errors": 2.6,
@@ -4873,9 +4957,9 @@
             "Arma"
           ],
           "attack": {
-            "score": 65.2,
+            "score": 64.9,
             "uptime": 79.1,
-            "cooldowns": 51.2
+            "cooldowns": 50.8
           },
           "attackDetail": [
             {
@@ -4887,8 +4971,8 @@
             {
               "spellId": 120644,
               "name": "Halo",
-              "casts": 66,
-              "efficiency": 53.9
+              "casts": 33,
+              "efficiency": 52.8
             },
             {
               "spellId": 15286,
@@ -4899,8 +4983,8 @@
             {
               "spellId": 228260,
               "name": "Voidform",
-              "casts": 50,
-              "efficiency": 74.8
+              "casts": 25,
+              "efficiency": 74.1
             }
           ],
           "defense": {
@@ -5022,6 +5106,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 4,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 5,
           "mechanics": {
             "errors": 1.1,
@@ -5201,7 +5291,7 @@
           "attack": {
             "score": 69.9,
             "uptime": 81.7,
-            "cooldowns": 58.1
+            "cooldowns": 58
           },
           "attackDetail": [
             {
@@ -5231,8 +5321,8 @@
             {
               "spellId": 370965,
               "name": "The Hunt",
-              "casts": 74,
-              "efficiency": 76.7
+              "casts": 37,
+              "efficiency": 76.3
             }
           ],
           "defense": {
@@ -5342,6 +5432,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 4,
           "mechanics": {
             "errors": 2,
@@ -5675,6 +5771,12 @@
               "role": "tank"
             }
           ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 4
+          },
           "deaths": 16,
           "mechanics": {
             "errors": 1,
@@ -5952,6 +6054,12 @@
               "role": "tank"
             }
           ],
+          "utility": {
+            "interrupts": 10,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 17,
           "mechanics": {
             "errors": 1.3,
@@ -6218,6 +6326,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 4,
+            "dispels": 73,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 15,
           "mechanics": {
             "errors": 1.1,
@@ -6496,6 +6610,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 79,
+            "purges": 0,
+            "battleRez": 11
+          },
           "deaths": 15,
           "mechanics": {
             "errors": 0.6,
@@ -6534,7 +6654,7 @@
         {
           "playerId": "cowsadeer",
           "hps": 191210,
-          "parse": 44,
+          "parse": 45,
           "itemLevel": 314,
           "preparation": 62,
           "preparationChecks": 2,
@@ -6719,6 +6839,12 @@
               "role": "healer"
             }
           ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 72,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 15,
           "mechanics": {
             "errors": 0.6,
@@ -6963,6 +7089,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 8,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 16,
           "mechanics": {
             "errors": 1.1,
@@ -7375,9 +7507,9 @@
             "Botas"
           ],
           "attack": {
-            "score": 77.5,
+            "score": 76.9,
             "uptime": 89.3,
-            "cooldowns": 65.7
+            "cooldowns": 64.5
           },
           "attackDetail": [
             {
@@ -7389,14 +7521,14 @@
             {
               "spellId": 120644,
               "name": "Halo",
-              "casts": 107,
-              "efficiency": 70.1
+              "casts": 49,
+              "efficiency": 67.6
             },
             {
               "spellId": 228260,
               "name": "Voidform",
-              "casts": 69,
-              "efficiency": 83.3
+              "casts": 32,
+              "efficiency": 82
             }
           ],
           "defense": {
@@ -7614,9 +7746,9 @@
             "Anel"
           ],
           "attack": {
-            "score": 80.5,
+            "score": 80.4,
             "uptime": 90.2,
-            "cooldowns": 70.8
+            "cooldowns": 70.7
           },
           "attackDetail": [
             {
@@ -7640,8 +7772,8 @@
             {
               "spellId": 370965,
               "name": "The Hunt",
-              "casts": 124,
-              "efficiency": 96.2
+              "casts": 62,
+              "efficiency": 95.8
             }
           ],
           "defense": {
@@ -7725,6 +7857,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 3,
+            "dispels": 2,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 15,
           "mechanics": {
             "errors": 0.9,
@@ -7961,6 +8099,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 17,
           "mechanics": {
             "errors": 0.9,
@@ -8213,6 +8357,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 6,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 17,
           "mechanics": {
             "errors": 1.4,
@@ -8385,9 +8535,9 @@
             "Pernas"
           ],
           "attack": {
-            "score": 87.7,
+            "score": 87.4,
             "uptime": 90.6,
-            "cooldowns": 84.8
+            "cooldowns": 84.1
           },
           "attackDetail": [
             {
@@ -8399,8 +8549,8 @@
             {
               "spellId": 120644,
               "name": "Halo",
-              "casts": 124,
-              "efficiency": 86.8
+              "casts": 61,
+              "efficiency": 84.9
             },
             {
               "spellId": 1306743,
@@ -8411,8 +8561,8 @@
             {
               "spellId": 228260,
               "name": "Voidform",
-              "casts": 68,
-              "efficiency": 89.8
+              "casts": 34,
+              "efficiency": 88.9
             }
           ],
           "defense": {
@@ -8496,6 +8646,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 16,
           "mechanics": {
             "errors": 0.5,
@@ -8633,9 +8789,9 @@
             "Anel"
           ],
           "attack": {
-            "score": 68.5,
+            "score": 68.3,
             "uptime": 79.4,
-            "cooldowns": 57.5
+            "cooldowns": 57.3
           },
           "attackDetail": [
             {
@@ -8665,8 +8821,8 @@
             {
               "spellId": 370965,
               "name": "The Hunt",
-              "casts": 91,
-              "efficiency": 79.9
+              "casts": 45,
+              "efficiency": 78.5
             }
           ],
           "defense": {
@@ -8738,6 +8894,12 @@
               "role": "dps"
             }
           ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0
+          },
           "deaths": 17,
           "mechanics": {
             "errors": 1.3,
