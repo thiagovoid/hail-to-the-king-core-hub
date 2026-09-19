@@ -4,7 +4,11 @@ import { buildUtility, MAGIAS_DE_BATTLE_REZ } from "./buildUtility";
 
 const interromper = (sourceID: number) => ({ sourceID });
 const dissipar = (sourceID: number, isBuff = false) => ({ sourceID, isBuff });
-const lancar = (sourceID: number, abilityGameID: number) => ({ sourceID, abilityGameID });
+const lancar = (sourceID: number, abilityGameID: number, type = "cast") => ({
+  sourceID,
+  abilityGameID,
+  type,
+});
 
 const RENASCIMENTO = 20484;
 
@@ -28,6 +32,19 @@ describe("buildUtility", () => {
   // bruto — o battle rez sai de lá sem requisição nova.
   it("tira battle rez dos casts, sem chamada nova", () => {
     const util = buildUtility([], [], [lancar(5, RENASCIMENTO), lancar(5, 12345)]);
+
+    expect(util.get(5)?.battleRez).toBe(1);
+  });
+
+  // Battle rez tem tempo de conjuração: emite begincast E cast. Contar os
+  // dois dobrava o número — e pior, contava como levantado alguém que a
+  // conjuração interrompida nunca chegou a levantar.
+  it("não conta a conjuração começada como rez", () => {
+    const util = buildUtility([], [], [
+      lancar(5, RENASCIMENTO, "begincast"),
+      lancar(5, RENASCIMENTO, "cast"),
+      lancar(5, RENASCIMENTO, "begincast"),
+    ]);
 
     expect(util.get(5)?.battleRez).toBe(1);
   });

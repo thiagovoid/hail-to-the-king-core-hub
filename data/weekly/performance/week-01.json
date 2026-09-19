@@ -704,7 +704,7 @@
             "interrupts": 1,
             "dispels": 66,
             "purges": 0,
-            "battleRez": 6
+            "battleRez": 3
           },
           "deaths": 6,
           "mechanics": {
@@ -1038,8 +1038,8 @@
             {
               "spellId": 421453,
               "name": "Ultimate Penitence",
-              "casts": 8,
-              "efficiency": 19.4
+              "casts": 4,
+              "efficiency": 19.3
             },
             {
               "spellId": 1258283,
@@ -1252,9 +1252,9 @@
           ],
           "preparationGear": 100,
           "attack": {
-            "score": 85.9,
+            "score": 84.8,
             "uptime": 93.4,
-            "cooldowns": 78.5
+            "cooldowns": 76.2
           },
           "attackDetail": [
             {
@@ -1266,8 +1266,8 @@
             {
               "spellId": 191634,
               "name": "Stormkeeper",
-              "casts": 112,
-              "efficiency": 92.5
+              "casts": 56,
+              "efficiency": 87.9
             }
           ],
           "defense": {
@@ -1472,7 +1472,7 @@
           "attack": {
             "score": 84.8,
             "uptime": 96.1,
-            "cooldowns": 73.6
+            "cooldowns": 73.5
           },
           "attackDetail": [
             {
@@ -1496,8 +1496,8 @@
             {
               "spellId": 370965,
               "name": "The Hunt",
-              "casts": 104,
-              "efficiency": 98.6
+              "casts": 52,
+              "efficiency": 98.4
             }
           ],
           "defense": {

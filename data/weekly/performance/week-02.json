@@ -1346,7 +1346,7 @@
             "interrupts": 6,
             "dispels": 60,
             "purges": 0,
-            "battleRez": 2
+            "battleRez": 1
           },
           "deaths": 5,
           "mechanics": {
@@ -2184,9 +2184,9 @@
             "Botas"
           ],
           "attack": {
-            "score": 80.2,
+            "score": 79.7,
             "uptime": 88.2,
-            "cooldowns": 72.2
+            "cooldowns": 71.2
           },
           "attackDetail": [
             {
@@ -2198,14 +2198,14 @@
             {
               "spellId": 120644,
               "name": "Halo",
-              "casts": 109,
-              "efficiency": 73.6
+              "casts": 47,
+              "efficiency": 71.5
             },
             {
               "spellId": 228260,
               "name": "Voidform",
-              "casts": 58,
-              "efficiency": 84.8
+              "casts": 30,
+              "efficiency": 83.9
             }
           ],
           "defense": {
@@ -2509,9 +2509,9 @@
           ],
           "preparationGear": 100,
           "attack": {
-            "score": 90.6,
+            "score": 89.9,
             "uptime": 99,
-            "cooldowns": 82.2
+            "cooldowns": 80.9
           },
           "attackDetail": [
             {
@@ -2523,8 +2523,8 @@
             {
               "spellId": 191634,
               "name": "Stormkeeper",
-              "casts": 138,
-              "efficiency": 94.8
+              "casts": 71,
+              "efficiency": 92.1
             }
           ],
           "defense": {
@@ -2859,8 +2859,8 @@
             {
               "spellId": 370965,
               "name": "The Hunt",
-              "casts": 121,
-              "efficiency": 98.6
+              "casts": 60,
+              "efficiency": 98.4
             }
           ],
           "defense": {
@@ -4508,8 +4508,8 @@
           },
           "deaths": 16,
           "mechanics": {
-            "errors": 1.2,
-            "tries": 13
+            "errors": 1.3,
+            "tries": 14
           },
           "mechanicsDetail": [
             {
@@ -4517,7 +4517,7 @@
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 7
+              "tries": 8
             },
             {
               "boss": "O Altar Espiralado",
@@ -4531,7 +4531,7 @@
               "mechanic": "Damage from Gravebound",
               "label": "Soul Fragments",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 2
+              "tries": 3
             },
             {
               "boss": "O Altar Espiralado",
@@ -4706,8 +4706,8 @@
           },
           "deaths": 18,
           "mechanics": {
-            "errors": 1.8,
-            "tries": 13
+            "errors": 1.9,
+            "tries": 14
           },
           "preparationMissingGear": [],
           "preparationMissing": [
@@ -4721,14 +4721,14 @@
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 9
+              "tries": 10
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 5
+              "tries": 6
             },
             {
               "boss": "O Altar Espiralado",
@@ -4742,7 +4742,7 @@
               "mechanic": "Damage from Toxic Deluge",
               "label": "Dilúvio Tóxico",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 3
+              "tries": 4
             },
             {
               "boss": "O Altar Espiralado",
@@ -4929,12 +4929,12 @@
             "interrupts": 0,
             "dispels": 28,
             "purges": 0,
-            "battleRez": 14
+            "battleRez": 6
           },
           "deaths": 14,
           "mechanics": {
-            "errors": 0.8,
-            "tries": 13
+            "errors": 0.9,
+            "tries": 14
           },
           "mechanicsDetail": [
             {
@@ -4942,14 +4942,14 @@
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 5
+              "tries": 6
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 2
+              "tries": 3
             },
             {
               "boss": "O Altar Espiralado",
@@ -5147,26 +5147,26 @@
             "interrupts": 0,
             "dispels": 69,
             "purges": 0,
-            "battleRez": 2
+            "battleRez": 1
           },
           "deaths": 12,
           "mechanics": {
             "errors": 0.9,
-            "tries": 13
+            "tries": 14
           },
           "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 4
-            },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 5
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
               "tries": 4
             },
             {
@@ -5189,7 +5189,7 @@
           "playerId": "bustgril",
           "dps": 56132,
           "itemLevel": 296,
-          "preparation": 54,
+          "preparation": 53,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
@@ -5370,8 +5370,8 @@
           },
           "deaths": 16,
           "mechanics": {
-            "errors": 1.8,
-            "tries": 13
+            "errors": 1.9,
+            "tries": 14
           },
           "mechanicsDetail": [
             {
@@ -5379,21 +5379,21 @@
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 8
+              "tries": 9
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 8
+              "tries": 9
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Widow's Kiss",
               "label": "50y",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 3
+              "tries": 4
             },
             {
               "boss": "O Altar Espiralado",
@@ -5407,7 +5407,7 @@
               "mechanic": "Damage from Gravebound",
               "label": "Soul Fragments",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 1
+              "tries": 2
             }
           ]
         },
@@ -5415,7 +5415,7 @@
           "playerId": "hysillens",
           "dps": 46410,
           "itemLevel": 300,
-          "preparation": 42,
+          "preparation": 43,
           "preparationMissing": [
             "Elmo",
             "Arma",
@@ -5578,14 +5578,21 @@
             "interrupts": 0,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 8
+            "battleRez": 3
           },
           "deaths": 15,
           "mechanics": {
             "errors": 2.3,
-            "tries": 13
+            "tries": 14
           },
           "mechanicsDetail": [
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
+              "tries": 8
+            },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
@@ -5595,23 +5602,16 @@
             },
             {
               "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 7
+              "mechanic": "Damage from Widow's Kiss",
+              "label": "50y",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
+              "tries": 5
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Sever",
               "label": "Arrancar",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
               "tries": 4
             },
             {
@@ -5641,12 +5641,11 @@
           "playerId": "kroline",
           "dps": 80755,
           "itemLevel": 306,
-          "preparation": 76,
+          "preparation": 77,
           "preparationMissing": [
             "Pernas",
             "Botas",
-            "Anel",
-            "Pedra de vida"
+            "Anel"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5724,9 +5723,9 @@
             "Anel"
           ],
           "attack": {
-            "score": 79.8,
+            "score": 79.6,
             "uptime": 93.9,
-            "cooldowns": 65.7
+            "cooldowns": 65.3
           },
           "attackDetail": [
             {
@@ -5744,8 +5743,8 @@
             {
               "spellId": 228260,
               "name": "Voidform",
-              "casts": 52,
-              "efficiency": 82.2
+              "casts": 25,
+              "efficiency": 81
             }
           ],
           "defense": {
@@ -5814,7 +5813,7 @@
           "deaths": 15,
           "mechanics": {
             "errors": 1.4,
-            "tries": 13
+            "tries": 14
           },
           "mechanicsDetail": [
             {
@@ -5822,7 +5821,7 @@
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 4
+              "tries": 5
             },
             {
               "boss": "O Altar Espiralado",
@@ -5944,9 +5943,9 @@
           ],
           "preparationGear": 100,
           "attack": {
-            "score": 76.1,
+            "score": 75.3,
             "uptime": 86.8,
-            "cooldowns": 65.4
+            "cooldowns": 63.8
           },
           "attackDetail": [
             {
@@ -5958,8 +5957,8 @@
             {
               "spellId": 191634,
               "name": "Stormkeeper",
-              "casts": 84,
-              "efficiency": 72.1
+              "casts": 42,
+              "efficiency": 68.7
             }
           ],
           "defense": {
@@ -6034,7 +6033,7 @@
           "deaths": 17,
           "mechanics": {
             "errors": 1.2,
-            "tries": 13
+            "tries": 14
           },
           "preparationMissingGear": [],
           "preparationMissing": [
@@ -6048,7 +6047,7 @@
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 8
+              "tries": 9
             },
             {
               "boss": "O Altar Espiralado",
@@ -6177,7 +6176,7 @@
             "Anel"
           ],
           "attack": {
-            "score": 76.3,
+            "score": 76.2,
             "uptime": 86.6,
             "cooldowns": 65.9
           },
@@ -6203,8 +6202,8 @@
             {
               "spellId": 370965,
               "name": "The Hunt",
-              "casts": 85,
-              "efficiency": 93.1
+              "casts": 43,
+              "efficiency": 92.7
             }
           ],
           "defense": {
@@ -6273,7 +6272,7 @@
           "deaths": 14,
           "mechanics": {
             "errors": 1.4,
-            "tries": 13
+            "tries": 14
           },
           "mechanicsDetail": [
             {
@@ -6281,14 +6280,14 @@
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 7
+              "tries": 8
             },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 7
+              "tries": 8
             },
             {
               "boss": "O Altar Espiralado",
@@ -6499,22 +6498,22 @@
           },
           "deaths": 15,
           "mechanics": {
-            "errors": 1.5,
-            "tries": 13
+            "errors": 1.6,
+            "tries": 14
           },
           "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 5
-            },
             {
               "boss": "O Altar Espiralado",
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 6
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Toxic Deluge",
+              "label": "Dilúvio Tóxico",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
               "tries": 5
             },
             {
@@ -6537,6 +6536,20 @@
               "label": "50y",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
               "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
+              "tries": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Soul Sever",
+              "label": "Cisão Anímica",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSouSev?insightId=3429-3",
+              "tries": 1
             }
           ]
         },
@@ -6723,7 +6736,7 @@
           "deaths": 15,
           "mechanics": {
             "errors": 1.4,
-            "tries": 13
+            "tries": 14
           },
           "mechanicsDetail": [
             {
@@ -6752,7 +6765,7 @@
               "mechanic": "Damage from Gravebound",
               "label": "Soul Fragments",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 2
+              "tries": 3
             },
             {
               "boss": "O Altar Espiralado",
@@ -6943,12 +6956,12 @@
             "interrupts": 1,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 4
+            "battleRez": 2
           },
           "deaths": 12,
           "mechanics": {
-            "errors": 1.7,
-            "tries": 13
+            "errors": 1.6,
+            "tries": 14
           },
           "mechanicsDetail": [
             {
@@ -6956,7 +6969,7 @@
               "mechanic": "Damage from Noxious Ground",
               "label": "Terra Nóxia",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 9
+              "tries": 10
             },
             {
               "boss": "O Altar Espiralado",
@@ -6992,7 +7005,7 @@
           "playerId": "dagom",
           "dps": 17460,
           "itemLevel": 300,
-          "preparation": 15,
+          "preparation": 17,
           "preparationMissing": [
             "Peito",
             "Pernas",
@@ -7166,12 +7179,12 @@
             "interrupts": 0,
             "dispels": 0,
             "purges": 0,
-            "battleRez": 2
+            "battleRez": 1
           },
           "deaths": 8,
           "mechanics": {
             "errors": 1.6,
-            "tries": 7
+            "tries": 8
           },
           "mechanicsDetail": [
             {
@@ -7179,7 +7192,14 @@
               "mechanic": "Damage from Axegrinder",
               "label": "Machadeiro Moedor",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 5
+              "tries": 6
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Sever",
+              "label": "Arrancar",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
+              "tries": 3
             },
             {
               "boss": "O Altar Espiralado",
@@ -7187,13 +7207,6 @@
               "label": "Terra Nóxia",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
               "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 2
             },
             {
               "boss": "O Altar Espiralado",

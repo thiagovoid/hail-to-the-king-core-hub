@@ -10,6 +10,8 @@
  * `buildNightDetail` — a tradução pra id do roster fica na camada que chama.
  */
 
+import { ehUso } from "../providers/warcraftlogs/cooldownUsage";
+
 /** Um evento de interrupção ou dispel, como a WCL entrega. */
 export interface EventoDeUtilidade {
   sourceID: number;
@@ -21,6 +23,12 @@ export interface EventoDeUtilidade {
 export interface CastParaRez {
   sourceID: number;
   abilityGameID: number;
+  /**
+   * "cast" ou "begincast". Battle rez tem tempo de conjuração, então emite os
+   * DOIS — contar os dois dobra o número, e pior: conta como levantado
+   * alguém que a conjuração interrompida nunca chegou a levantar.
+   */
+  type?: string;
 }
 
 /**
@@ -83,6 +91,9 @@ export function buildUtility(
   }
 
   for (const cast of casts) {
+    // Só o `cast` conta: o `begincast` é a conjuração começando, e ela pode
+    // ser interrompida. No log de 15/09 foram 13 começos pra 11 rez de fato.
+    if (!ehUso(cast)) continue;
     if (MAGIAS_DE_BATTLE_REZ.has(cast.abilityGameID)) doAtor(cast.sourceID).battleRez += 1;
   }
 
