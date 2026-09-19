@@ -380,10 +380,14 @@ const charts = series.map((item) => {
                       stroke-dasharray="6 6"
                     />
 
+                    {/* À esquerda e ABAIXO da linha. Na direita ela batia em
+                        cima do valor do último ponto justamente quando a
+                        pessoa chegava perto da meta — o momento em que os
+                        dois números mais importam. */}
                     <text
-                      x={width - paddingRight}
-                      y={getY(item.target, scale) - 6}
-                      text-anchor="end"
+                      x={paddingLeft + 4}
+                      y={getY(item.target, scale) + 14}
+                      text-anchor="start"
                       class="fill-amber-400 text-[11px]"
                     >
                       META
@@ -414,10 +418,14 @@ const charts = series.map((item) => {
                       />
 
                       {/* O piso rotula à esquerda e o próximo à direita: quando
-                          os dois números ficam perto, os rótulos não se cobrem. */}
+                          os dois números ficam perto, os rótulos não se cobrem.
+                          Os dois ficam ABAIXO da própria linha, porque o valor
+                          de cada ponto é desenhado acima do ponto — em cima
+                          eles se sobrepunham justamente quando a pessoa
+                          encostava no degrau. */}
                       <text
                         x={degrau.atual ? paddingLeft + 4 : width - paddingRight}
-                        y={y - 6}
+                        y={y + 14}
                         text-anchor={degrau.atual ? 'start' : 'end'}
                         class={`${cor.texto} text-[11px]`}
                         opacity={degrau.atual ? '0.7' : '1'}

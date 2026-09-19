@@ -34,6 +34,7 @@ import {
 } from '@/engine/metrics';
 import { formatCompact } from '@/utils/format';
 import { calculateOverallScore } from '@/engine/scores';
+import { TITULOS_DO_HAIL_SCORE } from '@/engine/team/hailScore';
 import { buildCoachRecommendation } from '@/engine/scores/coach';
 import CoachCard from '@/components/CoachCard.astro';
 import { formatDate } from '@/utils/format';
@@ -269,6 +270,55 @@ const HIDDEN_CHART_SERIES = new Set(['deaths']);
  * importa, mas não é por ele que se avalia um tank. Healer já entra com
  * Curar primeiro e dps com DPS, então só a defesa precisa ser promovida.
  */
+/**
+ * A NOTA DA PESSOA, noite a noite.
+ *
+ * É a mesma conta do card "Score geral" logo acima — inclusive os pesos por
+ * função, então o tanque é medido por Defender e o healer por Curar —, só
+ * que ao longo da temporada em vez de só na última noite. A nota do CORE
+ * mora no dashboard; aqui é a dela.
+ *
+ * Cada ponto carrega o que o puxou: passar o mouse mostra as três dimensões
+ * mais fracas daquela noite, com o número de cada uma. Sem isso, a linha
+ * sobe e desce sem dizer por quê.
+ */
+const scoreHistory = history
+  .map((noite) => ({
+    noite,
+    score: calculateOverallScore(noite, seasonJson.config.performanceTargets, player.role),
+  }))
+  .filter((item) => item.score.overall !== null)
+  .map(({ noite, score }) => ({
+    date: noite.date,
+    value: score.overall!,
+    detail: [
+      ...score.dimensions
+        .filter((dimensao) => dimensao.score !== null && dimensao.value !== null)
+        .sort((a, b) => a.score! - b.score!)
+        .slice(0, 3)
+        // Vírgula decimal: "1,8 erros por try" é como o resto da ficha fala.
+        .map(
+          (dimensao) =>
+            `${dimensao.label} — ${String(dimensao.value).replace('.', ',')} ${dimensao.unit}`
+        ),
+      // O multiplicador de sobrevivência só aparece quando ele mordeu: nas
+      // noites em que a pessoa ficou dentro da meta, dizer "x1,00" é ruído.
+      ...(score.survivalFactor !== null && score.survivalFactor < 1
+        ? [`Tempo morto levou a nota de ${score.beforeSurvival} pra ${score.overall}`]
+        : []),
+    ],
+  }));
+
+const scoreAtual = scoreHistory.at(-1)?.value ?? null;
+
+// A meta do gráfico é o PRÓXIMO título, o mesmo que o emblema de rank já
+// anuncia ali em cima ("Faltam 4 pontos pra Nobre"). Duas telas com metas
+// diferentes pra mesma nota seriam dois sistemas.
+const proximoTitulo =
+  scoreAtual === null
+    ? undefined
+    : TITULOS_DO_HAIL_SCORE.find((faixa) => faixa.minimo > scoreAtual);
+
 function ordenarPorFuncao<T extends { id: string }>(series: T[]): T[] {
   if (player.role !== 'tank') return series;
 
@@ -522,7 +572,23 @@ const attendance = calculateAttendance(weeks, player.id);
     {
       history.length > 0 && (
         <PerformanceChart
-          series={ordenarPorFuncao([
+          series={[
+            // A nota da pessoa abre o gráfico: é a leitura de cima, e as
+            // outras abas explicam ela. Fica fora do ordenarPorFuncao de
+            // propósito — pro tanque, Defender vem logo depois, não antes.
+            ...(scoreHistory.length > 0
+              ? [
+                  {
+                    id: 'score',
+                    label: 'Score geral',
+                    data: scoreHistory,
+                    target: proximoTitulo?.minimo,
+                    current: scoreAtual,
+                    direction: 'higher' as const,
+                  },
+                ]
+              : []),
+            ...ordenarPorFuncao([
             // Curar na frente quando existe: pro healer é o ofício, e o
             // volume (HPS) logo atrás explica o número.
             ...(healingHistory.length > 0
@@ -613,7 +679,8 @@ const attendance = calculateAttendance(weeks, player.id);
               target: player.performanceGoals?.deaths?.target,
               direction: 'lower',
             },
-          ].filter((item) => !HIDDEN_CHART_SERIES.has(item.id)))}
+            ].filter((item) => !HIDDEN_CHART_SERIES.has(item.id))),
+          ]}
         />
       )
     }
