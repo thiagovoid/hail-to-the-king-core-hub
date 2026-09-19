@@ -38,6 +38,21 @@ export interface WarcraftLogsRawReportTables {
   deathEvents?: Array<{ fight: number; targetID: number; timestamp: number }>;
   /** Dano por ator em CADA try, como pares (Map não sobrevive ao JSON). */
   damagePerFight?: Array<{ fightId: number; entries: Array<{ actorId: number; total: number }> }>;
+  /**
+   * `actorId` -> nome, como pares. Sem isso todo evento vira número solto.
+   */
+  actorNames?: Array<[number, string]>;
+  /**
+   * Todo cast de jogador da noite. É a peça mais cara — 53 mil eventos e
+   * 5 MB crus — e era justamente a que não passava pelo coletor.
+   */
+  castEvents?: EventoDeCast[];
+  /** Dano por habilidade dos atores que lançaram algo. Base do peso de cada cooldown. */
+  damageAbilities?: Array<{ sourceID: number; abilities: Array<{ name?: string; total?: number }> }>;
+  /** Dano recebido por ator na noite. Ver buildDefense. */
+  damageTaken?: Array<{ id?: number; name?: string; total?: number; totalReduced?: number }>;
+  /** Percentis calculados PRA ESTE relatório — a fonte do parse. */
+  reportRankings?: WclReportRankings | null;
 }
 
 /**
@@ -600,6 +615,31 @@ ${campos}
     const deathEvents = await this.fetchDeathEvents(context.reportCode, duracaoDoLogMs);
     const damagePerFight = await this.fetchDamagePerFight(context.reportCode, allFightIds);
 
+    /**
+     * O resto do que uma noite precisa, na MESMA passada.
+     *
+     * Estas quatro chamadas viviam soltas no script de coleta e nunca eram
+     * arquivadas — inclusive os casts, que sozinhos são 5 MB e a chamada mais
+     * cara de todas. Enquanto ficassem de fora, versionar o bruto não
+     * resolveria nada: recalcular continuaria exigindo ir à rede buscar
+     * justamente a parte grande.
+     */
+    const actorNames = await this.fetchActorNames(context.reportCode);
+    const castEvents = await this.fetchCastEvents(context.reportCode, raidFights);
+
+    // Só quem aparece nos eventos: buscar dano de ator que não lançou nada é
+    // ida de rede à toa.
+    const atoresComCast = [...new Set(castEvents.map((evento) => evento.sourceID))].filter((id) =>
+      actorNames.has(id)
+    );
+    const damageAbilities = await this.fetchDamageAbilities(
+      context.reportCode,
+      aggregateFightIds,
+      atoresComCast
+    );
+    const damageTaken = await this.fetchDamageTaken(context.reportCode, aggregateFightIds);
+    const reportRankings = await this.fetchReportRankings(context.reportCode);
+
     return {
       provider: this.name,
       fetchedAt: new Date().toISOString(),
@@ -620,6 +660,11 @@ ${campos}
           fightId,
           entries: [...porAtor].map(([actorId, total]) => ({ actorId, total })),
         })),
+        actorNames: [...actorNames],
+        castEvents,
+        damageAbilities,
+        damageTaken,
+        reportRankings,
       },
     };
   }

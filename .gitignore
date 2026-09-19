@@ -18,11 +18,18 @@ coverage/
 # Vite
 .vite/
 
-# Raw provider snapshots (data/raw/) — regenerável a partir dos mesmos
-# reportCodes/perfis; não versionado por enquanto pra não inchar o repo com
-# tabelas de dano/cura completas a cada semana. Revisitar se precisarmos de
-# histórico raw entre execuções do CI.
-data/raw/
+# Snapshots brutos dos providers.
+#
+# O do WarcraftLogs é VERSIONADO de propósito, contra a intuição de que dado
+# bruto não entra no repo. O relatório de uma noite de raid não muda depois
+# que a noite acaba, e enquanto ele era escrito e esquecido, toda métrica
+# nova virava uma recoleta de ~15 minutos por dado que já tinha passado por
+# aqui — e o site ficava com o campo vazio no meio-tempo.
+#
+# Custo medido: 495 KB comprimidos por noite, ~4 MB a temporada. O cache do
+# Wowhead que já mora aqui tem 1,4 MB.
+data/raw/*
+!data/raw/warcraftlogs/
 
 # OS
 .DS_Store

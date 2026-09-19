@@ -1,5 +1,5 @@
 import type { DataProvider, ProviderResult } from "../providers/types";
-import { saveRaw } from "./RawStorage";
+import { loadRaw, saveRaw } from "./RawStorage";
 
 export interface CollectorTask<TContext, TRaw> {
   provider: DataProvider<TContext, TRaw>;
@@ -9,7 +9,14 @@ export interface CollectorTask<TContext, TRaw> {
 }
 
 export type CollectorOutcome<TRaw> =
-  | { status: "ok"; provider: string; rawKey: string; result: ProviderResult<TRaw> }
+  | {
+      status: "ok";
+      provider: string;
+      rawKey: string;
+      result: ProviderResult<TRaw>;
+      /** Veio do arquivo em vez da rede. Ver `reuseArchived`. */
+      fromArchive?: boolean;
+    }
   | { status: "error"; provider: string; rawKey: string; error: string };
 
 export interface DataCollectorOptions {
@@ -19,6 +26,18 @@ export interface DataCollectorOptions {
    * revisit with real budget tracking if/when volume grows enough to matter.
    */
   minDelayMs?: number;
+  /**
+   * Reaproveitar o arquivo bruto quando ele já existe, em vez de ir à rede.
+   *
+   * É o que separa **recalcular** de **recoletar**. Uma regra nova sobre dado
+   * antigo não precisa de uma única chamada externa: o relatório de uma noite
+   * de raid não muda depois que a noite acabou.
+   *
+   * Desligado por padrão — coleta continua sendo coleta. Quem liga é o modo
+   * de build (`--reuse`), e quem precisa do dado de novo (o log foi
+   * reprocessado, a coleta mudou de forma) roda sem ele.
+   */
+  reuseArchived?: boolean;
 }
 
 /**
@@ -26,7 +45,17 @@ export interface DataCollectorOptions {
  * the whole batch, and archives every successful raw result before returning.
  */
 export class DataCollector {
-  constructor(private readonly options: DataCollectorOptions = {}) {}
+  constructor(private options: DataCollectorOptions = {}) {}
+
+  /**
+   * Liga o reaproveitamento do arquivo depois da construção.
+   *
+   * Existe porque quem decide isso é uma flag de linha de comando, lida
+   * dentro do `main()`, enquanto o coletor é montado no topo do módulo.
+   */
+  reuseArchivedFiles(): void {
+    this.options.reuseArchived = true;
+  }
 
   // Rest parameter (not a single array param) so a mixed-type batch — e.g.
   // one Raider.IO task + one WCL task in the same run() call — keeps each
@@ -38,6 +67,22 @@ export class DataCollector {
     const outcomes: Array<CollectorOutcome<unknown>> = [];
 
     for (const [index, task] of tasks.entries()) {
+      if (this.options.reuseArchived) {
+        const arquivado = await loadRaw<unknown>(task.provider.name, task.rawKey);
+        if (arquivado !== null) {
+          outcomes.push({
+            status: "ok",
+            provider: task.provider.name,
+            rawKey: task.rawKey,
+            result: { provider: task.provider.name, fetchedAt: "arquivo", raw: arquivado },
+            fromArchive: true,
+          });
+          continue;
+        }
+      }
+
+      // A pausa é entre IDAS À REDE. Tarefa resolvida pelo arquivo não gasta
+      // orçamento de API e não tem por que esperar.
       if (index > 0 && this.options.minDelayMs) {
         await delay(this.options.minDelayMs);
       }

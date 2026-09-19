@@ -82,13 +82,17 @@ const prateleiras = [
   {
     titulo: 'Conquistas',
     nota: 'O que você fez de melhor na temporada.',
+    rodape: undefined as string | undefined,
     itens: ordenar(medalhas.filter((item) => item.conquista.tipo === 'boa')),
   },
   {
     titulo: 'Pra rir de si mesmo',
-    nota: zoeiraDesde
-      ? `Contam a partir de ${formatDate(zoeiraDesde)}, quando o sistema estreou — e zeram a cada temporada. Se alguém usar isso pra alfinetar, o problema é dela.`
-      : 'Todo mundo tem. Se alguém usar isso pra alfinetar, o problema é dela.',
+    nota: 'O currículo que ninguém pediu.',
+    // Rodapé, não subtítulo: é informação de regra, e em cima da prateleira
+    // ela pesava mais que as medalhas.
+    rodape: zoeiraDesde
+      ? `Contam a partir de ${formatDate(zoeiraDesde)} · zeram a cada temporada`
+      : undefined,
     itens: ordenar(medalhas.filter((item) => item.conquista.tipo === 'zoeira')),
   },
 ];
@@ -154,6 +158,10 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
                 </div>
               ))}
             </div>
+
+            {prateleira.rodape && (
+              <p class="text-[10px] text-slate-600 mt-4 text-right">* {prateleira.rodape}</p>
+            )}
           </div>
         ))}
       </div>

@@ -7,11 +7,15 @@ import { saveRaw } from "../../src/services/RawStorage";
 import type { DataProvider } from "../../src/providers/types";
 import { RaiderIoProvider } from "../../src/providers/raiderio/RaiderIoProvider";
 import { buildPlayerPerformance } from "../../src/normalization/buildPlayerPerformance";
-import { buildParseByPlayer } from "../../src/providers/warcraftlogs/reportRankings";
+import {
+  buildParseByPlayer,
+  type WclReportRankings,
+} from "../../src/providers/warcraftlogs/reportRankings";
 import {
   buildCooldownUsage,
   buildDamageShares,
   type CooldownsDoJogador,
+  type EventoDeCast,
 } from "../../src/providers/warcraftlogs/cooldownUsage";
 import {
   CATALOGO_VAZIO,
@@ -94,6 +98,14 @@ interface Args {
   extraReportCodes: string[];
   discoverByCharacter: boolean;
   includeGuildReports: boolean;
+  /**
+   * Reconstruir a partir do que já está arquivado, sem tocar na rede.
+   *
+   * É o que separa recalcular de recoletar: regra nova sobre noite antiga
+   * não precisa de uma única chamada externa. Relatório sem arquivo ainda é
+   * buscado — senão uma noite nova nunca entraria.
+   */
+  reuse: boolean;
 }
 
 function parseArgs(): Args {
@@ -122,6 +134,7 @@ function parseArgs(): Args {
     // decisão do projeto é confiar só no upload pessoal do Thiago
     // (WCL_UPLOADER_USER_IDS). Ligar manualmente só em modo investigação.
     includeGuildReports: Boolean(args["include-guild-reports"]),
+    reuse: Boolean(args.reuse),
   };
 }
 
@@ -306,7 +319,15 @@ async function findReportCodesInOtherWeeks(performanceDir: string, currentFileNa
 }
 
 async function main() {
-  const { week: weekArg, days, start, end, extraReportCodes, discoverByCharacter, includeGuildReports } = parseArgs();
+  const { week: weekArg, days, start, end, extraReportCodes, discoverByCharacter, includeGuildReports, reuse } = parseArgs();
+
+  if (reuse) {
+    collector.reuseArchivedFiles();
+    console.log(
+      "Modo --reuse: reconstruindo do arquivo bruto. Só vai à WCL por relatório sem arquivo.\n"
+    );
+  }
+
   const roster = await loadRoster();
   const resolvePreparationChecklist = await loadPreparationResolver(roster);
 
@@ -430,6 +451,18 @@ async function main() {
     deathEvents: Array<{ fight: number; targetID: number; timestamp: number }>;
     /** Dano por ator em cada try, como pares (o arquivo bruto não guarda Map). */
     damagePerFight: Array<{ fightId: number; entries: Array<{ actorId: number; total: number }> }>;
+    /**
+     * O que antes o script buscava por conta própria e nunca era arquivado.
+     *
+     * Agora tudo vem do MESMO bruto — é o que faz `--reuse` recalcular sem
+     * tocar na rede. Relatório arquivado antes desta mudança não tem esses
+     * campos, e aí o script busca (ver `garantirDadosDoReport`).
+     */
+    actorNames: Array<[number, string]>;
+    castEvents: EventoDeCast[];
+    damageAbilities: Array<{ sourceID: number; abilities: Array<{ name?: string; total?: number }> }>;
+    damageTaken: Array<{ id?: number; name?: string; total?: number; totalReduced?: number }>;
+    reportRankings: WclReportRankings | null;
   }
 
   const reportContexts: ReportContext[] = [];
@@ -486,6 +519,11 @@ async function main() {
       trashTables: tables.trashTables ?? null,
       deathEvents: tables.deathEvents ?? [],
       damagePerFight: tables.damagePerFight ?? [],
+      actorNames: tables.actorNames ?? [],
+      castEvents: tables.castEvents ?? [],
+      damageAbilities: tables.damageAbilities ?? [],
+      damageTaken: tables.damageTaken ?? [],
+      reportRankings: tables.reportRankings ?? null,
     });
   }
 
@@ -582,10 +620,17 @@ async function main() {
 
   for (const ctx of reportContexts) {
     try {
-      const [atores, eventos] = await Promise.all([
-        wcl.fetchActorNames(ctx.report.code),
-        wcl.fetchCastEvents(ctx.report.code, ctx.raidFights),
-      ]);
+      /**
+       * Tudo sai do bruto. O `??` busca na rede só pra relatório arquivado
+       * antes desta coleta existir — recoletar tudo de novo não pode ser
+       * condição pra build passar.
+       */
+      const atores = ctx.actorNames.length
+        ? new Map(ctx.actorNames)
+        : await wcl.fetchActorNames(ctx.report.code);
+      const eventos = ctx.castEvents.length
+        ? ctx.castEvents
+        : await wcl.fetchCastEvents(ctx.report.code, ctx.raidFights);
 
       // Sem o mapa de atores, os eventos viram números soltos: o sourceID
       // não liga a ninguém e a noite inteira sai sem cooldown, sem erro
@@ -601,11 +646,9 @@ async function main() {
       const atoresComCast = [...new Set(eventos.map((evento) => evento.sourceID))].filter((id) =>
         atores.has(id)
       );
-      const danoPorHabilidade = await wcl.fetchDamageAbilities(
-        ctx.report.code,
-        ctx.aggregateFightIds,
-        atoresComCast
-      );
+      const danoPorHabilidade = ctx.damageAbilities.length
+        ? ctx.damageAbilities
+        : await wcl.fetchDamageAbilities(ctx.report.code, ctx.aggregateFightIds, atoresComCast);
 
       // Toda magia nova do log é consultada uma vez no Wowhead e o veredito
       // fica gravado — inclusive "não é cooldown". Sem esse registro, as
@@ -641,7 +684,10 @@ async function main() {
       // agregada mesmo — aqui só interessa o total por jogador, não a quebra
       // por habilidade, então a truncagem em 5 não atrapalha.
       const recebidoPorJogador = new Map<string, DanoRecebido>();
-      for (const entrada of await wcl.fetchDamageTaken(ctx.report.code, ctx.aggregateFightIds)) {
+      const danoRecebido = ctx.damageTaken.length
+        ? ctx.damageTaken
+        : await wcl.fetchDamageTaken(ctx.report.code, ctx.aggregateFightIds);
+      for (const entrada of danoRecebido) {
         if (!entrada.name) continue;
         const perfil = rosterProfiles.find((jogador) =>
           sameCharacterName(jogador.profile.name, entrada.name!)
@@ -789,7 +835,7 @@ async function main() {
   const parsePorReport = new Map<string, Awaited<ReturnType<typeof buildParseByPlayer>>>();
   for (const ctx of reportContexts) {
     try {
-      const rankings = await wcl.fetchReportRankings(ctx.report.code);
+      const rankings = ctx.reportRankings ?? (await wcl.fetchReportRankings(ctx.report.code));
       const porJogador = buildParseByPlayer(rankings ?? undefined);
       parsePorReport.set(ctx.report.code, porJogador);
       console.log(`Parse do report ${ctx.report.code}: ${porJogador.size} jogador(es) com percentil.`);

@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -22,4 +22,23 @@ export async function saveRaw(
   await mkdir(path.dirname(filePath), { recursive: true });
   await writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`);
   return filePath;
+}
+
+/**
+ * Lê de volta o que `saveRaw` arquivou, ou `null` se nunca foi arquivado.
+ *
+ * É o que separa "recalcular" de "recoletar". Enquanto o bruto era escrito e
+ * esquecido, toda métrica nova virava uma ida à API por dado que já tinha
+ * passado por aqui — e o site ficava com o campo vazio até a recoleta rodar.
+ *
+ * Arquivo corrompido devolve `null` em vez de derrubar a coleta: a resposta
+ * certa pra um arquivo ilegível é buscar de novo, não parar.
+ */
+export async function loadRaw<T>(provider: string, key: string): Promise<T | null> {
+  try {
+    const filePath = path.join(RAW_ROOT, provider, `${key}.json`);
+    return JSON.parse(await readFile(filePath, "utf-8")) as T;
+  } catch {
+    return null;
+  }
 }
