@@ -31,6 +31,7 @@ export interface PlayerPerformanceContributions {
     | "tries"
     | "bossTries"
     | "deathCost"
+    | "utility"
     | "trashShare"
     | "specs"
     | "preparationSlots"

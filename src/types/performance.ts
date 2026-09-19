@@ -251,6 +251,25 @@ export interface PlayerPerformance {
     inKills: number;
   };
 
+  /**
+   * Utilidade: interromper, dissipar, levantar quem caiu.
+   *
+   * Não entra em dano nem em cura, não entra no Score hoje — e é o que
+   * costuma separar um grupo que limpa heroico de um que não passa. Numa
+   * noite de 12 trys foram 22 interrupções e 79 dispels no raide inteiro:
+   * evento raro, alto impacto.
+   */
+  utility?: {
+    /** Casts inimigos interrompidos. */
+    interrupts: number;
+    /** Debuffs tirados de alguém do raide. */
+    dispels: number;
+    /** Buffs arrancados do inimigo — outra decisão, contada separada. */
+    purges: number;
+    /** Battle rez lançados. Sai dos casts, sem coleta nova. */
+    battleRez: number;
+  };
+
   /** Quantas trys de cada boss, e se caiu — base de "Paciência de Jó". */
   bossTries?: Array<{
     encounterID: number;

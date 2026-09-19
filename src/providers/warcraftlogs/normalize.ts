@@ -229,6 +229,8 @@ export interface NormalizedRunPlayer {
   bossTries?: PlayerPerformance["bossTries"];
   /** O que as mortes custaram. Ver buildNightDetail. */
   deathCost?: PlayerPerformance["deathCost"];
+  /** Interrupções, dispels e battle rez. Ver buildUtility. */
+  utility?: PlayerPerformance["utility"];
   /** % do dano do raide nas lutas de trash. */
   trashShare?: PlayerPerformance["trashShare"];
   /** Spec(s) da noite, com a função de cada. */
@@ -295,6 +297,8 @@ export interface BuildRunPlayersInput {
    * que tudo o que sai daqui é opcional do outro lado.
    */
   nightDetailByPlayer?: Map<string, DetalheDaNoite>;
+  /** Utilidade por id do roster — interrupções, dispels, battle rez. */
+  utilityByPlayer?: Map<string, NonNullable<PlayerPerformance["utility"]>>;
   /** % do dano no trash, por id do roster. Ausente quando o log não gravou trash. */
   trashShareByPlayer?: Map<string, number>;
   /** Spec(s) da noite, por id do roster. */
@@ -362,6 +366,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     nightDetailByPlayer,
     trashShareByPlayer,
     specsByPlayer,
+    utilityByPlayer,
     raidDamageTaken = 0,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
@@ -555,6 +560,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
         ? { trashShare: trashShareByPlayer.get(player.id) }
         : {}),
       ...(specsByPlayer?.get(player.id)?.length ? { specs: specsByPlayer.get(player.id) } : {}),
+      ...(utilityByPlayer?.has(player.id) ? { utility: utilityByPlayer.get(player.id) } : {}),
     });
   }
 

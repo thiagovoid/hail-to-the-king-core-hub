@@ -31,6 +31,7 @@ import {
   buildTrashShare,
   type DetalheDaNoite,
 } from "../../src/normalization/buildNightDetail";
+import { buildUtility, type UtilidadeDoJogador } from "../../src/normalization/buildUtility";
 import { buildBossKills, type BossMorto } from "../../src/providers/warcraftlogs/bossKills";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
@@ -44,6 +45,7 @@ import {
   type WarcraftLogsRankingContext,
   type WarcraftLogsRawRankings,
   type WclReportRef,
+  type EventoDeUtilidade,
 } from "../../src/providers/warcraftlogs/WarcraftLogsProvider";
 import {
   buildRunPlayers,
@@ -509,6 +511,9 @@ async function main() {
     damageAbilities: Array<{ sourceID: number; abilities: Array<{ name?: string; total?: number }> }>;
     damageTaken: Array<{ id?: number; name?: string; total?: number; totalReduced?: number }>;
     reportRankings: WclReportRankings | null;
+    /** Interrupções e dispels da noite. Ver buildUtility. */
+    interrupts: EventoDeUtilidade[];
+    dispels: EventoDeUtilidade[];
   }
 
   const reportContexts: ReportContext[] = [];
@@ -570,6 +575,8 @@ async function main() {
       damageAbilities: tables.damageAbilities ?? [],
       damageTaken: tables.damageTaken ?? [],
       reportRankings: tables.reportRankings ?? null,
+      interrupts: tables.interrupts ?? [],
+      dispels: tables.dispels ?? [],
     });
   }
 
@@ -663,6 +670,7 @@ async function main() {
   const noitePorReport = new Map<string, Map<string, DetalheDaNoite>>();
   const trashPorReport = new Map<string, Map<string, number>>();
   const specsPorReport = new Map<string, Map<string, NonNullable<PlayerPerformance["specs"]>>>();
+  const utilidadePorReport = new Map<string, Map<string, UtilidadeDoJogador>>();
 
   for (const ctx of reportContexts) {
     try {
@@ -850,6 +858,18 @@ async function main() {
       }
       specsPorReport.set(ctx.report.code, specsPorJogador);
 
+      /**
+       * Utilidade. Os dois eventos vêm do bruto; o battle rez sai dos casts
+       * que já estão na mão, porque `Resurrects` não existe no enum da WCL.
+       */
+      const utilPorAtor = buildUtility(ctx.interrupts, ctx.dispels, eventos);
+      const utilPorJogador = new Map<string, UtilidadeDoJogador>();
+      for (const [actorId, util] of utilPorAtor) {
+        const id = doRoster(actorId);
+        if (id) utilPorJogador.set(id, util);
+      }
+      utilidadePorReport.set(ctx.report.code, utilPorJogador);
+
       cooldownsPorReport.set(ctx.report.code, porJogador);
       console.log(
         `Cooldowns do report ${ctx.report.code}: ${eventos.length} casts, ${porJogador.size} jogador(es) do roster.`
@@ -914,6 +934,7 @@ async function main() {
       nightDetailByPlayer: noitePorReport.get(ctx.report.code),
       trashShareByPlayer: trashPorReport.get(ctx.report.code),
       specsByPlayer: specsPorReport.get(ctx.report.code),
+      utilityByPlayer: utilidadePorReport.get(ctx.report.code),
       raidDamageTaken: danoDoRaidePorReport.get(ctx.report.code),
     });
 

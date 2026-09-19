@@ -5,6 +5,20 @@ import { selectAggregateFights } from "./normalize";
 import type { WclFight, WclFightTables, WclProfile, WclRankingEntry } from "./normalize";
 import type { WclReportRankings } from "./reportRankings";
 
+/** Um evento de interrupção ou de dispel. Quem fez, em quem, com o quê. */
+export interface EventoDeUtilidade {
+  timestamp: number;
+  sourceID: number;
+  targetID: number;
+  /** A magia usada pra interromper/dissipar. */
+  abilityGameID: number;
+  /** A magia que foi interrompida ou dissipada. */
+  extraAbilityGameID?: number;
+  fight: number;
+  /** Só em dispel: se o que saiu era buff do inimigo em vez de debuff nosso. */
+  isBuff?: boolean;
+}
+
 export interface WclReportRef {
   code: string;
   startTime: number;
@@ -61,6 +75,10 @@ export interface WarcraftLogsRawReportTables {
    * ia parar no lugar errado do histórico.
    */
   reportStartTime?: number;
+  /** Interrupções da noite. Ver fetchUtilityEvents. */
+  interrupts?: EventoDeUtilidade[];
+  /** Dispels da noite. */
+  dispels?: EventoDeUtilidade[];
 }
 
 /**
@@ -288,6 +306,46 @@ export class WarcraftLogsProvider
     }
 
     return mortes;
+  }
+
+  /**
+   * Interrupções e dispels da noite.
+   *
+   * São o trabalho de utilidade: não aparece em dano nem em cura, e sustenta
+   * o raide. Numa noite de 12 trys são 22 interrupções e 79 dispels — evento
+   * raro, então cabe numa página só e custa quase nada (7,8 pontos os dois).
+   *
+   * Battle rez NÃO vem daqui: `Resurrects` não existe no enum da WCL. Ela sai
+   * dos casts que já coletamos, sem chamada nova (ver `MAGIAS_DE_BATTLE_REZ`).
+   */
+  async fetchUtilityEvents(
+    code: string,
+    duracaoDoLogMs: number
+  ): Promise<{
+    interrupts: EventoDeUtilidade[];
+    dispels: EventoDeUtilidade[];
+  }> {
+    const data = await wclGraphql<{
+      reportData: {
+        report: {
+          interrupts: { data: EventoDeUtilidade[] };
+          dispels: { data: EventoDeUtilidade[] };
+        };
+      };
+    }>(
+      `query($code: String!, $end: Float!) {
+        reportData { report(code: $code) {
+          interrupts: events(dataType: Interrupts, startTime: 0, endTime: $end, limit: 5000) { data }
+          dispels: events(dataType: Dispels, startTime: 0, endTime: $end, limit: 5000) { data }
+        } }
+      }`,
+      { code, end: duracaoDoLogMs }
+    );
+
+    return {
+      interrupts: data.reportData.report.interrupts.data ?? [],
+      dispels: data.reportData.report.dispels.data ?? [],
+    };
   }
 
   /**
@@ -648,6 +706,7 @@ ${campos}
     const damageTaken = await this.fetchDamageTaken(context.reportCode, aggregateFightIds);
     const reportRankings = await this.fetchReportRankings(context.reportCode);
     const meta = await this.fetchReportMeta(context.reportCode);
+    const utilidade = await this.fetchUtilityEvents(context.reportCode, duracaoDoLogMs);
 
     return {
       provider: this.name,
@@ -675,6 +734,8 @@ ${campos}
         damageTaken,
         reportRankings,
         reportStartTime: meta?.startTime,
+        interrupts: utilidade.interrupts,
+        dispels: utilidade.dispels,
       },
     };
   }
