@@ -18,6 +18,7 @@ on:
       - "Performance da raide (WCL + Wipefest + Wowhead)"
       - "Stats do roster (Raider.IO + WCL)"
       - "Referência de preparação (Wowhead)"
+      - "Metas de simulação (Raidbots)"
     types: [completed]
 
   workflow_dispatch:

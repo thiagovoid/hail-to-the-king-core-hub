@@ -1,0 +1,86 @@
+name: Metas de simulação (Raidbots)
+
+on:
+  # Uma vez por semana, segunda de manhã — as metas precisam estar frescas
+  # pra terça, que é o dia de raid (ver raidWeekAnchor).
+  #
+  # Semanal, e não diário, porque cada execução roda 19 simulações REAIS na
+  # infraestrutura do Raidbots. O que muda a meta é gear novo, e gear novo
+  # vem da raid da semana anterior — rodar todo dia gastaria o serviço deles
+  # pra chegar ao mesmo número.
+  #
+  # O problema que isto resolve: as metas ficaram congeladas em 02/09 e, com
+  # o pessoal se equipando, viraram ficção — o xúliodk chegou a marcar 154%
+  # do próprio alvo. Régua vencida não mede nada.
+  schedule:
+    # 03:00 UTC = meia-noite de Brasília, na segunda.
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Ids do roster separados por vírgula (ex: dagom,gunst). Em branco = todos."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-sim-goals
+  cancel-in-progress: false
+
+jobs:
+  update-sim-goals:
+    name: Quick Sim & Commit
+    runs-on: ubuntu-latest
+    # Cada simulação tem deadline de 3 min e elas rodam uma a uma; 19
+    # jogadores levam ~30 min na prática. A folga cobre um dia ruim do
+    # Raidbots sem deixar o job pendurado pra sempre.
+    timeout-minutes: 75
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # O Quick Sim não tem API: o script dirige o site do Raidbots num
+      # navegador de verdade. Só o Chromium — instalar os três triplicaria
+      # o tempo de setup à toa.
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Quick Sim for the core roster
+        run: |
+          ARGS=()
+          [ -n "${{ inputs.only }}" ] && ARGS+=("--only=${{ inputs.only }}")
+          npm run raidbots:update-goals -- "${ARGS[@]}"
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build site (valida que os dados gerados não quebram o build)
+        run: npm run build
+
+      - name: Commit goals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/guild/roster.json
+
+          if git diff --cached --quiet; then
+            echo "Nada para commitar — nenhuma meta mudou."
+          else
+            git commit -m "chore(data): atualiza metas de simulação (Raidbots)"
+            # Rebase antes do push: se alguém empurrou pra master enquanto o
+            # job rodava, o push é rejeitado e as simulações morrem com o
+            # runner — meia hora de trabalho jogada fora.
+            git pull --rebase origin master
+            git push
+          fi
