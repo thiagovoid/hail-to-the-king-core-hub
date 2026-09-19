@@ -112,7 +112,12 @@ const formatarNoite = (iso: string) => {
  * vez de a dimensão entrar como zero.
  */
 const dimensoesComDado = score.dimensions.filter(
-  (dimension): dimension is typeof dimension & { score: number } => dimension.score !== null
+  (dimension): dimension is typeof dimension & { score: number } =>
+    // Sobreviver fica FORA da soma: ela não é parcela, é multiplicador, e
+    // aparece logo abaixo como "× 0,91". Dentro da conta ela virava uma
+    // linha "0% × 52 = 0", que soma zero e sugere que a dimensão foi
+    // zerada — justamente o contrário do que ela faz com a nota.
+    dimension.score !== null && dimension.key !== 'survival'
 );
 
 const contaDoScore = dimensoesComDado.map((dimension) => ({
@@ -307,7 +312,10 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
           if (!detalhe) {
             return (
               <div class="dimensao">
-                <ScoreDimensionRow dimension={dimension} />
+                <ScoreDimensionRow
+                  dimension={dimension}
+                  multiplicador={descontoDeSobrevivencia?.fator ?? null}
+                />
               </div>
             );
           }

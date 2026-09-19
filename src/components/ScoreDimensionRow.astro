@@ -23,9 +23,21 @@ interface Props {
    * ouviria um botão sem nome.
    */
   rotuloDetalhe?: string;
+  /**
+   * O fator de sobrevivência já formatado ("0,91"), só na linha de
+   * Sobreviver e só quando ele mordeu. Sem ele a linha diz "multiplica",
+   * que é verdade mas não é o número.
+   */
+  multiplicador?: string | null;
 }
 
-const { dimension, temDetalhe = false, itensDetalhe = 0, rotuloDetalhe = '' } = Astro.props;
+const {
+  dimension,
+  temDetalhe = false,
+  itensDetalhe = 0,
+  rotuloDetalhe = '',
+  multiplicador = null,
+} = Astro.props;
 
 const bateuAMeta =
   dimension.value !== null &&
@@ -77,7 +89,19 @@ const direcao = dimension.target.direction === 'higher' ? 'quanto maior, melhor'
 <div class="linha">
   <div class="celula-nome">
     <span class="text-slate-300 font-medium">{dimension.label}</span>
-    <span class="text-slate-600 text-[10px]">{dimension.weight}%</span>
+    {/* "0%" era mentira em dois casos diferentes. Sobreviver tem peso zero
+        porque MULTIPLICA a nota em vez de ser parcela dela — o Bustgril em
+        15/09 passou 19,1% da noite morto e levou a nota inteira pra 91% do
+        que valia, o oposto de "não conta". E Curar com peso zero num dps é
+        dimensão que não é o ofício dele: ali não há percentual nenhum a
+        mostrar, e um "0%" só faz parecer que alguma coisa foi zerada. */}
+    {dimension.key === 'survival' ? (
+      <span class="text-slate-600 text-[10px]" title="Multiplica a nota final em vez de somar">
+        {multiplicador ? `× ${multiplicador}` : 'multiplica'}
+      </span>
+    ) : (
+      dimension.weight > 0 && <span class="text-slate-600 text-[10px]">{dimension.weight}%</span>
+    )}
 
     <InfoTooltip label={`O que é ${dimension.label}`}>
       <span class="block text-slate-200 text-[11px] leading-relaxed">{dimension.description}</span>
