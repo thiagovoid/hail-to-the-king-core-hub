@@ -81,6 +81,25 @@ export type SimboloDeConquista =
   | "degrau-ii"
   | "degrau-iii";
 
+/**
+ * Os cortes das conquistas que dependem de um número.
+ *
+ * Ficam nomeados porque a prateleira de "ao seu alcance" precisa da MESMA
+ * régua pra dizer o quanto falta. Repetir o 90 do parse em dois arquivos
+ * faria a medalha e a barrinha ao lado dela discordarem no dia em que
+ * alguém mexer num dos dois.
+ */
+export const CORTE = {
+  /** Parse numa noite. */
+  lenda: 90,
+  /** % do tempo em recarga de um cooldown ofensivo. */
+  relojoeiro: 95,
+  /** Nota de Defender de um tank. */
+  muralha: 50,
+  /** % de cura desperdiçada — abaixo disso leva. */
+  semSobra: 25,
+} as const;
+
 export interface DefinicaoDeConquista {
   id: string;
   nome: string;
@@ -798,12 +817,12 @@ function vencedoresDaRun(
   );
   porConquista.set(
     "relojoeiro",
-    simples(cumpriram((p) => (p.attackDetail ?? []).some((item) => item.efficiency >= 95)))
+    simples(cumpriram((p) => (p.attackDetail ?? []).some((item) => item.efficiency >= CORTE.relojoeiro)))
   );
 
   porConquista.set(
     "lenda",
-    comDetalhe((p) => (p.parse !== undefined && p.parse >= 90 ? `parse ${p.parse}` : null))
+    comDetalhe((p) => (p.parse !== undefined && p.parse >= CORTE.lenda ? `parse ${p.parse}` : null))
   );
 
   /**
@@ -868,7 +887,7 @@ function vencedoresDaRun(
   porConquista.set(
     "muralha",
     comDetalhe((p) =>
-      funcao(p) === "tank" && (p.defense?.score ?? 0) >= 50
+      funcao(p) === "tank" && (p.defense?.score ?? 0) >= CORTE.muralha
         ? `nota ${p.defense!.score} em Defender`
         : null
     )
@@ -877,7 +896,7 @@ function vencedoresDaRun(
   porConquista.set(
     "sem-sobra",
     comDetalhe((p) =>
-      p.healing !== undefined && p.healing.overheal < 25
+      p.healing !== undefined && p.healing.overheal < CORTE.semSobra
         ? `${p.healing.overheal}% de desperdício`
         : null
     )

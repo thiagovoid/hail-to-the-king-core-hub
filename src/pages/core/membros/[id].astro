@@ -16,6 +16,7 @@ import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
 import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
 import { contarConquistas } from '@/engine/guild/conquistas';
 import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
+import { aoSeuAlcance } from '@/engine/guild/aoSeuAlcance';
 import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
 import {
   degrausDaMetrica,
@@ -317,6 +318,20 @@ const conquistasDoJogador = contarConquistas(
   }
 ).get(pessoaDoJogador);
 
+/**
+ * As três medalhas mais perto de cair. Entram EM CIMA da parede, sem tirar
+ * nada dela — a mesma lista, lida pra frente.
+ *
+ * Usa o histórico da PESSOA (main + alts), pela mesma razão das conquistas:
+ * quem trocou de cadeira pra compor o raide não recomeça do zero.
+ */
+const aoAlcanceDoJogador = aoSeuAlcance(
+  roster
+    .filter((jogador) => (pessoas.get(jogador.id) ?? jogador.id) === pessoaDoJogador)
+    .flatMap((jogador) => getPlayerHistory(weeks, jogador.id)),
+  new Set(conquistasDoJogador?.keys() ?? [])
+);
+
 const prontidao = prontidaoDoPersonagem?.prontidao ?? null;
 const funcaoDaProntidao = prontidaoDoPersonagem?.funcao ?? 'dps';
 
@@ -493,6 +508,7 @@ const attendance = calculateAttendance(weeks, player.id);
       tambemJoga={outrosPersonagens.map((jogador) => jogador.name)}
       nomeDoPersonagem={Object.fromEntries(roster.map((jogador) => [jogador.id, jogador.name]))}
       zoeiraDesde={seasonJson.config.zoeiraDesde}
+      aoAlcance={aoAlcanceDoJogador}
     />
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
