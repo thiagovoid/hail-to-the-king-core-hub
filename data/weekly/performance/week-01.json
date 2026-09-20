@@ -10,7 +10,7 @@
           "dps": 47189,
           "parse": 37,
           "itemLevel": 290,
-          "preparation": 100,
+          "preparation": 69,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -197,19 +197,47 @@
             "battleRez": 0,
             "battleRezRecebidos": 4
           },
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 0.5,
+            "tries": 8
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 2
+            }
+          ]
         },
         {
           "playerId": "blackwatch",
           "dps": 34992,
           "parse": 22,
           "itemLevel": 292,
-          "preparation": 62,
+          "preparation": 39,
           "preparationMissing": [
             "Elmo",
             "Peito",
             "Botas",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -454,13 +482,40 @@
             "battleRez": 3,
             "battleRezRecebidos": 0
           },
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 0.6,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
           "hps": 98880,
           "parse": 74,
-          "preparation": 0,
+          "preparation": 8,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -469,7 +524,10 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -711,19 +769,40 @@
             "battleRez": 3,
             "battleRezRecebidos": 1
           },
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 0.4,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "bustgril",
           "dps": 63619,
           "parse": 23,
           "itemLevel": 286,
-          "preparation": 75,
+          "preparation": 70,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
             "Pernas",
-            "Botas"
+            "Botas",
+            "Flask/comida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -936,14 +1015,34 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 0.4,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "kroline",
           "dps": 16390,
           "parse": 32,
           "itemLevel": 291,
-          "preparation": 100,
+          "preparation": 84,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -1176,14 +1275,38 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 0.3,
+            "tries": 8
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "jrxamã",
           "dps": 89958,
           "parse": 35,
           "itemLevel": 290,
-          "preparation": 100,
+          "preparation": 73,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -1383,17 +1506,35 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 0.3,
+            "tries": 8
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Poção"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
           "dps": 81095,
           "parse": 39,
           "itemLevel": 293,
-          "preparation": 89,
+          "preparation": 75,
           "preparationMissing": [
             "Elmo",
-            "Ombreiras"
+            "Ombreiras",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1616,14 +1757,41 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 0.6,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "nerlock",
           "dps": 24744,
           "parse": 3,
           "itemLevel": 258,
-          "preparation": 0,
+          "preparation": 8,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1632,7 +1800,10 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1835,17 +2006,38 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 0.3,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "metallicä",
           "dps": 45735,
           "parse": 4,
           "itemLevel": 290,
-          "preparation": 76,
+          "preparation": 69,
           "preparationMissing": [
             "Botas",
-            "Colar"
+            "Colar",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -2063,14 +2255,41 @@
             "battleRez": 1,
             "battleRezRecebidos": 0
           },
-          "deaths": 5
+          "deaths": 5,
+          "mechanics": {
+            "errors": 0.5,
+            "tries": 8
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "xúliodk",
           "dps": 55041,
           "parse": 14,
           "itemLevel": 293,
-          "preparation": 100,
+          "preparation": 69,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -2302,7 +2521,46 @@
             "battleRez": 2,
             "battleRezRecebidos": 0
           },
-          "deaths": 5
+          "deaths": 5,
+          "mechanics": {
+            "errors": 0.8,
+            "tries": 8
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 1
+            }
+          ]
         }
       ]
     }

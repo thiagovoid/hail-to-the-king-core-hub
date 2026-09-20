@@ -10,9 +10,12 @@
           "dps": 43161,
           "parse": 34,
           "itemLevel": 314,
-          "preparation": 93,
+          "preparation": 46,
           "preparationMissing": [
-            "Elmo"
+            "Elmo",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -254,17 +257,107 @@
             "battleRez": 3,
             "battleRezRecebidos": 1
           },
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 2.1,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "label": "Destroços em Queda",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-g",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "apocalipse",
           "dps": 48319,
           "parse": 62,
           "itemLevel": 312,
-          "preparation": 77,
+          "preparation": 51,
           "preparationMissing": [
             "Botas",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -513,14 +606,81 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 2,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "label": "Destroços em Queda",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-v",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "voidsurge",
           "hps": 126133,
           "parse": 73,
           "itemLevel": 310,
-          "preparation": 17,
+          "preparation": 12,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -528,7 +688,10 @@
             "Pernas",
             "Botas",
             "Anel",
-            "Arma"
+            "Arma",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -770,14 +933,89 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 1.7,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 3
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
+              "tries": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
           "hps": 172454,
           "parse": 96,
           "itemLevel": 310,
-          "preparation": 29,
+          "preparation": 21,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -785,7 +1023,10 @@
             "Pernas",
             "Botas",
             "Anel",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1044,13 +1285,109 @@
             "battleRez": 6,
             "battleRezRecebidos": 0
           },
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 2.1,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
+              "tries": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "label": "Rondando a Presa",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCirPre?insightId=3492-o",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-v",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "cowsadeer",
           "hps": 219039,
           "parse": 59,
-          "preparation": 100,
+          "preparation": 79,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -1280,14 +1617,100 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 1.4,
+            "tries": 9
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "label": "Rondando a Presa",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCirPre?insightId=3492-o",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "bustgril",
           "dps": 102428,
           "parse": 78,
           "itemLevel": 314,
-          "preparation": 81,
+          "preparation": 77,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1509,14 +1932,62 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 0.8,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "label": "Rondando a Presa",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCirPre?insightId=3492-o",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "kroline",
           "dps": 107453,
           "parse": 63,
           "itemLevel": 318,
-          "preparation": 88,
+          "preparation": 84,
           "preparationMissing": [
             "Elmo",
             "Botas"
@@ -1736,14 +2207,75 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 1.3,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "label": "Rondando a Presa",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCirPre?insightId=3492-o",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-v",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "jrxamã",
           "dps": 131483,
           "parse": 86,
           "itemLevel": 321,
-          "preparation": 100,
+          "preparation": 71,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -1949,16 +2481,83 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 1.3,
+            "tries": 9
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Flask/comida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "label": "Rondando a Presa",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCirPre?insightId=3492-o",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-v",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
           "dps": 104464,
           "parse": 60,
           "itemLevel": 319,
-          "preparation": 94,
+          "preparation": 80,
           "preparationMissing": [
-            "Elmo"
+            "Elmo",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -2192,18 +2791,122 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 3,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-g",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Mephitic Thrash",
+              "label": "Gore Rattle",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekMepThr?insightId=3492-M",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "gunst",
           "dps": 107740,
           "parse": 61,
           "itemLevel": 318,
-          "preparation": 86,
+          "preparation": 77,
           "preparationMissing": [
             "Elmo",
             "Cintura",
-            "Braçadeiras"
+            "Braçadeiras",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -2435,14 +3138,95 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 2.1,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
+              "tries": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Widow's Kiss",
+              "label": "50y",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "label": "Destroços em Queda",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "nerlock",
           "dps": 50924,
           "parse": 10,
           "itemLevel": 302,
-          "preparation": 100,
+          "preparation": 56,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -2634,14 +3418,115 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 2.4,
+            "tries": 9
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Flask/comida",
+            "Pedra de vida",
+            "Poção"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "label": "Destroços em Queda",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Axegrinder",
+              "label": "Machadeiro Moedor",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
+              "tries": 1
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Gravebound",
+              "label": "Soul Fragments",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-v",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "xúlio",
           "dps": 100635,
           "parse": 70,
           "itemLevel": 316,
-          "preparation": 100,
+          "preparation": 80,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -2880,15 +3765,104 @@
             "battleRez": 1,
             "battleRezRecebidos": 1
           },
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 2,
+            "tries": 9
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "O Altar Espiralado",
+              "mechanic": "Damage from Noxious Ground",
+              "label": "Terra Nóxia",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Circling Prey",
+              "label": "Rondando a Presa",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCirPre?insightId=3492-o",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "dagom",
           "dps": 40453,
           "parse": 8,
-          "preparation": 94,
+          "preparation": 44,
           "preparationMissing": [
-            "Ombreiras"
+            "Ombreiras",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -3100,18 +4074,74 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 6
+          "deaths": 6,
+          "mechanics": {
+            "errors": 1.7,
+            "tries": 6
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "ligiaf",
           "dps": 89333,
           "parse": 54,
           "itemLevel": 304,
-          "preparation": 81,
+          "preparation": 55,
           "preparationMissing": [
             "Elmo",
             "Peito",
-            "Botas"
+            "Botas",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -3336,17 +4366,95 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 7
+          "deaths": 7,
+          "mechanics": {
+            "errors": 1.7,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Volatile Purge",
+              "label": "Expurgo Volátil",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVolPur?insightId=3492-g",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "minort",
           "dps": 74597,
           "parse": 35,
           "itemLevel": 303,
-          "preparation": 89,
+          "preparation": 54,
           "preparationMissing": [
             "Peito",
-            "Botas"
+            "Botas",
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -3581,7 +4689,88 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 2.3,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Warden's Protection",
+              "label": "Doomscale Warden's",
+              "tries": 4
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Caustic Waves",
+              "label": "Ondas Cáusticas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekCauWav?insightId=3492-C",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Virulent Spit",
+              "label": "Cusparada Virulenta",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekVirSpi?insightId=3492-V",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 3
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Desperate Thrash",
+              "label": "Weakened Doomscale's",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekDesTra?insightId=3492-D",
+              "tries": 2
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Falling Debris",
+              "label": "Destroços em Queda",
+              "tries": 1
+            },
+            {
+              "boss": "Ula'tek",
+              "mechanic": "Damage from Mephitic Thrash",
+              "label": "Gore Rattle",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/ulatek/ulatekMepThr?insightId=3492-M",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            }
+          ]
         }
       ]
     },
@@ -3594,7 +4783,7 @@
           "dps": 34466,
           "parse": 12,
           "itemLevel": 290,
-          "preparation": 100,
+          "preparation": 44,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -3769,17 +4958,46 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 1,
+            "tries": 9
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Flask/comida",
+            "Poção",
+            "Pedra de vida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 4
+            }
+          ]
         },
         {
           "playerId": "blackwatch",
           "dps": 6412,
           "parse": 12,
           "itemLevel": 317,
-          "preparation": 86,
+          "preparation": 41,
           "preparationMissing": [
             "Elmo",
-            "Ombreiras"
+            "Ombreiras",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -3975,16 +5193,44 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 3
+          "deaths": 3,
+          "mechanics": {
+            "errors": 1.3,
+            "tries": 3
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "apocalipse",
           "dps": 47057,
           "parse": 29,
           "itemLevel": 316,
-          "preparation": 94,
+          "preparation": 68,
           "preparationMissing": [
-            "Botas"
+            "Botas",
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -4222,14 +5468,55 @@
             "battleRez": 4,
             "battleRezRecebidos": 1
           },
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 1.5,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 7
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Cremation",
+              "label": "Chama Serpeante",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaCrema?insightId=3470-4",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "voidsurge",
           "hps": 31074,
           "parse": 46,
           "itemLevel": 314,
-          "preparation": 100,
+          "preparation": 47,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -4420,21 +5707,71 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 2
+          "deaths": 2,
+          "mechanics": {
+            "errors": 2,
+            "tries": 3
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 1
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "kams",
           "hps": 175882,
           "parse": 90,
           "itemLevel": 316,
-          "preparation": 52,
+          "preparation": 29,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Peito",
             "Pernas",
             "Botas",
-            "Colar"
+            "Colar",
+            "Poção",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -4682,16 +6019,52 @@
             "battleRez": 3,
             "battleRezRecebidos": 4
           },
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 2.3,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 11
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 8
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "cowsadeer",
           "hps": 210628,
           "parse": 18,
           "itemLevel": 320,
-          "preparation": 94,
+          "preparation": 65,
           "preparationMissing": [
-            "Pernas"
+            "Pernas",
+            "Poção",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -4916,18 +6289,61 @@
             "battleRez": 3,
             "battleRezRecebidos": 0
           },
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 2.1,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 11
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "bustgril",
           "dps": 96868,
           "parse": 49,
           "itemLevel": 316,
-          "preparation": 81,
+          "preparation": 62,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
-            "Botas"
+            "Botas",
+            "Flask/comida",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5135,14 +6551,48 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 1,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 4
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 4
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "hysillens",
           "dps": 90323,
           "parse": 22,
           "itemLevel": 316,
-          "preparation": 6,
+          "preparation": 25,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -5150,7 +6600,9 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar"
+            "Colar",
+            "Flask/comida",
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5356,17 +6808,45 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 0.8,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "kroline",
           "dps": 106288,
           "parse": 45,
           "itemLevel": 319,
-          "preparation": 88,
+          "preparation": 75,
           "preparationMissing": [
             "Elmo",
-            "Botas"
+            "Botas",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5580,14 +7060,48 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 9
+          "deaths": 9,
+          "mechanics": {
+            "errors": 1.4,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 7
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "jrxamã",
           "dps": 129010,
           "parse": 67,
           "itemLevel": 322,
-          "preparation": 100,
+          "preparation": 68,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -5783,16 +7297,56 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 1.4,
+            "tries": 12
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 5
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "heracranosx",
           "dps": 109362,
           "parse": 46,
           "itemLevel": 320,
-          "preparation": 94,
+          "preparation": 77,
           "preparationMissing": [
-            "Elmo"
+            "Elmo",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6002,19 +7556,61 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 2.3,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 11
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "gunst",
           "dps": 106196,
           "parse": 29,
           "itemLevel": 321,
-          "preparation": 82,
+          "preparation": 69,
           "preparationMissing": [
             "Elmo",
             "Cintura",
             "Botas",
-            "Braçadeiras"
+            "Braçadeiras",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6210,14 +7806,62 @@
               "role": "dps"
             }
           ],
-          "deaths": 11
+          "deaths": 11,
+          "mechanics": {
+            "errors": 1.8,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 10
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 7
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 2
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "nerlock",
           "dps": 55444,
           "parse": 7,
           "itemLevel": 304,
-          "preparation": 100,
+          "preparation": 65,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -6414,14 +8058,53 @@
               "role": "dps"
             }
           ],
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 1.8,
+            "tries": 12
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida",
+            "Poção"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "xúlio",
           "dps": 105695,
           "parse": 31,
           "itemLevel": 321,
-          "preparation": 100,
+          "preparation": 83,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -6641,14 +8324,52 @@
             "battleRez": 1,
             "battleRezRecebidos": 0
           },
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 1.8,
+            "tries": 12
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Pedra de vida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 10
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "dagom",
           "dps": 76783,
           "parse": 11,
           "itemLevel": 315,
-          "preparation": 100,
+          "preparation": 62,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -6862,15 +8583,56 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
-          "deaths": 12
+          "deaths": 12,
+          "mechanics": {
+            "errors": 1.8,
+            "tries": 12
+          },
+          "preparationMissingGear": [],
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
+          ],
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 10
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 4
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "ligiaf",
           "parse": 81,
-          "preparation": 88,
+          "preparation": 60,
           "preparationMissing": [
             "Elmo",
-            "Peito"
+            "Peito",
+            "Poção",
+            "Flask/comida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -7091,17 +8853,54 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 8
+          "deaths": 8,
+          "mechanics": {
+            "errors": 1.8,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 8
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 7
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 6
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            }
+          ]
         },
         {
           "playerId": "minort",
           "dps": 66751,
           "parse": 8,
           "itemLevel": 303,
-          "preparation": 89,
+          "preparation": 52,
           "preparationMissing": [
             "Peito",
-            "Botas"
+            "Botas",
+            "Pedra de vida",
+            "Flask/comida",
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -7300,7 +9099,55 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 10
+          "deaths": 10,
+          "mechanics": {
+            "errors": 1.8,
+            "tries": 12
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Living Venom",
+              "label": "Peçonha Viva",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentLivVen?insightId=3445-0",
+              "tries": 9
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Blood Venom",
+              "label": "Peçonha Sanguínea",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentBloVen?insightId=3445-V",
+              "tries": 6
+            },
+            {
+              "boss": "Sentinelas Sepultados",
+              "mechanic": "Damage from Toxic Droplets",
+              "label": "Gotículas Tóxicas",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
+              "tries": 3
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Anguished Echoes",
+              "label": "Ecos Angustiados",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Latent Cultist",
+              "label": "Sectário Latente",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
+              "tries": 1
+            },
+            {
+              "boss": "Nek'zali, a Espiral de Almas",
+              "mechanic": "Damage from Soul Transfer",
+              "label": "Transferência de Alma",
+              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
+              "tries": 1
+            }
+          ]
         }
       ]
     }
