@@ -281,7 +281,8 @@
               "afterSeconds": 70,
               "readyDefensives": [
                 "Lichborne"
-              ]
+              ],
+              "ability": "Uncoiling"
             },
             {
               "encounterID": 3470,
@@ -333,7 +334,8 @@
                 "Death's Advance",
                 "Anti-Magic Zone",
                 "Icebound Fortitude"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3445,
@@ -346,14 +348,16 @@
                 "Anti-Magic Zone",
                 "Icebound Fortitude",
                 "Lichborne"
-              ]
+              ],
+              "ability": "Empowering Slam"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 500,
               "fightSeconds": 501,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "ability": "Calcified Corpse"
             },
             {
               "encounterID": 3492,
@@ -395,6 +399,7 @@
               "atSecond": 338,
               "ability": "Melee",
               "amount": 1366623,
+              "fatiaDaVida": 93,
               "defensivosProntos": [
                 "Death's Advance",
                 "Vampiric Blood",
@@ -407,6 +412,7 @@
               "atSecond": 616,
               "ability": "Hollowing Strikes",
               "amount": 932335,
+              "fatiaDaVida": 50,
               "defensivosProntos": [
                 "Anti-Magic Zone",
                 "Icebound Fortitude",
@@ -416,7 +422,9 @@
             {
               "fight": 9,
               "atSecond": 235,
+              "ability": "Soul Transfer",
               "amount": 667411,
+              "fatiaDaVida": 44,
               "defensivosProntos": [
                 "Icebound Fortitude",
                 "Lichborne"
@@ -866,7 +874,8 @@
               "readyDefensives": [
                 "Holy Bulwark",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Calcified Corpse"
             },
             {
               "encounterID": 3470,
@@ -910,6 +919,7 @@
               "atSecond": 335,
               "ability": "Melee",
               "amount": 1148595,
+              "fatiaDaVida": 93,
               "defensivosProntos": [
                 "Ritual Wraps",
                 "Holy Bulwark",
@@ -923,7 +933,9 @@
             {
               "fight": 12,
               "atSecond": 403,
+              "ability": "Hungering Pyre",
               "amount": 919584,
+              "fatiaDaVida": 80,
               "defensivosProntos": [
                 "Holy Bulwark",
                 "Blessing of Sacrifice",
@@ -933,7 +945,9 @@
             {
               "fight": 9,
               "atSecond": 286,
+              "ability": "Hungering Pyre",
               "amount": 906551,
+              "fatiaDaVida": 79,
               "defensivosProntos": [
                 "Ardent Defender",
                 "Guardian of Ancient Kings",
@@ -1294,7 +1308,8 @@
               "readyDefensives": [
                 "Spirit Link Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -1320,7 +1335,8 @@
                 "Spirit Link Totem",
                 "Ascendance",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3445,
@@ -1330,7 +1346,8 @@
               "afterSeconds": 16,
               "readyDefensives": [
                 "Stormstream Totem"
-              ]
+              ],
+              "ability": "Mark of Acid"
             },
             {
               "encounterID": 3470,
@@ -1342,7 +1359,8 @@
                 "Healing Stream Totem",
                 "Spirit Link Totem",
                 "Stormstream Totem"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -1360,14 +1378,16 @@
               "difficulty": 3,
               "atSecond": 499,
               "fightSeconds": 501,
-              "afterSeconds": 2
+              "afterSeconds": 2,
+              "ability": "Vicious Echoes"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 501,
               "fightSeconds": 501,
-              "afterSeconds": 0
+              "afterSeconds": 0,
+              "ability": "Calcified Corpse"
             }
           ],
           "trashShare": 0.1,
@@ -1394,7 +1414,9 @@
             {
               "fight": 11,
               "atSecond": 346,
+              "ability": "Latent Cultist",
               "amount": 824869,
+              "fatiaDaVida": 99,
               "defensivosProntos": [
                 "Healing Stream Totem",
                 "Spirit Link Totem",
@@ -1406,6 +1428,7 @@
               "atSecond": 625,
               "ability": "Melee",
               "amount": 760704,
+              "fatiaDaVida": 83,
               "defensivosProntos": [
                 "Healing Stream Totem"
               ]
@@ -1413,7 +1436,9 @@
             {
               "fight": 4,
               "atSecond": 498,
+              "ability": "Calcified Corpse",
               "amount": 395132,
+              "fatiaDaVida": 43,
               "defensivosProntos": []
             }
           ],
@@ -1797,7 +1822,8 @@
                 "Lay on Hands",
                 "Potent Healing Potion",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3470,
@@ -1813,7 +1839,8 @@
                 "Lay on Hands",
                 "Potent Healing Potion",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3445,
@@ -1826,7 +1853,8 @@
                 "Blessing of Protection",
                 "Lay on Hands",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Blood Venom"
             },
             {
               "encounterID": 3470,
@@ -1838,7 +1866,8 @@
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3492,
@@ -1853,7 +1882,8 @@
                 "Lay on Hands",
                 "Potent Healing Potion",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3470,
@@ -1869,7 +1899,8 @@
                 "Lay on Hands",
                 "Potent Healing Potion",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3492,
@@ -1912,7 +1943,9 @@
             {
               "fight": 11,
               "atSecond": 347,
+              "ability": "Latent Cultist",
               "amount": 751980,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Divine Protection",
                 "Blessing of Sacrifice",
@@ -1926,7 +1959,9 @@
             {
               "fight": 12,
               "atSecond": 617,
+              "ability": "Latent Cultist",
               "amount": 595638,
+              "fatiaDaVida": 79,
               "defensivosProntos": [
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
@@ -1936,7 +1971,9 @@
             {
               "fight": 11,
               "atSecond": 297,
+              "ability": "Hungering Pyre",
               "amount": 516678,
+              "fatiaDaVida": 62,
               "defensivosProntos": [
                 "Blessing of Sacrifice",
                 "Divine Shield",
@@ -2305,7 +2342,8 @@
                 "Divine Protection",
                 "Blessing of Protection",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3492,
@@ -2317,7 +2355,8 @@
                 "Divine Protection",
                 "Blessing of Protection",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3470,
@@ -2330,7 +2369,8 @@
                 "Divine Protection",
                 "Blessing of Protection",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -2342,7 +2382,8 @@
                 "Divine Protection",
                 "Blessing of Protection",
                 "Soulcoiler Ritual Vessel"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -2408,6 +2449,7 @@
               "atSecond": 632,
               "ability": "Melee",
               "amount": 939818,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Divine Protection",
                 "Soulcoiler Ritual Vessel"
@@ -2418,6 +2460,7 @@
               "atSecond": 353,
               "ability": "Melee",
               "amount": 691924,
+              "fatiaDaVida": 81,
               "defensivosProntos": [
                 "Divine Shield",
                 "Blessing of Protection",
@@ -2427,7 +2470,9 @@
             {
               "fight": 11,
               "atSecond": 297,
+              "ability": "Hungering Pyre",
               "amount": 563076,
+              "fatiaDaVida": 60,
               "defensivosProntos": [
                 "Divine Shield",
                 "Divine Protection",
@@ -2784,7 +2829,8 @@
               "difficulty": 3,
               "atSecond": 409,
               "fightSeconds": 501,
-              "afterSeconds": 93
+              "afterSeconds": 93,
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3492,
@@ -2807,14 +2853,16 @@
               "readyDefensives": [
                 "Ice Barrier",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 300,
               "fightSeconds": 325,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3492,
@@ -2824,7 +2872,8 @@
               "afterSeconds": 17,
               "readyDefensives": [
                 "Ice Barrier"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3470,
@@ -2876,6 +2925,7 @@
               "atSecond": 621,
               "ability": "Melee",
               "amount": 743535,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -2883,13 +2933,17 @@
             {
               "fight": 4,
               "atSecond": 408,
+              "ability": "Circling Prey",
               "amount": 658923,
+              "fatiaDaVida": 80,
               "defensivosProntos": []
             },
             {
               "fight": 17,
               "atSecond": 293,
+              "ability": "Unstable Miasma",
               "amount": 620379,
+              "fatiaDaVida": 76,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -3191,7 +3245,8 @@
               "difficulty": 3,
               "atSecond": 409,
               "fightSeconds": 501,
-              "afterSeconds": 93
+              "afterSeconds": 93,
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3492,
@@ -3222,21 +3277,24 @@
                 "Desperate Prayer",
                 "Silvermoon Health Potion",
                 "Dispersion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 281,
               "fightSeconds": 304,
-              "afterSeconds": 22
+              "afterSeconds": 22,
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -3299,7 +3357,9 @@
             {
               "fight": 4,
               "atSecond": 408,
+              "ability": "Circling Prey",
               "amount": 1087157,
+              "fatiaDaVida": 84,
               "defensivosProntos": []
             },
             {
@@ -3307,6 +3367,7 @@
               "atSecond": 304,
               "ability": "Gravebound",
               "amount": 962896,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Desperate Prayer",
                 "Silvermoon Health Potion",
@@ -3318,6 +3379,7 @@
               "atSecond": 347,
               "ability": "Melee",
               "amount": 876800,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Dispersion"
               ]
@@ -3636,7 +3698,8 @@
                 "Healing Stream Totem",
                 "Astral Shift",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3492,
@@ -3648,7 +3711,8 @@
                 "Healing Stream Totem",
                 "Astral Shift",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Desperate Thrash"
             },
             {
               "encounterID": 3492,
@@ -3659,7 +3723,8 @@
               "readyDefensives": [
                 "Healing Stream Totem",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3470,
@@ -3671,7 +3736,8 @@
                 "Healing Stream Totem",
                 "Astral Shift",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3445,
@@ -3681,7 +3747,8 @@
               "afterSeconds": 24,
               "readyDefensives": [
                 "Healing Stream Totem"
-              ]
+              ],
+              "ability": "Contaminate"
             },
             {
               "encounterID": 3492,
@@ -3693,7 +3760,8 @@
                 "Healing Stream Totem",
                 "Astral Shift",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -3745,6 +3813,7 @@
               "atSecond": 624,
               "ability": "Melee",
               "amount": 829916,
+              "fatiaDaVida": 80,
               "defensivosProntos": [
                 "Concentrated Silvermoon Health Potion"
               ]
@@ -3754,6 +3823,7 @@
               "atSecond": 348,
               "ability": "Melee",
               "amount": 825236,
+              "fatiaDaVida": 88,
               "defensivosProntos": [
                 "Healing Stream Totem",
                 "Concentrated Silvermoon Health Potion"
@@ -3762,7 +3832,9 @@
             {
               "fight": 4,
               "atSecond": 408,
+              "ability": "Circling Prey",
               "amount": 760058,
+              "fatiaDaVida": 73,
               "defensivosProntos": [
                 "Healing Stream Totem",
                 "Astral Shift",
@@ -4104,14 +4176,16 @@
               "afterSeconds": 93,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 465,
               "fightSeconds": 501,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3492,
@@ -4134,7 +4208,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -4144,7 +4219,8 @@
               "afterSeconds": 17,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -4166,14 +4242,16 @@
               "afterSeconds": 9,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Hungering Pyre"
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 318,
               "fightSeconds": 325,
-              "afterSeconds": 8
+              "afterSeconds": 8,
+              "ability": "Mark of Acid"
             }
           ],
           "trashShare": 12,
@@ -4200,7 +4278,9 @@
             {
               "fight": 9,
               "atSecond": 286,
+              "ability": "Hungering Pyre",
               "amount": 826079,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -4208,7 +4288,9 @@
             {
               "fight": 4,
               "atSecond": 408,
+              "ability": "Circling Prey",
               "amount": 806208,
+              "fatiaDaVida": 97,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -4216,7 +4298,9 @@
             {
               "fight": 12,
               "atSecond": 617,
+              "ability": "Latent Cultist",
               "amount": 803613,
+              "fatiaDaVida": 97,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -4593,7 +4677,8 @@
               "afterSeconds": 308,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Warden's Protection"
             },
             {
               "encounterID": 3492,
@@ -4615,14 +4700,16 @@
               "afterSeconds": 48,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Desperate Thrash"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 465,
               "fightSeconds": 501,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3470,
@@ -4632,14 +4719,16 @@
               "afterSeconds": 27,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 308,
               "fightSeconds": 325,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "ability": "Mark of Acid"
             },
             {
               "encounterID": 3492,
@@ -4650,7 +4739,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -4701,6 +4791,7 @@
               "atSecond": 343,
               "ability": "Melee",
               "amount": 823560,
+              "fatiaDaVida": 79,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -4710,6 +4801,7 @@
               "atSecond": 622,
               "ability": "Melee",
               "amount": 801937,
+              "fatiaDaVida": 70,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -4717,7 +4809,9 @@
             {
               "fight": 9,
               "atSecond": 235,
+              "ability": "Soul Transfer",
               "amount": 755080,
+              "fatiaDaVida": 83,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -5028,7 +5122,8 @@
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion",
                 "Rallying Cry"
-              ]
+              ],
+              "ability": "Contaminate"
             },
             {
               "encounterID": 3470,
@@ -5038,7 +5133,8 @@
               "afterSeconds": 111,
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Soul Transfer"
             },
             {
               "encounterID": 3445,
@@ -5049,7 +5145,8 @@
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion",
                 "Rallying Cry"
-              ]
+              ],
+              "ability": "Living Venom"
             },
             {
               "encounterID": 3470,
@@ -5059,7 +5156,8 @@
               "afterSeconds": 60,
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Soul Transfer"
             },
             {
               "encounterID": 3492,
@@ -5077,7 +5175,8 @@
               "afterSeconds": 26,
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -5087,7 +5186,8 @@
               "afterSeconds": 18,
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -5098,7 +5198,8 @@
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion",
                 "Rallying Cry"
-              ]
+              ],
+              "ability": "Falling Debris"
             },
             {
               "encounterID": 3470,
@@ -5109,7 +5210,8 @@
               "readyDefensives": [
                 "Concentrated Silvermoon Health Potion",
                 "Rallying Cry"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3429,
@@ -5150,6 +5252,7 @@
               "atSecond": 304,
               "ability": "Gravebound",
               "amount": 728100,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Concentrated Silvermoon Health Potion",
                 "Rallying Cry"
@@ -5158,7 +5261,9 @@
             {
               "fight": 11,
               "atSecond": 246,
+              "ability": "Soul Transfer",
               "amount": 728100,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Concentrated Silvermoon Health Potion"
               ]
@@ -5166,7 +5271,9 @@
             {
               "fight": 12,
               "atSecond": 617,
+              "ability": "Latent Cultist",
               "amount": 672945,
+              "fatiaDaVida": 92,
               "defensivosProntos": [
                 "Concentrated Silvermoon Health Potion",
                 "Rallying Cry"
@@ -5545,7 +5652,8 @@
               "readyDefensives": [
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -5563,7 +5671,8 @@
               "afterSeconds": 36,
               "readyDefensives": [
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3470,
@@ -5574,7 +5683,8 @@
               "readyDefensives": [
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3445,
@@ -5596,7 +5706,8 @@
               "readyDefensives": [
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -5646,12 +5757,15 @@
               "atSecond": 626,
               "ability": "Melee",
               "amount": 915090,
+              "fatiaDaVida": 100,
               "defensivosProntos": []
             },
             {
               "fight": 17,
               "atSecond": 193,
+              "ability": "Unstable Miasma",
               "amount": 559041,
+              "fatiaDaVida": 67,
               "defensivosProntos": [
                 "Divine Protection",
                 "Lay on Hands"
@@ -5662,6 +5776,7 @@
               "atSecond": 225,
               "ability": "Melee",
               "amount": 535789,
+              "fatiaDaVida": 65,
               "defensivosProntos": [
                 "Divine Shield"
               ]
@@ -6023,7 +6138,8 @@
                 "Divine Shield",
                 "Lay on Hands",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3470,
@@ -6045,7 +6161,8 @@
               "afterSeconds": 10,
               "readyDefensives": [
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Blighted Blood"
             },
             {
               "encounterID": 3470,
@@ -6088,6 +6205,7 @@
               "atSecond": 350,
               "ability": "Melee",
               "amount": 726364,
+              "fatiaDaVida": 92,
               "defensivosProntos": [
                 "Divine Protection",
                 "Blessing of Sacrifice",
@@ -6100,6 +6218,7 @@
               "atSecond": 622,
               "ability": "Melee",
               "amount": 642703,
+              "fatiaDaVida": 74,
               "defensivosProntos": [
                 "Blessing of Sacrifice",
                 "Divine Shield"
@@ -6108,7 +6227,9 @@
             {
               "fight": 11,
               "atSecond": 297,
+              "ability": "Hungering Pyre",
               "amount": 557331,
+              "fatiaDaVida": 64,
               "defensivosProntos": [
                 "Blessing of Sacrifice",
                 "Divine Shield",
@@ -6434,7 +6555,8 @@
               "readyDefensives": [
                 "Potent Healing Potion",
                 "Dispersion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -6444,14 +6566,16 @@
               "afterSeconds": 48,
               "readyDefensives": [
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Desperate Thrash"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 464,
               "fightSeconds": 501,
-              "afterSeconds": 37
+              "afterSeconds": 37,
+              "ability": "Volatile Purge"
             },
             {
               "encounterID": 3470,
@@ -6462,7 +6586,8 @@
               "readyDefensives": [
                 "Potent Healing Potion",
                 "Dispersion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3445,
@@ -6472,7 +6597,8 @@
               "afterSeconds": 26,
               "readyDefensives": [
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3492,
@@ -6483,7 +6609,8 @@
               "readyDefensives": [
                 "Desperate Prayer",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -6493,7 +6620,8 @@
               "afterSeconds": 16,
               "readyDefensives": [
                 "Dispersion"
-              ]
+              ],
+              "ability": "Latent Cultist"
             }
           ],
           "trashShare": 8.8,
@@ -6520,7 +6648,9 @@
             {
               "fight": 12,
               "atSecond": 618,
+              "ability": "Latent Cultist",
               "amount": 750491,
+              "fatiaDaVida": 98,
               "defensivosProntos": [
                 "Dispersion"
               ]
@@ -6528,7 +6658,9 @@
             {
               "fight": 9,
               "atSecond": 246,
+              "ability": "Hungering Pyre",
               "amount": 459566,
+              "fatiaDaVida": 60,
               "defensivosProntos": [
                 "Desperate Prayer",
                 "Potent Healing Potion",
@@ -6538,7 +6670,9 @@
             {
               "fight": 11,
               "atSecond": 257,
+              "ability": "Hungering Pyre",
               "amount": 389855,
+              "fatiaDaVida": 51,
               "defensivosProntos": [
                 "Desperate Prayer",
                 "Potent Healing Potion",
@@ -6895,7 +7029,8 @@
                 "Blur",
                 "Darkness",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Circling Prey"
             },
             {
               "encounterID": 3492,
@@ -6932,7 +7067,8 @@
               "readyDefensives": [
                 "Blur",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -6944,7 +7080,8 @@
                 "Blur",
                 "Darkness",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -6955,7 +7092,8 @@
               "readyDefensives": [
                 "Blur",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3445,
@@ -7006,7 +7144,9 @@
             {
               "fight": 4,
               "atSecond": 408,
+              "ability": "Circling Prey",
               "amount": 691211,
+              "fatiaDaVida": 90,
               "defensivosProntos": [
                 "Blur",
                 "Darkness",
@@ -7018,6 +7158,7 @@
               "atSecond": 352,
               "ability": "Melee",
               "amount": 658371,
+              "fatiaDaVida": 94,
               "defensivosProntos": [
                 "Blur",
                 "Darkness",
@@ -7027,7 +7168,9 @@
             {
               "fight": 12,
               "atSecond": 617,
+              "ability": "Latent Cultist",
               "amount": 650738,
+              "fatiaDaVida": 93,
               "defensivosProntos": [
                 "Blur",
                 "Potent Healing Potion"
@@ -7318,7 +7461,8 @@
               "readyDefensives": [
                 "Rallying Cry",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Bloodvenom Injection"
             },
             {
               "encounterID": 3445,
@@ -7391,7 +7535,8 @@
               "readyDefensives": [
                 "Rallying Cry",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Deadly Venom"
             }
           ],
           "trashShare": 0,
@@ -7414,6 +7559,7 @@
               "atSecond": 541,
               "ability": "Melee",
               "amount": 757371,
+              "fatiaDaVida": 80,
               "defensivosProntos": []
             },
             {
@@ -7421,6 +7567,7 @@
               "atSecond": 108,
               "ability": "Empowering Slam",
               "amount": 703893,
+              "fatiaDaVida": 70,
               "defensivosProntos": [
                 "Potent Healing Potion"
               ]
@@ -7428,7 +7575,9 @@
             {
               "fight": 16,
               "atSecond": 64,
+              "ability": "Bloodvenom Injection",
               "amount": 677373,
+              "fatiaDaVida": 68,
               "defensivosProntos": [
                 "Rallying Cry",
                 "Potent Healing Potion"
@@ -7736,7 +7885,9 @@
             {
               "fight": 1,
               "atSecond": 282,
+              "ability": "Hungering Pyre",
               "amount": 1101193,
+              "fatiaDaVida": 65,
               "defensivosProntos": [
                 "Anti-Magic Zone",
                 "Death's Advance",
@@ -7750,6 +7901,7 @@
               "atSecond": 503,
               "ability": "Melee",
               "amount": 848260,
+              "fatiaDaVida": 58,
               "defensivosProntos": [
                 "Death's Advance",
                 "Healthstone"
@@ -7760,6 +7912,7 @@
               "atSecond": 504,
               "ability": "Melee",
               "amount": 799867,
+              "fatiaDaVida": 55,
               "defensivosProntos": []
             }
           ],
@@ -8138,7 +8291,8 @@
                 "Holy Bulwark",
                 "Guardian of Ancient Kings",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Clinging Murk"
             },
             {
               "encounterID": 3445,
@@ -8151,7 +8305,8 @@
                 "Holy Bulwark",
                 "Guardian of Ancient Kings",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -8174,7 +8329,8 @@
               "readyDefensives": [
                 "Ardent Defender",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Noxious Blast"
             }
           ],
           "trashShare": 5.9,
@@ -8201,7 +8357,9 @@
             {
               "fight": 1,
               "atSecond": 282,
+              "ability": "Hungering Pyre",
               "amount": 844503,
+              "fatiaDaVida": 59,
               "defensivosProntos": [
                 "Ritual Wraps",
                 "Healthstone",
@@ -8212,7 +8370,9 @@
             {
               "fight": 1,
               "atSecond": 198,
+              "ability": "Hungering Pyre",
               "amount": 820465,
+              "fatiaDaVida": 69,
               "defensivosProntos": [
                 "Ritual Wraps",
                 "Healthstone",
@@ -8225,6 +8385,7 @@
               "atSecond": 65,
               "ability": "Empowering Slam",
               "amount": 777754,
+              "fatiaDaVida": 59,
               "defensivosProntos": [
                 "Ardent Defender",
                 "Healthstone",
@@ -8485,7 +8646,8 @@
                 "Ascendance",
                 "Spirit Link Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -8523,7 +8685,9 @@
             {
               "fight": 7,
               "atSecond": 74,
+              "ability": "Cultivated Burst",
               "amount": 375301,
+              "fatiaDaVida": 39,
               "defensivosProntos": [
                 "Healing Stream Totem"
               ]
@@ -8531,21 +8695,14 @@
             {
               "fight": 1,
               "atSecond": 328,
+              "ability": "Anguished Echoes",
               "amount": 299407,
+              "fatiaDaVida": 34,
               "defensivosProntos": [
                 "Healing Stream Totem",
                 "Stormstream Totem",
                 "Spirit Link Totem",
                 "Astral Shift"
-              ]
-            },
-            {
-              "fight": 7,
-              "atSecond": 74,
-              "ability": "Toxic Droplets",
-              "amount": 203520,
-              "defensivosProntos": [
-                "Healing Stream Totem"
               ]
             }
           ],
@@ -8903,7 +9060,8 @@
                 "Blessing of Protection",
                 "Potent Healing Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -8950,7 +9108,8 @@
                 "Blessing of Protection",
                 "Potent Healing Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -8992,7 +9151,8 @@
                 "Divine Protection",
                 "Blessing of Protection",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -9023,7 +9183,8 @@
                 "Blessing of Protection",
                 "Potent Healing Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             }
           ],
           "trashShare": 0.7,
@@ -9052,6 +9213,7 @@
               "atSecond": 542,
               "ability": "Mark of Acid",
               "amount": 484138,
+              "fatiaDaVida": 61,
               "defensivosProntos": [
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
@@ -9063,6 +9225,7 @@
               "atSecond": 132,
               "ability": "Unstable Miasma",
               "amount": 474888,
+              "fatiaDaVida": 60,
               "defensivosProntos": [
                 "Divine Shield",
                 "Aura Mastery",
@@ -9076,6 +9239,7 @@
               "atSecond": 541,
               "ability": "Unstable Miasma",
               "amount": 460257,
+              "fatiaDaVida": 58,
               "defensivosProntos": [
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
@@ -9464,7 +9628,8 @@
                 "Divine Protection",
                 "Blessing of Sacrifice",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -9501,6 +9666,7 @@
               "atSecond": 546,
               "ability": "Melee",
               "amount": 2720210,
+              "fatiaDaVida": 316,
               "defensivosProntos": []
             },
             {
@@ -9508,6 +9674,7 @@
               "atSecond": 546,
               "ability": "Melee",
               "amount": 857742,
+              "fatiaDaVida": 100,
               "defensivosProntos": []
             },
             {
@@ -9515,6 +9682,7 @@
               "atSecond": 436,
               "ability": "Unstable Miasma",
               "amount": 580332,
+              "fatiaDaVida": 60,
               "defensivosProntos": [
                 "Divine Protection",
                 "Blessing of Sacrifice",
@@ -9817,7 +9985,8 @@
               "afterSeconds": 102,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -9843,7 +10012,8 @@
                 "Ice Cold",
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -9855,7 +10025,8 @@
                 "Ice Barrier",
                 "Ice Cold",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -9868,7 +10039,8 @@
                 "Ice Cold",
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Blighted Blood"
             },
             {
               "encounterID": 3445,
@@ -9933,6 +10105,7 @@
               "atSecond": 514,
               "ability": "Melee",
               "amount": 616882,
+              "fatiaDaVida": 80,
               "defensivosProntos": [
                 "Ice Barrier",
                 "Silvermoon Health Potion"
@@ -9943,6 +10116,7 @@
               "atSecond": 83,
               "ability": "Unstable Miasma",
               "amount": 432006,
+              "fatiaDaVida": 56,
               "defensivosProntos": [
                 "Ice Cold",
                 "Healthstone",
@@ -9954,6 +10128,7 @@
               "atSecond": 293,
               "ability": "Unstable Miasma",
               "amount": 397043,
+              "fatiaDaVida": 52,
               "defensivosProntos": [
                 "Ice Barrier",
                 "Healthstone"
@@ -10255,7 +10430,8 @@
                 "Potent Healing Potion",
                 "Unending Resolve",
                 "Mortal Coil"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -10276,7 +10452,8 @@
                 "Potent Healing Potion",
                 "Unending Resolve",
                 "Mortal Coil"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3470,
@@ -10301,7 +10478,8 @@
               "readyDefensives": [
                 "Potent Healing Potion",
                 "Mortal Coil"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -10351,7 +10529,8 @@
                 "Potent Healing Potion",
                 "Unending Resolve",
                 "Mortal Coil"
-              ]
+              ],
+              "ability": "Noxious Blast"
             }
           ],
           "trashShare": 2.5,
@@ -10380,6 +10559,7 @@
               "atSecond": 507,
               "ability": "Latent Cultist",
               "amount": 760024,
+              "fatiaDaVida": 85,
               "defensivosProntos": [
                 "Demonic Healthstone",
                 "Potent Healing Potion",
@@ -10392,6 +10572,7 @@
               "atSecond": 541,
               "ability": "Unstable Miasma",
               "amount": 687750,
+              "fatiaDaVida": 77,
               "defensivosProntos": [
                 "Mortal Coil"
               ]
@@ -10401,6 +10582,7 @@
               "atSecond": 289,
               "ability": "Unstable Miasma",
               "amount": 485245,
+              "fatiaDaVida": 55,
               "defensivosProntos": [
                 "Mortal Coil"
               ]
@@ -10681,7 +10863,8 @@
               "readyDefensives": [
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -10729,7 +10912,8 @@
                 "Dispersion",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3445,
@@ -10796,7 +10980,9 @@
             {
               "fight": 15,
               "atSecond": 74,
+              "ability": "Cultivated Burst",
               "amount": 423754,
+              "fatiaDaVida": 37,
               "defensivosProntos": [
                 "Silvermoon Health Potion",
                 "Healthstone"
@@ -10807,6 +10993,7 @@
               "atSecond": 84,
               "ability": "Unstable Miasma",
               "amount": 409143,
+              "fatiaDaVida": 49,
               "defensivosProntos": [
                 "Desperate Prayer",
                 "Dispersion",
@@ -10819,6 +11006,7 @@
               "atSecond": 91,
               "ability": "Unstable Miasma",
               "amount": 409143,
+              "fatiaDaVida": 36,
               "defensivosProntos": [
                 "Dispersion",
                 "Silvermoon Health Potion",
@@ -11090,7 +11278,8 @@
                 "Healing Stream Totem",
                 "Healthstone",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -11103,7 +11292,8 @@
                 "Healing Stream Totem",
                 "Healthstone",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -11128,7 +11318,8 @@
                 "Healing Stream Totem",
                 "Healthstone",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -11192,7 +11383,8 @@
                 "Healing Stream Totem",
                 "Healthstone",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Noxious Blast"
             }
           ],
           "trashShare": 17.1,
@@ -11221,6 +11413,7 @@
               "atSecond": 518,
               "ability": "Melee",
               "amount": 953720,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Healing Stream Totem",
                 "Healthstone",
@@ -11232,6 +11425,7 @@
               "atSecond": 541,
               "ability": "Mark of Blood",
               "amount": 607560,
+              "fatiaDaVida": 64,
               "defensivosProntos": [
                 "Healing Stream Totem"
               ]
@@ -11241,6 +11435,7 @@
               "atSecond": 189,
               "ability": "Unstable Miasma",
               "amount": 545168,
+              "fatiaDaVida": 57,
               "defensivosProntos": [
                 "Astral Shift",
                 "Healing Stream Totem",
@@ -11587,7 +11782,8 @@
               "difficulty": 4,
               "atSecond": 194,
               "fightSeconds": 202,
-              "afterSeconds": 8
+              "afterSeconds": 8,
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -11598,7 +11794,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3445,
@@ -11649,7 +11846,9 @@
             {
               "fight": 1,
               "atSecond": 188,
+              "ability": "Soul Transfer",
               "amount": 629435,
+              "fatiaDaVida": 68,
               "defensivosProntos": [
                 "Blur",
                 "Healthstone",
@@ -11661,6 +11860,7 @@
               "atSecond": 90,
               "ability": "Melee",
               "amount": 431940,
+              "fatiaDaVida": 51,
               "defensivosProntos": [
                 "Blur",
                 "Healthstone",
@@ -11672,6 +11872,7 @@
               "atSecond": 506,
               "ability": "Latent Cultist",
               "amount": 416911,
+              "fatiaDaVida": 49,
               "defensivosProntos": [
                 "Silvermoon Health Potion"
               ]
@@ -11956,7 +12157,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -12073,6 +12275,7 @@
               "atSecond": 512,
               "ability": "Melee",
               "amount": 994110,
+              "fatiaDaVida": 97,
               "defensivosProntos": [
                 "Healthstone"
               ]
@@ -12080,7 +12283,9 @@
             {
               "fight": 1,
               "atSecond": 188,
+              "ability": "Soul Transfer",
               "amount": 745313,
+              "fatiaDaVida": 73,
               "defensivosProntos": [
                 "Astral Shift",
                 "Healthstone"
@@ -12091,6 +12296,7 @@
               "atSecond": 519,
               "ability": "Latent Cultist",
               "amount": 693463,
+              "fatiaDaVida": 71,
               "defensivosProntos": [
                 "Healthstone"
               ]
@@ -12380,7 +12586,8 @@
                 "Concentrated Silvermoon Health Potion",
                 "Die by the Sword",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Helical Toxins"
             },
             {
               "encounterID": 3445,
@@ -12394,7 +12601,8 @@
                 "Concentrated Silvermoon Health Potion",
                 "Die by the Sword",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -12437,7 +12645,8 @@
                 "Concentrated Silvermoon Health Potion",
                 "Die by the Sword",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -12496,7 +12705,8 @@
                 "Concentrated Silvermoon Health Potion",
                 "Die by the Sword",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Blast"
             }
           ],
           "trashShare": 2.7,
@@ -12516,6 +12726,7 @@
               "atSecond": 520,
               "ability": "Latent Cultist",
               "amount": 650335,
+              "fatiaDaVida": 80,
               "defensivosProntos": [
                 "Rallying Cry",
                 "Healthstone"
@@ -12526,6 +12737,7 @@
               "atSecond": 132,
               "ability": "Unstable Miasma",
               "amount": 456367,
+              "fatiaDaVida": 62,
               "defensivosProntos": [
                 "Rallying Cry",
                 "Berserker Rage",
@@ -12537,7 +12749,9 @@
             {
               "fight": 7,
               "atSecond": 74,
+              "ability": "Cultivated Burst",
               "amount": 420472,
+              "fatiaDaVida": 52,
               "defensivosProntos": [
                 "Rallying Cry",
                 "Berserker Rage",
@@ -12826,7 +13040,8 @@
                 "Healthstone",
                 "Blessing of Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -12876,7 +13091,8 @@
                 "Divine Shield",
                 "Blessing of Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -12903,7 +13119,8 @@
                 "Healthstone",
                 "Blessing of Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Blighted Blood"
             },
             {
               "encounterID": 3445,
@@ -12917,7 +13134,8 @@
                 "Divine Shield",
                 "Blessing of Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -12943,7 +13161,8 @@
                 "Divine Shield",
                 "Blessing of Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Noxious Blast"
             }
           ],
           "trashShare": 9.2,
@@ -12972,6 +13191,7 @@
               "atSecond": 506,
               "ability": "Latent Cultist",
               "amount": 633733,
+              "fatiaDaVida": 65,
               "defensivosProntos": [
                 "Healthstone",
                 "Blessing of Protection",
@@ -12983,6 +13203,7 @@
               "atSecond": 542,
               "ability": "Mark of Acid",
               "amount": 488038,
+              "fatiaDaVida": 55,
               "defensivosProntos": [
                 "Healthstone",
                 "Blessing of Protection",
@@ -12994,6 +13215,7 @@
               "atSecond": 85,
               "ability": "Unstable Miasma",
               "amount": 471920,
+              "fatiaDaVida": 54,
               "defensivosProntos": [
                 "Divine Protection",
                 "Healthstone",
@@ -13305,7 +13527,8 @@
                 "Divine Protection",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Cultivated Burst"
             },
             {
               "encounterID": 3445,
@@ -13344,7 +13567,8 @@
                 "Divine Shield",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3445,
@@ -13409,7 +13633,8 @@
                 "Divine Shield",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -13451,6 +13676,7 @@
               "atSecond": 516,
               "ability": "Melee",
               "amount": 829731,
+              "fatiaDaVida": 99,
               "defensivosProntos": [
                 "Divine Protection",
                 "Healthstone",
@@ -13462,6 +13688,7 @@
               "atSecond": 436,
               "ability": "Unstable Miasma",
               "amount": 568296,
+              "fatiaDaVida": 64,
               "defensivosProntos": []
             },
             {
@@ -13469,6 +13696,7 @@
               "atSecond": 85,
               "ability": "Unstable Miasma",
               "amount": 506216,
+              "fatiaDaVida": 60,
               "defensivosProntos": [
                 "Divine Protection",
                 "Divine Shield",
@@ -13828,7 +14056,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3445,
@@ -13889,6 +14118,7 @@
               "atSecond": 89,
               "ability": "Unstable Miasma",
               "amount": 777380,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Healthstone",
                 "Dispersion",
@@ -13902,6 +14132,7 @@
               "atSecond": 421,
               "ability": "Mark of Blood",
               "amount": 775200,
+              "fatiaDaVida": 100,
               "defensivosProntos": [
                 "Healthstone",
                 "Dispersion",
@@ -13913,6 +14144,7 @@
               "atSecond": 202,
               "ability": "Unstable Miasma",
               "amount": 549145,
+              "fatiaDaVida": 71,
               "defensivosProntos": [
                 "Healthstone",
                 "Dispersion",
@@ -14197,7 +14429,8 @@
               "difficulty": 4,
               "atSecond": 494,
               "fightSeconds": 546,
-              "afterSeconds": 52
+              "afterSeconds": 52,
+              "ability": "Set Fire to the Pain"
             },
             {
               "encounterID": 3445,
@@ -14208,7 +14441,8 @@
               "readyDefensives": [
                 "Blur",
                 "Darkness"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3445,
@@ -14253,7 +14487,8 @@
               "readyDefensives": [
                 "Blur",
                 "Darkness"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
@@ -14263,14 +14498,16 @@
               "afterSeconds": 2,
               "readyDefensives": [
                 "Blur"
-              ]
+              ],
+              "ability": "Noxious Blast"
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 122,
               "fightSeconds": 123,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "ability": "Noxious Blast"
             }
           ],
           "trashShare": 6.1,
@@ -14297,7 +14534,9 @@
             {
               "fight": 1,
               "atSecond": 188,
+              "ability": "Soul Transfer",
               "amount": 658153,
+              "fatiaDaVida": 85,
               "defensivosProntos": [
                 "Blur",
                 "Darkness"
@@ -14308,6 +14547,7 @@
               "atSecond": 436,
               "ability": "Unstable Miasma",
               "amount": 475861,
+              "fatiaDaVida": 61,
               "defensivosProntos": []
             },
             {
@@ -14315,6 +14555,7 @@
               "atSecond": 27,
               "ability": "Unstable Miasma",
               "amount": 398463,
+              "fatiaDaVida": 57,
               "defensivosProntos": [
                 "Blur",
                 "Darkness"
