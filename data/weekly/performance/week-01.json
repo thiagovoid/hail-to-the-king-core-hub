@@ -226,7 +226,8 @@
               "afterSeconds": 208,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Bloodvenom Injection"
             },
             {
               "encounterID": 3455,
@@ -236,7 +237,8 @@
               "afterSeconds": 136,
               "readyDefensives": [
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Burning Presence"
             },
             {
               "encounterID": 3470,
@@ -247,7 +249,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Hollowing Strikes"
             },
             {
               "encounterID": 3445,
@@ -258,7 +261,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Bloodvenom Injection"
             },
             {
               "encounterID": 3455,
@@ -269,7 +273,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Malignant Burst"
             },
             {
               "encounterID": 3445,
@@ -329,6 +334,40 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 171,
+              "ability": "Empowering Slam",
+              "amount": 398886,
+              "fatiaDaVida": 42,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 20,
+              "atSecond": 124,
+              "ability": "Melee",
+              "amount": 396657,
+              "fatiaDaVida": 40,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 373,
+              "ability": "Empowering Slam",
+              "amount": 396449,
+              "fatiaDaVida": 42,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 0.5,
@@ -647,7 +686,8 @@
                 "Icebound Fortitude",
                 "Death Pact",
                 "Anti-Magic Zone"
-              ]
+              ],
+              "ability": "Contaminate"
             },
             {
               "encounterID": 3445,
@@ -700,7 +740,8 @@
               "afterSeconds": 0,
               "readyDefensives": [
                 "Anti-Magic Zone"
-              ]
+              ],
+              "ability": "Malignant Burst"
             }
           ],
           "trashShare": 4.6,
@@ -723,6 +764,40 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 20,
+              "atSecond": 584,
+              "ability": "Malignant Burst",
+              "amount": 657464,
+              "fatiaDaVida": 56,
+              "defensivosProntos": [
+                "Anti-Magic Zone"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 136,
+              "ability": "Empowering Slam",
+              "amount": 623221,
+              "fatiaDaVida": 53,
+              "defensivosProntos": [
+                "Death Pact",
+                "Anti-Magic Zone"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 343,
+              "ability": "Empowering Slam",
+              "amount": 587407,
+              "fatiaDaVida": 50,
+              "defensivosProntos": [
+                "Death's Advance",
+                "Icebound Fortitude"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.6,
@@ -1031,7 +1106,8 @@
                 "Divine Protection",
                 "Lay on Hands",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -1058,7 +1134,8 @@
                 "Aura Mastery",
                 "Divine Protection",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Conflagrating Expulsion"
             },
             {
               "encounterID": 3470,
@@ -1123,6 +1200,44 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 20,
+              "atSecond": 560,
+              "ability": "Conflagrating Expulsion",
+              "amount": 272146,
+              "fatiaDaVida": 50,
+              "defensivosProntos": [
+                "Aura Mastery",
+                "Divine Protection",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 544,
+              "ability": "Mark of Acid",
+              "amount": 262461,
+              "fatiaDaVida": 49,
+              "defensivosProntos": [
+                "Aura Mastery"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 26,
+              "ability": "Unstable Miasma",
+              "amount": 249818,
+              "fatiaDaVida": 47,
+              "defensivosProntos": [
+                "Aura Mastery",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.4,
@@ -1383,14 +1498,16 @@
               "difficulty": 3,
               "atSecond": 184,
               "fightSeconds": 543,
-              "afterSeconds": 359
+              "afterSeconds": 359,
+              "ability": "Toxic Droplets"
             },
             {
               "encounterID": 3455,
               "difficulty": 3,
               "atSecond": 378,
               "fightSeconds": 587,
-              "afterSeconds": 210
+              "afterSeconds": 210,
+              "ability": "Plague Wave"
             },
             {
               "encounterID": 3470,
@@ -1410,7 +1527,8 @@
                 "Ice Barrier",
                 "Ice Cold",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Unstable Miasma"
             },
             {
               "encounterID": 3470,
@@ -1453,6 +1571,34 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 541,
+              "ability": "Mark of Blood",
+              "amount": 372625,
+              "fatiaDaVida": 61,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 15,
+              "atSecond": 88,
+              "ability": "Unstable Miasma",
+              "amount": 326680,
+              "fatiaDaVida": 58,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 543,
+              "ability": "Mark of Blood",
+              "amount": 226375,
+              "fatiaDaVida": 37,
+              "defensivosProntos": []
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.4,
@@ -1743,7 +1889,8 @@
               "afterSeconds": 27,
               "readyDefensives": [
                 "Power Word: Barrier"
-              ]
+              ],
+              "ability": "Conflagrating Expulsion"
             },
             {
               "encounterID": 3445,
@@ -1756,7 +1903,8 @@
                 "Desperate Prayer",
                 "Power Word: Barrier",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3470,
@@ -1786,7 +1934,8 @@
               "difficulty": 3,
               "atSecond": 543,
               "fightSeconds": 543,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "ability": "Unstable Miasma"
             }
           ],
           "trashShare": 1.3,
@@ -1809,6 +1958,37 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 15,
+              "atSecond": 543,
+              "ability": "Unstable Miasma",
+              "amount": 507236,
+              "fatiaDaVida": 71,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 14,
+              "atSecond": 541,
+              "ability": "Mark of Blood",
+              "amount": 371031,
+              "fatiaDaVida": 58,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 338,
+              "ability": "Unstable Miasma",
+              "amount": 320622,
+              "fatiaDaVida": 50,
+              "defensivosProntos": [
+                "Power Word: Barrier",
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.3,
@@ -2057,7 +2237,8 @@
               "afterSeconds": 296,
               "readyDefensives": [
                 "Healing Stream Totem"
-              ]
+              ],
+              "ability": "Caustic Surge"
             },
             {
               "encounterID": 3445,
@@ -2072,7 +2253,8 @@
               "difficulty": 3,
               "atSecond": 438,
               "fightSeconds": 549,
-              "afterSeconds": 111
+              "afterSeconds": 111,
+              "ability": "Contaminate"
             },
             {
               "encounterID": 3455,
@@ -2082,7 +2264,8 @@
               "afterSeconds": 110,
               "readyDefensives": [
                 "Healing Stream Totem"
-              ]
+              ],
+              "ability": "Burning Presence"
             },
             {
               "encounterID": 3470,
@@ -2141,6 +2324,38 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 2,
+              "atSecond": 509,
+              "ability": "Melee",
+              "amount": 366922,
+              "fatiaDaVida": 54,
+              "defensivosProntos": [
+                "Concentrated Silvermoon Health Potion",
+                "Healing Stream Totem"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 188,
+              "ability": "Unstable Miasma",
+              "amount": 297768,
+              "fatiaDaVida": 44,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 432,
+              "ability": "Unstable Miasma",
+              "amount": 264925,
+              "fatiaDaVida": 41,
+              "defensivosProntos": []
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 0.3,
@@ -2406,7 +2621,8 @@
               "difficulty": 3,
               "atSecond": 498,
               "fightSeconds": 587,
-              "afterSeconds": 89
+              "afterSeconds": 89,
+              "ability": "Exploding Infection"
             },
             {
               "encounterID": 3470,
@@ -2439,7 +2655,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Toxic Droplets"
             },
             {
               "encounterID": 3445,
@@ -2449,7 +2666,8 @@
               "afterSeconds": 1,
               "readyDefensives": [
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Unstable Miasma"
             },
             {
               "encounterID": 3445,
@@ -2483,6 +2701,38 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 549,
+              "ability": "Melee",
+              "amount": 2568162,
+              "fatiaDaVida": 365,
+              "defensivosProntos": [
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 543,
+              "ability": "Unstable Miasma",
+              "amount": 458395,
+              "fatiaDaVida": 64,
+              "defensivosProntos": [
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 2,
+              "atSecond": 495,
+              "ability": "Melee",
+              "amount": 402245,
+              "fatiaDaVida": 63,
+              "defensivosProntos": [
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.6,
@@ -2774,7 +3024,8 @@
                 "Ultradon Cuirass",
                 "Rallying Cry",
                 "Die by the Sword"
-              ]
+              ],
+              "ability": "Plague Froth"
             },
             {
               "encounterID": 3455,
@@ -2785,7 +3036,8 @@
               "readyDefensives": [
                 "Rallying Cry",
                 "Die by the Sword"
-              ]
+              ],
+              "ability": "Plague Froth"
             },
             {
               "encounterID": 3470,
@@ -2834,6 +3086,41 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 4,
+              "atSecond": 284,
+              "ability": "Soul Transfer",
+              "amount": 317440,
+              "fatiaDaVida": 64,
+              "defensivosProntos": [
+                "Potent Healing Potion",
+                "Die by the Sword"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 188,
+              "ability": "Unstable Miasma",
+              "amount": 294675,
+              "fatiaDaVida": 59,
+              "defensivosProntos": [
+                "Rallying Cry"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 26,
+              "ability": "Unstable Miasma",
+              "amount": 223967,
+              "fatiaDaVida": 45,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Potent Healing Potion",
+                "Die by the Sword"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 0.3,
@@ -3127,7 +3414,8 @@
               "readyDefensives": [
                 "Anti-Magic Zone",
                 "Lichborne"
-              ]
+              ],
+              "ability": "Contaminate"
             },
             {
               "encounterID": 3470,
@@ -3171,6 +3459,43 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 2,
+              "atSecond": 524,
+              "ability": "Melee",
+              "amount": 392610,
+              "fatiaDaVida": 59,
+              "defensivosProntos": [
+                "Lichborne"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 26,
+              "ability": "Unstable Miasma",
+              "amount": 290651,
+              "fatiaDaVida": 40,
+              "defensivosProntos": [
+                "Death Charge",
+                "Icebound Fortitude",
+                "Anti-Magic Shell",
+                "Anti-Magic Zone",
+                "Lichborne"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 432,
+              "ability": "Unstable Miasma",
+              "amount": 260562,
+              "fatiaDaVida": 39,
+              "defensivosProntos": [
+                "Death Charge",
+                "Lichborne"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 0.5,
@@ -3455,7 +3780,8 @@
               "readyDefensives": [
                 "Anti-Magic Shell",
                 "Anti-Magic Zone"
-              ]
+              ],
+              "ability": "Plague Froth"
             },
             {
               "encounterID": 3470,
@@ -3528,6 +3854,21 @@
               "pessoasQueInterromperam": 16
             }
           },
+          "pancadas": [
+            {
+              "fight": 21,
+              "atSecond": 192,
+              "ability": "Gloom Expulsion",
+              "amount": 234079,
+              "fatiaDaVida": 35,
+              "defensivosProntos": [
+                "Death Charge",
+                "Anti-Magic Zone",
+                "Lichborne",
+                "Icebound Fortitude"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 0.8,
