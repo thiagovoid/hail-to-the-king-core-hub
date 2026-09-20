@@ -109,3 +109,19 @@ export function formatPercent(n: number | null): string {
   }
   return `${n}%`;
 }
+
+/**
+ * Segundos viram "4min 12s" — ou "42s" quando não chega a um minuto.
+ *
+ * Existe porque porcentagem sozinha não se entende: "21,5% do tempo de luta"
+ * não diz nada até virar "o raide lutou 12 minutos sem você". A régua do
+ * jogador é o relógio, não o denominador.
+ */
+export function formatDuracao(segundos: number): string {
+  const total = Math.max(0, Math.round(segundos));
+  if (total < 60) return `${total}s`;
+
+  const minutos = Math.floor(total / 60);
+  const resto = total % 60;
+  return resto === 0 ? `${minutos}min` : `${minutos}min ${resto}s`;
+}

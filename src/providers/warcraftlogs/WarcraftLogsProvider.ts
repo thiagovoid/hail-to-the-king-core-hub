@@ -49,7 +49,13 @@ export interface WarcraftLogsRawReportTables {
   /** Tabelas do trash somado. Null quando o log não gravou trash nenhum. */
   trashTables?: WclFightTables | null;
   /** Toda morte da noite, com a try em que aconteceu. */
-  deathEvents?: Array<{ fight: number; targetID: number; timestamp: number }>;
+  deathEvents?: Array<{
+    fight: number;
+    targetID: number;
+    timestamp: number;
+    /** O que deu o golpe final. É o que dá CAUSA à morte, não só hora. */
+    killingAbilityGameID?: number;
+  }>;
   /** Dano por ator em CADA try, como pares (Map não sobrevive ao JSON). */
   damagePerFight?: Array<{ fightId: number; entries: Array<{ actorId: number; total: number }> }>;
   /**

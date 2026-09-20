@@ -14,7 +14,7 @@
  * Atacar, Defender e Ajudar são medidos na noite inteira, e recortá-los por
  * encontro exigiria refazer a conta de recarga luta a luta.
  */
-import { formatCompact, formatDate } from '@/utils/format';
+import { formatCompact, formatDate, formatDuracao } from '@/utils/format';
 
 interface NoiteDoBoss {
   date: string;
@@ -23,6 +23,8 @@ interface NoiteDoBoss {
   dps?: number;
   deaths: number;
   share: number;
+  /** Segundos que o raide seguiu lutando sem esta pessoa nesta noite. */
+  semVoce: number;
 }
 
 interface Props {
@@ -36,6 +38,8 @@ interface Props {
     dps: number | null;
     deaths: number;
     share: number;
+    /** Segundos somados em que o raide seguiu lutando sem esta pessoa. */
+    semVoce: number;
     /** Já caiu antes — muda o que os números significam. */
     farm: boolean;
     noites: NoiteDoBoss[];
@@ -56,6 +60,11 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
           A média da noite mistura progressão com farm. Aqui cada encontro fala por si — e abrindo
           um deles você vê a sua evolução nele, try a try, semana a semana.
         </p>
+        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          <span class="text-slate-300">Raide sem você</span> é o tempo que o grupo seguiu lutando
+          depois que você caiu. Não é contagem de morte: morrer três segundos antes do wipe custa
+          três segundos, morrer no começo de uma luta de oito minutos custa oito.
+        </p>
       </div>
 
       <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
@@ -68,7 +77,7 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
                 <th class="px-4 py-3 font-medium text-right">Kills</th>
                 <th class="px-4 py-3 font-medium text-right">DPS</th>
                 <th class="px-4 py-3 font-medium text-right">Mortes</th>
-                <th class="px-4 py-3 font-medium text-right">Tempo morto</th>
+                <th class="px-4 py-3 font-medium text-right">Raide sem você</th>
                 <th class="px-4 py-3" />
               </tr>
             </thead>
@@ -105,9 +114,15 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
                       {boss.dps === null ? '—' : formatCompact(boss.dps)}
                     </td>
                     <td class="px-4 py-3 text-right text-slate-300 tabular-nums">{boss.deaths}</td>
+                    {/* Segundos primeiro, porcentagem embaixo: "12min" é uma
+                        régua que qualquer um tem; "21,5%" precisa de um
+                        denominador que ninguém sabe qual é. */}
                     <td class="px-4 py-3 text-right tabular-nums">
                       <span class={boss.share > 15 ? 'text-amber-400' : 'text-slate-300'}>
-                        {numero(boss.share)}%
+                        {formatDuracao(boss.semVoce)}
+                      </span>
+                      <span class="block text-[10px] text-slate-600">
+                        {numero(boss.share)}% da luta
                       </span>
                     </td>
                     <td class="px-4 py-3 text-right">
@@ -143,8 +158,10 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
                               {noite.dps === undefined ? '—' : formatCompact(noite.dps)}
                             </span>
                             <span class="text-slate-500 tabular-nums">
-                              {noite.deaths} morte{noite.deaths === 1 ? '' : 's'} ·{' '}
-                              {numero(noite.share)}% morto
+                              {noite.deaths} morte{noite.deaths === 1 ? '' : 's'}
+                              {noite.semVoce > 0 && (
+                                <span> · o raide lutou {formatDuracao(noite.semVoce)} sem você</span>
+                              )}
                             </span>
                           </div>
                         ))}

@@ -41,6 +41,8 @@ export interface MorteNaTry {
   targetID: number;
   /** Quando aconteceu, no mesmo relógio do `endTime` da luta. */
   timestamp: number;
+  /** O que matou, quando o log identifica. */
+  abilityGameID?: number;
 }
 
 /**
@@ -133,6 +135,27 @@ export interface AssinaturaDasMortes {
   fantasma: number;
 }
 
+/**
+ * Uma morte, com o contexto que a torna legível.
+ *
+ * "18,5% do tempo morto" é verdade e não se entende. "Sentinelas, try 7:
+ * caiu aos 1:12 de 3:40, Gotículas Tóxicas" é a mesma informação dita de um
+ * jeito que dá pra agir — e conecta Sobreviver com Mecânicas, que hoje são
+ * duas conversas separadas sobre o mesmo tombo.
+ */
+export interface MorteDetalhada {
+  encounterID: number;
+  difficulty: number;
+  /** Em que segundo da try a pessoa caiu. */
+  atSecond: number;
+  /** Quanto durou a try, em segundos. É o que dá escala ao número acima. */
+  fightSeconds: number;
+  /** Segundos que o raide seguiu lutando depois desta morte. */
+  afterSeconds: number;
+  /** Nome da habilidade que matou, quando o log identifica. */
+  ability?: string;
+}
+
 export interface DetalheDaNoite {
   tries: TrysDoJogador;
   bossTries: TrysDeUmBoss[];
@@ -140,6 +163,8 @@ export interface DetalheDaNoite {
   deathCost: CustoDasMortes;
   /** Como elas aconteceram. Ver `AssinaturaDasMortes`. */
   deathSignature: AssinaturaDasMortes;
+  /** Morte a morte, com boss, momento e causa. Ver `MorteDetalhada`. */
+  deathDetail: MorteDetalhada[];
 }
 
 /**
@@ -173,7 +198,9 @@ function valeComoLuta(luta: LutaDeBoss, danoPorTry: Map<number, Map<number, numb
 export function buildNightDetail(
   bosses: LutaDeBoss[],
   mortes: MorteNaTry[],
-  danoPorTry: Map<number, Map<number, number>>
+  danoPorTry: Map<number, Map<number, number>>,
+  /** Traduz o id da habilidade que matou. Sem ela, a morte fica sem causa. */
+  nomeDaHabilidade?: (abilityGameID: number) => string | undefined
 ): Map<number, DetalheDaNoite> {
   const detalhe = new Map<number, DetalheDaNoite>();
   if (bosses.length === 0) return detalhe;
@@ -309,13 +336,31 @@ export function buildNightDetail(
       fantasma: 0,
     };
 
+    const deathDetail: MorteDetalhada[] = [];
+
     for (const morte of mortes) {
       if (morte.targetID !== actorId) continue;
       const luta = porId.get(morte.fight);
       if (!luta) continue;
 
-      msMorto += Math.max(0, luta.endTime - morte.timestamp);
+      const sobrou = Math.max(0, luta.endTime - morte.timestamp);
+      msMorto += sobrou;
       if (luta.kill) emKills += 1;
+
+      const inicioDaLuta = luta.endTime - luta.durationMs;
+      deathDetail.push({
+        encounterID: luta.encounterID,
+        difficulty: luta.difficulty,
+        atSecond: Math.max(0, Math.round((morte.timestamp - inicioDaLuta) / 1000)),
+        fightSeconds: Math.round(luta.durationMs / 1000),
+        afterSeconds: Math.round(sobrou / 1000),
+        ...(morte.abilityGameID !== undefined
+          ? (() => {
+              const nome = nomeDaHabilidade?.(morte.abilityGameID);
+              return nome ? { ability: nome } : {};
+            })()
+          : {}),
+      });
 
       if (!valeComoLuta(luta, danoPorTry)) continue;
 
@@ -343,6 +388,9 @@ export function buildNightDetail(
         inKills: emKills,
       },
       deathSignature: assinatura,
+      // Da mais cara pra mais barata: o topo é a morte que mais custou ao
+      // raide, que é a que vale conversar.
+      deathDetail: deathDetail.sort((a, b) => b.afterSeconds - a.afterSeconds),
       tries: {
         present: presentes.length,
         total: bosses.length,

@@ -297,6 +297,28 @@ export interface PlayerPerformance {
    * ser justo com quem cumpre a call de wipe. Isto aqui é só zoeira, e um
    * tombo é engraçado independente de ter sido caro. Ver buildNightDetail.
    */
+  /**
+   * Morte a morte: onde, quando na luta, e o que matou.
+   *
+   * "18,5% do tempo morto" é verdade e não se entende. "Sentinelas, aos 1:12
+   * de 3:40, Gotículas Tóxicas" é a mesma informação dita de um jeito que dá
+   * pra agir — e liga Sobreviver a Mecânicas, que eram duas conversas
+   * separadas sobre o mesmo tombo. Ordenado da morte mais cara pra mais
+   * barata.
+   */
+  deathDetail?: Array<{
+    encounterID: number;
+    difficulty: number;
+    /** Em que segundo da try a pessoa caiu. */
+    atSecond: number;
+    /** Quanto durou a try. É o que dá escala ao número acima. */
+    fightSeconds: number;
+    /** Segundos que o raide seguiu lutando depois desta morte. */
+    afterSeconds: number;
+    /** O que matou, quando o log identifica. */
+    ability?: string;
+  }>;
+
   deathSignature?: {
     /** Trys em que foi o primeiro a cair, com mais gente caindo depois. */
     primeiroACair: number;

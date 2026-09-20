@@ -1,8 +1,9 @@
 ---
 import type { OverallPerformanceScore } from '@/engine/scores';
-import { formatDecimalBr, formatThousands } from '@/utils/format';
+import { formatDecimalBr, formatDuracao, formatThousands } from '@/utils/format';
 import ScoreDimensionRow from '@/components/ScoreDimensionRow.astro';
 import InfoTooltip from '@/components/InfoTooltip.astro';
+import { ROTULO_DA_CATEGORIA } from '@/normalization/buildAjudar';
 
 interface Props {
   score: OverallPerformanceScore;
@@ -44,6 +45,32 @@ interface Props {
   defenseDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
   /** Dano recebido e mitigação — contexto da nota de Defender, não entram nela. */
   defenseContext?: { mitigation: number; dtps: number; selfSustain?: number } | null;
+  /** Magia a magia da utilidade de grupo — o que explica a nota de Ajudar. */
+  helpDetail?: Array<{
+    spellId: number;
+    name: string;
+    casts: number;
+    efficiency: number;
+    categoria: "acelerar" | "controlar" | "interromper" | "socorrer" | "levantar";
+  }>;
+  /**
+   * As mortes da noite, da mais cara pra mais barata.
+   *
+   * "18,5% do tempo morto" é verdade e não se entende. "Sentinelas, caiu aos
+   * 1:12 de 3:40, Gotículas Tóxicas" é a mesma informação dita de um jeito
+   * que dá pra agir.
+   */
+  deathDetail?: Array<{
+    encounterID: number;
+    atSecond: number;
+    fightSeconds: number;
+    afterSeconds: number;
+    ability?: string;
+  }>;
+  /** encounterID -> nome do boss, pra morte dizer ONDE. */
+  nomeDoEncontro?: Record<number, string>;
+  /** Interrupções da noite — contadas por ato, não por recarga de magia. */
+  interrupcoes?: { total: number; porTry: number | null } | null;
   /** As duas metades da nota de Curar, mais a cobertura crua. */
   healingParts?: { coverage: number; share: number; overheal: number } | null;
   /** Nome da função usada pra escolher os pesos ("tank", "healer", "dps"). */
@@ -71,6 +98,10 @@ const {
   attackParts = null,
   defenseDetail = [],
   defenseContext = null,
+  helpDetail = [],
+  deathDetail = [],
+  nomeDoEncontro = {},
+  interrupcoes = null,
   healingParts = null,
   funcao = null,
   regrasDoCore = [],
@@ -204,6 +235,13 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
     defenseContext !== null || defenseDetail.length > 0
       ? { rotulo: 'Ver dano recebido e cooldowns', itens: defenseDetail.length }
       : undefined,
+  help:
+    helpDetail.length > 0 || interrupcoes !== null
+      ? { rotulo: 'Ver o que você fez pelo grupo', itens: helpDetail.length }
+      : undefined,
+  survival: deathDetail.length
+    ? { rotulo: 'Ver cada morte e o que custou', itens: deathDetail.length }
+    : undefined,
   healing: healingParts !== null ? { rotulo: 'Ver cobertura e desperdício', itens: 0 } : undefined,
   preparation: preparationMissing.length
     ? { rotulo: 'Ver o que falta arrumar', itens: preparationMissing.length }
@@ -462,6 +500,59 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     )}
                     <span class="text-slate-600"> &middot; contexto, não entra na nota</span>
                   </p>
+                )}
+
+                {dimension.key === 'survival' && deathDetail.length > 0 && (
+                  <ul class="space-y-0.5 mt-1">
+                    {deathDetail.map((morte) => (
+                      <li class="text-[11px] text-slate-500 leading-relaxed">
+                        {/* O momento vem antes da causa porque é o que explica o
+                            CUSTO: cair aos 20s de uma luta de 5min é caro, cair
+                            aos 4min50 é quase de graça. */}
+                        <span class="text-slate-400">{nomeDoEncontro[morte.encounterID] ?? `Encontro ${morte.encounterID}`}</span>
+                        {' '}&middot; caiu aos {formatDuracao(morte.atSecond)} de{' '}
+                        {formatDuracao(morte.fightSeconds)}
+                        {morte.ability && <> &middot; <span class="text-slate-400">{morte.ability}</span></>}
+                        <span class="text-slate-600">
+                          {' '}&middot; o raide seguiu {formatDuracao(morte.afterSeconds)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {dimension.key === 'help' && (
+                  <>
+                    {/* Interromper é contado por ATO, não por recarga: a maior
+                        parte das interrupções de algumas specs sai de habilidade
+                        de rotação, que não entra em lista de cooldown nenhuma.
+                        Por isso ele aparece separado das magias. */}
+                    {interrupcoes !== null && (
+                      <p class="text-[11px] text-slate-500 leading-relaxed">
+                        <span class="text-slate-400">
+                          {interrupcoes.total} interrupç{interrupcoes.total === 1 ? 'ão' : 'ões'}
+                        </span>
+                        {interrupcoes.porTry !== null && (
+                          <> &middot; {formatDecimalBr(interrupcoes.porTry)} por try</>
+                        )}
+                        <span class="text-slate-600">
+                          {' '}&middot; medido pelo ato, não pela magia
+                        </span>
+                      </p>
+                    )}
+
+                    <ul class="space-y-0.5 mt-1">
+                      {helpDetail.map((item) => (
+                        <li class="text-[11px] text-slate-500 leading-relaxed">
+                          <span class="text-slate-400">{item.name}</span>{' '}
+                          {item.casts} uso{item.casts === 1 ? '' : 's'}
+                          <span class="text-slate-600">
+                            {' '}&middot; {ROTULO_DA_CATEGORIA[item.categoria]}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
                 )}
 
                 {(dimension.key === 'attack' || dimension.key === 'defense') && (

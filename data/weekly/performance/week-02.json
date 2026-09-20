@@ -318,6 +318,39 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 95,
+              "fightSeconds": 97,
+              "afterSeconds": 2
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 195,
+              "fightSeconds": 195,
+              "afterSeconds": 0,
+              "ability": "Ula'tek's Presence"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 286,
+              "fightSeconds": 286,
+              "afterSeconds": 0,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 503,
+              "fightSeconds": 503,
+              "afterSeconds": 0,
+              "ability": "Melee"
+            }
+          ],
           "trashShare": 6.2,
           "specs": [
             {
@@ -788,6 +821,39 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 165,
+              "fightSeconds": 195,
+              "afterSeconds": 30
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 275,
+              "fightSeconds": 286,
+              "afterSeconds": 11,
+              "ability": "Caustic Deluge"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 494,
+              "fightSeconds": 503,
+              "afterSeconds": 10,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 92,
+              "fightSeconds": 97,
+              "afterSeconds": 5,
+              "ability": "Malevolent Presence"
+            }
+          ],
           "trashShare": 5.4,
           "specs": [
             {
@@ -1182,6 +1248,44 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 373,
+              "fightSeconds": 549,
+              "afterSeconds": 176
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 479,
+              "fightSeconds": 503,
+              "afterSeconds": 25
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 268,
+              "fightSeconds": 286,
+              "afterSeconds": 18,
+              "ability": "Eternal Venom"
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 88,
+              "fightSeconds": 97,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 195,
+              "fightSeconds": 195,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 0.5,
           "specs": [
             {
@@ -1624,6 +1728,44 @@
             "speedrun": 0,
             "fantasma": 1
           },
+          "deathDetail": [
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 87,
+              "fightSeconds": 390,
+              "afterSeconds": 304
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 254,
+              "fightSeconds": 286,
+              "afterSeconds": 32,
+              "ability": "Toxic Fumes"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 477,
+              "fightSeconds": 503,
+              "afterSeconds": 26
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 188,
+              "fightSeconds": 195,
+              "afterSeconds": 7
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 96,
+              "fightSeconds": 97,
+              "afterSeconds": 1
+            }
+          ],
           "trashShare": 1.6,
           "specs": [
             {
@@ -2039,6 +2181,58 @@
             "speedrun": 0,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 81,
+              "fightSeconds": 501,
+              "afterSeconds": 420
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 108,
+              "fightSeconds": 501,
+              "afterSeconds": 392
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 289,
+              "fightSeconds": 503,
+              "afterSeconds": 215
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 361,
+              "fightSeconds": 549,
+              "afterSeconds": 189
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 186,
+              "fightSeconds": 286,
+              "afterSeconds": 100
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 83,
+              "fightSeconds": 97,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 181,
+              "fightSeconds": 195,
+              "afterSeconds": 14,
+              "ability": "Mutilated Gash"
+            }
+          ],
           "trashShare": 10.5,
           "specs": [
             {
@@ -2426,6 +2620,51 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 252,
+              "fightSeconds": 503,
+              "afterSeconds": 251
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 151,
+              "fightSeconds": 195,
+              "afterSeconds": 44
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 478,
+              "fightSeconds": 503,
+              "afterSeconds": 25
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 267,
+              "fightSeconds": 286,
+              "afterSeconds": 20
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 87,
+              "fightSeconds": 97,
+              "afterSeconds": 10
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 186,
+              "fightSeconds": 195,
+              "afterSeconds": 9,
+              "ability": "Ula'tek's Presence"
+            }
+          ],
           "trashShare": 12.6,
           "specs": [
             {
@@ -2821,6 +3060,50 @@
             "speedrun": 0,
             "fantasma": 1
           },
+          "deathDetail": [
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 174,
+              "fightSeconds": 501,
+              "afterSeconds": 327
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 361,
+              "fightSeconds": 549,
+              "afterSeconds": 188
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 185,
+              "fightSeconds": 286,
+              "afterSeconds": 102
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 478,
+              "fightSeconds": 503,
+              "afterSeconds": 25
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 87,
+              "fightSeconds": 97,
+              "afterSeconds": 10
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 195,
+              "fightSeconds": 195,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 12.5,
           "specs": [
             {
@@ -3218,6 +3501,46 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 289,
+              "fightSeconds": 503,
+              "afterSeconds": 215
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 487,
+              "fightSeconds": 503,
+              "afterSeconds": 16,
+              "ability": "Eternal Venom"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 273,
+              "fightSeconds": 286,
+              "afterSeconds": 13,
+              "ability": "Eternal Venom"
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 90,
+              "fightSeconds": 97,
+              "afterSeconds": 7,
+              "ability": "Malevolent Presence"
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 195,
+              "fightSeconds": 195,
+              "afterSeconds": 1
+            }
+          ],
           "trashShare": 15.7,
           "specs": [
             {
@@ -3612,6 +3935,38 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 478,
+              "fightSeconds": 503,
+              "afterSeconds": 25,
+              "ability": "Toxic Fumes"
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 87,
+              "fightSeconds": 97,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 187,
+              "fightSeconds": 195,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 278,
+              "fightSeconds": 286,
+              "afterSeconds": 8,
+              "ability": "Toxic Fumes"
+            }
+          ],
           "trashShare": 11.6,
           "specs": [
             {
@@ -3995,6 +4350,44 @@
             "speedrun": 0,
             "fantasma": 1
           },
+          "deathDetail": [
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 81,
+              "fightSeconds": 501,
+              "afterSeconds": 420
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 267,
+              "fightSeconds": 286,
+              "afterSeconds": 20,
+              "ability": "Eternal Venom"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 487,
+              "fightSeconds": 503,
+              "afterSeconds": 16
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 90,
+              "fightSeconds": 97,
+              "afterSeconds": 7
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 188,
+              "fightSeconds": 195,
+              "afterSeconds": 7
+            }
+          ],
           "trashShare": 10.5,
           "specs": [
             {
@@ -4386,6 +4779,67 @@
             "speedrun": 0,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 63,
+              "fightSeconds": 549,
+              "afterSeconds": 487,
+              "ability": "Eternal Venom"
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 88,
+              "fightSeconds": 390,
+              "afterSeconds": 302,
+              "ability": "Malevolent Presence"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 328,
+              "fightSeconds": 549,
+              "afterSeconds": 221,
+              "ability": "Eternal Venom"
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 182,
+              "fightSeconds": 286,
+              "afterSeconds": 104
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 440,
+              "fightSeconds": 503,
+              "afterSeconds": 63
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 174,
+              "fightSeconds": 195,
+              "afterSeconds": 21
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 83,
+              "fightSeconds": 97,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 547,
+              "fightSeconds": 549,
+              "afterSeconds": 2
+            }
+          ],
           "trashShare": 3.4,
           "specs": [
             {
@@ -4794,6 +5248,50 @@
             "speedrun": 0,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 121,
+              "fightSeconds": 390,
+              "afterSeconds": 269
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 288,
+              "fightSeconds": 503,
+              "afterSeconds": 216
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 141,
+              "fightSeconds": 286,
+              "afterSeconds": 145
+            },
+            {
+              "encounterID": 3421,
+              "difficulty": 3,
+              "atSecond": 479,
+              "fightSeconds": 503,
+              "afterSeconds": 25
+            },
+            {
+              "encounterID": 3497,
+              "difficulty": 3,
+              "atSecond": 83,
+              "fightSeconds": 97,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3420,
+              "difficulty": 3,
+              "atSecond": 189,
+              "fightSeconds": 195,
+              "afterSeconds": 6
+            }
+          ],
           "trashShare": 9.5,
           "specs": [
             {
@@ -5123,6 +5621,55 @@
             "speedrun": 1,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 40,
+              "fightSeconds": 249,
+              "afterSeconds": 208,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 18,
+              "fightSeconds": 96,
+              "afterSeconds": 78
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 165,
+              "fightSeconds": 222,
+              "afterSeconds": 57,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 162,
+              "fightSeconds": 204,
+              "afterSeconds": 42,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 138,
+              "fightSeconds": 163,
+              "afterSeconds": 25,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 20,
+              "fightSeconds": 20,
+              "afterSeconds": 0,
+              "ability": "Melee"
+            }
+          ],
           "trashShare": 0,
           "specs": [
             {
@@ -5391,6 +5938,135 @@
             "speedrun": 0,
             "fantasma": 5
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 40,
+              "fightSeconds": 311,
+              "afterSeconds": 271,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 299,
+              "afterSeconds": 238,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 40,
+              "fightSeconds": 204,
+              "afterSeconds": 164,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 55,
+              "fightSeconds": 163,
+              "afterSeconds": 108,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 40,
+              "fightSeconds": 96,
+              "afterSeconds": 56,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 194,
+              "fightSeconds": 250,
+              "afterSeconds": 56,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 207,
+              "fightSeconds": 249,
+              "afterSeconds": 41,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 125,
+              "fightSeconds": 163,
+              "afterSeconds": 37,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 209,
+              "fightSeconds": 243,
+              "afterSeconds": 33,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 68,
+              "fightSeconds": 96,
+              "afterSeconds": 28,
+              "ability": "Twinfang Toxin"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 55,
+              "fightSeconds": 75,
+              "afterSeconds": 20,
+              "ability": "Twinfang Toxin"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 203,
+              "fightSeconds": 222,
+              "afterSeconds": 19,
+              "ability": "Twinfang Toxin"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 365,
+              "fightSeconds": 382,
+              "afterSeconds": 18,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 68,
+              "fightSeconds": 75,
+              "afterSeconds": 7,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 311,
+              "fightSeconds": 311,
+              "afterSeconds": 1
+            }
+          ],
           "trashShare": 8.1,
           "specs": [
             {
@@ -5624,6 +6300,141 @@
             "speedrun": 1,
             "fantasma": 4
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 222,
+              "afterSeconds": 199,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 255,
+              "afterSeconds": 194,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 77,
+              "fightSeconds": 204,
+              "afterSeconds": 127,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 47,
+              "fightSeconds": 163,
+              "afterSeconds": 115
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 290,
+              "fightSeconds": 382,
+              "afterSeconds": 92
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 137,
+              "fightSeconds": 204,
+              "afterSeconds": 67
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 205,
+              "fightSeconds": 255,
+              "afterSeconds": 50,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 262,
+              "fightSeconds": 311,
+              "afterSeconds": 50
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 254,
+              "fightSeconds": 299,
+              "afterSeconds": 45,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 96,
+              "afterSeconds": 35,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 236,
+              "fightSeconds": 250,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 300,
+              "fightSeconds": 311,
+              "afterSeconds": 12
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 240,
+              "fightSeconds": 249,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 217,
+              "fightSeconds": 222,
+              "afterSeconds": 5
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 72,
+              "fightSeconds": 75,
+              "afterSeconds": 4
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 243,
+              "fightSeconds": 243,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 0.1,
           "specs": [
             {
@@ -5876,6 +6687,111 @@
             "speedrun": 1,
             "fantasma": 1
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 222,
+              "afterSeconds": 199,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 243,
+              "afterSeconds": 97,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 55,
+              "fightSeconds": 96,
+              "afterSeconds": 42,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 187,
+              "fightSeconds": 204,
+              "afterSeconds": 17
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 282,
+              "fightSeconds": 299,
+              "afterSeconds": 17
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 236,
+              "fightSeconds": 250,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 369,
+              "fightSeconds": 382,
+              "afterSeconds": 13,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 301,
+              "fightSeconds": 311,
+              "afterSeconds": 10
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 240,
+              "fightSeconds": 249,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 247,
+              "fightSeconds": 255,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 73,
+              "fightSeconds": 75,
+              "afterSeconds": 2
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 161,
+              "fightSeconds": 163,
+              "afterSeconds": 1
+            }
+          ],
           "trashShare": 1.7,
           "specs": [
             {
@@ -6133,6 +7049,96 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 77,
+              "fightSeconds": 96,
+              "afterSeconds": 19,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 293,
+              "fightSeconds": 311,
+              "afterSeconds": 19
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 281,
+              "fightSeconds": 299,
+              "afterSeconds": 18
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 236,
+              "fightSeconds": 250,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 193,
+              "fightSeconds": 204,
+              "afterSeconds": 11,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 247,
+              "fightSeconds": 255,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 217,
+              "fightSeconds": 222,
+              "afterSeconds": 5
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 74,
+              "fightSeconds": 75,
+              "afterSeconds": 1
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 162,
+              "fightSeconds": 163,
+              "afterSeconds": 0,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 243,
+              "fightSeconds": 243,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 0.4,
           "specs": [
             {
@@ -6381,6 +7387,128 @@
             "speedrun": 0,
             "fantasma": 1
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 249,
+              "afterSeconds": 102,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 125,
+              "fightSeconds": 222,
+              "afterSeconds": 97,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 77,
+              "fightSeconds": 163,
+              "afterSeconds": 85,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 167,
+              "fightSeconds": 250,
+              "afterSeconds": 83
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 248,
+              "fightSeconds": 299,
+              "afterSeconds": 51
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 210,
+              "fightSeconds": 249,
+              "afterSeconds": 39
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 235,
+              "fightSeconds": 262,
+              "afterSeconds": 27
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 179,
+              "fightSeconds": 204,
+              "afterSeconds": 24
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 234,
+              "fightSeconds": 250,
+              "afterSeconds": 16,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 373,
+              "fightSeconds": 382,
+              "afterSeconds": 9,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 247,
+              "fightSeconds": 255,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 90,
+              "fightSeconds": 96,
+              "afterSeconds": 6,
+              "ability": "Fangs of the Coiled Altar"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 309,
+              "fightSeconds": 311,
+              "afterSeconds": 3
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 240,
+              "fightSeconds": 243,
+              "afterSeconds": 2,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 75,
+              "fightSeconds": 75,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 21,
           "specs": [
             {
@@ -6622,6 +7750,122 @@
             "speedrun": 1,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 222,
+              "afterSeconds": 199,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 255,
+              "afterSeconds": 194,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 272,
+              "fightSeconds": 382,
+              "afterSeconds": 110,
+              "ability": "Dreadful Presence"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 94,
+              "fightSeconds": 163,
+              "afterSeconds": 69
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 204,
+              "afterSeconds": 58,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 244,
+              "fightSeconds": 299,
+              "afterSeconds": 55
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 205,
+              "fightSeconds": 255,
+              "afterSeconds": 50,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 200,
+              "fightSeconds": 243,
+              "afterSeconds": 42,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 209,
+              "fightSeconds": 249,
+              "afterSeconds": 39
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 227,
+              "fightSeconds": 262,
+              "afterSeconds": 35
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 277,
+              "fightSeconds": 311,
+              "afterSeconds": 35,
+              "ability": "Dreadful Presence"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 77,
+              "fightSeconds": 96,
+              "afterSeconds": 19,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 236,
+              "fightSeconds": 250,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 75,
+              "fightSeconds": 75,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 9.7,
           "specs": [
             {
@@ -6887,6 +8131,122 @@
             "speedrun": 0,
             "fantasma": 0
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 226,
+              "fightSeconds": 382,
+              "afterSeconds": 156,
+              "ability": "Dreadful Presence"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 235,
+              "fightSeconds": 311,
+              "afterSeconds": 77,
+              "ability": "Dreadful Presence"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 205,
+              "fightSeconds": 255,
+              "afterSeconds": 50,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 254,
+              "fightSeconds": 299,
+              "afterSeconds": 45,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 215,
+              "fightSeconds": 243,
+              "afterSeconds": 28
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 181,
+              "fightSeconds": 204,
+              "afterSeconds": 22,
+              "ability": "Coalesced Venom"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 236,
+              "fightSeconds": 250,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 83,
+              "fightSeconds": 96,
+              "afterSeconds": 13,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 238,
+              "fightSeconds": 249,
+              "afterSeconds": 10,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 12,
+              "fightSeconds": 20,
+              "afterSeconds": 8,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 374,
+              "fightSeconds": 382,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 217,
+              "fightSeconds": 222,
+              "afterSeconds": 5
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 74,
+              "fightSeconds": 75,
+              "afterSeconds": 1
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 162,
+              "fightSeconds": 163,
+              "afterSeconds": 0,
+              "ability": "Sever"
+            }
+          ],
           "trashShare": 13.7,
           "specs": [
             {
@@ -7143,6 +8503,135 @@
             "speedrun": 2,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 222,
+              "afterSeconds": 199,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 163,
+              "afterSeconds": 139,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 302,
+              "fightSeconds": 382,
+              "afterSeconds": 80
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 125,
+              "fightSeconds": 204,
+              "afterSeconds": 79,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 263,
+              "fightSeconds": 311,
+              "afterSeconds": 48
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 72,
+              "fightSeconds": 96,
+              "afterSeconds": 24,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 279,
+              "fightSeconds": 299,
+              "afterSeconds": 21
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 236,
+              "fightSeconds": 250,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 238,
+              "fightSeconds": 249,
+              "afterSeconds": 10,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 245,
+              "fightSeconds": 255,
+              "afterSeconds": 10,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 374,
+              "fightSeconds": 382,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 156,
+              "fightSeconds": 163,
+              "afterSeconds": 6,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 249,
+              "fightSeconds": 250,
+              "afterSeconds": 1
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 243,
+              "fightSeconds": 243,
+              "afterSeconds": 0
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 75,
+              "fightSeconds": 75,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 0,
           "specs": [
             {
@@ -7417,6 +8906,112 @@
             "speedrun": 0,
             "fantasma": 1
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 47,
+              "fightSeconds": 163,
+              "afterSeconds": 115
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 299,
+              "fightSeconds": 382,
+              "afterSeconds": 83
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 263,
+              "fightSeconds": 311,
+              "afterSeconds": 48
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 254,
+              "fightSeconds": 299,
+              "afterSeconds": 45,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 162,
+              "fightSeconds": 204,
+              "afterSeconds": 42,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 209,
+              "fightSeconds": 250,
+              "afterSeconds": 41,
+              "ability": "Dreadful Presence"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 70,
+              "fightSeconds": 96,
+              "afterSeconds": 26,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 210,
+              "fightSeconds": 222,
+              "afterSeconds": 12,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 240,
+              "fightSeconds": 249,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 247,
+              "fightSeconds": 255,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 74,
+              "fightSeconds": 75,
+              "afterSeconds": 1
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 243,
+              "fightSeconds": 243,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 14.1,
           "specs": [
             {
@@ -7652,6 +9247,122 @@
             "speedrun": 0,
             "fantasma": 1
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 299,
+              "afterSeconds": 238,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 255,
+              "afterSeconds": 109,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 125,
+              "fightSeconds": 204,
+              "afterSeconds": 79,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 183,
+              "fightSeconds": 243,
+              "afterSeconds": 60
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 194,
+              "fightSeconds": 250,
+              "afterSeconds": 56,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 50,
+              "fightSeconds": 96,
+              "afterSeconds": 46,
+              "ability": "Twinfang Toxin"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 293,
+              "fightSeconds": 311,
+              "afterSeconds": 19
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 163,
+              "afterSeconds": 16,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 206,
+              "fightSeconds": 222,
+              "afterSeconds": 16,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 366,
+              "fightSeconds": 382,
+              "afterSeconds": 16,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 248,
+              "fightSeconds": 255,
+              "afterSeconds": 7
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 244,
+              "fightSeconds": 249,
+              "afterSeconds": 4
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 75,
+              "fightSeconds": 75,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 15.7,
           "specs": [
             {
@@ -7904,6 +9615,121 @@
             "speedrun": 2,
             "fantasma": 3
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 222,
+              "afterSeconds": 199,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 204,
+              "afterSeconds": 181,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 262,
+              "afterSeconds": 116,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 47,
+              "fightSeconds": 163,
+              "afterSeconds": 115
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 210,
+              "fightSeconds": 311,
+              "afterSeconds": 101
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 292,
+              "fightSeconds": 382,
+              "afterSeconds": 91
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 194,
+              "fightSeconds": 250,
+              "afterSeconds": 56,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 254,
+              "fightSeconds": 299,
+              "afterSeconds": 45,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 96,
+              "afterSeconds": 35,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 238,
+              "fightSeconds": 249,
+              "afterSeconds": 10,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 262,
+              "afterSeconds": 9
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 247,
+              "fightSeconds": 255,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 74,
+              "fightSeconds": 75,
+              "afterSeconds": 1
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 243,
+              "fightSeconds": 243,
+              "afterSeconds": 0
+            }
+          ],
           "trashShare": 4.5,
           "specs": [
             {
@@ -8161,6 +9987,101 @@
             "speedrun": 1,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 23,
+              "fightSeconds": 204,
+              "afterSeconds": 181,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 311,
+              "afterSeconds": 165,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 243,
+              "afterSeconds": 97,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 289,
+              "fightSeconds": 382,
+              "afterSeconds": 93
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 220,
+              "fightSeconds": 262,
+              "afterSeconds": 42,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 281,
+              "fightSeconds": 299,
+              "afterSeconds": 18
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 75,
+              "afterSeconds": 14,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 152,
+              "fightSeconds": 163,
+              "afterSeconds": 11,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 10,
+              "fightSeconds": 20,
+              "afterSeconds": 10,
+              "ability": "Unworthy"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 238,
+              "fightSeconds": 249,
+              "afterSeconds": 10,
+              "ability": "Gravebound"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 89,
+              "fightSeconds": 96,
+              "afterSeconds": 7,
+              "ability": "Coalesced Venom"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 253,
+              "fightSeconds": 255,
+              "afterSeconds": 2
+            }
+          ],
           "trashShare": 11,
           "specs": [
             {
@@ -8424,6 +10345,69 @@
             "speedrun": 0,
             "fantasma": 2
           },
+          "deathDetail": [
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 61,
+              "fightSeconds": 243,
+              "afterSeconds": 182,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 77,
+              "fightSeconds": 204,
+              "afterSeconds": 127,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 146,
+              "fightSeconds": 243,
+              "afterSeconds": 97,
+              "ability": "Sever"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 236,
+              "fightSeconds": 250,
+              "afterSeconds": 14
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 153,
+              "fightSeconds": 163,
+              "afterSeconds": 9,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 240,
+              "fightSeconds": 249,
+              "afterSeconds": 8
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 217,
+              "fightSeconds": 222,
+              "afterSeconds": 5
+            },
+            {
+              "encounterID": 3429,
+              "difficulty": 3,
+              "atSecond": 95,
+              "fightSeconds": 96,
+              "afterSeconds": 1,
+              "ability": "Melee"
+            }
+          ],
           "trashShare": 0,
           "specs": [
             {

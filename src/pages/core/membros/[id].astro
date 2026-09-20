@@ -121,6 +121,20 @@ const tankMedia = {
 };
 const noitesComoTank = history.filter((run) => run.defense !== undefined).length;
 
+/** O que explica a nota de Ajudar: magia a magia, mais as interrupções. */
+const helpDetail = ultimaNoite?.helpDetail ?? [];
+const interrupcoes = ultimaNoite?.utility
+  ? {
+      total: ultimaNoite.utility.interrupts,
+      porTry: ultimaNoite.tries?.present
+        ? Math.round((ultimaNoite.utility.interrupts / ultimaNoite.tries.present) * 100) / 100
+        : null,
+    }
+  : null;
+
+/** As mortes da noite, da mais cara pra mais barata. */
+const deathDetail = (ultimaNoite?.deathDetail ?? []).slice(0, 5);
+
 const healingParts = ultimaNoite?.healing
   ? {
       coverage: ultimaNoite.healing.coverage,
@@ -421,7 +435,8 @@ const porBoss = new Map<
     dano: number[];
     deaths: number;
     shares: number[];
-    noites: Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number }>;
+    segundos: number;
+    noites: Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number; semVoce: number }>;
   }
 >();
 
@@ -439,14 +454,18 @@ for (const noite of history) {
       dano: [] as number[],
       deaths: 0,
       shares: [] as number[],
-      noites: [] as Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number }>,
+      segundos: 0,
+      noites: [] as Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number; semVoce: number }>,
     };
 
     atual.tries += boss.tries;
     if (boss.killed) atual.kills += 1;
     if (boss.dps !== undefined) atual.dano.push(boss.dps);
     atual.deaths += boss.deaths ?? 0;
-    if (boss.deathCost) atual.shares.push(boss.deathCost.share);
+    if (boss.deathCost) {
+      atual.shares.push(boss.deathCost.share);
+      atual.segundos += boss.deathCost.seconds;
+    }
 
     atual.noites.push({
       date: noite.date,
@@ -455,6 +474,7 @@ for (const noite of history) {
       dps: boss.dps,
       deaths: boss.deaths ?? 0,
       share: boss.deathCost?.share ?? 0,
+      semVoce: boss.deathCost?.seconds ?? 0,
     });
 
     porBoss.set(chave, atual);
@@ -474,6 +494,7 @@ const bossABoss = [...porBoss.values()]
     dps: mediaDeLista(boss.dano),
     deaths: boss.deaths,
     share: mediaDeLista(boss.shares) ?? 0,
+    semVoce: boss.segundos,
     // Já tinha caído antes da ÚLTIMA noite em que a pessoa o enfrentou: é o
     // que separa a luta que se está aprendendo da que já se domina.
     farm: (() => {
@@ -623,7 +644,11 @@ const attendance = calculateAttendance(weeks, player.id);
           attackParts={attackParts}
           defenseDetail={defenseDetail}
           defenseContext={defenseContext}
-          healingParts={healingParts}
+          helpDetail={helpDetail}
+        interrupcoes={interrupcoes}
+          deathDetail={deathDetail}
+          nomeDoEncontro={Object.fromEntries(nomeDoBoss)}
+        healingParts={healingParts}
           funcao={ultimaNoite?.healing ? 'healer' : player.role === 'tank' ? 'tank' : 'dps'}
           regrasDoCore={regrasDoCore}
         />

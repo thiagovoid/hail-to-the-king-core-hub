@@ -511,7 +511,13 @@ async function main() {
     /** Tabelas das lutas de trash. Null quando o log não gravou trash. */
     trashTables: Awaited<ReturnType<WarcraftLogsProvider["fetchFightTables"]>> | null;
     /** Toda morte da noite, com a try em que aconteceu. */
-    deathEvents: Array<{ fight: number; targetID: number; timestamp: number }>;
+    deathEvents: Array<{
+      fight: number;
+      targetID: number;
+      timestamp: number;
+      /** O que deu o golpe final — dá causa à morte, não só hora. */
+      killingAbilityGameID?: number;
+    }>;
     /** Dano por ator em cada try, como pares (o arquivo bruto não guarda Map). */
     damagePerFight: Array<{ fightId: number; entries: Array<{ actorId: number; total: number }> }>;
     /**
@@ -819,6 +825,15 @@ async function main() {
         return rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome))?.id;
       };
 
+      /** id da habilidade inimiga -> nome, pra morte ter causa e não só hora. */
+      const nomeDaHabilidadeInimiga = new Map<number, string>();
+      for (const alvo of ctx.damageTaken ?? []) {
+        for (const habilidade of (alvo as { abilities?: Array<{ guid: number; name: string }> })
+          .abilities ?? []) {
+          if (habilidade.guid && habilidade.name) nomeDaHabilidadeInimiga.set(habilidade.guid, habilidade.name);
+        }
+      }
+
       const detalhePorAtor = buildNightDetail(
         ctx.raidFights.map((fight) => ({
           id: fight.id,
@@ -831,13 +846,21 @@ async function main() {
           endTime: fight.endTime,
           friendlyPlayers: fight.friendlyPlayers ?? [],
         })),
-        ctx.deathEvents,
+        // A morte vem com o id de quem deu o golpe final; buildNightDetail
+        // espera o campo com o nome dele.
+        ctx.deathEvents.map((morte) => ({
+          ...morte,
+          abilityGameID: morte.killingAbilityGameID,
+        })),
         new Map(
           ctx.damagePerFight.map((luta) => [
             luta.fightId,
             new Map(luta.entries.map((entrada) => [entrada.actorId, entrada.total])),
           ])
-        )
+        ),
+        // O nome do que matou sai da tabela de dano RECEBIDO pelo raide: é a
+        // única fonte no bruto que traduz o id da habilidade inimiga.
+        (abilityGameID) => nomeDaHabilidadeInimiga.get(abilityGameID)
       );
 
       const detalhePorJogador = new Map<string, DetalheDaNoite>();
