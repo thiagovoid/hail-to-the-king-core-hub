@@ -1,0 +1,136 @@
+---
+/**
+ * O portão de preparação.
+ *
+ * Preparação era uma DIMENSÃO do Score, valendo 10 a 15 pontos. Isso
+ * convertia uma falha binária — trouxe ou não trouxe — em alguns pontos que
+ * as outras dimensões compensavam: dava pra falhar em 8 de 8 noites e ainda
+ * tirar 87.
+ *
+ * Aqui não tem nota, não tem meia-entrada e não tem compensação. Ou está
+ * pronto, ou falta alguma coisa e a tela diz qual.
+ *
+ * É também a cobrança mais justa que existe: não depende de habilidade, de
+ * spec, de boss nem de sorte. Só de ter comprado antes de entrar.
+ */
+interface Props {
+  /** Encantos e gemas faltando, peça a peça. */
+  slots?: Array<{ slot: number; label: string; tipo: 'encanto' | 'gema'; ok: boolean }>;
+  /** Tudo que o ready check flagrou — inclui consumíveis. */
+  faltando?: string[];
+  /** A noite medida, pra nota ser rastreável. */
+  nightDate?: string | null;
+}
+
+const { slots = [], faltando = [], nightDate = null } = Astro.props;
+
+/** O que vem do ready check e não é peça de equipamento. */
+const CONSUMIVEIS = ['Poção', 'Flask/comida', 'Pedra de vida'];
+
+const consumiveisFaltando = faltando.filter((item) => CONSUMIVEIS.includes(item));
+const pecasFaltando = slots.filter((peca) => !peca.ok);
+
+// Sem slots coletados, o que sobra é a lista de nomes do ready check.
+const semSlots = slots.length === 0;
+const equipamentoFaltando = semSlots
+  ? faltando.filter((item) => !CONSUMIVEIS.includes(item))
+  : pecasFaltando.map((peca) => `${peca.label} (${peca.tipo})`);
+
+const pronto = consumiveisFaltando.length === 0 && equipamentoFaltando.length === 0;
+
+const formatarNoite = (iso: string) => {
+  const [ano, mes, dia] = iso.split('-');
+  return `${dia}/${mes}/${ano}`;
+};
+---
+
+<section class="mb-10">
+  <div class="mb-4">
+    <h2 class="text-xl font-bold text-white">Você chegou pronto?</h2>
+    <p class="text-sm text-slate-400 mt-1 leading-relaxed">
+      Não é nota, é porta: ou está pronto, ou falta alguma coisa. Nada aqui compensa nada — é a
+      única parte da sua ficha que não depende de habilidade, de spec nem de boss, só de ter
+      comprado antes de entrar.
+    </p>
+    <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+      E o motivo de cobrarmos isso não é o percentual de dano.
+      <span class="text-slate-300">
+        É sinal de intenção: um grupo onde todo mundo flaska é um grupo que decidiu tentar. Isso é
+        cultura, não performance.
+      </span>
+    </p>
+  </div>
+
+  <div
+    class={`rounded-xl border p-5 ${
+      pronto ? 'bg-emerald-500/5 border-emerald-500/25' : 'bg-slate-900/60 border-slate-800'
+    }`}
+  >
+    <div class="flex items-center gap-3 mb-1">
+      <span
+        class={`inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold ${
+          pronto ? 'bg-emerald-500/15 text-emerald-400' : 'bg-amber-500/15 text-amber-400'
+        }`}
+        aria-hidden="true"
+      >
+        {pronto ? '✓' : '!'}
+      </span>
+
+      <p class={`text-base font-bold ${pronto ? 'text-emerald-400' : 'text-amber-400'}`}>
+        {pronto ? 'Pronto' : 'Faltou coisa'}
+      </p>
+
+      {nightDate && (
+        <span class="text-[11px] text-slate-600 ml-auto">Noite de {formatarNoite(nightDate)}</span>
+      )}
+    </div>
+
+    {
+      pronto ? (
+        <p class="text-sm text-slate-400 mt-2">
+          Encantos, gemas e consumíveis todos no lugar. É assim que se chega.
+        </p>
+      ) : (
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Separados porque a resposta é diferente: encanto e gema são compra
+              única e resolvem fora da raide; consumível é toda semana. */}
+          <div>
+            <p class="text-[11px] uppercase tracking-wide text-slate-500 mb-2">
+              Equipamento — compra única
+            </p>
+            {equipamentoFaltando.length === 0 ? (
+              <p class="text-xs text-emerald-400">Tudo encantado e engemado.</p>
+            ) : (
+              <ul class="space-y-1">
+                {equipamentoFaltando.map((item) => (
+                  <li class="text-xs text-slate-300 flex gap-2">
+                    <span class="text-amber-500/60" aria-hidden="true">○</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div>
+            <p class="text-[11px] uppercase tracking-wide text-slate-500 mb-2">
+              Consumíveis — toda noite
+            </p>
+            {consumiveisFaltando.length === 0 ? (
+              <p class="text-xs text-emerald-400">Flask, comida e poção no lugar.</p>
+            ) : (
+              <ul class="space-y-1">
+                {consumiveisFaltando.map((item) => (
+                  <li class="text-xs text-slate-300 flex gap-2">
+                    <span class="text-amber-500/60" aria-hidden="true">○</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

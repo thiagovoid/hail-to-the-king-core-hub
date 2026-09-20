@@ -448,7 +448,7 @@ export const TETO_DA_SUB_NOTA = 115;
  * Com 0,4, passar MUITO da meta rende, passar um pouco quase não muda, e a
  * ordem de quem está acima da régua volta a aparecer sem levantar o chão.
  */
-export const COMPRESSAO_DA_FOLGA = 0.4;
+export const COMPRESSAO_DA_FOLGA = 0.25;
 
 /**
  * Como `calculateGoalProgress`, mas deixa a sub-nota passar de 100.

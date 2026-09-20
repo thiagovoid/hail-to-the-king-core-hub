@@ -117,7 +117,7 @@ const dimensoesComDado = score.dimensions.filter(
     // aparece logo abaixo como "× 0,91". Dentro da conta ela virava uma
     // linha "0% × 52 = 0", que soma zero e sugere que a dimensão foi
     // zerada — justamente o contrário do que ela faz com a nota.
-    dimension.score !== null && dimension.key !== 'survival'
+    dimension.score !== null && dimension.key !== 'survival' && dimension.key !== 'preparation'
 );
 
 const contaDoScore = dimensoesComDado.map((dimension) => ({
@@ -136,6 +136,36 @@ const somaDosProdutos = contaDoScore.reduce((soma, linha) => soma + linha.produt
  * Null quando não há desconto nenhum — mostrar "× 1,00" só ocuparia espaço
  * pra dizer que nada aconteceu. Ver `fatorDeSobrevivencia`.
  */
+/**
+ * As dimensões na ordem em que importam PRA ESTA PESSOA, sem as que não são
+ * dela.
+ *
+ * Duas regras, as duas pedidas pelo core:
+ *
+ * 1. **Do maior peso pro menor.** A ordem era fixa pra todo mundo, então o
+ *    tanque via Parse (peso 10 pra ele) antes de Defender (peso 30). Quem lê
+ *    de cima pra baixo lia na ordem errada de importância.
+ * 2. **Dimensão que não é da spec não aparece.** "Curar —" na ficha de um
+ *    mago não informa nada: ele nunca vai curar. Peso zero E sem dado é o
+ *    par que identifica isso — Curar num healer tem peso, e Mecânicas sem
+ *    coleta tem peso, e as duas continuam aparecendo.
+ *
+ * Sobreviver fica por último de propósito, mesmo com peso zero: ela não é
+ * parcela, é o multiplicador que fecha a conta, e é nessa ordem que a conta
+ * acontece.
+ */
+const dimensoesVisiveis = [...score.dimensions]
+  // Preparação saiu da lista porque virou PORTÃO, com seção própria: ela não
+  // pontua mais, e uma linha de peso zero no meio das que pontuam faria
+  // parecer que ela conta um pouquinho.
+  .filter((dimension) => dimension.key !== "preparation")
+  .filter((dimension) => dimension.weight > 0 || dimension.value !== null)
+  .sort((a, b) => {
+    if (a.key === 'survival') return 1;
+    if (b.key === 'survival') return -1;
+    return b.weight - a.weight;
+  });
+
 const dimensaoDeSobreviver = score.dimensions.find((d) => d.key === "survival");
 const descontoDeSobrevivencia =
   score.survivalFactor !== null && score.survivalFactor < 1 && dimensaoDeSobreviver?.value !== null
@@ -304,7 +334,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 
     <div class="space-y-3">
       {
-        score.dimensions.map((dimension) => {
+        dimensoesVisiveis.map((dimension) => {
           const detalhe = detalheDaDimensao[dimension.key];
 
           // Quem não tem o que detalhar não vira <details>: seta sem conteúdo

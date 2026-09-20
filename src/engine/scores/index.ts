@@ -113,9 +113,9 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
  * `fatorDeSobrevivencia`.
  */
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
-  dps: { parse: 30, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 10, preparation: 10 },
-  tank: { parse: 10, mechanics: 25, attack: 10, defense: 30, healing: 0, survival: 0, help: 10, preparation: 15 },
-  healer: { parse: 15, mechanics: 25, attack: 5, defense: 5, healing: 30, survival: 0, help: 10, preparation: 10 },
+  dps: { parse: 35, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 15, preparation: 0 },
+  tank: { parse: 10, mechanics: 25, attack: 10, defense: 40, healing: 0, survival: 0, help: 15, preparation: 0 },
+  healer: { parse: 15, mechanics: 25, attack: 5, defense: 5, healing: 35, survival: 0, help: 15, preparation: 0 },
 };
 
 /**

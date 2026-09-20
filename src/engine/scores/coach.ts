@@ -206,9 +206,12 @@ function acharAvanco(
 
 /** O ponto mais forte da noite, pra quando nada mudou (regra 6). */
 function acharDestaque(score: OverallPerformanceScore): PontoPositivo | null {
+  // Só parcelas. Sobreviver é multiplicador e Preparação virou portão: as
+  // duas têm peso zero, e as duas cravam nota alta com facilidade — deixá-las
+  // concorrer faria o coach elogiar a mesma coisa toda semana.
   const comNota = score.dimensions.filter(
     (d): d is ScoreDimension & { score: number; value: number } =>
-      d.score !== null && d.value !== null
+      d.score !== null && d.value !== null && d.weight > 0
   );
 
   if (comNota.length === 0) return null;

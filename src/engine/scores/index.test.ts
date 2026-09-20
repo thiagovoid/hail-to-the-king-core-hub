@@ -58,8 +58,8 @@ describe("calculateOverallScore", () => {
   });
 
   it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
-    // Sem função informada, vale a régua de dps: parse 30 e mecânicas 25 têm
-    // dado → denominador 55.
+    // Sem função informada, vale a régua de dps: parse 35 e mecânicas 25 têm
+    // dado → denominador 60.
     const result = calculateOverallScore(
       { playerId: "voidwar", parse: 60, mechanics: { errors: 4 }, deaths: 0 },
       TARGETS
@@ -67,8 +67,8 @@ describe("calculateOverallScore", () => {
 
     expect(dimension(result, "attack")?.score).toBeNull();
     expect(dimension(result, "preparation")?.score).toBeNull();
-    // (100*30 + 50*25) / 55 = 77,27 → 77
-    expect(result.overall).toBe(77);
+    // (100*35 + 50*25) / 60 = 79,16 → 79
+    expect(result.overall).toBe(79);
   });
 
   /**
@@ -156,11 +156,11 @@ describe("pesos por função", () => {
 
   it("dá o maior peso a Curar no healer", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "healer");
-    expect(peso(r, "healing")).toBe(30);
+    expect(peso(r, "healing")).toBe(35);
     expect(peso(r, "attack")).toBe(5);
   });
 
-  it("mantém Mecânicas em 25 nas três funções", () => {
+  it("mantém Mecânicas com o mesmo peso nas três funções", () => {
     for (const funcao of ["dps", "tank", "healer"] as const) {
       expect(peso(calculateOverallScore(base, TARGETS, funcao), "mechanics")).toBe(25);
     }
@@ -195,7 +195,7 @@ describe("pesos por função", () => {
   // Medi-la com a régua de dps daria peso 20 ao que ela não fez.
   it("mede como healer quem curou, mesmo cadastrado como dps", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "dps");
-    expect(peso(r, "healing")).toBe(30);
+    expect(peso(r, "healing")).toBe(35);
     expect(funcaoEfetiva({ ...base, healing: HEALING }, "dps")).toBe("healer");
   });
 

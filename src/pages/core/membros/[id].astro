@@ -18,6 +18,7 @@ import { contarConquistas } from '@/engine/guild/conquistas';
 import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
 import { aoSeuAlcance } from '@/engine/guild/aoSeuAlcance';
 import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
+import PortaoDePreparacao from '@/components/PortaoDePreparacao.astro';
 import {
   degrausDaMetrica,
   EXIGENCIA,
@@ -546,6 +547,14 @@ const attendance = calculateAttendance(weeks, player.id);
         />
       )
     }
+
+    {hasData && (
+      <PortaoDePreparacao
+        slots={ultimaNoite?.preparationSlots}
+        faltando={preparationMissing}
+        nightDate={ultimaNoite?.date ?? null}
+      />
+    )}
 
     {hasData && prontidao && (
       <CartaoDeProntidao prontidao={prontidao} noites={history.length} />
