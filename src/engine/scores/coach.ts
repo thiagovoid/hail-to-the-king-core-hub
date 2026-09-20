@@ -24,6 +24,7 @@
 
 import type { CorePerformanceTargets } from "../../types/index";
 import type { PlayerPerformance } from "../../types/performance";
+import { TETO_DE_APROVEITAMENTO, TETO_PADRAO } from "./ajudar";
 import {
   calculateOverallScore,
   type FuncaoDoJogador,
@@ -133,6 +134,20 @@ function comMetaEm(
     case "survival":
       return noite.deathCost
         ? { ...noite, deathCost: { ...noite.deathCost, share: targets.survival.target } }
+        : noite;
+    case "help":
+      // "Como ficaria se você tirasse da magia o que a meta pede": cada
+      // habilidade vai pra fração do teto DELA que corresponde à meta.
+      return noite.helpDetail
+        ? {
+            ...noite,
+            helpDetail: noite.helpDetail.map((habilidade) => ({
+              ...habilidade,
+              efficiency:
+                (TETO_DE_APROVEITAMENTO.get(habilidade.spellId) ?? TETO_PADRAO) *
+                (targets.help.target / 100),
+            })),
+          }
         : noite;
     case "preparation":
       return { ...noite, preparation: targets.preparation.target };
@@ -305,6 +320,25 @@ function acharCausa(
             causa: `Você cobriu ${numero(cobertura)}% do dano que cabia a você.`,
             acao: `Olhe quais mecânicas machucam o raide em bloco: é onde a cobertura se ganha de uma vez.`,
           };
+    }
+
+    case "help": {
+      const pior = [...(noite.helpDetail ?? [])].sort((a, b) => {
+        const tetoA = TETO_DE_APROVEITAMENTO.get(a.spellId) ?? TETO_PADRAO;
+        const tetoB = TETO_DE_APROVEITAMENTO.get(b.spellId) ?? TETO_PADRAO;
+        return a.efficiency / tetoA - b.efficiency / tetoB;
+      })[0];
+      if (!pior) return null;
+
+      const teto = TETO_DE_APROVEITAMENTO.get(pior.spellId) ?? TETO_PADRAO;
+
+      return {
+        nome: pior.name,
+        causa: `${pior.casts} uso${pior.casts === 1 ? "" : "s"} na noite — ${Math.round(
+          (pior.efficiency / teto) * 100
+        )}% do que essa magia costuma render.`,
+        acao: `Utilidade não aparece no seu dano nem na sua cura, e é o que o grupo sente primeiro quando falta. Combine antes do pull quem cobre o quê.`,
+      };
     }
 
     // Parse é SINTOMA, não causa (regra 2): ele é o resultado de atacar bem,

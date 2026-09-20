@@ -173,15 +173,22 @@ describe("buildCooldownUsage", () => {
   // Stun, silêncio, battle res e invocação de pet não são decisão de atacar
   // nem de se defender. Na primeira coleta real eles caíam em "ofensivo" por
   // descarte e afundavam a média.
-  it("deixa habilidade de utilidade fora da conta e do detalhe", () => {
+  /**
+   * A utilidade FICA na lista, porque é a matéria-prima de "Ajudar" — mas
+   * continua fora das médias de Atacar e Defender, que é o motivo pelo qual
+   * ela era descartada antes: um stun entrando na média ofensiva afundava a
+   * nota de quem usou o stun na hora certa.
+   */
+  it("mantém a utilidade na lista e fora da média ofensiva", () => {
     const [jogador] = buildCooldownUsage(
       [evento(5, AVATAR.spellId, 0), evento(5, STUN.spellId, 0)],
       janelas,
       catalogo
     );
 
-    expect(jogador.abilities.map((a) => a.spellId)).toEqual([AVATAR.spellId]);
+    expect(jogador.abilities.map((a) => a.spellId)).toContain(STUN.spellId);
     expect(jogador.offensive).toBe(15);
+    expect(jogador.abilities.find((a) => a.spellId === STUN.spellId)?.kind).toBe("utility");
   });
 
   it("informa o tempo de presença, que serve de denominador do uptime", () => {

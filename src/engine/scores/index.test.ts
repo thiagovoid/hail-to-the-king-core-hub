@@ -12,6 +12,7 @@ const TARGETS: CorePerformanceTargets = {
   attack: { target: 70, direction: "higher" },
   defense: { target: 60, direction: "higher" },
   healing: { target: 80, direction: "higher" },
+  help: { target: 60, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
@@ -57,8 +58,8 @@ describe("calculateOverallScore", () => {
   });
 
   it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
-    // Sem função informada, vale a régua de dps: parse 35 e mecânicas 25 têm
-    // dado → denominador 60.
+    // Sem função informada, vale a régua de dps: parse 30 e mecânicas 25 têm
+    // dado → denominador 55.
     const result = calculateOverallScore(
       { playerId: "voidwar", parse: 60, mechanics: { errors: 4 }, deaths: 0 },
       TARGETS
@@ -66,8 +67,8 @@ describe("calculateOverallScore", () => {
 
     expect(dimension(result, "attack")?.score).toBeNull();
     expect(dimension(result, "preparation")?.score).toBeNull();
-    // (100*35 + 50*25) / 60 = 79.16 → 79
-    expect(result.overall).toBe(79);
+    // (100*30 + 50*25) / 55 = 77,27 → 77
+    expect(result.overall).toBe(77);
   });
 
   /**
@@ -86,6 +87,7 @@ describe("calculateOverallScore", () => {
       "defense",
       "healing",
       "survival",
+      "help",
       "preparation",
     ]);
     // Sem deathCost, Sobreviver não tem dado e o peso é redistribuído.
@@ -138,14 +140,18 @@ describe("pesos por função", () => {
 
   it("dá o maior peso a Defender no tank", () => {
     const r = calculateOverallScore(base, TARGETS, "tank");
-    expect(peso(r, "defense")).toBe(30);
-    expect(peso(r, "parse")).toBe(15);
+    const maior = Math.max(...r.dimensions.map((d) => d.weight));
+
+    expect(peso(r, "defense")).toBe(maior);
+    expect(peso(r, "parse")!).toBeLessThan(peso(r, "defense")!);
   });
 
   it("dá o maior peso a Parse no dps", () => {
     const r = calculateOverallScore(base, TARGETS, "dps");
-    expect(peso(r, "parse")).toBe(35);
-    expect(peso(r, "defense")).toBe(10);
+    const maior = Math.max(...r.dimensions.map((d) => d.weight));
+
+    expect(peso(r, "parse")).toBe(maior);
+    expect(peso(r, "defense")!).toBeLessThan(peso(r, "parse")!);
   });
 
   it("dá o maior peso a Curar no healer", () => {

@@ -9,16 +9,14 @@
           "playerId": "blackwatch",
           "dps": 45820,
           "parse": 29,
-          "preparation": 28,
+          "preparation": 31,
           "preparationMissing": [
             "Elmo",
             "Peito",
             "Pernas",
             "Botas",
             "Anel",
-            "Colar",
-            "Poção",
-            "Flask/comida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -167,6 +165,27 @@
               "efficiency": 91.7
             }
           ],
+          "help": {
+            "score": 17.3,
+            "abilities": 2,
+            "casts": 13
+          },
+          "helpDetail": [
+            {
+              "spellId": 47528,
+              "name": "Mind Freeze",
+              "casts": 6,
+              "efficiency": 2.1,
+              "categoria": "interromper"
+            },
+            {
+              "spellId": 61999,
+              "name": "Raise Ally",
+              "casts": 7,
+              "efficiency": 32.4,
+              "categoria": "levantar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -268,145 +287,14 @@
             "battleRez": 7,
             "battleRezRecebidos": 0
           },
-          "deaths": 4,
-          "mechanics": {
-            "errors": 3.1,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
-              "label": "The Twin Fangs'",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCloBol?insightId=3421-B",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 3
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Deadly Venom",
-              "label": "Peçonha Mortífera",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Anguished Echoes",
-              "label": "Ecos Angustiados",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
-              "tries": 1
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Froth",
-              "label": "Espuma Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Elemental Patches",
-              "label": "Trecho de Fogo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-C",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 1
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            }
-          ]
+          "deaths": 4
         },
         {
           "playerId": "apocalipse",
           "dps": 33022,
           "parse": 9,
           "itemLevel": 288,
-          "preparation": 29,
+          "preparation": 0,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -415,8 +303,7 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar",
-            "Flask/comida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -573,6 +460,27 @@
               "efficiency": 97.2
             }
           ],
+          "help": {
+            "score": 0.8,
+            "abilities": 2,
+            "casts": 4
+          },
+          "helpDetail": [
+            {
+              "spellId": 853,
+              "name": "Hammer of Justice",
+              "casts": 1,
+              "efficiency": 0.3,
+              "categoria": "controlar"
+            },
+            {
+              "spellId": 96231,
+              "name": "Rebuke",
+              "casts": 3,
+              "efficiency": 1.2,
+              "categoria": "interromper"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -674,97 +582,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 4,
-          "mechanics": {
-            "errors": 1.6,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
-              "label": "The Twin Fangs'",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCloBol?insightId=3421-B",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Soul Transfer",
-              "label": "Transferência de Alma",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Wave",
-              "label": "Onda Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-0",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Elemental Patches",
-              "label": "Trecho de Fogo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-C",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Frostfire Volley",
-              "label": "10 yds",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-Q",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 1
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 1
-            }
-          ]
+          "deaths": 4
         },
         {
           "playerId": "voidsurge",
           "hps": 126969,
           "parse": 41,
           "itemLevel": 287,
-          "preparation": 54,
+          "preparation": 100,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -885,6 +710,41 @@
               "efficiency": 72.5
             }
           ],
+          "help": {
+            "score": 21.5,
+            "abilities": 4,
+            "casts": 21
+          },
+          "helpDetail": [
+            {
+              "spellId": 57994,
+              "name": "Wind Shear",
+              "casts": 2,
+              "efficiency": 0.7,
+              "categoria": "interromper"
+            },
+            {
+              "spellId": 51485,
+              "name": "Earthgrab Totem",
+              "casts": 2,
+              "efficiency": 1.6,
+              "categoria": "controlar"
+            },
+            {
+              "spellId": 192077,
+              "name": "Wind Rush Totem",
+              "casts": 9,
+              "efficiency": 27.3,
+              "categoria": "acelerar"
+            },
+            {
+              "spellId": 32182,
+              "name": "Heroism",
+              "casts": 8,
+              "efficiency": 56.4,
+              "categoria": "acelerar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -991,117 +851,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 5,
-          "mechanics": {
-            "errors": 2.2,
-            "tries": 10
-          },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
-          ],
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 3
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 2
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 2
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Wave",
-              "label": "Onda Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-0",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Froth",
-              "label": "Espuma Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Elemental Patches",
-              "label": "Trecho de Fogo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-C",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 1
-            }
-          ]
+          "deaths": 5
         },
         {
           "playerId": "kams",
           "hps": 156613,
           "parse": 92,
           "itemLevel": 294,
-          "preparation": 11,
+          "preparation": 0,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1110,10 +867,7 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1270,6 +1024,20 @@
               "efficiency": 53.3
             }
           ],
+          "help": {
+            "score": 13.1,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 391054,
+              "name": "Intercession",
+              "casts": 1,
+              "efficiency": 13.1,
+              "categoria": "levantar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -1376,124 +1144,14 @@
             "battleRez": 1,
             "battleRezRecebidos": 2
           },
-          "deaths": 5,
-          "mechanics": {
-            "errors": 2.3,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 3
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Froth",
-              "label": "Espuma Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Elemental Patches",
-              "label": "Trecho de Fogo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-C",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Corrosive Spit",
-              "label": "Cuspe Corrosivo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVenEme?insightId=3421-C",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Deadly Venom",
-              "label": "Peçonha Mortífera",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 1
-            }
-          ]
+          "deaths": 5
         },
         {
           "playerId": "bustgril",
           "dps": 69041,
           "parse": 28,
           "itemLevel": 290,
-          "preparation": 71,
+          "preparation": 75,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
@@ -1627,6 +1285,27 @@
               "efficiency": 54.7
             }
           ],
+          "help": {
+            "score": 6.6,
+            "abilities": 2,
+            "casts": 5
+          },
+          "helpDetail": [
+            {
+              "spellId": 2139,
+              "name": "Counterspell",
+              "casts": 3,
+              "efficiency": 2,
+              "categoria": "interromper"
+            },
+            {
+              "spellId": 80353,
+              "name": "Time Warp",
+              "casts": 2,
+              "efficiency": 11.1,
+              "categoria": "acelerar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -1727,111 +1406,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 7,
-          "mechanics": {
-            "errors": 1.8,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 3
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Wave",
-              "label": "Onda Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-0",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Froth",
-              "label": "Espuma Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            }
-          ]
+          "deaths": 7
         },
         {
           "playerId": "hysillens",
           "dps": 95710,
           "parse": 38,
           "itemLevel": 300,
-          "preparation": 82,
+          "preparation": 71,
           "preparationMissing": [
             "Elmo",
             "Arma",
@@ -1957,6 +1539,20 @@
               "efficiency": 43
             }
           ],
+          "help": {
+            "score": 0.5,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 30283,
+              "name": "Shadowfury",
+              "casts": 1,
+              "efficiency": 0.5,
+              "categoria": "controlar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -2057,104 +1653,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
-          "deaths": 6,
-          "mechanics": {
-            "errors": 2,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 3
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 2
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 1
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 1
-            }
-          ]
+          "deaths": 6
         },
         {
           "playerId": "kroline",
           "dps": 96335,
           "parse": 40,
           "itemLevel": 302,
-          "preparation": 89,
+          "preparation": 94,
           "preparationMissing": [
             "Botas"
           ],
@@ -2288,6 +1794,27 @@
               "efficiency": 54.9
             }
           ],
+          "help": {
+            "score": 43.4,
+            "abilities": 2,
+            "casts": 51
+          },
+          "helpDetail": [
+            {
+              "spellId": 32375,
+              "name": "Mass Dispel",
+              "casts": 1,
+              "efficiency": 3.3,
+              "categoria": "socorrer"
+            },
+            {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 50,
+              "efficiency": 83.5,
+              "categoria": "acelerar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -2388,111 +1915,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 6,
-          "mechanics": {
-            "errors": 1.4,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Elemental Patches",
-              "label": "Trecho de Fogo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-C",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Frostfire Volley",
-              "label": "10 yds",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-R",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 1
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 1
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Corrosive Spit",
-              "label": "Cuspe Corrosivo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVenEme?insightId=3421-C",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            }
-          ]
+          "deaths": 6
         },
         {
           "playerId": "jrxamã",
           "dps": 132510,
           "parse": 76,
           "itemLevel": 308,
-          "preparation": 84,
+          "preparation": 100,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -2614,6 +2044,34 @@
               "efficiency": 28.1
             }
           ],
+          "help": {
+            "score": 3.8,
+            "abilities": 3,
+            "casts": 10
+          },
+          "helpDetail": [
+            {
+              "spellId": 57994,
+              "name": "Wind Shear",
+              "casts": 6,
+              "efficiency": 2,
+              "categoria": "interromper"
+            },
+            {
+              "spellId": 32182,
+              "name": "Heroism",
+              "casts": 1,
+              "efficiency": 2.9,
+              "categoria": "acelerar"
+            },
+            {
+              "spellId": 192077,
+              "name": "Wind Rush Totem",
+              "casts": 3,
+              "efficiency": 6.4,
+              "categoria": "acelerar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -2714,98 +2172,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 5,
-          "mechanics": {
-            "errors": 1.6,
-            "tries": 10
-          },
-          "preparationMissingGear": [],
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 3
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Wave",
-              "label": "Onda Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-0",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Elemental Patches",
-              "label": "Trecho de Fogo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-C",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Corrosive Spit",
-              "label": "Cuspe Corrosivo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVenEme?insightId=3421-C",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 1
-            }
-          ]
+          "deaths": 5
         },
         {
           "playerId": "heracranosx",
           "dps": 90383,
           "parse": 37,
           "itemLevel": 305,
-          "preparation": 61,
+          "preparation": 39,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -2951,6 +2325,20 @@
               "efficiency": 66.6
             }
           ],
+          "help": {
+            "score": 0.4,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 183752,
+              "name": "Disrupt",
+              "casts": 1,
+              "efficiency": 0.4,
+              "categoria": "interromper"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -3051,89 +2439,13 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 4,
-          "mechanics": {
-            "errors": 1.6,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Corrosive Spit",
-              "label": "Cuspe Corrosivo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVenEme?insightId=3421-C",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Soul Transfer",
-              "label": "Transferência de Alma",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
-              "tries": 1
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Frostfire Volley",
-              "label": "10 yds",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-Q",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 1
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            }
-          ]
+          "deaths": 4
         },
         {
           "playerId": "gunst",
           "dps": 110671,
           "parse": 34,
-          "preparation": 72,
+          "preparation": 68,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -3277,6 +2589,20 @@
               "efficiency": 53.1
             }
           ],
+          "help": {
+            "score": 1,
+            "abilities": 1,
+            "casts": 3
+          },
+          "helpDetail": [
+            {
+              "spellId": 57994,
+              "name": "Wind Shear",
+              "casts": 3,
+              "efficiency": 1,
+              "categoria": "interromper"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -3377,110 +2703,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 5,
-          "mechanics": {
-            "errors": 1.7,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 3
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Soul Transfer",
-              "label": "Transferência de Alma",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
-              "tries": 1
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Wave",
-              "label": "Onda Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-0",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Froth",
-              "label": "Espuma Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Elemental Patches",
-              "label": "Trecho de Fogo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpFroVol?insightId=3497-C",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Deadly Venom",
-              "label": "Peçonha Mortífera",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 1
-            }
-          ]
+          "deaths": 5
         },
         {
           "playerId": "nerlock",
           "dps": 41759,
           "parse": 6,
           "itemLevel": 279,
-          "preparation": 10,
+          "preparation": 0,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -3489,10 +2719,7 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -3725,104 +2952,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
-          "deaths": 8,
-          "mechanics": {
-            "errors": 1.9,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 3
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 3
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Damage from Raging Crosswinds",
-              "label": "Ventos Contrários Enfurecidos",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Corrosive Spit",
-              "label": "Cuspe Corrosivo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVenEme?insightId=3421-C",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Soul Transfer",
-              "label": "Transferência de Alma",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Wave",
-              "label": "Onda Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-0",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Froth",
-              "label": "Espuma Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            }
-          ]
+          "deaths": 8
         },
         {
           "playerId": "xúliodk",
           "dps": 78739,
           "parse": 28,
           "itemLevel": 295,
-          "preparation": 88,
+          "preparation": 93,
           "preparationMissing": [
             "Botas"
           ],
@@ -3962,6 +3099,34 @@
               "efficiency": 60.3
             }
           ],
+          "help": {
+            "score": 2.2,
+            "abilities": 3,
+            "casts": 4
+          },
+          "helpDetail": [
+            {
+              "spellId": 47528,
+              "name": "Mind Freeze",
+              "casts": 1,
+              "efficiency": 0.4,
+              "categoria": "interromper"
+            },
+            {
+              "spellId": 207167,
+              "name": "Blinding Sleet",
+              "casts": 1,
+              "efficiency": 0.7,
+              "categoria": "controlar"
+            },
+            {
+              "spellId": 61999,
+              "name": "Raise Ally",
+              "casts": 2,
+              "efficiency": 5.4,
+              "categoria": "levantar"
+            }
+          ],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -4062,110 +3227,7 @@
             "battleRez": 2,
             "battleRezRecebidos": 2
           },
-          "deaths": 6,
-          "mechanics": {
-            "errors": 2,
-            "tries": 10
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 3
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Splinters",
-              "label": "Throw Junk",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-L",
-              "tries": 2
-            },
-            {
-              "boss": "Sszorak",
-              "mechanic": "Debuffs of Tempest",
-              "label": "Tempestade",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakTempe?insightId=3420-T",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 2
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 2
-            },
-            {
-              "boss": "Nek'zali, a Espiral de Almas",
-              "mechanic": "Damage from Latent Cultist",
-              "label": "Sectário Latente",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
-              "tries": 1
-            },
-            {
-              "boss": "Sentinelas Sepultados",
-              "mechanic": "Damage from Toxic Droplets",
-              "label": "Gotículas Tóxicas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
-              "tries": 1
-            },
-            {
-              "boss": "Vashnik, o Maligno",
-              "mechanic": "Damage from Plague Froth",
-              "label": "Espuma Pestilenta",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Damage from Throw Junk",
-              "label": "Arremessar Sucata",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpThrJun?insightId=3497-J",
-              "tries": 1
-            },
-            {
-              "boss": "Os Exploradores Perdidos",
-              "mechanic": "Debuffs of Shell Spin",
-              "label": "Stunned",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-lost-explorers/losexpSheSpi?insightId=3497-N",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Deadly Venom",
-              "label": "Peçonha Mortífera",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Vile Flood",
-              "label": "Vexhaul's",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
-              "tries": 1
-            }
-          ]
+          "deaths": 6
         }
       ]
     },
@@ -4177,17 +3239,14 @@
           "playerId": "blackwatch",
           "dps": 3994,
           "itemLevel": 303,
-          "preparation": 23,
+          "preparation": 31,
           "preparationMissing": [
             "Elmo",
             "Peito",
             "Pernas",
             "Botas",
             "Anel",
-            "Colar",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -4324,6 +3383,20 @@
               "efficiency": 90.2
             }
           ],
+          "help": {
+            "score": 2.5,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 47528,
+              "name": "Mind Freeze",
+              "casts": 1,
+              "efficiency": 2.5,
+              "categoria": "interromper"
+            }
+          ],
           "offRole": {
             "dps": 20583,
             "hps": 54982
@@ -4362,47 +3435,13 @@
               "role": "tank"
             }
           ],
-          "deaths": 6,
-          "mechanics": {
-            "errors": 1.3,
-            "tries": 6
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 1
-            }
-          ]
+          "deaths": 6
         },
         {
           "playerId": "apocalipse",
           "dps": 20536,
           "itemLevel": 292,
-          "preparation": 21,
+          "preparation": 0,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -4411,9 +3450,7 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar",
-            "Flask/comida",
-            "Poção"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -4570,6 +3607,20 @@
               "efficiency": 97.6
             }
           ],
+          "help": {
+            "score": 13,
+            "abilities": 1,
+            "casts": 9
+          },
+          "helpDetail": [
+            {
+              "spellId": 853,
+              "name": "Hammer of Justice",
+              "casts": 9,
+              "efficiency": 13,
+              "categoria": "controlar"
+            }
+          ],
           "offRole": {
             "dps": 20536,
             "hps": 36097
@@ -4615,47 +3666,13 @@
             "battleRez": 0,
             "battleRezRecebidos": 6
           },
-          "deaths": 16,
-          "mechanics": {
-            "errors": 1.3,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 8
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 6
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 1
-            }
-          ]
+          "deaths": 16
         },
         {
           "playerId": "voidsurge",
           "hps": 61682,
           "itemLevel": 287,
-          "preparation": 43,
+          "preparation": 100,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -4770,6 +3787,27 @@
               "efficiency": 52
             }
           ],
+          "help": {
+            "score": 16,
+            "abilities": 2,
+            "casts": 10
+          },
+          "helpDetail": [
+            {
+              "spellId": 57994,
+              "name": "Wind Shear",
+              "casts": 1,
+              "efficiency": 0.4,
+              "categoria": "interromper"
+            },
+            {
+              "spellId": 192077,
+              "name": "Wind Rush Totem",
+              "casts": 9,
+              "efficiency": 31.6,
+              "categoria": "acelerar"
+            }
+          ],
           "healing": {
             "score": 67.9,
             "coverage": 9.1,
@@ -4820,58 +3858,11 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 18,
-          "mechanics": {
-            "errors": 1.9,
-            "tries": 14
-          },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
-          ],
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 10
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 6
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 2
-            }
-          ]
+          "deaths": 18
         },
         {
           "playerId": "kams",
-          "preparation": 2,
+          "preparation": 0,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -4880,10 +3871,7 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar",
-            "Flask/comida",
-            "Poção",
-            "Pedra de vida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5003,6 +3991,20 @@
               "efficiency": 30.9
             }
           ],
+          "help": {
+            "score": 26.8,
+            "abilities": 1,
+            "casts": 6
+          },
+          "helpDetail": [
+            {
+              "spellId": 391054,
+              "name": "Intercession",
+              "casts": 6,
+              "efficiency": 26.8,
+              "categoria": "levantar"
+            }
+          ],
           "healing": {
             "score": 71.9,
             "coverage": 12.4,
@@ -5054,54 +4056,17 @@
             "battleRez": 6,
             "battleRezRecebidos": 0
           },
-          "deaths": 14,
-          "mechanics": {
-            "errors": 0.9,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 6
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 1
-            }
-          ]
+          "deaths": 14
         },
         {
           "playerId": "cowsadeer",
           "hps": 173200,
           "itemLevel": 305,
-          "preparation": 30,
+          "preparation": 58,
           "preparationMissing": [
             "Pernas",
             "Botas",
-            "Anel",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
+            "Anel"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5229,6 +4194,27 @@
               "efficiency": 71.8
             }
           ],
+          "help": {
+            "score": 6.2,
+            "abilities": 2,
+            "casts": 7
+          },
+          "helpDetail": [
+            {
+              "spellId": 391054,
+              "name": "Intercession",
+              "casts": 1,
+              "efficiency": 3.4,
+              "categoria": "levantar"
+            },
+            {
+              "spellId": 853,
+              "name": "Hammer of Justice",
+              "casts": 6,
+              "efficiency": 8.9,
+              "categoria": "controlar"
+            }
+          ],
           "healing": {
             "score": 83.5,
             "coverage": 25.7,
@@ -5279,54 +4265,18 @@
             "battleRez": 1,
             "battleRezRecebidos": 0
           },
-          "deaths": 12,
-          "mechanics": {
-            "errors": 0.9,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 1
-            }
-          ]
+          "deaths": 12
         },
         {
           "playerId": "bustgril",
           "dps": 56132,
           "itemLevel": 296,
-          "preparation": 53,
+          "preparation": 75,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
             "Pernas",
-            "Botas",
-            "Flask/comida",
-            "Pedra de vida"
+            "Botas"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5461,6 +4411,20 @@
               "efficiency": 49.8
             }
           ],
+          "help": {
+            "score": 2.9,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 80353,
+              "name": "Time Warp",
+              "casts": 1,
+              "efficiency": 2.9,
+              "categoria": "acelerar"
+            }
+          ],
           "offRole": {
             "hps": 3588
           },
@@ -5505,60 +4469,17 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
-          "deaths": 16,
-          "mechanics": {
-            "errors": 1.9,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 9
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 9
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 2
-            }
-          ]
+          "deaths": 16
         },
         {
           "playerId": "hysillens",
           "dps": 46410,
           "itemLevel": 300,
-          "preparation": 43,
+          "preparation": 71,
           "preparationMissing": [
             "Elmo",
             "Arma",
-            "Colar",
-            "Poção",
-            "Flask/comida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5680,6 +4601,20 @@
               "efficiency": 27.3
             }
           ],
+          "help": {
+            "score": 13.9,
+            "abilities": 1,
+            "casts": 3
+          },
+          "helpDetail": [
+            {
+              "spellId": 20707,
+              "name": "Soulstone",
+              "casts": 3,
+              "efficiency": 13.9,
+              "categoria": "levantar"
+            }
+          ],
           "offRole": {
             "hps": 8854
           },
@@ -5724,68 +4659,13 @@
             "battleRez": 3,
             "battleRezRecebidos": 1
           },
-          "deaths": 15,
-          "mechanics": {
-            "errors": 2.3,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 8
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 7
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Soul Sever",
-              "label": "Cisão Anímica",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSouSev?insightId=3429-3",
-              "tries": 2
-            }
-          ]
+          "deaths": 15
         },
         {
           "playerId": "kroline",
           "dps": 80755,
           "itemLevel": 306,
-          "preparation": 77,
+          "preparation": 81,
           "preparationMissing": [
             "Pernas",
             "Botas",
@@ -5923,6 +4803,20 @@
               "efficiency": 18.7
             }
           ],
+          "help": {
+            "score": 81.6,
+            "abilities": 1,
+            "casts": 44
+          },
+          "helpDetail": [
+            {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 44,
+              "efficiency": 81.6,
+              "categoria": "acelerar"
+            }
+          ],
           "offRole": {
             "hps": 14189
           },
@@ -5967,68 +4861,13 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 15,
-          "mechanics": {
-            "errors": 1.4,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Soul Sever",
-              "label": "Cisão Anímica",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSouSev?insightId=3429-3",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 1
-            }
-          ]
+          "deaths": 15
         },
         {
           "playerId": "jrxamã",
           "dps": 89154,
           "itemLevel": 310,
-          "preparation": 65,
+          "preparation": 100,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -6150,6 +4989,27 @@
               "efficiency": 8.4
             }
           ],
+          "help": {
+            "score": 4.9,
+            "abilities": 2,
+            "casts": 5
+          },
+          "helpDetail": [
+            {
+              "spellId": 32182,
+              "name": "Heroism",
+              "casts": 1,
+              "efficiency": 2.3,
+              "categoria": "acelerar"
+            },
+            {
+              "spellId": 192058,
+              "name": "Capacitor Totem",
+              "casts": 4,
+              "efficiency": 7.5,
+              "categoria": "controlar"
+            }
+          ],
           "offRole": {
             "hps": 7195
           },
@@ -6194,68 +5054,18 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 17,
-          "mechanics": {
-            "errors": 1.2,
-            "tries": 14
-          },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Poção",
-            "Pedra de vida",
-            "Flask/comida"
-          ],
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 9
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Soul Sever",
-              "label": "Cisão Anímica",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSouSev?insightId=3429-3",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 1
-            }
-          ]
+          "deaths": 17
         },
         {
           "playerId": "heracranosx",
           "dps": 58545,
           "itemLevel": 305,
-          "preparation": 41,
+          "preparation": 39,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Botas",
-            "Anel",
-            "Pedra de vida",
-            "Flask/comida",
-            "Poção"
+            "Anel"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6402,6 +5212,20 @@
               "efficiency": 42.5
             }
           ],
+          "help": {
+            "score": 0.5,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 183752,
+              "name": "Disrupt",
+              "casts": 1,
+              "efficiency": 0.5,
+              "categoria": "interromper"
+            }
+          ],
           "offRole": {
             "hps": 13350
           },
@@ -6439,61 +5263,18 @@
               "role": "dps"
             }
           ],
-          "deaths": 14,
-          "mechanics": {
-            "errors": 1.4,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 8
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 8
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 1
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 1
-            }
-          ]
+          "deaths": 14
         },
         {
           "playerId": "gunst",
           "dps": 63774,
-          "preparation": 51,
+          "preparation": 77,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Cintura",
             "Botas",
-            "Braçadeiras",
-            "Flask/comida",
-            "Pedra de vida"
+            "Braçadeiras"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6673,68 +5454,13 @@
             "battleRez": 0,
             "battleRezRecebidos": 0
           },
-          "deaths": 15,
-          "mechanics": {
-            "errors": 1.6,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 6
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 1
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Soul Sever",
-              "label": "Cisão Anímica",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSouSev?insightId=3429-3",
-              "tries": 1
-            }
-          ]
+          "deaths": 15
         },
         {
           "playerId": "nerlock",
           "dps": 22825,
           "itemLevel": 286,
-          "preparation": 2,
+          "preparation": 0,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -6743,10 +5469,7 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar",
-            "Flask/comida",
-            "Poção",
-            "Pedra de vida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6917,65 +5640,14 @@
             "battleRez": 0,
             "battleRezRecebidos": 1
           },
-          "deaths": 15,
-          "mechanics": {
-            "errors": 1.4,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 5
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 4
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 1
-            }
-          ]
+          "deaths": 15
         },
         {
           "playerId": "xúlio",
-          "preparation": 48,
+          "preparation": 77,
           "preparationMissing": [
             "Pernas",
-            "Anel",
-            "Poção",
-            "Pedra de vida",
-            "Flask/comida"
+            "Anel"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -7101,6 +5773,27 @@
               "efficiency": 67.8
             }
           ],
+          "help": {
+            "score": 11.8,
+            "abilities": 2,
+            "casts": 12
+          },
+          "helpDetail": [
+            {
+              "spellId": 391054,
+              "name": "Intercession",
+              "casts": 2,
+              "efficiency": 9.7,
+              "categoria": "levantar"
+            },
+            {
+              "spellId": 853,
+              "name": "Hammer of Justice",
+              "casts": 10,
+              "efficiency": 13.9,
+              "categoria": "controlar"
+            }
+          ],
           "offRole": {
             "hps": 20926
           },
@@ -7149,63 +5842,19 @@
             "battleRez": 2,
             "battleRezRecebidos": 0
           },
-          "deaths": 12,
-          "mechanics": {
-            "errors": 1.6,
-            "tries": 14
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 10
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 8
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Gravebound",
-              "label": "Soul Fragments",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
-              "tries": 2
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Toxic Deluge",
-              "label": "Dilúvio Tóxico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
-              "tries": 1
-            }
-          ]
+          "deaths": 12
         },
         {
           "playerId": "dagom",
           "dps": 17460,
           "itemLevel": 300,
-          "preparation": 17,
+          "preparation": 19,
           "preparationMissing": [
             "Peito",
             "Pernas",
             "Botas",
             "Anel",
-            "Colar",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -7335,6 +5984,27 @@
               "efficiency": 36
             }
           ],
+          "help": {
+            "score": 7.2,
+            "abilities": 2,
+            "casts": 2
+          },
+          "helpDetail": [
+            {
+              "spellId": 853,
+              "name": "Hammer of Justice",
+              "casts": 1,
+              "efficiency": 3.2,
+              "categoria": "controlar"
+            },
+            {
+              "spellId": 391054,
+              "name": "Intercession",
+              "casts": 1,
+              "efficiency": 11.1,
+              "categoria": "levantar"
+            }
+          ],
           "offRole": {
             "hps": 10565
           },
@@ -7379,41 +6049,7 @@
             "battleRez": 1,
             "battleRezRecebidos": 1
           },
-          "deaths": 8,
-          "mechanics": {
-            "errors": 1.6,
-            "tries": 8
-          },
-          "mechanicsDetail": [
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Axegrinder",
-              "label": "Machadeiro Moedor",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtAxegri?insightId=3429-A",
-              "tries": 6
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Sever",
-              "label": "Arrancar",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSeve?insightId=3429-S",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Noxious Ground",
-              "label": "Terra Nóxia",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
-              "tries": 3
-            },
-            {
-              "boss": "O Altar Espiralado",
-              "mechanic": "Damage from Widow's Kiss",
-              "label": "50y",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
-              "tries": 1
-            }
-          ]
+          "deaths": 8
         }
       ]
     }

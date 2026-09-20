@@ -10,6 +10,7 @@ import { findParse } from "./reportRankings";
 import type { CooldownsDoJogador } from "./cooldownUsage";
 import type { BossMorto } from "./bossKills";
 import { buildAttack, calculateUptime } from "../../normalization/buildAttack";
+import { buildAjudar } from "../../normalization/buildAjudar";
 import { buildDefense, type DanoRecebido } from "../../normalization/buildDefense";
 import { buildHealing, calculateCobertura } from "../../normalization/buildHealing";
 import type { DetalheDaNoite } from "../../normalization/buildNightDetail";
@@ -499,6 +500,10 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       autoCura
     );
 
+    // "Ajudar": a mesma conta de recarga, sobre a lista curada de utilidade
+    // de grupo. Ausente quando a spec não tem nenhuma — ausente, não zero.
+    const ajuda = buildAjudar(cooldownsDoJogador);
+
     const danoDoRaideNoTempoDele =
       aggregateDurationMs > 0
         ? raidDamageTaken * (tempoNaLuta / aggregateDurationMs)
@@ -550,6 +555,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       ...(preparationMissing?.length ? { preparationMissingGear: preparationMissing } : {}),
       ...(ataque ? { attack: ataque.attack, attackDetail: ataque.attackDetail } : {}),
       ...(defesa ? { defense: defesa.defense, defenseDetail: defesa.defenseDetail } : {}),
+      ...(ajuda ? { help: ajuda.help, helpDetail: ajuda.helpDetail } : {}),
       ...(bossKillsByPlayer?.get(player.id)?.length
         ? { bossKills: bossKillsByPlayer.get(player.id) }
         : {}),

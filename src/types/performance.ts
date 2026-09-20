@@ -203,6 +203,34 @@ export interface PlayerPerformance {
     selfSustain?: number;
   };
 
+
+  /**
+   * "Ajudar" — o que você fez pelo GRUPO, 0-100.
+   *
+   * Tempo em que os seus cooldowns de utilidade de grupo ficaram em recarga,
+   * contra a recarga deles. Mesma conta de Atacar e Defender, e pela mesma
+   * razão: mede você contra você, nunca contra o raide. Ausente quando a
+   * spec não tem utilidade de grupo nenhuma — ausente, não zero.
+   */
+  help?: {
+    /** 0-100, média das eficiências. */
+    score: number;
+    /** Quantas magias de utilidade de grupo entraram na conta. */
+    abilities: number;
+    /** Usos somados na noite. Contexto, não nota. */
+    casts: number;
+  };
+
+  /** Magia a magia, da pior aproveitada pra melhor. */
+  helpDetail?: Array<{
+    spellId: number;
+    name: string;
+    casts: number;
+    /** 0-100: tempo em recarga sobre o tempo de luta. */
+    efficiency: number;
+    categoria: "acelerar" | "controlar" | "interromper" | "socorrer" | "levantar";
+  }>;
+
   /** Cooldown a cooldown, do pior aproveitado pro melhor. */
   defenseDetail?: Array<{
     spellId: number;

@@ -43,6 +43,11 @@
         "target": 80,
         "direction": "higher",
         "description": "Nota de cura: metade quinhão do dano coberto, metade aproveitamento. Calibrado sobre o log de 15/09, em que os quatro healers ficaram entre 81,6 e 85."
+      },
+      "help": {
+        "target": 60,
+        "direction": "higher",
+        "description": "Nota de utilidade de grupo: interromper, controlar adds, acelerar o raide, socorrer e levantar. Cada magia é medida contra o melhor aproveitamento já visto DELA na temporada, senão a nota mediria o kit — kick de 15s nunca fica em recarga a luta inteira, Power Infusion de 2min chega a 95%. Calibrado sobre as 92 noites-jogador com utilidade medida: mediana 54, quartis em 29 e 85."
       }
     },
     "nextRaid": {

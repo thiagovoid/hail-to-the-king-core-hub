@@ -26,6 +26,7 @@ import {
 } from "../../src/providers/wowhead/cooldownCatalog";
 import { fetchSpellCooldowns } from "../../src/providers/wowhead/spellTooltip";
 import type { DanoRecebido } from "../../src/normalization/buildDefense";
+import { RECARGA_DAS_INTERRUPCOES } from "../../src/normalization/buildAjudar";
 import {
   buildNightDetail,
   buildTrashShare,
@@ -718,10 +719,18 @@ async function main() {
       // Sem a participação no dano, uma habilidade situacional define a
       // nota: na coleta de 15/09 um jogador com 97% de uptime ficou com 52
       // porque o único "cooldown ofensivo" detectado foi um gap closer.
+      // As interrupções entram à mão porque o catálogo do Wowhead corta
+      // abaixo de 30s — e Kick tem 15s, Wind Shear 12s. Sem elas, "Ajudar"
+      // ficaria sem a utilidade que o core mais usa. Ver buildAjudar.
+      const comInterrupcoes = new Map([
+        ...catalogToMap(catalogo),
+        ...RECARGA_DAS_INTERRUPCOES,
+      ]);
+
       const usos = buildCooldownUsage(
         eventos,
         ctx.raidFights,
-        catalogToMap(catalogo),
+        comInterrupcoes,
         buildDamageShares(danoPorHabilidade)
       );
 

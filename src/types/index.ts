@@ -169,6 +169,8 @@ export interface CorePerformanceTargets {
   defense: CoreTarget;
   /** Nota de cura. Só se aplica a quem curou na noite. */
   healing: CoreTarget;
+  /** Nota de utilidade de grupo. Só se aplica a quem tem alguma. */
+  help: CoreTarget;
   /**
    * Máximo do tempo de luta passado morto ENQUANTO o raide ainda lutava.
    *

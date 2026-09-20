@@ -368,9 +368,10 @@ export function buildCooldownUsage(
           } satisfies UsoDeCooldown,
         };
       })
-      // Stun, silêncio, battle res e invocação de pet não são decisão de
-      // atacar nem de se defender, e entravam na média afundando a nota.
-      .filter(({ uso }) => uso.kind !== "utility")
+      // A utilidade CONTINUA fora das médias de Atacar e Defender (elas
+      // filtram por kind logo abaixo), mas agora fica na lista: stun,
+      // silêncio e battle res são a matéria-prima de "Ajudar", e antes eram
+      // descartados aqui antes de qualquer um poder lê-los.
       .filter(({ uso, magia }) => contaParaNota(uso, magia.cooldownMs, sharesDoJogador !== undefined))
       .map(({ uso }) => uso)
       .sort((a, b) => a.efficiency - b.efficiency);

@@ -1,6 +1,7 @@
 import type { PlayerPerformance } from "../../types/performance";
 import type { CorePerformanceTargets, CoreTarget } from "../../types/index";
 import { calculateGoalProgress } from "../metrics";
+import { notaDeAjudar } from "./ajudar";
 
 export type ScoreDimensionKey =
   | "parse"
@@ -9,6 +10,7 @@ export type ScoreDimensionKey =
   | "defense"
   | "healing"
   | "survival"
+  | "help"
   | "preparation";
 
 export interface ScoreDimension {
@@ -111,9 +113,9 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
  * `fatorDeSobrevivencia`.
  */
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
-  dps: { parse: 35, mechanics: 25, attack: 20, defense: 10, healing: 0, survival: 0, preparation: 10 },
-  tank: { parse: 15, mechanics: 25, attack: 15, defense: 30, healing: 0, survival: 0, preparation: 15 },
-  healer: { parse: 20, mechanics: 25, attack: 5, defense: 10, healing: 30, survival: 0, preparation: 10 },
+  dps: { parse: 30, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 10, preparation: 10 },
+  tank: { parse: 10, mechanics: 25, attack: 10, defense: 30, healing: 0, survival: 0, help: 10, preparation: 15 },
+  healer: { parse: 15, mechanics: 25, attack: 5, defense: 5, healing: 30, survival: 0, help: 10, preparation: 10 },
 };
 
 /**
@@ -183,6 +185,14 @@ const DIMENSION_META: Record<
       "Quanto do tempo de luta da noite você passou morto ENQUANTO o raide ainda lutava. Não é contagem de mortes: morrer três segundos antes do wipe custa três segundos, morrer no começo de uma luta de oito minutos custa oito minutos. Progressão de trezentas trys com call de wipe no fim sai perto de zero — resiliência não é punida, desperdício é.",
     source:
       "Warcraft Logs (eventos de morte, com a try em que aconteceram). Morte em try que virou kill aparece à parte: o boss caiu sem você.",
+  },
+  help: {
+    label: "Ajudar",
+    unit: "% do que a magia dá",
+    description:
+      "O que você fez pelo GRUPO: interromper, controlar adds, acelerar o raide, socorrer e levantar quem caiu. Cada magia é medida contra o melhor aproveitamento já visto DELA nesta temporada — um Kick de 15s nunca ficaria em recarga a luta inteira, e cobrar isso mediria o kit em vez da pessoa. Quem não tem utilidade de grupo não é medido por ela.",
+    source:
+      "Warcraft Logs (cada cast da noite) + Wowhead (recarga de cada magia), sobre uma lista curada de utilidade de grupo. Defensivo e cooldown de dano ficam de fora: já contam em Defender e Atacar.",
   },
   preparation: {
     label: "Preparação",
@@ -276,6 +286,14 @@ export function calculateOverallScore(
       target: targets.survival,
       value: performance.deathCost?.share ?? null,
       score: progress(performance.deathCost?.share, targets.survival),
+    },
+    {
+      key: "help",
+      ...DIMENSION_META.help,
+      weight: pesos.help,
+      target: targets.help,
+      value: notaDeAjudar(performance.helpDetail),
+      score: progress(notaDeAjudar(performance.helpDetail) ?? undefined, targets.help),
     },
     {
       key: "preparation",
