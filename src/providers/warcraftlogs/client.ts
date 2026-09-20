@@ -54,10 +54,37 @@ export async function wclGraphql<T = unknown>(
     body: JSON.stringify({ query, variables }),
   });
 
-  const json = (await response.json()) as { data: T; errors?: unknown };
+  /**
+   * O status HTTP vem ANTES do corpo, e por um motivo concreto.
+   *
+   * Sem esta checagem, estourar o limite de pontos devolvia um corpo sem
+   * `data` e sem `errors`, e o script morria três chamadas adiante com
+   * "Cannot read properties of undefined (reading 'worldData')" — um erro que
+   * não diz nada sobre o que aconteceu e manda procurar no lugar errado.
+   */
+  if (!response.ok) {
+    const corpo = await response.text();
+    const dica =
+      response.status === 429
+        ? " — limite de pontos da hora estourado. Espere a hora virar; ver COLETA.md."
+        : "";
+    throw new Error(
+      `WarcraftLogs respondeu ${response.status} ${response.statusText}${dica}\n${corpo.slice(0, 400)}`
+    );
+  }
+
+  const json = (await response.json()) as { data?: T; errors?: unknown };
 
   if (json.errors) {
     throw new Error(`Erro GraphQL do WarcraftLogs: ${JSON.stringify(json.errors)}`);
+  }
+
+  // Resposta 200 sem `data` e sem `errors` existe: é o que a WCL devolve em
+  // algumas falhas internas. Falhar aqui aponta pra chamada certa.
+  if (json.data === undefined) {
+    throw new Error(
+      `WarcraftLogs devolveu 200 sem dados nem erros. Query: ${query.slice(0, 120).replace(/\s+/g, " ")}`
+    );
   }
 
   return json.data;
