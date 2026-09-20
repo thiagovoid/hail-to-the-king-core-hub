@@ -308,9 +308,24 @@ export interface Boss {
    */
   pulls: number;
   /**
-   * Reports da WCL já somados em `pulls`, um por report. É o que torna o
-   * atualizador idempotente (o mesmo report visto de novo não conta duas
-   * vezes). Ausente em bosses cujos pulls foram contados à mão.
+   * Todos os pulls da temporada neste boss, inclusive os de farm depois da
+   * primeira kill.
+   *
+   * Complementa `pulls` em vez de substituí-lo: são duas perguntas legítimas
+   * e diferentes. "Quanto custou matar" não pode encarecer porque o core
+   * voltou nele toda semana; "quanto rodamos nele" é o outro lado.
+   */
+  pullsTotal?: number;
+  /**
+   * Um registro por report da WCL — pulls e se teve kill naquela noite.
+   *
+   * É a fonte de `pulls`, `pullsTotal` e `status`, que viraram derivados.
+   * Processar um report SUBSTITUI a entrada dele, o que torna reprocessar
+   * inofensivo — antes a conta era `pulls +=` e recoletar inflava o número
+   * sem ter como corrigir.
+   *
+   * A data de cada entrada também responde se um boss já estava morto numa
+   * certa noite, que é a definição de farm (ver `ehFarm`).
    */
   pullLog?: BossPullLogEntry[];
   /**

@@ -999,21 +999,39 @@ async function main() {
     `Gerado ${path.relative(ROOT, outPath)} com ${runs.length} run(s) (${runsByReportCode.size} atualizada(s)/nova(s) nessa execução).`
   );
 
+  /**
+   * Este script REESCREVE o arquivo da semana inteiro e só conhece os campos
+   * que ele mesmo produz. Mecânicas e a metade de consumíveis da preparação
+   * vêm da Wipefest, por um script separado que roda DEPOIS — rodar só este
+   * apaga aqueles campos, em silêncio.
+   *
+   * Aconteceu três vezes durante o desenvolvimento, e uma delas foi parar no
+   * ar: as 113 noites ficaram sem `mechanics`, que pesa 25 em todas as
+   * funções, e todo mundo ficou com o Score errado. O aviso é barato perto
+   * do estrago.
+   */
+  const semMecanicas = runs.every((run) =>
+    run.players.every((player: PlayerPerformance) => player.mechanics === undefined)
+  );
+
+  if (semMecanicas && runs.length > 0) {
+    console.warn(
+      `\n⚠ Nenhuma run desta semana tem Mecânicas — este script não as produz.\n` +
+        `  Rode agora:  npm run wipefest:build -- --week=${week}\n` +
+        `  Sem isso, o arquivo fica sem mecânicas e sem os consumíveis da preparação.\n`
+    );
+  }
+
   // Progressão de boss + "menu" de logs recentes na home, a partir dos
   // mesmos reports já buscados acima — nenhuma chamada de API extra.
   //
-  // Só conta pulls de reports que `recentLogs` ainda não conhecia antes desta
-  // execução — sem isso, rodar o script de novo pra uma janela já processada
-  // (cron reprocessando o mesmo report) somaria os mesmos pulls de novo a
-  // cada execução. `recentLogs` já registra todo report processado (ver
-  // updateRecentLogs abaixo), então serve de "já contei isso" sem precisar
-  // de um controle à parte.
-  const alreadyLoggedUrls = new Set(season.recentLogs.map((entry) => entry.url));
-  const newReportContexts = reportContexts.filter(
-    (ctx) => !alreadyLoggedUrls.has(`https://www.warcraftlogs.com/reports/${ctx.report.code}`)
-  );
-
-  const progressionChanges = updateBossProgression(season, newReportContexts);
+  // TODOS os reports entram, inclusive os já conhecidos. Antes havia um
+  // filtro que pulava report já registrado em recentLogs, porque a conta era
+  // `pulls +=` e reprocessar somava de novo. Com o placar no pullLog, onde
+  // cada report SUBSTITUI a própria entrada, reprocessar é inofensivo — e é
+  // o que permite corrigir a história quando um log é recoletado, em vez de
+  // congelar o primeiro número que entrou.
+  const progressionChanges = updateBossProgression(season, reportContexts);
   const recentLogsChanged = updateRecentLogs(season, reportContexts);
 
   if (progressionChanges.length > 0 || recentLogsChanged) {

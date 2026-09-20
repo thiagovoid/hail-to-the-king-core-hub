@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { computeWeekNumber, updateBossProgression, updateRecentLogs, type SeasonConfigFile } from "./buildSeasonProgression";
+import { computeWeekNumber, ehFarm,
+  updateBossProgression, updateRecentLogs, type SeasonConfigFile } from "./buildSeasonProgression";
 import type { WclFight } from "../providers/warcraftlogs/normalize";
 import type { WclReportRef } from "../providers/warcraftlogs/WarcraftLogsProvider";
 import type { Boss } from "../types/index";
@@ -100,51 +101,102 @@ describe("updateBossProgression", () => {
   });
 
   it("counts wipes as pulls and bumps not_started to progress, without a kill", () => {
-    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "not_started", pulls: 2 })] });
+    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "not_started" })] });
     const changes = updateBossProgression(s, [
       { report: report(), raidFights: [fight({ kill: false }), fight({ kill: false, id: 2 })] },
     ]);
 
     expect(s.bossesNormal[0].status).toBe("progress");
-    expect(s.bossesNormal[0].pulls).toBe(4);
+    expect(s.bossesNormal[0].pulls).toBe(2);
     expect(s.bossesNormal[0].killDate).toBeNull();
     expect(s.bossesNormal[0].links.warcraftLogs).toBeNull();
-    expect(changes).toEqual(["Boss (Normal): +2 pull(s), 4 no total"]);
+    expect(changes).toEqual(["Boss (Normal): 2 pull(s) no total"]);
   });
 
   it("marks a boss killed, sets killDate from report.startTime + fight.endTime, and the WCL link", () => {
-    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "progress", pulls: 3 })] });
+    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "not_started" })] });
     const r = report({ code: "REPORT1", startTime: 1_757_000_000_000 });
     const killFight = fight({ id: 7, kill: true, endTime: 500_000 });
 
     const changes = updateBossProgression(s, [{ report: r, raidFights: [killFight] }]);
 
     expect(s.bossesNormal[0].status).toBe("killed");
-    expect(s.bossesNormal[0].pulls).toBe(4);
+    expect(s.bossesNormal[0].pulls).toBe(1);
     expect(s.bossesNormal[0].killDate).toBe(new Date(1_757_000_000_000 + 500_000).toISOString());
     expect(s.bossesNormal[0].links.warcraftLogs).toBe("https://www.warcraftlogs.com/reports/REPORT1?fight=7");
-    expect(changes).toEqual(["Boss (Normal): morto! (4 pulls no total)"]);
+    expect(changes).toEqual(["Boss (Normal): morto! (1 pull no total)"]);
   });
 
-  it("never touches a boss that is already killed, even if a matching fight shows up again", () => {
-    const s = season({
-      bossesNormal: [
-        boss({
-          id: "b1",
-          encounterID: 100,
-          status: "killed",
-          pulls: 5,
-          killDate: "2026-08-18T21:30:00.000Z",
-          links: { warcraftLogs: "https://www.warcraftlogs.com/reports/OLD?fight=1", wipefest: null, video: null },
-        }),
-      ],
-    });
+  /**
+   * O motivo de o placar ter virado `pullLog`: antes era `pulls +=`, e a
+   * mesma noite processada duas vezes somava duas vezes. Não havia como
+   * corrigir sem editar o JSON na mão.
+   */
+  it("é idempotente: processar o mesmo report de novo não muda nada", () => {
+    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "not_started" })] });
+    const entrada = [{ report: report({ code: "R1" }), raidFights: [fight({}), fight({ id: 2 })] }];
 
-    const changes = updateBossProgression(s, [{ report: report(), raidFights: [fight({ kill: true })] }]);
+    updateBossProgression(s, entrada);
+    const depoisDaPrimeira = s.bossesNormal[0].pulls;
+    updateBossProgression(s, entrada);
 
-    expect(changes).toEqual([]);
-    expect(s.bossesNormal[0]).toMatchObject({ pulls: 5, killDate: "2026-08-18T21:30:00.000Z" });
-    expect(s.bossesNormal[0].links.warcraftLogs).toBe("https://www.warcraftlogs.com/reports/OLD?fight=1");
+    expect(s.bossesNormal[0].pulls).toBe(depoisDaPrimeira);
+    expect(s.bossesNormal[0].pullLog).toHaveLength(1);
+  });
+
+  /**
+   * "Quanto custou matar esse boss" não pode encarecer porque o core voltou
+   * nele em farm toda semana. O total existe à parte.
+   */
+  it("para de contar pulls na noite do kill, e guarda o total à parte", () => {
+    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "not_started" })] });
+
+    updateBossProgression(s, [
+      {
+        report: report({ code: "PROG", startTime: new Date("2026-08-18T21:00:00Z").getTime() }),
+        raidFights: [fight({}), fight({ id: 2 }), fight({ id: 3, kill: true })],
+      },
+    ]);
+    expect(s.bossesNormal[0].pulls).toBe(3);
+
+    updateBossProgression(s, [
+      {
+        report: report({ code: "FARM", startTime: new Date("2026-08-25T21:00:00Z").getTime() }),
+        raidFights: [fight({ id: 9, kill: true })],
+      },
+    ]);
+
+    expect(s.bossesNormal[0].pulls).toBe(3);
+    expect(s.bossesNormal[0].pullsTotal).toBe(4);
+  });
+
+  it("não reescreve o kill original quando o boss cai de novo em farm", () => {
+    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "not_started" })] });
+    const primeiro = report({ code: "PRIMEIRO", startTime: new Date("2026-08-18T21:00:00Z").getTime() });
+    const depois = report({ code: "DEPOIS", startTime: new Date("2026-09-01T21:00:00Z").getTime() });
+
+    updateBossProgression(s, [{ report: primeiro, raidFights: [fight({ id: 1, kill: true })] }]);
+    const killDate = s.bossesNormal[0].killDate;
+
+    updateBossProgression(s, [{ report: depois, raidFights: [fight({ id: 2, kill: true })] }]);
+
+    expect(s.bossesNormal[0].killDate).toBe(killDate);
+    expect(s.bossesNormal[0].links.warcraftLogs).toContain("PRIMEIRO");
+  });
+
+  /** A definição de farm sai do próprio log, não de configuração. */
+  it("ehFarm diz se o boss já tinha caído antes daquela noite", () => {
+    const s = season({ bossesNormal: [boss({ id: "b1", encounterID: 100, status: "not_started" })] });
+    updateBossProgression(s, [
+      {
+        report: report({ code: "R1", startTime: new Date("2026-08-18T21:00:00Z").getTime() }),
+        raidFights: [fight({ kill: true })],
+      },
+    ]);
+
+    expect(ehFarm(s.bossesNormal[0], "2026-08-25")).toBe(true);
+    expect(ehFarm(s.bossesNormal[0], "2026-08-18")).toBe(false);
+    expect(ehFarm(s.bossesNormal[0], "2026-08-01")).toBe(false);
   });
 
   it("routes by difficulty: a Heroic fight (difficulty 4) never updates the Normal bucket for the same encounterID", () => {
