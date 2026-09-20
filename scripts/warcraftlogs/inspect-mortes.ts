@@ -19,7 +19,7 @@ const fights = await wcl.fetchReportFights(code);
 const bosses = fights.filter((fight) => fight.encounterID > 0);
 const duracao = Math.max(...fights.map((fight) => fight.endTime), 0);
 
-const atores = await wcl.fetchActorNames(code);
+const atores = (await wcl.fetchActorNames(code)).atores;
 const mortes = await wcl.fetchDeathEvents(code, duracao);
 const porFight = new Map(bosses.map((fight) => [fight.id, fight]));
 

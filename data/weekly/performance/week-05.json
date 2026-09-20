@@ -389,6 +389,40 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 11,
+              "atSecond": 338,
+              "ability": "Melee",
+              "amount": 1366623,
+              "defensivosProntos": [
+                "Death's Advance",
+                "Vampiric Blood",
+                "Icebound Fortitude",
+                "Lichborne"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 616,
+              "ability": "Hollowing Strikes",
+              "amount": 932335,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Icebound Fortitude",
+                "Lichborne"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 235,
+              "amount": 667411,
+              "defensivosProntos": [
+                "Icebound Fortitude",
+                "Lichborne"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2.1,
@@ -870,6 +904,45 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 11,
+              "atSecond": 335,
+              "ability": "Melee",
+              "amount": 1148595,
+              "defensivosProntos": [
+                "Ritual Wraps",
+                "Holy Bulwark",
+                "Ardent Defender",
+                "Guardian of Ancient Kings",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 403,
+              "amount": 919584,
+              "defensivosProntos": [
+                "Holy Bulwark",
+                "Blessing of Sacrifice",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 286,
+              "amount": 906551,
+              "defensivosProntos": [
+                "Ardent Defender",
+                "Guardian of Ancient Kings",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands"
+              ]
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 2,
@@ -1317,6 +1390,33 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 11,
+              "atSecond": 346,
+              "amount": 824869,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Spirit Link Totem",
+                "Stormstream Totem"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 625,
+              "ability": "Melee",
+              "amount": 760704,
+              "defensivosProntos": [
+                "Healing Stream Totem"
+              ]
+            },
+            {
+              "fight": 4,
+              "atSecond": 498,
+              "amount": 395132,
+              "defensivosProntos": []
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.7,
@@ -1808,6 +1908,45 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 11,
+              "atSecond": 347,
+              "amount": 751980,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Potent Healing Potion",
+                "Soulcoiler Ritual Vessel"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 617,
+              "amount": 595638,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 297,
+              "amount": 516678,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Potent Healing Potion",
+                "Soulcoiler Ritual Vessel"
+              ]
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 2.1,
@@ -2263,6 +2402,40 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 632,
+              "ability": "Melee",
+              "amount": 939818,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 353,
+              "ability": "Melee",
+              "amount": 691924,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 297,
+              "amount": 563076,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Divine Protection",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.4,
@@ -2697,6 +2870,31 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 621,
+              "ability": "Melee",
+              "amount": 743535,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 4,
+              "atSecond": 408,
+              "amount": 658923,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 17,
+              "atSecond": 293,
+              "amount": 620379,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 0.8,
@@ -3097,6 +3295,34 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 4,
+              "atSecond": 408,
+              "amount": 1087157,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 3,
+              "atSecond": 304,
+              "ability": "Gravebound",
+              "amount": 962896,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Dispersion"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 347,
+              "ability": "Melee",
+              "amount": 876800,
+              "defensivosProntos": [
+                "Dispersion"
+              ]
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1.3,
@@ -3513,6 +3739,37 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 624,
+              "ability": "Melee",
+              "amount": 829916,
+              "defensivosProntos": [
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 348,
+              "ability": "Melee",
+              "amount": 825236,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 4,
+              "atSecond": 408,
+              "amount": 760058,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1.3,
@@ -3939,6 +4196,32 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 9,
+              "atSecond": 286,
+              "amount": 826079,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 4,
+              "atSecond": 408,
+              "amount": 806208,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 617,
+              "amount": 803613,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 3,
@@ -4412,6 +4695,34 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 11,
+              "atSecond": 343,
+              "ability": "Melee",
+              "amount": 823560,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 622,
+              "ability": "Melee",
+              "amount": 801937,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 235,
+              "amount": 755080,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 2.1,
@@ -4833,6 +5144,35 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 3,
+              "atSecond": 304,
+              "ability": "Gravebound",
+              "amount": 728100,
+              "defensivosProntos": [
+                "Concentrated Silvermoon Health Potion",
+                "Rallying Cry"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 246,
+              "amount": 728100,
+              "defensivosProntos": [
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 617,
+              "amount": 672945,
+              "defensivosProntos": [
+                "Concentrated Silvermoon Health Potion",
+                "Rallying Cry"
+              ]
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 2.4,
@@ -5300,6 +5640,33 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 626,
+              "ability": "Melee",
+              "amount": 915090,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 17,
+              "atSecond": 193,
+              "amount": 559041,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 6,
+              "atSecond": 225,
+              "ability": "Melee",
+              "amount": 535789,
+              "defensivosProntos": [
+                "Divine Shield"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2,
@@ -5715,6 +6082,41 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 11,
+              "atSecond": 350,
+              "ability": "Melee",
+              "amount": 726364,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 622,
+              "ability": "Melee",
+              "amount": 642703,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 297,
+              "amount": 557331,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.7,
@@ -6114,6 +6516,36 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 618,
+              "amount": 750491,
+              "defensivosProntos": [
+                "Dispersion"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 246,
+              "amount": 459566,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Potent Healing Potion",
+                "Dispersion"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 257,
+              "amount": 389855,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Potent Healing Potion",
+                "Dispersion"
+              ]
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.7,
@@ -6570,6 +7002,38 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 4,
+              "atSecond": 408,
+              "amount": 691211,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 352,
+              "ability": "Melee",
+              "amount": 658371,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 617,
+              "amount": 650738,
+              "defensivosProntos": [
+                "Blur",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 2.3,
@@ -6944,6 +7408,33 @@
             "battleRez": 0,
             "battleRezRecebidos": 2
           },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 541,
+              "ability": "Melee",
+              "amount": 757371,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 9,
+              "atSecond": 108,
+              "ability": "Empowering Slam",
+              "amount": 703893,
+              "defensivosProntos": [
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 16,
+              "atSecond": 64,
+              "amount": 677373,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1,
@@ -7241,6 +7732,37 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 282,
+              "amount": 1101193,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Death's Advance",
+                "Vampiric Blood",
+                "Icebound Fortitude",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 1,
+              "atSecond": 503,
+              "ability": "Melee",
+              "amount": 848260,
+              "defensivosProntos": [
+                "Death's Advance",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 1,
+              "atSecond": 504,
+              "ability": "Melee",
+              "amount": 799867,
+              "defensivosProntos": []
+            }
+          ],
           "deaths": 3,
           "mechanics": {
             "errors": 1.3,
@@ -7675,6 +8197,43 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 282,
+              "amount": 844503,
+              "defensivosProntos": [
+                "Ritual Wraps",
+                "Healthstone",
+                "Holy Bulwark",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 1,
+              "atSecond": 198,
+              "amount": 820465,
+              "defensivosProntos": [
+                "Ritual Wraps",
+                "Healthstone",
+                "Holy Bulwark",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 8,
+              "atSecond": 65,
+              "ability": "Empowering Slam",
+              "amount": 777754,
+              "defensivosProntos": [
+                "Ardent Defender",
+                "Healthstone",
+                "Guardian of Ancient Kings",
+                "Divine Shield",
+                "Lay on Hands"
+              ]
+            }
+          ],
           "deaths": 11,
           "mechanics": {
             "errors": 1.5,
@@ -7960,6 +8519,36 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 7,
+              "atSecond": 74,
+              "amount": 375301,
+              "defensivosProntos": [
+                "Healing Stream Totem"
+              ]
+            },
+            {
+              "fight": 1,
+              "atSecond": 328,
+              "amount": 299407,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Stormstream Totem",
+                "Spirit Link Totem",
+                "Astral Shift"
+              ]
+            },
+            {
+              "fight": 7,
+              "atSecond": 74,
+              "ability": "Toxic Droplets",
+              "amount": 203520,
+              "defensivosProntos": [
+                "Healing Stream Totem"
+              ]
+            }
+          ],
           "deaths": 2,
           "mechanics": {
             "errors": 2,
@@ -8457,6 +9046,43 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 542,
+              "ability": "Mark of Acid",
+              "amount": 484138,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 132,
+              "ability": "Unstable Miasma",
+              "amount": 474888,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Aura Mastery",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 541,
+              "ability": "Unstable Miasma",
+              "amount": 460257,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 11,
           "mechanics": {
             "errors": 2.3,
@@ -8869,6 +9495,33 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 546,
+              "ability": "Melee",
+              "amount": 2720210,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 13,
+              "atSecond": 546,
+              "ability": "Melee",
+              "amount": 857742,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 13,
+              "atSecond": 436,
+              "ability": "Unstable Miasma",
+              "amount": 580332,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ]
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 2.1,
@@ -9274,6 +9927,39 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 514,
+              "ability": "Melee",
+              "amount": 616882,
+              "defensivosProntos": [
+                "Ice Barrier",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 83,
+              "ability": "Unstable Miasma",
+              "amount": 432006,
+              "defensivosProntos": [
+                "Ice Cold",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 293,
+              "ability": "Unstable Miasma",
+              "amount": 397043,
+              "defensivosProntos": [
+                "Ice Barrier",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 1,
@@ -9688,6 +10374,38 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 507,
+              "ability": "Latent Cultist",
+              "amount": 760024,
+              "defensivosProntos": [
+                "Demonic Healthstone",
+                "Potent Healing Potion",
+                "Unending Resolve",
+                "Mortal Coil"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 541,
+              "ability": "Unstable Miasma",
+              "amount": 687750,
+              "defensivosProntos": [
+                "Mortal Coil"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 289,
+              "ability": "Unstable Miasma",
+              "amount": 485245,
+              "defensivosProntos": [
+                "Mortal Coil"
+              ]
+            }
+          ],
           "deaths": 11,
           "mechanics": {
             "errors": 0.8,
@@ -10074,6 +10792,40 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 15,
+              "atSecond": 74,
+              "amount": 423754,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 84,
+              "ability": "Unstable Miasma",
+              "amount": 409143,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 91,
+              "ability": "Unstable Miasma",
+              "amount": 409143,
+              "defensivosProntos": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 9,
           "mechanics": {
             "errors": 1.4,
@@ -10463,6 +11215,40 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 518,
+              "ability": "Melee",
+              "amount": 953720,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 541,
+              "ability": "Mark of Blood",
+              "amount": 607560,
+              "defensivosProntos": [
+                "Healing Stream Totem"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 189,
+              "ability": "Unstable Miasma",
+              "amount": 545168,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 1.4,
@@ -10859,6 +11645,38 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 188,
+              "amount": 629435,
+              "defensivosProntos": [
+                "Blur",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 16,
+              "atSecond": 90,
+              "ability": "Melee",
+              "amount": 431940,
+              "defensivosProntos": [
+                "Blur",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 1,
+              "atSecond": 506,
+              "ability": "Latent Cultist",
+              "amount": 416911,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 2.3,
@@ -11247,6 +12065,35 @@
             {
               "spec": "Enhancement",
               "role": "dps"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 512,
+              "ability": "Melee",
+              "amount": 994110,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 1,
+              "atSecond": 188,
+              "amount": 745313,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 1,
+              "atSecond": 519,
+              "ability": "Latent Cultist",
+              "amount": 693463,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
             }
           ],
           "deaths": 11,
@@ -11661,6 +12508,43 @@
             {
               "spec": "Arms",
               "role": "dps"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 520,
+              "ability": "Latent Cultist",
+              "amount": 650335,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 132,
+              "ability": "Unstable Miasma",
+              "amount": 456367,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 7,
+              "atSecond": 74,
+              "amount": 420472,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ]
             }
           ],
           "deaths": 10,
@@ -12082,6 +12966,44 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 506,
+              "ability": "Latent Cultist",
+              "amount": 633733,
+              "defensivosProntos": [
+                "Healthstone",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 542,
+              "ability": "Mark of Acid",
+              "amount": 488038,
+              "defensivosProntos": [
+                "Healthstone",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 8,
+              "atSecond": 85,
+              "ability": "Unstable Miasma",
+              "amount": 471920,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Healthstone",
+                "Lay on Hands",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,
@@ -12523,6 +13445,38 @@
               "pessoasQueInterromperam": 3
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 516,
+              "ability": "Melee",
+              "amount": 829731,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 436,
+              "ability": "Unstable Miasma",
+              "amount": 568296,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 8,
+              "atSecond": 85,
+              "ability": "Unstable Miasma",
+              "amount": 506216,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 12,
           "mechanics": {
             "errors": 1.8,
@@ -12929,6 +13883,43 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 15,
+              "atSecond": 89,
+              "ability": "Unstable Miasma",
+              "amount": 777380,
+              "defensivosProntos": [
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion",
+                "Divine Hymn",
+                "Guardian Spirit"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 421,
+              "ability": "Mark of Blood",
+              "amount": 775200,
+              "defensivosProntos": [
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 10,
+              "atSecond": 202,
+              "ability": "Unstable Miasma",
+              "amount": 549145,
+              "defensivosProntos": [
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.8,
@@ -13302,6 +14293,34 @@
               "pessoasQueInterromperam": 9
             }
           },
+          "pancadas": [
+            {
+              "fight": 1,
+              "atSecond": 188,
+              "amount": 658153,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 436,
+              "ability": "Unstable Miasma",
+              "amount": 475861,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 8,
+              "atSecond": 27,
+              "ability": "Unstable Miasma",
+              "amount": 398463,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness"
+              ]
+            }
+          ],
           "deaths": 10,
           "mechanics": {
             "errors": 1.8,

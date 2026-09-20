@@ -314,6 +314,8 @@ export interface BuildRunPlayersInput {
   simDeDpsPorJogador?: Map<string, number>;
   /** Utilidade por id do roster — interrupções, dispels, battle rez. */
   utilityByPlayer?: Map<string, NonNullable<PlayerPerformance["utility"]>>;
+  /** As maiores pancadas de cada um, cruzadas com o defensivo na mao. */
+  pancadasByPlayer?: Map<string, NonNullable<PlayerPerformance["pancadas"]>>;
   /** % do dano no trash, por id do roster. Ausente quando o log não gravou trash. */
   trashShareByPlayer?: Map<string, number>;
   /** Spec(s) da noite, por id do roster. */
@@ -382,6 +384,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     trashShareByPlayer,
     specsByPlayer,
     utilityByPlayer,
+    pancadasByPlayer,
     simDeDpsPorJogador,
     raidDamageTaken = 0,
   } = input;
@@ -589,6 +592,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
         : {}),
       ...(specsByPlayer?.get(player.id)?.length ? { specs: specsByPlayer.get(player.id) } : {}),
       ...(utilityByPlayer?.has(player.id) ? { utility: utilityByPlayer.get(player.id) } : {}),
+      ...(pancadasByPlayer?.has(player.id) ? { pancadas: pancadasByPlayer.get(player.id) } : {}),
     });
   }
 

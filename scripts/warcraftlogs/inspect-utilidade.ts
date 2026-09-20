@@ -16,7 +16,7 @@ const wcl = new WarcraftLogsProvider();
 
 const fights = await wcl.fetchReportFights(code);
 const duracao = Math.max(...fights.map((f) => f.endTime), 0);
-const atores = await wcl.fetchActorNames(code);
+const atores = (await wcl.fetchActorNames(code)).atores;
 const antes = await wcl.fetchRateLimitData();
 
 async function eventos(tipo: string) {

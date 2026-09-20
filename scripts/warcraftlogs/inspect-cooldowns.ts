@@ -65,7 +65,7 @@ const magias = catalogToMap(catalogo);
 const ignoradas = new Set(catalogo.ignored ?? []);
 
 const fights = (await wcl.fetchReportFights(code)).filter((f: WclFight) => f.encounterID > 0);
-const atores = await wcl.fetchActorNames(code);
+const atores = (await wcl.fetchActorNames(code)).atores;
 const eventos = await wcl.fetchCastEvents(code, fights);
 
 const alvos = [...atores.entries()].filter(([, nome]) => !filtro || nome.toLowerCase().includes(filtro));

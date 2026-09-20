@@ -76,6 +76,15 @@ export interface WarcraftLogsRawReportTables {
    */
   actorNames?: Array<[number, string]>;
   /**
+   * gameID -> nome de TODA habilidade do relatório, inclusive inimiga.
+   *
+   * Vem de graça no mesmo masterData dos atores, e é a única fonte sem
+   * truncagem: a tabela agregada de dano recebido corta em 5 habilidades por
+   * alvo, e a que matou raramente está entre as 5 maiores — metade das
+   * mortes da temporada não sabia dizer de quê.
+   */
+  abilityNames?: Array<[number, string]>;
+  /**
    * Todo cast de jogador da noite. É a peça mais cara — 53 mil eventos e
    * 5 MB crus — e era justamente a que não passava pelo coletor.
    */
@@ -506,23 +515,55 @@ export class WarcraftLogsProvider
    * dano recebido, bosses mortos, a noite try a try), deixando a noite pela
    * metade sem nada explodir.
    */
-  async fetchActorNames(reportCode: string): Promise<Map<number, string>> {
+  async fetchActorNames(
+    reportCode: string
+  ): Promise<{ atores: Map<number, string>; habilidades: Map<number, string> }> {
     const ESPERA_MS = [0, 2_000, 6_000];
 
     for (const [tentativa, espera] of ESPERA_MS.entries()) {
       if (espera > 0) await new Promise((resolve) => setTimeout(resolve, espera));
 
       const data = await wclGraphql<{
-        reportData: { report: { masterData?: { actors?: Array<{ id: number; name: string; type: string }> } } | null };
+        reportData: {
+          report: {
+            masterData?: {
+              actors?: Array<{ id: number; name: string; type: string }>;
+              abilities?: Array<{ gameID: number; name: string }>;
+            };
+          } | null;
+        };
       }>(
+        /**
+         * `abilities` vem de graça na query que já era feita pelos atores, e
+         * é a única fonte que traduz id de habilidade INIMIGA sem truncagem.
+         *
+         * A tabela agregada de dano recebido trunca em 5 habilidades por
+         * alvo, e a que matou raramente está entre as 5 maiores — metade das
+         * mortes da temporada não sabia dizer de quê. Sem nome, a pancada
+         * mais cara da noite também vira "habilidade 1234567", que não é
+         * laudo nenhum.
+         */
         `query($code: String!) {
-          reportData { report(code: $code) { masterData { actors(type: "Player") { id name type } } } }
+          reportData { report(code: $code) { masterData {
+            actors(type: "Player") { id name type }
+            abilities { gameID name }
+          } } }
         }`,
         { code: reportCode }
       );
 
       const atores = data.reportData.report?.masterData?.actors ?? [];
-      if (atores.length > 0) return new Map(atores.map((ator) => [ator.id, ator.name]));
+      const habilidades = data.reportData.report?.masterData?.abilities ?? [];
+      if (atores.length > 0) {
+        return {
+          atores: new Map(atores.map((ator) => [ator.id, ator.name])),
+          habilidades: new Map(
+            habilidades
+              .filter((h): h is { gameID: number; name: string } => Boolean(h?.gameID && h?.name))
+              .map((h) => [h.gameID, h.name])
+          ),
+        };
+      }
 
       if (tentativa < ESPERA_MS.length - 1) {
         console.warn(
@@ -531,7 +572,7 @@ export class WarcraftLogsProvider
       }
     }
 
-    return new Map();
+    return { atores: new Map(), habilidades: new Map() };
   }
 
   /**
@@ -625,7 +666,7 @@ export class WarcraftLogsProvider
             reportData { report(code: $code) {
               events(
                 fightIDs: $fightIDs, dataType: DamageTaken, hostilityType: Friendlies,
-                startTime: $start, endTime: $end, limit: 10000
+                startTime: $start, endTime: $end, limit: 10000, includeResources: true
               ) {
                 data
                 nextPageTimestamp
@@ -871,7 +912,9 @@ ${campos}
      * resolveria nada: recalcular continuaria exigindo ir à rede buscar
      * justamente a parte grande.
      */
-    const actorNames = await this.fetchActorNames(context.reportCode);
+    const { atores: actorNames, habilidades: abilityNames } = await this.fetchActorNames(
+      context.reportCode
+    );
     const castEvents = await this.fetchCastEvents(context.reportCode, raidFights);
 
     // Só quem aparece nos eventos: buscar dano de ator que não lançou nada é
@@ -935,6 +978,7 @@ ${campos}
           entries: [...porAtor].map(([actorId, total]) => ({ actorId, total })),
         })),
         actorNames: [...actorNames],
+        abilityNames: [...abilityNames],
         castEvents,
         damageAbilities,
         damageTaken,

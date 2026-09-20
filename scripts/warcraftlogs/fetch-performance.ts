@@ -38,6 +38,8 @@ import {
   buildOportunidadeDeInterrupt,
   magiasInterrompiveis,
 } from "../../src/normalization/buildOportunidadeDeInterrupt";
+import { buildPancadas, type PancadaExplicada } from "../../src/normalization/buildPancadas";
+import type { PancadaLevada } from "../../src/providers/warcraftlogs/biggestHits";
 import { buildBossKills, type BossMorto } from "../../src/providers/warcraftlogs/bossKills";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
@@ -549,6 +551,16 @@ async function main() {
     enemyCastCounts: Array<{ fight: number; abilityGameID: number; casts: number }>;
     /** As trys de trash, pela presença: a oportunidade de lá também é delas. */
     trashFights: WclFight[];
+    /** As maiores pancadas de cada um, try a try. Ver buildPancadas. */
+    biggestHits: PancadaLevada[];
+    /**
+     * gameID -> nome de toda habilidade do relatório, sem truncar.
+     *
+     * É o que dá NOME ao que matou e ao que bateu forte. A tabela agregada
+     * corta em 5 habilidades por alvo, e a que matou raramente está entre as
+     * 5 maiores.
+     */
+    abilityNames: Array<[number, string]>;
   }
 
   const reportContexts: ReportContext[] = [];
@@ -613,6 +625,8 @@ async function main() {
       interrupts: tables.interrupts ?? [],
       dispels: tables.dispels ?? [],
       enemyCastCounts: tables.enemyCastCounts ?? [],
+      biggestHits: tables.biggestHits ?? [],
+      abilityNames: tables.abilityNames ?? [],
       trashFights: tables.trashFights ?? [],
     });
   }
@@ -751,6 +765,8 @@ async function main() {
   const trashPorReport = new Map<string, Map<string, number>>();
   const specsPorReport = new Map<string, Map<string, NonNullable<PlayerPerformance["specs"]>>>();
   const utilidadePorReport = new Map<string, Map<string, UtilidadeDoJogador>>();
+  // As maiores pancadas de cada um, cruzadas com o defensivo na mao.
+  const pancadasPorReport = new Map<string, Map<string, PancadaExplicada[]>>();
 
   for (const ctx of reportContexts) {
     try {
@@ -761,7 +777,7 @@ async function main() {
        */
       const atores = ctx.actorNames.length
         ? new Map(ctx.actorNames)
-        : await wcl.fetchActorNames(ctx.report.code);
+        : (await wcl.fetchActorNames(ctx.report.code)).atores;
       const eventos = ctx.castEvents.length
         ? ctx.castEvents
         : await wcl.fetchCastEvents(ctx.report.code, ctx.raidFights);
@@ -921,7 +937,16 @@ async function main() {
         return prontos;
       };
 
-      /** id da habilidade inimiga -> nome, pra morte ter causa e não só hora. */
+      /**
+       * id da habilidade -> nome, pra morte ter causa e não só hora.
+       *
+       * Duas fontes, e a ordem importa. O `masterData` do relatório traz TODA
+       * habilidade sem truncar e é a fonte boa; a tabela de dano recebido
+       * trunca em 5 por alvo, e a que matou raramente está entre as 5
+       * maiores — era por isso que metade das mortes da temporada não sabia
+       * dizer de quê. A tabela fica como reserva para relatório arquivado
+       * antes de `abilityNames` existir.
+       */
       const nomeDaHabilidadeInimiga = new Map<number, string>();
       for (const alvo of ctx.damageTaken ?? []) {
         for (const habilidade of (alvo as { abilities?: Array<{ guid: number; name: string }> })
@@ -929,6 +954,7 @@ async function main() {
           if (habilidade.guid && habilidade.name) nomeDaHabilidadeInimiga.set(habilidade.guid, habilidade.name);
         }
       }
+      for (const [gameID, nome] of ctx.abilityNames) nomeDaHabilidadeInimiga.set(gameID, nome);
 
       const detalhePorAtor = buildNightDetail(
         ctx.raidFights.map((fight) => ({
@@ -959,6 +985,30 @@ async function main() {
         (abilityGameID) => nomeDaHabilidadeInimiga.get(abilityGameID),
         defensivosProntos
       );
+
+      /**
+       * As maiores pancadas de cada um, cruzadas com o defensivo que estava
+       * na mão — o laudo que faltava em Defender.
+       *
+       * Só luta de boss: `biggestHits` não cobre trash de propósito, porque
+       * lá o custo é por evento e o que se aprende é pouco.
+       */
+      const inicioDaTry = new Map(ctx.raidFights.map((fight) => [fight.id, fight.startTime]));
+      const pancadasPorJogador = new Map<string, PancadaExplicada[]>();
+      for (const actorId of new Set(ctx.biggestHits.map((p) => p.targetID))) {
+        const id = doRoster(actorId);
+        if (!id) continue;
+
+        const pancadas = buildPancadas(
+          ctx.biggestHits,
+          actorId,
+          inicioDaTry,
+          (gameID) => nomeDaHabilidadeInimiga.get(gameID),
+          defensivosProntos
+        );
+        if (pancadas.length > 0) pancadasPorJogador.set(id, pancadas);
+      }
+      pancadasPorReport.set(ctx.report.code, pancadasPorJogador);
 
       const detalhePorJogador = new Map<string, DetalheDaNoite>();
       for (const [actorId, detalhe] of detalhePorAtor) {
@@ -1105,6 +1155,7 @@ async function main() {
       trashShareByPlayer: trashPorReport.get(ctx.report.code),
       specsByPlayer: specsPorReport.get(ctx.report.code),
       utilityByPlayer: utilidadePorReport.get(ctx.report.code),
+      pancadasByPlayer: pancadasPorReport.get(ctx.report.code),
       // A meta de sim vai JUNTO com a noite: o sim sobe conforme a pessoa se
       // equipa, e comparar o dano de agosto com o sim de setembro diria que
       // ela piorou quando ela melhorou.

@@ -348,6 +348,30 @@ export interface PlayerPerformance {
    * noite de 12 trys foram 22 interrupções e 79 dispels no raide inteiro:
    * evento raro, alto impacto.
    */
+  /**
+   * As maiores pancadas da noite, cruzadas com o defensivo que estava na mão.
+   *
+   * É o laudo que faltava em Defender. A dimensão pesa 45 no tank e provava o
+   * lado errado da frase: media que o botão foi apertado, nunca que havia o
+   * que mitigar — e "você não usou Anti-Magic Zone" não acusa nada sozinho,
+   * porque pode não ter existido o que absorver.
+   *
+   * Só entra golpe que levou pelo menos um terço da vida. Abaixo disso é
+   * rotina de raide, e apontar cada um seria o mesmo ruído dos sites que só
+   * despejam número.
+   */
+  pancadas?: Array<{
+    fight: number;
+    /** Segundos desde o começo da luta — o mesmo relógio das mortes. */
+    atSecond: number;
+    ability?: string;
+    amount: number;
+    /** Quanto da vida total o golpe levou, 0-100. */
+    fatiaDaVida?: number;
+    /** Vazio quando não havia nada na mão — e aí o golpe não acusa ninguém. */
+    defensivosProntos: string[];
+  }>;
+
   utility?: {
     /** Casts inimigos interrompidos. */
     interrupts: number;
