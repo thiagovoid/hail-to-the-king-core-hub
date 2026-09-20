@@ -1,0 +1,200 @@
+---
+/**
+ * A temporada boss a boss, e cada boss noite a noite.
+ *
+ * A média da noite mistura o que não se mistura: uma luta de progressão e um
+ * farm limpo entram no mesmo número. Quem pergunta "estou melhorando no
+ * Nek'zali?" não tinha onde olhar.
+ *
+ * As duas leituras convivem de propósito, porque servem a gente diferente:
+ * a tabela é a visão fria da temporada, boa de acompanhar; o detalhe de cada
+ * boss é a visão quente, que é onde mora o diagnóstico.
+ *
+ * O que NÃO dá pra abrir por boss fica de fora em vez de ser estimado:
+ * Atacar, Defender e Ajudar são medidos na noite inteira, e recortá-los por
+ * encontro exigiria refazer a conta de recarga luta a luta.
+ */
+import { formatCompact, formatDate } from '@/utils/format';
+
+interface NoiteDoBoss {
+  date: string;
+  tries: number;
+  killed: boolean;
+  dps?: number;
+  deaths: number;
+  share: number;
+}
+
+interface Props {
+  /** Uma linha por boss+dificuldade, já agregada da temporada. */
+  bosses: Array<{
+    chave: string;
+    nome: string;
+    dificuldade: string;
+    tries: number;
+    kills: number;
+    dps: number | null;
+    deaths: number;
+    share: number;
+    /** Já caiu antes — muda o que os números significam. */
+    farm: boolean;
+    noites: NoiteDoBoss[];
+  }>;
+}
+
+const { bosses } = Astro.props;
+
+const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.', ',');
+---
+
+{
+  bosses.length > 0 && (
+    <section class="mb-10">
+      <div class="mb-4">
+        <h2 class="text-xl font-bold text-white">Boss a boss</h2>
+        <p class="text-sm text-slate-400 mt-1 leading-relaxed">
+          A média da noite mistura progressão com farm. Aqui cada encontro fala por si — e abrindo
+          um deles você vê a sua evolução nele, try a try, semana a semana.
+        </p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="border-b border-slate-800">
+              <tr class="text-left text-slate-500 text-xs">
+                <th class="px-4 py-3 font-medium">Boss</th>
+                <th class="px-4 py-3 font-medium text-right">Trys</th>
+                <th class="px-4 py-3 font-medium text-right">Kills</th>
+                <th class="px-4 py-3 font-medium text-right">DPS</th>
+                <th class="px-4 py-3 font-medium text-right">Mortes</th>
+                <th class="px-4 py-3 font-medium text-right">Tempo morto</th>
+                <th class="px-4 py-3" />
+              </tr>
+            </thead>
+
+            <tbody>
+              {bosses.map((boss) => (
+                <>
+                  <tr
+                    class="border-b border-slate-800/50 hover:bg-white/[0.02] cursor-pointer"
+                    data-boss={boss.chave}
+                  >
+                    <td class="px-4 py-3">
+                      <span class="text-white">{boss.nome}</span>
+                      <span
+                        class={`ml-2 text-[10px] uppercase tracking-wide ${
+                          boss.dificuldade === 'Heroico' ? 'text-purple-400' : 'text-slate-500'
+                        }`}
+                      >
+                        {boss.dificuldade}
+                      </span>
+                      {/* Farm e progressão não se leem igual: num boss já morto o
+                          número mede execução, num que ainda não caiu mede aprendizado. */}
+                      <span class="ml-2 text-[10px] text-slate-600">
+                        {boss.farm ? 'farm' : 'progressão'}
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-right text-slate-300 tabular-nums">{boss.tries}</td>
+                    <td class="px-4 py-3 text-right tabular-nums">
+                      <span class={boss.kills > 0 ? 'text-emerald-400' : 'text-slate-600'}>
+                        {boss.kills}
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                      {boss.dps === null ? '—' : formatCompact(boss.dps)}
+                    </td>
+                    <td class="px-4 py-3 text-right text-slate-300 tabular-nums">{boss.deaths}</td>
+                    <td class="px-4 py-3 text-right tabular-nums">
+                      <span class={boss.share > 15 ? 'text-amber-400' : 'text-slate-300'}>
+                        {numero(boss.share)}%
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                      <span class="seta text-slate-600 text-[11px]" aria-hidden="true">
+                        &rsaquo;
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr class="hidden" data-detalhe={boss.chave}>
+                    <td colspan="7" class="px-4 pb-4 pt-1 bg-black/20">
+                      <p class="text-[11px] uppercase tracking-wide text-slate-500 mb-2">
+                        Noite a noite neste boss
+                      </p>
+
+                      <div class="grid gap-1.5">
+                        {boss.noites.map((noite) => (
+                          <div class="flex items-center gap-3 text-[11px]">
+                            <span class="text-slate-500 w-14 shrink-0">
+                              {formatDate(noite.date).slice(0, 5)}
+                            </span>
+                            <span class="text-slate-400 w-20 shrink-0">
+                              {noite.tries} try{noite.tries === 1 ? '' : 's'}
+                            </span>
+                            <span
+                              class={`w-12 shrink-0 ${
+                                noite.killed ? 'text-emerald-400' : 'text-slate-600'
+                              }`}
+                            >
+                              {noite.killed ? 'kill' : 'wipe'}
+                            </span>
+                            <span class="text-slate-300 w-20 shrink-0 tabular-nums">
+                              {noite.dps === undefined ? '—' : formatCompact(noite.dps)}
+                            </span>
+                            <span class="text-slate-500 tabular-nums">
+                              {noite.deaths} morte{noite.deaths === 1 ? '' : 's'} ·{' '}
+                              {numero(noite.share)}% morto
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-[10px] text-slate-600 px-4 py-3 border-t border-white/5">
+          Atacar, Defender e Ajudar não aparecem aqui: são medidos na noite inteira, e recortá-los
+          por encontro exigiria refazer a conta de recarga luta a luta. Preferimos não estimar.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  // Clicar na linha abre o detalhe daquele boss. Uma de cada vez: duas
+  // abertas viram parede e a comparação que importa é com as OUTRAS noites
+  // do mesmo boss, não com outro boss.
+  for (const linha of document.querySelectorAll('[data-boss]')) {
+    linha.addEventListener('click', () => {
+      const chave = linha.getAttribute('data-boss');
+      const detalhe = document.querySelector(`[data-detalhe="${chave}"]`);
+      if (!detalhe) return;
+
+      const vaiAbrir = detalhe.classList.contains('hidden');
+
+      for (const outro of document.querySelectorAll('[data-detalhe]')) outro.classList.add('hidden');
+      for (const seta of document.querySelectorAll('[data-boss] .seta')) {
+        (seta as HTMLElement).style.transform = '';
+      }
+
+      if (vaiAbrir) {
+        detalhe.classList.remove('hidden');
+        const seta = linha.querySelector('.seta') as HTMLElement | null;
+        if (seta) seta.style.transform = 'rotate(90deg)';
+      }
+    });
+  }
+</script>
+
+<style>
+  .seta {
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+</style>

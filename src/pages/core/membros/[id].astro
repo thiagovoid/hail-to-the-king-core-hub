@@ -19,6 +19,7 @@ import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
 import { aoSeuAlcance } from '@/engine/guild/aoSeuAlcance';
 import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
 import PortaoDePreparacao from '@/components/PortaoDePreparacao.astro';
+import BossABoss from '@/components/BossABoss.astro';
 import {
   degrausDaMetrica,
   EXIGENCIA,
@@ -383,6 +384,108 @@ const aoAlcanceDoJogador = aoSeuAlcance(
   new Set(conquistasDoJogador?.keys() ?? [])
 );
 
+/**
+ * A temporada do jogador aberta boss a boss.
+ *
+ * A chave é encounterID + dificuldade: o mesmo encontro no Normal e no
+ * Heroico são duas lutas diferentes, e somá-las daria uma média que não
+ * descreve nenhuma das duas.
+ */
+const nomeDoEncontro = new Map<number, string>(
+  [...seasonJson.bossesNormal, ...seasonJson.bossesHeroic].map((boss) => [
+    boss.encounterID,
+    boss.name,
+  ])
+);
+
+/** Em que noite cada boss caiu pela primeira vez, por dificuldade. */
+const primeiroKill = new Map<string, string>();
+for (const [lista, dificuldade] of [
+  [seasonJson.bossesNormal, 3],
+  [seasonJson.bossesHeroic, 4],
+] as const) {
+  for (const boss of lista) {
+    const kill = (boss.pullLog ?? []).find((entrada) => entrada.kill);
+    if (kill) primeiroKill.set(`${boss.encounterID}:${dificuldade}`, kill.date);
+  }
+}
+
+const porBoss = new Map<
+  string,
+  {
+    chave: string;
+    nome: string;
+    dificuldade: string;
+    tries: number;
+    kills: number;
+    dano: number[];
+    deaths: number;
+    shares: number[];
+    noites: Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number }>;
+  }
+>();
+
+for (const noite of history) {
+  for (const boss of noite.bossTries ?? []) {
+    const dificuldade = boss.difficulty ?? 0;
+    const chave = `${boss.encounterID}:${dificuldade}`;
+
+    const atual = porBoss.get(chave) ?? {
+      chave,
+      nome: nomeDoEncontro.get(boss.encounterID) ?? `Encontro ${boss.encounterID}`,
+      dificuldade: dificuldade === 4 ? 'Heroico' : dificuldade === 3 ? 'Normal' : '—',
+      tries: 0,
+      kills: 0,
+      dano: [] as number[],
+      deaths: 0,
+      shares: [] as number[],
+      noites: [] as Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number }>,
+    };
+
+    atual.tries += boss.tries;
+    if (boss.killed) atual.kills += 1;
+    if (boss.dps !== undefined) atual.dano.push(boss.dps);
+    atual.deaths += boss.deaths ?? 0;
+    if (boss.deathCost) atual.shares.push(boss.deathCost.share);
+
+    atual.noites.push({
+      date: noite.date,
+      tries: boss.tries,
+      killed: boss.killed,
+      dps: boss.dps,
+      deaths: boss.deaths ?? 0,
+      share: boss.deathCost?.share ?? 0,
+    });
+
+    porBoss.set(chave, atual);
+  }
+}
+
+const mediaDeLista = (v: number[]) =>
+  v.length === 0 ? null : Math.round((v.reduce((s, x) => s + x, 0) / v.length) * 10) / 10;
+
+const bossABoss = [...porBoss.values()]
+  .map((boss) => ({
+    chave: boss.chave,
+    nome: boss.nome,
+    dificuldade: boss.dificuldade,
+    tries: boss.tries,
+    kills: boss.kills,
+    dps: mediaDeLista(boss.dano),
+    deaths: boss.deaths,
+    share: mediaDeLista(boss.shares) ?? 0,
+    // Já tinha caído antes da ÚLTIMA noite em que a pessoa o enfrentou: é o
+    // que separa a luta que se está aprendendo da que já se domina.
+    farm: (() => {
+      const quando = primeiroKill.get(boss.chave);
+      return quando !== undefined && quando < (boss.noites.at(-1)?.date ?? '');
+    })(),
+    noites: [...boss.noites].sort((a, b) => a.date.localeCompare(b.date)),
+  }))
+  // Mais trys primeiro: é onde a temporada foi gasta, e onde há o que ver.
+  .sort((a, b) => b.tries - a.tries);
+
+
 const prontidao = prontidaoDoPersonagem?.prontidao ?? null;
 const funcaoDaProntidao = prontidaoDoPersonagem?.funcao ?? 'dps';
 
@@ -547,6 +650,8 @@ const attendance = calculateAttendance(weeks, player.id);
         />
       )
     }
+
+    {hasData && <BossABoss bosses={bossABoss} />}
 
     {hasData && (
       <PortaoDePreparacao

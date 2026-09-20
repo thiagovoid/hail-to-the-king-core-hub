@@ -823,6 +823,9 @@ async function main() {
         ctx.raidFights.map((fight) => ({
           id: fight.id,
           encounterID: fight.encounterID,
+          // Dificuldade ausente vira 0: luta sem dificuldade não é boss de
+          // raide, e agrupar por 0 a mantém separada das que são.
+          difficulty: fight.difficulty ?? 0,
           kill: fight.kill,
           durationMs: fight.endTime - fight.startTime,
           endTime: fight.endTime,

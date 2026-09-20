@@ -218,45 +218,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 37868,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 42979,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 39295,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 52996,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 42938,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 69276,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 25035,
+              "deaths": 5,
+              "deathCost": {
+                "seconds": 785,
+                "share": 67.4
+              }
             }
           ],
           "deathCost": {
@@ -636,45 +685,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 29292,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 34786,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 36045,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 61762,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 28245,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 41140,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 26068,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 215,
+                "share": 18.5
+              }
             }
           ],
           "deathCost": {
@@ -988,45 +1086,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 10604,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 12808,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 6737,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 2326,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 4409,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 294,
+                "share": 67.5
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 1880,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 243,
+                "share": 46.5
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 5094,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 24,
+                "share": 2.1
+              }
             }
           ],
           "deathCost": {
@@ -1386,45 +1533,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 13986,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 10949,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 13137,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 12780,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 8896,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 7184,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 96,
+                "share": 18.3
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 5792,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 385,
+                "share": 33
+              }
             }
           ],
           "deathCost": {
@@ -1748,45 +1944,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 9433,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 9635,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 7569,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 3859,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 5135,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 4054,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 3965,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 27,
+                "share": 2.3
+              }
             }
           ],
           "deathCost": {
@@ -2087,45 +2332,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 95591,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 100578,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 100224,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 164584,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 37891,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 703,
+                "share": 161.7
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 146530,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 70801,
+              "deaths": 4,
+              "deathCost": {
+                "seconds": 337,
+                "share": 29
+              }
             }
           ],
           "deathCost": {
@@ -2416,45 +2710,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 84655,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 95337,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 109806,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 171093,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 88786,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 141720,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 90795,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 37,
+                "share": 3.1
+              }
             }
           ],
           "deathCost": {
@@ -2761,45 +3104,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 92621,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 115497,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 112387,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 185353,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 102294,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 144363,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 347,
+                "share": 66.3
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 110358,
+              "deaths": 4,
+              "deathCost": {
+                "seconds": 279,
+                "share": 23.9
+              }
             }
           ],
           "deathCost": {
@@ -3109,45 +3501,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 142993,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 134218,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 154426,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 196278,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 120055,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 167902,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 94057,
+              "deaths": 4,
+              "deathCost": {
+                "seconds": 455,
+                "share": 39.1
+              }
             }
           ],
           "deathCost": {
@@ -3484,45 +3925,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 72839,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 89807,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 81107,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 77049,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 125,
+                "share": 40
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 82365,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 106860,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 66688,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 311,
+                "share": 26.7
+              }
             }
           ],
           "deathCost": {
@@ -3874,33 +4364,68 @@
           "bossTries": [
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 94561,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 131222,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 101671,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 117118,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 161,
+                "share": 30.9
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 73539,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 235,
+                "share": 20.2
+              }
             }
           ],
           "deathCost": {
@@ -4230,45 +4755,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 56912,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 64593,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 56390,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 73817,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 63643,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 31218,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 350,
+                "share": 66.9
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 41002,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 229,
+                "share": 19.6
+              }
             }
           ],
           "deathCost": {
@@ -4629,45 +5203,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 111282,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 122412,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 112460,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 127466,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 121373,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 132558,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 94038,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 35,
+                "share": 3
+              }
             }
           ],
           "deathCost": {
@@ -5048,33 +5671,68 @@
           "bossTries": [
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 63218,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 68722,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 71193,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 91512,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 25577,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 453,
+                "share": 38.9
+              }
             }
           ],
           "deathCost": {
@@ -5409,45 +6067,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 74084,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 80622,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 79892,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 126504,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 19252,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 300,
+                "share": 69
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 36631,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 349,
+                "share": 66.7
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 60650,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 120,
+                "share": 10.3
+              }
             }
           ],
           "deathCost": {
@@ -5757,45 +6464,94 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 36513,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3445,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 43841,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3455,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 39520,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3497,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 46117,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 47,
+                "share": 15.1
+              }
             },
             {
               "encounterID": 3420,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 43828,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3421,
+              "difficulty": 3,
               "tries": 1,
               "killed": true,
-              "flawless": true
+              "flawless": true,
+              "dps": 47935,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 3,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 18086,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 581,
+                "share": 49.9
+              }
             }
           ],
           "deathCost": {
@@ -6149,21 +6905,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 29052,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 101,
+                "share": 4.8
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 43271,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 7,
+                "share": 0.8
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 38011,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 100,
+                "share": 8.3
+              }
             }
           ],
           "deathCost": {
@@ -6461,21 +7238,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 38862,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 67,
+                "share": 3.2
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 39560,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 97,
+                "share": 12.4
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 47028,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 83,
+                "share": 7
+              }
             }
           ],
           "deathCost": {
@@ -6768,21 +7566,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 4297,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 41,
+                "share": 2
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 6956,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 63,
+                "share": 8
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 5042,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 138,
+                "share": 11.6
+              }
             }
           ],
           "deathCost": {
@@ -7081,21 +7900,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 7940,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 62,
+                "share": 3
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 12387,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 35,
+                "share": 4.4
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 7921,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 198,
+                "share": 16.6
+              }
             }
           ],
           "deathCost": {
@@ -7317,21 +8157,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 4185,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 34,
+                "share": 1.6
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 6099,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 1,
+                "share": 0.1
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 4033,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 90,
+                "share": 7.5
+              }
             }
           ],
           "deathCost": {
@@ -7596,21 +8457,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 95502,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 94,
+                "share": 4.5
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 101837,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 2,
+                "share": 0.3
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 85832,
+              "deaths": 7,
+              "deathCost": {
+                "seconds": 477,
+                "share": 39.9
+              }
             }
           ],
           "deathCost": {
@@ -7868,21 +8750,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 79079,
+              "deaths": 9,
+              "deathCost": {
+                "seconds": 201,
+                "share": 9.6
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 98088,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 1,
+                "share": 0.1
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 75542,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 233,
+                "share": 19.5
+              }
             }
           ],
           "deathCost": {
@@ -8162,21 +9065,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 102498,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 73,
+                "share": 3.5
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 103712,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 86,
+                "share": 10.9
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 88187,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 242,
+                "share": 20.2
+              }
             }
           ],
           "deathCost": {
@@ -8428,21 +9352,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 81430,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 72,
+                "share": 3.4
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 90042,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 1,
+                "share": 0.1
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 82847,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 218,
+                "share": 18.3
+              }
             }
           ],
           "deathCost": {
@@ -8699,21 +9644,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 99692,
+              "deaths": 9,
+              "deathCost": {
+                "seconds": 106,
+                "share": 5.1
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 72731,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 302,
+                "share": 38.6
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 91924,
+              "deaths": 7,
+              "deathCost": {
+                "seconds": 159,
+                "share": 13.3
+              }
             }
           ],
           "deathCost": {
@@ -8993,21 +9959,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 96593,
+              "deaths": 9,
+              "deathCost": {
+                "seconds": 195,
+                "share": 9.3
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 80904,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 388,
+                "share": 49.6
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 100309,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 98,
+                "share": 8.2
+              }
             }
           ],
           "deathCost": {
@@ -9304,21 +10291,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 72082,
+              "deaths": 9,
+              "deathCost": {
+                "seconds": 226,
+                "share": 10.8
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 67537,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 81,
+                "share": 10.3
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 69928,
+              "deaths": 6,
+              "deathCost": {
+                "seconds": 214,
+                "share": 17.9
+              }
             }
           ],
           "deathCost": {
@@ -9574,21 +10582,42 @@
           "bossTries": [
             {
               "encounterID": 3470,
+              "difficulty": 4,
               "tries": 8,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 45387,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 257,
+                "share": 12.3
+              }
             },
             {
               "encounterID": 3429,
+              "difficulty": 3,
               "tries": 2,
               "killed": true,
-              "flawless": false
+              "flawless": false,
+              "dps": 37888,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 205,
+                "share": 26.2
+              }
             },
             {
               "encounterID": 3492,
+              "difficulty": 3,
               "tries": 6,
               "killed": false,
-              "flawless": false
+              "flawless": false,
+              "dps": 39532,
+              "deaths": 7,
+              "deathCost": {
+                "seconds": 589,
+                "share": 49.4
+              }
             }
           ],
           "deathCost": {

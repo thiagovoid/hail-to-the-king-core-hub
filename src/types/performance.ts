@@ -332,10 +332,30 @@ export interface PlayerPerformance {
   /** Quantas trys de cada boss, e se caiu — base de "Paciência de Jó". */
   bossTries?: Array<{
     encounterID: number;
+    /**
+     * 3 = Normal, 4 = Heroico.
+     *
+     * A chave de um boss é encounterID + dificuldade: o mesmo encontro no
+     * Normal e no Heroico são duas lutas diferentes, com dano e mortes que
+     * não se somam. Ausente em noites coletadas antes deste campo existir.
+     */
+    difficulty?: number;
     tries: number;
     killed: boolean;
     /** Derrubou o boss sem morrer em nenhuma try dele naquela noite. */
     flawless: boolean;
+    /**
+     * Dano por segundo SÓ nas trys deste boss.
+     *
+     * É o que a média da noite não responde: uma luta de progressão e um
+     * farm limpo entram no mesmo número, e "estou melhorando NESTE boss?"
+     * fica sem resposta. Ausente quando não há tabela de dano.
+     */
+    dps?: number;
+    /** Mortes deste jogador neste boss. */
+    deaths?: number;
+    /** Segundos e % do tempo DESTE boss passados morto com a luta viva. */
+    deathCost?: { seconds: number; share: number };
   }>;
 
   /**

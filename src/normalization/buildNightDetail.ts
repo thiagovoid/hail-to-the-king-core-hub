@@ -13,6 +13,8 @@
 export interface LutaDeBoss {
   id: number;
   encounterID: number;
+  /** 3 = Normal, 4 = Heroico. Separa a mesma luta em duas réguas. */
+  difficulty: number;
   kill: boolean;
   /** Duração da try, em ms. Separa luta de pull cancelada. */
   durationMs: number;
@@ -83,12 +85,20 @@ export interface TrysDoJogador {
 
 export interface TrysDeUmBoss {
   encounterID: number;
+  /** 3 = Normal, 4 = Heroico — o mesmo boss em duas dificuldades é duas linhas. */
+  difficulty: number;
   /** Trys DESTE boss em que o jogador estava. */
   tries: number;
   /** O boss caiu numa try em que ele estava. */
   killed: boolean;
   /** Atravessou todas as trys dele sem morrer nenhuma vez. */
   flawless: boolean;
+  /** Dano por segundo SÓ nas trys deste boss. Ausente sem tabela de dano. */
+  dps?: number;
+  /** Mortes deste jogador neste boss. */
+  deaths: number;
+  /** O que as mortes neste boss custaram — segundos e % do tempo dele. */
+  deathCost: { seconds: number; share: number };
 }
 
 /**
@@ -231,19 +241,54 @@ export function buildNightDetail(
       if (morreu && lideresDaTry.get(luta.id)?.has(actorId)) topDamageDead += 1;
     }
 
-    const porBoss = new Map<number, LutaDeBoss[]>();
+    /**
+     * Agrupado por boss E dificuldade: o mesmo encontro no Normal e no
+     * Heroico são duas lutas diferentes, com dano e mortes que não se somam.
+     */
+    const porBoss = new Map<string, LutaDeBoss[]>();
     for (const luta of presentes) {
-      porBoss.set(luta.encounterID, [...(porBoss.get(luta.encounterID) ?? []), luta]);
+      const chave = `${luta.encounterID}:${luta.difficulty}`;
+      porBoss.set(chave, [...(porBoss.get(chave) ?? []), luta]);
     }
 
-    const bossTries: TrysDeUmBoss[] = [...porBoss].map(([encounterID, lutas]) => ({
-      encounterID,
-      tries: lutas.length,
-      killed: lutas.some((luta) => luta.kill),
-      flawless:
-        lutas.some((luta) => luta.kill) &&
-        lutas.every((luta) => !morreuNaTry.has(`${luta.id}:${actorId}`)),
-    }));
+    const bossTries: TrysDeUmBoss[] = [...porBoss.values()].map((lutas) => {
+      const idsDasLutas = new Set(lutas.map((luta) => luta.id));
+      const tempoMs = lutas.reduce((soma, luta) => soma + luta.durationMs, 0);
+
+      const dano = lutas.reduce(
+        (soma, luta) => soma + (danoPorTry.get(luta.id)?.get(actorId) ?? 0),
+        0
+      );
+
+      // O custo das mortes DESTE boss, mesma conta da noite inteira: o que
+      // sobrou de luta depois de cada morte.
+      let msMorto = 0;
+      let mortesAqui = 0;
+      for (const morte of mortes) {
+        if (morte.targetID !== actorId || !idsDasLutas.has(morte.fight)) continue;
+        const luta = porId.get(morte.fight)!;
+        msMorto += Math.max(0, luta.endTime - morte.timestamp);
+        mortesAqui += 1;
+      }
+
+      return {
+        encounterID: lutas[0].encounterID,
+        difficulty: lutas[0].difficulty,
+        tries: lutas.length,
+        killed: lutas.some((luta) => luta.kill),
+        flawless:
+          lutas.some((luta) => luta.kill) &&
+          lutas.every((luta) => !morreuNaTry.has(`${luta.id}:${actorId}`)),
+        // Sem dano medido não se inventa zero: a ausência do número é
+        // diferente de ter feito nada.
+        ...(dano > 0 && tempoMs > 0 ? { dps: Math.round(dano / (tempoMs / 1000)) } : {}),
+        deaths: mortesAqui,
+        deathCost: {
+          seconds: Math.round(msMorto / 1000),
+          share: tempoMs > 0 ? Math.round((msMorto / tempoMs) * 1000) / 10 : 0,
+        },
+      };
+    });
 
     /**
      * O custo, morte a morte: o que sobrou de luta depois dela.

@@ -9,6 +9,7 @@ const luta = (
 ): LutaDeBoss => ({
   id,
   encounterID: 100,
+  difficulty: 4,
   kill: false,
   durationMs: 200_000,
   endTime: 200_000,
