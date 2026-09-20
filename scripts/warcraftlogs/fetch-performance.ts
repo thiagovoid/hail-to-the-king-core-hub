@@ -1130,6 +1130,33 @@ async function main() {
   } else {
     console.log("\nNenhuma mudança de progressão ou log novo pro menu da home.");
   }
+
+  /**
+   * Quanto do orçamento da WCL esta execução gastou.
+   *
+   * A coleta nunca dizia isso, e numa recoleta é justamente o que decide se
+   * dá pra soltar a próxima semana em seguida ou se é melhor esperar a hora
+   * virar. Estourar o limite no meio deixa metade dos relatórios recoletados
+   * e metade não, que é o estado mais chato de diagnosticar.
+   *
+   * Nunca derruba a execução: é relatório, não etapa. No modo `--reuse` nem
+   * é consultado, porque aí não houve ida à rede pra medir.
+   */
+  if (!reuse) {
+    try {
+      const limite = await wcl.fetchRateLimitData();
+      const sobra = limite.limitPerHour - limite.pointsSpentThisHour;
+      console.log(
+        `\nOrçamento da WCL: ${Math.round(limite.pointsSpentThisHour)} de ${limite.limitPerHour} ` +
+          `pontos gastos nesta hora (${Math.round(sobra)} de sobra, zera em ${Math.round(limite.pointsResetIn / 60)}min).`
+      );
+      if (sobra < limite.limitPerHour * 0.25) {
+        console.warn("AVISO: menos de um quarto do orçamento restante. Espere a hora virar antes da próxima semana.");
+      }
+    } catch (error) {
+      console.warn(`Não deu pra ler o orçamento da WCL: ${error instanceof Error ? error.message : error}`);
+    }
+  }
 }
 
 main().catch((error) => {
