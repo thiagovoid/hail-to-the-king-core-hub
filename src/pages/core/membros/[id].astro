@@ -641,45 +641,31 @@ const attendance = calculateAttendance(weeks, player.id);
       </div>
     </header>
 
-    {hasData && (
-      <AtoDaPagina
-        numero={1}
-        titulo="Como você está"
-        comoLer="O resumo da sua temporada e uma coisa só pra levar pra próxima terça. Se você só tem dois minutos, é aqui que eles valem mais — o resto da página existe pra provar isto."
-      />
+    {!hasData && (
+      <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
+        <h2 class="text-xl font-bold text-white">Sem dados de performance</h2>
+
+        <p class="text-slate-400 mt-2">
+          Ainda não existem dados registrados para este jogador.
+        </p>
+      </section>
     )}
 
-    {
-      hasData ? (
-        <PerformanceSummary average={seasonAverage} />
-      ) : (
-        <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
-          <h2 class="text-xl font-bold text-white">
-            Sem dados de performance
-          </h2>
-
-          <p class="text-slate-400 mt-2">
-            Ainda não existem dados registrados para este jogador.
-          </p>
-        </section>
-      )
-    }
-
-    {/* O coach vem ANTES da parede de números, e essa é a inversão que
-        importa. Ele estava em quarto lugar, depois do Score inteiro aberto —
-        o jogador atravessava o dado pra só então chegar no que fazer. É a
-        mesma crítica que fazemos aos outros sites: apontam log, uptime e
-        gráfico, e quase nenhum aponta caminho. */}
-    {hasData && coachRecommendation && <CoachCard recomendacao={coachRecommendation} />}
-
-    {hasData && (
-      <AtoDaPagina
-        numero={2}
-        titulo="De onde saiu esse número"
-        comoLer="Cada linha do Score traz o dado que a sustenta — a magia, o segundo, a pancada, o erro com nome. Se alguma parecer errada, o laudo está aí pra você conferir e reclamar."
-      />
-    )}
-
+    {/**
+     * O Score abre a página, e NADA se interpõe entre o jogador e ele — nem
+     * título de ato, nem faixa de resumo.
+     *
+     * Uma versão anterior pôs o coach e um cabeçalho na frente, e a nota caiu
+     * pra quinta posição. Era o erro que criticamos nos outros sites feito ao
+     * contrário: em vez de dado sem caminho, caminho sem o dado que a pessoa
+     * veio ver. O Score é o centro; o coach explica o que fazer com ele e o
+     * resto da página existe pra sustentá-lo.
+     *
+     * A faixa "Performance na temporada" desceu junto, e isso conserta uma
+     * incoerência que já existia: ela é da season inteira, o Score é da
+     * última noite, e ela estava aparecendo primeiro. O primeiro número da
+     * página não era o que a pessoa veio ver.
+     */}
     {
       hasData && overallScore && (
         <PerformanceScoreCard
@@ -705,6 +691,18 @@ const attendance = calculateAttendance(weeks, player.id);
         />
       )
     }
+
+    {/* Logo abaixo da nota: o que fazer com ela. Uma coisa de cada vez,
+        medida na própria noite da pessoa, sem comparar com ninguém. */}
+    {hasData && coachRecommendation && <CoachCard recomendacao={coachRecommendation} />}
+
+    {hasData && (
+      <AtoDaPagina
+        numero={2}
+        titulo="O que sustenta a nota"
+        comoLer="As metas que a nota persegue, o que você trouxe de casa e em que conteúdo você já está pronto. É aqui que se vê o que muda a nota antes da próxima terça."
+      />
+    )}
 
     {
       hasData && (
@@ -740,9 +738,16 @@ const attendance = calculateAttendance(weeks, player.id);
     {hasData && (
       <AtoDaPagina
         numero={3}
-        titulo="Como você chegou aqui"
-        comoLer="Uma noite não descreve ninguém. Aqui é a temporada: encontro a encontro, semana a semana, e o que o grupo já reconheceu em você."
+        titulo="Ao longo do tempo"
+        comoLer="Uma noite não descreve ninguém. Aqui é o acumulado da temporada: encontro a encontro, semana a semana, e o que o grupo já reconheceu em você."
       />
+    )}
+
+    {/* A faixa da temporada mora AQUI, não no topo: ela soma a season
+        inteira, enquanto o Score mede a última noite. Lá em cima, o primeiro
+        número da página era de outra grandeza que o da nota logo abaixo. */}
+    {hasData && (
+      <PerformanceSummary average={seasonAverage} />
     )}
 
     {hasData && <BossABoss bosses={bossABoss} />}
