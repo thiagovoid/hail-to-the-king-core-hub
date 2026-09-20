@@ -13,6 +13,7 @@ import {
 } from "../../src/providers/warcraftlogs/reportRankings";
 import {
   buildCooldownUsage,
+  ehUso,
   buildDamageShares,
   type CooldownsDoJogador,
   type EventoDeCast,
@@ -825,6 +826,43 @@ async function main() {
         return rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome))?.id;
       };
 
+      /**
+       * Linha do tempo dos defensivos de cada ator, pra responder se havia
+       * defensivo na mão no instante de cada morte.
+       *
+       * Sem esse cruzamento, "você não usou X" não comunica nada: pode não
+       * ter havido o que mitigar. Com ele, a frase vira "você morreu para
+       * Gravebound com Anti-Magic Zone pronto", que é acionável.
+       */
+      const usosDeDefensivo = new Map<number, Map<number, number[]>>();
+      for (const evento of eventos) {
+        if (!ehUso(evento)) continue;
+        if (comInterrupcoes.get(evento.abilityGameID)?.kind !== "defensive") continue;
+
+        const doAtor = usosDeDefensivo.get(evento.sourceID) ?? new Map<number, number[]>();
+        doAtor.set(evento.abilityGameID, [
+          ...(doAtor.get(evento.abilityGameID) ?? []),
+          evento.timestamp,
+        ]);
+        usosDeDefensivo.set(evento.sourceID, doAtor);
+      }
+
+      const defensivosProntos = (actorId: number, quando: number): string[] => {
+        const doAtor = usosDeDefensivo.get(actorId);
+        if (!doAtor) return [];
+
+        const prontos: string[] = [];
+        for (const [spellId, usos] of doAtor) {
+          const magia = comInterrupcoes.get(spellId);
+          if (!magia) continue;
+
+          // Sem uso anterior, a magia estava inteira desde o começo.
+          const ultimo = usos.filter((t) => t <= quando).at(-1);
+          if (ultimo === undefined || quando - ultimo >= magia.cooldownMs) prontos.push(magia.name);
+        }
+        return prontos;
+      };
+
       /** id da habilidade inimiga -> nome, pra morte ter causa e não só hora. */
       const nomeDaHabilidadeInimiga = new Map<number, string>();
       for (const alvo of ctx.damageTaken ?? []) {
@@ -860,7 +898,8 @@ async function main() {
         ),
         // O nome do que matou sai da tabela de dano RECEBIDO pelo raide: é a
         // única fonte no bruto que traduz o id da habilidade inimiga.
-        (abilityGameID) => nomeDaHabilidadeInimiga.get(abilityGameID)
+        (abilityGameID) => nomeDaHabilidadeInimiga.get(abilityGameID),
+        defensivosProntos
       );
 
       const detalhePorJogador = new Map<string, DetalheDaNoite>();

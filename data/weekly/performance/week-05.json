@@ -278,7 +278,10 @@
               "difficulty": 4,
               "atSecond": 564,
               "fightSeconds": 634,
-              "afterSeconds": 70
+              "afterSeconds": 70,
+              "readyDefensives": [
+                "Lichborne"
+              ]
             },
             {
               "encounterID": 3470,
@@ -286,6 +289,11 @@
               "atSecond": 272,
               "fightSeconds": 295,
               "afterSeconds": 23,
+              "readyDefensives": [
+                "Death's Advance",
+                "Vampiric Blood",
+                "Lichborne"
+              ],
               "ability": "Melee"
             },
             {
@@ -294,6 +302,11 @@
               "atSecond": 616,
               "fightSeconds": 634,
               "afterSeconds": 18,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Icebound Fortitude",
+                "Lichborne"
+              ],
               "ability": "Melee"
             },
             {
@@ -302,6 +315,12 @@
               "atSecond": 341,
               "fightSeconds": 357,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Death's Advance",
+                "Vampiric Blood",
+                "Icebound Fortitude",
+                "Lichborne"
+              ],
               "ability": "Melee"
             },
             {
@@ -309,14 +328,25 @@
               "difficulty": 3,
               "atSecond": 269,
               "fightSeconds": 281,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Death's Advance",
+                "Anti-Magic Zone",
+                "Icebound Fortitude"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 321,
               "fightSeconds": 325,
-              "afterSeconds": 5
+              "afterSeconds": 5,
+              "readyDefensives": [
+                "Death's Advance",
+                "Anti-Magic Zone",
+                "Icebound Fortitude",
+                "Lichborne"
+              ]
             },
             {
               "encounterID": 3492,
@@ -331,6 +361,11 @@
               "atSecond": 303,
               "fightSeconds": 304,
               "afterSeconds": 1,
+              "readyDefensives": [
+                "Death's Advance",
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
               "ability": "Necrotic Vapors"
             }
           ],
@@ -719,6 +754,15 @@
               "atSecond": 335,
               "fightSeconds": 357,
               "afterSeconds": 23,
+              "readyDefensives": [
+                "Ritual Wraps",
+                "Holy Bulwark",
+                "Ardent Defender",
+                "Guardian of Ancient Kings",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands"
+              ],
               "ability": "Melee"
             },
             {
@@ -727,6 +771,10 @@
               "atSecond": 619,
               "fightSeconds": 634,
               "afterSeconds": 15,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Lay on Hands"
+              ],
               "ability": "Melee"
             },
             {
@@ -735,6 +783,12 @@
               "atSecond": 298,
               "fightSeconds": 304,
               "afterSeconds": 6,
+              "readyDefensives": [
+                "Sentinel",
+                "Ritual Wraps",
+                "Divine Shield",
+                "Lay on Hands"
+              ],
               "ability": "Necrotic Vapors"
             },
             {
@@ -743,6 +797,11 @@
               "atSecond": 322,
               "fightSeconds": 325,
               "afterSeconds": 4,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Blessing of Sacrifice",
+                "Lay on Hands"
+              ],
               "ability": "Melee"
             },
             {
@@ -751,6 +810,11 @@
               "atSecond": 278,
               "fightSeconds": 281,
               "afterSeconds": 3,
+              "readyDefensives": [
+                "Ritual Wraps",
+                "Holy Bulwark",
+                "Blessing of Sacrifice"
+              ],
               "ability": "Melee"
             },
             {
@@ -758,7 +822,11 @@
               "difficulty": 3,
               "atSecond": 501,
               "fightSeconds": 501,
-              "afterSeconds": 0
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Blessing of Sacrifice"
+              ]
             },
             {
               "encounterID": 3470,
@@ -766,6 +834,13 @@
               "atSecond": 295,
               "fightSeconds": 295,
               "afterSeconds": 0,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Guardian of Ancient Kings",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands"
+              ],
               "ability": "Melee"
             }
           ],
@@ -1130,7 +1205,11 @@
               "difficulty": 4,
               "atSecond": 269,
               "fightSeconds": 295,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Spirit Link Totem",
+                "Astral Shift"
+              ]
             },
             {
               "encounterID": 3492,
@@ -1138,6 +1217,11 @@
               "atSecond": 280,
               "fightSeconds": 304,
               "afterSeconds": 23,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Stormstream Totem",
+                "Astral Shift"
+              ],
               "ability": "Rage of the Shackled"
             },
             {
@@ -1145,21 +1229,35 @@
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Spirit Link Totem",
+                "Ascendance",
+                "Astral Shift"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 310,
               "fightSeconds": 325,
-              "afterSeconds": 16
+              "afterSeconds": 16,
+              "readyDefensives": [
+                "Stormstream Totem"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 346,
               "fightSeconds": 357,
-              "afterSeconds": 11
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Spirit Link Totem",
+                "Stormstream Totem"
+              ]
             },
             {
               "encounterID": 3470,
@@ -1167,6 +1265,9 @@
               "atSecond": 625,
               "fightSeconds": 634,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ],
               "ability": "Melee"
             },
             {
@@ -1571,42 +1672,86 @@
               "difficulty": 3,
               "atSecond": 465,
               "fightSeconds": 501,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Potent Healing Potion",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 268,
               "fightSeconds": 295,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Potent Healing Potion",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 300,
               "fightSeconds": 325,
-              "afterSeconds": 25
+              "afterSeconds": 25,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 617,
               "fightSeconds": 634,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 291,
               "fightSeconds": 304,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Divine Protection",
+                "Aura Mastery",
+                "Divine Shield",
+                "Lay on Hands",
+                "Potent Healing Potion",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 347,
               "fightSeconds": 357,
-              "afterSeconds": 11
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Potent Healing Potion",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3492,
@@ -1614,6 +1759,14 @@
               "atSecond": 281,
               "fightSeconds": 281,
               "afterSeconds": 0,
+              "readyDefensives": [
+                "Aura Mastery",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Potent Healing Potion",
+                "Soulcoiler Ritual Vessel"
+              ],
               "ability": "Melee"
             }
           ],
@@ -1983,28 +2136,50 @@
               "difficulty": 3,
               "atSecond": 255,
               "fightSeconds": 304,
-              "afterSeconds": 49
+              "afterSeconds": 49,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Divine Protection",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 465,
               "fightSeconds": 501,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 270,
               "fightSeconds": 295,
-              "afterSeconds": 25
+              "afterSeconds": 25,
+              "readyDefensives": [
+                "Divine Shield",
+                "Divine Protection",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ]
             },
             {
               "encounterID": 3470,
@@ -2012,6 +2187,11 @@
               "atSecond": 353,
               "fightSeconds": 357,
               "afterSeconds": 4,
+              "readyDefensives": [
+                "Divine Shield",
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ],
               "ability": "Melee"
             },
             {
@@ -2020,6 +2200,10 @@
               "atSecond": 632,
               "fightSeconds": 634,
               "afterSeconds": 2,
+              "readyDefensives": [
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel"
+              ],
               "ability": "Melee"
             },
             {
@@ -2028,6 +2212,10 @@
               "atSecond": 325,
               "fightSeconds": 325,
               "afterSeconds": 0,
+              "readyDefensives": [
+                "Blessing of Protection",
+                "Soulcoiler Ritual Vessel"
+              ],
               "ability": "Melee"
             }
           ],
@@ -2382,6 +2570,10 @@
               "atSecond": 161,
               "fightSeconds": 357,
               "afterSeconds": 197,
+              "readyDefensives": [
+                "Ice Cold",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Soulcoil Rite"
             },
             {
@@ -2397,6 +2589,10 @@
               "atSecond": 224,
               "fightSeconds": 281,
               "afterSeconds": 57,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Malignant Shell"
             },
             {
@@ -2404,7 +2600,11 @@
               "difficulty": 4,
               "atSecond": 268,
               "fightSeconds": 295,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -2418,7 +2618,10 @@
               "difficulty": 3,
               "atSecond": 286,
               "fightSeconds": 304,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Ice Barrier"
+              ]
             },
             {
               "encounterID": 3470,
@@ -2426,6 +2629,9 @@
               "atSecond": 621,
               "fightSeconds": 634,
               "afterSeconds": 13,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -2434,6 +2640,10 @@
               "atSecond": 355,
               "fightSeconds": 357,
               "afterSeconds": 2,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             }
           ],
@@ -2763,6 +2973,9 @@
               "atSecond": 298,
               "fightSeconds": 325,
               "afterSeconds": 28,
+              "readyDefensives": [
+                "Dispersion"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -2770,7 +2983,12 @@
               "difficulty": 4,
               "atSecond": 268,
               "fightSeconds": 295,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Dispersion"
+              ]
             },
             {
               "encounterID": 3492,
@@ -2792,6 +3010,9 @@
               "atSecond": 347,
               "fightSeconds": 357,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Dispersion"
+              ],
               "ability": "Melee"
             },
             {
@@ -2800,6 +3021,11 @@
               "atSecond": 304,
               "fightSeconds": 310,
               "afterSeconds": 6,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Dispersion"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -2808,6 +3034,10 @@
               "atSecond": 630,
               "fightSeconds": 634,
               "afterSeconds": 4,
+              "readyDefensives": [
+                "Silvermoon Health Potion",
+                "Dispersion"
+              ],
               "ability": "Melee"
             }
           ],
@@ -3121,6 +3351,11 @@
               "atSecond": 197,
               "fightSeconds": 433,
               "afterSeconds": 236,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Necrotic Vapors"
             },
             {
@@ -3128,42 +3363,69 @@
               "difficulty": 3,
               "atSecond": 409,
               "fightSeconds": 501,
-              "afterSeconds": 93
+              "afterSeconds": 93,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 257,
               "fightSeconds": 304,
-              "afterSeconds": 47
+              "afterSeconds": 47,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 465,
               "fightSeconds": 501,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 269,
               "fightSeconds": 295,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 301,
               "fightSeconds": 325,
-              "afterSeconds": 24
+              "afterSeconds": 24,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 265,
               "fightSeconds": 281,
-              "afterSeconds": 16
+              "afterSeconds": 16,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3470,
@@ -3171,6 +3433,9 @@
               "atSecond": 624,
               "fightSeconds": 634,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -3179,6 +3444,10 @@
               "atSecond": 348,
               "fightSeconds": 357,
               "afterSeconds": 9,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             }
           ],
@@ -3527,7 +3796,10 @@
               "difficulty": 3,
               "atSecond": 409,
               "fightSeconds": 501,
-              "afterSeconds": 93
+              "afterSeconds": 93,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
@@ -3542,6 +3814,10 @@
               "atSecond": 282,
               "fightSeconds": 304,
               "afterSeconds": 22,
+              "readyDefensives": [
+                "Blur",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Necrotic Vapors"
             },
             {
@@ -3549,14 +3825,21 @@
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Darkness",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 617,
               "fightSeconds": 634,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3470,
@@ -3564,6 +3847,10 @@
               "atSecond": 346,
               "fightSeconds": 357,
               "afterSeconds": 12,
+              "readyDefensives": [
+                "Blur",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -3571,7 +3858,10 @@
               "difficulty": 4,
               "atSecond": 286,
               "fightSeconds": 295,
-              "afterSeconds": 9
+              "afterSeconds": 9,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -3963,7 +4253,10 @@
               "difficulty": 3,
               "atSecond": 193,
               "fightSeconds": 501,
-              "afterSeconds": 308
+              "afterSeconds": 308,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
@@ -3971,6 +4264,10 @@
               "atSecond": 220,
               "fightSeconds": 304,
               "afterSeconds": 83,
+              "readyDefensives": [
+                "Astral Shift",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -3978,7 +4275,10 @@
               "difficulty": 3,
               "atSecond": 255,
               "fightSeconds": 304,
-              "afterSeconds": 48
+              "afterSeconds": 48,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
@@ -3992,7 +4292,10 @@
               "difficulty": 4,
               "atSecond": 268,
               "fightSeconds": 295,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -4006,7 +4309,11 @@
               "difficulty": 3,
               "atSecond": 264,
               "fightSeconds": 281,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Astral Shift",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3470,
@@ -4014,6 +4321,9 @@
               "atSecond": 343,
               "fightSeconds": 357,
               "afterSeconds": 14,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -4022,6 +4332,9 @@
               "atSecond": 622,
               "fightSeconds": 634,
               "afterSeconds": 13,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             }
           ],
@@ -4340,28 +4653,42 @@
               "difficulty": 4,
               "atSecond": 84,
               "fightSeconds": 325,
-              "afterSeconds": 242
+              "afterSeconds": 242,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion",
+                "Rallying Cry"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 246,
               "fightSeconds": 357,
-              "afterSeconds": 111
+              "afterSeconds": 111,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 223,
               "fightSeconds": 325,
-              "afterSeconds": 102
+              "afterSeconds": 102,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion",
+                "Rallying Cry"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 235,
               "fightSeconds": 295,
-              "afterSeconds": 60
+              "afterSeconds": 60,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
@@ -4376,28 +4703,42 @@
               "difficulty": 4,
               "atSecond": 269,
               "fightSeconds": 295,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 286,
               "fightSeconds": 304,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion",
+                "Rallying Cry"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 617,
               "fightSeconds": 634,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion",
+                "Rallying Cry"
+              ]
             },
             {
               "encounterID": 3429,
@@ -4405,6 +4746,10 @@
               "atSecond": 304,
               "fightSeconds": 310,
               "afterSeconds": 6,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion",
+                "Rallying Cry"
+              ],
               "ability": "Gravebound"
             }
           ],
@@ -4790,7 +5135,11 @@
               "difficulty": 4,
               "atSecond": 280,
               "fightSeconds": 357,
-              "afterSeconds": 78
+              "afterSeconds": 78,
+              "readyDefensives": [
+                "Divine Shield",
+                "Lay on Hands"
+              ]
             },
             {
               "encounterID": 3492,
@@ -4805,14 +5154,21 @@
               "difficulty": 3,
               "atSecond": 465,
               "fightSeconds": 501,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Lay on Hands"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 270,
               "fightSeconds": 295,
-              "afterSeconds": 25
+              "afterSeconds": 25,
+              "readyDefensives": [
+                "Divine Shield",
+                "Lay on Hands"
+              ]
             },
             {
               "encounterID": 3445,
@@ -4820,6 +5176,9 @@
               "atSecond": 302,
               "fightSeconds": 325,
               "afterSeconds": 24,
+              "readyDefensives": [
+                "Divine Protection"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -4827,7 +5186,11 @@
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Divine Shield",
+                "Lay on Hands"
+              ]
             },
             {
               "encounterID": 3470,
@@ -4843,6 +5206,11 @@
               "atSecond": 357,
               "fightSeconds": 357,
               "afterSeconds": 1,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Lay on Hands"
+              ],
               "ability": "Melee"
             }
           ],
@@ -5184,6 +5552,13 @@
               "atSecond": 230,
               "fightSeconds": 304,
               "afterSeconds": 74,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -5192,6 +5567,11 @@
               "atSecond": 254,
               "fightSeconds": 304,
               "afterSeconds": 50,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -5199,7 +5579,12 @@
               "difficulty": 4,
               "atSecond": 270,
               "fightSeconds": 295,
-              "afterSeconds": 25
+              "afterSeconds": 25,
+              "readyDefensives": [
+                "Divine Shield",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3470,
@@ -5207,6 +5592,10 @@
               "atSecond": 622,
               "fightSeconds": 634,
               "afterSeconds": 12,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Melee"
             },
             {
@@ -5214,7 +5603,10 @@
               "difficulty": 4,
               "atSecond": 315,
               "fightSeconds": 325,
-              "afterSeconds": 10
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3470,
@@ -5222,6 +5614,12 @@
               "atSecond": 350,
               "fightSeconds": 357,
               "afterSeconds": 7,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             }
           ],
@@ -5552,14 +5950,21 @@
               "difficulty": 4,
               "atSecond": 280,
               "fightSeconds": 357,
-              "afterSeconds": 77
+              "afterSeconds": 77,
+              "readyDefensives": [
+                "Potent Healing Potion",
+                "Dispersion"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 255,
               "fightSeconds": 304,
-              "afterSeconds": 48
+              "afterSeconds": 48,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3492,
@@ -5573,28 +5978,42 @@
               "difficulty": 4,
               "atSecond": 269,
               "fightSeconds": 295,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Potent Healing Potion",
+                "Dispersion"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 300,
               "fightSeconds": 325,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 618,
               "fightSeconds": 634,
-              "afterSeconds": 16
+              "afterSeconds": 16,
+              "readyDefensives": [
+                "Dispersion"
+              ]
             }
           ],
           "trashShare": 8.8,
@@ -5955,7 +6374,12 @@
               "difficulty": 3,
               "atSecond": 409,
               "fightSeconds": 501,
-              "afterSeconds": 93
+              "afterSeconds": 93,
+              "readyDefensives": [
+                "Blur",
+                "Darkness",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3492,
@@ -5963,6 +6387,11 @@
               "atSecond": 216,
               "fightSeconds": 304,
               "afterSeconds": 87,
+              "readyDefensives": [
+                "Blur",
+                "Darkness",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -5971,6 +6400,11 @@
               "atSecond": 394,
               "fightSeconds": 433,
               "afterSeconds": 39,
+              "readyDefensives": [
+                "Blur",
+                "Darkness",
+                "Potent Healing Potion"
+              ],
               "ability": "Caustic Waves"
             },
             {
@@ -5978,21 +6412,34 @@
               "difficulty": 4,
               "atSecond": 268,
               "fightSeconds": 295,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Blur",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 263,
               "fightSeconds": 281,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Blur",
+                "Darkness",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 617,
               "fightSeconds": 634,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Blur",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -6000,6 +6447,9 @@
               "atSecond": 314,
               "fightSeconds": 325,
               "afterSeconds": 12,
+              "readyDefensives": [
+                "Darkness"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -6008,6 +6458,11 @@
               "atSecond": 352,
               "fightSeconds": 357,
               "afterSeconds": 6,
+              "readyDefensives": [
+                "Blur",
+                "Darkness",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             }
           ],
@@ -6295,6 +6750,9 @@
               "atSecond": 196,
               "fightSeconds": 246,
               "afterSeconds": 50,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -6302,7 +6760,11 @@
               "difficulty": 4,
               "atSecond": 87,
               "fightSeconds": 123,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -6310,6 +6772,9 @@
               "atSecond": 217,
               "fightSeconds": 246,
               "afterSeconds": 30,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -6318,6 +6783,10 @@
               "atSecond": 279,
               "fightSeconds": 306,
               "afterSeconds": 27,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -6334,6 +6803,10 @@
               "atSecond": 72,
               "fightSeconds": 95,
               "afterSeconds": 23,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -6342,6 +6815,9 @@
               "atSecond": 189,
               "fightSeconds": 202,
               "afterSeconds": 13,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -6357,7 +6833,11 @@
               "difficulty": 4,
               "atSecond": 78,
               "fightSeconds": 82,
-              "afterSeconds": 4
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Potent Healing Potion"
+              ]
             }
           ],
           "trashShare": 0,
@@ -6617,6 +7097,14 @@
               "atSecond": 94,
               "fightSeconds": 119,
               "afterSeconds": 25,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Death's Advance",
+                "Anti-Magic Shell",
+                "Vampiric Blood",
+                "Icebound Fortitude",
+                "Healthstone"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -6625,6 +7113,13 @@
               "atSecond": 78,
               "fightSeconds": 95,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Death's Advance",
+                "Vampiric Blood",
+                "Icebound Fortitude",
+                "Healthstone"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -6933,6 +7428,9 @@
               "atSecond": 441,
               "fightSeconds": 521,
               "afterSeconds": 81,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Hollowing Strikes"
             },
             {
@@ -6941,6 +7439,10 @@
               "atSecond": 514,
               "fightSeconds": 527,
               "afterSeconds": 13,
+              "readyDefensives": [
+                "Healthstone",
+                "Lay on Hands"
+              ],
               "ability": "Empowering Slam"
             },
             {
@@ -6949,6 +7451,9 @@
               "atSecond": 511,
               "fightSeconds": 521,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Melee"
             },
             {
@@ -6957,6 +7462,10 @@
               "atSecond": 238,
               "fightSeconds": 246,
               "afterSeconds": 8,
+              "readyDefensives": [
+                "Healthstone",
+                "Lay on Hands"
+              ],
               "ability": "Living Venom"
             },
             {
@@ -6965,6 +7474,13 @@
               "atSecond": 195,
               "fightSeconds": 202,
               "afterSeconds": 7,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Ritual Wraps",
+                "Healthstone",
+                "Holy Bulwark",
+                "Lay on Hands"
+              ],
               "ability": "Empowering Slam"
             },
             {
@@ -6973,6 +7489,11 @@
               "atSecond": 301,
               "fightSeconds": 306,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Ritual Wraps",
+                "Healthstone",
+                "Lay on Hands"
+              ],
               "ability": "Melee"
             },
             {
@@ -6981,6 +7502,10 @@
               "atSecond": 543,
               "fightSeconds": 546,
               "afterSeconds": 3,
+              "readyDefensives": [
+                "Healthstone",
+                "Lay on Hands"
+              ],
               "ability": "Melee"
             },
             {
@@ -6988,14 +7513,27 @@
               "difficulty": 4,
               "atSecond": 91,
               "fightSeconds": 95,
-              "afterSeconds": 3
+              "afterSeconds": 3,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Healthstone",
+                "Holy Bulwark",
+                "Guardian of Ancient Kings",
+                "Lay on Hands"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 94,
               "fightSeconds": 95,
-              "afterSeconds": 0
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Healthstone",
+                "Holy Bulwark",
+                "Guardian of Ancient Kings",
+                "Lay on Hands"
+              ]
             },
             {
               "encounterID": 3445,
@@ -7003,6 +7541,10 @@
               "atSecond": 119,
               "fightSeconds": 119,
               "afterSeconds": 0,
+              "readyDefensives": [
+                "Healthstone",
+                "Lay on Hands"
+              ],
               "ability": "Empowering Slam"
             },
             {
@@ -7010,7 +7552,11 @@
               "difficulty": 4,
               "atSecond": 122,
               "fightSeconds": 123,
-              "afterSeconds": 0
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Lay on Hands"
+              ]
             }
           ],
           "trashShare": 5.9,
@@ -7272,7 +7818,13 @@
               "difficulty": 4,
               "atSecond": 93,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Stormstream Totem",
+                "Ascendance",
+                "Spirit Link Totem",
+                "Astral Shift"
+              ]
             },
             {
               "encounterID": 3445,
@@ -7280,6 +7832,9 @@
               "atSecond": 80,
               "fightSeconds": 95,
               "afterSeconds": 15,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ],
               "ability": "Unstable Miasma"
             }
           ],
@@ -7617,6 +8172,11 @@
               "atSecond": 191,
               "fightSeconds": 527,
               "afterSeconds": 335,
+              "readyDefensives": [
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -7625,6 +8185,11 @@
               "atSecond": 287,
               "fightSeconds": 527,
               "afterSeconds": 240,
+              "readyDefensives": [
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -7632,7 +8197,16 @@
               "difficulty": 4,
               "atSecond": 93,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Aura Mastery",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -7640,6 +8214,13 @@
               "atSecond": 501,
               "fightSeconds": 527,
               "afterSeconds": 25,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -7648,6 +8229,15 @@
               "atSecond": 81,
               "fightSeconds": 95,
               "afterSeconds": 14,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Aura Mastery",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Healthstone"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -7655,7 +8245,15 @@
               "difficulty": 4,
               "atSecond": 87,
               "fightSeconds": 95,
-              "afterSeconds": 7
+              "afterSeconds": 7,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -7663,6 +8261,15 @@
               "atSecond": 298,
               "fightSeconds": 306,
               "afterSeconds": 7,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -7671,6 +8278,11 @@
               "atSecond": 542,
               "fightSeconds": 546,
               "afterSeconds": 4,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -7678,7 +8290,12 @@
               "difficulty": 4,
               "atSecond": 200,
               "fightSeconds": 202,
-              "afterSeconds": 2
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Protection",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -7686,6 +8303,14 @@
               "atSecond": 245,
               "fightSeconds": 246,
               "afterSeconds": 1,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ],
               "ability": "Melee"
             },
             {
@@ -7693,7 +8318,15 @@
               "difficulty": 4,
               "atSecond": 122,
               "fightSeconds": 123,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
             }
           ],
           "trashShare": 0.7,
@@ -7987,6 +8620,13 @@
               "atSecond": 85,
               "fightSeconds": 119,
               "afterSeconds": 33,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Lay on Hands",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -7995,6 +8635,12 @@
               "atSecond": 276,
               "fightSeconds": 306,
               "afterSeconds": 29,
+              "readyDefensives": [
+                "Aura Mastery",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -8003,6 +8649,11 @@
               "atSecond": 503,
               "fightSeconds": 527,
               "afterSeconds": 24,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -8011,6 +8662,12 @@
               "atSecond": 110,
               "fightSeconds": 123,
               "afterSeconds": 13,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Toxic Droplets"
             },
             {
@@ -8019,6 +8676,13 @@
               "atSecond": 84,
               "fightSeconds": 95,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Lay on Hands",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -8027,6 +8691,12 @@
               "atSecond": 86,
               "fightSeconds": 95,
               "afterSeconds": 9,
+              "readyDefensives": [
+                "Aura Mastery",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -8035,6 +8705,12 @@
               "atSecond": 238,
               "fightSeconds": 246,
               "afterSeconds": 8,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -8042,7 +8718,13 @@
               "difficulty": 4,
               "atSecond": 200,
               "fightSeconds": 202,
-              "afterSeconds": 2
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ]
             },
             {
               "encounterID": 3445,
@@ -8337,6 +9019,9 @@
               "atSecond": 289,
               "fightSeconds": 527,
               "afterSeconds": 238,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -8345,6 +9030,10 @@
               "atSecond": 393,
               "fightSeconds": 546,
               "afterSeconds": 153,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -8352,7 +9041,10 @@
               "difficulty": 4,
               "atSecond": 203,
               "fightSeconds": 306,
-              "afterSeconds": 102
+              "afterSeconds": 102,
+              "readyDefensives": [
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -8360,6 +9052,12 @@
               "atSecond": 187,
               "fightSeconds": 246,
               "afterSeconds": 59,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -8367,21 +9065,37 @@
               "difficulty": 4,
               "atSecond": 93,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Ice Cold",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 74,
               "fightSeconds": 95,
-              "afterSeconds": 20
+              "afterSeconds": 20,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 108,
               "fightSeconds": 123,
-              "afterSeconds": 15
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -8389,6 +9103,11 @@
               "atSecond": 83,
               "fightSeconds": 95,
               "afterSeconds": 11,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -8397,6 +9116,10 @@
               "atSecond": 514,
               "fightSeconds": 521,
               "afterSeconds": 7,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -8405,6 +9128,9 @@
               "atSecond": 196,
               "fightSeconds": 202,
               "afterSeconds": 6,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Contaminate"
             }
           ],
@@ -8687,6 +9413,12 @@
               "atSecond": 86,
               "fightSeconds": 546,
               "afterSeconds": 460,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion",
+                "Unending Resolve",
+                "Mortal Coil"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -8695,6 +9427,9 @@
               "atSecond": 290,
               "fightSeconds": 527,
               "afterSeconds": 236,
+              "readyDefensives": [
+                "Mortal Coil"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -8702,7 +9437,13 @@
               "difficulty": 4,
               "atSecond": 181,
               "fightSeconds": 306,
-              "afterSeconds": 125
+              "afterSeconds": 125,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion",
+                "Unending Resolve",
+                "Mortal Coil"
+              ]
             },
             {
               "encounterID": 3445,
@@ -8717,7 +9458,13 @@
               "difficulty": 4,
               "atSecond": 93,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion",
+                "Unending Resolve",
+                "Mortal Coil"
+              ]
             },
             {
               "encounterID": 3470,
@@ -8725,6 +9472,12 @@
               "atSecond": 507,
               "fightSeconds": 521,
               "afterSeconds": 14,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion",
+                "Unending Resolve",
+                "Mortal Coil"
+              ],
               "ability": "Latent Cultist"
             },
             {
@@ -8732,7 +9485,11 @@
               "difficulty": 4,
               "atSecond": 83,
               "fightSeconds": 95,
-              "afterSeconds": 11
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Potent Healing Potion",
+                "Mortal Coil"
+              ]
             },
             {
               "encounterID": 3445,
@@ -8740,6 +9497,12 @@
               "atSecond": 84,
               "fightSeconds": 95,
               "afterSeconds": 11,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion",
+                "Unending Resolve",
+                "Mortal Coil"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -8748,6 +9511,9 @@
               "atSecond": 541,
               "fightSeconds": 546,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Mortal Coil"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -8756,6 +9522,11 @@
               "atSecond": 198,
               "fightSeconds": 202,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion",
+                "Mortal Coil"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -8763,7 +9534,12 @@
               "difficulty": 4,
               "atSecond": 122,
               "fightSeconds": 123,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Potent Healing Potion",
+                "Unending Resolve",
+                "Mortal Coil"
+              ]
             }
           ],
           "trashShare": 2.5,
@@ -9040,6 +9816,10 @@
               "atSecond": 289,
               "fightSeconds": 527,
               "afterSeconds": 238,
+              "readyDefensives": [
+                "Dispersion",
+                "Healthstone"
+              ],
               "ability": "Living Venom"
             },
             {
@@ -9047,7 +9827,11 @@
               "difficulty": 4,
               "atSecond": 402,
               "fightSeconds": 546,
-              "afterSeconds": 144
+              "afterSeconds": 144,
+              "readyDefensives": [
+                "Dispersion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -9055,6 +9839,9 @@
               "atSecond": 208,
               "fightSeconds": 246,
               "afterSeconds": 39,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -9063,6 +9850,11 @@
               "atSecond": 97,
               "fightSeconds": 119,
               "afterSeconds": 22,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -9071,6 +9863,10 @@
               "atSecond": 77,
               "fightSeconds": 95,
               "afterSeconds": 18,
+              "readyDefensives": [
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -9078,7 +9874,12 @@
               "difficulty": 4,
               "atSecond": 293,
               "fightSeconds": 306,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -9086,6 +9887,12 @@
               "atSecond": 113,
               "fightSeconds": 123,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -9094,6 +9901,11 @@
               "atSecond": 86,
               "fightSeconds": 95,
               "afterSeconds": 8,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -9102,6 +9914,11 @@
               "atSecond": 200,
               "fightSeconds": 202,
               "afterSeconds": 2,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Mark of Blood"
             }
           ],
@@ -9364,6 +10181,12 @@
               "atSecond": 202,
               "fightSeconds": 306,
               "afterSeconds": 103,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -9371,14 +10194,26 @@
               "difficulty": 4,
               "atSecond": 93,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 75,
               "fightSeconds": 95,
-              "afterSeconds": 19
+              "afterSeconds": 19,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -9386,6 +10221,10 @@
               "atSecond": 231,
               "fightSeconds": 246,
               "afterSeconds": 15,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -9393,7 +10232,13 @@
               "difficulty": 4,
               "atSecond": 81,
               "fightSeconds": 95,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -9401,6 +10246,12 @@
               "atSecond": 195,
               "fightSeconds": 202,
               "afterSeconds": 7,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -9409,6 +10260,9 @@
               "atSecond": 541,
               "fightSeconds": 546,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -9417,6 +10271,11 @@
               "atSecond": 518,
               "fightSeconds": 521,
               "afterSeconds": 4,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -9425,6 +10284,11 @@
               "atSecond": 526,
               "fightSeconds": 527,
               "afterSeconds": 1,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -9432,7 +10296,13 @@
               "difficulty": 4,
               "atSecond": 122,
               "fightSeconds": 123,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
             }
           ],
           "trashShare": 17.1,
@@ -9716,6 +10586,9 @@
               "atSecond": 322,
               "fightSeconds": 546,
               "afterSeconds": 224,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ],
               "ability": "Living Venom"
             },
             {
@@ -9724,6 +10597,12 @@
               "atSecond": 96,
               "fightSeconds": 119,
               "afterSeconds": 22,
+              "readyDefensives": [
+                "Blur",
+                "Darkness",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -9732,6 +10611,9 @@
               "atSecond": 506,
               "fightSeconds": 521,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ],
               "ability": "Latent Cultist"
             },
             {
@@ -9740,6 +10622,10 @@
               "atSecond": 290,
               "fightSeconds": 306,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Living Venom"
             },
             {
@@ -9748,6 +10634,9 @@
               "atSecond": 510,
               "fightSeconds": 527,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -9756,6 +10645,11 @@
               "atSecond": 86,
               "fightSeconds": 95,
               "afterSeconds": 8,
+              "readyDefensives": [
+                "Darkness",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -9770,7 +10664,11 @@
               "difficulty": 4,
               "atSecond": 117,
               "fightSeconds": 123,
-              "afterSeconds": 6
+              "afterSeconds": 6,
+              "readyDefensives": [
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -9778,6 +10676,10 @@
               "atSecond": 242,
               "fightSeconds": 246,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -9786,6 +10688,10 @@
               "atSecond": 93,
               "fightSeconds": 95,
               "afterSeconds": 2,
+              "readyDefensives": [
+                "Darkness",
+                "Healthstone"
+              ],
               "ability": "Melee"
             }
           ],
@@ -10068,6 +10974,9 @@
               "atSecond": 499,
               "fightSeconds": 527,
               "afterSeconds": 28,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -10075,7 +10984,11 @@
               "difficulty": 4,
               "atSecond": 93,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -10083,6 +10996,10 @@
               "atSecond": 230,
               "fightSeconds": 246,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -10091,6 +11008,10 @@
               "atSecond": 79,
               "fightSeconds": 95,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -10099,6 +11020,10 @@
               "atSecond": 112,
               "fightSeconds": 123,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ],
               "ability": "Toxic Droplets"
             },
             {
@@ -10107,6 +11032,9 @@
               "atSecond": 512,
               "fightSeconds": 521,
               "afterSeconds": 9,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Melee"
             },
             {
@@ -10115,6 +11043,9 @@
               "atSecond": 298,
               "fightSeconds": 306,
               "afterSeconds": 7,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -10123,6 +11054,10 @@
               "atSecond": 198,
               "fightSeconds": 202,
               "afterSeconds": 4,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ],
               "ability": "Melee"
             },
             {
@@ -10131,6 +11066,10 @@
               "atSecond": 91,
               "fightSeconds": 95,
               "afterSeconds": 3,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -10139,6 +11078,9 @@
               "atSecond": 519,
               "fightSeconds": 521,
               "afterSeconds": 2,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Latent Cultist"
             },
             {
@@ -10420,6 +11362,13 @@
               "atSecond": 187,
               "fightSeconds": 527,
               "afterSeconds": 340,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -10427,14 +11376,28 @@
               "difficulty": 4,
               "atSecond": 180,
               "fightSeconds": 306,
-              "afterSeconds": 125
+              "afterSeconds": 125,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 93,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -10442,6 +11405,12 @@
               "atSecond": 525,
               "fightSeconds": 546,
               "afterSeconds": 21,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -10450,6 +11419,13 @@
               "atSecond": 73,
               "fightSeconds": 95,
               "afterSeconds": 21,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -10457,7 +11433,14 @@
               "difficulty": 4,
               "atSecond": 229,
               "fightSeconds": 246,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3445,
@@ -10465,6 +11448,13 @@
               "atSecond": 80,
               "fightSeconds": 95,
               "afterSeconds": 15,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -10473,6 +11463,13 @@
               "atSecond": 117,
               "fightSeconds": 123,
               "afterSeconds": 6,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -10481,6 +11478,13 @@
               "atSecond": 77,
               "fightSeconds": 82,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -10488,7 +11492,14 @@
               "difficulty": 4,
               "atSecond": 200,
               "fightSeconds": 202,
-              "afterSeconds": 2
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Berserker Rage",
+                "Concentrated Silvermoon Health Potion",
+                "Die by the Sword",
+                "Healthstone"
+              ]
             }
           ],
           "trashShare": 2.7,
@@ -10775,7 +11786,13 @@
               "difficulty": 4,
               "atSecond": 184,
               "fightSeconds": 306,
-              "afterSeconds": 122
+              "afterSeconds": 122,
+              "readyDefensives": [
+                "Divine Protection",
+                "Healthstone",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
             },
             {
               "encounterID": 3445,
@@ -10783,6 +11800,14 @@
               "atSecond": 92,
               "fightSeconds": 119,
               "afterSeconds": 27,
+              "readyDefensives": [
+                "Divine Protection",
+                "Healthstone",
+                "Lay on Hands",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -10799,6 +11824,11 @@
               "atSecond": 506,
               "fightSeconds": 521,
               "afterSeconds": 15,
+              "readyDefensives": [
+                "Healthstone",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ],
               "ability": "Latent Cultist"
             },
             {
@@ -10806,7 +11836,13 @@
               "difficulty": 4,
               "atSecond": 79,
               "fightSeconds": 95,
-              "afterSeconds": 15
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Healthstone",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
             },
             {
               "encounterID": 3445,
@@ -10814,6 +11850,13 @@
               "atSecond": 192,
               "fightSeconds": 202,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Divine Protection",
+                "Healthstone",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -10821,14 +11864,26 @@
               "difficulty": 4,
               "atSecond": 518,
               "fightSeconds": 527,
-              "afterSeconds": 9
+              "afterSeconds": 9,
+              "readyDefensives": [
+                "Healthstone",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 87,
               "fightSeconds": 95,
-              "afterSeconds": 8
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Healthstone",
+                "Lay on Hands",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
             },
             {
               "encounterID": 3445,
@@ -10836,6 +11891,11 @@
               "atSecond": 544,
               "fightSeconds": 546,
               "afterSeconds": 2,
+              "readyDefensives": [
+                "Healthstone",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ],
               "ability": "Melee"
             },
             {
@@ -10843,7 +11903,13 @@
               "difficulty": 4,
               "atSecond": 122,
               "fightSeconds": 123,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Blessing of Sacrifice"
+              ]
             }
           ],
           "trashShare": 9.2,
@@ -11127,6 +12193,12 @@
               "atSecond": 116,
               "fightSeconds": 546,
               "afterSeconds": 430,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Living Venom"
             },
             {
@@ -11135,6 +12207,13 @@
               "atSecond": 78,
               "fightSeconds": 482,
               "afterSeconds": 403,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Toxic Droplets"
             },
             {
@@ -11142,7 +12221,13 @@
               "difficulty": 4,
               "atSecond": 177,
               "fightSeconds": 246,
-              "afterSeconds": 69
+              "afterSeconds": 69,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Divine Protection",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -11150,6 +12235,12 @@
               "atSecond": 89,
               "fightSeconds": 119,
               "afterSeconds": 30,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -11158,6 +12249,10 @@
               "atSecond": 506,
               "fightSeconds": 527,
               "afterSeconds": 20,
+              "readyDefensives": [
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -11165,7 +12260,13 @@
               "difficulty": 4,
               "atSecond": 75,
               "fightSeconds": 95,
-              "afterSeconds": 20
+              "afterSeconds": 20,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -11173,6 +12274,12 @@
               "atSecond": 77,
               "fightSeconds": 95,
               "afterSeconds": 17,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -11181,6 +12288,10 @@
               "atSecond": 529,
               "fightSeconds": 546,
               "afterSeconds": 17,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Healthstone"
+              ],
               "ability": "Living Venom"
             },
             {
@@ -11189,6 +12300,11 @@
               "atSecond": 516,
               "fightSeconds": 521,
               "afterSeconds": 6,
+              "readyDefensives": [
+                "Divine Protection",
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -11197,6 +12313,11 @@
               "atSecond": 197,
               "fightSeconds": 202,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             },
             {
@@ -11204,7 +12325,13 @@
               "difficulty": 4,
               "atSecond": 122,
               "fightSeconds": 123,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -11212,6 +12339,11 @@
               "atSecond": 305,
               "fightSeconds": 306,
               "afterSeconds": 0,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Healthstone",
+                "Potent Healing Potion"
+              ],
               "ability": "Melee"
             }
           ],
@@ -11503,6 +12635,14 @@
               "atSecond": 86,
               "fightSeconds": 119,
               "afterSeconds": 33,
+              "readyDefensives": [
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion",
+                "Holy Word: Serenity",
+                "Divine Hymn",
+                "Guardian Spirit"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -11511,6 +12651,11 @@
               "atSecond": 497,
               "fightSeconds": 527,
               "afterSeconds": 29,
+              "readyDefensives": [
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -11519,6 +12664,11 @@
               "atSecond": 530,
               "fightSeconds": 546,
               "afterSeconds": 16,
+              "readyDefensives": [
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion"
+              ],
               "ability": "Mark of Acid"
             },
             {
@@ -11527,6 +12677,13 @@
               "atSecond": 510,
               "fightSeconds": 521,
               "afterSeconds": 11,
+              "readyDefensives": [
+                "Healthstone",
+                "Dispersion",
+                "Holy Word: Serenity",
+                "Divine Hymn",
+                "Guardian Spirit"
+              ],
               "ability": "Latent Cultist"
             },
             {
@@ -11535,6 +12692,13 @@
               "atSecond": 83,
               "fightSeconds": 95,
               "afterSeconds": 11,
+              "readyDefensives": [
+                "Dispersion",
+                "Potent Healing Potion",
+                "Holy Word: Serenity",
+                "Divine Hymn",
+                "Guardian Spirit"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -11542,7 +12706,13 @@
               "difficulty": 4,
               "atSecond": 117,
               "fightSeconds": 123,
-              "afterSeconds": 6
+              "afterSeconds": 6,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3445,
@@ -11550,6 +12720,11 @@
               "atSecond": 241,
               "fightSeconds": 246,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion",
+                "Potent Healing Potion"
+              ],
               "ability": "Contaminate"
             },
             {
@@ -11558,6 +12733,13 @@
               "atSecond": 303,
               "fightSeconds": 306,
               "afterSeconds": 3,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion",
+                "Guardian Spirit"
+              ],
               "ability": "Blood Venom"
             }
           ],
@@ -11833,6 +13015,10 @@
               "atSecond": 119,
               "fightSeconds": 306,
               "afterSeconds": 187,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ],
               "ability": "Living Venom"
             },
             {
@@ -11841,6 +13027,10 @@
               "atSecond": 386,
               "fightSeconds": 527,
               "afterSeconds": 141,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ],
               "ability": "Unstable Miasma"
             },
             {
@@ -11855,7 +13045,11 @@
               "difficulty": 4,
               "atSecond": 92,
               "fightSeconds": 119,
-              "afterSeconds": 26
+              "afterSeconds": 26,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ]
             },
             {
               "encounterID": 3445,
@@ -11863,6 +13057,10 @@
               "atSecond": 285,
               "fightSeconds": 306,
               "afterSeconds": 20,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ],
               "ability": "Mark of Blood"
             },
             {
@@ -11871,6 +13069,9 @@
               "atSecond": 76,
               "fightSeconds": 95,
               "afterSeconds": 19,
+              "readyDefensives": [
+                "Darkness"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -11879,6 +13080,9 @@
               "atSecond": 75,
               "fightSeconds": 95,
               "afterSeconds": 19,
+              "readyDefensives": [
+                "Blur"
+              ],
               "ability": "Blood Venom"
             },
             {
@@ -11886,14 +13090,21 @@
               "difficulty": 4,
               "atSecond": 229,
               "fightSeconds": 246,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ]
             },
             {
               "encounterID": 3445,
               "difficulty": 4,
               "atSecond": 200,
               "fightSeconds": 202,
-              "afterSeconds": 2
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Blur"
+              ]
             },
             {
               "encounterID": 3445,

@@ -342,14 +342,25 @@
               "difficulty": 3,
               "atSecond": 290,
               "fightSeconds": 321,
-              "afterSeconds": 31
+              "afterSeconds": 31,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 240,
               "fightSeconds": 258,
-              "afterSeconds": 18
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Vampiric Blood",
+                "Icebound Fortitude",
+                "Healthstone",
+                "Lichborne"
+              ]
             },
             {
               "encounterID": 3429,
@@ -357,6 +368,10 @@
               "atSecond": 431,
               "fightSeconds": 442,
               "afterSeconds": 11,
+              "readyDefensives": [
+                "Icebound Fortitude",
+                "Healthstone"
+              ],
               "ability": "Melee"
             },
             {
@@ -364,7 +379,12 @@
               "difficulty": 3,
               "atSecond": 265,
               "fightSeconds": 273,
-              "afterSeconds": 8
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Icebound Fortitude",
+                "Healthstone",
+                "Lichborne"
+              ]
             },
             {
               "encounterID": 3429,
@@ -372,6 +392,10 @@
               "atSecond": 343,
               "fightSeconds": 348,
               "afterSeconds": 5,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
               "ability": "Melee"
             },
             {
@@ -379,7 +403,13 @@
               "difficulty": 3,
               "atSecond": 295,
               "fightSeconds": 299,
-              "afterSeconds": 4
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Anti-Magic Shell",
+                "Vampiric Blood",
+                "Healthstone",
+                "Lichborne"
+              ]
             }
           ],
           "trashShare": 4.2,
@@ -874,14 +904,27 @@
               "difficulty": 3,
               "atSecond": 242,
               "fightSeconds": 258,
-              "afterSeconds": 15
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Ardent Defender",
+                "Divine Shield",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 264,
               "fightSeconds": 273,
-              "afterSeconds": 9
+              "afterSeconds": 9,
+              "readyDefensives": [
+                "Ritual Wraps",
+                "Holy Bulwark",
+                "Ardent Defender",
+                "Divine Shield",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -889,6 +932,10 @@
               "atSecond": 339,
               "fightSeconds": 348,
               "afterSeconds": 9,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Healthstone"
+              ],
               "ability": "Melee"
             },
             {
@@ -896,14 +943,21 @@
               "difficulty": 3,
               "atSecond": 297,
               "fightSeconds": 299,
-              "afterSeconds": 2
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 518,
               "fightSeconds": 518,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Healthstone"
+              ]
             }
           ],
           "trashShare": 5.4,
@@ -1374,56 +1428,91 @@
               "difficulty": 3,
               "atSecond": 246,
               "fightSeconds": 442,
-              "afterSeconds": 195
+              "afterSeconds": 195,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3420,
               "difficulty": 3,
               "atSecond": 305,
               "fightSeconds": 332,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Ascendance",
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 231,
               "fightSeconds": 258,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 258,
               "fightSeconds": 273,
-              "afterSeconds": 15
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Stormstream Totem",
+                "Spirit Link Totem",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 336,
               "fightSeconds": 348,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 430,
               "fightSeconds": 442,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Stormstream Totem"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 507,
               "fightSeconds": 518,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 289,
               "fightSeconds": 299,
-              "afterSeconds": 10
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Spirit Link Totem",
+                "Healthstone"
+              ]
             }
           ],
           "trashShare": 0.3,
@@ -1887,35 +1976,61 @@
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Blessing of Protection"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 336,
               "fightSeconds": 348,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Blessing of Protection"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 261,
               "fightSeconds": 273,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 511,
               "fightSeconds": 518,
-              "afterSeconds": 8
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Blessing of Sacrifice",
+                "Blessing of Protection"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 295,
               "fightSeconds": 299,
-              "afterSeconds": 4
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Blessing of Protection"
+              ]
             },
             {
               "encounterID": 3429,
@@ -2319,6 +2434,10 @@
               "atSecond": 199,
               "fightSeconds": 518,
               "afterSeconds": 319,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Divine Protection"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -2327,6 +2446,11 @@
               "atSecond": 161,
               "fightSeconds": 273,
               "afterSeconds": 112,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Divine Shield",
+                "Divine Protection"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -2334,21 +2458,33 @@
               "difficulty": 3,
               "atSecond": 360,
               "fightSeconds": 437,
-              "afterSeconds": 77
+              "afterSeconds": 77,
+              "readyDefensives": [
+                "Aura Mastery",
+                "Divine Shield",
+                "Divine Protection"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Divine Protection"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 507,
               "fightSeconds": 518,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Divine Shield",
+                "Divine Protection"
+              ]
             },
             {
               "encounterID": 3429,
@@ -2356,6 +2492,9 @@
               "atSecond": 338,
               "fightSeconds": 348,
               "afterSeconds": 11,
+              "readyDefensives": [
+                "Divine Shield"
+              ],
               "ability": "Coalesced Venom"
             },
             {
@@ -2372,6 +2511,11 @@
               "atSecond": 298,
               "fightSeconds": 299,
               "afterSeconds": 1,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Divine Shield",
+                "Divine Protection"
+              ],
               "ability": "Unworthy"
             }
           ],
@@ -2800,6 +2944,11 @@
               "atSecond": 199,
               "fightSeconds": 518,
               "afterSeconds": 319,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -2808,6 +2957,11 @@
               "atSecond": 262,
               "fightSeconds": 299,
               "afterSeconds": 37,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Dreadful Presence"
             },
             {
@@ -2822,7 +2976,12 @@
               "difficulty": 3,
               "atSecond": 247,
               "fightSeconds": 258,
-              "afterSeconds": 11
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3429,
@@ -2830,6 +2989,11 @@
               "atSecond": 338,
               "fightSeconds": 348,
               "afterSeconds": 11,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Coalesced Venom"
             },
             {
@@ -2845,6 +3009,9 @@
               "atSecond": 432,
               "fightSeconds": 442,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Silvermoon Health Potion"
+              ],
               "ability": "Coalesced Venom"
             }
           ],
@@ -3256,42 +3423,64 @@
               "difficulty": 3,
               "atSecond": 361,
               "fightSeconds": 437,
-              "afterSeconds": 77
+              "afterSeconds": 77,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 226,
               "fightSeconds": 299,
-              "afterSeconds": 73
+              "afterSeconds": 73,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 236,
               "fightSeconds": 273,
-              "afterSeconds": 37
+              "afterSeconds": 37,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 269,
               "fightSeconds": 299,
-              "afterSeconds": 30
+              "afterSeconds": 30,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 336,
               "fightSeconds": 348,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Demonic Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
@@ -3717,14 +3906,24 @@
               "difficulty": 3,
               "atSecond": 253,
               "fightSeconds": 442,
-              "afterSeconds": 189
+              "afterSeconds": 189,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 131,
               "fightSeconds": 258,
-              "afterSeconds": 126
+              "afterSeconds": 126,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -3732,6 +3931,12 @@
               "atSecond": 152,
               "fightSeconds": 273,
               "afterSeconds": 121,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -3740,6 +3945,10 @@
               "atSecond": 326,
               "fightSeconds": 442,
               "afterSeconds": 116,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -3747,14 +3956,23 @@
               "difficulty": 3,
               "atSecond": 246,
               "fightSeconds": 339,
-              "afterSeconds": 93
+              "afterSeconds": 93,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 349,
               "fightSeconds": 442,
-              "afterSeconds": 93
+              "afterSeconds": 93,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3429,
@@ -3762,6 +3980,11 @@
               "atSecond": 234,
               "fightSeconds": 299,
               "afterSeconds": 65,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -3769,21 +3992,33 @@
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Dispersion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 490,
               "fightSeconds": 518,
-              "afterSeconds": 28
+              "afterSeconds": 28,
+              "readyDefensives": [
+                "Dispersion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 336,
               "fightSeconds": 348,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
             }
           ],
           "trashShare": 10.5,
@@ -4211,6 +4446,11 @@
               "atSecond": 199,
               "fightSeconds": 518,
               "afterSeconds": 319,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -4219,6 +4459,11 @@
               "atSecond": 326,
               "fightSeconds": 442,
               "afterSeconds": 116,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -4226,28 +4471,43 @@
               "difficulty": 3,
               "atSecond": 476,
               "fightSeconds": 518,
-              "afterSeconds": 43
+              "afterSeconds": 43,
+              "readyDefensives": [
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 272,
               "fightSeconds": 299,
-              "afterSeconds": 27
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 243,
               "fightSeconds": 258,
-              "afterSeconds": 14
+              "afterSeconds": 14,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 430,
               "fightSeconds": 442,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -4255,6 +4515,10 @@
               "atSecond": 340,
               "fightSeconds": 348,
               "afterSeconds": 9,
+              "readyDefensives": [
+                "Astral Shift",
+                "Concentrated Silvermoon Health Potion"
+              ],
               "ability": "Coalesced Venom"
             }
           ],
@@ -4671,7 +4935,11 @@
               "difficulty": 3,
               "atSecond": 228,
               "fightSeconds": 273,
-              "afterSeconds": 45
+              "afterSeconds": 45,
+              "readyDefensives": [
+                "Darkness",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -4679,6 +4947,9 @@
               "atSecond": 274,
               "fightSeconds": 299,
               "afterSeconds": 25,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -4686,14 +4957,21 @@
               "difficulty": 3,
               "atSecond": 336,
               "fightSeconds": 348,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Blur",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 507,
               "fightSeconds": 518,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -4701,6 +4979,9 @@
               "atSecond": 432,
               "fightSeconds": 442,
               "afterSeconds": 10,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Melee"
             },
             {
@@ -4709,6 +4990,11 @@
               "atSecond": 257,
               "fightSeconds": 258,
               "afterSeconds": 0,
+              "readyDefensives": [
+                "Blur",
+                "Darkness",
+                "Healthstone"
+              ],
               "ability": "Melee"
             }
           ],
@@ -5117,21 +5403,33 @@
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 239,
               "fightSeconds": 258,
-              "afterSeconds": 19
+              "afterSeconds": 19,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 260,
               "fightSeconds": 273,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -5139,6 +5437,9 @@
               "atSecond": 340,
               "fightSeconds": 348,
               "afterSeconds": 9,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Coalesced Venom"
             },
             {
@@ -5147,6 +5448,9 @@
               "atSecond": 434,
               "fightSeconds": 442,
               "afterSeconds": 8,
+              "readyDefensives": [
+                "Healthstone"
+              ],
               "ability": "Coalesced Venom"
             },
             {
@@ -5580,6 +5884,10 @@
               "atSecond": 199,
               "fightSeconds": 518,
               "afterSeconds": 319,
+              "readyDefensives": [
+                "Die by the Sword",
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -5588,6 +5896,11 @@
               "atSecond": 174,
               "fightSeconds": 437,
               "afterSeconds": 264,
+              "readyDefensives": [
+                "Die by the Sword",
+                "Rallying Cry",
+                "Healthstone"
+              ],
               "ability": "Eternal Venom"
             },
             {
@@ -5596,6 +5909,11 @@
               "atSecond": 152,
               "fightSeconds": 273,
               "afterSeconds": 121,
+              "readyDefensives": [
+                "Die by the Sword",
+                "Rallying Cry",
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -5603,14 +5921,23 @@
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Die by the Sword",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 336,
               "fightSeconds": 348,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Die by the Sword",
+                "Rallying Cry",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -5625,7 +5952,12 @@
               "difficulty": 3,
               "atSecond": 298,
               "fightSeconds": 299,
-              "afterSeconds": 1
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Die by the Sword",
+                "Rallying Cry",
+                "Healthstone"
+              ]
             }
           ],
           "trashShare": 3.6,
@@ -6075,6 +6407,11 @@
               "atSecond": 390,
               "fightSeconds": 518,
               "afterSeconds": 129,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -6082,21 +6419,36 @@
               "difficulty": 3,
               "atSecond": 341,
               "fightSeconds": 442,
-              "afterSeconds": 101
+              "afterSeconds": 101,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Lay on Hands"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Divine Shield",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 259,
               "fightSeconds": 273,
-              "afterSeconds": 14
+              "afterSeconds": 14,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -6104,6 +6456,9 @@
               "atSecond": 347,
               "fightSeconds": 348,
               "afterSeconds": 1,
+              "readyDefensives": [
+                "Lay on Hands"
+              ],
               "ability": "Corrupted Toxin"
             }
           ],
@@ -6529,14 +6884,31 @@
               "difficulty": 3,
               "atSecond": 23,
               "fightSeconds": 273,
-              "afterSeconds": 250
+              "afterSeconds": 250,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Divine Shield",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3421,
               "difficulty": 3,
               "atSecond": 239,
               "fightSeconds": 437,
-              "afterSeconds": 198
+              "afterSeconds": 198,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Divine Shield",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -6544,6 +6916,13 @@
               "atSecond": 360,
               "fightSeconds": 518,
               "afterSeconds": 159,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -6551,21 +6930,43 @@
               "difficulty": 3,
               "atSecond": 255,
               "fightSeconds": 273,
-              "afterSeconds": 17
+              "afterSeconds": 17,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands",
+                "Divine Shield",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 245,
               "fightSeconds": 258,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Divine Shield",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 430,
               "fightSeconds": 442,
-              "afterSeconds": 12
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Healthstone"
+              ]
             },
             {
               "encounterID": 3429,
@@ -6573,6 +6974,12 @@
               "atSecond": 347,
               "fightSeconds": 348,
               "afterSeconds": 1,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Potent Healing Potion",
+                "Healthstone"
+              ],
               "ability": "Melee"
             }
           ],
@@ -7030,6 +7437,10 @@
               "atSecond": 326,
               "fightSeconds": 442,
               "afterSeconds": 116,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Healthstone"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -7037,21 +7448,33 @@
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 273,
-              "afterSeconds": 52
+              "afterSeconds": 52,
+              "readyDefensives": [
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 483,
               "fightSeconds": 518,
-              "afterSeconds": 35
+              "afterSeconds": 35,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion"
+              ]
             },
             {
               "encounterID": 3429,
@@ -7059,6 +7482,10 @@
               "atSecond": 340,
               "fightSeconds": 348,
               "afterSeconds": 9,
+              "readyDefensives": [
+                "Dispersion",
+                "Potent Healing Potion"
+              ],
               "ability": "Coalesced Venom"
             }
           ],
@@ -7460,6 +7887,9 @@
               "atSecond": 153,
               "fightSeconds": 442,
               "afterSeconds": 288,
+              "readyDefensives": [
+                "Blur"
+              ],
               "ability": "Dreadful Presence"
             },
             {
@@ -7468,6 +7898,10 @@
               "atSecond": 181,
               "fightSeconds": 258,
               "afterSeconds": 76,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ],
               "ability": "Gravebound"
             },
             {
@@ -7475,21 +7909,31 @@
               "difficulty": 3,
               "atSecond": 215,
               "fightSeconds": 273,
-              "afterSeconds": 58
+              "afterSeconds": 58,
+              "readyDefensives": [
+                "Darkness"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 336,
               "fightSeconds": 348,
-              "afterSeconds": 13
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Blur"
+              ]
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 297,
               "fightSeconds": 299,
-              "afterSeconds": 2
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ]
             }
           ],
           "trashShare": 3.2,

@@ -317,6 +317,16 @@ export interface PlayerPerformance {
     afterSeconds: number;
     /** O que matou, quando o log identifica. */
     ability?: string;
+    /**
+     * Defensivos que estavam fora de recarga no instante da morte.
+     *
+     * É o cruzamento que faz o dado comunicar. "Você não usou X" não diz
+     * nada — pode não ter havido o que mitigar. Sozinho ele também não
+     * separa: 94% das 1048 mortes da temporada tinham algum defensivo
+     * pronto. O que separa é cruzar com o CUSTO da morte e com a causa ter
+     * nome; aí caem pra 13%.
+     */
+    readyDefensives?: string[];
   }>;
 
   deathSignature?: {

@@ -154,6 +154,19 @@ export interface MorteDetalhada {
   afterSeconds: number;
   /** Nome da habilidade que matou, quando o log identifica. */
   ability?: string;
+  /**
+   * Defensivos que estavam FORA de recarga no instante da morte.
+   *
+   * É o cruzamento que transforma o dado em conversa. "Você não usou Anti-Magic
+   * Zone" não comunica nada — pode não haver o que mitigar. "Você morreu para
+   * Gravebound, o raide lutou 4 minutos sem você, e o Anti-Magic Zone estava
+   * na sua mão" comunica.
+   *
+   * Sozinho ele ainda não separa: 94% das 1048 mortes da temporada tinham
+   * ALGUM defensivo pronto. O que separa é cruzar com o custo da morte e com
+   * a causa ter nome — aí caem pra 13%.
+   */
+  readyDefensives?: string[];
 }
 
 export interface DetalheDaNoite {
@@ -200,7 +213,9 @@ export function buildNightDetail(
   mortes: MorteNaTry[],
   danoPorTry: Map<number, Map<number, number>>,
   /** Traduz o id da habilidade que matou. Sem ela, a morte fica sem causa. */
-  nomeDaHabilidade?: (abilityGameID: number) => string | undefined
+  nomeDaHabilidade?: (abilityGameID: number) => string | undefined,
+  /** Quais defensivos deste ator estavam prontos naquele instante. */
+  defensivosProntos?: (actorId: number, timestamp: number) => string[]
 ): Map<number, DetalheDaNoite> {
   const detalhe = new Map<number, DetalheDaNoite>();
   if (bosses.length === 0) return detalhe;
@@ -354,6 +369,10 @@ export function buildNightDetail(
         atSecond: Math.max(0, Math.round((morte.timestamp - inicioDaLuta) / 1000)),
         fightSeconds: Math.round(luta.durationMs / 1000),
         afterSeconds: Math.round(sobrou / 1000),
+        ...(() => {
+          const prontos = defensivosProntos?.(actorId, morte.timestamp) ?? [];
+          return prontos.length > 0 ? { readyDefensives: prontos } : {};
+        })(),
         ...(morte.abilityGameID !== undefined
           ? (() => {
               const nome = nomeDaHabilidade?.(morte.abilityGameID);
