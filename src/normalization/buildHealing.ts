@@ -61,6 +61,9 @@ export function calculateQuinhao(cobertura: number, coberturaDosHealers: number[
   return Math.round((cobertura / esperado) * 1000) / 10;
 }
 
+/** Quanto do quinhão puxado a mais que o combinado ainda pontua. */
+export const TETO_DO_QUINHAO = 130;
+
 function arredondar(valor: number): number {
   return Math.round(valor * 10) / 10;
 }
@@ -68,10 +71,17 @@ function arredondar(valor: number): number {
 /**
  * Monta a dimensão de um healer.
  *
- * `score` combina as duas metades: o quinhão puxado (limitado a 100, porque
- * cobrir o dobro do seu quinhão não é o dobro de mérito — em geral significa
- * que o outro healer faltou) e o aproveitamento, que é o complemento do
- * desperdício.
+ * `score` combina as duas metades: o quinhão puxado e o aproveitamento, que
+ * é o complemento do desperdício.
+ *
+ * O quinhão tinha teto em 100, com o argumento de que cobrir o dobro do seu
+ * quinhão costuma significar que o outro healer faltou. A temporada desmente:
+ * a Cowsadeer puxa entre 115% e 163% em SEIS noites seguidas, com os mesmos
+ * healers ao lado. Isso não é ausência alheia, é trabalho — e o teto fazia
+ * seis noites dela valerem o mesmo que puxar exatamente o combinado.
+ *
+ * O teto novo é 130: deixa a diferença aparecer sem transformar uma noite de
+ * raide massacrado em nota impossível de alcançar.
  */
 export function buildHealing(
   cura: CuraDoJogador,
@@ -89,7 +99,7 @@ export function buildHealing(
 
   return {
     healing: {
-      score: arredondar((Math.min(100, quinhao) + aproveitamento) / 2),
+      score: arredondar((Math.min(TETO_DO_QUINHAO, quinhao) + aproveitamento) / 2),
       coverage: cobertura,
       share: arredondar(quinhao),
       overheal: desperdicio,

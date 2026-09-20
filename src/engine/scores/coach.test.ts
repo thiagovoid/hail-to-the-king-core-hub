@@ -87,16 +87,17 @@ describe("registra o que foi bem", () => {
     const positivo = coach(NOITE).positivo;
 
     expect(positivo?.tipo).toBe("destaque");
-    expect(positivo?.texto).toContain("1,8");
+    expect(positivo?.texto).toContain("97,8");
   });
 
   /**
-   * Mecânicas (1,8 de meta 2) e Atacar (97,8 de meta 70) batem as duas em
-   * 100. Entre duas coisas igualmente boas, o destaque vai pra que pesa mais
-   * no ofício da pessoa.
+   * Desde que a sub-nota passa de 100 ao superar a meta (ver
+   * TETO_DA_SUB_NOTA), o destaque vai pra quem foi mais ALÉM da régua, e não
+   * mais pro desempate por peso: Atacar 97,8 contra meta 90 passa de 100,
+   * Mecânicas 1,8 contra meta 1,8 fica exatamente em 100.
    */
-  it("desempata o destaque pelo peso da função", () => {
-    expect(coach(NOITE).positivo?.dimensao).toBe("mechanics");
+  it("destaca quem foi mais além da meta", () => {
+    expect(coach(NOITE).positivo?.dimensao).toBe("attack");
   });
 
   it("não inventa elogio quando nada passa da meta", () => {

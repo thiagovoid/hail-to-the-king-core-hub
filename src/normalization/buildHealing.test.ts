@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   buildHealing,
+  TETO_DO_QUINHAO,
   calculateCobertura,
   calculateDesperdicio,
   calculateQuinhao,
@@ -63,10 +64,22 @@ describe("buildHealing", () => {
 
   // Cobrir o dobro do seu quinhão não é o dobro de mérito: em geral quer
   // dizer que o outro healer faltou, não que este foi duas vezes melhor.
-  it("limita o quinhão em 100 na nota", () => {
+  /**
+   * O quinhão tinha teto em 100 com o argumento de que cobrir o dobro só
+   * acontece quando o outro healer falta. A temporada desmente: a Cowsadeer
+   * puxa 115% a 163% em SEIS noites seguidas, com os mesmos healers ao lado.
+   */
+  it("deixa o quinhão passar de 100, até o teto", () => {
     const r = buildHealing({ effective: 500, overheal: 0 }, 1000, [50, 10]);
+
     expect(r?.healing.share).toBeGreaterThan(100);
-    expect(r?.healing.score).toBe(100);
+    expect(r?.healing.score).toBeGreaterThan(100);
+  });
+
+  it("não deixa o quinhão passar do teto", () => {
+    const absurdo = buildHealing({ effective: 990, overheal: 0 }, 1000, [1, 1]);
+
+    expect(absurdo?.healing.score).toBeLessThanOrEqual((100 + TETO_DO_QUINHAO) / 2);
   });
 
   it("guarda a cobertura crua, que é o número explicável", () => {

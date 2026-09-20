@@ -419,3 +419,69 @@ export function calculateAttendance(
   return Math.round((attended / runs.length) * 100);
 }
 
+
+/**
+ * Quanto uma sub-nota pode passar de 100 ao superar a meta.
+ *
+ * O teto rígido em 100 apagava tudo acima da régua: parse 74 e parse 55
+ * valiam a mesma coisa, e a Cowsadeer puxando 163% do quinhão dela pontuava
+ * igual a quem puxa exatamente 100%. A régua sabia dizer "você chegou no
+ * heroico" e não sabia dizer "você está muito além dele" — e é justamente aí
+ * que mora a percepção de quem é o melhor da raide.
+ *
+ * 130 dá folga pra excelência aparecer sem deixar uma dimensão dominar a
+ * nota: com peso 30, parse acima da meta rende no máximo 9 pontos extras,
+ * que compensam uma dimensão fraca sem apagar as outras seis.
+ */
+export const TETO_DA_SUB_NOTA = 115;
+
+/**
+ * Quanto do excedente acima da meta vira nota.
+ *
+ * Sem comprimir, a folga inflacionava tudo: com teto em 130 cru a mediana do
+ * core pulou de 79 pra 88 e 21 noites cravaram 100 — pior do que antes de
+ * alinhar a régua ao heroico. O motivo é que numa dimensão em que o core
+ * inteiro já passa da meta (Mecânicas: mediana 1,5 contra meta 1,8) o bônus
+ * vira presente pra todo mundo, e presente pra todo mundo não separa
+ * ninguém.
+ *
+ * Com 0,4, passar MUITO da meta rende, passar um pouco quase não muda, e a
+ * ordem de quem está acima da régua volta a aparecer sem levantar o chão.
+ */
+export const COMPRESSAO_DA_FOLGA = 0.4;
+
+/**
+ * Como `calculateGoalProgress`, mas deixa a sub-nota passar de 100.
+ *
+ * Só o Score Engine usa: os cartões de objetivo individual continuam
+ * falando em "% da meta", onde passar de 100 não quer dizer nada.
+ */
+/** Acima de 100, o excedente entra comprimido e limitado ao teto. */
+function comFolga(bruto: number, teto: number): number {
+  if (bruto <= 100) return bruto;
+  return Math.min(teto, Math.round(100 + (bruto - 100) * COMPRESSAO_DA_FOLGA));
+}
+
+export function progressoComFolga(
+  actual: number,
+  target: number,
+  direction: "higher" | "lower",
+  teto: number = TETO_DA_SUB_NOTA
+): number {
+  if (actual < 0 || target < 0) return 0;
+
+  if (direction === "higher") {
+    if (target === 0) return teto;
+    return comFolga(Math.round((actual / target) * 100), teto);
+  }
+
+  // "Quanto menor melhor": abaixo da meta a conta é a MESMA de
+  // calculateGoalProgress — só a folga acima de 100 é nova. Trocar a fórmula
+  // de baixo mudaria a nota de quem ainda não chegou na régua, que não é o
+  // que se quis mexer aqui.
+  if (target === 0) return actual === 0 ? teto : 0;
+  if (actual <= 0) return teto;
+  if (actual > target) return Math.round((target / actual) * 100);
+
+  return comFolga(Math.round((target / actual) * 100), teto);
+}

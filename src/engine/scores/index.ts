@@ -1,6 +1,6 @@
 import type { PlayerPerformance } from "../../types/performance";
 import type { CorePerformanceTargets, CoreTarget } from "../../types/index";
-import { calculateGoalProgress } from "../metrics";
+import { progressoComFolga } from "../metrics";
 import { notaDeAjudar } from "./ajudar";
 
 export type ScoreDimensionKey =
@@ -134,6 +134,25 @@ export function funcaoEfetiva(
   return funcaoDoRoster ?? "dps";
 }
 
+/**
+ * A mitigação que vale nota cheia PARA UM TANQUE.
+ *
+ * A mitigação estava fora da nota com uma justificativa que a temporada
+ * confirma entre funções e desmente entre tanques. Entre funções ela mede
+ * armadura: a mediana é 45,8% no dps e 39,6% no tanque, porque tanque come
+ * dano mágico, que armadura não corta. Pontuar isso puniria quem tanka.
+ *
+ * Entre tanques, porém, ela separa — e separa na direção que quem assiste à
+ * raide enxerga. Na temporada: Apocalipse mitiga 42% e come 82 mil de dano
+ * por segundo; Blackwatch mitiga 35% e come 95 mil. A nota de cooldowns
+ * dizia o contrário (45 contra 47), e o dado de mitigação dizia o que o
+ * olho via.
+ *
+ * 42% é o p75 das 17 noites-tanque. Vale só pra tanque, e por isso a
+ * comparação é sempre entre iguais.
+ */
+export const MITIGACAO_DO_TANQUE = 42;
+
 const DIMENSION_META: Record<
   ScoreDimensionKey,
   { label: string; unit: string; description: string; source: string }
@@ -218,7 +237,7 @@ export function metaDaFuncao(target: CoreTarget, funcao: FuncaoDoJogador): CoreT
 
 function progress(value: number | undefined, target: CoreTarget): number | null {
   if (value === undefined) return null;
-  return calculateGoalProgress(value, target.target, target.direction);
+  return progressoComFolga(value, target.target, target.direction);
 }
 
 /**
@@ -243,6 +262,29 @@ function progress(value: number | undefined, target: CoreTarget): number | null 
  * Dimensão sem dado é descartada e seu peso é redistribuído entre as que
  * têm — em vez de assumir um denominador fixo de 100 pontos.
  */
+/**
+ * O valor de Defender desta noite.
+ *
+ * Pro tanque, a nota de cooldowns entra em média com a mitigação
+ * normalizada (ver MITIGACAO_DO_TANQUE). Pras outras funções continua só o
+ * cooldown, porque ali a mitigação mede equipamento.
+ */
+function valorDeDefender(
+  performance: PlayerPerformance,
+  funcao: FuncaoDoJogador
+): number | null {
+  const cooldowns = performance.defense?.score ?? null;
+  if (funcao !== "tank") return cooldowns;
+
+  const mitigacao = performance.defense?.mitigation;
+  if (mitigacao === undefined) return cooldowns;
+
+  const notaDaMitigacao = Math.min(100, (mitigacao / MITIGACAO_DO_TANQUE) * 100);
+  if (cooldowns === null) return Math.round(notaDaMitigacao * 10) / 10;
+
+  return Math.round(((cooldowns + notaDaMitigacao) / 2) * 10) / 10;
+}
+
 export function calculateOverallScore(
   performance: PlayerPerformance,
   targets: CorePerformanceTargets,
@@ -284,8 +326,8 @@ export function calculateOverallScore(
       ...DIMENSION_META.defense,
       weight: pesos.defense,
       target: alvo("defense"),
-      value: performance.defense?.score ?? null,
-      score: progress(performance.defense?.score ?? undefined, alvo("defense")),
+      value: valorDeDefender(performance, funcao),
+      score: progress(valorDeDefender(performance, funcao) ?? undefined, alvo("defense")),
     },
     {
       key: "healing",
@@ -334,7 +376,10 @@ export function calculateOverallScore(
 
   const totalWeight = available.reduce((sum, dimension) => sum + dimension.weight, 0);
   const weightedSum = available.reduce((sum, dimension) => sum + dimension.weight * dimension.score, 0);
-  const beforeSurvival = Math.round(weightedSum / totalWeight);
+  // A sub-nota pode passar de 100 (ver TETO_DA_SUB_NOTA), a nota final não.
+  // É o que deixa a excelência numa dimensão compensar uma fraca sem que o
+  // Score deixe de ser uma escala de 0 a 100.
+  const beforeSurvival = Math.min(100, Math.round(weightedSum / totalWeight));
 
   const share = performance.deathCost?.share;
   const survivalFactor =

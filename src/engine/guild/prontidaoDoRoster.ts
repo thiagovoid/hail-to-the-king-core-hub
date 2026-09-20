@@ -20,6 +20,18 @@ import {
   type NivelDeConteudo,
 } from "../scores/prontidao";
 
+/**
+ * Noites mínimas numa função pra ser julgado por ela.
+ *
+ * A Kroline curou UMA noite na temporada — cobertura 36,7%, nota 88,4 — e
+ * isso bastava pra ela liderar o ofício de healer à frente da Cowsadeer, que
+ * curou seis. Uma noite excepcional não é um ofício, é uma amostra.
+ *
+ * Três é o menor número em que a média começa a resistir a uma noite fora da
+ * curva, e ainda cabe numa temporada de oito noites.
+ */
+export const NOITES_MINIMAS_DE_OFICIO = 3;
+
 /** O mínimo que a prontidão precisa saber do cadastro. */
 export interface JogadorDoRoster {
   id: string;
@@ -46,7 +58,12 @@ export function funcaoDaProntidao(
   role: string | undefined,
   noites: Array<{ healing?: unknown }>
 ): FuncaoDaProntidao {
-  if (noites.some((noite) => noite.healing)) return "healer";
+  // Curar TRÊS noites é ofício; curar uma é ter coberto um buraco. A Kroline
+  // curou uma noite na temporada e era medida por Curar a temporada inteira,
+  // com a régua do ofício de healer sobre uma amostra de um.
+  const noitesCurando = noites.filter((noite) => noite.healing).length;
+  if (noitesCurando >= NOITES_MINIMAS_DE_OFICIO) return "healer";
+
   return role === "tank" ? "tank" : "dps";
 }
 
@@ -126,3 +143,4 @@ export function pessoasNaComp(
 function posicaoDoNivel(nivel: NivelDeConteudo | null): number {
   return nivel === null ? -1 : NIVEIS.indexOf(nivel);
 }
+
