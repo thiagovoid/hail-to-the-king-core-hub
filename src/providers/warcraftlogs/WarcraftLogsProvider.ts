@@ -899,8 +899,20 @@ ${campos}
      */
     const biggestHits = await this.fetchBiggestHits(context.reportCode, raidFights);
 
-    // O denominador do interrupt. Barato: é contagem, não evento.
-    const enemyCastCounts = await this.fetchEnemyCastCounts(context.reportCode, raidFights);
+    /**
+     * O denominador do interrupt. Barato: é contagem, não evento.
+     *
+     * Inclui o TRASH, e é aí que mora a razão de ser dele: 529 das 652
+     * interrupções da temporada (81%) aconteceram fora de luta de boss.
+     * Coletar só os bosses daria um denominador que descreve um quinto da
+     * atividade real — e comparar interrupções da noite inteira contra
+     * oportunidades só de boss produz 133 kicks para 25 oportunidades, que é
+     * a cara de uma métrica quebrada.
+     */
+    const enemyCastCounts = await this.fetchEnemyCastCounts(context.reportCode, [
+      ...raidFights,
+      ...trashFights,
+    ]);
 
     return {
       provider: this.name,
