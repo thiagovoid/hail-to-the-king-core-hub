@@ -1,5 +1,6 @@
 import type { DataProvider, ProviderResult } from "../types";
 import { wclGraphql } from "./client";
+import { maioresPancadas, type PancadaLevada } from "./biggestHits";
 import type { EventoDeCast } from "./cooldownUsage";
 import { selectAggregateFights } from "./normalize";
 import type { WclFight, WclFightTables, WclProfile, WclRankingEntry } from "./normalize";
@@ -17,6 +18,18 @@ export interface EventoDeUtilidade {
   fight: number;
   /** Só em dispel: se o que saiu era buff do inimigo em vez de debuff nosso. */
   isBuff?: boolean;
+}
+
+/**
+ * Quantas vezes uma magia inimiga foi COMEÇADA numa try.
+ *
+ * Contagem e não evento: a pergunta é "houve oportunidade, e quantas?", e a
+ * resposta cabe numa linha por magia por try.
+ */
+export interface ContagemDeCastInimigo {
+  fight: number;
+  abilityGameID: number;
+  casts: number;
 }
 
 export interface WclReportRef {
@@ -83,6 +96,19 @@ export interface WarcraftLogsRawReportTables {
   reportStartTime?: number;
   /** Interrupções da noite. Ver fetchUtilityEvents. */
   interrupts?: EventoDeUtilidade[];
+  /**
+   * As maiores pancadas levadas por pessoa em cada try, já reduzidas.
+   *
+   * É o único dado que prova que havia o que mitigar. Ver biggestHits.ts.
+   */
+  biggestHits?: PancadaLevada[];
+  /**
+   * Quantas vezes cada inimigo começou cada magia, por try.
+   *
+   * O denominador do interrupt: sem ele não dá pra separar "ninguém
+   * interrompeu" de "não havia o que interromper".
+   */
+  enemyCastCounts?: ContagemDeCastInimigo[];
   /** Dispels da noite. */
   dispels?: EventoDeUtilidade[];
 }
@@ -231,7 +257,7 @@ export class WarcraftLogsProvider
       `query($code: String!) {
         reportData {
           report(code: $code) {
-            fights { id encounterID name kill difficulty startTime endTime friendlyPlayers }
+            fights { id encounterID name kill difficulty startTime endTime friendlyPlayers enemyNPCs { id gameID instanceCount } }
           }
         }
       }`,
@@ -563,6 +589,155 @@ export class WarcraftLogsProvider
   }
 
   /**
+   * As maiores pancadas levadas por cada pessoa, try a try.
+   *
+   * É o lado que falta pra Defender ter laudo. Hoje ela prova que o botão foi
+   * apertado, nunca que havia o que mitigar — e "você não usou X" não acusa
+   * nada sozinho. Com o instante da porrada, a frase ganha o cruzamento.
+   *
+   * O fluxo bruto é dominado por tique periódico de 2k, então a redução
+   * acontece AQUI, antes de arquivar: try a try, pra não segurar a noite
+   * inteira em memória. O que não é guardado nunca trafega pro git.
+   *
+   * `hostilityType: Friendlies` porque a pergunta é sobre o raide apanhando,
+   * e `endTime` é obrigatório junto com `startTime`: sem ele a WCL devolve a
+   * janela vazia sem erro nenhum, a mesma armadilha do `fetchCastEvents`.
+   */
+  async fetchBiggestHits(
+    reportCode: string,
+    fights: Array<{ id: number; startTime: number; endTime: number }>
+  ): Promise<PancadaLevada[]> {
+    const escolhidas: PancadaLevada[] = [];
+
+    for (const fight of fights) {
+      const daTry: PancadaLevada[] = [];
+      let cursor: number | undefined = fight.startTime;
+
+      while (cursor !== undefined) {
+        const pagina: {
+          reportData: {
+            report: {
+              events?: { data?: PancadaLevada[]; nextPageTimestamp?: number | null };
+            } | null;
+          };
+        } = await wclGraphql(
+          `query($code: String!, $fightIDs: [Int]!, $start: Float!, $end: Float!) {
+            reportData { report(code: $code) {
+              events(
+                fightIDs: $fightIDs, dataType: DamageTaken, hostilityType: Friendlies,
+                startTime: $start, endTime: $end, limit: 10000
+              ) {
+                data
+                nextPageTimestamp
+              }
+            } }
+          }`,
+          { code: reportCode, fightIDs: [fight.id], start: cursor, end: fight.endTime }
+        );
+
+        for (const evento of pagina.reportData.report?.events?.data ?? []) {
+          daTry.push({
+            // `fight` nem sempre vem preenchido no evento; como a busca é try
+            // a try, o id é sabido aqui de qualquer jeito.
+            fight: fight.id,
+            timestamp: evento.timestamp,
+            targetID: evento.targetID,
+            abilityGameID: evento.abilityGameID,
+            amount: evento.amount,
+            ...(evento.unmitigatedAmount !== undefined && {
+              unmitigatedAmount: evento.unmitigatedAmount,
+            }),
+            ...(evento.absorbed !== undefined && { absorbed: evento.absorbed }),
+            ...(evento.hitPoints !== undefined && { hitPoints: evento.hitPoints }),
+            ...(evento.maxHitPoints !== undefined && { maxHitPoints: evento.maxHitPoints }),
+          });
+        }
+
+        cursor = pagina.reportData.report?.events?.nextPageTimestamp ?? undefined;
+      }
+
+      escolhidas.push(...maioresPancadas(daTry));
+    }
+
+    return escolhidas.sort((a, b) => a.timestamp - b.timestamp);
+  }
+
+  /**
+   * Quantas vezes cada inimigo COMEÇOU cada magia, try a try.
+   *
+   * É o denominador que falta pro interrupt. Hoje a conta só tem numerador —
+   * quantos kicks você acertou — e 35 das 113 noites da temporada têm zero
+   * interrupção do raide inteiro. Sem denominador não dá pra distinguir
+   * "ninguém interrompeu" de "não havia o que interromper", e a dimensão
+   * acaba punindo desenho de boss. Pior: cria incentivo perverso, porque
+   * apertar o kick numa luta sem alvo tira nota de quem apertou.
+   *
+   * Guarda CONTAGEM, não evento: a pergunta é "houve oportunidade e quantas",
+   * e a resposta cabe em uma linha por magia por try. A temporada inteira sai
+   * em poucos KB, contra megabytes se fossem os eventos.
+   *
+   * `begincast` e não `cast` de propósito: a magia interrompida nunca emite o
+   * `cast`. Contar os concluídos daria um denominador que já desconta
+   * justamente o sucesso que se quer medir.
+   */
+  async fetchEnemyCastCounts(
+    reportCode: string,
+    fights: Array<{ id: number; startTime: number; endTime: number }>
+  ): Promise<ContagemDeCastInimigo[]> {
+    const contagens: ContagemDeCastInimigo[] = [];
+
+    for (const fight of fights) {
+      const porMagia = new Map<number, number>();
+      let cursor: number | undefined = fight.startTime;
+
+      while (cursor !== undefined) {
+        const pagina: {
+          reportData: {
+            report: {
+              events?: {
+                data?: Array<{ type?: string; abilityGameID?: number }>;
+                nextPageTimestamp?: number | null;
+              };
+            } | null;
+          };
+        } = await wclGraphql(
+          `query($code: String!, $fightIDs: [Int]!, $start: Float!, $end: Float!) {
+            reportData { report(code: $code) {
+              events(
+                fightIDs: $fightIDs, dataType: Casts, hostilityType: Enemies,
+                startTime: $start, endTime: $end, limit: 10000
+              ) {
+                data
+                nextPageTimestamp
+              }
+            } }
+          }`,
+          { code: reportCode, fightIDs: [fight.id], start: cursor, end: fight.endTime }
+        );
+
+        for (const evento of pagina.reportData.report?.events?.data ?? []) {
+          // Só `begincast`, e por dois motivos que coincidem: a magia com
+          // tempo de conjuração emite os dois eventos, então contar ambos
+          // contaria o mesmo lançamento duas vezes — e magia instantânea,
+          // que só emite `cast`, não é interrompível de qualquer forma. O
+          // `begincast` é ao mesmo tempo o sem-duplicata e o interrompível.
+          if (evento.type !== "begincast" || evento.abilityGameID === undefined) continue;
+
+          porMagia.set(evento.abilityGameID, (porMagia.get(evento.abilityGameID) ?? 0) + 1);
+        }
+
+        cursor = pagina.reportData.report?.events?.nextPageTimestamp ?? undefined;
+      }
+
+      for (const [abilityGameID, casts] of porMagia) {
+        contagens.push({ fight: fight.id, abilityGameID, casts });
+      }
+    }
+
+    return contagens;
+  }
+
+  /**
    * Dano por habilidade de cada jogador, sem truncar.
    *
    * A tabela agregada de DamageDone traz só as 5 maiores habilidades de
@@ -714,6 +889,19 @@ ${campos}
     const meta = await this.fetchReportMeta(context.reportCode);
     const utilidade = await this.fetchUtilityEvents(context.reportCode, duracaoDoLogMs);
 
+    /**
+     * As maiores pancadas de cada um, try a try.
+     *
+     * A chamada mais cara depois dos casts, e a que dá laudo a Defender: sem
+     * o instante da porrada, "você não usou o defensivo" não acusa nada,
+     * porque pode não ter havido o que mitigar. A redução às 20 maiores
+     * acontece dentro do fetch, então o que chega aqui já é o que fica.
+     */
+    const biggestHits = await this.fetchBiggestHits(context.reportCode, raidFights);
+
+    // O denominador do interrupt. Barato: é contagem, não evento.
+    const enemyCastCounts = await this.fetchEnemyCastCounts(context.reportCode, raidFights);
+
     return {
       provider: this.name,
       fetchedAt: new Date().toISOString(),
@@ -741,6 +929,8 @@ ${campos}
         reportRankings,
         reportStartTime: meta?.startTime,
         interrupts: utilidade.interrupts,
+        biggestHits,
+        enemyCastCounts,
         dispels: utilidade.dispels,
       },
     };

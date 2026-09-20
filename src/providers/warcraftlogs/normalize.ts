@@ -85,6 +85,14 @@ export interface WclFight {
    * arquivados antes desta coleta não têm o campo.
    */
   friendlyPlayers?: number[] | null;
+  /**
+   * Que inimigos existiram NESTA try, e quantos de cada.
+   *
+   * Vem de graça na query que já era feita. É o que responde "havia add pra
+   * controlar?" — sem isso, cobrar Shadowfury ou Hammer of Justice é cobrar
+   * por uma oportunidade que pode nunca ter existido.
+   */
+  enemyNPCs?: Array<{ id: number; gameID: number; instanceCount: number }> | null;
 }
 
 /**
