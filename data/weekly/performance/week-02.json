@@ -332,7 +332,8 @@
                 "Icebound Fortitude",
                 "Vampiric Blood",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3420,
@@ -401,6 +402,49 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 28,
+              "atSecond": 289,
+              "ability": "Eternal Venom",
+              "amount": 816380,
+              "fatiaDaVida": 59,
+              "defensivosProntos": [
+                "Anti-Magic Shell",
+                "Ritual Wraps",
+                "Anti-Magic Zone",
+                "Icebound Fortitude",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 29,
+              "atSecond": 311,
+              "ability": "Eternal Venom",
+              "amount": 810049,
+              "fatiaDaVida": 58,
+              "defensivosProntos": [
+                "Ritual Wraps",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 27,
+              "atSecond": 36,
+              "ability": "Stone Breaker",
+              "amount": 753742,
+              "fatiaDaVida": 61,
+              "defensivosProntos": [
+                "Death's Advance",
+                "Anti-Magic Shell",
+                "Ritual Wraps",
+                "Anti-Magic Zone",
+                "Icebound Fortitude",
+                "Vampiric Blood",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 3.1,
@@ -870,7 +914,8 @@
                 "Guardian of Ancient Kings",
                 "Healthstone",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Mutilate"
             },
             {
               "encounterID": 3421,
@@ -931,6 +976,50 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 24,
+              "atSecond": 165,
+              "ability": "Mutilate",
+              "amount": 793148,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Ritual Wraps",
+                "Holy Bulwark",
+                "Guardian of Ancient Kings",
+                "Healthstone",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 29,
+              "atSecond": 309,
+              "ability": "Eternal Venom",
+              "amount": 519339,
+              "fatiaDaVida": 58,
+              "defensivosProntos": [
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings",
+                "Healthstone",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 25,
+              "atSecond": 326,
+              "ability": "Ravage",
+              "amount": 449514,
+              "fatiaDaVida": 45,
+              "defensivosProntos": [
+                "Ritual Wraps",
+                "Holy Bulwark",
+                "Divine Shield",
+                "Healthstone",
+                "Lay on Hands"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -1324,7 +1413,8 @@
                 "Ascendance",
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3421,
@@ -1335,7 +1425,8 @@
               "readyDefensives": [
                 "Stormstream Totem",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Caustic Globule"
             },
             {
               "encounterID": 3421,
@@ -1360,7 +1451,8 @@
               "readyDefensives": [
                 "Spirit Link Totem",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3420,
@@ -1373,7 +1465,8 @@
                 "Stormstream Totem",
                 "Spirit Link Totem",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Venomous Surge"
             }
           ],
           "trashShare": 0.5,
@@ -1396,6 +1489,43 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 27,
+              "atSecond": 189,
+              "ability": "Eternal Venom",
+              "amount": 483863,
+              "fatiaDaVida": 67,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Spirit Link Totem",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 86,
+              "ability": "Blast Wave",
+              "amount": 345823,
+              "fatiaDaVida": 53,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Stormstream Totem",
+                "Spirit Link Totem",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 118,
+              "ability": "Blast Wave",
+              "amount": 342182,
+              "fatiaDaVida": 52,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 2.2,
@@ -1839,7 +1969,8 @@
                 "Blessing of Protection",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Blast Wave"
             },
             {
               "encounterID": 3421,
@@ -1867,7 +1998,8 @@
                 "Blessing of Protection",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3420,
@@ -1894,7 +2026,8 @@
                 "Blessing of Protection",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Final Ascension"
             }
           ],
           "trashShare": 1.6,
@@ -1917,6 +2050,51 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 27,
+              "atSecond": 254,
+              "ability": "Eternal Venom",
+              "amount": 410573,
+              "fatiaDaVida": 64,
+              "defensivosProntos": [
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 86,
+              "ability": "Blast Wave",
+              "amount": 393315,
+              "fatiaDaVida": 62,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Aura Mastery",
+                "Divine Protection",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 28,
+              "atSecond": 477,
+              "ability": "Eternal Venom",
+              "amount": 345303,
+              "fatiaDaVida": 54,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 2.3,
@@ -2327,7 +2505,8 @@
               "afterSeconds": 420,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Ravage"
             },
             {
               "encounterID": 3420,
@@ -2338,7 +2517,8 @@
               "readyDefensives": [
                 "Ice Barrier",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Venomous Surge"
             },
             {
               "encounterID": 3421,
@@ -2348,7 +2528,8 @@
               "afterSeconds": 215,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3421,
@@ -2358,7 +2539,8 @@
               "afterSeconds": 189,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3421,
@@ -2368,7 +2550,8 @@
               "afterSeconds": 100,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Vile Flood"
             },
             {
               "encounterID": 3497,
@@ -2378,7 +2561,8 @@
               "afterSeconds": 14,
               "readyDefensives": [
                 "Ice Cold"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3420,
@@ -2412,6 +2596,38 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 25,
+              "atSecond": 81,
+              "ability": "Ravage",
+              "amount": 570871,
+              "fatiaDaVida": 96,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 120,
+              "ability": "Blast Wave",
+              "amount": 388186,
+              "fatiaDaVida": 65,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 28,
+              "atSecond": 289,
+              "ability": "Eternal Venom",
+              "amount": 366429,
+              "fatiaDaVida": 56,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 7,
           "mechanics": {
             "errors": 1.8,
@@ -2791,7 +3007,8 @@
               "difficulty": 3,
               "atSecond": 252,
               "fightSeconds": 503,
-              "afterSeconds": 251
+              "afterSeconds": 251,
+              "ability": "Stir the Depths"
             },
             {
               "encounterID": 3420,
@@ -2814,7 +3031,8 @@
               "readyDefensives": [
                 "Demonic Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3421,
@@ -2824,14 +3042,16 @@
               "afterSeconds": 20,
               "readyDefensives": [
                 "Demonic Healthstone"
-              ]
+              ],
+              "ability": "Ravenous Feast"
             },
             {
               "encounterID": 3497,
               "difficulty": 3,
               "atSecond": 87,
               "fightSeconds": 97,
-              "afterSeconds": 10
+              "afterSeconds": 10,
+              "ability": "Relic Rupture"
             },
             {
               "encounterID": 3420,
@@ -2867,6 +3087,29 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 29,
+              "atSecond": 460,
+              "ability": "Eternal Venom",
+              "amount": 591241,
+              "fatiaDaVida": 71,
+              "defensivosProntos": [
+                "Demonic Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 86,
+              "ability": "Blast Wave",
+              "amount": 349938,
+              "fatiaDaVida": 46,
+              "defensivosProntos": [
+                "Demonic Healthstone",
+                "Unending Resolve"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 2,
@@ -3259,7 +3502,8 @@
                 "Desperate Prayer",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Ravage"
             },
             {
               "encounterID": 3421,
@@ -3269,7 +3513,8 @@
               "afterSeconds": 188,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Vile Flood"
             },
             {
               "encounterID": 3421,
@@ -3280,7 +3525,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Vile Flood"
             },
             {
               "encounterID": 3421,
@@ -3291,7 +3537,8 @@
               "readyDefensives": [
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3497,
@@ -3302,7 +3549,8 @@
               "readyDefensives": [
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3420,
@@ -3336,6 +3584,42 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 25,
+              "atSecond": 174,
+              "ability": "Ravage",
+              "amount": 611585,
+              "fatiaDaVida": 84,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 120,
+              "ability": "Blast Wave",
+              "amount": 370929,
+              "fatiaDaVida": 34,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 8,
+              "atSecond": 79,
+              "ability": "Unstable Miasma",
+              "amount": 269009,
+              "fatiaDaVida": 37,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Dispersion",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.4,
@@ -3729,7 +4013,8 @@
               "readyDefensives": [
                 "Healing Stream Totem",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Caustic Globule"
             },
             {
               "encounterID": 3421,
@@ -3804,6 +4089,43 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 25,
+              "atSecond": 81,
+              "ability": "Ravage",
+              "amount": 677113,
+              "fatiaDaVida": 81,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Healthstone",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 28,
+              "atSecond": 289,
+              "ability": "Eternal Venom",
+              "amount": 649576,
+              "fatiaDaVida": 70,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 119,
+              "ability": "Blast Wave",
+              "amount": 383226,
+              "fatiaDaVida": 46,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.6,
@@ -4205,7 +4527,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3420,
@@ -4251,6 +4574,40 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 28,
+              "atSecond": 476,
+              "ability": "Eternal Venom",
+              "amount": 441884,
+              "fatiaDaVida": 58,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 29,
+              "atSecond": 483,
+              "ability": "Eternal Venom",
+              "amount": 324149,
+              "fatiaDaVida": 47,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 88,
+              "ability": "Blast Wave",
+              "amount": 308712,
+              "fatiaDaVida": 44,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -4631,7 +4988,8 @@
                 "Astral Shift",
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Ravage"
             },
             {
               "encounterID": 3421,
@@ -4654,7 +5012,8 @@
               "afterSeconds": 16,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3497,
@@ -4665,7 +5024,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3420,
@@ -4699,6 +5059,39 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 25,
+              "atSecond": 81,
+              "ability": "Ravage",
+              "amount": 739870,
+              "fatiaDaVida": 97,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 28,
+              "atSecond": 420,
+              "ability": "Eternal Venom",
+              "amount": 549441,
+              "fatiaDaVida": 65,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 19,
+              "atSecond": 86,
+              "ability": "Blast Wave",
+              "amount": 354090,
+              "fatiaDaVida": 46,
+              "defensivosProntos": [
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.7,
@@ -5128,7 +5521,8 @@
                 "Rallying Cry",
                 "Healthstone",
                 "Die by the Sword"
-              ]
+              ],
+              "ability": "Vile Flood"
             },
             {
               "encounterID": 3421,
@@ -5139,7 +5533,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Die by the Sword"
-              ]
+              ],
+              "ability": "Coiling Ichor"
             },
             {
               "encounterID": 3420,
@@ -5151,7 +5546,8 @@
                 "Rallying Cry",
                 "Healthstone",
                 "Die by the Sword"
-              ]
+              ],
+              "ability": "Ravage"
             },
             {
               "encounterID": 3497,
@@ -5163,7 +5559,8 @@
                 "Potent Healing Potion",
                 "Healthstone",
                 "Die by the Sword"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3421,
@@ -5176,7 +5573,8 @@
                 "Potent Healing Potion",
                 "Healthstone",
                 "Die by the Sword"
-              ]
+              ],
+              "ability": "Caustic Rain"
             }
           ],
           "trashShare": 3.4,
@@ -5199,6 +5597,45 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 24,
+              "atSecond": 174,
+              "ability": "Ravage",
+              "amount": 409653,
+              "fatiaDaVida": 70,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Healthstone",
+                "Die by the Sword"
+              ]
+            },
+            {
+              "fight": 28,
+              "atSecond": 308,
+              "ability": "Eternal Venom",
+              "amount": 407802,
+              "fatiaDaVida": 64,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Potent Healing Potion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 87,
+              "ability": "Blast Wave",
+              "amount": 401832,
+              "fatiaDaVida": 69,
+              "defensivosProntos": [
+                "Rallying Cry",
+                "Potent Healing Potion",
+                "Healthstone",
+                "Die by the Sword"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.9,
@@ -5605,7 +6042,8 @@
                 "Icebound Fortitude",
                 "Lichborne",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Blast Wave"
             },
             {
               "encounterID": 3421,
@@ -5616,7 +6054,8 @@
               "readyDefensives": [
                 "Anti-Magic Zone",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3421,
@@ -5627,7 +6066,8 @@
               "readyDefensives": [
                 "Icebound Fortitude",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3421,
@@ -5641,7 +6081,8 @@
                 "Icebound Fortitude",
                 "Lichborne",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3497,
@@ -5655,7 +6096,8 @@
                 "Death Pact",
                 "Lichborne",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Final Ascension"
             },
             {
               "encounterID": 3420,
@@ -5692,6 +6134,47 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 19,
+              "atSecond": 87,
+              "ability": "Blast Wave",
+              "amount": 382805,
+              "fatiaDaVida": 56,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Anti-Magic Shell",
+                "Death Pact",
+                "Icebound Fortitude",
+                "Lichborne",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 119,
+              "ability": "Blast Wave",
+              "amount": 358805,
+              "fatiaDaVida": 48,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Icebound Fortitude",
+                "Lichborne",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 29,
+              "atSecond": 308,
+              "ability": "Eternal Venom",
+              "amount": 335883,
+              "fatiaDaVida": 45,
+              "defensivosProntos": [
+                "Death Pact",
+                "Lichborne"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 2,
@@ -6098,6 +6581,40 @@
             {
               "spec": "Blood",
               "role": "tank"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 4,
+              "atSecond": 162,
+              "ability": "Sever",
+              "amount": 1272989,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 6,
+              "atSecond": 162,
+              "ability": "Sever",
+              "amount": 1206017,
+              "fatiaDaVida": 85,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 61,
+              "ability": "Sever",
+              "amount": 788279,
+              "fatiaDaVida": 67,
+              "defensivosProntos": [
+                "Vampiric Blood",
+                "Healthstone",
+                "Icebound Fortitude"
+              ]
             }
           ],
           "deaths": 6,
@@ -6572,7 +7089,8 @@
               "readyDefensives": [
                 "Holy Bulwark",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Soul Sever"
             }
           ],
           "trashShare": 8.1,
@@ -6595,6 +7113,45 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 17,
+              "atSecond": 40,
+              "ability": "Sever",
+              "amount": 1028610,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Ardent Defender",
+                "Guardian of Ancient Kings",
+                "Healthstone",
+                "Divine Shield",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 7,
+              "atSecond": 40,
+              "ability": "Sever",
+              "amount": 1001314,
+              "fatiaDaVida": 97,
+              "defensivosProntos": [
+                "Guardian of Ancient Kings",
+                "Healthstone",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 10,
+              "atSecond": 209,
+              "ability": "Gravebound",
+              "amount": 912306,
+              "fatiaDaVida": 89,
+              "defensivosProntos": [
+                "Holy Bulwark",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 1.3,
@@ -6866,7 +7423,8 @@
                 "Stormstream Totem",
                 "Spirit Link Totem",
                 "Ascendance"
-              ]
+              ],
+              "ability": "Axegrinder"
             },
             {
               "encounterID": 3429,
@@ -6890,7 +7448,8 @@
                 "Astral Shift",
                 "Spirit Link Totem",
                 "Ascendance"
-              ]
+              ],
+              "ability": "Axegrinder"
             },
             {
               "encounterID": 3429,
@@ -6945,7 +7504,8 @@
               "difficulty": 3,
               "atSecond": 236,
               "fightSeconds": 250,
-              "afterSeconds": 14
+              "afterSeconds": 14,
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -6955,7 +7515,8 @@
               "afterSeconds": 12,
               "readyDefensives": [
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Despair"
             },
             {
               "encounterID": 3429,
@@ -6981,7 +7542,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Ascendance"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -6992,7 +7554,8 @@
               "readyDefensives": [
                 "Stormstream Totem",
                 "Spirit Link Totem"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7003,7 +7566,8 @@
               "readyDefensives": [
                 "Stormstream Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Guillotine"
             },
             {
               "encounterID": 3429,
@@ -7028,7 +7592,8 @@
                 "Healing Stream Totem",
                 "Astral Shift",
                 "Spirit Link Totem"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             }
           ],
           "trashShare": 0.1,
@@ -7051,6 +7616,44 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 205,
+              "ability": "Gravebound",
+              "amount": 667336,
+              "fatiaDaVida": 107,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Spirit Link Totem",
+                "Ascendance"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 61,
+              "ability": "Sever",
+              "amount": 665608,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Astral Shift",
+                "Spirit Link Totem",
+                "Ascendance"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 254,
+              "ability": "Gravebound",
+              "amount": 637153,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Astral Shift"
+              ]
+            }
+          ],
           "deaths": 18,
           "mechanics": {
             "errors": 1.9,
@@ -7372,7 +7975,8 @@
                 "Divine Protection",
                 "Divine Protection",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7414,7 +8018,8 @@
                 "Divine Protection",
                 "Aura Mastery",
                 "Divine Protection"
-              ]
+              ],
+              "ability": "Despair"
             },
             {
               "encounterID": 3429,
@@ -7428,7 +8033,8 @@
                 "Divine Protection",
                 "Divine Protection",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7441,7 +8047,8 @@
                 "Divine Protection",
                 "Divine Protection",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7455,7 +8062,8 @@
                 "Divine Protection",
                 "Divine Protection",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7508,6 +8116,50 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 6,
+              "atSecond": 23,
+              "ability": "Sever",
+              "amount": 714436,
+              "fatiaDaVida": 97,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Divine Protection",
+                "Aura Mastery",
+                "Divine Protection",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 8,
+              "atSecond": 240,
+              "ability": "Eternal Nightfall",
+              "amount": 634059,
+              "fatiaDaVida": 86,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Divine Protection",
+                "Divine Protection",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 253,
+              "ability": "Eternal Nightfall",
+              "amount": 607744,
+              "fatiaDaVida": 91,
+              "defensivosProntos": [
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Divine Protection",
+                "Divine Protection",
+                "Lay on Hands"
+              ]
+            }
+          ],
           "deaths": 14,
           "mechanics": {
             "errors": 0.9,
@@ -7788,7 +8440,8 @@
                 "Lay on Hands",
                 "Divine Protection",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7823,7 +8476,8 @@
               "afterSeconds": 9,
               "readyDefensives": [
                 "Divine Protection"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7834,7 +8488,8 @@
               "readyDefensives": [
                 "Divine Protection",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -7844,7 +8499,8 @@
               "afterSeconds": 5,
               "readyDefensives": [
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Guillotine"
             },
             {
               "encounterID": 3429,
@@ -7878,7 +8534,8 @@
                 "Lay on Hands",
                 "Divine Protection",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             }
           ],
           "trashShare": 0.4,
@@ -7901,6 +8558,44 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 10,
+              "atSecond": 242,
+              "ability": "Eternal Nightfall",
+              "amount": 807884,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Aura Mastery",
+                "Lay on Hands",
+                "Divine Protection",
+                "Divine Shield"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 236,
+              "ability": "Eternal Nightfall",
+              "amount": 710808,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Lay on Hands",
+                "Divine Protection",
+                "Divine Shield"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 247,
+              "ability": "Eternal Nightfall",
+              "amount": 587732,
+              "fatiaDaVida": 80,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Divine Shield"
+              ]
+            }
+          ],
           "deaths": 12,
           "mechanics": {
             "errors": 0.9,
@@ -8214,7 +8909,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Gloombomb"
             },
             {
               "encounterID": 3429,
@@ -8224,7 +8920,8 @@
               "afterSeconds": 24,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Noxious Ground"
             },
             {
               "encounterID": 3429,
@@ -8272,7 +8969,8 @@
               "afterSeconds": 8,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -8298,7 +8996,8 @@
                 "Ice Barrier",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Gloombomb"
             },
             {
               "encounterID": 3429,
@@ -8345,6 +9044,39 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 8,
+              "atSecond": 146,
+              "ability": "Sever",
+              "amount": 608787,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 247,
+              "ability": "Eternal Nightfall",
+              "amount": 602948,
+              "fatiaDaVida": 96,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 373,
+              "ability": "Melee",
+              "amount": 575597,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Ice Barrier",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 1.9,
@@ -8620,7 +9352,8 @@
               "readyDefensives": [
                 "Demonic Healthstone",
                 "Unending Resolve"
-              ]
+              ],
+              "ability": "Noxious Ground"
             },
             {
               "encounterID": 3429,
@@ -8639,7 +9372,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Unending Resolve"
-              ]
+              ],
+              "ability": "Gravebound"
             },
             {
               "encounterID": 3429,
@@ -8687,7 +9421,8 @@
                 "Demonic Healthstone",
                 "Silvermoon Health Potion",
                 "Unending Resolve"
-              ]
+              ],
+              "ability": "Despair"
             },
             {
               "encounterID": 3429,
@@ -8717,7 +9452,8 @@
               "afterSeconds": 14,
               "readyDefensives": [
                 "Demonic Healthstone"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -8765,6 +9501,39 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 10,
+              "atSecond": 200,
+              "ability": "Gravebound",
+              "amount": 754824,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Demonic Healthstone",
+                "Silvermoon Health Potion",
+                "Unending Resolve"
+              ]
+            },
+            {
+              "fight": 7,
+              "atSecond": 77,
+              "ability": "Sever",
+              "amount": 728955,
+              "fatiaDaVida": 97,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Unending Resolve"
+              ]
+            },
+            {
+              "fight": 4,
+              "atSecond": 146,
+              "ability": "Sever",
+              "amount": 633598,
+              "fatiaDaVida": 84,
+              "defensivosProntos": []
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 2.3,
@@ -9103,7 +9872,8 @@
                 "Dispersion",
                 "Healthstone",
                 "Desperate Prayer"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -9140,7 +9910,8 @@
                 "Silvermoon Health Potion",
                 "Healthstone",
                 "Desperate Prayer"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -9165,7 +9936,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Desperate Prayer"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -9176,7 +9948,8 @@
               "readyDefensives": [
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Guillotine"
             },
             {
               "encounterID": 3429,
@@ -9223,6 +9996,46 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 254,
+              "ability": "Gravebound",
+              "amount": 797545,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone",
+                "Desperate Prayer"
+              ]
+            },
+            {
+              "fight": 8,
+              "atSecond": 238,
+              "ability": "Gravebound",
+              "amount": 725040,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Dispersion",
+                "Healthstone",
+                "Desperate Prayer"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 205,
+              "ability": "Gravebound",
+              "amount": 725040,
+              "fatiaDaVida": 91,
+              "defensivosProntos": [
+                "Dispersion",
+                "Silvermoon Health Potion",
+                "Healthstone",
+                "Desperate Prayer"
+              ]
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 1.4,
@@ -9568,7 +10381,8 @@
                 "Astral Shift",
                 "Healing Stream Totem",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -9622,7 +10436,8 @@
                 "Astral Shift",
                 "Healing Stream Totem",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -9634,7 +10449,8 @@
                 "Healthstone",
                 "Astral Shift",
                 "Healing Stream Totem"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -9660,7 +10476,8 @@
                 "Astral Shift",
                 "Healing Stream Totem",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Dread Bolt"
             },
             {
               "encounterID": 3429,
@@ -9673,7 +10490,8 @@
                 "Astral Shift",
                 "Healing Stream Totem",
                 "Concentrated Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -9708,6 +10526,47 @@
               "pessoasQueInterromperam": 3
             }
           },
+          "pancadas": [
+            {
+              "fight": 10,
+              "atSecond": 242,
+              "ability": "Eternal Nightfall",
+              "amount": 830668,
+              "fatiaDaVida": 89,
+              "defensivosProntos": [
+                "Healthstone",
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 6,
+              "atSecond": 23,
+              "ability": "Sever",
+              "amount": 819724,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Healthstone",
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 245,
+              "ability": "Gravebound",
+              "amount": 812860,
+              "fatiaDaVida": 96,
+              "defensivosProntos": [
+                "Healthstone",
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 17,
           "mechanics": {
             "errors": 1.2,
@@ -9978,7 +10837,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Guillotine"
             },
             {
               "encounterID": 3429,
@@ -10087,7 +10947,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -10098,7 +10959,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -10109,7 +10971,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -10133,7 +10996,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             }
           ],
           "trashShare": 14.1,
@@ -10141,6 +11005,43 @@
             {
               "spec": "Havoc",
               "role": "dps"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 6,
+              "atSecond": 210,
+              "ability": "Sever",
+              "amount": 684983,
+              "fatiaDaVida": 98,
+              "defensivosProntos": [
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 7,
+              "atSecond": 70,
+              "ability": "Melee",
+              "amount": 625082,
+              "fatiaDaVida": 90,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 254,
+              "ability": "Gravebound",
+              "amount": 591191,
+              "fatiaDaVida": 77,
+              "defensivosProntos": [
+                "Darkness",
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
             }
           ],
           "deaths": 14,
@@ -10418,7 +11319,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Despair"
             },
             {
               "encounterID": 3429,
@@ -10522,7 +11424,8 @@
               "difficulty": 3,
               "atSecond": 248,
               "fightSeconds": 255,
-              "afterSeconds": 7
+              "afterSeconds": 7,
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -10532,7 +11435,8 @@
               "afterSeconds": 4,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -10566,6 +11470,41 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 5,
+              "atSecond": 146,
+              "ability": "Sever",
+              "amount": 710594,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 146,
+              "ability": "Sever",
+              "amount": 692598,
+              "fatiaDaVida": 86,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 8,
+              "atSecond": 240,
+              "ability": "Eternal Nightfall",
+              "amount": 679307,
+              "fatiaDaVida": 80,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 1.6,
@@ -10854,7 +11793,8 @@
                 "Die by the Sword",
                 "Potent Healing Potion",
                 "Rallying Cry"
-              ]
+              ],
+              "ability": "Guillotine"
             },
             {
               "encounterID": 3429,
@@ -10950,7 +11890,8 @@
               "readyDefensives": [
                 "Die by the Sword",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -10962,7 +11903,8 @@
                 "Die by the Sword",
                 "Potent Healing Potion",
                 "Rallying Cry"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -10985,7 +11927,8 @@
               "readyDefensives": [
                 "Die by the Sword",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             }
           ],
           "trashShare": 4.5,
@@ -11008,6 +11951,44 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 4,
+              "atSecond": 23,
+              "ability": "Sever",
+              "amount": 628466,
+              "fatiaDaVida": 91,
+              "defensivosProntos": [
+                "Die by the Sword",
+                "Potent Healing Potion",
+                "Rallying Cry"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 254,
+              "ability": "Gravebound",
+              "amount": 555188,
+              "fatiaDaVida": 80,
+              "defensivosProntos": [
+                "Die by the Sword",
+                "Potent Healing Potion",
+                "Rallying Cry"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 47,
+              "ability": "Execution",
+              "amount": 547930,
+              "fatiaDaVida": 87,
+              "defensivosProntos": [
+                "Die by the Sword",
+                "Potent Healing Potion",
+                "Rallying Cry"
+              ]
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 1.4,
@@ -11438,7 +12419,8 @@
                 "Divine Shield",
                 "Lay on Hands",
                 "Guardian of Ancient Kings"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             }
           ],
           "trashShare": 11,
@@ -11465,6 +12447,53 @@
               "pessoasQueInterromperam": 5
             }
           },
+          "pancadas": [
+            {
+              "fight": 17,
+              "atSecond": 146,
+              "ability": "Sever",
+              "amount": 958035,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Healthstone",
+                "Divine Protection",
+                "Lay on Hands",
+                "Divine Shield",
+                "Lay on Hands",
+                "Guardian of Ancient Kings"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 247,
+              "ability": "Eternal Nightfall",
+              "amount": 829018,
+              "fatiaDaVida": 79,
+              "defensivosProntos": [
+                "Healthstone",
+                "Divine Protection",
+                "Lay on Hands",
+                "Divine Shield",
+                "Lay on Hands",
+                "Guardian of Ancient Kings"
+              ]
+            },
+            {
+              "fight": 7,
+              "atSecond": 61,
+              "ability": "Sever",
+              "amount": 792481,
+              "fatiaDaVida": 94,
+              "defensivosProntos": [
+                "Healthstone",
+                "Divine Protection",
+                "Sentinel",
+                "Ardent Defender",
+                "Lay on Hands",
+                "Guardian of Ancient Kings"
+              ]
+            }
+          ],
           "deaths": 12,
           "mechanics": {
             "errors": 1.6,
@@ -11758,7 +12787,8 @@
               "readyDefensives": [
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -11784,7 +12814,8 @@
                 "Divine Shield",
                 "Healthstone",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3429,
@@ -11795,7 +12826,8 @@
               "readyDefensives": [
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Execution"
             },
             {
               "encounterID": 3429,
@@ -11830,6 +12862,44 @@
               "pessoasQueInterromperam": 0
             }
           },
+          "pancadas": [
+            {
+              "fight": 5,
+              "atSecond": 153,
+              "ability": "Melee",
+              "amount": 535641,
+              "fatiaDaVida": 75,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Divine Shield",
+                "Healthstone",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 9,
+              "atSecond": 236,
+              "ability": "Eternal Nightfall",
+              "amount": 501131,
+              "fatiaDaVida": 64,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 8,
+              "atSecond": 240,
+              "ability": "Eternal Nightfall",
+              "amount": 443112,
+              "fatiaDaVida": 56,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Healthstone",
+                "Blessing of Sacrifice"
+              ]
+            }
+          ],
           "deaths": 8,
           "mechanics": {
             "errors": 1.6,
