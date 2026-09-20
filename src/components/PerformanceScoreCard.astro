@@ -41,6 +41,19 @@ interface Props {
   attackDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
   /** As duas metades da nota de Atacar, pra tela não esconder de onde ela veio. */
   attackParts?: { uptime: number; cooldowns: number | null } | null;
+  /**
+   * As pancadas que doeram, cruzadas com o defensivo que estava na mão.
+   *
+   * Só entra golpe que levou pelo menos um terço da vida: abaixo disso é
+   * rotina de raide, e apontar cada um seria o mesmo ruído dos sites que só
+   * despejam número.
+   */
+  pancadas?: Array<{
+    ability?: string;
+    amount: number;
+    fatiaDaVida?: number;
+    defensivosProntos: string[];
+  }>;
   /** Cooldowns defensivos da noite, do pior aproveitado pro melhor. */
   defenseDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
   /** Dano recebido e mitigação — contexto da nota de Defender, não entram nela. */
@@ -113,6 +126,7 @@ const {
   attackParts = null,
   defenseDetail = [],
   defenseContext = null,
+  pancadas = [],
   helpDetail = [],
   deathDetail = [],
   nomeDoEncontro = {},
@@ -515,6 +529,32 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     )}
                     <span class="text-slate-600"> &middot; contexto, não entra na nota</span>
                   </p>
+                )}
+
+                {/* As pancadas que doeram, cruzadas com o defensivo que estava
+                    na mão. É o que faz Defender parar de provar o lado errado
+                    da frase: sem isto ela mede que o botão foi apertado, nunca
+                    que havia o que mitigar — e "você não usou X" não acusa
+                    nada sozinho, porque pode não ter existido o que absorver. */}
+                {dimension.key === 'defense' && pancadas.length > 0 && (
+                  <ul class="space-y-0.5 mt-1">
+                    {pancadas.map((pancada) => (
+                      <li class="text-[11px] text-slate-500 leading-relaxed">
+                        <span class="text-slate-400">{pancada.ability ?? 'Golpe'}</span>
+                        {' '}&middot; {formatThousands(pancada.amount)}
+                        {pancada.fatiaDaVida !== undefined && (
+                          <> &middot; {pancada.fatiaDaVida}% da sua vida</>
+                        )}
+                        {pancada.defensivosProntos.length > 0 ? (
+                          <span class="text-amber-500/80">
+                            {' '}&middot; {pancada.defensivosProntos.slice(0, 2).join(' e ')} na mão
+                          </span>
+                        ) : (
+                          <span class="text-slate-600"> &middot; nada na mão — não dava pra evitar</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 )}
 
                 {dimension.key === 'survival' && deathDetail.length > 0 && (

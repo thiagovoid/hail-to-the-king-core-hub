@@ -96,6 +96,16 @@ export function formatThousands(value: number, decimals = 2): string {
   if (Math.abs(value) < 1000) {
     return String(Math.round(value));
   }
+  /**
+   * Acima de um milhão vira M, senão o número sai como "1101.19k".
+   *
+   * Parece detalhe e não é: uma pancada de um milhão e pouco é justamente a
+   * que interessa mostrar, e "1101.19k" obriga quem lê a contar casa. Quem
+   * está abrindo a própria ficha pra entender a nota não deveria precisar.
+   */
+  if (Math.abs(value) >= 1_000_000) {
+    return `${(value / 1_000_000).toFixed(decimals)}M`;
+  }
   return `${(value / 1000).toFixed(decimals)}k`;
 }
 

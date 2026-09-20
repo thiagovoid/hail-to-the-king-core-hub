@@ -230,3 +230,23 @@ describe('formatDecimalBr', () => {
     expect(formatDecimalBr(57.74)).toBe('57,7');
   });
 });
+
+describe("formatThousands em milhões", () => {
+  /**
+   * Uma pancada de um milhão e pouco é justamente a que interessa mostrar, e
+   * "1101.19k" obriga quem lê a contar casa. Ver buildPancadas.
+   */
+  it("passa pra M acima de um milhão", () => {
+    expect(formatThousands(1_101_190)).toBe("1.10M");
+    expect(formatThousands(2_500_000)).toBe("2.50M");
+  });
+
+  it("continua em k logo abaixo do milhão", () => {
+    expect(formatThousands(999_999)).toBe("1000.00k");
+    expect(formatThousands(45_000)).toBe("45.00k");
+  });
+
+  it("vale pros dois sinais", () => {
+    expect(formatThousands(-1_500_000)).toBe("-1.50M");
+  });
+});
