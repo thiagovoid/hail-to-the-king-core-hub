@@ -1,0 +1,39 @@
+---
+/**
+ * O cabeçalho que divide a ficha em atos.
+ *
+ * A ficha tem treze seções e crescia sem uma linha dizendo como se lê. Todo
+ * site de análise de WoW faz isso: despeja temporizador, uptime, gráfico e
+ * log, e deixa a tradução por conta de quem já sabe ler log — que não é a
+ * maioria do core.
+ *
+ * A saída não foi cortar seção, foi ACRESCENTAR a leitura. Cada ato responde
+ * uma pergunta que a pessoa faz de verdade, nessa ordem: como eu tô, de onde
+ * saiu isso, e como cheguei aqui. Quem quer só a primeira resposta para no
+ * primeiro ato; quem quer conferir a conta continua descendo.
+ */
+interface Props {
+  /** O número do ato. Dá noção de quanto falta — a rolagem sozinha não dá. */
+  numero: number;
+  /** A pergunta do jogador, nas palavras dele. */
+  titulo: string;
+  /** Como ler o que vem abaixo. Uma frase, não um parágrafo. */
+  comoLer: string;
+}
+
+const { numero, titulo, comoLer } = Astro.props;
+---
+
+<div class="mb-5 mt-12 first:mt-0">
+  <div class="flex items-baseline gap-3">
+    <span
+      class="text-[11px] font-mono text-slate-600 tabular-nums shrink-0"
+      aria-hidden="true">{String(numero).padStart(2, '0')}</span
+    >
+    <h2 class="text-2xl font-bold text-white">{titulo}</h2>
+  </div>
+
+  <p class="text-sm text-slate-400 mt-1.5 leading-relaxed pl-8">{comoLer}</p>
+
+  <div class="mt-4 h-px bg-gradient-to-r from-slate-700 via-slate-800 to-transparent"></div>
+</div>

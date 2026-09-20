@@ -280,10 +280,15 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 
 <section class="mb-10">
   <div class="mb-4">
-    <h2 class="text-xl font-bold text-white">
-      <span class="inline-flex items-center gap-2 flex-wrap">
-        Performance da última run
+    {/* O tooltip e o link saem de DENTRO do h2 de propósito.
+        Estando lá, o título acessível virava as regras inteiras do core
+        coladas no nome da seção — um leitor de tela anunciava trezentas
+        palavras onde devia anunciar quatro, e a lista de títulos da página
+        (que é como muita gente navega) ficava ilegível. */}
+    <div class="inline-flex items-center gap-2 flex-wrap">
+      <h2 class="text-xl font-bold text-white">Performance da última run</h2>
 
+      <span class="inline-flex items-center gap-2 flex-wrap">
         {regrasDoCore.length > 0 && (
           <InfoTooltip label="Como o core lê estes números" largura="larga" direcao="baixo">
             <span class="block text-slate-200 text-[11px] font-semibold">
@@ -310,7 +315,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
           </a>
         )}
       </span>
-    </h2>
+    </div>
 
     <p class="text-sm text-slate-400 mt-1">
       {nightDate ? `Noite de ${formatarNoite(nightDate)}` : 'Última noite de raid'}

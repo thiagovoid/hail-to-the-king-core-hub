@@ -19,6 +19,7 @@ import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
 import { aoSeuAlcance } from '@/engine/guild/aoSeuAlcance';
 import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
 import PortaoDePreparacao from '@/components/PortaoDePreparacao.astro';
+import AtoDaPagina from '@/components/AtoDaPagina.astro';
 import BossABoss from '@/components/BossABoss.astro';
 import {
   degrausDaMetrica,
@@ -640,6 +641,14 @@ const attendance = calculateAttendance(weeks, player.id);
       </div>
     </header>
 
+    {hasData && (
+      <AtoDaPagina
+        numero={1}
+        titulo="Como você está"
+        comoLer="O resumo da sua temporada e uma coisa só pra levar pra próxima terça. Se você só tem dois minutos, é aqui que eles valem mais — o resto da página existe pra provar isto."
+      />
+    )}
+
     {
       hasData ? (
         <PerformanceSummary average={seasonAverage} />
@@ -656,6 +665,21 @@ const attendance = calculateAttendance(weeks, player.id);
       )
     }
 
+    {/* O coach vem ANTES da parede de números, e essa é a inversão que
+        importa. Ele estava em quarto lugar, depois do Score inteiro aberto —
+        o jogador atravessava o dado pra só então chegar no que fazer. É a
+        mesma crítica que fazemos aos outros sites: apontam log, uptime e
+        gráfico, e quase nenhum aponta caminho. */}
+    {hasData && coachRecommendation && <CoachCard recomendacao={coachRecommendation} />}
+
+    {hasData && (
+      <AtoDaPagina
+        numero={2}
+        titulo="De onde saiu esse número"
+        comoLer="Cada linha do Score traz o dado que a sustenta — a magia, o segundo, a pancada, o erro com nome. Se alguma parecer errada, o laudo está aí pra você conferir e reclamar."
+      />
+    )}
+
     {
       hasData && overallScore && (
         <PerformanceScoreCard
@@ -671,18 +695,16 @@ const attendance = calculateAttendance(weeks, player.id);
           defenseDetail={defenseDetail}
           defenseContext={defenseContext}
           helpDetail={helpDetail}
-        interrupcoes={interrupcoes}
-        pancadas={ultimaNoite?.pancadas ?? []}
+          interrupcoes={interrupcoes}
+          pancadas={ultimaNoite?.pancadas ?? []}
           deathDetail={deathDetail}
           nomeDoEncontro={Object.fromEntries(nomeDoBoss)}
-        healingParts={healingParts}
+          healingParts={healingParts}
           funcao={ultimaNoite?.healing ? 'healer' : player.role === 'tank' ? 'tank' : 'dps'}
           regrasDoCore={regrasDoCore}
         />
       )
     }
-
-    {hasData && coachRecommendation && <CoachCard recomendacao={coachRecommendation} />}
 
     {
       hasData && (
@@ -703,8 +725,6 @@ const attendance = calculateAttendance(weeks, player.id);
       )
     }
 
-    {hasData && <BossABoss bosses={bossABoss} />}
-
     {hasData && (
       <PortaoDePreparacao
         slots={ultimaNoite?.preparationSlots}
@@ -717,15 +737,17 @@ const attendance = calculateAttendance(weeks, player.id);
       <CartaoDeProntidao prontidao={prontidao} noites={history.length} />
     )}
 
-    <ConquistasDoJogador
-      ganhas={conquistasDoJogador}
-      elegivel={player.status === 'member' || player.status === 'veteran'}
-      remeteAo={mainDoJogador ? { id: mainDoJogador.id, nome: mainDoJogador.name } : undefined}
-      tambemJoga={outrosPersonagens.map((jogador) => jogador.name)}
-      nomeDoPersonagem={Object.fromEntries(roster.map((jogador) => [jogador.id, jogador.name]))}
-      zoeiraDesde={seasonJson.config.zoeiraDesde}
-      aoAlcance={aoAlcanceDoJogador}
-    />
+    {hasData && (
+      <AtoDaPagina
+        numero={3}
+        titulo="Como você chegou aqui"
+        comoLer="Uma noite não descreve ninguém. Aqui é a temporada: encontro a encontro, semana a semana, e o que o grupo já reconheceu em você."
+      />
+    )}
+
+    {hasData && <BossABoss bosses={bossABoss} />}
+
+
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
 
@@ -737,7 +759,17 @@ const attendance = calculateAttendance(weeks, player.id);
 
     {
       history.length > 0 && (
-        <PerformanceChart
+            <ConquistasDoJogador
+      ganhas={conquistasDoJogador}
+      elegivel={player.status === 'member' || player.status === 'veteran'}
+      remeteAo={mainDoJogador ? { id: mainDoJogador.id, nome: mainDoJogador.name } : undefined}
+      tambemJoga={outrosPersonagens.map((jogador) => jogador.name)}
+      nomeDoPersonagem={Object.fromEntries(roster.map((jogador) => [jogador.id, jogador.name]))}
+      zoeiraDesde={seasonJson.config.zoeiraDesde}
+      aoAlcance={aoAlcanceDoJogador}
+    />
+
+<PerformanceChart
           series={[
             // A nota da pessoa abre o gráfico: é a leitura de cima, e as
             // outras abas explicam ela. Fica fora do ordenarPorFuncao de
