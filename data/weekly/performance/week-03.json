@@ -398,6 +398,40 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 32,
+              "atSecond": 403,
+              "ability": "Gravebound",
+              "amount": 1881687,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Anti-Magic Zone"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 253,
+              "ability": "Gravebound",
+              "amount": 1360020,
+              "fatiaDaVida": 80,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 367,
+              "ability": "Gravebound",
+              "amount": 1300133,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.7,
@@ -907,6 +941,40 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 32,
+              "atSecond": 345,
+              "ability": "Gravebound",
+              "amount": 1331946,
+              "fatiaDaVida": 100,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 34,
+              "atSecond": 430,
+              "ability": "Gravebound",
+              "amount": 1296367,
+              "fatiaDaVida": 97,
+              "defensivosProntos": [
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 33,
+              "atSecond": 174,
+              "ability": "Gravebound",
+              "amount": 1040359,
+              "fatiaDaVida": 85,
+              "defensivosProntos": [
+                "Ardent Defender",
+                "Holy Bulwark",
+                "Guardian of Ancient Kings",
+                "Divine Shield",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 3,
           "mechanics": {
             "errors": 1.7,
@@ -1311,7 +1379,8 @@
               "difficulty": 3,
               "atSecond": 285,
               "fightSeconds": 523,
-              "afterSeconds": 238
+              "afterSeconds": 238,
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3429,
@@ -1332,7 +1401,8 @@
               "readyDefensives": [
                 "Spirit Link Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Coiling Ichor"
             },
             {
               "encounterID": 3429,
@@ -1376,6 +1446,40 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 28,
+              "atSecond": 285,
+              "ability": "Eternal Venom",
+              "amount": 395207,
+              "fatiaDaVida": 62,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 20,
+              "atSecond": 255,
+              "ability": "Blast Wave",
+              "amount": 300377,
+              "fatiaDaVida": 45,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ]
+            },
+            {
+              "fight": 32,
+              "atSecond": 90,
+              "ability": "Toxic Deluge",
+              "amount": 240579,
+              "fatiaDaVida": 36,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Stormstream Totem",
+                "Ascendance",
+                "Spirit Link Totem"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 2,
@@ -1845,7 +1949,8 @@
                 "Blessing of Sacrifice",
                 "Lay on Hands",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Corrosive Spit"
             },
             {
               "encounterID": 3429,
@@ -1880,6 +1985,34 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 28,
+              "atSecond": 427,
+              "ability": "Eternal Venom",
+              "amount": 566572,
+              "fatiaDaVida": 71,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Lay on Hands",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 20,
+              "atSecond": 254,
+              "ability": "Blast Wave",
+              "amount": 395940,
+              "fatiaDaVida": 54,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 1.3,
@@ -2324,6 +2457,44 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 28,
+              "atSecond": 467,
+              "ability": "Eternal Venom",
+              "amount": 564448,
+              "fatiaDaVida": 74,
+              "defensivosProntos": [
+                "Blessing of Protection"
+              ]
+            },
+            {
+              "fight": 25,
+              "atSecond": 80,
+              "ability": "Ravage",
+              "amount": 543989,
+              "fatiaDaVida": 71,
+              "defensivosProntos": [
+                "Aura Mastery",
+                "Lay on Hands",
+                "Divine Protection",
+                "Divine Shield",
+                "Blessing of Protection"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 455,
+              "ability": "Melee",
+              "amount": 490382,
+              "fatiaDaVida": 64,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Divine Shield",
+                "Blessing of Protection"
+              ]
+            }
+          ],
           "deaths": 2,
           "mechanics": {
             "errors": 1.4,
@@ -2745,7 +2916,8 @@
               "afterSeconds": 107,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Blighted Sever"
             },
             {
               "encounterID": 3429,
@@ -2791,6 +2963,40 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 34,
+              "atSecond": 253,
+              "ability": "Gravebound",
+              "amount": 640503,
+              "fatiaDaVida": 75,
+              "defensivosProntos": [
+                "Ice Barrier",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 32,
+              "atSecond": 410,
+              "ability": "Melee",
+              "amount": 611765,
+              "fatiaDaVida": 89,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 351,
+              "ability": "Blighted Sever",
+              "amount": 301919,
+              "fatiaDaVida": 46,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 6,
           "mechanics": {
             "errors": 1.2,
@@ -3208,6 +3414,42 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 34,
+              "atSecond": 446,
+              "ability": "Melee",
+              "amount": 705813,
+              "fatiaDaVida": 85,
+              "defensivosProntos": [
+                "Demonic Healthstone",
+                "Unending Resolve"
+              ]
+            },
+            {
+              "fight": 25,
+              "atSecond": 326,
+              "ability": "Ravage",
+              "amount": 678465,
+              "fatiaDaVida": 81,
+              "defensivosProntos": [
+                "Demonic Healthstone",
+                "Unending Resolve",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 28,
+              "atSecond": 167,
+              "ability": "Eternal Venom",
+              "amount": 496467,
+              "fatiaDaVida": 60,
+              "defensivosProntos": [
+                "Unending Resolve",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 3,
           "mechanics": {
             "errors": 1.6,
@@ -3599,7 +3841,8 @@
                 "Silvermoon Health Potion",
                 "Healthstone",
                 "Dispersion"
-              ]
+              ],
+              "ability": "Vile Flood"
             },
             {
               "encounterID": 3429,
@@ -3612,7 +3855,8 @@
                 "Silvermoon Health Potion",
                 "Healthstone",
                 "Dispersion"
-              ]
+              ],
+              "ability": "Sever"
             },
             {
               "encounterID": 3429,
@@ -3675,6 +3919,47 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 32,
+              "atSecond": 405,
+              "ability": "Melee",
+              "amount": 676546,
+              "fatiaDaVida": 80,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Healthstone",
+                "Dispersion"
+              ]
+            },
+            {
+              "fight": 33,
+              "atSecond": 61,
+              "ability": "Sever",
+              "amount": 635342,
+              "fatiaDaVida": 83,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Healthstone",
+                "Dispersion"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 444,
+              "ability": "Melee",
+              "amount": 433890,
+              "fatiaDaVida": 57,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Silvermoon Health Potion",
+                "Healthstone",
+                "Dispersion"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.4,
@@ -4128,6 +4413,41 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 34,
+              "atSecond": 253,
+              "ability": "Gravebound",
+              "amount": 980424,
+              "fatiaDaVida": 91,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 32,
+              "atSecond": 199,
+              "ability": "Gravebound",
+              "amount": 644643,
+              "fatiaDaVida": 60,
+              "defensivosProntos": [
+                "Healing Stream Totem",
+                "Concentrated Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 451,
+              "ability": "Melee",
+              "amount": 532800,
+              "fatiaDaVida": 64,
+              "defensivosProntos": [
+                "Healing Stream Totem"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 1.6,
@@ -4559,7 +4879,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Evil Eyes"
             },
             {
               "encounterID": 3429,
@@ -4607,6 +4928,42 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 33,
+              "atSecond": 216,
+              "ability": "Gravebound",
+              "amount": 782936,
+              "fatiaDaVida": 93,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 32,
+              "atSecond": 199,
+              "ability": "Gravebound",
+              "amount": 600145,
+              "fatiaDaVida": 70,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 28,
+              "atSecond": 36,
+              "ability": "Stone Breaker",
+              "amount": 590326,
+              "fatiaDaVida": 70,
+              "defensivosProntos": [
+                "Blur",
+                "Darkness",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 2.3,
@@ -5028,7 +5385,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Vile Flood"
             },
             {
               "encounterID": 3429,
@@ -5072,6 +5430,29 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 34,
+              "atSecond": 253,
+              "ability": "Gravebound",
+              "amount": 794170,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 20,
+              "atSecond": 258,
+              "ability": "Blast Wave",
+              "amount": 355612,
+              "fatiaDaVida": 44,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 2.6,
@@ -5485,7 +5866,8 @@
               "readyDefensives": [
                 "Potent Healing Potion",
                 "Rallying Cry"
-              ]
+              ],
+              "ability": "Eternal Venom"
             },
             {
               "encounterID": 3429,
@@ -5542,6 +5924,40 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 25,
+              "atSecond": 232,
+              "ability": "Ravage",
+              "amount": 700857,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Potent Healing Potion",
+                "Rallying Cry"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 253,
+              "ability": "Gravebound",
+              "amount": 690922,
+              "fatiaDaVida": 89,
+              "defensivosProntos": [
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 32,
+              "atSecond": 412,
+              "ability": "Melee",
+              "amount": 619071,
+              "fatiaDaVida": 90,
+              "defensivosProntos": [
+                "Potent Healing Potion",
+                "Rallying Cry"
+              ]
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 1.9,
@@ -6024,6 +6440,31 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 28,
+              "atSecond": 390,
+              "ability": "Eternal Venom",
+              "amount": 578318,
+              "fatiaDaVida": 65,
+              "defensivosProntos": [
+                "Healthstone",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 32,
+              "atSecond": 416,
+              "ability": "Melee",
+              "amount": 578209,
+              "fatiaDaVida": 72,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Healthstone",
+                "Blessing of Sacrifice"
+              ]
+            }
+          ],
           "deaths": 2,
           "mechanics": {
             "errors": 2.4,
@@ -6516,6 +6957,47 @@
               "pessoasQueInterromperam": 13
             }
           },
+          "pancadas": [
+            {
+              "fight": 34,
+              "atSecond": 253,
+              "ability": "Gravebound",
+              "amount": 855410,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Potent Healing Potion",
+                "Lay on Hands",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 32,
+              "atSecond": 199,
+              "ability": "Gravebound",
+              "amount": 746228,
+              "fatiaDaVida": 79,
+              "defensivosProntos": [
+                "Potent Healing Potion",
+                "Lay on Hands",
+                "Healthstone",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 20,
+              "atSecond": 228,
+              "ability": "Blast Wave",
+              "amount": 412634,
+              "fatiaDaVida": 49,
+              "defensivosProntos": [
+                "Potent Healing Potion",
+                "Lay on Hands",
+                "Healthstone",
+                "Blessing of Sacrifice"
+              ]
+            }
+          ],
           "deaths": 3,
           "mechanics": {
             "errors": 2.6,
@@ -6934,7 +7416,8 @@
               "readyDefensives": [
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Vile Flood"
             },
             {
               "encounterID": 3420,
@@ -6999,6 +7482,41 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 20,
+              "atSecond": 257,
+              "ability": "Blast Wave",
+              "amount": 316984,
+              "fatiaDaVida": 38,
+              "defensivosProntos": [
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 33,
+              "atSecond": 244,
+              "ability": "Gloombomb",
+              "amount": 237237,
+              "fatiaDaVida": 37,
+              "defensivosProntos": [
+                "Dispersion",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 25,
+              "atSecond": 51,
+              "ability": "Venomous Surge",
+              "amount": 235421,
+              "fatiaDaVida": 38,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Dispersion",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 5,
           "mechanics": {
             "errors": 1.1,
@@ -7421,7 +7939,8 @@
               "afterSeconds": 47,
               "readyDefensives": [
                 "Blur"
-              ]
+              ],
+              "ability": "Blink Nova"
             }
           ],
           "trashShare": 5.3,
@@ -7444,6 +7963,36 @@
               "pessoasQueInterromperam": 15
             }
           },
+          "pancadas": [
+            {
+              "fight": 32,
+              "atSecond": 199,
+              "ability": "Gravebound",
+              "amount": 587467,
+              "fatiaDaVida": 91,
+              "defensivosProntos": [
+                "Blur"
+              ]
+            },
+            {
+              "fight": 33,
+              "atSecond": 174,
+              "ability": "Gravebound",
+              "amount": 508125,
+              "fatiaDaVida": 97,
+              "defensivosProntos": [
+                "Blur"
+              ]
+            },
+            {
+              "fight": 34,
+              "atSecond": 210,
+              "ability": "Gravebound",
+              "amount": 445594,
+              "fatiaDaVida": 85,
+              "defensivosProntos": []
+            }
+          ],
           "deaths": 4,
           "mechanics": {
             "errors": 2,
@@ -7833,7 +8382,8 @@
                 "Anti-Magic Zone",
                 "Lichborne",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Toxin Cloud"
             },
             {
               "encounterID": 3492,
@@ -7848,7 +8398,8 @@
                 "Anti-Magic Zone",
                 "Lichborne",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -7981,7 +8532,8 @@
                 "Icebound Fortitude",
                 "Anti-Magic Zone",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Corrupted Toxin"
             },
             {
               "encounterID": 3470,
@@ -8007,7 +8559,8 @@
               "readyDefensives": [
                 "Lichborne",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Corrupted Toxin"
             },
             {
               "encounterID": 3492,
@@ -8033,7 +8586,8 @@
                 "Anti-Magic Zone",
                 "Lichborne",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mephitic Thrash"
             }
           ],
           "trashShare": 2.3,
@@ -8056,6 +8610,44 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 2,
+              "atSecond": 242,
+              "ability": "Melee",
+              "amount": 1411017,
+              "fatiaDaVida": 93,
+              "defensivosProntos": [
+                "Icebound Fortitude",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 6,
+              "atSecond": 239,
+              "ability": "Melee",
+              "amount": 1398916,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Death's Advance",
+                "Anti-Magic Shell",
+                "Icebound Fortitude",
+                "Lichborne",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 238,
+              "ability": "Melee",
+              "amount": 1207205,
+              "fatiaDaVida": 79,
+              "defensivosProntos": [
+                "Lichborne",
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 1,
@@ -8587,7 +9179,8 @@
               "readyDefensives": [
                 "Lay on Hands",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Acidic Burst"
             },
             {
               "encounterID": 3492,
@@ -8601,7 +9194,8 @@
                 "Lay on Hands",
                 "Holy Bulwark",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -8638,6 +9232,45 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 365,
+              "ability": "Gravebound",
+              "amount": 1183226,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Healthstone",
+                "Lay on Hands",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 7,
+              "atSecond": 296,
+              "ability": "Melee",
+              "amount": 1083904,
+              "fatiaDaVida": 90,
+              "defensivosProntos": [
+                "Healthstone",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 3,
+              "atSecond": 247,
+              "ability": "Melee",
+              "amount": 1000519,
+              "fatiaDaVida": 84,
+              "defensivosProntos": [
+                "Ritual Wraps",
+                "Healthstone",
+                "Ardent Defender",
+                "Divine Shield",
+                "Blessing of Sacrifice"
+              ]
+            }
+          ],
           "deaths": 17,
           "mechanics": {
             "errors": 1.3,
@@ -8974,7 +9607,8 @@
                 "Healing Stream Totem",
                 "Stormstream Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -9000,7 +9634,8 @@
               "readyDefensives": [
                 "Stormstream Totem",
                 "Spirit Link Totem"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -9012,7 +9647,8 @@
                 "Healing Stream Totem",
                 "Spirit Link Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Caustic Waves"
             },
             {
               "encounterID": 3492,
@@ -9026,7 +9662,8 @@
                 "Ascendance",
                 "Spirit Link Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -9037,7 +9674,8 @@
               "readyDefensives": [
                 "Stormstream Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3470,
@@ -9047,14 +9685,16 @@
               "afterSeconds": 13,
               "readyDefensives": [
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
               "difficulty": 4,
               "atSecond": 250,
               "fightSeconds": 257,
-              "afterSeconds": 7
+              "afterSeconds": 7,
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -9079,7 +9719,8 @@
                 "Ascendance",
                 "Spirit Link Totem",
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -9100,7 +9741,8 @@
               "afterSeconds": 1,
               "readyDefensives": [
                 "Astral Shift"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3492,
@@ -9111,7 +9753,8 @@
               "readyDefensives": [
                 "Stormstream Totem",
                 "Spirit Link Totem"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -9146,6 +9789,41 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 2,
+              "atSecond": 241,
+              "ability": "Latent Cultist",
+              "amount": 820234,
+              "fatiaDaVida": 98,
+              "defensivosProntos": [
+                "Astral Shift"
+              ]
+            },
+            {
+              "fight": 4,
+              "atSecond": 256,
+              "ability": "Latent Cultist",
+              "amount": 544478,
+              "fatiaDaVida": 72,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Ascendance",
+                "Spirit Link Totem",
+                "Astral Shift"
+              ]
+            },
+            {
+              "fight": 10,
+              "atSecond": 257,
+              "ability": "Latent Cultist",
+              "amount": 521175,
+              "fatiaDaVida": 69,
+              "defensivosProntos": [
+                "Astral Shift"
+              ]
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 1.1,
@@ -9505,7 +10183,8 @@
                 "Aura Mastery",
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -9519,7 +10198,8 @@
                 "Blessing of Sacrifice",
                 "Aura Mastery",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -9532,7 +10212,8 @@
                 "Blessing of Sacrifice",
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3492,
@@ -9547,7 +10228,8 @@
                 "Aura Mastery",
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -9561,7 +10243,8 @@
                 "Aura Mastery",
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3470,
@@ -9574,7 +10257,8 @@
                 "Blessing of Sacrifice",
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -9601,7 +10285,8 @@
                 "Healthstone",
                 "Divine Protection",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Acidic Burst"
             },
             {
               "encounterID": 3470,
@@ -9614,7 +10299,8 @@
                 "Divine Protection",
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -9640,7 +10326,8 @@
                 "Healthstone",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -9670,7 +10357,8 @@
                 "Aura Mastery",
                 "Divine Shield",
                 "Lay on Hands"
-              ]
+              ],
+              "ability": "Latent Cultist"
             }
           ],
           "trashShare": 1.2,
@@ -9693,6 +10381,50 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 4,
+              "atSecond": 250,
+              "ability": "Melee",
+              "amount": 663792,
+              "fatiaDaVida": 83,
+              "defensivosProntos": [
+                "Healthstone",
+                "Blessing of Sacrifice",
+                "Aura Mastery",
+                "Divine Shield",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 2,
+              "atSecond": 254,
+              "ability": "Latent Cultist",
+              "amount": 616612,
+              "fatiaDaVida": 85,
+              "defensivosProntos": [
+                "Healthstone",
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Aura Mastery",
+                "Divine Shield",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 241,
+              "ability": "Latent Cultist",
+              "amount": 611049,
+              "fatiaDaVida": 84,
+              "defensivosProntos": [
+                "Healthstone",
+                "Blessing of Sacrifice",
+                "Divine Shield",
+                "Lay on Hands"
+              ]
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 0.6,
@@ -9947,7 +10679,8 @@
                 "Aura Mastery",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Rage of the Shackled"
             },
             {
               "encounterID": 3492,
@@ -9960,7 +10693,8 @@
                 "Divine Shield",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -9973,7 +10707,8 @@
                 "Divine Shield",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -9986,7 +10721,8 @@
                 "Divine Shield",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -9996,7 +10732,8 @@
               "afterSeconds": 13,
               "readyDefensives": [
                 "Divine Protection"
-              ]
+              ],
+              "ability": "Caustic Waves"
             },
             {
               "encounterID": 3470,
@@ -10007,7 +10744,8 @@
               "readyDefensives": [
                 "Divine Shield",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -10031,7 +10769,8 @@
                 "Lay on Hands",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Falling Debris"
             },
             {
               "encounterID": 3470,
@@ -10082,7 +10821,8 @@
                 "Divine Shield",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3492,
@@ -10094,7 +10834,8 @@
                 "Divine Shield",
                 "Divine Protection",
                 "Blessing of Sacrifice"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -10142,6 +10883,41 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 3,
+              "atSecond": 259,
+              "ability": "Melee",
+              "amount": 790663,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Divine Protection",
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 18,
+              "atSecond": 189,
+              "ability": "Melee",
+              "amount": 632517,
+              "fatiaDaVida": 70,
+              "defensivosProntos": [
+                "Blessing of Sacrifice"
+              ]
+            },
+            {
+              "fight": 2,
+              "atSecond": 255,
+              "ability": "Melee",
+              "amount": 629387,
+              "fatiaDaVida": 77,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice"
+              ]
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 0.6,
@@ -10450,7 +11226,8 @@
               "afterSeconds": 121,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Malignant Shell"
             },
             {
               "encounterID": 3492,
@@ -10463,7 +11240,8 @@
                 "Ice Cold",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -10474,7 +11252,8 @@
               "readyDefensives": [
                 "Ice Cold",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -10487,7 +11266,8 @@
                 "Ice Cold",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -10500,7 +11280,8 @@
                 "Ice Cold",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -10513,7 +11294,8 @@
                 "Ice Cold",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -10526,7 +11308,8 @@
                 "Ice Cold",
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -10537,7 +11320,8 @@
               "readyDefensives": [
                 "Ice Barrier",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Putrid Membrane"
             },
             {
               "encounterID": 3470,
@@ -10648,6 +11432,41 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 3,
+              "atSecond": 249,
+              "ability": "Melee",
+              "amount": 766591,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 361,
+              "ability": "Melee",
+              "amount": 681789,
+              "fatiaDaVida": 98,
+              "defensivosProntos": [
+                "Ice Barrier",
+                "Ice Cold",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 2,
+              "atSecond": 247,
+              "ability": "Melee",
+              "amount": 602030,
+              "fatiaDaVida": 78,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 1.1,
@@ -10937,14 +11756,16 @@
               "readyDefensives": [
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Essence Rend"
             },
             {
               "encounterID": 3492,
               "difficulty": 3,
               "atSecond": 286,
               "fightSeconds": 381,
-              "afterSeconds": 95
+              "afterSeconds": 95,
+              "ability": "Rage of the Shackled"
             },
             {
               "encounterID": 3492,
@@ -10955,7 +11776,8 @@
               "readyDefensives": [
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -10966,7 +11788,8 @@
               "readyDefensives": [
                 "Demonic Healthstone",
                 "Unending Resolve"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -10978,7 +11801,8 @@
                 "Demonic Healthstone",
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -10989,7 +11813,8 @@
               "readyDefensives": [
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -11000,7 +11825,8 @@
               "readyDefensives": [
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Caustic Waves"
             },
             {
               "encounterID": 3470,
@@ -11011,7 +11837,8 @@
               "readyDefensives": [
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3470,
@@ -11022,7 +11849,8 @@
               "readyDefensives": [
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Uncoiling"
             },
             {
               "encounterID": 3470,
@@ -11082,7 +11910,8 @@
                 "Demonic Healthstone",
                 "Unending Resolve",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             },
             {
               "encounterID": 3470,
@@ -11130,6 +11959,42 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 363,
+              "ability": "Eternal Nightfall",
+              "amount": 594364,
+              "fatiaDaVida": 71,
+              "defensivosProntos": [
+                "Demonic Healthstone",
+                "Unending Resolve",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 252,
+              "ability": "Melee",
+              "amount": 515208,
+              "fatiaDaVida": 62,
+              "defensivosProntos": [
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 19,
+              "atSecond": 12,
+              "ability": "Rattler Slam",
+              "amount": 409802,
+              "fatiaDaVida": 49,
+              "defensivosProntos": [
+                "Demonic Healthstone",
+                "Unending Resolve",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 0.9,
@@ -11468,7 +12333,8 @@
                 "Silvermoon Health Potion",
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -11481,7 +12347,8 @@
                 "Silvermoon Health Potion",
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -11492,7 +12359,8 @@
               "readyDefensives": [
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -11504,7 +12372,8 @@
                 "Silvermoon Health Potion",
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3492,
@@ -11517,7 +12386,8 @@
                 "Silvermoon Health Potion",
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -11528,7 +12398,8 @@
               "readyDefensives": [
                 "Silvermoon Health Potion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Putrid Membrane"
             },
             {
               "encounterID": 3470,
@@ -11539,7 +12410,8 @@
               "readyDefensives": [
                 "Dispersion",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3470,
@@ -11620,6 +12492,43 @@
             {
               "spec": "Shadow",
               "role": "dps"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 10,
+              "atSecond": 250,
+              "ability": "Melee",
+              "amount": 826538,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Dispersion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 3,
+              "atSecond": 250,
+              "ability": "Melee",
+              "amount": 823215,
+              "fatiaDaVida": 90,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Dispersion",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 4,
+              "atSecond": 249,
+              "ability": "Melee",
+              "amount": 768314,
+              "fatiaDaVida": 86,
+              "defensivosProntos": [
+                "Silvermoon Health Potion",
+                "Dispersion",
+                "Healthstone"
+              ]
             }
           ],
           "deaths": 15,
@@ -11911,7 +12820,8 @@
               "afterSeconds": 69,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Toxin Cloud"
             },
             {
               "encounterID": 3492,
@@ -11922,7 +12832,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Virulent Spit"
             },
             {
               "encounterID": 3492,
@@ -11934,7 +12845,8 @@
                 "Blur",
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -11960,7 +12872,8 @@
                 "Blur",
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -11971,7 +12884,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Putrid Membrane"
             },
             {
               "encounterID": 3470,
@@ -12023,7 +12937,8 @@
                 "Darkness",
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Unchecked Rage"
             },
             {
               "encounterID": 3470,
@@ -12046,7 +12961,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Uncoiling"
             },
             {
               "encounterID": 3470,
@@ -12083,7 +12999,8 @@
                 "Darkness",
                 "Healthstone",
                 "Silvermoon Health Potion"
-              ]
+              ],
+              "ability": "Eternal Nightfall"
             }
           ],
           "trashShare": 5.6,
@@ -12106,6 +13023,43 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 3,
+              "atSecond": 253,
+              "ability": "Melee",
+              "amount": 864435,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 250,
+              "ability": "Melee",
+              "amount": 691341,
+              "fatiaDaVida": 80,
+              "defensivosProntos": [
+                "Darkness",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            },
+            {
+              "fight": 6,
+              "atSecond": 249,
+              "ability": "Melee",
+              "amount": 559456,
+              "fatiaDaVida": 71,
+              "defensivosProntos": [
+                "Blur",
+                "Healthstone",
+                "Silvermoon Health Potion"
+              ]
+            }
+          ],
           "deaths": 15,
           "mechanics": {
             "errors": 0.9,
@@ -12394,7 +13348,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Sever"
             },
             {
               "encounterID": 3492,
@@ -12412,7 +13367,8 @@
               "afterSeconds": 26,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Rage of the Shackled"
             },
             {
               "encounterID": 3492,
@@ -12423,7 +13379,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -12434,7 +13391,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3470,
@@ -12457,7 +13415,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -12467,7 +13426,8 @@
               "afterSeconds": 15,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -12477,7 +13437,8 @@
               "afterSeconds": 15,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Putrid Membrane"
             },
             {
               "encounterID": 3470,
@@ -12546,7 +13507,8 @@
               "readyDefensives": [
                 "Astral Shift",
                 "Healthstone"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3492,
@@ -12556,7 +13518,8 @@
               "afterSeconds": 1,
               "readyDefensives": [
                 "Healthstone"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -12587,6 +13550,37 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 61,
+              "ability": "Sever",
+              "amount": 864648,
+              "fatiaDaVida": 89,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 3,
+              "atSecond": 252,
+              "ability": "Melee",
+              "amount": 785201,
+              "fatiaDaVida": 81,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 250,
+              "ability": "Melee",
+              "amount": 779524,
+              "fatiaDaVida": 93,
+              "defensivosProntos": []
+            }
+          ],
           "deaths": 17,
           "mechanics": {
             "errors": 0.9,
@@ -12901,7 +13895,8 @@
                 "Lay on Hands",
                 "Blessing of Protection",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Sever"
             },
             {
               "encounterID": 3470,
@@ -12914,7 +13909,8 @@
                 "Lay on Hands",
                 "Blessing of Protection",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Essence Rend"
             },
             {
               "encounterID": 3429,
@@ -12940,7 +13936,8 @@
                 "Divine Protection",
                 "Healthstone",
                 "Blessing of Protection"
-              ]
+              ],
+              "ability": "Deadly Venom"
             },
             {
               "encounterID": 3492,
@@ -12983,7 +13980,8 @@
                 "Lay on Hands",
                 "Blessing of Protection",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -12996,7 +13994,8 @@
                 "Lay on Hands",
                 "Blessing of Protection",
                 "Divine Shield"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3470,
@@ -13120,7 +14119,8 @@
               "readyDefensives": [
                 "Healthstone",
                 "Blessing of Protection"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             }
           ],
           "trashShare": 8.4,
@@ -13143,6 +14143,47 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 4,
+              "atSecond": 247,
+              "ability": "Melee",
+              "amount": 587463,
+              "fatiaDaVida": 65,
+              "defensivosProntos": [
+                "Healthstone",
+                "Blessing of Protection",
+                "Divine Shield"
+              ]
+            },
+            {
+              "fight": 3,
+              "atSecond": 260,
+              "ability": "Melee",
+              "amount": 540619,
+              "fatiaDaVida": 70,
+              "defensivosProntos": [
+                "Healthstone",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Divine Shield"
+              ]
+            },
+            {
+              "fight": 17,
+              "atSecond": 97,
+              "ability": "Melee",
+              "amount": 530606,
+              "fatiaDaVida": 65,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Healthstone",
+                "Lay on Hands",
+                "Blessing of Protection",
+                "Divine Shield"
+              ]
+            }
+          ],
           "deaths": 17,
           "mechanics": {
             "errors": 1.4,
@@ -13472,7 +14513,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3492,
@@ -13484,7 +14526,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Warden's Protection"
             },
             {
               "encounterID": 3429,
@@ -13509,7 +14552,8 @@
                 "Desperate Prayer",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Virulent Spit"
             },
             {
               "encounterID": 3492,
@@ -13522,7 +14566,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3492,
@@ -13546,7 +14591,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -13558,7 +14604,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3492,
@@ -13582,7 +14629,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Soulcoil Well"
             },
             {
               "encounterID": 3470,
@@ -13616,7 +14664,8 @@
                 "Desperate Prayer",
                 "Healthstone",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -13641,7 +14690,8 @@
                 "Healthstone",
                 "Dispersion",
                 "Potent Healing Potion"
-              ]
+              ],
+              "ability": "Soulcoil Well"
             },
             {
               "encounterID": 3470,
@@ -13676,6 +14726,42 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 3,
+              "atSecond": 254,
+              "ability": "Melee",
+              "amount": 636345,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Healthstone",
+                "Dispersion",
+                "Potent Healing Potion"
+              ]
+            },
+            {
+              "fight": 11,
+              "atSecond": 239,
+              "ability": "Soulcoil Well",
+              "amount": 469370,
+              "fatiaDaVida": 71,
+              "defensivosProntos": [
+                "Healthstone"
+              ]
+            },
+            {
+              "fight": 2,
+              "atSecond": 246,
+              "ability": "Latent Cultist",
+              "amount": 466519,
+              "fatiaDaVida": 65,
+              "defensivosProntos": [
+                "Desperate Prayer",
+                "Healthstone",
+                "Potent Healing Potion"
+              ]
+            }
+          ],
           "deaths": 16,
           "mechanics": {
             "errors": 0.5,
@@ -13963,7 +15049,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Blur"
-              ]
+              ],
+              "ability": "Caustic Waves"
             },
             {
               "encounterID": 3470,
@@ -13973,7 +15060,8 @@
               "afterSeconds": 184,
               "readyDefensives": [
                 "Blur"
-              ]
+              ],
+              "ability": "Essence Rend"
             },
             {
               "encounterID": 3492,
@@ -13984,7 +15072,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Blur"
-              ]
+              ],
+              "ability": "Warden's Protection"
             },
             {
               "encounterID": 3429,
@@ -14017,7 +15106,8 @@
               "afterSeconds": 70,
               "readyDefensives": [
                 "Blur"
-              ]
+              ],
+              "ability": "Toxin Cloud"
             },
             {
               "encounterID": 3470,
@@ -14027,7 +15117,8 @@
               "afterSeconds": 26,
               "readyDefensives": [
                 "Darkness"
-              ]
+              ],
+              "ability": "Anguished Echoes"
             },
             {
               "encounterID": 3492,
@@ -14038,7 +15129,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Blur"
-              ]
+              ],
+              "ability": "Dread Roar"
             },
             {
               "encounterID": 3492,
@@ -14060,7 +15152,8 @@
               "afterSeconds": 22,
               "readyDefensives": [
                 "Darkness"
-              ]
+              ],
+              "ability": "Caustic Waves"
             },
             {
               "encounterID": 3492,
@@ -14071,7 +15164,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Blur"
-              ]
+              ],
+              "ability": "Mother's Wrath"
             },
             {
               "encounterID": 3470,
@@ -14081,7 +15175,8 @@
               "afterSeconds": 15,
               "readyDefensives": [
                 "Blur"
-              ]
+              ],
+              "ability": "Vessel of Awakening"
             },
             {
               "encounterID": 3470,
@@ -14092,7 +15187,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Blur"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -14103,7 +15199,8 @@
               "readyDefensives": [
                 "Darkness",
                 "Blur"
-              ]
+              ],
+              "ability": "Latent Cultist"
             },
             {
               "encounterID": 3470,
@@ -14161,6 +15258,41 @@
               "pessoasQueInterromperam": 12
             }
           },
+          "pancadas": [
+            {
+              "fight": 10,
+              "atSecond": 254,
+              "ability": "Melee",
+              "amount": 646079,
+              "fatiaDaVida": 99,
+              "defensivosProntos": [
+                "Darkness",
+                "Blur"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 263,
+              "ability": "Gravebound",
+              "amount": 594988,
+              "fatiaDaVida": 91,
+              "defensivosProntos": [
+                "Darkness",
+                "Blur"
+              ]
+            },
+            {
+              "fight": 2,
+              "atSecond": 247,
+              "ability": "Latent Cultist",
+              "amount": 431101,
+              "fatiaDaVida": 66,
+              "defensivosProntos": [
+                "Darkness",
+                "Blur"
+              ]
+            }
+          ],
           "deaths": 17,
           "mechanics": {
             "errors": 1.3,
