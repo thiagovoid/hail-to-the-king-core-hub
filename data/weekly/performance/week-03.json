@@ -9,6 +9,7 @@
           "playerId": "blackwatch",
           "dps": 40896,
           "parse": 36,
+          "simTarget": 66361,
           "itemLevel": 307,
           "preparation": 24,
           "preparationMissing": [
@@ -393,6 +394,7 @@
           "playerId": "apocalipse",
           "dps": 33952,
           "parse": 34,
+          "simTarget": 84292,
           "preparation": 20,
           "preparationMissing": [
             "Elmo",
@@ -1168,6 +1170,7 @@
           "playerId": "kams",
           "hps": 131096,
           "parse": 82,
+          "simTarget": 107954,
           "itemLevel": 305,
           "preparation": 21,
           "preparationMissing": [
@@ -1906,6 +1909,7 @@
           "playerId": "bustgril",
           "dps": 94945,
           "parse": 61,
+          "simTarget": 149699,
           "itemLevel": 305,
           "preparation": 89,
           "preparationMissing": [
@@ -2238,6 +2242,7 @@
           "playerId": "hysillens",
           "dps": 106843,
           "parse": 67,
+          "simTarget": 136610,
           "preparation": 44,
           "preparationMissing": [
             "Elmo",
@@ -2566,6 +2571,7 @@
           "playerId": "kroline",
           "dps": 119738,
           "parse": 61,
+          "simTarget": 150655,
           "itemLevel": 311,
           "preparation": 89,
           "preparationMissing": [
@@ -2917,6 +2923,7 @@
           "playerId": "jrxamã",
           "dps": 132772,
           "parse": 86,
+          "simTarget": 156424,
           "itemLevel": 313,
           "preparation": 95,
           "preparationChecks": 2,
@@ -3265,6 +3272,7 @@
           "playerId": "heracranosx",
           "dps": 79905,
           "parse": 46,
+          "simTarget": 143526,
           "itemLevel": 313,
           "preparation": 46,
           "preparationMissing": [
@@ -3680,6 +3688,7 @@
           "playerId": "gunst",
           "dps": 75072,
           "parse": 37,
+          "simTarget": 148687,
           "itemLevel": 307,
           "preparation": 50,
           "preparationMissing": [
@@ -4042,6 +4051,7 @@
           "playerId": "nerlock",
           "dps": 50929,
           "parse": 9,
+          "simTarget": 126688,
           "preparation": 13,
           "preparationMissing": [
             "Elmo",
@@ -4410,6 +4420,7 @@
           "playerId": "xúlio",
           "dps": 112651,
           "parse": 80,
+          "simTarget": 159801,
           "itemLevel": 312,
           "preparation": 95,
           "preparationMissing": [
@@ -4821,6 +4832,7 @@
           "playerId": "dagom",
           "dps": 43106,
           "parse": 17,
+          "simTarget": 137056,
           "itemLevel": 307,
           "preparation": 45,
           "preparationMissing": [
@@ -5199,6 +5211,7 @@
           "playerId": "ligiaf",
           "dps": 63296,
           "parse": 20,
+          "simTarget": 149984,
           "preparation": 47,
           "preparationMissing": [
             "Elmo",
@@ -5537,6 +5550,7 @@
           "playerId": "minort",
           "dps": 34926,
           "parse": 7,
+          "simTarget": 129137,
           "preparation": 15,
           "preparationMissing": [
             "Elmo",
@@ -5932,6 +5946,7 @@
           "playerId": "blackwatch",
           "dps": 34415,
           "parse": 15,
+          "simTarget": 66361,
           "itemLevel": 308,
           "preparation": 14,
           "preparationMissing": [
@@ -6235,6 +6250,7 @@
           "playerId": "apocalipse",
           "dps": 41392,
           "parse": 27,
+          "simTarget": 84292,
           "itemLevel": 306,
           "preparation": 40,
           "preparationMissing": [
@@ -6861,6 +6877,7 @@
           "playerId": "kams",
           "hps": 158677,
           "parse": 84,
+          "simTarget": 107954,
           "itemLevel": 305,
           "preparation": 7,
           "preparationMissing": [
@@ -7399,6 +7416,7 @@
           "playerId": "bustgril",
           "dps": 93884,
           "parse": 39,
+          "simTarget": 149699,
           "itemLevel": 307,
           "preparation": 73,
           "preparationMissing": [
@@ -7694,6 +7712,7 @@
           "playerId": "hysillens",
           "dps": 81697,
           "parse": 35,
+          "simTarget": 136610,
           "itemLevel": 310,
           "preparation": 31,
           "preparationMissing": [
@@ -7965,6 +7984,7 @@
           "playerId": "kroline",
           "dps": 98533,
           "parse": 59,
+          "simTarget": 150655,
           "preparation": 76,
           "preparationMissing": [
             "Botas",
@@ -8216,6 +8236,7 @@
           "playerId": "heracranosx",
           "dps": 83502,
           "parse": 27,
+          "simTarget": 143526,
           "itemLevel": 315,
           "preparation": 33,
           "preparationMissing": [
@@ -8502,6 +8523,7 @@
           "playerId": "gunst",
           "dps": 92228,
           "parse": 34,
+          "simTarget": 148687,
           "itemLevel": 315,
           "preparation": 62,
           "preparationMissing": [
@@ -8779,6 +8801,7 @@
           "playerId": "xúlio",
           "dps": 94665,
           "parse": 35,
+          "simTarget": 159801,
           "itemLevel": 313,
           "preparation": 67,
           "preparationMissing": [
@@ -9099,6 +9122,7 @@
           "playerId": "ligiaf",
           "dps": 70576,
           "parse": 18,
+          "simTarget": 149984,
           "itemLevel": 290,
           "preparation": 53,
           "preparationMissing": [
@@ -9361,6 +9385,7 @@
           "playerId": "minort",
           "dps": 42227,
           "parse": 6,
+          "simTarget": 129137,
           "itemLevel": 288,
           "preparation": 13,
           "preparationMissing": [

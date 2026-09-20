@@ -11,6 +11,7 @@ export type ScoreDimensionKey =
   | "healing"
   | "survival"
   | "help"
+  | "deliver"
   | "preparation";
 
 export interface ScoreDimension {
@@ -113,9 +114,9 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
  * `fatorDeSobrevivencia`.
  */
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
-  dps: { parse: 35, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 15, preparation: 0 },
-  tank: { parse: 10, mechanics: 25, attack: 10, defense: 40, healing: 0, survival: 0, help: 15, preparation: 0 },
-  healer: { parse: 15, mechanics: 25, attack: 5, defense: 5, healing: 35, survival: 0, help: 15, preparation: 0 },
+  dps: { parse: 0, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 15, deliver: 35, preparation: 0 },
+  tank: { parse: 0, mechanics: 30, attack: 10, defense: 45, healing: 0, survival: 0, help: 15, deliver: 0, preparation: 0 },
+  healer: { parse: 0, mechanics: 30, attack: 5, defense: 10, healing: 40, survival: 0, help: 15, deliver: 0, preparation: 0 },
 };
 
 /**
@@ -213,6 +214,14 @@ const DIMENSION_META: Record<
     source:
       "Warcraft Logs (cada cast da noite) + Wowhead (recarga de cada magia), sobre uma lista curada de utilidade de grupo. Defensivo e cooldown de dano ficam de fora: já contam em Defender e Atacar.",
   },
+  deliver: {
+    label: "Entregar",
+    unit: "% do seu sim",
+    description:
+      "Quanto do SEU potencial você entregou: o dano da noite contra a simulação que o Raidbots fez do seu personagem, com o seu equipamento e os seus talentos. Não é comparação com ninguém — é você contra o teto do seu próprio boneco.",
+    source:
+      "Warcraft Logs (dano da noite) + Raidbots (simulação semanal por jogador). A meta de sim fica guardada na noite, porque ela sobe conforme a pessoa se equipa: comparar o dano de agosto com o sim de setembro diria que alguém piorou quando melhorou.",
+  },
   preparation: {
     label: "Preparação",
     unit: "% pronto",
@@ -269,6 +278,27 @@ function progress(value: number | undefined, target: CoreTarget): number | null 
  * normalizada (ver MITIGACAO_DO_TANQUE). Pras outras funções continua só o
  * cooldown, porque ali a mitigação mede equipamento.
  */
+/**
+ * Quanto do próprio sim a pessoa entregou na noite, 0-100+.
+ *
+ * Substituiu Parse como a medida de dano do dps, e a razão é prática: parse
+ * SÓ EXISTE PARA BOSS MORTO. Num grupo em progressão, a métrica de maior
+ * peso media justamente as lutas que o core já domina, e ficava cega na
+ * luta que estava sendo aprendida. Além disso parse é percentil contra a
+ * população, o que premia jogo ganancioso — e jogo ganancioso é o que mata
+ * gente em progressão.
+ *
+ * Null sem dano ou sem sim medido: dimensão sem dado sai da média em vez de
+ * virar zero.
+ */
+function percentualDoSim(performance: PlayerPerformance): number | null {
+  const dano = performance.dps;
+  const sim = performance.simTarget;
+  if (typeof dano !== "number" || typeof sim !== "number" || sim <= 0) return null;
+
+  return Math.round((dano / sim) * 1000) / 10;
+}
+
 function valorDeDefender(
   performance: PlayerPerformance,
   funcao: FuncaoDoJogador
@@ -355,6 +385,14 @@ export function calculateOverallScore(
         notaDeAjudar(performance.helpDetail, performance.utility, performance.tries) ?? undefined,
         alvo("help")
       ),
+    },
+    {
+      key: "deliver",
+      ...DIMENSION_META.deliver,
+      weight: pesos.deliver,
+      target: alvo("deliver"),
+      value: percentualDoSim(performance),
+      score: progress(percentualDoSim(performance) ?? undefined, alvo("deliver")),
     },
     {
       key: "preparation",

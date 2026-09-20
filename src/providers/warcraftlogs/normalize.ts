@@ -300,6 +300,8 @@ export interface BuildRunPlayersInput {
    * que tudo o que sai daqui é opcional do outro lado.
    */
   nightDetailByPlayer?: Map<string, DetalheDaNoite>;
+  /** Meta de sim do Raidbots por id do roster — base da dimensão Entregar. */
+  simDeDpsPorJogador?: Map<string, number>;
   /** Utilidade por id do roster — interrupções, dispels, battle rez. */
   utilityByPlayer?: Map<string, NonNullable<PlayerPerformance["utility"]>>;
   /** % do dano no trash, por id do roster. Ausente quando o log não gravou trash. */
@@ -370,6 +372,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
     trashShareByPlayer,
     specsByPlayer,
     utilityByPlayer,
+    simDeDpsPorJogador,
     raidDamageTaken = 0,
   } = input;
   const deathEvents = fullTables.summary.data.deathEvents ?? [];
@@ -543,6 +546,7 @@ export function buildRunPlayers(input: BuildRunPlayersInput): NormalizedRunPlaye
       playerId: player.id,
       ...(trocouDeFuncao ? {} : { [metricKey]: Math.round(value) }),
       parse: bestRankPercent !== undefined ? Math.round(bestRankPercent) : undefined,
+      ...(simDeDpsPorJogador?.has(player.id) ? { simTarget: simDeDpsPorJogador.get(player.id) } : {}),
       itemLevel: entry.itemLevel,
       deaths,
       preparation,

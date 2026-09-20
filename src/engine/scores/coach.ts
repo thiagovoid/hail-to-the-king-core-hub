@@ -149,6 +149,10 @@ function comMetaEm(
             })),
           }
         : noite;
+    case "deliver":
+      return noite.simTarget
+        ? { ...noite, dps: Math.round(noite.simTarget * (targets.deliver.target / 100)) }
+        : noite;
     case "preparation":
       return { ...noite, preparation: targets.preparation.target };
   }
@@ -343,6 +347,11 @@ function acharCausa(
         acao: `Utilidade não aparece no seu dano nem na sua cura, e é o que o grupo sente primeiro quando falta. Combine antes do pull quem cobre o quê.`,
       };
     }
+
+    // Entregar é resultado de atacar bem e chegar preparado, não causa em
+    // si: apontar "entregue mais dano" devolve a pergunta pra pessoa.
+    case "deliver":
+      return null;
 
     // Parse é SINTOMA, não causa (regra 2): ele é o resultado de atacar bem,
     // chegar preparado e ficar vivo. Apontar "melhore seu parse" é devolver a

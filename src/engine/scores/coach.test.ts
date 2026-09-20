@@ -11,6 +11,7 @@ const TARGETS: CorePerformanceTargets = {
   defense: { target: 30, direction: "higher" },
   healing: { target: 80, direction: "higher" },
   help: { target: 60, direction: "higher" },
+  deliver: { target: 75, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };

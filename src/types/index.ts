@@ -186,6 +186,14 @@ export interface CorePerformanceTargets {
   /** Nota de utilidade de grupo. Só se aplica a quem tem alguma. */
   help: CoreTarget;
   /**
+   * % do próprio sim do Raidbots entregue na noite.
+   *
+   * Substituiu Parse como medida de dano do dps: parse só existe para boss
+   * morto, e num grupo em progressão isso media justamente as lutas já
+   * dominadas. Só se aplica a quem tem sim medido.
+   */
+  deliver: CoreTarget;
+  /**
    * Máximo do tempo de luta passado morto ENQUANTO o raide ainda lutava.
    *
    * Direção "lower": menos é melhor. Não é contagem de mortes — ver

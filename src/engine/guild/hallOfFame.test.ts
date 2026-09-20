@@ -10,6 +10,7 @@ const TARGETS: CorePerformanceTargets = {
   defense: { target: 60, direction: "higher" },
   healing: { target: 80, direction: "higher" },
   help: { target: 60, direction: "higher" },
+  deliver: { target: 75, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
@@ -29,8 +30,8 @@ describe("buildHallOfFame", () => {
           {
             date: "2026-08-18",
             players: [
-              { playerId: "voidwar", parse: 92, deaths: 0 },
-              { playerId: "blackwatch", parse: 80, deaths: 0 },
+              { playerId: "voidwar", parse: 92, dps: 92, simTarget: 100, deaths: 0 },
+              { playerId: "blackwatch", parse: 80, dps: 80, simTarget: 100, deaths: 0 },
             ],
           },
         ],
@@ -47,7 +48,7 @@ describe("buildHallOfFame", () => {
     const weeks: WeeklyPerformance[] = [
       {
         week: 1,
-        runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", deaths: 0, parse: 50 }] }],
+        runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", deaths: 0, parse: 50, dps: 50, simTarget: 100 }] }],
       },
     ];
 
@@ -59,9 +60,9 @@ describe("buildHallOfFame", () => {
 
   it("computes parse evolution from the first to the last run, not just consecutive runs", () => {
     const weeks: WeeklyPerformance[] = [
-      { week: 1, runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", parse: 50, deaths: 0 }] }] },
-      { week: 2, runs: [{ date: "2026-08-25", players: [{ playerId: "voidwar", parse: 60, deaths: 0 }] }] },
-      { week: 3, runs: [{ date: "2026-09-01", players: [{ playerId: "voidwar", parse: 75, deaths: 0 }] }] },
+      { week: 1, runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", parse: 50, dps: 50, simTarget: 100, deaths: 0 }] }] },
+      { week: 2, runs: [{ date: "2026-08-25", players: [{ playerId: "voidwar", parse: 60, dps: 60, simTarget: 100, deaths: 0 }] }] },
+      { week: 3, runs: [{ date: "2026-09-01", players: [{ playerId: "voidwar", parse: 75, dps: 75, simTarget: 100, deaths: 0 }] }] },
     ];
 
     const hof = buildHallOfFame("S2", weeks, [], [], players, TARGETS);
@@ -73,7 +74,7 @@ describe("buildHallOfFame", () => {
 
   it("reuses the Chronicle MVP calculation instead of duplicating it", () => {
     const weeks: WeeklyPerformance[] = [
-      { week: 1, runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", parse: 60, deaths: 0 }] }] },
+      { week: 1, runs: [{ date: "2026-08-18", players: [{ playerId: "voidwar", parse: 60, dps: 75, simTarget: 100, deaths: 0 }] }] },
     ];
     
     const hof = buildHallOfFame("S2", weeks, [], [], players, TARGETS);

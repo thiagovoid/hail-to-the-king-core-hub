@@ -11,11 +11,21 @@ const TARGETS: CorePerformanceTargets = {
   defense: { target: 30, direction: "higher" },
   healing: { target: 80, direction: "higher" },
   help: { target: 60, direction: "higher" },
+  deliver: { target: 75, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
 
-const jogador = (playerId: string, parse: number) => ({ playerId, parse, deaths: 0 });
+/**
+ * Parse não pontua mais — quem mede o dano do dps é Entregar, contra o sim
+ * do próprio jogador. Com sim 100, o número vira direto o percentual.
+ */
+const jogador = (playerId: string, nota: number) => ({
+  playerId,
+  dps: nota,
+  simTarget: 100,
+  deaths: 0,
+});
 
 describe("tituloDoHailScore", () => {
   it("dá o título da faixa alcançada", () => {
@@ -46,8 +56,8 @@ describe("hailScoreDaRun", () => {
       players: [jogador("a", 60), jogador("b", 30)],
     };
 
-    // parse 60 bate a meta (100), parse 30 fica em 50 => média 75.
-    expect(hailScoreDaRun(run, TARGETS)).toBe(75);
+    // 60% do sim contra meta 75 dá 80; 30% dá 40 => média 60.
+    expect(hailScoreDaRun(run, TARGETS)).toBe(60);
   });
 
   // Noite sem dado não vira zero, pelo mesmo motivo que dimensão sem dado
@@ -70,8 +80,8 @@ describe("serieDoHailScore", () => {
 
   it("devolve a série em ordem cronológica, não na ordem do arquivo", () => {
     expect(serieDoHailScore(weeks, TARGETS)).toEqual([
-      { date: "2026-08-18", value: 50 },
-      { date: "2026-08-25", value: 100 },
+      { date: "2026-08-18", value: 40 },
+      { date: "2026-08-25", value: 80 },
     ]);
   });
 

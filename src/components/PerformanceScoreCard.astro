@@ -117,7 +117,10 @@ const dimensoesComDado = score.dimensions.filter(
     // aparece logo abaixo como "× 0,91". Dentro da conta ela virava uma
     // linha "0% × 52 = 0", que soma zero e sugere que a dimensão foi
     // zerada — justamente o contrário do que ela faz com a nota.
-    dimension.score !== null && dimension.key !== 'survival' && dimension.key !== 'preparation'
+    dimension.score !== null &&
+    dimension.key !== 'survival' &&
+    dimension.key !== 'preparation' &&
+    dimension.key !== 'parse'
 );
 
 const contaDoScore = dimensoesComDado.map((dimension) => ({
@@ -158,7 +161,11 @@ const dimensoesVisiveis = [...score.dimensions]
   // Preparação saiu da lista porque virou PORTÃO, com seção própria: ela não
   // pontua mais, e uma linha de peso zero no meio das que pontuam faria
   // parecer que ela conta um pouquinho.
-  .filter((dimension) => dimension.key !== "preparation")
+  // Parse saiu da nota junto com Preparação, mas por outro motivo: ele só
+  // existe pra boss MORTO, e num grupo em progressão isso mede justamente as
+  // lutas já dominadas. Continua na tela como contexto — no resumo da
+  // temporada e no gráfico —, só não pontua mais.
+  .filter((dimension) => dimension.key !== "preparation" && dimension.key !== "parse")
   .filter((dimension) => dimension.weight > 0 || dimension.value !== null)
   .sort((a, b) => {
     if (a.key === 'survival') return 1;

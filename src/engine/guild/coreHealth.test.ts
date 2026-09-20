@@ -11,6 +11,7 @@ const TARGETS: CorePerformanceTargets = {
   defense: { target: 60, direction: "higher" },
   healing: { target: 80, direction: "higher" },
   help: { target: 60, direction: "higher" },
+  deliver: { target: 75, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
@@ -44,8 +45,8 @@ describe("calculateCoreHealth", () => {
           {
             date: "2026-09-01",
             players: [
-              { playerId: "voidwar", parse: 60, deaths: 0 },
-              { playerId: "blackwatch", parse: 60, deaths: 0 },
+              { playerId: "voidwar", parse: 60, dps: 60, simTarget: 100, deaths: 0 },
+              { playerId: "blackwatch", parse: 60, dps: 60, simTarget: 100, deaths: 0 },
             ],
           },
         ],

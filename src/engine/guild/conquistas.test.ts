@@ -13,6 +13,7 @@ const TARGETS: CorePerformanceTargets = {
   defense: { target: 30, direction: "higher" },
   healing: { target: 80, direction: "higher" },
   help: { target: 60, direction: "higher" },
+  deliver: { target: 75, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
@@ -97,8 +98,8 @@ describe("contarConquistas", () => {
   it("dá MVP a quem teve o maior Score Geral", () => {
     const weeks = [
       semana("2026-09-01", [
-        { playerId: "a", deaths: 1, parse: 60 },
-        { playerId: "b", deaths: 1, parse: 30 },
+        { playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 },
+        { playerId: "b", deaths: 1, parse: 30, dps: 30, simTarget: 100 },
       ]),
     ];
 
@@ -183,16 +184,16 @@ describe("conquistas de uma noite só", () => {
   it("só dá Tríplice coroa quando as três coisas acontecem juntas", () => {
     const comTudo = [
       semana("2026-09-01", [
-        { playerId: "a", deaths: 1, parse: 60, dps: 100, mechanics: { errors: 0, tries: 5 } },
-        { playerId: "b", deaths: 1, parse: 10, dps: 50, mechanics: { errors: 3, tries: 5 } },
+        { playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100, mechanics: { errors: 0, tries: 5 } },
+        { playerId: "b", deaths: 1, parse: 10, dps: 50, simTarget: 100, mechanics: { errors: 3, tries: 5 } },
       ]),
     ];
     expect(quantas(comTudo, "a", "triplice-coroa")).toBe(1);
 
     const comErro = [
       semana("2026-09-01", [
-        { playerId: "a", deaths: 1, parse: 60, dps: 100, mechanics: { errors: 1, tries: 5 } },
-        { playerId: "b", deaths: 1, parse: 10, dps: 50, mechanics: { errors: 3, tries: 5 } },
+        { playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100, mechanics: { errors: 1, tries: 5 } },
+        { playerId: "b", deaths: 1, parse: 10, dps: 50, simTarget: 100, mechanics: { errors: 3, tries: 5 } },
       ]),
     ];
     expect(quantas(comErro, "a", "mvp")).toBe(1);
@@ -217,8 +218,8 @@ describe("conquistas de uma noite só", () => {
   it("dá Lenda a partir de parse 90 e diz qual foi", () => {
     const weeks = [
       semana("2026-09-01", [
-        { playerId: "a", deaths: 1, parse: 90 },
-        { playerId: "b", deaths: 1, parse: 89 },
+        { playerId: "a", deaths: 1, parse: 90, dps: 90, simTarget: 100 },
+        { playerId: "b", deaths: 1, parse: 89, dps: 89, simTarget: 100 },
       ]),
     ];
 
@@ -569,6 +570,8 @@ describe("corte de data da zoeira", () => {
             playerId: "a",
             deaths: 3,
             parse: 60,
+            dps: 100,
+            simTarget: 100,
             preparationMissing: ["Poção"],
             preparationSlots: [{ slot: 7, label: "Botas", tipo: "encanto", ok: false }],
           },
@@ -659,10 +662,10 @@ describe("conquistas de temporada", () => {
 
   it("conta Superação a cada vez que o jogador bate o próprio teto", () => {
     const weeks = noites([
-      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 30 }]],
-      ["2026-09-03", [{ playerId: "a", deaths: 1, parse: 40 }]],
-      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 35 }]],
-      ["2026-09-08", [{ playerId: "a", deaths: 1, parse: 50 }]],
+      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 30, dps: 30, simTarget: 100 }]],
+      ["2026-09-03", [{ playerId: "a", deaths: 1, parse: 40, dps: 40, simTarget: 100 }]],
+      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 35, dps: 35, simTarget: 100 }]],
+      ["2026-09-08", [{ playerId: "a", deaths: 1, parse: 50, dps: 50, simTarget: 100 }]],
     ]);
 
     // A primeira noite não supera nada: só vira recorde.
@@ -671,8 +674,8 @@ describe("conquistas de temporada", () => {
 
   it("apura a temporada em ordem de data, não de arquivo", () => {
     const foraDeOrdem: WeeklyPerformance[] = [
-      { week: 2, runs: [{ date: "2026-09-03", players: [{ playerId: "a", deaths: 1, parse: 20 }] }] },
-      { week: 1, runs: [{ date: "2026-09-01", players: [{ playerId: "a", deaths: 1, parse: 50 }] }] },
+      { week: 2, runs: [{ date: "2026-09-03", players: [{ playerId: "a", deaths: 1, parse: 20, dps: 20, simTarget: 100 }] }] },
+      { week: 1, runs: [{ date: "2026-09-01", players: [{ playerId: "a", deaths: 1, parse: 50, dps: 50, simTarget: 100 }] }] },
     ];
 
     // Na ordem certa a nota caiu de 50 pra 20 — não houve superação nenhuma.
@@ -681,9 +684,9 @@ describe("conquistas de temporada", () => {
 
   it("fecha Constante a cada três noites seguidas acima de 90", () => {
     const weeks = noites([
-      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 60 }]],
-      ["2026-09-03", [{ playerId: "a", deaths: 1, parse: 60 }]],
-      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 60 }]],
+      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-03", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
     ]);
 
     expect(quantas(weeks, "a", "constante")).toBe(1);
@@ -692,10 +695,10 @@ describe("conquistas de temporada", () => {
 
   it("quebra a sequência da Constante com nota baixa", () => {
     const weeks = noites([
-      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 60 }]],
-      ["2026-09-03", [{ playerId: "a", deaths: 1, parse: 10 }]],
-      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 60 }]],
-      ["2026-09-08", [{ playerId: "a", deaths: 1, parse: 60 }]],
+      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-03", [{ playerId: "a", deaths: 1, parse: 10, dps: 10, simTarget: 100 }]],
+      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-08", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
     ]);
 
     expect(quantas(weeks, "a", "constante")).toBe(0);
@@ -704,10 +707,10 @@ describe("conquistas de temporada", () => {
   // Quem não jogou não errou nada — "Inabalável" já é a medalha de presença.
   it("não quebra a sequência da Constante por ausência", () => {
     const weeks = noites([
-      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 60 }]],
-      ["2026-09-03", [{ playerId: "b", deaths: 1, parse: 60 }]],
-      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 60 }]],
-      ["2026-09-08", [{ playerId: "a", deaths: 1, parse: 60 }]],
+      ["2026-09-01", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-03", [{ playerId: "b", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-05", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-08", [{ playerId: "a", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
     ]);
 
     expect(quantas(weeks, "a", "constante")).toBe(1);
@@ -854,9 +857,9 @@ describe("conquistas de temporada", () => {
   it("não quebra a sequência da Constante por troca de personagem", () => {
     const pessoaDe = (id: string) => (id === "metallica" ? "gunst" : id);
     const weeks = noites([
-      ["2026-09-01", [{ playerId: "gunst", deaths: 1, parse: 60 }]],
-      ["2026-09-03", [{ playerId: "metallica", deaths: 1, parse: 60 }]],
-      ["2026-09-05", [{ playerId: "gunst", deaths: 1, parse: 60 }]],
+      ["2026-09-01", [{ playerId: "gunst", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-03", [{ playerId: "metallica", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
+      ["2026-09-05", [{ playerId: "gunst", deaths: 1, parse: 60, dps: 100, simTarget: 100 }]],
     ]);
 
     expect(contarConquistas(weeks, TARGETS, { pessoaDe }).get("gunst")?.get("constante")?.vezes).toBe(

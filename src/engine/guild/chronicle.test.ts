@@ -11,6 +11,7 @@ const TARGETS: CorePerformanceTargets = {
   defense: { target: 60, direction: "higher" },
   healing: { target: 80, direction: "higher" },
   help: { target: 60, direction: "higher" },
+  deliver: { target: 75, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
@@ -60,8 +61,8 @@ describe("buildSeasonChronicle", () => {
           {
             date: "2026-08-18",
             players: [
-              { playerId: "voidwar", parse: 60, deaths: 0 },
-              { playerId: "blackwatch", parse: 30, deaths: 2 },
+              { playerId: "voidwar", parse: 60, dps: 60, simTarget: 100, deaths: 0 },
+              { playerId: "blackwatch", parse: 30, dps: 30, simTarget: 100, deaths: 2 },
             ],
           },
         ],
@@ -72,8 +73,8 @@ describe("buildSeasonChronicle", () => {
           {
             date: "2026-08-25",
             players: [
-              { playerId: "voidwar", parse: 30, deaths: 4 },
-              { playerId: "blackwatch", parse: 60, deaths: 0 },
+              { playerId: "voidwar", parse: 30, dps: 30, simTarget: 100, deaths: 4 },
+              { playerId: "blackwatch", parse: 60, dps: 60, simTarget: 100, deaths: 0 },
             ],
           },
         ],
@@ -86,7 +87,7 @@ describe("buildSeasonChronicle", () => {
     // Empate — o que importa é que o cálculo cobre a temporada toda, não só a última run.
     expect(chronicle.mvp).not.toBeNull();
     expect(["voidwar", "blackwatch"]).toContain(chronicle.mvp?.playerId);
-    expect(chronicle.mvp?.avgScore).toBe(75);
+    expect(chronicle.mvp?.avgScore).toBe(60);
   });
 
   it("returns mvp: null when no run has scoreable data", () => {

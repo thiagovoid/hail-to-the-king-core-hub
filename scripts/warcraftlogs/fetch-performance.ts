@@ -332,6 +332,20 @@ async function main() {
   }
 
   const roster = await loadRoster();
+
+  /**
+   * Meta de sim do Raidbots por jogador — base da dimensão Entregar.
+   *
+   * Vai junto com a noite em vez de ser lida do roster na hora de exibir: o
+   * sim sobe conforme a pessoa se equipa, e comparar o dano de agosto com o
+   * sim de setembro diria que ela piorou quando ela melhorou.
+   */
+  const simDeDpsPorJogador = new Map<string, number>();
+  for (const jogador of roster) {
+    const alvo = (jogador as { performanceGoals?: { dps?: { target?: number } } }).performanceGoals
+      ?.dps?.target;
+    if (typeof alvo === "number" && alvo > 0) simDeDpsPorJogador.set(jogador.id, alvo);
+  }
   const resolvePreparationChecklist = await loadPreparationResolver(roster);
 
   const seasonPath = path.join(ROOT, "data/seasons", SEASON_SLUG, "config.json");
@@ -944,6 +958,10 @@ async function main() {
       trashShareByPlayer: trashPorReport.get(ctx.report.code),
       specsByPlayer: specsPorReport.get(ctx.report.code),
       utilityByPlayer: utilidadePorReport.get(ctx.report.code),
+      // A meta de sim vai JUNTO com a noite: o sim sobe conforme a pessoa se
+      // equipa, e comparar o dano de agosto com o sim de setembro diria que
+      // ela piorou quando ela melhorou.
+      simDeDpsPorJogador,
       raidDamageTaken: danoDoRaidePorReport.get(ctx.report.code),
     });
 

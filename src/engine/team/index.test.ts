@@ -10,6 +10,7 @@ const TARGETS: CorePerformanceTargets = {
   defense: { target: 60, direction: "higher" },
   healing: { target: 80, direction: "higher" },
   help: { target: 60, direction: "higher" },
+  deliver: { target: 75, direction: "higher" },
   survival: { target: 10, direction: "lower" },
   preparation: { target: 60, direction: "higher" },
 };
@@ -21,8 +22,8 @@ const weeks: WeeklyPerformance[] = [
       {
         date: "2026-08-18",
         players: [
-          { playerId: "voidwar", dps: 100000, parse: 80, deaths: 2, mechanics: { errors: 1 } },
-          { playerId: "blackwatch", dps: 80000, parse: 60, deaths: 4 },
+          { playerId: "voidwar", dps: 100000, parse: 80, simTarget: 125000, deaths: 2, mechanics: { errors: 1 } },
+          { playerId: "blackwatch", dps: 80000, parse: 60, simTarget: 133333, deaths: 4 },
         ],
       },
     ],
@@ -33,8 +34,8 @@ const weeks: WeeklyPerformance[] = [
       {
         date: "2026-08-25",
         players: [
-          { playerId: "voidwar", dps: 120000, parse: 90, deaths: 0 },
-          { playerId: "blackwatch", dps: 90000, parse: 70, deaths: 2 },
+          { playerId: "voidwar", dps: 120000, parse: 90, simTarget: 133333, deaths: 0 },
+          { playerId: "blackwatch", dps: 90000, parse: 70, simTarget: 128571, deaths: 2 },
         ],
       },
     ],
@@ -63,10 +64,11 @@ describe("buildCoreRanking", () => {
   it("ordena pelo Score Geral (decrescente) usando a run mais recente", () => {
     const ranking = buildCoreRanking(weeks, players, TARGETS);
 
-    // run mais recente: voidwar parse 90 vs meta 60 -> 100; blackwatch parse 70 -> 100.
-    // Empate no teto, então o desempate é a ordem de entrada.
+    // run mais recente, medida por Entregar (Parse saiu da nota): voidwar
+    // entrega 90% do sim contra meta 75 e crava o teto; blackwatch entrega
+    // 70% e fica em 93.
     expect(ranking[0]).toMatchObject({ playerId: "voidwar", overall: 100 });
-    expect(ranking[1]).toMatchObject({ playerId: "blackwatch", overall: 100 });
+    expect(ranking[1]).toMatchObject({ playerId: "blackwatch", overall: 93 });
   });
 
   it("joga pro fim quem não aparece na run mais recente, em vez de tratar como 0", () => {

@@ -20,6 +20,17 @@ export interface PlayerPerformance {
   hps?: number;
 
   /**
+   * O dps que a simulação do Raidbots dizia ser o potencial DESTE jogador
+   * quando a noite foi coletada.
+   *
+   * Guardado na noite, e não lido do roster na hora de exibir, porque o sim
+   * muda conforme a pessoa se equipa: comparar o dano de agosto com o sim de
+   * setembro diria que ela piorou quando ela melhorou. Noites coletadas
+   * antes deste campo existir usam o sim atual — a distorção está assumida.
+   */
+  simTarget?: number;
+
+  /**
    * Warcraft Logs parse percentile.
    * Only available for kills logged on a public report.
    */

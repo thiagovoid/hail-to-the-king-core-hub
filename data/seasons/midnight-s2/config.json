@@ -53,6 +53,11 @@
         "target": 75,
         "direction": "higher",
         "description": "Utilidade de grupo: interromper, controlar adds, acelerar o raide, socorrer e levantar. Cada magia é medida contra o melhor aproveitamento já visto DELA na temporada. A régua de conteúdo não cobre utilidade, então o heroico foi calibrado como o resto dela: o p75 das 92 noites-jogador medidas. Era 60, a mediana — ou seja, o patamar do normal."
+      },
+      "deliver": {
+        "target": 75,
+        "direction": "higher",
+        "description": "Quanto do próprio sim do Raidbots o jogador entregou. Degrau heroico do ofício de dps (ver CRITERIO_DO_OFICIO): 60 é normal, 75 heroico, 88 mítico — calibrado com os sims frescos, em que o melhor da casa alcança 88%. Substituiu Parse na nota porque parse só existe para boss morto, e num grupo em progressão isso media justamente as lutas já dominadas."
       }
     },
     "nextRaid": {
