@@ -1011,7 +1011,7 @@ async function main() {
    * do estrago.
    */
   const semMecanicas = runs.every((run) =>
-    run.players.every((player: PlayerPerformance) => player.mechanics === undefined)
+    (run.players as PlayerPerformance[]).every((player) => player.mechanics === undefined)
   );
 
   if (semMecanicas && runs.length > 0) {
