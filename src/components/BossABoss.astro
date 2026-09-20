@@ -28,7 +28,7 @@ interface NoiteDoBoss {
 }
 
 interface Props {
-  /** Uma linha por boss+dificuldade, já agregada da temporada. */
+  /** Uma linha por boss+dificuldade, na ordem da instância. */
   bosses: Array<{
     chave: string;
     nome: string;
@@ -37,9 +37,13 @@ interface Props {
     kills: number;
     dps: number | null;
     deaths: number;
-    share: number;
-    /** Segundos somados em que o raide seguiu lutando sem esta pessoa. */
-    semVoce: number;
+    /**
+     * A última vez que esta pessoa encarou este boss — o que dá pra corrigir
+     * na próxima. O somado da temporada ficou de fora de propósito: ele nunca
+     * diminui, então uma noite limpa não o move, e ele cobra hoje por semanas
+     * de progressão e de lag que já passaram.
+     */
+    ultimaNoite: { date: string; deaths: number; semVoce: number; share: number } | null;
     /** Já caiu antes — muda o que os números significam. */
     farm: boolean;
     noites: NoiteDoBoss[];
@@ -61,9 +65,17 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
           um deles você vê a sua evolução nele, try a try, semana a semana.
         </p>
         <p class="text-sm text-slate-400 mt-2 leading-relaxed">
-          <span class="text-slate-300">Raide sem você</span> é o tempo que o grupo seguiu lutando
-          depois que você caiu. Não é contagem de morte: morrer três segundos antes do wipe custa
-          três segundos, morrer no começo de uma luta de oito minutos custa oito.
+          <span class="text-slate-300">Sem você na última noite</span> é o tempo que o grupo seguiu
+          lutando depois que você caiu, na noite mais recente em que vocês se encontraram. Não é
+          contagem de morte: cair três segundos antes do wipe custa três segundos, cair no começo de
+          uma luta de oito minutos custa oito.
+        </p>
+        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          É de propósito que aqui fique só a última noite, e não o somado da temporada. Um total que
+          nunca diminui não responde à noite que você limpou, e continua cobrando por semanas de
+          progressão que já passaram. O acumulado da temporada é assunto da retrospectiva; aqui o
+          que interessa é o que dá pra corrigir na próxima. O histórico completo continua logo
+          abaixo, abrindo o boss.
         </p>
       </div>
 
@@ -73,11 +85,11 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
             <thead class="border-b border-slate-800">
               <tr class="text-left text-slate-500 text-xs">
                 <th class="px-4 py-3 font-medium">Boss</th>
-                <th class="px-4 py-3 font-medium text-right">Trys</th>
+                <th class="px-4 py-3 font-medium text-right">Trys<br /><span class="text-slate-600 font-normal">temporada</span></th>
                 <th class="px-4 py-3 font-medium text-right">Kills</th>
                 <th class="px-4 py-3 font-medium text-right">DPS</th>
-                <th class="px-4 py-3 font-medium text-right">Mortes</th>
-                <th class="px-4 py-3 font-medium text-right">Raide sem você</th>
+                <th class="px-4 py-3 font-medium text-right">Mortes<br /><span class="text-slate-600 font-normal">temporada</span></th>
+                <th class="px-4 py-3 font-medium text-right">Sem você<br /><span class="text-slate-600 font-normal">última noite</span></th>
                 <th class="px-4 py-3" />
               </tr>
             </thead>
@@ -114,16 +126,31 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
                       {boss.dps === null ? '—' : formatCompact(boss.dps)}
                     </td>
                     <td class="px-4 py-3 text-right text-slate-300 tabular-nums">{boss.deaths}</td>
-                    {/* Segundos primeiro, porcentagem embaixo: "12min" é uma
-                        régua que qualquer um tem; "21,5%" precisa de um
-                        denominador que ninguém sabe qual é. */}
+                    {/* Segundos primeiro, data embaixo: "3min12" é uma régua
+                        que qualquer um tem, e a data impede a leitura errada
+                        de achar que é a temporada inteira. */}
                     <td class="px-4 py-3 text-right tabular-nums">
-                      <span class={boss.share > 15 ? 'text-amber-400' : 'text-slate-300'}>
-                        {formatDuracao(boss.semVoce)}
-                      </span>
-                      <span class="block text-[10px] text-slate-600">
-                        {numero(boss.share)}% da luta
-                      </span>
+                      {boss.ultimaNoite === null || boss.ultimaNoite.semVoce === 0 ? (
+                        <>
+                          <span class="text-emerald-400">de pé</span>
+                          {boss.ultimaNoite && (
+                            <span class="block text-[10px] text-slate-600">
+                              em {formatDate(boss.ultimaNoite.date).slice(0, 5)}
+                            </span>
+                          )}
+                        </>
+                      ) : (
+                        <>
+                          <span
+                            class={boss.ultimaNoite.share > 15 ? 'text-amber-400' : 'text-slate-300'}
+                          >
+                            {formatDuracao(boss.ultimaNoite.semVoce)}
+                          </span>
+                          <span class="block text-[10px] text-slate-600">
+                            {numero(boss.ultimaNoite.share)}% da luta · {formatDate(boss.ultimaNoite.date).slice(0, 5)}
+                          </span>
+                        </>
+                      )}
                     </td>
                     <td class="px-4 py-3 text-right">
                       <span class="seta text-slate-600 text-[11px]" aria-hidden="true">

@@ -412,6 +412,15 @@ const nomeDoEncontro = new Map<number, string>(
   ])
 );
 
+/**
+ * A posição de cada encontro na raide. Ordenar por trys parecia útil — "onde
+ * a temporada foi gasta" — mas embaralha a lista a cada semana e obriga a
+ * procurar o boss. A ordem da instância é a que o jogador já tem na cabeça.
+ */
+const ordemDaRaide = new Map<number, number>(
+  seasonJson.bossesNormal.map((boss, indice) => [boss.encounterID, indice])
+);
+
 /** Em que noite cada boss caiu pela primeira vez, por dificuldade. */
 const primeiroKill = new Map<string, string>();
 for (const [lista, dificuldade] of [
@@ -434,8 +443,6 @@ const porBoss = new Map<
     kills: number;
     dano: number[];
     deaths: number;
-    shares: number[];
-    segundos: number;
     noites: Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number; semVoce: number }>;
   }
 >();
@@ -453,8 +460,6 @@ for (const noite of history) {
       kills: 0,
       dano: [] as number[],
       deaths: 0,
-      shares: [] as number[],
-      segundos: 0,
       noites: [] as Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number; semVoce: number }>,
     };
 
@@ -462,10 +467,6 @@ for (const noite of history) {
     if (boss.killed) atual.kills += 1;
     if (boss.dps !== undefined) atual.dano.push(boss.dps);
     atual.deaths += boss.deaths ?? 0;
-    if (boss.deathCost) {
-      atual.shares.push(boss.deathCost.share);
-      atual.segundos += boss.deathCost.seconds;
-    }
 
     atual.noites.push({
       date: noite.date,
@@ -485,26 +486,47 @@ const mediaDeLista = (v: number[]) =>
   v.length === 0 ? null : Math.round((v.reduce((s, x) => s + x, 0) / v.length) * 10) / 10;
 
 const bossABoss = [...porBoss.values()]
-  .map((boss) => ({
-    chave: boss.chave,
-    nome: boss.nome,
-    dificuldade: boss.dificuldade,
-    tries: boss.tries,
-    kills: boss.kills,
-    dps: mediaDeLista(boss.dano),
-    deaths: boss.deaths,
-    share: mediaDeLista(boss.shares) ?? 0,
-    semVoce: boss.segundos,
-    // Já tinha caído antes da ÚLTIMA noite em que a pessoa o enfrentou: é o
-    // que separa a luta que se está aprendendo da que já se domina.
-    farm: (() => {
-      const quando = primeiroKill.get(boss.chave);
-      return quando !== undefined && quando < (boss.noites.at(-1)?.date ?? '');
-    })(),
-    noites: [...boss.noites].sort((a, b) => a.date.localeCompare(b.date)),
-  }))
-  // Mais trys primeiro: é onde a temporada foi gasta, e onde há o que ver.
-  .sort((a, b) => b.tries - a.tries);
+  .map((boss) => {
+    const noites = [...boss.noites].sort((a, b) => a.date.localeCompare(b.date));
+    const ultima = noites.at(-1);
+
+    return {
+      chave: boss.chave,
+      encounterID: Number(boss.chave.split(':')[0]),
+      dificuldade: boss.dificuldade,
+      nome: boss.nome,
+      tries: boss.tries,
+      kills: boss.kills,
+      dps: mediaDeLista(boss.dano),
+      deaths: boss.deaths,
+      /**
+       * O tempo morto da ÚLTIMA noite, não o somado da temporada.
+       *
+       * O acumulado só cresce: uma noite impecável mal o move, o que faz dele
+       * um número insensível justamente ao comportamento que ele deveria
+       * provocar. Pior, carrega pra sempre semanas de progressão e de lag,
+       * cobrando hoje por uma luta que ninguém sabia jogar em agosto.
+       * O somado da temporada é leitura de retrospectiva, não de diagnóstico.
+       */
+      ultimaNoite: ultima
+        ? { date: ultima.date, deaths: ultima.deaths, semVoce: ultima.semVoce, share: ultima.share }
+        : null,
+      // Já tinha caído antes da ÚLTIMA noite em que a pessoa o enfrentou: é o
+      // que separa a luta que se está aprendendo da que já se domina.
+      farm: (() => {
+        const quando = primeiroKill.get(boss.chave);
+        return quando !== undefined && quando < (ultima?.date ?? '');
+      })(),
+      noites,
+    };
+  })
+  // A ordem da instância, e o Heroico antes do Normal do mesmo encontro:
+  // é a dificuldade em que o core raida hoje.
+  .sort(
+    (a, b) =>
+      (ordemDaRaide.get(a.encounterID) ?? 99) - (ordemDaRaide.get(b.encounterID) ?? 99) ||
+      a.dificuldade.localeCompare(b.dificuldade)
+  );
 
 
 const prontidao = prontidaoDoPersonagem?.prontidao ?? null;
