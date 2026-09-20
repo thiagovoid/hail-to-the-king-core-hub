@@ -69,8 +69,23 @@ interface Props {
   }>;
   /** encounterID -> nome do boss, pra morte dizer ONDE. */
   nomeDoEncontro?: Record<number, string>;
-  /** Interrupções da noite — contadas por ato, não por recarga de magia. */
-  interrupcoes?: { total: number; porTry: number | null } | null;
+  /**
+   * O laudo do interrupt: quantos foram seus, quantos deu pra pegar, e
+   * quanto o raide cobriu.
+   *
+   * Contadas por ato, não por recarga de magia. `oportunidade` nula significa
+   * que não havia o que interromper nas trys desta pessoa — o caso de sete
+   * dos dez encontros da temporada.
+   */
+  interrupcoes?: {
+    total: number;
+    oportunidade: {
+      oportunidades: number;
+      cobertosPeloRaide: number;
+      seus: number;
+      pessoasQueInterromperam: number;
+    } | null;
+  } | null;
   /** As duas metades da nota de Curar, mais a cobertura crua. */
   healingParts?: { coverage: number; share: number; overheal: number } | null;
   /** Nome da função usada pra escolher os pesos ("tank", "healer", "dps"). */
@@ -532,11 +547,26 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                         <span class="text-slate-400">
                           {interrupcoes.total} interrupç{interrupcoes.total === 1 ? 'ão' : 'ões'}
                         </span>
-                        {interrupcoes.porTry !== null && (
-                          <> &middot; {formatDecimalBr(interrupcoes.porTry)} por try</>
+                        {/* O denominador é o que DEU pra interromper nas trys
+                            em que você estava — não o número de trys. Sete dos
+                            dez encontros da temporada não têm uma única magia
+                            interrompível, e a régua antiga cobrava neles. */}
+                        {interrupcoes.oportunidade === null ? (
+                          <span class="text-slate-600">
+                            {' '}&middot; não houve o que interromper nas suas trys
+                          </span>
+                        ) : (
+                          <>
+                            {' '}&middot; de {interrupcoes.oportunidade.oportunidades} que deu pra
+                            pegar
+                            <span class="text-slate-600">
+                              {` · o raide pegou ${interrupcoes.oportunidade.cobertosPeloRaide}, divididos entre ${interrupcoes.oportunidade.pessoasQueInterromperam} pessoa${interrupcoes.oportunidade.pessoasQueInterromperam === 1 ? '' : 's'}`}
+                            </span>
+                          </>
                         )}
-                        <span class="text-slate-600">
-                          {' '}&middot; medido pelo ato, não pela magia
+                        <span class="block text-slate-600">
+                          Interromper só soma: é trabalho de time, e não deixar de interromper
+                          nunca tira nota de ninguém.
                         </span>
                       </p>
                     )}

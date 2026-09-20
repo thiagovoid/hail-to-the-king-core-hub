@@ -49,6 +49,32 @@ Esta é a distinção que economiza tempo e dinheiro. Antes de rodar, responda:
 | A FORMA da coleta (campo novo, query nova) | `npm run wcl:collect` (sem `--reuse`) | **Sim** |
 | Chegou uma noite nova | `npm run wcl:collect` | Só o report novo |
 
+### Duas armadilhas que já fizeram uma verificação inteira mentir
+
+**1. `--reuse` sozinho não reconstrói nada.** A descoberta só enxerga a janela
+de datas (`--days=7` por padrão, a partir de HOJE). Sem `--reports` ou
+`--start`/`--end`, ela acha zero relatórios, o script preserva as runs que já
+estavam no arquivo e imprime `Gerado ... (0 atualizada(s)/nova(s))`. Isso
+parece sucesso e não recalculou uma linha. Uma comparação "antes x depois"
+feita assim dá zero divergências porque nada foi recalculado.
+
+Para reconstruir de verdade, passe os códigos:
+
+```bash
+npm run wcl:build -- --week=3 --reports=83A2nJ4NHBFCD9xW,6BcGTrAN7HaPx431
+```
+
+**2. `wipefest:build` só faz a semana ATUAL.** Ele calcula a semana pelo
+`raidWeekAnchor`, igual ao coletor. Reconstruiu cinco semanas? Rode
+`wipefest:build -- --week=N` para cada uma, ou quatro delas ficam sem
+`mechanics` — e o teste vai acusar.
+
+**3. Regra que aprende do log precisa de DUAS passadas.** A lista de magias
+interrompíveis cresce enquanto os relatórios são processados (6 → 8 → 10 →
+11). A semana 1, processada primeiro, foi calculada com 6. Depois que o
+arquivo tem as 11, rode tudo de novo para que toda semana use o conjunto
+completo.
+
 `--reuse` reconstrói do bruto arquivado em `data/raw/warcraftlogs/`. O
 relatório de uma noite não muda depois que a noite acabou, então **regra nova
 sobre noite antiga não precisa de uma única chamada externa.**

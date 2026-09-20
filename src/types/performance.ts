@@ -351,6 +351,26 @@ export interface PlayerPerformance {
   utility?: {
     /** Casts inimigos interrompidos. */
     interrupts: number;
+    /**
+     * Quantas vezes houve o que interromper, e quanto o raide cobriu.
+     *
+     * É o laudo do interrupt. Sem ele a nota dividia por TRYS, e sete dos dez
+     * encontros da temporada não têm uma única magia interrompível — a
+     * dimensão cobrava por oportunidade inexistente, e quem apertava o kick
+     * numa luta dessas tirava nota pior do que quem nunca apertou.
+     *
+     * Ausente quando a noite não teve nenhuma oportunidade.
+     */
+    interrupcoes?: {
+      /** Casts interrompíveis nas trys em que esta pessoa estava. */
+      oportunidades: number;
+      /** Quantos o RAIDE pegou. É o número que diz se houve falha de time. */
+      cobertosPeloRaide: number;
+      /** Quantos foram seus. */
+      seus: number;
+      /** Quantas pessoas dividiram o trabalho nessas trys. */
+      pessoasQueInterromperam: number;
+    };
     /** Debuffs tirados de alguém do raide. */
     dispels: number;
     /** Buffs arrancados do inimigo — outra decisão, contada separada. */

@@ -79,24 +79,15 @@ export const TETO_DE_APROVEITAMENTO = new Map<number, number>([
 export const TETO_PADRAO = 10;
 
 /**
- * Interrupções por try que valem nota cheia.
- *
- * Interromper é medido pelo ATO, não pela magia, e isso foi um conserto: a
- * primeira versão media a recarga das magias de interromper, e o resultado
- * contradizia o log. O Apocalipse interrompe 34, 35, 19 vezes por noite; o
- * Blackwatch, 13, 4, 2. Mesmo assim a eficiência de Rebuke do Apocalipse
- * saía em 0,9 contra 2,0 do Mind Freeze do Blackwatch — invertido.
- *
- * O motivo: a maior parte das interrupções de um Paladino de Proteção sai
- * do Avenger's Shield, que é rotação e não entra em lista curada nenhuma.
- * Medir a magia mede o kit; medir o ato mede a pessoa.
- *
- * 1,5 por try é o p90 das 108 noites com utilidade medida (mediana 0,25).
- * O máximo absoluto foi 5 numa noite do Voidwar — teto de noite excepcional
- * deixaria todo mundo em 5% e não seria régua, seria muro.
+ * Interromper é contado pelo ATO e nunca pela magia, e isso foi um conserto
+ * que a leitura do core pegou: a primeira versão media a recarga das magias
+ * de interromper e o resultado contradizia o log. O Apocalipse interrompe
+ * 34, 35, 19 vezes por noite; o Blackwatch, 13, 4, 2. Mesmo assim a
+ * eficiência de Rebuke do Apocalipse saía em 0,9 contra 2,0 do Mind Freeze
+ * do Blackwatch — invertido, porque a maior parte das interrupções de um
+ * Paladino de Proteção sai do Avenger's Shield, que é rotação e não entra em
+ * lista curada nenhuma. Medir a magia mede o kit; medir o ato mede a pessoa.
  */
-export const TETO_DE_INTERRUPCOES = 1.5;
-
 
 /**
  * A nota de Ajudar, 0-100. Null quando a noite não tem utilidade medida.
@@ -124,23 +115,63 @@ export function notaDeAjudar(
   }
 
   /**
-   * O termo de interromper só existe pra quem TEM como interromper.
+   * Sem magia de utilidade medida, a dimensão continua nula — e o bônus de
+   * interromper não resgata isso.
    *
-   * A prova de que tem é ter interrompido alguma vez na noite, ou ter
-   * lançado uma magia de interromper. Quem não tem a ferramenta não é
-   * medido por ela — é a mesma regra que rege a dimensão inteira, e é o que
-   * impede que a Cowsadeer, que não interrompe nada, seja cobrada por isso.
+   * Tentador seria deixar o bônus virar a nota, pra creditar quem só
+   * interrompe. Mas 24 das 113 noites-jogador da temporada estão nesse caso,
+   * e um bônus de no máximo 15 pontos virando nota daria Ajudar 15 pra quem
+   * apertou o kick — punição vestida de crédito, que é exatamente o que a
+   * régua nova existe pra acabar.
+   *
+   * Nula é o certo: a dimensão sai da média ponderada do Score e o peso se
+   * redistribui, em vez de a pessoa carregar um número baixo por algo que
+   * não temos como medir nela. O que ela interrompeu aparece como dado de
+   * apoio na tela de qualquer jeito.
    */
-  const podeInterromper =
-    (utility?.interrupts ?? 0) > 0 ||
-    (helpDetail ?? []).some((h) => h.categoria === "interromper");
-
-  if (podeInterromper && utility && tries && tries.present > 0) {
-    const porTry = utility.interrupts / tries.present;
-    notas.push(Math.min(100, (porTry / TETO_DE_INTERRUPCOES) * 100));
-  }
-
   if (notas.length === 0) return null;
 
-  return Math.round((notas.reduce((soma, nota) => soma + nota, 0) / notas.length) * 10) / 10;
+  const base = notas.reduce((soma, nota) => soma + nota, 0) / notas.length;
+
+  /**
+   * Interromper entra como PISO, não como parcela nem como acréscimo.
+   *
+   * Como parcela era a régua antiga, e ela puxava pra baixo quem apertava
+   * pouco. Como acréscimo de 15 pontos ficou pior de outro jeito: o
+   * Apocalipse, numa noite em que interrompeu 34 vezes — três vezes a parte
+   * dele — saía com Ajudar 17, porque as magias dele naquela noite renderam
+   * 3. Dizer que a ajuda dele ao grupo foi 17 é um número que ninguém
+   * acredita, e a dimensão inteira perde crédito junto.
+   *
+   * Piso resolve os dois: nunca desce (o máximo com a base garante isso,
+   * então apertar o kick uma vez continua não custando nada) e reconhece
+   * quem carrega o trabalho de interromper mesmo quando o resto do kit não
+   * foi usado.
+   */
+  return Math.round(Math.max(base, notaDeInterromper(utility)) * 10) / 10;
+}
+
+/**
+ * A nota de interromper sozinha, 0-100 — usada como PISO de Ajudar.
+ *
+ * Interromper é dever de time, não de pessoa: o raide cobre 87% das
+ * oportunidades em luta de boss, mas onze pessoas dividem isso de forma
+ * muito desigual, e não existe no log quem era o designado. Punir o
+ * indivíduo por uma falha que pode não ser dele seria acusar sem laudo — por
+ * isso ela só pode levantar a nota, nunca baixá-la.
+ *
+ * A régua é a PARTE IGUAL: se onze pessoas interromperam naquelas trys,
+ * cumprir um onze avos das oportunidades vale a nota cheia. Quem faz mais
+ * não ganha além disso, porque o trabalho já estava coberto — e quem faz
+ * menos não perde nada, porque o máximo com a base segura.
+ */
+export function notaDeInterromper(utility?: PlayerPerformance["utility"]): number {
+  const dados = utility?.interrupcoes;
+  if (!dados || dados.oportunidades === 0 || dados.seus === 0) return 0;
+
+  // Sem ninguém interrompendo não há com quem dividir: a régua vira a
+  // oportunidade inteira, que é o caso de quem interrompeu sozinho.
+  const parteIgual = dados.oportunidades / Math.max(1, dados.pessoasQueInterromperam);
+
+  return Math.min(100, (dados.seus / parteIgual) * 100);
 }

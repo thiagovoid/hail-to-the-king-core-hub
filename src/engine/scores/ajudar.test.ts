@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { notaDeAjudar, TETO_DE_APROVEITAMENTO, TETO_PADRAO } from "./ajudar";
+import {
+  notaDeInterromper,
+  notaDeAjudar,
+  TETO_DE_APROVEITAMENTO,
+  TETO_PADRAO,
+} from "./ajudar";
 
 const magia = (spellId: number, efficiency: number) => ({
   spellId,
@@ -69,49 +74,128 @@ describe("notaDeAjudar", () => {
 });
 
 /**
- * O conserto que a leitura do core pegou: o Apocalipse interrompe 34 vezes
- * numa noite e o Blackwatch 13, mas a eficiência de recarga das magias saía
- * invertida — porque a maior parte das interrupções de um Paladino de
- * Proteção vem do Avenger's Shield, que é rotação.
+ * Interromper é dever de TIME, não de pessoa.
+ *
+ * O raide cobre 87% das oportunidades em luta de boss, mas onze pessoas
+ * dividem isso de forma muito desigual e o log não diz quem era o designado.
+ * Punir o indivíduo por uma falha que pode não ser dele seria acusar sem
+ * laudo, então interromper só soma.
+ *
+ * A régua velha dividia por TRYS — cada try valia uma oportunidade,
+ * existisse alvo ou não. Sete dos dez encontros da temporada não têm uma
+ * única magia interrompível.
  */
-describe("interromper é medido pelo ato, não pela magia", () => {
-  const util = (interrupts: number) => ({
+describe("interromper credita, nunca pune", () => {
+  const trys = { present: 10, total: 10, lateStart: false, earlyExit: false, idle: 0, topDamageDead: 0 };
+
+  const util = (
+    interrupts: number,
+    interrupcoes?: {
+      oportunidades: number;
+      cobertosPeloRaide: number;
+      seus: number;
+      pessoasQueInterromperam: number;
+    }
+  ) => ({
     interrupts,
     dispels: 0,
     purges: 0,
     battleRez: 0,
     battleRezRecebidos: 0,
+    ...(interrupcoes && { interrupcoes }),
   });
 
-  const kick = [
-    { spellId: 96231, name: "Rebuke", casts: 2, efficiency: 0.9, categoria: "interromper" as const },
+  const base = [
+    { spellId: 10060, name: "Power Infusion", casts: 5, efficiency: 5, categoria: "acelerar" as const },
   ];
 
-  it("dá nota a quem interrompe muito, mesmo com recarga mal aproveitada", () => {
-    const muito = notaDeAjudar(kick, util(34), { present: 10, total: 10, lateStart: false, earlyExit: false, idle: 0, topDamageDead: 0 });
-    const pouco = notaDeAjudar(kick, util(4), { present: 10, total: 10, lateStart: false, earlyExit: false, idle: 0, topDamageDead: 0 });
-
-    expect(muito).toBe(100);
-    expect(pouco!).toBeLessThan(muito!);
+  it("não tira nota de quem não interrompeu", () => {
+    expect(notaDeAjudar(base, util(0), trys)).toBe(notaDeAjudar(base, undefined, trys));
   });
 
-  /** Quem não tem como interromper não é cobrado por isso. */
-  it("não cria o termo pra quem nunca interrompeu", () => {
-    const semKick = [
-      { spellId: 10060, name: "Power Infusion", casts: 5, efficiency: 95.3, categoria: "acelerar" as const },
+  it("apertar o kick uma vez nunca piora a nota", () => {
+    // A armadilha da régua velha por outro caminho: como parcela da média,
+    // uma participação pequena PUXAVA a nota pra baixo, e quem nunca
+    // apertava escapava de ser medido.
+    const nenhum = notaDeAjudar(base, util(0), trys)!;
+    const uma = notaDeAjudar(
+      base,
+      util(1, { oportunidades: 50, cobertosPeloRaide: 44, seus: 1, pessoasQueInterromperam: 11 }),
+      trys
+    )!;
+
+    expect(uma).toBeGreaterThanOrEqual(nenhum);
+  });
+
+  it("cumprir a parte igual vale a nota cheia", () => {
+    // Onze pessoas dividindo 55 oportunidades: a parte de cada uma é 5.
+    const naParte = notaDeAjudar(
+      base,
+      util(5, { oportunidades: 55, cobertosPeloRaide: 50, seus: 5, pessoasQueInterromperam: 11 }),
+      trys
+    )!;
+
+    expect(naParte).toBe(100);
+  });
+
+  it("fazer muito além da parte não rende mais que o teto", () => {
+    // O trabalho já estava coberto; passar por cima dele não é mérito extra.
+    const cheio = notaDeAjudar(
+      base,
+      util(5, { oportunidades: 55, cobertosPeloRaide: 50, seus: 5, pessoasQueInterromperam: 11 }),
+      trys
+    )!;
+    const exagero = notaDeAjudar(
+      base,
+      util(40, { oportunidades: 55, cobertosPeloRaide: 50, seus: 40, pessoasQueInterromperam: 11 }),
+      trys
+    )!;
+
+    expect(exagero).toBe(cheio);
+  });
+
+  it("noite sem nada interrompível não mexe na nota", () => {
+    // Sete dos dez encontros da temporada. A régua velha cobrava aqui.
+    const semOportunidade = notaDeAjudar(
+      base,
+      util(0, { oportunidades: 0, cobertosPeloRaide: 0, seus: 0, pessoasQueInterromperam: 0 }),
+      trys
+    );
+
+    expect(semOportunidade).toBe(notaDeAjudar(base, util(0), trys));
+  });
+
+  it("quem só interrompe fica NULO, não fica com nota baixa", () => {
+    /**
+     * A armadilha que quase foi publicada: deixar o bônus virar a nota
+     * quando não há base daria Ajudar 15 pra quem apertou o kick — punição
+     * vestida de crédito. São 24 das 113 noites-jogador da temporada.
+     *
+     * Nulo faz a dimensão sair da média ponderada e o peso se redistribuir,
+     * em vez de a pessoa carregar um número baixo por algo que não temos
+     * como medir nela.
+     */
+    const soKick = [
+      { spellId: 96231, name: "Rebuke", casts: 2, efficiency: 0.9, categoria: "interromper" as const },
     ];
 
     expect(
-      notaDeAjudar(semKick, util(0), { present: 10, total: 10, lateStart: false, earlyExit: false, idle: 0, topDamageDead: 0 })
-    ).toBe(100);
+      notaDeAjudar(
+        soKick,
+        util(34, { oportunidades: 50, cobertosPeloRaide: 44, seus: 34, pessoasQueInterromperam: 11 }),
+        trys
+      )
+    ).toBeNull();
   });
 
   /** A magia de interromper sai da conta de recarga pra não contar duas vezes. */
   it("não conta a mesma interrupção duas vezes", () => {
-    const so = notaDeAjudar(kick, util(15), { present: 10, total: 10, lateStart: false, earlyExit: false, idle: 0, topDamageDead: 0 });
+    const comKick = [
+      ...base,
+      { spellId: 96231, name: "Rebuke", casts: 2, efficiency: 0.9, categoria: "interromper" as const },
+    ];
 
-    // 1,5 por try é o teto: 15 em 10 trys crava 100, e a eficiência 0,9 do
-    // Rebuke não entra puxando a média pra baixo.
-    expect(so).toBe(100);
+    // A eficiência 0,9 do Rebuke não entra puxando a média pra baixo.
+    expect(notaDeAjudar(comKick, util(0), trys)).toBe(notaDeAjudar(base, util(0), trys));
   });
 });

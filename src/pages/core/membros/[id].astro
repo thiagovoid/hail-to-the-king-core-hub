@@ -123,12 +123,16 @@ const noitesComoTank = history.filter((run) => run.defense !== undefined).length
 
 /** O que explica a nota de Ajudar: magia a magia, mais as interrupções. */
 const helpDetail = ultimaNoite?.helpDetail ?? [];
+/**
+ * "Por try" saiu porque era a régua quebrada: cada try valia uma
+ * oportunidade, existisse alvo ou não, e sete dos dez encontros da temporada
+ * não têm uma única magia interrompível. O denominador agora é o que de fato
+ * deu pra interromper nas trys em que a pessoa estava.
+ */
 const interrupcoes = ultimaNoite?.utility
   ? {
       total: ultimaNoite.utility.interrupts,
-      porTry: ultimaNoite.tries?.present
-        ? Math.round((ultimaNoite.utility.interrupts / ultimaNoite.tries.present) * 100) / 100
-        : null,
+      oportunidade: ultimaNoite.utility.interrupcoes ?? null,
     }
   : null;
 

@@ -34,6 +34,10 @@ import {
   type DetalheDaNoite,
 } from "../../src/normalization/buildNightDetail";
 import { buildUtility, type UtilidadeDoJogador } from "../../src/normalization/buildUtility";
+import {
+  buildOportunidadeDeInterrupt,
+  magiasInterrompiveis,
+} from "../../src/normalization/buildOportunidadeDeInterrupt";
 import { buildBossKills, type BossMorto } from "../../src/providers/warcraftlogs/bossKills";
 import type { PreparationChecklist } from "../../src/providers/warcraftlogs/preparation";
 import {
@@ -536,6 +540,15 @@ async function main() {
     /** Interrupções e dispels da noite. Ver buildUtility. */
     interrupts: EventoDeUtilidade[];
     dispels: EventoDeUtilidade[];
+    /**
+     * Quantas vezes cada magia inimiga foi começada, por try.
+     *
+     * O denominador do interrupt. Inclui trash, que é onde acontecem 81% das
+     * interrupções da temporada.
+     */
+    enemyCastCounts: Array<{ fight: number; abilityGameID: number; casts: number }>;
+    /** As trys de trash, pela presença: a oportunidade de lá também é delas. */
+    trashFights: WclFight[];
   }
 
   const reportContexts: ReportContext[] = [];
@@ -599,6 +612,8 @@ async function main() {
       reportRankings: tables.reportRankings ?? null,
       interrupts: tables.interrupts ?? [],
       dispels: tables.dispels ?? [],
+      enemyCastCounts: tables.enemyCastCounts ?? [],
+      trashFights: tables.trashFights ?? [],
     });
   }
 
@@ -680,6 +695,49 @@ async function main() {
     catalogo = JSON.parse(await readFile(catalogPath, "utf8")) as CooldownCatalogFile;
   } catch {
     console.log("Catálogo de cooldowns ainda não existe — será criado nesta coleta.");
+  }
+
+  /**
+   * As magias que o raide comprovadamente consegue interromper, acumuladas
+   * ao longo da temporada.
+   *
+   * Tem que ser um arquivo, e não um cálculo em cima dos relatórios desta
+   * execução: numa coleta semanal chegam um ou dois logs, e o conjunto
+   * derivado deles sozinhos seria quase vazio — a oportunidade das noites
+   * anteriores sumiria.
+   *
+   * Cresce sozinho, igual ao catálogo de cooldowns: quando alguém
+   * interromper uma magia que ainda não estava na lista, ela entra sem
+   * ninguém editar nada. E como só entra o que foi interrompido de fato,
+   * o conjunto nunca acusa oportunidade que não se provou existir.
+   */
+  const interrompiveisPath = path.join(
+    ROOT,
+    "data/seasons",
+    SEASON_SLUG,
+    "interruptible-abilities.json"
+  );
+  const interrompiveisDaTemporada = new Set<number>();
+  try {
+    const salvo = JSON.parse(await readFile(interrompiveisPath, "utf8")) as { spellIds?: number[] };
+    for (const id of salvo.spellIds ?? []) interrompiveisDaTemporada.add(id);
+  } catch {
+    console.log("Lista de magias interrompíveis ainda não existe — será criada nesta coleta.");
+  }
+  const interrompiveisAntes = interrompiveisDaTemporada.size;
+  for (const ctx of reportContexts) {
+    for (const nova of magiasInterrompiveis(ctx.interrupts)) interrompiveisDaTemporada.add(nova);
+  }
+  if (interrompiveisDaTemporada.size > interrompiveisAntes) {
+    await writeFile(
+      interrompiveisPath,
+      `${JSON.stringify({ spellIds: [...interrompiveisDaTemporada].sort((a, b) => a - b) }, null, 2)}\n`,
+      "utf8"
+    );
+    console.log(
+      `Magias interrompíveis: ${interrompiveisDaTemporada.size} conhecidas ` +
+        `(${interrompiveisDaTemporada.size - interrompiveisAntes} nova(s) nesta coleta).`
+    );
   }
 
   const cooldownsPorReport = new Map<string, Map<string, CooldownsDoJogador>>();
@@ -951,10 +1009,34 @@ async function main() {
        * que já estão na mão, porque `Resurrects` não existe no enum da WCL.
        */
       const utilPorAtor = buildUtility(ctx.interrupts, ctx.dispels, eventos);
+
+      /**
+       * A oportunidade de interromper: quantos casts interrompíveis
+       * aconteceram nas trys em que cada um estava.
+       *
+       * Sem isto a nota dividia por TRYS, e sete dos dez encontros da
+       * temporada não têm uma única magia interrompível — a dimensão cobrava
+       * por uma oportunidade que não existia. Ver
+       * buildOportunidadeDeInterrupt.
+       */
+      const presencaPorTry = new Map<number, Set<number>>();
+      for (const fight of [...ctx.raidFights, ...ctx.trashFights]) {
+        presencaPorTry.set(fight.id, new Set(fight.friendlyPlayers ?? []));
+      }
+      const oportunidadePorAtor = buildOportunidadeDeInterrupt(
+        ctx.enemyCastCounts,
+        ctx.interrupts,
+        presencaPorTry,
+        interrompiveisDaTemporada
+      );
+
       const utilPorJogador = new Map<string, UtilidadeDoJogador>();
       for (const [actorId, util] of utilPorAtor) {
         const id = doRoster(actorId);
-        if (id) utilPorJogador.set(id, util);
+        if (!id) continue;
+
+        const oportunidade = oportunidadePorAtor.get(actorId);
+        utilPorJogador.set(id, oportunidade ? { ...util, interrupcoes: oportunidade } : util);
       }
       utilidadePorReport.set(ctx.report.code, utilPorJogador);
 

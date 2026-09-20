@@ -393,7 +393,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 7,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 4,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 4,
           "mechanics": {
@@ -917,7 +923,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 34,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 4,
           "mechanics": {
@@ -1376,7 +1388,13 @@
             "dispels": 25,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 8,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 5,
           "mechanics": {
@@ -1891,7 +1909,13 @@
             "dispels": 60,
             "purges": 0,
             "battleRez": 1,
-            "battleRezRecebidos": 2
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 6,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 5,
           "mechanics": {
@@ -2380,7 +2404,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 1
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 169,
+              "cobertosPeloRaide": 112,
+              "seus": 9,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 7,
           "mechanics": {
@@ -2829,7 +2859,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 2
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 0,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 6,
           "mechanics": {
@@ -3292,7 +3328,13 @@
             "dispels": 2,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 1
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 12,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 6,
           "mechanics": {
@@ -3754,7 +3796,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 18,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 5,
           "mechanics": {
@@ -4195,7 +4243,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 12,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 4,
           "mechanics": {
@@ -4637,7 +4691,13 @@
             "dispels": 2,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 169,
+              "cobertosPeloRaide": 112,
+              "seus": 1,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 5,
           "mechanics": {
@@ -5131,7 +5191,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 2
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 169,
+              "cobertosPeloRaide": 112,
+              "seus": 0,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 8,
           "mechanics": {
@@ -5618,7 +5684,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 2,
-            "battleRezRecebidos": 2
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 124,
+              "seus": 6,
+              "pessoasQueInterromperam": 15
+            }
           },
           "deaths": 6,
           "mechanics": {
@@ -6515,7 +6587,13 @@
             "dispels": 2,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 6
+            "battleRezRecebidos": 6,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 8,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 16,
           "mechanics": {
@@ -6965,7 +7043,13 @@
             "dispels": 33,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 1
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 1,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 18,
           "mechanics": {
@@ -7416,7 +7500,13 @@
             "dispels": 28,
             "purges": 0,
             "battleRez": 6,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 0,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 14,
           "mechanics": {
@@ -7803,7 +7893,13 @@
             "dispels": 69,
             "purges": 0,
             "battleRez": 1,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 0,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 12,
           "mechanics": {
@@ -8241,7 +8337,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 2
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 2,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 16,
           "mechanics": {
@@ -8655,7 +8757,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 3,
-            "battleRezRecebidos": 1
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 0,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 15,
           "mechanics": {
@@ -9107,7 +9215,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 1
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 0,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 15,
           "mechanics": {
@@ -9586,7 +9700,13 @@
             "dispels": 1,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 9,
+              "cobertosPeloRaide": 3,
+              "seus": 0,
+              "pessoasQueInterromperam": 3
+            }
           },
           "deaths": 17,
           "mechanics": {
@@ -10438,7 +10558,13 @@
             "dispels": 5,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 1,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 15,
           "mechanics": {
@@ -10874,7 +11000,13 @@
             "dispels": 1,
             "purges": 0,
             "battleRez": 0,
-            "battleRezRecebidos": 1
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 0,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 15,
           "mechanics": {
@@ -11325,7 +11457,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 2,
-            "battleRezRecebidos": 0
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 21,
+              "cobertosPeloRaide": 13,
+              "seus": 1,
+              "pessoasQueInterromperam": 5
+            }
           },
           "deaths": 12,
           "mechanics": {
@@ -11684,7 +11822,13 @@
             "dispels": 0,
             "purges": 0,
             "battleRez": 1,
-            "battleRezRecebidos": 1
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 4,
+              "cobertosPeloRaide": 0,
+              "seus": 0,
+              "pessoasQueInterromperam": 0
+            }
           },
           "deaths": 8,
           "mechanics": {

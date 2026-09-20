@@ -54,6 +54,17 @@ export const MAGIAS_DE_BATTLE_REZ = new Map<number, string>([
 export interface UtilidadeDoJogador {
   /** Casts inimigos interrompidos. */
   interrupts: number;
+  /**
+   * O denominador: quantas vezes houve o que interromper, e quanto o raide
+   * cobriu. Ausente em noite sem nenhuma magia interrompível — que é o caso
+   * de sete dos dez encontros da temporada.
+   */
+  interrupcoes?: {
+    oportunidades: number;
+    cobertosPeloRaide: number;
+    seus: number;
+    pessoasQueInterromperam: number;
+  };
   /** Debuffs tirados de alguém do raide. */
   dispels: number;
   /** Buffs arrancados do inimigo — outra grandeza, contada separada. */
