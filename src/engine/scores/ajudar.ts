@@ -79,6 +79,26 @@ export const TETO_DE_APROVEITAMENTO = new Map<number, number>([
 export const TETO_PADRAO = 10;
 
 /**
+ * Interrupções por try que valem nota cheia.
+ *
+ * Interromper é medido pelo ATO, não pela magia, e isso foi um conserto: a
+ * primeira versão media a recarga das magias de interromper, e o resultado
+ * contradizia o log. O Apocalipse interrompe 34, 35, 19 vezes por noite; o
+ * Blackwatch, 13, 4, 2. Mesmo assim a eficiência de Rebuke do Apocalipse
+ * saía em 0,9 contra 2,0 do Mind Freeze do Blackwatch — invertido.
+ *
+ * O motivo: a maior parte das interrupções de um Paladino de Proteção sai
+ * do Avenger's Shield, que é rotação e não entra em lista curada nenhuma.
+ * Medir a magia mede o kit; medir o ato mede a pessoa.
+ *
+ * 1,5 por try é o p90 das 108 noites com utilidade medida (mediana 0,25).
+ * O máximo absoluto foi 5 numa noite do Voidwar — teto de noite excepcional
+ * deixaria todo mundo em 5% e não seria régua, seria muro.
+ */
+export const TETO_DE_INTERRUPCOES = 1.5;
+
+
+/**
  * A nota de Ajudar, 0-100. Null quando a noite não tem utilidade medida.
  *
  * Null, e não zero: o caso comum é a spec não ter utilidade de grupo
@@ -86,17 +106,41 @@ export const TETO_PADRAO = 10;
  * empurrar a pessoa pra baixo por algo que ela não escolheu.
  */
 export function notaDeAjudar(
-  helpDetail: PlayerPerformance["helpDetail"]
+  helpDetail: PlayerPerformance["helpDetail"],
+  utility?: PlayerPerformance["utility"],
+  tries?: PlayerPerformance["tries"]
 ): number | null {
-  if (!helpDetail || helpDetail.length === 0) return null;
+  const notas: number[] = [];
 
-  const notas = helpDetail.map((habilidade) => {
+  // Interromper sai por fora: é medido pelo ATO, e as magias de interromper
+  // saem da conta de recarga pra não contar a mesma coisa duas vezes.
+  for (const habilidade of helpDetail ?? []) {
+    if (habilidade.categoria === "interromper") continue;
+
     const teto = TETO_DE_APROVEITAMENTO.get(habilidade.spellId) ?? TETO_PADRAO;
     // Teto zero não existe na tabela, mas uma régua futura pode trazer um —
     // e dividir por zero viraria Infinity na nota de alguém.
-    if (teto <= 0) return 100;
-    return Math.min(100, (habilidade.efficiency / teto) * 100);
-  });
+    notas.push(teto <= 0 ? 100 : Math.min(100, (habilidade.efficiency / teto) * 100));
+  }
+
+  /**
+   * O termo de interromper só existe pra quem TEM como interromper.
+   *
+   * A prova de que tem é ter interrompido alguma vez na noite, ou ter
+   * lançado uma magia de interromper. Quem não tem a ferramenta não é
+   * medido por ela — é a mesma regra que rege a dimensão inteira, e é o que
+   * impede que a Cowsadeer, que não interrompe nada, seja cobrada por isso.
+   */
+  const podeInterromper =
+    (utility?.interrupts ?? 0) > 0 ||
+    (helpDetail ?? []).some((h) => h.categoria === "interromper");
+
+  if (podeInterromper && utility && tries && tries.present > 0) {
+    const porTry = utility.interrupts / tries.present;
+    notas.push(Math.min(100, (porTry / TETO_DE_INTERRUPCOES) * 100));
+  }
+
+  if (notas.length === 0) return null;
 
   return Math.round((notas.reduce((soma, nota) => soma + nota, 0) / notas.length) * 10) / 10;
 }

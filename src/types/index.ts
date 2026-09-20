@@ -151,6 +151,20 @@ export interface CoreTarget {
   target: number;
   direction: GoalDirection;
   description?: string;
+  /**
+   * Meta diferente por função, quando a dimensão é estruturalmente diferente
+   * entre elas.
+   *
+   * Existe por causa de Defender: na temporada, a mediana é 45,4 no tanque,
+   * 30 no healer e 18,7 no dps. Uma meta só tornava o número inútil nas duas
+   * pontas — 30 era abaixo do que o Normal já exige de um tanque, e 45 seria
+   * inalcançável pra um dps por causa do kit, não do esforço.
+   *
+   * Função sem entrada aqui usa `target`. É a exceção, não a regra: parse é
+   * percentil contra a MESMA spec e já se compara sozinho, e preparação é
+   * escolha, não kit — ali a meta tem que ser igual pra todo mundo.
+   */
+  porFuncao?: Partial<Record<"tank" | "healer" | "dps", number>>;
 }
 
 /**

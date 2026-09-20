@@ -10,44 +10,49 @@
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
       "parse": {
-        "target": 60,
+        "target": 55,
         "direction": "higher",
-        "description": "Parse mínimo esperado em todas as trys da noite"
+        "description": "Percentil mínimo esperado. É o degrau HEROICO da régua de conteúdo (ver prontidao.ts). Era 60 — mais duro que o próprio heroico, o que não fazia sentido nenhum."
       },
       "mechanics": {
-        "target": 2,
+        "target": 1.8,
         "direction": "lower",
-        "description": "Máximo de mecânicas distintas erradas por try, na média da noite. Calibrado sobre o log de 15/09: faixa de 0,8 a 2,3."
+        "description": "Máximo de mecânicas distintas erradas por try, na média da noite. Degrau heroico. Era 2, que é o patamar do normal — e o core já domina o normal."
       },
       "attack": {
-        "target": 70,
+        "target": 90,
         "direction": "higher",
-        "description": "Execução ofensiva na média da noite: metade uptime, metade tempo em recarga dos cooldowns ofensivos."
+        "description": "Execução ofensiva: metade uptime, metade tempo em recarga dos cooldowns ofensivos. A régua de conteúdo não tem exigência de Atacar, então o degrau heroico foi calibrado como o resto dela — perto do p75/p90 da temporada. Era 70, que o p10 do core já batia: 95% das noites cravavam 100 e a dimensão não media nada."
       },
       "preparation": {
-        "target": 60,
+        "target": 70,
         "direction": "higher",
-        "description": "Itens de preparação prontos (gemas, encantos, flask, comida, poções, runa, óleo)"
+        "description": "Encantos, gemas e consumíveis da noite. Degrau heroico. Era 60, quase o normal (50) — e preparação é escolha, não kit: aqui a meta é igual pra todo mundo de propósito."
       },
       "defense": {
-        "target": 30,
+        "target": 28,
         "direction": "higher",
-        "description": "Tempo médio em recarga dos cooldowns defensivos na noite. Calibrado sobre o log de 15/09: tanks entre 43 e 55, dps entre 4 e 36 — 60 seria inalcançável pra todo mundo. Mitigação e dano recebido são coletados e exibidos, mas não pontuam."
+        "porFuncao": {
+          "tank": 45,
+          "healer": 40,
+          "dps": 28
+        },
+        "description": "Tempo médio em recarga dos cooldowns defensivos. É a única dimensão com meta POR FUNÇÃO, porque a diferença é de kit: na temporada a mediana é 45,4 no tanque, 30 no healer e 18,7 no dps. O tanque usa o critério heroico de Defender da régua de conteúdo (45); healer e dps usam o p75 da própria distribuição. A meta única de 30 era menor que o que o Normal já exige de um tanque."
       },
       "survival": {
         "target": 10,
         "direction": "lower",
-        "description": "Máximo do tempo de luta da noite passado morto ENQUANTO o raide ainda lutava. Calibrado sobre as 113 noites-jogador da temporada: mediana 11,2%, com tanks em 4,2% e dps em 13%."
+        "description": "Máximo do tempo de luta da noite passado morto ENQUANTO o raide ainda lutava. Já era o degrau heroico — a única dimensão que nasceu alinhada."
       },
       "healing": {
-        "target": 80,
+        "target": 82,
         "direction": "higher",
-        "description": "Nota de cura: metade quinhão do dano coberto, metade aproveitamento. Calibrado sobre o log de 15/09, em que os quatro healers ficaram entre 81,6 e 85."
+        "description": "Nota de cura: metade quinhão do dano coberto, metade aproveitamento. Degrau heroico do ofício de healer (ver CRITERIO_DO_OFICIO). Era 80, entre o normal e o heroico."
       },
       "help": {
-        "target": 60,
+        "target": 75,
         "direction": "higher",
-        "description": "Nota de utilidade de grupo: interromper, controlar adds, acelerar o raide, socorrer e levantar. Cada magia é medida contra o melhor aproveitamento já visto DELA na temporada, senão a nota mediria o kit — kick de 15s nunca fica em recarga a luta inteira, Power Infusion de 2min chega a 95%. Calibrado sobre as 92 noites-jogador com utilidade medida: mediana 54, quartis em 29 e 85."
+        "description": "Utilidade de grupo: interromper, controlar adds, acelerar o raide, socorrer e levantar. Cada magia é medida contra o melhor aproveitamento já visto DELA na temporada. A régua de conteúdo não cobre utilidade, então o heroico foi calibrado como o resto dela: o p75 das 92 noites-jogador medidas. Era 60, a mediana — ou seja, o patamar do normal."
       }
     },
     "nextRaid": {

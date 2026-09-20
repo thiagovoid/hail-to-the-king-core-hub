@@ -204,6 +204,18 @@ const DIMENSION_META: Record<
   },
 };
 
+/**
+ * A meta desta dimensão PARA ESTA FUNÇÃO.
+ *
+ * Quase toda dimensão tem meta única — é o que mantém a régua comparável. A
+ * exceção existe onde a diferença é de kit e não de esforço: ver
+ * `CoreTarget.porFuncao`.
+ */
+export function metaDaFuncao(target: CoreTarget, funcao: FuncaoDoJogador): CoreTarget {
+  const especifica = target.porFuncao?.[funcao];
+  return especifica === undefined ? target : { ...target, target: especifica };
+}
+
 function progress(value: number | undefined, target: CoreTarget): number | null {
   if (value === undefined) return null;
   return calculateGoalProgress(value, target.target, target.direction);
@@ -236,72 +248,79 @@ export function calculateOverallScore(
   targets: CorePerformanceTargets,
   funcaoDoRoster?: FuncaoDoJogador
 ): OverallPerformanceScore {
-  const pesos = PESOS_POR_FUNCAO[funcaoEfetiva(performance, funcaoDoRoster)];
+  const funcao = funcaoEfetiva(performance, funcaoDoRoster);
+  const pesos = PESOS_POR_FUNCAO[funcao];
+
+  /** A meta de cada dimensão já resolvida pra função desta noite. */
+  const alvo = (chave: keyof CorePerformanceTargets) => metaDaFuncao(targets[chave], funcao);
 
   const dimensions: ScoreDimension[] = [
     {
       key: "parse",
       ...DIMENSION_META.parse,
       weight: pesos.parse,
-      target: targets.parse,
+      target: alvo("parse"),
       value: performance.parse ?? null,
-      score: progress(performance.parse, targets.parse),
+      score: progress(performance.parse, alvo("parse")),
     },
     {
       key: "mechanics",
       ...DIMENSION_META.mechanics,
       weight: pesos.mechanics,
-      target: targets.mechanics,
+      target: alvo("mechanics"),
       value: performance.mechanics?.errors ?? null,
-      score: progress(performance.mechanics?.errors, targets.mechanics),
+      score: progress(performance.mechanics?.errors, alvo("mechanics")),
     },
     {
       key: "attack",
       ...DIMENSION_META.attack,
       weight: pesos.attack,
-      target: targets.attack,
+      target: alvo("attack"),
       value: performance.attack?.score ?? null,
-      score: progress(performance.attack?.score, targets.attack),
+      score: progress(performance.attack?.score, alvo("attack")),
     },
     {
       key: "defense",
       ...DIMENSION_META.defense,
       weight: pesos.defense,
-      target: targets.defense,
+      target: alvo("defense"),
       value: performance.defense?.score ?? null,
-      score: progress(performance.defense?.score ?? undefined, targets.defense),
+      score: progress(performance.defense?.score ?? undefined, alvo("defense")),
     },
     {
       key: "healing",
       ...DIMENSION_META.healing,
       weight: pesos.healing,
-      target: targets.healing,
+      target: alvo("healing"),
       value: performance.healing?.score ?? null,
-      score: progress(performance.healing?.score, targets.healing),
+      score: progress(performance.healing?.score, alvo("healing")),
     },
     {
       key: "survival",
       ...DIMENSION_META.survival,
       weight: pesos.survival,
-      target: targets.survival,
+      target: alvo("survival"),
       value: performance.deathCost?.share ?? null,
-      score: progress(performance.deathCost?.share, targets.survival),
+      score: progress(performance.deathCost?.share, alvo("survival")),
     },
     {
       key: "help",
       ...DIMENSION_META.help,
       weight: pesos.help,
-      target: targets.help,
-      value: notaDeAjudar(performance.helpDetail),
-      score: progress(notaDeAjudar(performance.helpDetail) ?? undefined, targets.help),
+      target: alvo("help"),
+      value: notaDeAjudar(performance.helpDetail, performance.utility, performance.tries),
+      score: progress(
+        notaDeAjudar(performance.helpDetail, performance.utility, performance.tries) ?? undefined,
+        alvo("help")
+      ),
     },
     {
       key: "preparation",
       ...DIMENSION_META.preparation,
       weight: pesos.preparation,
-      target: targets.preparation,
+      target: alvo("preparation"),
       value: performance.preparation ?? null,
-      score: progress(performance.preparation, targets.preparation),
+      score: progress(performance.preparation, alvo("preparation")),
     },
   ];
 
