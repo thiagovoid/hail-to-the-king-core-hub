@@ -39,6 +39,16 @@ export interface LinhaDoMacro {
    * quer dizer que alguma execução falhou ou foi pulada.
    */
   simCalculadoEm: string | null;
+  /**
+   * Quanto do dano do raide este healer cobriu na última noite.
+   *
+   * Anda junto da nota de Curar porque a nota NÃO é isto: ela é o quinhão,
+   * que é esta cobertura dividida pela média dos healers da noite. Quem
+   * cobriu o mesmo de sempre numa noite em que os colegas subiram cai de
+   * nota sem ter feito nada diferente — sem a cobertura ao lado, a queda
+   * parece piora.
+   */
+  coberturaDeCura: number | null;
   score: number | null;
   /** Média das noites da temporada — diz se a última foi típica ou ponto fora. */
   scoreMedio: number | null;
@@ -110,6 +120,7 @@ export function buildVisaoMacro(
       ultimaNoite: ultima.date,
       personagemDaUltimaNoite: ultima.playerId,
       simCalculadoEm: porId.get(ultima.playerId)?.performanceGoals?.dps?.calculatedAt ?? null,
+      coberturaDeCura: ultima.healing?.coverage ?? null,
       score: score.overall,
       scoreMedio:
         medias.length === 0 ? null : Math.round(medias.reduce((s, v) => s + v, 0) / medias.length),

@@ -169,10 +169,15 @@ const COLUNAS = [
     titulo: "Curar",
     explica: (alvo: never) => [
       oQueE(
-        "Duas metades: o <strong>quinhão</strong> do dano do raide que você cobriu, e quanto da sua cura <strong>não</strong> foi pro ralo."
+        "Duas metades: o <strong>quinhão</strong> que você puxou, e quanto da sua cura <strong>não</strong> foi pro ralo."
       ),
+      formula("cobertura = sua cura ÷ dano que o raide tomou"),
+      formula("quinhão = sua cobertura ÷ média dos healers da noite"),
       formula("valor = (quinhão + (100 − overheal)) ÷ 2"),
       formula("nota = valor ÷ meta × 100"),
+      oQueE(
+        "O quinhão é <strong>relativo aos outros healers</strong>, pra se ajustar sozinho quando o raide vai com dois em vez de três. O preço é que quem cobriu o mesmo de sempre numa noite em que os colegas subiram cai de nota — por isso a cobertura aparece embaixo."
+      ),
       meta(metaPorFuncao(alvo)),
     ],
   },
@@ -240,7 +245,15 @@ function tabelaDoMacro(
               ? '<span class="text-emerald-500/70">•</span> '
               : '<span class="text-red-500/70">•</span> ';
 
-        return `<td class="px-2 py-3 text-right tabular-nums ${corDaNota(d.nota)}">${marca}${Math.round(d.nota)}</td>`;
+        // A cobertura embaixo da nota de Curar: a nota é o quinhão, que é
+        // relativo aos colegas da noite. Sem ela, "caiu de 98 pra 87" parece
+        // piora quando pode ser só o time inteiro tendo subido.
+        const contexto =
+          coluna.chave === "healing" && l.coberturaDeCura !== null
+            ? `<span class="block text-[10px] text-slate-600 font-normal">${numero(l.coberturaDeCura)}% do dano</span>`
+            : "";
+
+        return `<td class="px-2 py-3 text-right tabular-nums ${corDaNota(d.nota)}">${marca}${Math.round(d.nota)}${contexto}</td>`;
       }).join("");
 
       const alts =

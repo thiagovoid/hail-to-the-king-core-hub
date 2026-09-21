@@ -13,6 +13,7 @@ const linha: LinhaDoMacro = {
   ultimaNoite: "2026-09-16",
   personagemDaUltimaNoite: "nerlock",
   simCalculadoEm: "2026-09-16T08:00:00.000Z",
+  coberturaDeCura: null,
   score: 57,
   scoreMedio: 55,
   dimensoes: [
@@ -103,6 +104,27 @@ describe("montarPainel", () => {
       expect(tooltip, tooltip).toContain("top-full");
       expect(tooltip, tooltip).not.toContain("bottom-full");
     }
+  });
+
+  /**
+   * A nota de Curar é o QUINHÃO, que é a cobertura dividida pela média dos
+   * healers da noite. Duas noites da Cowsadeer provam por que os dois números
+   * precisam andar juntos: cobertura 25,7% e 25,9%, notas 98,5 e 86,8 — ela
+   * cobriu o mesmo e caiu 12 pontos porque os colegas subiram.
+   */
+  it("mostra a cobertura embaixo da nota de Curar", () => {
+    const html = painel({
+      ...linha,
+      funcao: "healer",
+      dimensoes: [{ chave: "healing", rotulo: "Curar", nota: 87, cumpriu: true }],
+      coberturaDeCura: 25.9,
+    });
+
+    expect(html).toContain("25,9% do dano");
+  });
+
+  it("não inventa cobertura pra quem não é healer", () => {
+    expect(painel()).not.toContain("% do dano");
   });
 
   it("tira a meta do arquivo da temporada, não de número escrito à mão", () => {
