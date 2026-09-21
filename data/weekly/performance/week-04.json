@@ -110,18 +110,12 @@
             }
           ],
           "defense": {
-            "score": 40.1,
+            "score": 45,
             "mitigation": 34.5,
             "dtps": 76105,
             "selfSustain": 51
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 5,
-              "efficiency": 5.4
-            },
             {
               "spellId": 49039,
               "name": "Lichborne",
@@ -359,7 +353,6 @@
                 "Anti-Magic Zone",
                 "Vampiric Blood",
                 "Icebound Fortitude",
-                "Healthstone",
                 "Lichborne"
               ]
             },
@@ -370,8 +363,7 @@
               "fightSeconds": 442,
               "afterSeconds": 11,
               "readyDefensives": [
-                "Icebound Fortitude",
-                "Healthstone"
+                "Icebound Fortitude"
               ],
               "ability": "Melee"
             },
@@ -383,7 +375,6 @@
               "afterSeconds": 8,
               "readyDefensives": [
                 "Icebound Fortitude",
-                "Healthstone",
                 "Lichborne"
               ]
             },
@@ -408,7 +399,6 @@
               "readyDefensives": [
                 "Anti-Magic Shell",
                 "Vampiric Blood",
-                "Healthstone",
                 "Lichborne"
               ]
             }
@@ -441,7 +431,6 @@
               "amount": 1843272,
               "fatiaDaVida": 95,
               "defensivosProntos": [
-                "Healthstone",
                 "Lichborne"
               ]
             },
@@ -460,8 +449,7 @@
               "amount": 1109252,
               "fatiaDaVida": 47,
               "defensivosProntos": [
-                "Icebound Fortitude",
-                "Healthstone"
+                "Icebound Fortitude"
               ]
             }
           ],
@@ -724,18 +712,12 @@
             }
           ],
           "defense": {
-            "score": 42.3,
+            "score": 49.3,
             "mitigation": 40.5,
             "dtps": 63806,
             "selfSustain": 45.3
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 0.7
-            },
             {
               "spellId": 642,
               "name": "Divine Shield",
@@ -947,8 +929,7 @@
               "readyDefensives": [
                 "Holy Bulwark",
                 "Ardent Defender",
-                "Divine Shield",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -961,8 +942,7 @@
                 "Ritual Wraps",
                 "Holy Bulwark",
                 "Ardent Defender",
-                "Divine Shield",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -972,8 +952,7 @@
               "fightSeconds": 348,
               "afterSeconds": 9,
               "readyDefensives": [
-                "Holy Bulwark",
-                "Healthstone"
+                "Holy Bulwark"
               ],
               "ability": "Melee"
             },
@@ -984,8 +963,7 @@
               "fightSeconds": 299,
               "afterSeconds": 2,
               "readyDefensives": [
-                "Holy Bulwark",
-                "Healthstone"
+                "Holy Bulwark"
               ]
             },
             {
@@ -994,9 +972,6 @@
               "atSecond": 518,
               "fightSeconds": 518,
               "afterSeconds": 1,
-              "readyDefensives": [
-                "Healthstone"
-              ],
               "ability": "Eternal Nightfall"
             }
           ],
@@ -1029,8 +1004,7 @@
               "fatiaDaVida": 68,
               "defensivosProntos": [
                 "Ritual Wraps",
-                "Holy Bulwark",
-                "Healthstone"
+                "Holy Bulwark"
               ]
             },
             {
@@ -1040,8 +1014,7 @@
               "amount": 830665,
               "fatiaDaVida": 60,
               "defensivosProntos": [
-                "Divine Shield",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -1051,8 +1024,7 @@
               "amount": 536871,
               "fatiaDaVida": 47,
               "defensivosProntos": [
-                "Holy Bulwark",
-                "Healthstone"
+                "Holy Bulwark"
               ]
             }
           ],
@@ -1286,18 +1258,12 @@
           },
           "attackDetail": [],
           "defense": {
-            "score": 40.4,
+            "score": 48.4,
             "mitigation": 45.7,
             "dtps": 35564,
             "selfSustain": 50.9
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 0.4
-            },
             {
               "spellId": 108271,
               "name": "Astral Shift",
@@ -1512,8 +1478,7 @@
               "fightSeconds": 442,
               "afterSeconds": 195,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -1524,8 +1489,7 @@
               "afterSeconds": 27,
               "readyDefensives": [
                 "Ascendance",
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -1536,8 +1500,7 @@
               "afterSeconds": 27,
               "readyDefensives": [
                 "Healing Stream Totem",
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -1549,8 +1512,7 @@
               "readyDefensives": [
                 "Healing Stream Totem",
                 "Stormstream Totem",
-                "Spirit Link Totem",
-                "Healthstone"
+                "Spirit Link Totem"
               ]
             },
             {
@@ -1560,8 +1522,7 @@
               "fightSeconds": 348,
               "afterSeconds": 13,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ],
               "ability": "Toxic Deluge"
             },
@@ -1583,8 +1544,7 @@
               "fightSeconds": 518,
               "afterSeconds": 12,
               "readyDefensives": [
-                "Healing Stream Totem",
-                "Healthstone"
+                "Healing Stream Totem"
               ],
               "ability": "Eternal Nightfall"
             },
@@ -1595,8 +1555,7 @@
               "fightSeconds": 299,
               "afterSeconds": 10,
               "readyDefensives": [
-                "Spirit Link Totem",
-                "Healthstone"
+                "Spirit Link Totem"
               ]
             }
           ],
@@ -1628,8 +1587,7 @@
               "amount": 774076,
               "fatiaDaVida": 84,
               "defensivosProntos": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -1639,8 +1597,7 @@
               "amount": 509414,
               "fatiaDaVida": 55,
               "defensivosProntos": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -1653,8 +1610,7 @@
                 "Healing Stream Totem",
                 "Stormstream Totem",
                 "Spirit Link Totem",
-                "Ascendance",
-                "Healthstone"
+                "Ascendance"
               ]
             }
           ],
@@ -2993,18 +2949,12 @@
             }
           ],
           "defense": {
-            "score": 11.6,
+            "score": 14.3,
             "mitigation": 46,
             "dtps": 35030,
             "selfSustain": 4.8
           },
           "defenseDetail": [
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 3,
-              "efficiency": 6.3
-            },
             {
               "spellId": 11426,
               "name": "Ice Barrier",
@@ -3168,8 +3118,7 @@
               "afterSeconds": 319,
               "readyDefensives": [
                 "Ice Barrier",
-                "Ice Cold",
-                "Silvermoon Health Potion"
+                "Ice Cold"
               ],
               "ability": "Gravebound"
             },
@@ -3181,8 +3130,7 @@
               "afterSeconds": 37,
               "readyDefensives": [
                 "Ice Barrier",
-                "Ice Cold",
-                "Silvermoon Health Potion"
+                "Ice Cold"
               ],
               "ability": "Dreadful Presence"
             },
@@ -3201,8 +3149,7 @@
               "afterSeconds": 11,
               "readyDefensives": [
                 "Ice Barrier",
-                "Ice Cold",
-                "Silvermoon Health Potion"
+                "Ice Cold"
               ]
             },
             {
@@ -3213,8 +3160,7 @@
               "afterSeconds": 11,
               "readyDefensives": [
                 "Ice Barrier",
-                "Ice Cold",
-                "Silvermoon Health Potion"
+                "Ice Cold"
               ],
               "ability": "Coalesced Venom"
             },
@@ -3231,9 +3177,6 @@
               "atSecond": 432,
               "fightSeconds": 442,
               "afterSeconds": 10,
-              "readyDefensives": [
-                "Silvermoon Health Potion"
-              ],
               "ability": "Coalesced Venom"
             }
           ],
@@ -3266,8 +3209,7 @@
               "fatiaDaVida": 52,
               "defensivosProntos": [
                 "Ice Barrier",
-                "Ice Cold",
-                "Silvermoon Health Potion"
+                "Ice Cold"
               ]
             },
             {
@@ -3277,8 +3219,7 @@
               "amount": 315248,
               "fatiaDaVida": 42,
               "defensivosProntos": [
-                "Ice Barrier",
-                "Silvermoon Health Potion"
+                "Ice Barrier"
               ]
             },
             {
@@ -3288,8 +3229,7 @@
               "amount": 293925,
               "fatiaDaVida": 39,
               "defensivosProntos": [
-                "Ice Cold",
-                "Silvermoon Health Potion"
+                "Ice Cold"
               ]
             }
           ],
@@ -3521,25 +3461,12 @@
             }
           ],
           "defense": {
-            "score": 3.9,
+            "score": null,
             "mitigation": 39.3,
             "dtps": 39111,
             "selfSustain": 26.4
           },
-          "defenseDetail": [
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 1,
-              "efficiency": 0.5
-            },
-            {
-              "spellId": 452930,
-              "name": "Demonic Healthstone",
-              "casts": 5,
-              "efficiency": 7.2
-            }
-          ],
+          "defenseDetail": [],
           "bossKills": [
             {
               "encounterID": 3470,
@@ -3688,10 +3615,6 @@
               "atSecond": 361,
               "fightSeconds": 437,
               "afterSeconds": 77,
-              "readyDefensives": [
-                "Demonic Healthstone",
-                "Potent Healing Potion"
-              ],
               "ability": "Eternal Venom"
             },
             {
@@ -3699,42 +3622,28 @@
               "difficulty": 3,
               "atSecond": 226,
               "fightSeconds": 299,
-              "afterSeconds": 73,
-              "readyDefensives": [
-                "Demonic Healthstone",
-                "Potent Healing Potion"
-              ]
+              "afterSeconds": 73
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 236,
               "fightSeconds": 273,
-              "afterSeconds": 37,
-              "readyDefensives": [
-                "Potent Healing Potion"
-              ]
+              "afterSeconds": 37
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36,
-              "readyDefensives": [
-                "Potent Healing Potion"
-              ]
+              "afterSeconds": 36
             },
             {
               "encounterID": 3429,
               "difficulty": 3,
               "atSecond": 269,
               "fightSeconds": 299,
-              "afterSeconds": 30,
-              "readyDefensives": [
-                "Demonic Healthstone",
-                "Potent Healing Potion"
-              ]
+              "afterSeconds": 30
             },
             {
               "encounterID": 3429,
@@ -3742,10 +3651,6 @@
               "atSecond": 336,
               "fightSeconds": 348,
               "afterSeconds": 13,
-              "readyDefensives": [
-                "Demonic Healthstone",
-                "Potent Healing Potion"
-              ],
               "ability": "Toxic Deluge"
             },
             {
@@ -3784,10 +3689,7 @@
               "ability": "Eternal Venom",
               "amount": 518025,
               "fatiaDaVida": 55,
-              "defensivosProntos": [
-                "Demonic Healthstone",
-                "Potent Healing Potion"
-              ]
+              "defensivosProntos": []
             },
             {
               "fight": 33,
@@ -3795,10 +3697,7 @@
               "ability": "Toxic Deluge",
               "amount": 482511,
               "fatiaDaVida": 52,
-              "defensivosProntos": [
-                "Demonic Healthstone",
-                "Potent Healing Potion"
-              ]
+              "defensivosProntos": []
             },
             {
               "fight": 33,
@@ -3806,10 +3705,7 @@
               "ability": "Blighted Sever",
               "amount": 368974,
               "fatiaDaVida": 39,
-              "defensivosProntos": [
-                "Demonic Healthstone",
-                "Potent Healing Potion"
-              ]
+              "defensivosProntos": []
             }
           ],
           "deaths": 7,
@@ -3997,9 +3893,9 @@
             "Botas"
           ],
           "attack": {
-            "score": 78.1,
+            "score": 81,
             "uptime": 93.5,
-            "cooldowns": 62.7
+            "cooldowns": 68.4
           },
           "attackDetail": [
             {
@@ -4015,6 +3911,12 @@
               "efficiency": 74.5
             },
             {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 59,
+              "efficiency": 85.6
+            },
+            {
               "spellId": 228260,
               "name": "Voidform",
               "casts": 34,
@@ -4022,24 +3924,12 @@
             }
           ],
           "defense": {
-            "score": 12.4,
+            "score": 20.6,
             "mitigation": 46.4,
             "dtps": 46450,
             "selfSustain": 26.1
           },
           "defenseDetail": [
-            {
-              "spellId": 1234768,
-              "name": "Silvermoon Health Potion",
-              "casts": 2,
-              "efficiency": 3.9
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 3,
-              "efficiency": 4.3
-            },
             {
               "spellId": 47585,
               "name": "Dispersion",
@@ -4216,8 +4106,7 @@
               "fightSeconds": 442,
               "afterSeconds": 189,
               "readyDefensives": [
-                "Dispersion",
-                "Silvermoon Health Potion"
+                "Dispersion"
               ]
             },
             {
@@ -4228,9 +4117,7 @@
               "afterSeconds": 126,
               "readyDefensives": [
                 "Desperate Prayer",
-                "Dispersion",
-                "Silvermoon Health Potion",
-                "Healthstone"
+                "Dispersion"
               ]
             },
             {
@@ -4241,9 +4128,7 @@
               "afterSeconds": 121,
               "readyDefensives": [
                 "Desperate Prayer",
-                "Dispersion",
-                "Silvermoon Health Potion",
-                "Healthstone"
+                "Dispersion"
               ],
               "ability": "Gravebound"
             },
@@ -4254,8 +4139,7 @@
               "fightSeconds": 442,
               "afterSeconds": 116,
               "readyDefensives": [
-                "Dispersion",
-                "Silvermoon Health Potion"
+                "Dispersion"
               ],
               "ability": "Gravebound"
             },
@@ -4266,9 +4150,7 @@
               "fightSeconds": 339,
               "afterSeconds": 93,
               "readyDefensives": [
-                "Dispersion",
-                "Silvermoon Health Potion",
-                "Healthstone"
+                "Dispersion"
               ],
               "ability": "Mark of Acid"
             },
@@ -4279,8 +4161,7 @@
               "fightSeconds": 442,
               "afterSeconds": 93,
               "readyDefensives": [
-                "Dispersion",
-                "Silvermoon Health Potion"
+                "Dispersion"
               ]
             },
             {
@@ -4290,9 +4171,7 @@
               "fightSeconds": 299,
               "afterSeconds": 65,
               "readyDefensives": [
-                "Dispersion",
-                "Silvermoon Health Potion",
-                "Healthstone"
+                "Dispersion"
               ],
               "ability": "Gravebound"
             },
@@ -4313,8 +4192,7 @@
               "fightSeconds": 518,
               "afterSeconds": 28,
               "readyDefensives": [
-                "Dispersion",
-                "Healthstone"
+                "Dispersion"
               ]
             },
             {
@@ -4324,9 +4202,7 @@
               "fightSeconds": 348,
               "afterSeconds": 13,
               "readyDefensives": [
-                "Dispersion",
-                "Silvermoon Health Potion",
-                "Healthstone"
+                "Dispersion"
               ],
               "ability": "Toxic Deluge"
             }
@@ -4359,9 +4235,7 @@
               "amount": 803010,
               "fatiaDaVida": 67,
               "defensivosProntos": [
-                "Dispersion",
-                "Silvermoon Health Potion",
-                "Healthstone"
+                "Dispersion"
               ]
             },
             {
@@ -4371,9 +4245,7 @@
               "amount": 778342,
               "fatiaDaVida": 68,
               "defensivosProntos": [
-                "Dispersion",
-                "Silvermoon Health Potion",
-                "Healthstone"
+                "Dispersion"
               ]
             },
             {
@@ -4383,8 +4255,7 @@
               "amount": 766640,
               "fatiaDaVida": 100,
               "defensivosProntos": [
-                "Dispersion",
-                "Silvermoon Health Potion"
+                "Dispersion"
               ]
             }
           ],
@@ -4586,9 +4457,9 @@
           ],
           "preparationGear": 100,
           "attack": {
-            "score": 84.4,
+            "score": 88.5,
             "uptime": 94.3,
-            "cooldowns": 74.4
+            "cooldowns": 82.7
           },
           "attackDetail": [
             {
@@ -4602,27 +4473,21 @@
               "name": "Stormkeeper",
               "casts": 69,
               "efficiency": 83.8
+            },
+            {
+              "spellId": 114050,
+              "name": "Ascendance",
+              "casts": 35,
+              "efficiency": 99.2
             }
           ],
           "defense": {
-            "score": 5.2,
+            "score": 9.7,
             "mitigation": 47.7,
             "dtps": 39239,
             "selfSustain": 11.5
           },
           "defenseDetail": [
-            {
-              "spellId": 1295247,
-              "name": "Concentrated Silvermoon Health Potion",
-              "casts": 1,
-              "efficiency": 2
-            },
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 4,
-              "efficiency": 3.9
-            },
             {
               "spellId": 108271,
               "name": "Astral Shift",
@@ -4800,9 +4665,7 @@
               "fightSeconds": 518,
               "afterSeconds": 319,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ],
               "ability": "Gravebound"
             },
@@ -4813,9 +4676,7 @@
               "fightSeconds": 442,
               "afterSeconds": 116,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ],
               "ability": "Gravebound"
             },
@@ -4824,10 +4685,7 @@
               "difficulty": 3,
               "atSecond": 476,
               "fightSeconds": 518,
-              "afterSeconds": 43,
-              "readyDefensives": [
-                "Concentrated Silvermoon Health Potion"
-              ]
+              "afterSeconds": 43
             },
             {
               "encounterID": 3429,
@@ -4836,8 +4694,7 @@
               "fightSeconds": 299,
               "afterSeconds": 27,
               "readyDefensives": [
-                "Astral Shift",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ],
               "ability": "Soul Sever"
             },
@@ -4848,9 +4705,7 @@
               "fightSeconds": 258,
               "afterSeconds": 14,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ]
             },
             {
@@ -4859,9 +4714,6 @@
               "atSecond": 430,
               "fightSeconds": 442,
               "afterSeconds": 12,
-              "readyDefensives": [
-                "Healthstone"
-              ],
               "ability": "Venom Rupture"
             },
             {
@@ -4871,8 +4723,7 @@
               "fightSeconds": 348,
               "afterSeconds": 9,
               "readyDefensives": [
-                "Astral Shift",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ],
               "ability": "Coalesced Venom"
             }
@@ -4905,9 +4756,7 @@
               "amount": 928581,
               "fatiaDaVida": 80,
               "defensivosProntos": [
-                "Astral Shift",
-                "Healthstone",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ]
             },
             {
@@ -4917,9 +4766,7 @@
               "amount": 666524,
               "fatiaDaVida": 65,
               "defensivosProntos": [
-                "Astral Shift",
-                "Healthstone",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ]
             },
             {
@@ -4929,9 +4776,7 @@
               "amount": 360851,
               "fatiaDaVida": 39,
               "defensivosProntos": [
-                "Astral Shift",
-                "Healthstone",
-                "Concentrated Silvermoon Health Potion"
+                "Astral Shift"
               ]
             }
           ],
@@ -5162,18 +5007,12 @@
             }
           ],
           "defense": {
-            "score": 18.7,
+            "score": 27.4,
             "mitigation": 44.2,
             "dtps": 33866,
             "selfSustain": 39.4
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 1.5
-            },
             {
               "spellId": 196718,
               "name": "Darkness",
@@ -5336,8 +5175,7 @@
               "fightSeconds": 273,
               "afterSeconds": 45,
               "readyDefensives": [
-                "Darkness",
-                "Healthstone"
+                "Darkness"
               ],
               "ability": "Gravebound"
             },
@@ -5347,9 +5185,6 @@
               "atSecond": 274,
               "fightSeconds": 299,
               "afterSeconds": 25,
-              "readyDefensives": [
-                "Healthstone"
-              ],
               "ability": "Gravebound"
             },
             {
@@ -5359,8 +5194,7 @@
               "fightSeconds": 348,
               "afterSeconds": 13,
               "readyDefensives": [
-                "Blur",
-                "Healthstone"
+                "Blur"
               ],
               "ability": "Toxic Deluge"
             },
@@ -5370,9 +5204,6 @@
               "atSecond": 507,
               "fightSeconds": 518,
               "afterSeconds": 12,
-              "readyDefensives": [
-                "Healthstone"
-              ],
               "ability": "Eternal Nightfall"
             },
             {
@@ -5381,9 +5212,6 @@
               "atSecond": 432,
               "fightSeconds": 442,
               "afterSeconds": 10,
-              "readyDefensives": [
-                "Healthstone"
-              ],
               "ability": "Melee"
             },
             {
@@ -5394,8 +5222,7 @@
               "afterSeconds": 0,
               "readyDefensives": [
                 "Blur",
-                "Darkness",
-                "Healthstone"
+                "Darkness"
               ],
               "ability": "Melee"
             }
@@ -5428,8 +5255,7 @@
               "amount": 689877,
               "fatiaDaVida": 76,
               "defensivosProntos": [
-                "Blur",
-                "Healthstone"
+                "Blur"
               ]
             },
             {
@@ -5438,9 +5264,7 @@
               "ability": "Eternal Nightfall",
               "amount": 528744,
               "fatiaDaVida": 59,
-              "defensivosProntos": [
-                "Healthstone"
-              ]
+              "defensivosProntos": []
             },
             {
               "fight": 31,
@@ -5448,9 +5272,7 @@
               "ability": "Gravebound",
               "amount": 506740,
               "fatiaDaVida": 62,
-              "defensivosProntos": [
-                "Healthstone"
-              ]
+              "defensivosProntos": []
             }
           ],
           "deaths": 6,
@@ -5664,18 +5486,12 @@
             }
           ],
           "defense": {
-            "score": 13.6,
+            "score": 25.5,
             "mitigation": 47.2,
             "dtps": 34012,
             "selfSustain": 16.8
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 2,
-              "efficiency": 1.7
-            },
             {
               "spellId": 108271,
               "name": "Astral Shift",
@@ -5846,8 +5662,7 @@
               "fightSeconds": 258,
               "afterSeconds": 36,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -5857,8 +5672,7 @@
               "fightSeconds": 258,
               "afterSeconds": 19,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -5868,8 +5682,7 @@
               "fightSeconds": 273,
               "afterSeconds": 13,
               "readyDefensives": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -5878,9 +5691,6 @@
               "atSecond": 340,
               "fightSeconds": 348,
               "afterSeconds": 9,
-              "readyDefensives": [
-                "Healthstone"
-              ],
               "ability": "Coalesced Venom"
             },
             {
@@ -5889,9 +5699,6 @@
               "atSecond": 434,
               "fightSeconds": 442,
               "afterSeconds": 8,
-              "readyDefensives": [
-                "Healthstone"
-              ],
               "ability": "Coalesced Venom"
             },
             {
@@ -5930,9 +5737,7 @@
               "ability": "Eternal Nightfall",
               "amount": 654044,
               "fatiaDaVida": 57,
-              "defensivosProntos": [
-                "Healthstone"
-              ]
+              "defensivosProntos": []
             },
             {
               "fight": 33,
@@ -5941,8 +5746,7 @@
               "amount": 385457,
               "fatiaDaVida": 39,
               "defensivosProntos": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             },
             {
@@ -5952,8 +5756,7 @@
               "amount": 376540,
               "fatiaDaVida": 38,
               "defensivosProntos": [
-                "Astral Shift",
-                "Healthstone"
+                "Astral Shift"
               ]
             }
           ],
@@ -6193,18 +5996,12 @@
             }
           ],
           "defense": {
-            "score": 8,
+            "score": 11.8,
             "mitigation": 47.2,
             "dtps": 37895,
             "selfSustain": 16.9
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 0.3
-            },
             {
               "spellId": 118038,
               "name": "Die by the Sword",
@@ -6367,8 +6164,7 @@
               "fightSeconds": 518,
               "afterSeconds": 319,
               "readyDefensives": [
-                "Die by the Sword",
-                "Healthstone"
+                "Die by the Sword"
               ],
               "ability": "Gravebound"
             },
@@ -6380,8 +6176,7 @@
               "afterSeconds": 264,
               "readyDefensives": [
                 "Die by the Sword",
-                "Rallying Cry",
-                "Healthstone"
+                "Rallying Cry"
               ],
               "ability": "Eternal Venom"
             },
@@ -6393,8 +6188,7 @@
               "afterSeconds": 121,
               "readyDefensives": [
                 "Die by the Sword",
-                "Rallying Cry",
-                "Healthstone"
+                "Rallying Cry"
               ],
               "ability": "Gravebound"
             },
@@ -6405,8 +6199,7 @@
               "fightSeconds": 258,
               "afterSeconds": 36,
               "readyDefensives": [
-                "Die by the Sword",
-                "Healthstone"
+                "Die by the Sword"
               ]
             },
             {
@@ -6417,8 +6210,7 @@
               "afterSeconds": 13,
               "readyDefensives": [
                 "Die by the Sword",
-                "Rallying Cry",
-                "Healthstone"
+                "Rallying Cry"
               ],
               "ability": "Toxic Deluge"
             },
@@ -6438,8 +6230,7 @@
               "afterSeconds": 1,
               "readyDefensives": [
                 "Die by the Sword",
-                "Rallying Cry",
-                "Healthstone"
+                "Rallying Cry"
               ]
             }
           ],
@@ -6472,8 +6263,7 @@
               "fatiaDaVida": 89,
               "defensivosProntos": [
                 "Die by the Sword",
-                "Rallying Cry",
-                "Healthstone"
+                "Rallying Cry"
               ]
             },
             {
@@ -6484,8 +6274,7 @@
               "fatiaDaVida": 64,
               "defensivosProntos": [
                 "Die by the Sword",
-                "Rallying Cry",
-                "Healthstone"
+                "Rallying Cry"
               ]
             },
             {
@@ -6496,8 +6285,7 @@
               "fatiaDaVida": 67,
               "defensivosProntos": [
                 "Die by the Sword",
-                "Rallying Cry",
-                "Healthstone"
+                "Rallying Cry"
               ]
             }
           ],
@@ -6741,18 +6529,12 @@
             }
           ],
           "defense": {
-            "score": 17.4,
+            "score": 21.6,
             "mitigation": 46.2,
             "dtps": 36057,
             "selfSustain": 8.9
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 4,
-              "efficiency": 4.6
-            },
             {
               "spellId": 633,
               "name": "Lay on Hands",
@@ -6936,8 +6718,7 @@
               "afterSeconds": 129,
               "readyDefensives": [
                 "Divine Protection",
-                "Divine Shield",
-                "Healthstone"
+                "Divine Shield"
               ],
               "ability": "Gravebound"
             },
@@ -6950,7 +6731,6 @@
               "readyDefensives": [
                 "Divine Protection",
                 "Divine Shield",
-                "Healthstone",
                 "Lay on Hands"
               ]
             },
@@ -6961,8 +6741,7 @@
               "fightSeconds": 258,
               "afterSeconds": 36,
               "readyDefensives": [
-                "Divine Shield",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -6973,8 +6752,7 @@
               "afterSeconds": 14,
               "readyDefensives": [
                 "Divine Protection",
-                "Divine Shield",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -7018,8 +6796,7 @@
               "fatiaDaVida": 85,
               "defensivosProntos": [
                 "Divine Protection",
-                "Divine Shield",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -7031,7 +6808,6 @@
               "defensivosProntos": [
                 "Divine Protection",
                 "Divine Shield",
-                "Healthstone",
                 "Lay on Hands"
               ]
             },
@@ -7258,18 +7034,12 @@
             }
           ],
           "defense": {
-            "score": 10.3,
+            "score": 12.9,
             "mitigation": 44,
             "dtps": 39732,
             "selfSustain": 17.4
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 1,
-              "efficiency": 1.5
-            },
             {
               "spellId": 1022,
               "name": "Blessing of Protection",
@@ -7281,12 +7051,6 @@
               "name": "Lay on Hands",
               "casts": 2,
               "efficiency": 3.6
-            },
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 1,
-              "efficiency": 6.1
             },
             {
               "spellId": 642,
@@ -7460,9 +7224,7 @@
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
                 "Lay on Hands",
-                "Divine Shield",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Divine Shield"
               ],
               "ability": "Sever"
             },
@@ -7476,9 +7238,7 @@
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
                 "Lay on Hands",
-                "Divine Shield",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Divine Shield"
               ],
               "ability": "Congealed Gore"
             },
@@ -7491,9 +7251,7 @@
               "readyDefensives": [
                 "Divine Protection",
                 "Blessing of Sacrifice",
-                "Blessing of Protection",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Blessing of Protection"
               ],
               "ability": "Gravebound"
             },
@@ -7508,9 +7266,7 @@
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
                 "Lay on Hands",
-                "Divine Shield",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -7523,9 +7279,7 @@
                 "Divine Protection",
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
-                "Divine Shield",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -7536,8 +7290,7 @@
               "afterSeconds": 12,
               "readyDefensives": [
                 "Blessing of Sacrifice",
-                "Blessing of Protection",
-                "Healthstone"
+                "Blessing of Protection"
               ],
               "ability": "Venom Rupture"
             },
@@ -7549,9 +7302,7 @@
               "afterSeconds": 1,
               "readyDefensives": [
                 "Blessing of Sacrifice",
-                "Blessing of Protection",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Blessing of Protection"
               ],
               "ability": "Melee"
             }
@@ -7586,9 +7337,7 @@
               "defensivosProntos": [
                 "Divine Protection",
                 "Blessing of Sacrifice",
-                "Blessing of Protection",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Blessing of Protection"
               ]
             },
             {
@@ -7602,9 +7351,7 @@
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
                 "Lay on Hands",
-                "Divine Shield",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Divine Shield"
               ]
             },
             {
@@ -7617,9 +7364,7 @@
                 "Divine Protection",
                 "Blessing of Sacrifice",
                 "Blessing of Protection",
-                "Divine Shield",
-                "Potent Healing Potion",
-                "Healthstone"
+                "Divine Shield"
               ]
             }
           ],
@@ -7832,9 +7577,9 @@
             "Botas"
           ],
           "attack": {
-            "score": 82.4,
+            "score": 85.1,
             "uptime": 98,
-            "cooldowns": 66.9
+            "cooldowns": 72.1
           },
           "attackDetail": [
             {
@@ -7860,27 +7605,21 @@
               "name": "Voidform",
               "casts": 33,
               "efficiency": 89.2
+            },
+            {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 36,
+              "efficiency": 93.1
             }
           ],
           "defense": {
-            "score": 26,
+            "score": 38.5,
             "mitigation": 45.2,
             "dtps": 34905,
             "selfSustain": 28.5
           },
           "defenseDetail": [
-            {
-              "spellId": 6262,
-              "name": "Healthstone",
-              "casts": 8,
-              "efficiency": 10.4
-            },
-            {
-              "spellId": 1262857,
-              "name": "Potent Healing Potion",
-              "casts": 3,
-              "efficiency": 16.7
-            },
             {
               "spellId": 47585,
               "name": "Dispersion",
@@ -8064,8 +7803,7 @@
               "fightSeconds": 442,
               "afterSeconds": 116,
               "readyDefensives": [
-                "Desperate Prayer",
-                "Healthstone"
+                "Desperate Prayer"
               ],
               "ability": "Gravebound"
             },
@@ -8075,10 +7813,6 @@
               "atSecond": 221,
               "fightSeconds": 273,
               "afterSeconds": 52,
-              "readyDefensives": [
-                "Healthstone",
-                "Potent Healing Potion"
-              ],
               "ability": "Gloombomb"
             },
             {
@@ -8086,11 +7820,7 @@
               "difficulty": 3,
               "atSecond": 221,
               "fightSeconds": 258,
-              "afterSeconds": 36,
-              "readyDefensives": [
-                "Healthstone",
-                "Potent Healing Potion"
-              ]
+              "afterSeconds": 36
             },
             {
               "encounterID": 3429,
@@ -8110,8 +7840,7 @@
               "fightSeconds": 348,
               "afterSeconds": 9,
               "readyDefensives": [
-                "Dispersion",
-                "Potent Healing Potion"
+                "Dispersion"
               ],
               "ability": "Coalesced Venom"
             }
@@ -8144,8 +7873,7 @@
               "amount": 605850,
               "fatiaDaVida": 80,
               "defensivosProntos": [
-                "Desperate Prayer",
-                "Healthstone"
+                "Desperate Prayer"
               ]
             },
             {
@@ -8155,8 +7883,7 @@
               "amount": 532269,
               "fatiaDaVida": 64,
               "defensivosProntos": [
-                "Desperate Prayer",
-                "Healthstone"
+                "Desperate Prayer"
               ]
             },
             {
@@ -8166,8 +7893,7 @@
               "amount": 315376,
               "fatiaDaVida": 42,
               "defensivosProntos": [
-                "Dispersion",
-                "Healthstone"
+                "Dispersion"
               ]
             }
           ],

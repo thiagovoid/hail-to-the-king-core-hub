@@ -15,6 +15,7 @@
  */
 
 import type { CooldownDaMagia, TipoDeCooldown } from "./spellCooldown";
+import { classificacaoFinal } from "./classificacaoManual";
 
 export interface CooldownCatalogFile {
   generatedAt: string;
@@ -30,13 +31,30 @@ export const CATALOGO_VAZIO: CooldownCatalogFile = {
   ignored: [],
 };
 
+/**
+ * O catálogo como o motor lê, já com a correção manual por cima.
+ *
+ * A correção entra AQUI e não no `mergeCatalog` porque ele pula o que já
+ * está catalogado — uma magia classificada errada na primeira coleta ficaria
+ * errada pra sempre. Aplicando na leitura, as 193 entradas existentes são
+ * corrigidas sem reescrever o arquivo nem voltar ao Wowhead.
+ *
+ * Consumível some do mapa: poção, flask e pedra de vida já são cobrados no
+ * Portão de Preparação, e medi-los de novo no aproveitamento de cooldown
+ * cobraria a mesma coisa duas vezes. Trinket fica — apertá-lo na recarga é
+ * execução, igual apertar a habilidade.
+ */
 export function catalogToMap(file: CooldownCatalogFile): Map<number, CooldownDaMagia> {
   const mapa = new Map<number, CooldownDaMagia>();
 
   for (const [chave, dados] of Object.entries(file.cooldowns ?? {})) {
     const spellId = Number(chave);
     if (!Number.isFinite(spellId)) continue;
-    mapa.set(spellId, { spellId, ...dados });
+
+    const kind = classificacaoFinal(spellId, dados.name, dados.cooldownMs, dados.kind);
+    if (kind === "consumivel") continue;
+
+    mapa.set(spellId, { spellId, ...dados, kind });
   }
 
   return mapa;
