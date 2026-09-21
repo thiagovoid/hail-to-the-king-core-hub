@@ -136,9 +136,26 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
  * Os 15 pontos vão pro ofício de cada função, que é onde a pessoa já é
  * cobrada pelo que ela de fato escolheu fazer.
  */
+/**
+ * O TANK TAMBÉM ENTREGA DANO, e desde 21/09/2026 isso pontua.
+ *
+ * Entregar valia zero no tank, e não havia razão: dps de tank importa, ainda
+ * mais num core que precisa de todo dano disponível. Os 17 noites-tank da
+ * temporada têm sim registrado — o dado sempre esteve lá.
+ *
+ * Havia um segundo motivo pra mexer: a régua do tank era a mais fácil da
+ * ficha. Mediana 97 contra 86 do core inteiro, porque Defender sozinho
+ * pesava 60 e o tank cumpre Defender com folga.
+ *
+ * Defender continua dominante (45), porque mitigar é o ofício. Entregar
+ * entra com 15 e meta própria de 57 — ver a descrição de `deliver` no
+ * arquivo da temporada pra por que a meta de dps não serviria.
+ */
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
   dps: { parse: 0, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 0, deliver: 50, preparation: 0 },
-  tank: { parse: 0, mechanics: 30, attack: 10, defense: 60, healing: 0, survival: 0, help: 0, deliver: 0, preparation: 0 },
+  tank: { parse: 0, mechanics: 30, attack: 10, defense: 45, healing: 0, survival: 0, help: 0, deliver: 15, preparation: 0 },
+  // Healer fica em zero por falta de DADO, não por decisão: só 1 das 23
+  // noites-healer da temporada tem sim registrado.
   healer: { parse: 0, mechanics: 30, attack: 5, defense: 10, healing: 55, survival: 0, help: 0, deliver: 0, preparation: 0 },
 };
 

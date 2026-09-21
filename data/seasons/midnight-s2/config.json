@@ -33,11 +33,11 @@
         "target": 28,
         "direction": "higher",
         "porFuncao": {
-          "tank": 45,
+          "tank": 70,
           "healer": 40,
           "dps": 28
         },
-        "description": "Tempo médio em recarga dos cooldowns defensivos. É a única dimensão com meta POR FUNÇÃO, porque a diferença é de kit: na temporada a mediana é 45,4 no tanque, 30 no healer e 18,7 no dps. O tanque usa o critério heroico de Defender da régua de conteúdo (45); healer e dps usam o p75 da própria distribuição. A meta única de 30 era menor que o que o Normal já exige de um tanque."
+        "description": "Tempo médio em recarga dos cooldowns defensivos, e no TANK a média disso com a mitigação normalizada (ver valorDeDefender). É a única dimensão com meta POR FUNÇÃO, porque a diferença é de kit. A meta do tank subiu de 45 pra 70 em 21/09/2026: 45 tinha sido calibrado contra o aproveitamento de cooldown puro, mas o Score alimenta o tank com o valor misturado, que vai de 55,6 a 77,3 na temporada — a meta estava abaixo do mínimo e as 17 noites-tank passavam, 100%, na dimensão de peso 45. 70 dá 41% de aprovação. A escada de prontidão segue em 38/45/55 porque compara contra o cooldown puro: mesmo nome, grandezas diferentes."
       },
       "survival": {
         "target": 10,
@@ -57,7 +57,12 @@
       "deliver": {
         "target": 75,
         "direction": "higher",
-        "description": "Quanto do próprio sim do Raidbots o jogador entregou. Degrau heroico do ofício de dps (ver CRITERIO_DO_OFICIO): 60 é normal, 75 heroico, 88 mítico — calibrado com os sims frescos, em que o melhor da casa alcança 88%. Substituiu Parse na nota porque parse só existe para boss morto, e num grupo em progressão isso media justamente as lutas já dominadas."
+        "description": "Quanto do próprio sim do Raidbots o jogador entregou. Degrau heroico do ofício de dps. Ganhou meta POR FUNÇÃO em 21/09/2026: o sim roda um perfil de dano puro, e o tank joga a mesma luta segurando ameaça e gastando GCD em defensivo — nas 17 noites-tank da temporada o máximo foi 69%, e nenhuma alcançou os 75% da régua de dps. 57 dá 41% de aprovação no tank, em linha com o resto do degrau heroico. Healer fica com peso zero: só 1 das 23 noites-healer tem sim registrado, e meta sem dado não mede ninguém.",
+        "porFuncao": {
+          "tank": 57,
+          "dps": 75,
+          "healer": 75
+        }
       }
     },
     "nextRaid": {
