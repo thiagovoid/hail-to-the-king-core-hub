@@ -144,7 +144,11 @@ const numeros = average
   : [];
 ---
 
-<header class="mb-8 bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+{/* Sem `overflow-hidden`: ele arredondava os cantos e, de quebra, recortava
+    o tooltip de cada número na borda de baixo da moldura — que é justamente
+    onde a caixa abre. Os cantos ficam por conta do `rounded-xl` da faixa de
+    baixo, que é o único filho que encosta neles. */}
+<header class="mb-8 bg-slate-900/60 border border-slate-800 rounded-xl">
   <div class="flex items-center gap-5 p-5">
     {player.avatar && (
       <img
@@ -172,7 +176,7 @@ const numeros = average
 
   {
     numeros.length > 0 && (
-      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 border-t border-slate-800">
+      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 border-t border-slate-800 rounded-b-xl">
         {numeros.map((numero, indice) => (
           <div
             class:list={[
