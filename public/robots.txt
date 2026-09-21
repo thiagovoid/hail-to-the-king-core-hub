@@ -1,0 +1,7 @@
+# A /admin não é segredo de Estado — ela publica só um blob cifrado, e a
+# senha é a chave, não uma checagem que se burla. Mas área de coordenação
+# não tem por que aparecer em busca.
+User-agent: *
+Disallow: /admin
+
+Sitemap: https://hailtotheking.com.br/sitemap-index.xml

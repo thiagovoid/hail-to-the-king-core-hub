@@ -10,9 +10,16 @@ import Footer from '@/components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  /**
+   * Tira a página dos buscadores.
+   *
+   * Existe pra /admin: mesmo publicando só um blob cifrado, área de
+   * coordenação não tem por que aparecer em busca.
+   */
+  semIndexacao?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, semIndexacao = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -24,6 +31,7 @@ const { title, description } = Astro.props;
       name="description"
       content={description ?? 'Hail to the King — guild de World of Warcraft.'}
     />
+    {semIndexacao && <meta name="robots" content="noindex, nofollow" />}
     <title>{title} | Hail to the King</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>

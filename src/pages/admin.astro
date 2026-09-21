@@ -1,0 +1,149 @@
+---
+/**
+ * A área de administração.
+ *
+ * Fora da navegação de propósito: não é página do core, é ferramenta de quem
+ * coordena. E o conteúdo vai CIFRADO — ver `engine/admin/cofre`. Num site
+ * estático não existe servidor pra checar senha, então a senha não verifica
+ * nada: ela decifra. O HTML publicado carrega um blob e mais nada.
+ *
+ * A senha entra pelo build, como secret do GitHub Actions (ADMIN_PASSWORD).
+ * Sem ela, a página publica um aviso e nenhum dado — é o que faz um PR de
+ * quem não tem o secret não vazar a tela inteira em claro.
+ *
+ * Em `npm run dev` o conteúdo aparece sem senha: é localhost, o dado já está
+ * no disco da própria pessoa, e pedir senha ali só atrapalharia o trabalho.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+import roster from '../../data/guild/roster.json';
+import seasonJson from '../../data/seasons/midnight-s2/config.json';
+import { performanceWeeks } from '../../data/weekly/performance/index';
+import { cifrar } from '@/engine/admin/cofre';
+import { buildVisaoMacro } from '@/engine/admin/visaoMacro';
+import { montarPainel } from '@/engine/admin/painel';
+
+const linhas = buildVisaoMacro(
+  performanceWeeks,
+  roster,
+  seasonJson.config.performanceTargets as never
+);
+
+const html = montarPainel({ linhas, roster });
+
+const senha = import.meta.env.ADMIN_PASSWORD ?? process.env.ADMIN_PASSWORD;
+const modoAberto = import.meta.env.DEV;
+
+const cofre = senha && !modoAberto ? await cifrar(senha, html) : null;
+---
+
+<BaseLayout
+  title="Administração"
+  description="Área restrita de coordenação do core."
+  semIndexacao
+>
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    {
+      modoAberto ? (
+        <div class="mb-6 rounded-lg border border-amber-500/30 bg-amber-500/5 px-4 py-3">
+          <p class="text-sm text-amber-400">
+            Modo de desenvolvimento: o conteúdo abaixo está em claro. No site publicado ele vai
+            cifrado e só abre com a senha.
+          </p>
+        </div>
+      ) : cofre === null ? (
+        <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-6">
+          <h1 class="text-xl font-bold text-white">Administração indisponível</h1>
+          <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+            Este build saiu sem o segredo <code class="text-slate-300">ADMIN_PASSWORD</code>, então
+            não há conteúdo cifrado nesta página — e não há conteúdo em claro tampouco. Rode o
+            deploy com o secret configurado.
+          </p>
+        </div>
+      ) : (
+        <div data-cofre={JSON.stringify(cofre)}>
+          <form class="max-w-sm mx-auto mt-16" data-entrada>
+            <h1 class="text-2xl font-bold text-white">Administração</h1>
+            <p class="text-sm text-slate-400 mt-1 mb-6">
+              O conteúdo desta página está cifrado. A senha é a chave — não existe versão em claro
+              pra burlar.
+            </p>
+
+            <label class="block text-xs uppercase tracking-wide text-slate-500 mb-2" for="senha">
+              Senha
+            </label>
+            <input
+              id="senha"
+              name="senha"
+              type="password"
+              autocomplete="current-password"
+              class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white focus:outline-none focus:border-[#f0a500]"
+            />
+
+            <button
+              type="submit"
+              class="mt-4 w-full rounded-lg bg-[#f0a500] px-4 py-2 font-semibold text-slate-950 hover:brightness-110 transition disabled:opacity-50"
+            >
+              Abrir
+            </button>
+
+            <p class="mt-3 text-sm text-red-400 hidden" data-erro role="alert" />
+            <p class="mt-3 text-sm text-slate-500 hidden" data-abrindo>
+              Derivando a chave… isso leva um instante de propósito.
+            </p>
+          </form>
+        </div>
+      )
+    }
+
+    {modoAberto && <Fragment set:html={html} />}
+  </div>
+</BaseLayout>
+
+<script>
+  import { abrir, type CofreCifrado } from '@/engine/admin/cofre';
+
+  const raiz = document.querySelector<HTMLElement>('[data-cofre]');
+  const form = raiz?.querySelector<HTMLFormElement>('[data-entrada]');
+
+  if (raiz && form) {
+    const erro = form.querySelector<HTMLElement>('[data-erro]');
+    const abrindo = form.querySelector<HTMLElement>('[data-abrindo]');
+    const botao = form.querySelector('button');
+
+    form.addEventListener('submit', async (evento) => {
+      evento.preventDefault();
+
+      const senha = new FormData(form).get('senha');
+      if (typeof senha !== 'string' || senha.length === 0) return;
+
+      erro?.classList.add('hidden');
+      abrindo?.classList.remove('hidden');
+      if (botao) botao.disabled = true;
+
+      // 600 mil iterações de PBKDF2 travam a thread por um instante — o
+      // repaint garante que o "Derivando a chave" apareça antes disso.
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+
+      const cofre = JSON.parse(raiz.dataset.cofre ?? '{}') as CofreCifrado;
+      const conteudo = await abrir(senha, cofre);
+
+      abrindo?.classList.add('hidden');
+      if (botao) botao.disabled = false;
+
+      if (conteudo === null) {
+        if (erro) {
+          erro.textContent = 'Senha incorreta.';
+          erro.classList.remove('hidden');
+        }
+        return;
+      }
+
+      // O blob some do DOM junto com o formulário: deixá-lo ali só daria a
+      // quem já entrou uma cópia cifrada pra levar embora.
+      delete raiz.dataset.cofre;
+      raiz.innerHTML = conteudo;
+      raiz.dispatchEvent(new CustomEvent('cofre-aberto', { bubbles: true }));
+    });
+  }
+</script>

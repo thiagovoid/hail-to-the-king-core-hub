@@ -64,8 +64,13 @@ jobs:
       - name: Run tests
         run: npm test
 
+      # ADMIN_PASSWORD cifra o conteúdo da /admin no build — ver
+      # engine/admin/cofre. Sem o secret a página publica um aviso e nenhum
+      # dado, em claro ou cifrado, então esquecer de configurar não vaza nada.
       - name: Build with Astro
         run: npm run build
+        env:
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
