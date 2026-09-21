@@ -102,7 +102,33 @@ const { bosses } = Astro.props;
               <tr class="text-left text-slate-500 text-xs">
                 <th class="px-3 py-3 font-medium">Boss</th>
                 <th class="px-3 py-3 font-medium text-right whitespace-nowrap">Kills / trys</th>
-                <th class="px-3 py-3 font-medium text-right">DPS</th>
+                <th class="px-3 py-3 font-medium text-right">
+                  <span class="inline-flex items-center gap-1.5">
+                    DPS
+                    <InfoTooltip label="O que é este DPS" alinhamento="direita">
+                      <span class="block text-slate-200 text-[11px] font-semibold">
+                        DPS neste encontro
+                      </span>
+
+                      <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+                        Seu dano dividido pelo tempo das trys <em>deste boss</em> — não da noite
+                        inteira. Média de todas as vezes que você o encarou.
+                      </span>
+
+                      {/* A diferença some é confusa: o jogador vê 110k aqui e
+                          97k no cabeçalho e acha que um dos dois mente. */}
+                      <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+                        Costuma ficar <span class="text-slate-300">acima</span> do DPS do cabeçalho,
+                        que divide pela noite toda e por isso carrega o tempo parado entre pulls.
+                      </span>
+
+                      <span class="block text-[11px] text-slate-500 leading-relaxed mt-2">
+                        É dano para todo mundo, inclusive healer e tank. Para eles não é o ofício —
+                        a cura e a mitigação estão no Score, lá em cima.
+                      </span>
+                    </InfoTooltip>
+                  </span>
+                </th>
                 <th class="px-3 py-3 font-medium text-right whitespace-nowrap">Suas mortes</th>
                 <th class="px-2 py-3" />
               </tr>
