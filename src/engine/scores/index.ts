@@ -220,9 +220,9 @@ const DIMENSION_META: Record<
     label: "Mecânicas",
     unit: "erros por try",
     description:
-      "Média de mecânicas DISTINTAS erradas por try — dano evitável tomado, soak perdido. Errar a mesma mecânica cinco vezes na mesma try conta uma: a régua é quantas coisas diferentes deram errado, não quantas pancadas você levou.",
+      "Média de mecânicas DISTINTAS em que você tomou dano por try. Errar a mesma cinco vezes na mesma try conta uma. A meta não é fixa: é a MEDIANA do grupo no mesmo boss na mesma noite, com uma margem — o que interessa é o desvio em relação a quem encarou a mesma luta, não um número que vale igual em noite de progressão e em noite de farm.",
     source:
-      "Wipefest, todas as trys da noite (kill ou wipe). A curadoria deles é que decide o que conta: dano de soak dividido entre o grupo não é erro, tomar uma habilidade que dava pra desviar é.",
+      "Wipefest, todas as trys da noite (kill ou wipe). Atenção ao que ele mede de verdade: 1029 dos 1032 registros da temporada são literalmente \"Damage from X\" — é dano tomado, não erro julgado. Tem mecânica em que tomar dano é o jogo (soak que larga poça no pé, chão que você PRECISA pisar pra limpar), e é por isso que a régua é o grupo: imposto que cai em todo mundo se dissolve sozinho.",
   },
   attack: {
     label: "Atacar",
@@ -376,6 +376,24 @@ export function calculateOverallScore(
   /** A meta de cada dimensão já resolvida pra função desta noite. */
   const alvo = (chave: keyof CorePerformanceTargets) => metaDaFuncao(targets[chave], funcao);
 
+  /**
+   * Mecânicas é a única meta que vem da NOITE, não do arquivo da temporada.
+   *
+   * O Wipefest não mede "você errou", mede "você tomou dano disso" — e tem
+   * mecânica em que tomar dano é o jogo (soak que larga poça no pé, chão que
+   * você PRECISA pisar pra limpar). Uma régua fixa cobra esse imposto de
+   * todo mundo. A mediana do grupo no mesmo boss o dissolve sozinha, sem
+   * curadoria mecânica por mecânica, e continua cobrando de quem come a
+   * mesma coisa muito mais que os colegas.
+   *
+   * Sem a meta da noite (arquivo antigo, noite sem detalhe) cai na fixa: é
+   * pior, mas é a régua que já existia, não um buraco.
+   */
+  const metaDeMecanicas =
+    performance.mechanics?.meta === undefined
+      ? alvo("mechanics")
+      : { ...alvo("mechanics"), target: performance.mechanics.meta };
+
   const dimensions: ScoreDimension[] = [
     {
       key: "parse",
@@ -389,9 +407,9 @@ export function calculateOverallScore(
       key: "mechanics",
       ...DIMENSION_META.mechanics,
       weight: pesos.mechanics,
-      target: alvo("mechanics"),
+      target: metaDeMecanicas,
       value: performance.mechanics?.errors ?? null,
-      score: progress(performance.mechanics?.errors, alvo("mechanics")),
+      score: progress(performance.mechanics?.errors, metaDeMecanicas),
     },
     {
       key: "attack",

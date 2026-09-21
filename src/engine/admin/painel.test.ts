@@ -132,16 +132,17 @@ describe("montarPainel", () => {
     // seguinte ao primeiro ajuste da régua.
     const html = painel();
 
-    expect(html).toContain("1,4");
+    // Mecânicas saiu daqui de propósito: a meta dela agora vem da NOITE, não
+    // do arquivo da temporada. As outras continuam vindo do config.
     expect(html).toContain("dps 75% · healer 75% · tank 57%");
 
     const comOutraMeta = montarPainel({
       linhas: [linha],
       roster: [{ id: "nerlock", name: "Nerlock" }],
-      metas: { ...metas, mechanics: { target: 1.1 } },
+      metas: { ...metas, healing: { target: 77 } },
+      agora: AGORA,
     });
 
-    expect(comOutraMeta).toContain("1,1");
-    expect(comOutraMeta).not.toContain("1,4");
+    expect(comOutraMeta).toContain("77");
   });
 });

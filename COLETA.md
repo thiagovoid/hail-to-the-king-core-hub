@@ -208,3 +208,30 @@ O que a tela recusa, e por quê:
 - **corrente de alt** (A é alt de B, que é alt de C): `mapearPessoas` até
   resolveria subindo até o topo, mas a medalha iria pro C calada, e quem
   escolheu B na tela esperava o B.
+
+## A meta de mecânicas não vem do arquivo da temporada
+
+`performanceTargets.mechanics` continua no config, mas só como **reserva**. A
+meta de verdade é derivada da noite: a mediana do grupo no mesmo boss, vezes
+0,95, com piso de 0,6 erro por try (`src/normalization/metaDeMecanicas.ts`).
+
+Por que não é fixa: o Wipefest mede **dano tomado**, não erro julgado — 1029
+dos 1032 registros da temporada são literalmente "Damage from X". Tem
+mecânica em que tomar dano é o jogo (soak que larga poça no pé, chão que se
+PRECISA pisar pra limpar), e uma régua fixa cobra esse imposto de todo mundo.
+A mediana real do grupo variou de 0,44 a 1,90 entre noites: a fixa de 1,4
+punia progressão e dava 115 de graça em noite limpa.
+
+**Não é coleta, é derivação.** Roda em `data/weekly/performance/index.ts`, que
+é o único ponto por onde site, admin e testes leem as semanas. Vale pras
+noites antigas sem recoletar nada, e não há passo novo na atualização semanal.
+
+Duas armadilhas que já morderam:
+
+- **Parte dos registros do Wipefest vem sem `insightId` na URL.** O boss é
+  resolvido pelo NOME, com um mapa montado da temporada inteira. Montar o
+  mapa por noite deixaria de fora justamente a noite em que o id faltou pra
+  todo mundo — foi o caso do Ula'tek em 03/09 e 10/09, e o efeito era nota
+  mais baixa por defeito de parsing.
+- **Quem esteve no boss e não errou tem que entrar na mediana como zero.**
+  Contando só quem errou, a referência sai alta e a meta afrouxa pra todos.

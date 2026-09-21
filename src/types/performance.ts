@@ -104,6 +104,14 @@ export interface PlayerPerformance {
     errors: number;
     /** Em quantas trys a média foi calculada — deixa o número rastreável. */
     tries?: number;
+    /**
+     * A meta desta noite, tirada da mediana do grupo no mesmo boss.
+     *
+     * Derivada no carregador das semanas (ver `metaDeMecanicas`), não
+     * coletada. Ausente em noite sem `mechanicsDetail`/`bossTries`, e aí o
+     * Score cai na meta fixa do arquivo da temporada.
+     */
+    meta?: number;
   };
 
   /**

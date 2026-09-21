@@ -126,13 +126,19 @@ const COLUNAS = [
     chave: "mechanics",
     rotulo: "Mec",
     titulo: "Mecânicas",
-    explica: (alvo: never) => [
+    explica: () => [
       oQueE(
-        "Quantas mecânicas <strong>distintas</strong> você errou por try, na média da noite. Errar a mesma três vezes conta uma. Fonte: Wipefest."
+        "Em quantas mecânicas <strong>distintas</strong> você tomou dano por try, na média da noite. Errar a mesma três vezes conta uma. Fonte: Wipefest."
       ),
-      formula("meta ÷ erros × 100"),
+      formula("meta = mediana do grupo no mesmo boss × 0,95"),
+      formula("nota = meta ÷ erros × 100"),
       oQueE("A conta se inverte porque aqui menos é melhor."),
-      meta(`no máximo ${metaPorFuncao(alvo)} por try`),
+      oQueE(
+        "A meta <strong>não é fixa</strong>: é o que o grupo fez na mesma luta na mesma noite. O Wipefest mede dano tomado, não erro julgado — e tem mecânica em que tomar dano é o jogo. Imposto que cai em todo mundo se dissolve sozinho; quem come muito mais que os colegas continua aparecendo."
+      ),
+      oQueE(
+        "Piso de 0,6 por try: abaixo disso a noite está boa e não interessa o que os outros fizeram. A meta de cada um vai embaixo da nota."
+      ),
     ],
   },
   {
@@ -251,7 +257,9 @@ function tabelaDoMacro(
         const contexto =
           coluna.chave === "healing" && l.coberturaDeCura !== null
             ? `<span class="block text-[10px] text-slate-600 font-normal">${numero(l.coberturaDeCura)}% do dano</span>`
-            : "";
+            : coluna.chave === "mechanics" && l.metaDeMecanicas !== null
+              ? `<span class="block text-[10px] text-slate-600 font-normal">meta ${numero(l.metaDeMecanicas)}</span>`
+              : "";
 
         return `<td class="px-2 py-3 text-right tabular-nums ${corDaNota(d.nota)}">${marca}${Math.round(d.nota)}${contexto}</td>`;
       }).join("");

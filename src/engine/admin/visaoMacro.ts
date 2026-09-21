@@ -49,6 +49,13 @@ export interface LinhaDoMacro {
    * parece piora.
    */
   coberturaDeCura: number | null;
+  /**
+   * A meta de mecânicas desta noite — que não é fixa, é a do grupo.
+   *
+   * Anda junto da nota pelo mesmo motivo da cobertura de cura: sem ela,
+   * "78 em mecânicas" não diz se a pessoa foi mal ou se a noite foi dura.
+   */
+  metaDeMecanicas: number | null;
   score: number | null;
   /** Média das noites da temporada — diz se a última foi típica ou ponto fora. */
   scoreMedio: number | null;
@@ -121,6 +128,7 @@ export function buildVisaoMacro(
       personagemDaUltimaNoite: ultima.playerId,
       simCalculadoEm: porId.get(ultima.playerId)?.performanceGoals?.dps?.calculatedAt ?? null,
       coberturaDeCura: ultima.healing?.coverage ?? null,
+      metaDeMecanicas: ultima.mechanics?.meta ?? null,
       score: score.overall,
       scoreMedio:
         medias.length === 0 ? null : Math.round(medias.reduce((s, v) => s + v, 0) / medias.length),
