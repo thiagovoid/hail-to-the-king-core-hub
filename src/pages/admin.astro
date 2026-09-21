@@ -29,7 +29,13 @@ const linhas = buildVisaoMacro(
   seasonJson.config.performanceTargets as never
 );
 
-const html = montarPainel({ linhas, roster });
+const html = montarPainel({
+  linhas,
+  roster,
+  // As metas vêm do arquivo da temporada, não escritas à mão no tooltip: é
+  // pra calibrar que ele existe, e um número fixo mentiria no dia seguinte.
+  metas: seasonJson.config.performanceTargets as never,
+});
 
 const senha = import.meta.env.ADMIN_PASSWORD ?? process.env.ADMIN_PASSWORD;
 const modoAberto = import.meta.env.DEV;
