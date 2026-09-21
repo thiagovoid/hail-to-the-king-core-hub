@@ -154,8 +154,18 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
   dps: { parse: 0, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 0, deliver: 50, preparation: 0 },
   tank: { parse: 0, mechanics: 30, attack: 10, defense: 45, healing: 0, survival: 0, help: 0, deliver: 15, preparation: 0 },
-  // Healer fica em zero por falta de DADO, não por decisão: só 1 das 23
-  // noites-healer da temporada tem sim registrado.
+  // Entregar fica em zero pro healer por DECISÃO, não por falta de dado.
+  //
+  // Dá pra simular um healer — o Quick Sim da Armory aceita e devolve número.
+  // Só que ele mede a spec de DANO do personagem: o alvo do Kams saiu 107954,
+  // que é Retribution, não Holy. Seria régua de um jogo que ele não jogou.
+  //
+  // E não falta nada: quem mede a entrega do healer é Curar, e está na forma
+  // certa. HPS é movido pela DEMANDA — ninguém cura mais do que o raide
+  // apanha, e numa noite limpa o healer cura menos porque foi bem. Por isso
+  // Curar não é um absoluto, é quanto do dano do raide passou pelas mãos dele
+  // (ver buildHealing). Ligar esta dimensão aqui não somaria informação:
+  // acrescentaria ruído com peso.
   healer: { parse: 0, mechanics: 30, attack: 5, defense: 10, healing: 55, survival: 0, help: 0, deliver: 0, preparation: 0 },
 };
 

@@ -41,11 +41,40 @@ function parseArgs() {
 async function main() {
   const { only, headed } = parseArgs();
   const roster = await loadRoster();
-  const targets = only ? roster.filter((player) => only.includes(player.id)) : roster;
+
+  // Healer fica de fora da rodada automática.
+  //
+  // O Quick Sim da Armory mede a spec de DANO do personagem — o alvo do Kams
+  // saiu 107954, que é número de Retribution, não de Holy. É régua de um jogo
+  // que ele não jogou na noite, e nada consome: Entregar tem peso zero pra
+  // healer, porque quem mede a entrega dele é Curar (ver buildHealing).
+  //
+  // O corte é pelo CADASTRO, não pela função da noite: a Ligiaf é Shadow e
+  // curou numa necessidade da noite: cortar por função efetiva tiraria dela a
+  // régua que ela usa quando joga do próprio jeito.
+  //
+  // Pedir explicitamente com --only continua funcionando, pro dia em que um
+  // healer virar dps de verdade.
+  const elegiveis = only
+    ? roster.filter((player) => only.includes(player.id))
+    : roster.filter((player) => player.role !== "healer");
+
+  const pulados = only ? [] : roster.filter((player) => player.role === "healer");
+  const targets = elegiveis;
 
   if (targets.length === 0) {
     console.log("Nenhum jogador encontrado para simular.");
     return;
+  }
+
+  if (pulados.length > 0) {
+    console.log(
+      `Pulando ${pulados.length} healer(s) — o Quick Sim mede a spec de dano, e Entregar não pontua pra healer: ${pulados
+        .map((player) => player.name)
+        .join(", ")}`
+    );
+    console.log("Pra simular um deles assim mesmo: --only=id1,id2
+");
   }
 
   console.log(`Rodando Quick Sim (Raidbots) para ${targets.length} jogador(es), um de cada vez...`);
