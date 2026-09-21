@@ -32,7 +32,16 @@ export interface Slide {
     | "pancada"
     | "ranking"
     | "evolucao"
+    | "resumo"
     | "fechamento";
+  /**
+   * Só no `resumo`: a temporada inteira numa imagem.
+   *
+   * Existe pra quem quer postar uma coisa só, sem carrossel — foi pedido do
+   * core. Cada item é um par rótulo/valor, e o layout deles é lista, não
+   * número gigante.
+   */
+  itens?: Array<{ rotulo: string; valor: string }>;
   /** A linha pequena de cima, que prepara o número. */
   chapeu: string;
   /** O número ou nome que é o assunto do slide. */
@@ -289,6 +298,52 @@ export function buildRetrospectiva(
         ? `Item level ${inicial} → ${atual}. Nos vemos terça.`
         : "Nos vemos terça.",
   });
+
+  /**
+   * O resumo fecha a sequência: a temporada inteira numa imagem só.
+   *
+   * Pedido do core, e a razão é prática — quem não quer montar carrossel
+   * posta essa e acabou. Vem DEPOIS do fechamento de propósito: ela é
+   * material pra compartilhar, não o desfecho da narrativa.
+   *
+   * Monta-se a partir dos slides que já existem, em vez de recalcular: o que
+   * não coube na história também não cabe no resumo, e derivar dos mesmos
+   * números impede que as duas telas discordem.
+   */
+  const doTipo = (tipo: Slide["tipo"]) => slides.find((s) => s.tipo === tipo);
+  const pegar = (chapeuComeca: string) =>
+    slides.find((s) => s.chapeu.toLowerCase().startsWith(chapeuComeca.toLowerCase()));
+
+  const itens: Array<{ rotulo: string; valor: string }> = [];
+  const juntar = (rotulo: string, slide?: Slide) => {
+    if (!slide) return;
+    itens.push({
+      rotulo,
+      valor: slide.unidade ? `${slide.destaque} ${slide.unidade}` : slide.destaque,
+    });
+  };
+
+  juntar("Trys encaradas", pegar("Você encarou"));
+  juntar("Bosses derrubados", { ...slides[0], destaque: String(kills) } as Slide);
+  juntar("Botão favorito", pegar("Seu botão favorito"));
+  juntar("Nêmesis", doTipo("nemesis"));
+  juntar("Maior porrada levada", doTipo("pancada"));
+  juntar("Boss mais teimoso", pegar("O boss que não"));
+  juntar("Tempo sem você", pegar("O raide seguiu"));
+  juntar("Kills sem cair", pegar("Kills em que"));
+  juntar("Dispels", doTipo("ranking"));
+  juntar("Melhor noite", pegar("Sua melhor noite"));
+  juntar("Evolução", doTipo("evolucao"));
+
+  if (itens.length >= 4) {
+    slides.push({
+      tipo: "resumo",
+      chapeu: temporada,
+      destaque: nome,
+      itens,
+      rodape: "A temporada inteira numa imagem só.",
+    });
+  }
 
   return { id: playerId, nome, temporada, slides };
 }
