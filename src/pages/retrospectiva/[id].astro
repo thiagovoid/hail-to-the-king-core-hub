@@ -1,0 +1,338 @@
+---
+/**
+ * A retrospectiva da temporada, no formato de stories.
+ *
+ * Fora da navegação: chega-se por link, da /admin ou de quem compartilhou.
+ * `noindex` porque é celebração pessoal, não conteúdo de busca.
+ *
+ * Os slides são SVG de 1080x1920 gerados no build. O mesmo elemento que
+ * aparece na tela é o que vira PNG no download — serializa, desenha num
+ * canvas, exporta. Sem biblioteca de captura: o navegador já faz.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+import roster from '../../../data/guild/roster.json';
+import seasonJson from '../../../data/seasons/midnight-s2/config.json';
+import { performanceWeeks } from '../../../data/weekly/performance/index';
+import { buildRetrospectiva } from '@/engine/admin/retrospectiva';
+import { slideParaSvg } from '@/engine/admin/slideSvg';
+import { mapearPessoas, type PersonagemDoRoster } from '@/engine/guild/pessoas';
+import { getPlayerHistory } from '@/engine/metrics';
+
+/**
+ * O import de JSON infere `type: string`, e `PersonagemDoRoster` quer a união
+ * "main" | "alt" | "replace". O arquivo respeita a união; é o inferidor que
+ * não sabe disso. Um cast só, aqui, em vez de espalhar pelas chamadas.
+ */
+const elenco = roster as unknown as PersonagemDoRoster[];
+
+export function getStaticPaths() {
+  const pessoas = mapearPessoas(roster as unknown as PersonagemDoRoster[]);
+
+  // Uma página por PESSOA, não por personagem: a temporada do Voidsurge
+  // inclui o que ele fez de Voidwar, e duas páginas dividiriam a história
+  // dele em duas metades.
+  return roster
+    .filter((jogador) => (pessoas.get(jogador.id) ?? jogador.id) === jogador.id)
+    .map((jogador) => ({
+      params: { id: jogador.id },
+      props: {
+        jogador,
+        personagens: roster
+          .filter((outro) => (pessoas.get(outro.id) ?? outro.id) === jogador.id)
+          .map((outro) => outro.id),
+      },
+    }));
+}
+
+const { jogador, personagens } = Astro.props;
+
+const nomeDoBoss = new Map<number, string>(
+  [...seasonJson.bossesNormal, ...seasonJson.bossesHeroic].map((boss) => [
+    boss.encounterID,
+    boss.name,
+  ])
+);
+
+/**
+ * O core inteiro, pro ranking dos slides de comparação.
+ *
+ * Comparar entra aqui de propósito, ao contrário da página pública: numa
+ * retrospectiva o "2º do core" é o coração do formato. Decisão registrada.
+ */
+const pessoas = mapearPessoas(elenco);
+const coreInteiro = new Map<string, { dispels: number; interrupts: number; bossKills: number }>();
+for (const outro of elenco) {
+  const dono = pessoas.get(outro.id) ?? outro.id;
+  const atual = coreInteiro.get(dono) ?? { dispels: 0, interrupts: 0, bossKills: 0 };
+  for (const noite of getPlayerHistory(performanceWeeks, outro.id)) {
+    atual.dispels += noite.utility?.dispels ?? 0;
+    atual.interrupts += noite.utility?.interrupts ?? 0;
+    atual.bossKills += noite.bossKills?.length ?? 0;
+  }
+  coreInteiro.set(dono, atual);
+}
+
+const retro = buildRetrospectiva(
+  jogador.id,
+  personagens,
+  jogador.name,
+  jogador.role as never,
+  performanceWeeks,
+  seasonJson.config.performanceTargets as never,
+  nomeDoBoss,
+  seasonJson.config.currentSeason ?? 'Midnight S2',
+  coreInteiro
+);
+
+const svgs = (retro?.slides ?? []).map((slide, indice) =>
+  slideParaSvg(slide, indice, retro!.slides.length)
+);
+---
+
+<BaseLayout
+  title={`Retrospectiva de ${jogador.name}`}
+  description={`A temporada de ${jogador.name} no Hail to the King.`}
+  semIndexacao
+>
+  <div class="min-h-[80vh] flex items-center justify-center px-4 py-8">
+    {
+      retro === null ? (
+        <p class="text-slate-400">
+          {jogador.name} ainda não tem noites registradas nesta temporada.
+        </p>
+      ) : (
+        <div class="w-full max-w-[420px]" data-stories data-nome={jogador.id}>
+          {/* As barrinhas do topo, uma por slide — a gramática que todo mundo
+              já conhece de story. */}
+          <div class="flex gap-1 mb-3" data-barras>
+            {svgs.map(() => (
+              <div class="h-0.5 flex-1 rounded-full bg-white/15 overflow-hidden">
+                <div class="h-full w-0 bg-white/80" data-progresso />
+              </div>
+            ))}
+          </div>
+
+          <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-[#0b1020]">
+            {svgs.map((svg, indice) => (
+              <div
+                class:list={['w-full', indice > 0 && 'hidden']}
+                data-slide={indice}
+                set:html={svg}
+              />
+            ))}
+
+            {/* As metades invisíveis de toque, igual story: esquerda volta,
+                direita avança. */}
+            <button
+              type="button"
+              class="absolute inset-y-0 left-0 w-1/3 cursor-default"
+              data-voltar
+              aria-label="Slide anterior"
+            />
+            <button
+              type="button"
+              class="absolute inset-y-0 right-0 w-1/3 cursor-default"
+              data-avancar
+              aria-label="Próximo slide"
+            />
+          </div>
+
+          <div class="flex items-center justify-between gap-3 mt-4">
+            <button
+              type="button"
+              class="text-xs text-slate-400 hover:text-white transition-colors"
+              data-pausar
+            >
+              Pausar
+            </button>
+
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="rounded-lg border border-slate-700 px-3 py-2 text-xs text-slate-300 hover:border-[#f0a500] hover:text-[#f0a500] transition-colors"
+                data-baixar-um
+              >
+                Baixar este
+              </button>
+              <button
+                type="button"
+                class="rounded-lg bg-[#f0a500] px-3 py-2 text-xs font-semibold text-slate-950 hover:brightness-110 transition"
+                data-baixar-todos
+              >
+                Baixar todos
+              </button>
+            </div>
+          </div>
+
+          <p class="mt-3 text-[11px] text-slate-600 text-center" data-aviso>
+            Toque nas laterais pra navegar. As imagens saem em 1080×1920, prontas pra story.
+          </p>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<script>
+  const raiz = document.querySelector<HTMLElement>('[data-stories]');
+
+  if (raiz) {
+    const slides = [...raiz.querySelectorAll<HTMLElement>('[data-slide]')];
+    const barras = [...raiz.querySelectorAll<HTMLElement>('[data-progresso]')];
+    const aviso = raiz.querySelector<HTMLElement>('[data-aviso]');
+    const botaoPausar = raiz.querySelector<HTMLButtonElement>('[data-pausar]');
+
+    /** Quanto cada slide fica na tela. O suficiente pra ler o rodapé. */
+    const DURACAO_MS = 5_000;
+
+    let atual = 0;
+    let pausado = false;
+    let inicio = performance.now();
+    let animacao = 0;
+
+    const mostrar = (indice: number) => {
+      atual = (indice + slides.length) % slides.length;
+      for (const [i, slide] of slides.entries()) slide.classList.toggle('hidden', i !== atual);
+
+      // A barra do slide ATUAL zera junto: ela vai ser preenchida do começo
+      // outra vez. Sem isso, voltar um slide mostrava a barra dele cheia,
+      // como se ele já tivesse passado.
+      for (const [i, barra] of barras.entries()) {
+        barra.style.width = i < atual ? '100%' : '0%';
+      }
+
+      inicio = performance.now();
+    };
+
+    const passo = (agora: number) => {
+      if (!pausado) {
+        const decorrido = agora - inicio;
+        const fracao = Math.min(1, decorrido / DURACAO_MS);
+        if (barras[atual]) barras[atual].style.width = `${fracao * 100}%`;
+
+        // Para no último em vez de voltar ao começo: reiniciar sozinho faria
+        // quem está lendo o fechamento perder o lugar.
+        if (fracao >= 1) {
+          if (atual < slides.length - 1) mostrar(atual + 1);
+          else {
+            pausado = true;
+            if (botaoPausar) botaoPausar.textContent = 'Ver de novo';
+          }
+        }
+      }
+      animacao = requestAnimationFrame(passo);
+    };
+
+    raiz.querySelector('[data-avancar]')?.addEventListener('click', () => mostrar(atual + 1));
+    raiz.querySelector('[data-voltar]')?.addEventListener('click', () => mostrar(atual - 1));
+
+    botaoPausar?.addEventListener('click', () => {
+      if (pausado && atual === slides.length - 1) {
+        mostrar(0);
+        for (const barra of barras) barra.style.width = '0%';
+        pausado = false;
+        botaoPausar.textContent = 'Pausar';
+        return;
+      }
+      pausado = !pausado;
+      if (!pausado) inicio = performance.now() - (parseFloat(barras[atual]?.style.width ?? '0') / 100) * DURACAO_MS;
+      botaoPausar.textContent = pausado ? 'Continuar' : 'Pausar';
+    });
+
+    document.addEventListener('keydown', (evento) => {
+      if (evento.key === 'ArrowRight') mostrar(atual + 1);
+      if (evento.key === 'ArrowLeft') mostrar(atual - 1);
+    });
+
+    /**
+     * Voltar pra aba recomeça o slide atual, não pula a story inteira.
+     *
+     * `requestAnimationFrame` não roda com a aba escondida — de propósito,
+     * e é o que faz a story pausar sozinha, igual ao Instagram. Mas o
+     * relógio de `inicio` continua correndo: sem este reset, quem abrisse o
+     * link numa aba de fundo e voltasse dois minutos depois cairia direto no
+     * último slide, com todas as barras cheias.
+     */
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') inicio = performance.now();
+    });
+
+    animacao = requestAnimationFrame(passo);
+    window.addEventListener('pagehide', () => cancelAnimationFrame(animacao));
+
+    /**
+     * O SVG vira PNG pelo próprio navegador.
+     *
+     * O `<img>` com o SVG serializado em data URL desenha no canvas sem
+     * sujar a origem — é o que permite o `toBlob` funcionar. Com `blob:` o
+     * Safari marca o canvas como contaminado e o download falha calado.
+     */
+    const paraPng = (svg: SVGElement): Promise<Blob | null> =>
+      new Promise((resolve) => {
+        const texto = new XMLSerializer().serializeToString(svg);
+        const imagem = new Image();
+
+        imagem.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 1080;
+          canvas.height = 1920;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return resolve(null);
+          ctx.drawImage(imagem, 0, 0, 1080, 1920);
+          canvas.toBlob(resolve, 'image/png');
+        };
+        imagem.onerror = () => resolve(null);
+        imagem.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(texto)}`;
+      });
+
+    const baixar = (blob: Blob, nome: string) => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = nome;
+      link.click();
+      URL.revokeObjectURL(url);
+    };
+
+    const quem = raiz.dataset.nome ?? 'retrospectiva';
+
+    const exportar = async (indices: number[]) => {
+      if (aviso) aviso.textContent = 'Gerando as imagens…';
+
+      for (const indice of indices) {
+        const svg = slides[indice]?.querySelector('svg');
+        if (!svg) continue;
+        const png = await paraPng(svg);
+        if (png) baixar(png, `${quem}-${String(indice + 1).padStart(2, '0')}.png`);
+        // Um respiro entre downloads: o Chrome engole os seguintes quando
+        // vários disparam no mesmo tique.
+        await new Promise((resolve) => setTimeout(resolve, 250));
+      }
+
+      if (aviso) aviso.textContent = 'Pronto. Confira a pasta de downloads.';
+    };
+
+    raiz.querySelector('[data-baixar-um]')?.addEventListener('click', () => exportar([atual]));
+    raiz
+      .querySelector('[data-baixar-todos]')
+      ?.addEventListener('click', () => exportar(slides.map((_, i) => i)));
+  }
+</script>
+
+<style is:global>
+  /**
+   * `is:global` e não escopado: o SVG entra por `set:html`, então não recebe
+   * o atributo de escopo que o Astro adiciona aos elementos do template — e
+   * um seletor escopado simplesmente não casa com ele.
+   *
+   * O SVG mantém width/height de 1080x1920 porque o EXPORT precisa do
+   * tamanho intrínseco: sem ele, o `<img>` que alimenta o canvas assume o
+   * padrão de 300x150 e o PNG sai minúsculo. Na tela quem escala é o CSS.
+   */
+  [data-slide] svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

@@ -82,6 +82,7 @@ function tabelaDoMacro(linhas: LinhaDoMacro[]): string {
       return `<tr class="border-b border-slate-800/50 hover:bg-white/[0.02]">
   <td class="px-3 py-3">
     <a href="/core/membros/${esc(l.id)}/" class="text-white hover:text-[#f0a500]">${esc(l.nome)}</a>
+    <a href="/retrospectiva/${esc(l.id)}/" class="ml-2 text-[10px] text-slate-500 hover:text-[#f0a500]" title="Retrospectiva da temporada, em formato de story">retrô</a>
     ${alts}
   </td>
   <td class="px-2 py-3 text-slate-500 text-xs">${ROTULO_DA_FUNCAO[l.funcao] ?? l.funcao}</td>
