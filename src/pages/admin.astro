@@ -22,6 +22,7 @@ import { performanceWeeks } from '../../data/weekly/performance/index';
 import { cifrar } from '@/engine/admin/cofre';
 import { buildVisaoMacro } from '@/engine/admin/visaoMacro';
 import { montarPainel } from '@/engine/admin/painel';
+import { montarPainelDeAlts } from '@/engine/admin/painelDeAlts';
 
 const linhas = buildVisaoMacro(
   performanceWeeks,
@@ -29,13 +30,14 @@ const linhas = buildVisaoMacro(
   seasonJson.config.performanceTargets as never
 );
 
-const html = montarPainel({
-  linhas,
-  roster,
-  // As metas vêm do arquivo da temporada, não escritas à mão no tooltip: é
-  // pra calibrar que ele existe, e um número fixo mentiria no dia seguinte.
-  metas: seasonJson.config.performanceTargets as never,
-});
+const html =
+  montarPainel({
+    linhas,
+    roster,
+    // As metas vêm do arquivo da temporada, não escritas à mão no tooltip: é
+    // pra calibrar que ele existe, e um número fixo mentiria no dia seguinte.
+    metas: seasonJson.config.performanceTargets as never,
+  }) + montarPainelDeAlts(roster as never);
 
 const senha = import.meta.env.ADMIN_PASSWORD ?? process.env.ADMIN_PASSWORD;
 const modoAberto = import.meta.env.DEV;
@@ -108,6 +110,129 @@ const cofre = senha && !modoAberto ? await cifrar(senha, html) : null;
 
 <script>
   import { abrir, type CofreCifrado } from '@/engine/admin/cofre';
+  import {
+    mudancasDe,
+    validarVinculos,
+    type PersonagemParaVincular,
+    type Vinculos,
+  } from '@/engine/admin/vinculos';
+
+  /**
+   * A tela de vínculo de alts, ligada depois que o conteúdo aparece.
+   *
+   * Aqui em claro e não dentro do painel porque script que entra por
+   * `innerHTML` não executa. O que é segredo são os NOMES, e eles continuam
+   * dentro do blob — este arquivo só sabe mexer em `<select>`.
+   */
+  function ligarAlts(raiz: ParentNode) {
+    const area = raiz.querySelector<HTMLElement>('[data-alts]');
+    if (!area) return;
+
+    const selects = [...area.querySelectorAll<HTMLSelectElement>('select[data-vinculo]')];
+    const baixar = area.querySelector<HTMLButtonElement>('[data-alts-baixar]');
+    const desfazer = area.querySelector<HTMLButtonElement>('[data-alts-desfazer]');
+    const caixaDeProblemas = area.querySelector<HTMLElement>('[data-alts-problemas]');
+    const listaDeProblemas = area.querySelector<HTMLElement>('[data-alts-lista-problemas]');
+    const listaDeMudancas = area.querySelector<HTMLElement>('[data-alts-mudancas]');
+
+    // O roster remontado dos próprios selects: o vínculo de origem é a opção
+    // que veio `selected`, que o DOM guarda mesmo depois de escolherem outra.
+    const roster: PersonagemParaVincular[] = selects.map((select) => {
+      const original = [...select.options].find((opcao) => opcao.defaultSelected);
+      return {
+        id: select.dataset.vinculo!,
+        name: select.dataset.nome!,
+        type: (select.dataset.tipo ?? 'main') as PersonagemParaVincular['type'],
+        pertenceA: original?.value || null,
+      };
+    });
+
+    const original = new Map(roster.map((p) => [p.id, p.pertenceA]));
+
+    const propostaAtual = (): Vinculos => {
+      const vinculos: Vinculos = {};
+      for (const select of selects) {
+        const id = select.dataset.vinculo!;
+        const escolhido = select.value || null;
+        if (escolhido !== original.get(id)) vinculos[id] = escolhido;
+      }
+      return vinculos;
+    };
+
+    const redesenhar = () => {
+      const vinculos = propostaAtual();
+      const problemas = validarVinculos(roster, vinculos);
+      const mudancas = problemas.length === 0 ? mudancasDe(roster, vinculos) : [];
+
+      if (caixaDeProblemas && listaDeProblemas) {
+        listaDeProblemas.innerHTML = '';
+        for (const problema of problemas) {
+          const item = document.createElement('li');
+          item.textContent = problema.motivo;
+          listaDeProblemas.append(item);
+        }
+        caixaDeProblemas.classList.toggle('hidden', problemas.length === 0);
+      }
+
+      if (listaDeMudancas) {
+        listaDeMudancas.innerHTML = '';
+        if (mudancas.length === 0) {
+          const item = document.createElement('li');
+          item.className = 'text-slate-600';
+          item.textContent = problemas.length > 0 ? 'Resolva o acima primeiro.' : 'Nada ainda.';
+          listaDeMudancas.append(item);
+        }
+        for (const mudanca of mudancas) {
+          const item = document.createElement('li');
+          item.textContent = `${mudanca.name}: ${mudanca.de ?? 'main'} → ${mudanca.para ?? 'main'}`;
+          listaDeMudancas.append(item);
+        }
+      }
+
+      // A situação de cada linha, pra quem procura um personagem específico
+      // não ter que caçar na lista de mudanças.
+      for (const select of selects) {
+        const id = select.dataset.vinculo!;
+        const celula = area.querySelector<HTMLElement>(`[data-vinculo-estado="${id}"]`);
+        if (!celula) continue;
+
+        const mudou = id in propostaAtual();
+        celula.textContent = mudou ? 'alterado' : '';
+        celula.className = `px-3 py-2 text-xs ${mudou ? 'text-amber-400' : 'text-slate-600'}`;
+      }
+
+      if (baixar) baixar.disabled = mudancas.length === 0 || problemas.length > 0;
+    };
+
+    for (const select of selects) select.addEventListener('change', redesenhar);
+
+    desfazer?.addEventListener('click', () => {
+      for (const select of selects) select.value = original.get(select.dataset.vinculo!) ?? '';
+      redesenhar();
+    });
+
+    baixar?.addEventListener('click', () => {
+      const blob = new Blob([`${JSON.stringify(propostaAtual(), null, 2)}
+`], {
+        type: 'application/json',
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'vinculos.json';
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+
+    redesenhar();
+  }
+
+  // Em dev o conteúdo já está na página; no site publicado ele só existe
+  // depois que a senha abre o cofre.
+  ligarAlts(document);
+  document.addEventListener('cofre-aberto', (evento) => {
+    ligarAlts(evento.target as ParentNode);
+  });
 
   const raiz = document.querySelector<HTMLElement>('[data-cofre]');
   const form = raiz?.querySelector<HTMLFormElement>('[data-entrada]');

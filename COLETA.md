@@ -181,3 +181,30 @@ porque escrevem em arquivos próprios:
 | `wipefest:fetch-boss-insights` | `boss-insights.json` | por tier |
 
 Os `wcl:inspect-*` são ferramentas de diagnóstico: leem, nunca escrevem.
+
+## O dado que nenhuma coleta descobre: quem é alt de quem
+
+A WCL vê dois personagens e não vê que atrás dos dois tem a mesma pessoa.
+`type` e `pertenceA` no `roster.json` são os únicos campos escritos à mão — e
+sobrevivem às coletas porque `wcl:sync-roster-stats` e `raidbots:update-goals`
+espalham o personagem (`...player`) em vez de remontá-lo.
+
+O caminho é pela tela, não pelo editor:
+
+1. `/admin` → **Vínculo de alts** → escolher o main de cada personagem.
+2. **Baixar vinculos.json** (só habilita quando há mudança válida).
+3. `npm run roster:alts -- caminho/do/vinculos.json`
+4. `git diff data/guild/roster.json` — tem que mexer **só** em `type` e
+   `pertenceA`. Se mexeu em parse, io ou presença, algo saiu errado.
+
+O arquivo baixado **não é o roster**: são só os vínculos. É de propósito. O
+script lê o `roster.json` do disco na hora de gravar, então uma coleta que
+rodou entre o download e o comando não é desfeita — o que aconteceria se a
+tela mandasse de volta o roster inteiro da hora do build.
+
+O que a tela recusa, e por quê:
+
+- **alt de si mesmo** — não precisa de explicação.
+- **corrente de alt** (A é alt de B, que é alt de C): `mapearPessoas` até
+  resolveria subindo até o topo, mas a medalha iria pro C calada, e quem
+  escolheu B na tela esperava o B.

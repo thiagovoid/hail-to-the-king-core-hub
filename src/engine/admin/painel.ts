@@ -8,19 +8,8 @@
  * O preço é escrever HTML na mão. Em troca, nada do que está aqui aparece no
  * "ver código-fonte" de quem não tem a senha.
  */
+import { esc } from "./html";
 import type { LinhaDoMacro } from "./visaoMacro";
-
-/**
- * Escapa o que vai pro HTML.
- *
- * Nome de personagem vem do roster, que é nosso — mas o painel monta string
- * crua e é injetado com `innerHTML`. Escapar é o hábito que impede que um
- * apóstrofo em "Apocalïpse" ou um nome com `<` quebre a página calado.
- */
-const esc = (texto: string): string =>
-  texto.replace(/[&<>"']/g, (c) =>
-    c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : c === '"' ? "&quot;" : "&#39;"
-  );
 
 const corDaNota = (nota: number | null): string =>
   nota === null
