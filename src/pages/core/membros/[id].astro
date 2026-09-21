@@ -629,6 +629,12 @@ const attendance = calculateAttendance(weeks, [
       average={hasData ? seasonAverage : null}
       presenca={hasData ? attendance : null}
       tendencia={hasData ? trend : null}
+      porBoss={bossABoss.map((boss) => ({
+        nome: boss.nome,
+        dificuldade: boss.dificuldade,
+        kills: boss.kills,
+        deaths: boss.deaths,
+      }))}
     />
 
     {!hasData && (

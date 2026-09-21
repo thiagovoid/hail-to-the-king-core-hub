@@ -11,13 +11,16 @@
  * só, do jeito que uma ficha de personagem mostra atributo — legíveis de
  * relance, sem competir com a nota que vem logo abaixo.
  *
- * A explicação de cada número não some: vira o `title` de cada um, porque o
+ * A explicação de cada número não some: vira o tooltip do rótulo, porque o
  * texto que antes ocupava um parágrafo fixo só interessa a quem duvidou
- * daquele número específico.
+ * daquele número específico. Bosses e Mortes abrem a lista encontro a
+ * encontro — o total sozinho não diz se foram vinte e três encontros ou o
+ * mesmo Altar oito vezes, nem onde treinar.
  */
 import { formatPerformanceValue } from '@/engine/metrics';
 import type { PlayerSeasonAverage } from '@/engine/metrics';
 import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
+import InfoTooltip from '@/components/InfoTooltip.astro';
 
 interface Props {
   player: { name: string; avatar: string | null; class: string; spec: string; role: string };
@@ -28,9 +31,21 @@ interface Props {
   presenca: number | null;
   /** Subida ou queda do dps/hps ao longo das noites, em %. */
   tendencia: number | null;
+  /**
+   * O detalhe por trás de "Bosses" e "Mortes": encontro a encontro.
+   *
+   * Sem ele os dois números são só totais. "23 bosses" não diz se foram
+   * vinte e três encontros diferentes ou o mesmo Altar oito vezes, e "62
+   * mortes" não diz onde treinar.
+   */
+  porBoss?: Array<{ nome: string; dificuldade: string; kills: number; deaths: number }>;
 }
 
-const { player, score, average, presenca, tendencia } = Astro.props;
+const { player, score, average, presenca, tendencia, porBoss = [] } = Astro.props;
+
+/** Só os encontros onde o número existe — zero não ensina nada numa lista. */
+const killsPorBoss = porBoss.filter((boss) => boss.kills > 0).sort((a, b) => b.kills - a.kills);
+const mortesPorBoss = porBoss.filter((boss) => boss.deaths > 0).sort((a, b) => b.deaths - a.deaths);
 
 /**
  * Abaixo de 5% pra qualquer lado é ruído de boss e de composição, não
@@ -70,12 +85,25 @@ const numeros = average
       {
         rotulo: 'Bosses',
         valor: String(average.bossesMortos),
-        explica: 'Kills com você presente na try, contando repetição: três clears do mesmo boss contam três.',
+        explica:
+          'Kills com você presente na try, contando repetição: três clears do mesmo boss contam três.',
+        lista: killsPorBoss.map((boss) => ({
+          nome: boss.nome,
+          dificuldade: boss.dificuldade,
+          quantos: boss.kills,
+        })),
+        listaVazia: 'Nenhum boss caiu com você presente ainda.',
       },
       {
         rotulo: 'Mortes',
         valor: String(average.mortesNaSeason),
         explica: 'Total da temporada, não média por noite. A média por try fica no Score.',
+        lista: mortesPorBoss.map((boss) => ({
+          nome: boss.nome,
+          dificuldade: boss.dificuldade,
+          quantos: boss.deaths,
+        })),
+        listaVazia: 'Você não caiu uma vez na temporada.',
       },
       average.mechanics !== undefined
         ? {
@@ -104,7 +132,12 @@ const numeros = average
             valor: `${tendencia > 0 ? '+' : ''}${tendencia}%`,
             cor: corDaTendencia,
             explica:
-              'Subida ou queda do seu dps/hps ao longo de todas as noites. É uma reta, não dois pontos comparados: uma noite ruim isolada não derruba, várias seguidas sim. Compara você com você mesmo.',
+              'Subida ou queda do seu dps/hps ao longo de todas as noites. É uma reta, não dois pontos comparados: uma noite ruim isolada não derruba, várias seguidas sim. Compara você com você mesmo, nunca com o resto do core.',
+            paragrafos: [
+              'Subida ou queda do seu dps/hps ao longo de todas as runs.',
+              'Por ser uma reta, e não dois pontos comparados, uma noite ruim isolada não derruba o número — mas várias seguidas, sim.',
+              'Compara você com você mesmo, nunca com o resto do core. Precisa de pelo menos duas runs pra existir.',
+            ],
           }
         : null,
     ].filter((n): n is NonNullable<typeof n> => n !== null)
@@ -142,7 +175,6 @@ const numeros = average
       <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 border-t border-slate-800">
         {numeros.map((numero, indice) => (
           <div
-            title={numero.explica}
             class:list={[
               'px-4 py-3 border-slate-800/70',
               indice > 0 && 'border-l',
@@ -151,7 +183,68 @@ const numeros = average
               'border-t sm:border-t-0 first:border-t-0',
             ]}
           >
-            <p class="text-[10px] uppercase tracking-wider text-slate-500">{numero.rotulo}</p>
+            {/* O `title` do navegador some pra quem não usa mouse e não
+                aparece pra quem não sabe que existe. O "i" é visível e
+                alcançável pelo teclado. */}
+            <p class="text-[10px] uppercase tracking-wider text-slate-500">
+              <span class="inline-flex items-center gap-1">
+                {numero.rotulo}
+
+                <InfoTooltip
+                  label={`O que é ${numero.rotulo}`}
+                  alinhamento={indice >= numeros.length - 2 ? 'direita' : 'esquerda'}
+                  direcao="baixo"
+                >
+                  {'paragrafos' in numero && numero.paragrafos ? (
+                    numero.paragrafos.map((paragrafo, ordem) => (
+                      <span
+                        class:list={[
+                          'block text-[11px] leading-relaxed',
+                          ordem === 0 ? 'text-slate-300' : 'text-slate-400 mt-2',
+                        ]}
+                      >
+                        {paragrafo}
+                      </span>
+                    ))
+                  ) : (
+                    <span class="block text-[11px] text-slate-400 leading-relaxed">
+                      {numero.explica}
+                    </span>
+                  )}
+
+                  {/* Encontro a encontro: "23 bosses" não diz se foram vinte e
+                      três encontros ou o mesmo Altar oito vezes, e "62 mortes"
+                      não diz onde treinar. */}
+                  {'lista' in numero && numero.lista && (
+                    <span class="block mt-2 pt-2 border-t border-white/10">
+                      {numero.lista.length === 0 ? (
+                        <span class="block text-[11px] text-slate-500">{numero.listaVazia}</span>
+                      ) : (
+                        numero.lista.map((item) => (
+                          <span class="flex items-baseline justify-between gap-3 text-[11px] leading-relaxed">
+                            <span class="text-slate-400 min-w-0">
+                              {item.nome}
+                              <span
+                                class:list={[
+                                  'ml-1.5 text-[9px] uppercase tracking-wide',
+                                  item.dificuldade === 'Heroico'
+                                    ? 'text-purple-400'
+                                    : 'text-slate-600',
+                                ]}
+                              >
+                                {item.dificuldade}
+                              </span>
+                            </span>
+                            <span class="text-slate-200 tabular-nums shrink-0">{item.quantos}</span>
+                          </span>
+                        ))
+                      )}
+                    </span>
+                  )}
+                </InfoTooltip>
+              </span>
+            </p>
+
             <strong class:list={["block text-lg font-bold tabular-nums mt-0.5", ("cor" in numero && numero.cor) || "text-white"]}>
               {numero.valor}
             </strong>
