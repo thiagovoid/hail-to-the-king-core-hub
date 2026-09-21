@@ -39,6 +39,7 @@ import { calculateOverallScore } from '@/engine/scores';
 import { TITULOS_DO_HAIL_SCORE } from '@/engine/team/hailScore';
 import { buildCoachRecommendation } from '@/engine/scores/coach';
 import CoachCard from '@/components/CoachCard.astro';
+import OQueVoceFezPeloGrupo from '@/components/OQueVoceFezPeloGrupo.astro';
 import { formatDate } from '@/utils/format';
 
 export function getStaticPaths() {
@@ -682,8 +683,6 @@ const attendance = calculateAttendance(weeks, [
           attackParts={attackParts}
           defenseDetail={defenseDetail}
           defenseContext={defenseContext}
-          helpDetail={helpDetail}
-          interrupcoes={interrupcoes}
           pancadas={ultimaNoite?.pancadas ?? []}
           deathDetail={deathDetail}
           nomeDoEncontro={Object.fromEntries(nomeDoBoss)}
@@ -697,6 +696,14 @@ const attendance = calculateAttendance(weeks, [
     {/* Logo abaixo da nota: o que fazer com ela. Uma coisa de cada vez,
         medida na própria noite da pessoa, sem comparar com ninguém. */}
     {hasData && coachRecommendation && <CoachCard recomendacao={coachRecommendation} />}
+
+    {hasData && (
+      <OQueVoceFezPeloGrupo
+        helpDetail={helpDetail}
+        interrupcoes={interrupcoes}
+        utilidade={ultimaNoite?.utility ?? null}
+      />
+    )}
 
     {hasData && (
       <AtoDaPagina

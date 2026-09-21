@@ -1,0 +1,165 @@
+---
+/**
+ * O que você fez pelo grupo — dado, não nota.
+ *
+ * Isto era a dimensão "Ajudar", com peso 15 no Score de todas as funções.
+ * Ela media aproveitamento de RECARGA das magias de utilidade, e recarga não
+ * descreve magia situacional: das 27 magias que a temporada registrou, só
+ * duas são rotacionais (Power Infusion, 85,6% de eficiência, e Evangelism,
+ * 67,3%). Todo o resto vive em um dígito, porque não se usa por recarga —
+ * usa-se quando a luta pede.
+ *
+ * A prova de que o que ela media era o KIT e não a pessoa: Apocalipse e
+ * Cowsadeer têm o mesmo par de magias medidas e tiravam 100 e 21,7. O
+ * Heroísmo, que por desenho se usa uma vez por try, dava 85,6 a um e 28,2 a
+ * outro. Três pessoas não tinham nota nenhuma a temporada inteira.
+ *
+ * Curadoria de lista não conserta isso: o defeito não é a lista estar
+ * errada, é a régua não existir. Então o trabalho continua VISÍVEL, com o
+ * número do que foi feito, e para de virar julgamento.
+ */
+import { ROTULO_DA_CATEGORIA } from '@/normalization/buildAjudar';
+import InfoTooltip from '@/components/InfoTooltip.astro';
+
+interface Props {
+  /** Magia a magia da utilidade de grupo na última noite. */
+  helpDetail?: Array<{
+    spellId: number;
+    name: string;
+    casts: number;
+    categoria: 'acelerar' | 'controlar' | 'interromper' | 'socorrer' | 'levantar';
+  }>;
+  /** Interrupções, com a oportunidade que existiu. */
+  interrupcoes?: {
+    total: number;
+    oportunidade: {
+      oportunidades: number;
+      cobertosPeloRaide: number;
+      seus: number;
+      pessoasQueInterromperam: number;
+    } | null;
+  } | null;
+  /** Os contadores que não são magia lançada. */
+  utilidade?: {
+    dispels: number;
+    purges: number;
+    battleRez: number;
+    battleRezRecebidos: number;
+  } | null;
+}
+
+const { helpDetail = [], interrupcoes = null, utilidade = null } = Astro.props;
+
+/**
+ * Interromper sai da lista de magias porque é contado pelo ATO.
+ *
+ * A maior parte das interrupções de um Paladino de Proteção sai do Avenger's
+ * Shield, que é rotação e não entra em lista de cooldown nenhuma: medir a
+ * magia mede o kit, contar o ato mede a pessoa.
+ */
+const magias = helpDetail.filter((item) => item.categoria !== 'interromper');
+
+const contadores = utilidade
+  ? [
+      { rotulo: 'Dispels', valor: utilidade.dispels },
+      { rotulo: 'Purges', valor: utilidade.purges },
+      { rotulo: 'Battle rez dados', valor: utilidade.battleRez },
+      { rotulo: 'Battle rez recebidos', valor: utilidade.battleRezRecebidos },
+    ].filter((item) => item.valor > 0)
+  : [];
+
+const temAlgo =
+  magias.length > 0 || contadores.length > 0 || (interrupcoes?.total ?? 0) > 0;
+---
+
+{
+  temAlgo && (
+    <section class="mb-10">
+      <div class="mb-4">
+        <div class="inline-flex items-center gap-2 flex-wrap">
+          <h2 class="text-xl font-bold text-white">O que você fez pelo grupo</h2>
+
+          <InfoTooltip label="Por que isto não vira nota" largura="larga">
+            <span class="block text-slate-200 text-[11px] font-semibold">
+              Por que isto não é nota
+            </span>
+
+            <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+              Isto já foi uma dimensão do Score, medindo quanto da recarga de cada magia você
+              aproveitou. Mas recarga não descreve magia situacional: Heroísmo se usa uma vez por
+              luta, battle rez tem carga limitada, e controle de massa só existe se houver add.
+            </span>
+
+            <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+              O resultado era medir o kit da spec, não a pessoa — dois jogadores com exatamente as
+              mesmas duas magias tiravam 100 e 21,7. O trabalho continua aqui, com número; o que
+              saiu foi o julgamento.
+            </span>
+          </InfoTooltip>
+        </div>
+
+        <p class="text-sm text-slate-400 mt-1">
+          Última noite. Não entra no Score — é reconhecimento, não régua.
+        </p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
+        {interrupcoes !== null && interrupcoes.total > 0 && (
+          <div>
+            <p class="text-sm text-slate-200">
+              <span class="font-semibold">{interrupcoes.total}</span> interrupç
+              {interrupcoes.total === 1 ? 'ão' : 'ões'}
+              {interrupcoes.oportunidade !== null && (
+                <span class="text-slate-500">
+                  {` de ${interrupcoes.oportunidade.oportunidades} que deu pra pegar`}
+                </span>
+              )}
+            </p>
+
+            {interrupcoes.oportunidade !== null && (
+              <p class="text-[11px] text-slate-600 mt-0.5">
+                {`O raide pegou ${interrupcoes.oportunidade.cobertosPeloRaide}, divididos entre ${interrupcoes.oportunidade.pessoasQueInterromperam} pessoa${interrupcoes.oportunidade.pessoasQueInterromperam === 1 ? '' : 's'}.`}
+              </p>
+            )}
+          </div>
+        )}
+
+        {magias.length > 0 && (
+          <div>
+            <p class="text-[11px] uppercase tracking-wide text-slate-500 mb-2">
+              Utilidade de grupo
+            </p>
+
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+              {magias.map((item) => (
+                <li class="flex items-baseline justify-between gap-3 text-[12px]">
+                  <span class="text-slate-300 min-w-0">
+                    {item.name}
+                    <span class="text-slate-600 text-[10px] ml-1.5">
+                      {ROTULO_DA_CATEGORIA[item.categoria]}
+                    </span>
+                  </span>
+
+                  <span class="text-slate-400 tabular-nums shrink-0">
+                    {item.casts} uso{item.casts === 1 ? '' : 's'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {contadores.length > 0 && (
+          <div class="flex flex-wrap gap-x-6 gap-y-2 pt-1">
+            {contadores.map((item) => (
+              <span class="text-[12px] text-slate-400">
+                {item.rotulo}
+                <span class="text-slate-200 font-semibold tabular-nums ml-1.5">{item.valor}</span>
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}

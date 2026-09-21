@@ -3,7 +3,6 @@ import type { OverallPerformanceScore } from '@/engine/scores';
 import { formatDecimalBr, formatDuracao, formatThousands } from '@/utils/format';
 import ScoreDimensionRow from '@/components/ScoreDimensionRow.astro';
 import InfoTooltip from '@/components/InfoTooltip.astro';
-import { ROTULO_DA_CATEGORIA } from '@/normalization/buildAjudar';
 
 interface Props {
   score: OverallPerformanceScore;
@@ -55,14 +54,6 @@ interface Props {
   defenseDetail?: Array<{ spellId: number; name: string; casts: number; efficiency: number }>;
   /** Dano recebido e mitigação — contexto da nota de Defender, não entram nela. */
   defenseContext?: { mitigation: number; dtps: number; selfSustain?: number } | null;
-  /** Magia a magia da utilidade de grupo — o que explica a nota de Ajudar. */
-  helpDetail?: Array<{
-    spellId: number;
-    name: string;
-    casts: number;
-    efficiency: number;
-    categoria: "acelerar" | "controlar" | "interromper" | "socorrer" | "levantar";
-  }>;
   /**
    * As mortes da noite, da mais cara pra mais barata.
    *
@@ -79,23 +70,6 @@ interface Props {
   }>;
   /** encounterID -> nome do boss, pra morte dizer ONDE. */
   nomeDoEncontro?: Record<number, string>;
-  /**
-   * O laudo do interrupt: quantos foram seus, quantos deu pra pegar, e
-   * quanto o raide cobriu.
-   *
-   * Contadas por ato, não por recarga de magia. `oportunidade` nula significa
-   * que não havia o que interromper nas trys desta pessoa — o caso de sete
-   * dos dez encontros da temporada.
-   */
-  interrupcoes?: {
-    total: number;
-    oportunidade: {
-      oportunidades: number;
-      cobertosPeloRaide: number;
-      seus: number;
-      pessoasQueInterromperam: number;
-    } | null;
-  } | null;
   /** As duas metades da nota de Curar, mais a cobertura crua. */
   healingParts?: { coverage: number; share: number; overheal: number } | null;
   /** Nome da função usada pra escolher os pesos ("tank", "healer", "dps"). */
@@ -122,10 +96,8 @@ const {
   defenseDetail = [],
   defenseContext = null,
   pancadas = [],
-  helpDetail = [],
   deathDetail = [],
   nomeDoEncontro = {},
-  interrupcoes = null,
   healingParts = null,
   funcao = null,
   regrasDoCore = [],
@@ -166,7 +138,9 @@ const dimensoesComDado = score.dimensions.filter(
     dimension.score !== null &&
     dimension.key !== 'survival' &&
     dimension.key !== 'preparation' &&
-    dimension.key !== 'parse'
+    dimension.key !== 'parse' &&
+    // Peso zero desde que Ajudar virou painel: a linha sairia '0% x 100 = 0'.
+    dimension.key !== 'help'
 );
 
 const contaDoScore = dimensoesComDado.map((dimension) => ({
@@ -211,7 +185,14 @@ const dimensoesVisiveis = [...score.dimensions]
   // existe pra boss MORTO, e num grupo em progressão isso mede justamente as
   // lutas já dominadas. Continua na tela como contexto — no resumo da
   // temporada e no gráfico —, só não pontua mais.
-  .filter((dimension) => dimension.key !== "preparation" && dimension.key !== "parse")
+  // Ajudar é a terceira, e a razão está em PESOS_POR_FUNCAO: ela media
+  // aproveitamento de recarga, e recarga não descreve magia situacional —
+  // dois jogadores com o mesmo par de magias tiravam 100 e 21,7. O que ela
+  // media segue na tela como dado, em seção própria, sem virar nota.
+  .filter(
+    (dimension) =>
+      dimension.key !== "preparation" && dimension.key !== "parse" && dimension.key !== "help"
+  )
   .filter((dimension) => dimension.weight > 0 || dimension.value !== null)
   .sort((a, b) => {
     if (a.key === 'survival') return 1;
@@ -249,10 +230,6 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
   defense:
     defenseContext !== null || defenseDetail.length > 0
       ? { rotulo: 'Ver dano recebido e cooldowns', itens: defenseDetail.length }
-      : undefined,
-  help:
-    helpDetail.length > 0 || interrupcoes !== null
-      ? { rotulo: 'Ver o que você fez pelo grupo', itens: helpDetail.length }
       : undefined,
   survival: deathDetail.length
     ? { rotulo: 'Ver cada morte e o que custou', itens: deathDetail.length }
@@ -574,55 +551,6 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                       </li>
                     ))}
                   </ul>
-                )}
-
-                {dimension.key === 'help' && (
-                  <>
-                    {/* Interromper é contado por ATO, não por recarga: a maior
-                        parte das interrupções de algumas specs sai de habilidade
-                        de rotação, que não entra em lista de cooldown nenhuma.
-                        Por isso ele aparece separado das magias. */}
-                    {interrupcoes !== null && (
-                      <p class="text-[11px] text-slate-500 leading-relaxed">
-                        <span class="text-slate-400">
-                          {interrupcoes.total} interrupç{interrupcoes.total === 1 ? 'ão' : 'ões'}
-                        </span>
-                        {/* O denominador é o que DEU pra interromper nas trys
-                            em que você estava — não o número de trys. Sete dos
-                            dez encontros da temporada não têm uma única magia
-                            interrompível, e a régua antiga cobrava neles. */}
-                        {interrupcoes.oportunidade === null ? (
-                          <span class="text-slate-600">
-                            {' '}&middot; não houve o que interromper nas suas trys
-                          </span>
-                        ) : (
-                          <>
-                            {' '}&middot; de {interrupcoes.oportunidade.oportunidades} que deu pra
-                            pegar
-                            <span class="text-slate-600">
-                              {` · o raide pegou ${interrupcoes.oportunidade.cobertosPeloRaide}, divididos entre ${interrupcoes.oportunidade.pessoasQueInterromperam} pessoa${interrupcoes.oportunidade.pessoasQueInterromperam === 1 ? '' : 's'}`}
-                            </span>
-                          </>
-                        )}
-                        <span class="block text-slate-600">
-                          Interromper só soma: é trabalho de time, e não deixar de interromper
-                          nunca tira nota de ninguém.
-                        </span>
-                      </p>
-                    )}
-
-                    <ul class="space-y-0.5 mt-1">
-                      {helpDetail.map((item) => (
-                        <li class="text-[11px] text-slate-500 leading-relaxed">
-                          <span class="text-slate-400">{item.name}</span>{' '}
-                          {item.casts} uso{item.casts === 1 ? '' : 's'}
-                          <span class="text-slate-600">
-                            {' '}&middot; {ROTULO_DA_CATEGORIA[item.categoria]}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
                 )}
 
                 {(dimension.key === 'attack' || dimension.key === 'defense') && (

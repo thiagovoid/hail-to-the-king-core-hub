@@ -59,8 +59,8 @@ describe("calculateOverallScore", () => {
   });
 
   it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
-    // Sem função informada, vale a régua de dps: Entregar 35 e Mecânicas 25
-    // têm dado → denominador 60. Parse não pontua mais.
+    // Sem função informada, vale a régua de dps: Entregar 50 e Mecânicas 25
+    // têm dado → denominador 75. Parse e Ajudar não pontuam mais.
     const result = calculateOverallScore(
       { playerId: "voidwar", dps: 75, simTarget: 100, mechanics: { errors: 4 }, deaths: 0 },
       TARGETS
@@ -68,9 +68,9 @@ describe("calculateOverallScore", () => {
 
     expect(dimension(result, "attack")?.score).toBeNull();
     expect(dimension(result, "preparation")?.score).toBeNull();
-    // (100*35 + 50*25) / 60 = 79,16 → 79
+    // (100*50 + 50*25) / 75 = 83,3 → 83
     expect(dimension(result, "deliver")?.score).toBe(100);
-    expect(result.overall).toBe(79);
+    expect(result.overall).toBe(83);
   });
 
   /**
@@ -165,9 +165,28 @@ describe("pesos por função", () => {
     expect(peso(r, "parse")).toBe(0);
   });
 
+  /**
+   * Ajudar media aproveitamento de RECARGA das magias de utilidade, e recarga
+   * não descreve magia situacional: Heroísmo se usa uma vez por luta, battle
+   * rez tem carga limitada, controle só existe se houver add. Das 27 magias
+   * da temporada, duas são rotacionais.
+   *
+   * O resultado era medir o kit da spec e não a pessoa — Apocalipse e
+   * Cowsadeer, com exatamente o mesmo par de magias, tiravam 100 e 21,7.
+   * O trabalho continua visível como dado, em seção própria; o que saiu foi
+   * a nota. Ver OQueVoceFezPeloGrupo.
+   */
+  it("não deixa Ajudar pontuar em nenhuma função", () => {
+    for (const funcao of ["dps", "tank", "healer"] as const) {
+      const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, funcao);
+      expect(peso(r, "help"), funcao).toBe(0);
+    }
+  });
+
   it("dá o maior peso a Curar no healer", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "healer");
-    expect(peso(r, "healing")).toBe(40);
+    // 55 e não 40: Curar herdou os 15 que eram de Ajudar.
+    expect(peso(r, "healing")).toBe(55);
     expect(peso(r, "attack")).toBe(5);
   });
 
@@ -214,7 +233,7 @@ describe("pesos por função", () => {
   // Medi-la com a régua de dps daria peso 20 ao que ela não fez.
   it("mede como healer quem curou, mesmo cadastrado como dps", () => {
     const r = calculateOverallScore({ ...base, healing: HEALING }, TARGETS, "dps");
-    expect(peso(r, "healing")).toBe(40);
+    expect(peso(r, "healing")).toBe(55);
     expect(funcaoEfetiva({ ...base, healing: HEALING }, "dps")).toBe("healer");
   });
 

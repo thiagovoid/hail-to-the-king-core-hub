@@ -113,10 +113,33 @@ export type FuncaoDoJogador = "dps" | "tank" | "healer";
  * da luta: o raide seguiu sem ela. Isso é invalidação, não desconto — ver
  * `fatorDeSobrevivencia`.
  */
+/**
+ * AJUDAR PESA ZERO, e isso foi uma correção, não um esquecimento.
+ *
+ * Ela media aproveitamento de recarga das magias de utilidade, e recarga não
+ * descreve magia situacional. Das 27 magias que a temporada registrou, só
+ * duas são rotacionais — Power Infusion (85,6% de eficiência) e Evangelism
+ * (67,3%). Todo o resto vive em um dígito, porque não se usa por recarga:
+ * usa-se quando a luta pede.
+ *
+ * A prova de que o que ela media era o KIT, e não a pessoa: Apocalipse e
+ * Cowsadeer têm exatamente o mesmo par de magias medidas (Hammer of Justice
+ * e Intercession) e tiravam 100 e 21,7. O Heracranosx tirava 100 de uma
+ * noite com uma magia usada uma vez. O Heroísmo, que por desenho se usa uma
+ * vez por try, dava 85,6 a um jogador e 28,2 a outro. E três pessoas não
+ * tinham nota nenhuma a temporada inteira.
+ *
+ * Curadoria de lista não conserta: o defeito não é a lista estar errada, é a
+ * régua não existir. O que ela media segue visível como DADO — magia a
+ * magia, interrupções, battle rez, dispels — sem virar nota.
+ *
+ * Os 15 pontos vão pro ofício de cada função, que é onde a pessoa já é
+ * cobrada pelo que ela de fato escolheu fazer.
+ */
 const PESOS_POR_FUNCAO: Record<FuncaoDoJogador, Record<ScoreDimensionKey, number>> = {
-  dps: { parse: 0, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 15, deliver: 35, preparation: 0 },
-  tank: { parse: 0, mechanics: 30, attack: 10, defense: 45, healing: 0, survival: 0, help: 15, deliver: 0, preparation: 0 },
-  healer: { parse: 0, mechanics: 30, attack: 5, defense: 10, healing: 40, survival: 0, help: 15, deliver: 0, preparation: 0 },
+  dps: { parse: 0, mechanics: 25, attack: 15, defense: 10, healing: 0, survival: 0, help: 0, deliver: 50, preparation: 0 },
+  tank: { parse: 0, mechanics: 30, attack: 10, defense: 60, healing: 0, survival: 0, help: 0, deliver: 0, preparation: 0 },
+  healer: { parse: 0, mechanics: 30, attack: 5, defense: 10, healing: 55, survival: 0, help: 0, deliver: 0, preparation: 0 },
 };
 
 /**
