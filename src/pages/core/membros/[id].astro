@@ -6,13 +6,12 @@ import roster from '../../../../data/guild/roster.json';
 import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
 import rulesJson from '../../../../data/guild/rules.json';
 import { performanceWeeks } from '../../../../data/weekly/performance/index';
-import PerformanceSummary from '@/components/PerformanceSummary.astro';
+import CabecalhoDoJogador from '@/components/CabecalhoDoJogador.astro';
 import PerformanceGoals from '@/components/PerformanceGoals.astro';
 import PerformanceScoreCard from '@/components/PerformanceScoreCard.astro';
 import PerformanceChart from '@/components/PerformanceChart.astro';
 import ContribuicaoForaDeFuncao from '@/components/ContribuicaoForaDeFuncao.astro';
 import PainelDoTank from '@/components/PainelDoTank.astro';
-import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
 import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
 import { contarConquistas } from '@/engine/guild/conquistas';
 import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
@@ -611,35 +610,16 @@ const attendance = calculateAttendance(weeks, player.id);
       ← Voltar para membros
     </a>
 
-    <header class="flex items-center gap-5 mb-8">
-      <img
-        src={player.avatar}
-        alt={player.name}
-        width="96"
-        height="96"
-        class="w-24 h-24 rounded-lg border border-slate-700"
-      />
-
-      <div>
-        <h1 class="text-3xl font-bold text-white">
-          {player.name}
-        </h1>
-
-        <p class="text-slate-400 mt-1">
-          {player.class} · {player.spec}
-        </p>
-
-        <p class="text-sm text-slate-500 mt-1 capitalize">
-          {player.role}
-        </p>
-      </div>
-
-      {/* Do mesmo tamanho do avatar e do outro lado: o emblema é a segunda
-          coisa que se olha, não um enfeite grudado no nome. */}
-      <div class="ml-auto">
-        <EmblemaDeRank score={overallScore?.overall ?? null} />
-      </div>
-    </header>
+    {/* Identidade, medalha e os números da temporada numa faixa só.
+        Antes eram duas coisas: um header e uma seção inteira de cartões, e
+        o jogador rolava uma tela de contexto antes de chegar na nota. */}
+    <CabecalhoDoJogador
+      player={player}
+      score={overallScore?.overall ?? null}
+      average={hasData ? seasonAverage : null}
+      presenca={hasData ? attendance : null}
+      tendencia={hasData ? trend : null}
+    />
 
     {!hasData && (
       <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
@@ -670,8 +650,6 @@ const attendance = calculateAttendance(weeks, player.id);
       hasData && overallScore && (
         <PerformanceScoreCard
           score={overallScore}
-          trend={trend}
-          attendance={attendance}
           nightDate={ultimaNoite?.date ?? null}
           nightTries={ultimaNoite?.mechanics?.tries ?? null}
           preparationMissing={preparationMissing}
@@ -700,10 +678,24 @@ const attendance = calculateAttendance(weeks, player.id);
       <AtoDaPagina
         numero={2}
         titulo="O que sustenta a nota"
-        comoLer="As metas que a nota persegue, o que você trouxe de casa e em que conteúdo você já está pronto. É aqui que se vê o que muda a nota antes da próxima terça."
+        comoLer="À esquerda, o que muda a nota antes da próxima terça: metas, o que você trouxe de casa, em que conteúdo já está pronto. À direita, a temporada inteira."
       />
     )}
 
+    {/**
+     * Daqui pra baixo a ficha vira painel, não lista.
+     *
+     * Em coluna única cada seção ocupava a tela inteira e a pessoa rolava
+     * quinze vezes pra ter a visão do conjunto — que é justamente o que um
+     * painel existe pra dar de relance. Duas colunas separam as duas
+     * perguntas que sobram: o que dá pra mudar já (esquerda) e como foi a
+     * temporada (direita).
+     *
+     * Empilha em uma coluna abaixo de lg, onde duas colunas viram duas
+     * colunas estreitas e ilegíveis.
+     */}
+    <div class="grid lg:grid-cols-2 gap-x-8 items-start">
+      <div>
     {
       hasData && (
         <PerformanceGoals
@@ -734,25 +726,10 @@ const attendance = calculateAttendance(weeks, player.id);
     {hasData && prontidao && (
       <CartaoDeProntidao prontidao={prontidao} noites={history.length} />
     )}
+      </div>
 
-    {hasData && (
-      <AtoDaPagina
-        numero={3}
-        titulo="Ao longo do tempo"
-        comoLer="Uma noite não descreve ninguém. Aqui é o acumulado da temporada: encontro a encontro, semana a semana, e o que o grupo já reconheceu em você."
-      />
-    )}
-
-    {/* A faixa da temporada mora AQUI, não no topo: ela soma a season
-        inteira, enquanto o Score mede a última noite. Lá em cima, o primeiro
-        número da página era de outra grandeza que o da nota logo abaixo. */}
-    {hasData && (
-      <PerformanceSummary average={seasonAverage} />
-    )}
-
+      <div>
     {hasData && <BossABoss bosses={bossABoss} />}
-
-
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
 
@@ -761,6 +738,8 @@ const attendance = calculateAttendance(weeks, player.id);
       media={foraDeFuncaoMedia}
       nights={noitesForaDeFuncao}
     />
+      </div>
+    </div>
 
     {
       history.length > 0 && (

@@ -7,9 +7,6 @@ import { ROTULO_DA_CATEGORIA } from '@/normalization/buildAjudar';
 
 interface Props {
   score: OverallPerformanceScore;
-  /** Variação do dps/hps no período, em % — positivo é melhora. */
-  trend: number | null;
-  attendance: number;
   /** Data da noite medida — deixa a nota rastreável. */
   nightDate?: string | null;
   /**
@@ -116,8 +113,6 @@ interface Props {
 
 const {
   score,
-  trend,
-  attendance,
   nightDate = null,
   nightTries = null,
   preparationMissing = [],
@@ -135,15 +130,6 @@ const {
   funcao = null,
   regrasDoCore = [],
 } = Astro.props;
-
-// Faixa neutra: abaixo de 5% pra qualquer lado é ruído de boss/composição,
-// não tendência — não vale pintar de verde nem de vermelho.
-const trendColor =
-  trend === null || Math.abs(trend) < 5
-    ? 'text-slate-200'
-    : trend > 0
-      ? 'text-emerald-400'
-      : 'text-red-400';
 
 const scoreTextColor = (value: number) =>
   value >= 80 ? 'text-emerald-400' : value >= 50 ? 'text-amber-400' : 'text-red-400';
@@ -651,56 +637,6 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-4 mt-4">
-    <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-      <p class="text-xs uppercase tracking-wide text-slate-500">
-        <span class="inline-flex items-center gap-1.5">
-          Tendência
-          <InfoTooltip label="O que é Tendência">
-            <span class="block text-slate-200 text-[11px] leading-relaxed">
-              Se o seu dano (ou cura) vem subindo ou caindo ao longo de <strong>todas</strong> as
-              runs do histórico. Não é a última noite contra a anterior.
-            </span>
-            <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
-              O cálculo traça a reta que melhor acompanha os seus números e mede o quanto ela sobe
-              do começo ao fim, comparado à sua própria média. +75% quer dizer que a reta subiu o
-              equivalente a 75% do seu dps médio.
-            </span>
-            <span class="block text-slate-400 text-[11px] leading-relaxed mt-2">
-              Por ser uma reta, e não dois pontos comparados, uma noite ruim isolada não derruba o
-              número — mas várias seguidas, sim.
-            </span>
-            <span class="block text-slate-500 text-[11px] leading-relaxed mt-2">
-              Compara você com você mesmo, nunca com o resto do core. Precisa de pelo menos duas
-              runs pra existir.
-            </span>
-          </InfoTooltip>
-        </span>
-      </p>
-
-      <strong class={`block text-2xl font-bold mt-1 ${trendColor}`}>
-        {trend !== null ? `${trend > 0 ? '+' : ''}${trend}%` : '-'}
-      </strong>
-
-      <p class="text-[11px] text-slate-500 mt-1">
-        Subida ou queda do seu dps/hps ao longo de todas as runs
-      </p>
-    </article>
-
-    <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-      <p class="text-xs uppercase tracking-wide text-slate-500">
-        Presença
-      </p>
-
-      <strong class="block text-2xl font-bold text-white mt-1">
-        {attendance}%
-      </strong>
-
-      <p class="text-[11px] text-slate-500 mt-1">
-        Runs em que você aparece no log
-      </p>
-    </article>
-  </div>
 </section>
 
 <style>
