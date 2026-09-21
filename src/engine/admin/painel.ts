@@ -43,11 +43,17 @@ const ROTULO_DA_FUNCAO: Record<string, string> = {
  * Feito na mão e não com o InfoTooltip.astro porque este painel é HTML em
  * string — precisa existir como texto pra ser cifrado. As classes são as
  * mesmas do componente, e o Tailwind as encontra porque varre `.ts`.
+ *
+ * Abre pra BAIXO, ao contrário do componente. O container da tabela tem
+ * `overflow-x-auto` pras 12 colunas rolarem, e basta um eixo deixar de ser
+ * `visible` pro outro virar `auto`: abrindo pra cima, o tooltip saía do
+ * container e era cortado. Pra baixo ele cai sobre as linhas, que estão
+ * dentro da área rolável.
  */
 function dica(titulo: string, linhas: string[], alinhamento: "esquerda" | "direita" = "esquerda") {
   return `<span class="relative group inline-flex align-middle ml-1">
   <button type="button" class="w-3.5 h-3.5 rounded-full border border-slate-700 text-slate-500 text-[9px] leading-none flex items-center justify-center hover:border-[#f0a500] hover:text-[#f0a500] transition-colors" aria-label="Como ${esc(titulo)} é calculado">i</button>
-  <span role="tooltip" class="pointer-events-none absolute z-30 bottom-full mb-2 ${alinhamento === "direita" ? "right-0" : "left-0"} w-72 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity shadow-xl normal-case font-normal">
+  <span role="tooltip" class="pointer-events-none absolute z-30 top-full mt-2 ${alinhamento === "direita" ? "right-0" : "left-0"} w-72 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity shadow-xl normal-case font-normal">
     <span class="block text-slate-200 text-[11px] font-semibold">${esc(titulo)}</span>
     ${linhas.map((l) => `<span class="block text-[11px] text-slate-400 leading-relaxed mt-1.5">${l}</span>`).join("")}
   </span>
