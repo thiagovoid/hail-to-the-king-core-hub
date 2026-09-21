@@ -11,6 +11,8 @@ const linha: LinhaDoMacro = {
   noites: 7,
   presenca: 88,
   ultimaNoite: "2026-09-16",
+  personagemDaUltimaNoite: "nerlock",
+  simCalculadoEm: "2026-09-16T08:00:00.000Z",
   score: 57,
   scoreMedio: 55,
   dimensoes: [
@@ -28,10 +30,52 @@ const metas = {
   attack: { target: 90 },
 };
 
-const painel = () =>
-  montarPainel({ linhas: [linha], roster: [{ id: "nerlock", name: "Nerlock" }], metas });
+/** Fixo pra idade do sim não mudar de valor conforme o dia em que o teste roda. */
+const AGORA = new Date("2026-09-21T12:00:00.000Z");
+
+const painel = (l: LinhaDoMacro = linha) =>
+  montarPainel({ linhas: [l], roster: [{ id: "nerlock", name: "Nerlock" }], metas, agora: AGORA });
 
 describe("montarPainel", () => {
+  describe("coluna do sim", () => {
+    it("conta os dias desde o cálculo do sim", () => {
+      expect(painel()).toContain(">5d<");
+    });
+
+    it("marca quem passou do prazo do cron semanal", () => {
+      // O cron roda 1x por semana: 19 dias quer dizer duas execuções puladas,
+      // e a régua do Entregar (peso 50 no dps) já não vale nada.
+      const html = painel({ ...linha, simCalculadoEm: "2026-09-02T08:00:00.000Z" });
+
+      expect(html).toContain(">19d<");
+      expect(html).toMatch(/text-red-400[^>]*>19d</);
+    });
+
+    it("diz 'nunca' em vez de fingir uma data", () => {
+      const html = painel({ ...linha, simCalculadoEm: null });
+
+      expect(html).toContain(">nunca<");
+      expect(html).toContain("nunca foi simulado");
+    });
+
+    /**
+     * O Quick Sim da Armory mede a spec de DANO do personagem, que não é o
+     * jogo que um healer jogou na noite. Mostrar a idade ali convidaria a
+     * re-simular pra consertar um número que ninguém usa — Entregar tem peso
+     * zero pra healer.
+     */
+    it("não mostra idade de sim pra healer", () => {
+      const html = painel({
+        ...linha,
+        funcao: "healer",
+        simCalculadoEm: "2026-09-02T08:00:00.000Z",
+      });
+
+      expect(html).not.toContain(">19d<");
+      expect(html).toContain("Healer não usa sim");
+    });
+  });
+
   /**
    * O defeito que gerou este teste: o `<th>` é `whitespace-nowrap` pro rótulo
    * da coluna não quebrar, e isso DESCE pro tooltip. Sem desfazer ali dentro,

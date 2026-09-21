@@ -83,6 +83,33 @@ const metaPorFuncao = (
   )} · tank ${escrever(alvo.porFuncao.tank ?? alvo.target)}`;
 };
 
+/** O cron do Raidbots é semanal; passar disso quer dizer execução pulada. */
+const PRAZO_DO_SIM_EM_DIAS = 7;
+
+/**
+ * A idade do sim, em dias, e a cor que ela merece.
+ *
+ * Não é enfeite: o Entregar vale 50 do Score de dps e é medido contra o sim.
+ * Régua vencida com o pessoal se equipando vira ficção — já aconteceu, as
+ * metas congelaram em 02/09 e o xúliodk marcou 154% do próprio alvo.
+ */
+function idadeDoSim(calculadoEm: string | null, agora: Date) {
+  if (!calculadoEm) return { texto: "nunca", cor: "text-red-400", dias: null };
+
+  const dias = Math.floor((agora.getTime() - new Date(calculadoEm).getTime()) / 86_400_000);
+
+  return {
+    texto: dias === 0 ? "hoje" : `${dias}d`,
+    cor:
+      dias <= PRAZO_DO_SIM_EM_DIAS
+        ? "text-slate-500"
+        : dias <= PRAZO_DO_SIM_EM_DIAS * 2
+          ? "text-amber-400"
+          : "text-red-400",
+    dias,
+  };
+}
+
 /** A frase que diz o que o valor variável É, antes da fórmula. */
 const oQueE = (texto: string) =>
   `<span class="block text-[11px] text-slate-400 leading-relaxed">${texto}</span>`;
@@ -164,9 +191,31 @@ const COLUNAS = [
   },
 ] as const;
 
+/**
+ * A célula do sim.
+ *
+ * Healer sai com travessão em vez de data: o Quick Sim da Armory mede a spec
+ * de DANO do personagem, que não é o jogo que ele jogou na noite. Mostrar
+ * "19d" ali convidaria a re-simular pra consertar um número que ninguém usa
+ * — Entregar tem peso zero pra healer.
+ */
+function celulaDoSim(linha: LinhaDoMacro, agora: Date): string {
+  if (linha.funcao === "healer") {
+    return '<td class="px-2 py-3 text-right text-slate-700" title="Healer não usa sim: o Quick Sim mede a spec de dano.">—</td>';
+  }
+
+  const idade = idadeDoSim(linha.simCalculadoEm, agora);
+  const titulo = linha.simCalculadoEm
+    ? `Sim de ${esc(linha.personagemDaUltimaNoite)} calculado em ${esc(linha.simCalculadoEm.slice(0, 10))}`
+    : `${esc(linha.personagemDaUltimaNoite)} nunca foi simulado — sem régua, Entregar sai da conta`;
+
+  return `<td class="px-2 py-3 text-right tabular-nums ${idade.cor}" title="${titulo}">${idade.texto}</td>`;
+}
+
 function tabelaDoMacro(
   linhas: LinhaDoMacro[],
-  metas: Record<string, { target: number; porFuncao?: Record<string, number> }>
+  metas: Record<string, { target: number; porFuncao?: Record<string, number> }>,
+  agora: Date
 ): string {
   const cabecalho = COLUNAS.map(
     (c) =>
@@ -214,6 +263,7 @@ function tabelaDoMacro(
   <td class="px-2 py-3 text-right tabular-nums text-xl font-bold ${corDaNota(l.score)}">${l.score ?? "—"}</td>
   <td class="px-2 py-3 text-right tabular-nums text-slate-500">${l.scoreMedio ?? "—"}</td>
   ${celulas}
+  ${celulaDoSim(l, agora)}
   <td class="px-2 py-3 text-right tabular-nums text-slate-400">${l.presenca}%</td>
   <td class="px-2 py-3 text-right tabular-nums text-slate-500">${l.noites}</td>
   <td class="px-3 py-3">${faltando}</td>
@@ -250,6 +300,17 @@ function tabelaDoMacro(
             formula("média dos Scores de todas as noites"),
           ])}</th>
           ${cabecalho}
+          <th class="px-2 py-3 font-medium text-right whitespace-nowrap">Sim${dica("Sim do Raidbots", [
+            oQueE(
+              "Há quanto tempo o sim do personagem que jogou a última noite foi calculado. É a <strong>régua</strong> do Entregar, não uma nota."
+            ),
+            oQueE(
+              `O cron roda uma vez por semana, então passar de ${PRAZO_DO_SIM_EM_DIAS} dias quer dizer execução pulada ou falha. Régua vencida com o pessoal se equipando vira ficção.`
+            ),
+            oQueE(
+              "Healer não tem: o Quick Sim mede a spec de <strong>dano</strong>, que não é o jogo que ele jogou. Entregar não pontua pra healer."
+            ),
+          ])}</th>
           <th class="px-2 py-3 font-medium text-right whitespace-nowrap">Pres.${dica(
             "Presença",
             [formula("noites com você ÷ noites do core"), oQueE("Somando todos os seus personagens: trocar de personagem pelo grupo não é falta.")],
@@ -282,6 +343,8 @@ export function montarPainel(dados: {
   roster: Array<{ id: string; name: string }>;
   /** As metas da temporada, pra fórmula do tooltip não desatualizar. */
   metas: Record<string, { target: number; porFuncao?: Record<string, number> }>;
+  /** Injetável pro teste não depender do dia em que roda. */
+  agora?: Date;
 }): string {
   return `<div class="space-y-2">
   <header class="mb-8">
@@ -293,6 +356,6 @@ export function montarPainel(dados: {
     </p>
   </header>
 
-  ${tabelaDoMacro(dados.linhas, dados.metas)}
+  ${tabelaDoMacro(dados.linhas, dados.metas, dados.agora ?? new Date())}
 </div>`;
 }

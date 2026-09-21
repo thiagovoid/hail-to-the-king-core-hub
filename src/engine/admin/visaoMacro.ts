@@ -25,6 +25,20 @@ export interface LinhaDoMacro {
   presenca: number;
   /** A última noite medida, que é o que o Score reflete. */
   ultimaNoite: string | null;
+  /**
+   * O personagem que jogou a última noite — que não é sempre o main.
+   *
+   * É dele a régua do Entregar: `simTarget` fica congelado na noite, e quem
+   * foi de alt foi medido contra o sim do alt.
+   */
+  personagemDaUltimaNoite: string;
+  /**
+   * Quando o sim do Raidbots desse personagem foi calculado.
+   *
+   * `null` quando nunca rodou. O cron é semanal, então passar de sete dias
+   * quer dizer que alguma execução falhou ou foi pulada.
+   */
+  simCalculadoEm: string | null;
   score: number | null;
   /** Média das noites da temporada — diz se a última foi típica ou ponto fora. */
   scoreMedio: number | null;
@@ -35,7 +49,13 @@ export interface LinhaDoMacro {
 
 export function buildVisaoMacro(
   weeks: WeeklyPerformance[],
-  roster: Array<{ id: string; name: string; role: string; pertenceA?: string | null }>,
+  roster: Array<{
+    id: string;
+    name: string;
+    role: string;
+    pertenceA?: string | null;
+    performanceGoals?: { dps?: { calculatedAt?: string } };
+  }>,
   targets: CorePerformanceTargets
 ): LinhaDoMacro[] {
   const porId = new Map(roster.map((jogador) => [jogador.id, jogador]));
@@ -88,6 +108,8 @@ export function buildVisaoMacro(
       noites: historico.length,
       presenca: calculateAttendance(weeks, personagens),
       ultimaNoite: ultima.date,
+      personagemDaUltimaNoite: ultima.playerId,
+      simCalculadoEm: porId.get(ultima.playerId)?.performanceGoals?.dps?.calculatedAt ?? null,
       score: score.overall,
       scoreMedio:
         medias.length === 0 ? null : Math.round(medias.reduce((s, v) => s + v, 0) / medias.length),
