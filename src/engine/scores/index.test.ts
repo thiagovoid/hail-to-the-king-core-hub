@@ -58,6 +58,47 @@ describe("calculateOverallScore", () => {
     expect(result.overall).toBe(100);
   });
 
+/**
+   * O 100 era comprável: a folga acima de 100 numa dimensão pagava a falha em
+   * outra, e 17 das 19 notas 100 da temporada tinham alguma meta não cumprida.
+   * A Cowsadeer tirava 100 tendo falhado em Atacar E Defender.
+   */
+  it("não dá 100 pra quem falhou em alguma meta, por melhor que vá nas outras", () => {
+    const quaseTudo = calculateOverallScore(
+      {
+        playerId: "voidwar",
+        // Muito acima da meta em Entregar (75) e Mecânicas (1,4)...
+        dps: 200,
+        simTarget: 100,
+        mechanics: { errors: 0.1 },
+        // ...e abaixo da meta em Atacar (90).
+        attack: { score: 60, uptime: 60, cooldowns: 60 },
+        deaths: 0,
+      },
+      TARGETS
+    );
+
+    expect(dimension(quaseTudo, "attack")?.score).toBeLessThan(100);
+    expect(quaseTudo.overall).toBe(99);
+  });
+
+  it("dá 100 quando todas as metas da função foram cumpridas", () => {
+    const tudo = calculateOverallScore(
+      {
+        playerId: "voidwar",
+        dps: 200,
+        simTarget: 100,
+        mechanics: { errors: 0.1 },
+        attack: { score: 95, uptime: 95, cooldowns: 95 },
+        defense: { score: 90, dtps: 0, mitigation: 0 },
+        deaths: 0,
+      },
+      TARGETS
+    );
+
+    expect(tudo.overall).toBe(100);
+  });
+
   it("redistribui o peso das dimensões sem dado em vez de contá-las como zero", () => {
     // Sem função informada, vale a régua de dps: Entregar 50 e Mecânicas 25
     // têm dado → denominador 75. Parse e Ajudar não pontuam mais.

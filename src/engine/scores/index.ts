@@ -446,8 +446,44 @@ export function calculateOverallScore(
   const survivalFactor =
     share === undefined ? null : fatorDeSobrevivencia(share, targets.survival.target);
 
+  /**
+   * O 100 é reservado pra quem cumpriu TODAS as metas da função.
+   *
+   * Sem isto ele era comprável: a folga acima de 100 numa dimensão pagava a
+   * falha em outra, e 17 das 19 notas 100 da temporada tinham pelo menos uma
+   * meta não cumprida. A Cowsadeer tirava 100 tendo falhado em Atacar E
+   * Defender; o Voidsurge tirava 100 tendo falhado em Curar, que é o ofício
+   * dele e pesa 55. Um Score que diz "perfeito" pra quem não cumpriu o
+   * próprio ofício é exatamente o tipo de número que ninguém acredita.
+   *
+   * O corte é em 99 e não em algo menor de propósito: a folga continua
+   * premiando quem vai além da meta em toda a faixa, e o que se perde é só a
+   * capacidade de comprar o TETO. Medido: 14 noites mudam, todas caindo
+   * exatamente um ponto, e a distribuição inteira — mediana, quartis, quantas
+   * noites passam de 90 — fica idêntica.
+   */
+  /**
+   * Só as dimensões que PONTUAM entram nessa conta.
+   *
+   * `available` filtra por ter nota, não por ter peso, então carrega junto
+   * Parse, Ajudar, Preparação e Sobreviver — as quatro que saíram do Score de
+   * propósito. Exigi-las aqui gatilhava o teto por fora da nota: Preparação
+   * sozinha reprova 69% das noites, e o 100 simplesmente deixava de existir.
+   * Cobrar no teto o que não se cobra na nota é a mesma incoerência, do
+   * avesso.
+   */
+  const cumpriuTudo = available
+    .filter((dimension) => dimension.weight > 0)
+    .every((dimension) =>
+      dimension.target.direction === "lower"
+        ? dimension.value! <= dimension.target.target
+        : dimension.value! >= dimension.target.target
+    );
+
+  const comSobrevivencia = Math.round(beforeSurvival * (survivalFactor ?? 1));
+
   return {
-    overall: Math.round(beforeSurvival * (survivalFactor ?? 1)),
+    overall: cumpriuTudo ? comSobrevivencia : Math.min(99, comSobrevivencia),
     beforeSurvival,
     survivalFactor,
     dimensions,

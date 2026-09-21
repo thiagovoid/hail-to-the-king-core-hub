@@ -15,9 +15,9 @@
         "description": "Percentil mínimo esperado. É o degrau HEROICO da régua de conteúdo (ver prontidao.ts). Era 60 — mais duro que o próprio heroico, o que não fazia sentido nenhum."
       },
       "mechanics": {
-        "target": 1.8,
+        "target": 1.4,
         "direction": "lower",
-        "description": "Máximo de mecânicas distintas erradas por try, na média da noite. Degrau heroico. Era 2, que é o patamar do normal — e o core já domina o normal."
+        "description": "Máximo de mecânicas distintas erradas por try, na média da noite. É o degrau heroico da escada de prontidão, e ele foi apertado em 20/09/2026: em 1,8, 75% das noites do core passavam — quase o mesmo do degrau normal (2,5, com 96%), o que fazia normal e heroico não serem dois degraus de verdade. 1,4 leva a aprovação pra 46%, em linha com os outros critérios do mesmo degrau (tempo morto 46%, tank 53%, healer 57%), e fica acima do mítico (1,2), preservando os três níveis."
       },
       "attack": {
         "target": 90,
