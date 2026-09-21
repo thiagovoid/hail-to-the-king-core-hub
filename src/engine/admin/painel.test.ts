@@ -14,6 +14,7 @@ const linha: LinhaDoMacro = {
   personagemDaUltimaNoite: "nerlock",
   simCalculadoEm: "2026-09-16T08:00:00.000Z",
   coberturaDeCura: null,
+  metaDeMecanicas: 1.58,
   score: 57,
   scoreMedio: 55,
   dimensoes: [
@@ -118,9 +119,19 @@ describe("montarPainel", () => {
       funcao: "healer",
       dimensoes: [{ chave: "healing", rotulo: "Curar", nota: 87, cumpriu: true }],
       coberturaDeCura: 25.9,
+      metaDeMecanicas: 1.58,
     });
 
     expect(html).toContain("25,9% do dano");
+  });
+
+  /**
+   * A meta de mecânicas deixou de sair do arquivo da temporada: cada noite
+   * tem a sua, tirada da mediana do grupo. Sem ela na tela, "88 em
+   * mecânicas" não diz se a pessoa foi mal ou se a noite foi dura.
+   */
+  it("mostra a meta da noite embaixo da nota de Mecânicas", () => {
+    expect(painel()).toContain("meta 1,58");
   });
 
   it("não inventa cobertura pra quem não é healer", () => {

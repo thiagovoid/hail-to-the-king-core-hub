@@ -1,5 +1,9 @@
 import type { WeeklyPerformance } from "../../../src/types/performance";
 import { comMetaDeMecanicas, mapaDeBosses } from "../../../src/normalization/metaDeMecanicas";
+import {
+  comDefensivosCompletos,
+  kitDaTemporada,
+} from "../../../src/normalization/defensivosDaPancada";
 import { sortByWeek } from "../index";
 
 const modules = import.meta.glob<{ default: WeeklyPerformance }>("./week-*.json", {
@@ -27,6 +31,15 @@ const semanas = sortByWeek(modules);
  */
 const bosses = mapaDeBosses(semanas);
 
+/**
+ * O kit de defensivos de cada um sai da TEMPORADA, não da noite.
+ *
+ * Magia do kit que a pessoa não apertou na noite esteve pronta o tempo
+ * inteiro — e antes disso ela sumia da lista, fazendo quem nunca aperta
+ * parecer mais limpo que quem aperta.
+ */
+const kit = kitDaTemporada(semanas);
+
 export const performanceWeeks: WeeklyPerformance[] = semanas.map((semana) =>
-  comMetaDeMecanicas(semana, bosses)
+  comDefensivosCompletos(comMetaDeMecanicas(semana, bosses), kit)
 );
