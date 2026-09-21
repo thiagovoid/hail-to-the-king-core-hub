@@ -219,6 +219,49 @@ describe("calculateAttendance", () => {
     ];
     expect(calculateAttendance(mixedWeeks, "voidwar")).toBe(50);
   });
+
+  /**
+   * A regra escrita do core: "presença, sequência e recorde somam os
+   * personagens da mesma pessoa — trocar de personagem pelo grupo nunca pode
+   * sair mais caro que faltar". A conta fazia o contrário, e três pessoas do
+   * roster apareciam com 88%, 88% e 75% tendo ido a todas as noites.
+   */
+  it("soma os personagens da mesma pessoa, em vez de contar falta", () => {
+    const trocouDePersonagem: WeeklyPerformance[] = [
+      {
+        week: 1,
+        runs: [
+          { date: "2026-08-18", players: [{ playerId: "voidwar", deaths: 0 }] },
+          { date: "2026-08-25", players: [{ playerId: "voidsurge", deaths: 0 }] },
+        ],
+      },
+    ];
+
+    expect(calculateAttendance(trocouDePersonagem, "voidsurge")).toBe(50);
+    expect(calculateAttendance(trocouDePersonagem, ["voidsurge", "voidwar"])).toBe(100);
+  });
+
+  it("não conta a mesma noite duas vezes quando os dois personagens jogaram", () => {
+    // Trocar de personagem no meio da noite é uma noite, não duas — foi o que
+    // aconteceu em 15/09, com Voidsurge nas trys 1 a 8 e Voidwar da 9 em diante.
+    const trocouNoMeio: WeeklyPerformance[] = [
+      {
+        week: 1,
+        runs: [
+          {
+            date: "2026-09-15",
+            players: [
+              { playerId: "voidsurge", deaths: 0 },
+              { playerId: "voidwar", deaths: 0 },
+            ],
+          },
+          { date: "2026-09-16", players: [{ playerId: "outro", deaths: 0 }] },
+        ],
+      },
+    ];
+
+    expect(calculateAttendance(trocouNoMeio, ["voidsurge", "voidwar"])).toBe(50);
+  });
 });
 
 describe('buildPlayerSeasonAverage', () => {

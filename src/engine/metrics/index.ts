@@ -403,17 +403,33 @@ export function calculateTrend(values: number[]): number | null {
  * the same calculation, available for the engine to call directly instead
  * of only living in that one script.
  */
+/**
+ * Presença da PESSOA, somando todos os personagens dela.
+ *
+ * Contava por personagem, e isso contrariava uma regra escrita do core:
+ * "presença, sequência e recorde somam os personagens da mesma pessoa —
+ * trocar de personagem pelo grupo nunca pode sair mais caro que faltar".
+ * Fazia exatamente o contrário. Quem pegou o alt porque faltava dps ficava
+ * com 88% ou 75%, como se tivesse faltado à noite que jogou.
+ *
+ * `personagens` é a pessoa inteira (main + alts). Passar um id só continua
+ * valendo e mede aquele personagem — é o que a tela de personagem quer.
+ */
 export function calculateAttendance(
   weeks: WeeklyPerformance[],
-  playerId: string
+  personagens: string | string[]
 ): number {
   const runs = getAllRuns(weeks);
   if (runs.length === 0) {
     return 0;
   }
 
+  const daPessoa = new Set(
+    typeof personagens === "string" ? [personagens] : personagens
+  );
+
   const attended = runs.filter(({ run }) =>
-    run.players.some((player) => player.playerId === playerId)
+    run.players.some((player) => daPessoa.has(player.playerId))
   ).length;
 
   return Math.round((attended / runs.length) * 100);

@@ -594,7 +594,17 @@ const trend = calculateTrend(
   primaryMetricSeries.data.map((point) => point.value)
 );
 
-const attendance = calculateAttendance(weeks, player.id);
+/**
+ * Presença da PESSOA, não do personagem.
+ *
+ * Contava só este personagem, e isso contrariava a regra escrita do core:
+ * quem pegou o alt porque faltava dps aparecia com 88% ou 75%, como se
+ * tivesse faltado à noite que jogou. Três pessoas do roster estavam assim.
+ */
+const attendance = calculateAttendance(weeks, [
+  player.id,
+  ...outrosPersonagens.map((jogador) => jogador.id),
+]);
 
 ---
 

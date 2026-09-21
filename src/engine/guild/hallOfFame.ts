@@ -94,11 +94,47 @@ function fewestDeathsEntry(weeks: WeeklyPerformance[], players: Array<{ id: stri
   };
 }
 
-function bestAttendanceEntry(weeks: WeeklyPerformance[], players: Array<{ id: string; name: string }>): HallOfFameEntry {
+/**
+ * A maior presença é da PESSOA, somando os personagens dela.
+ *
+ * Contava por personagem, e assim quem pegou o alt porque faltava dps podia
+ * PERDER o prêmio pra quem não trocou — ainda que os dois tivessem ido a
+ * todas as noites. É o contrário do que a regra do core diz: "trocar de
+ * personagem pelo grupo nunca pode sair mais caro que faltar".
+ */
+function bestAttendanceEntry(
+  weeks: WeeklyPerformance[],
+  players: Array<{ id: string; name: string; pertenceA?: string | null }>
+): HallOfFameEntry {
   let best: { playerId: string; playerName: string; attendance: number } | null = null;
 
+  const porId = new Map(players.map((player) => [player.id, player]));
+
+  /** Sobe a corrente de `pertenceA` até o main. O teto evita ciclo. */
+  const donoDe = (id: string): string => {
+    let atual = porId.get(id);
+    let passos = 0;
+    while (atual?.pertenceA && passos < players.length) {
+      const acima = porId.get(atual.pertenceA);
+      if (!acima || acima.id === atual.id) break;
+      atual = acima;
+      passos += 1;
+    }
+    return atual?.id ?? id;
+  };
+
+  const personagensDa = new Map<string, string[]>();
   for (const player of players) {
-    const attendance = calculateAttendance(weeks, player.id);
+    const dono = donoDe(player.id);
+    personagensDa.set(dono, [...(personagensDa.get(dono) ?? []), player.id]);
+  }
+
+  for (const player of players) {
+    // Só o main representa a pessoa no ranking: o alt entraria com o mesmo
+    // número e duplicaria a linha.
+    if (donoDe(player.id) !== player.id) continue;
+
+    const attendance = calculateAttendance(weeks, personagensDa.get(player.id) ?? [player.id]);
     if (attendance <= 0) continue;
     if (!best || attendance > best.attendance) {
       best = { playerId: player.id, playerName: player.name, attendance };
