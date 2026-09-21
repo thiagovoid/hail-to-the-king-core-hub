@@ -688,7 +688,7 @@ const attendance = calculateAttendance(weeks, [
       <AtoDaPagina
         numero={2}
         titulo="O que sustenta a nota"
-        comoLer="À esquerda, o que muda a nota antes da próxima terça: metas, o que você trouxe de casa, em que conteúdo já está pronto. À direita, a temporada inteira."
+        comoLer="À esquerda, a mesma noite que a nota mede e o que muda ela antes da próxima terça. À direita, a temporada inteira."
       />
     )}
 
@@ -706,6 +706,14 @@ const attendance = calculateAttendance(weeks, [
      */}
     <div class="grid lg:grid-cols-2 gap-x-8 items-start">
       <div>
+    {/* Sobe pro topo da coluna: é da MESMA noite que o Score mede, e lá
+        embaixo ficava solta, depois de dois blocos de temporada. */}
+    <ContribuicaoForaDeFuncao
+      atual={foraDeFuncaoAtual}
+      media={foraDeFuncaoMedia}
+      nights={noitesForaDeFuncao}
+    />
+
     {
       hasData && (
         <PerformanceGoals
@@ -743,11 +751,6 @@ const attendance = calculateAttendance(weeks, [
 
     <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
 
-    <ContribuicaoForaDeFuncao
-      atual={foraDeFuncaoAtual}
-      media={foraDeFuncaoMedia}
-      nights={noitesForaDeFuncao}
-    />
       </div>
     </div>
 

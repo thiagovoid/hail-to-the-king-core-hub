@@ -278,6 +278,16 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
         {regrasDoCore.length > 0 && (
           <InfoTooltip label="Como o core lê estes números" largura="larga" direcao="baixo">
             <span class="block text-slate-200 text-[11px] font-semibold">
+              O que esta nota mede
+            </span>
+
+            <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+              É a foto de agora, não a média da temporada — a evolução está no gráfico mais abaixo.
+              Dimensão sem dado tem o peso redistribuído entre as demais, em vez de pesar contra o
+              jogador.
+            </span>
+
+            <span class="block text-slate-200 text-[11px] font-semibold mt-3">
               Como a gente lê estes números
             </span>
 
@@ -303,13 +313,12 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
       </span>
     </div>
 
+    {/* O que a nota mede fica na linha; as ressalvas vão pro tooltip do
+        título. O dado é o foco — quem duvidou da conta abre o "i". */}
     <p class="text-sm text-slate-400 mt-1">
       {nightDate ? `Noite de ${formatarNoite(nightDate)}` : 'Última noite de raid'}
       {nightTries !== null && ` · ${nightTries} ${nightTries === 1 ? 'try' : 'trys'}`} —
-      a raid inteira, todas as trys, não só os kills, comparada às metas do core.
-      É a foto de agora, não a média da temporada: a evolução está no gráfico
-      abaixo. Dimensão sem dado tem o peso redistribuído entre as demais, em vez
-      de pesar contra o jogador.
+      a raid inteira, não só os kills.
     </p>
   </div>
 

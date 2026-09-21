@@ -15,6 +15,7 @@
  * encontro exigiria refazer a conta de recarga luta a luta.
  */
 import { formatCompact, formatDate, formatDuracao } from '@/utils/format';
+import InfoTooltip from '@/components/InfoTooltip.astro';
 
 interface NoiteDoBoss {
   date: string;
@@ -52,30 +53,41 @@ interface Props {
 
 const { bosses } = Astro.props;
 
-const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.', ',');
 ---
 
 {
   bosses.length > 0 && (
     <section class="mb-10">
       <div class="mb-4">
-        <h2 class="text-xl font-bold text-white">Boss a boss</h2>
+        <div class="inline-flex items-center gap-2 flex-wrap">
+          <h2 class="text-xl font-bold text-white">Boss a boss</h2>
+
+          <InfoTooltip label="Como ler o boss a boss" largura="larga">
+            <span class="block text-slate-200 text-[11px] font-semibold">
+              Por que só a última noite
+            </span>
+
+            <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+              <span class="text-slate-300">Sem você</span> é o tempo que o grupo seguiu lutando
+              depois que você caiu. Não é contagem de morte: cair três segundos antes do wipe custa
+              três segundos, cair no começo de uma luta de oito minutos custa oito.
+            </span>
+
+            <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+              Um total que nunca diminui não responde à noite que você limpou, e continua cobrando
+              por semanas de progressão que já passaram. O acumulado é assunto da retrospectiva de
+              fim de season.
+            </span>
+
+            <span class="block text-[11px] text-slate-500 leading-relaxed mt-2">
+              Atacar, Defender e Ajudar não aparecem aqui: são medidos na noite inteira, e recortá-los
+              por encontro exigiria refazer a conta de recarga luta a luta. Preferimos não estimar.
+            </span>
+          </InfoTooltip>
+        </div>
+
         <p class="text-sm text-slate-400 mt-1 leading-relaxed">
-          A média da noite mistura progressão com farm. Aqui cada encontro fala por si — e abrindo
-          um deles você vê a sua evolução nele, try a try, semana a semana.
-        </p>
-        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
-          <span class="text-slate-300">Sem você na última noite</span> é o tempo que o grupo seguiu
-          lutando depois que você caiu, na noite mais recente em que vocês se encontraram. Não é
-          contagem de morte: cair três segundos antes do wipe custa três segundos, cair no começo de
-          uma luta de oito minutos custa oito.
-        </p>
-        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
-          É de propósito que aqui fique só a última noite, e não o somado da temporada. Um total que
-          nunca diminui não responde à noite que você limpou, e continua cobrando por semanas de
-          progressão que já passaram. O acumulado da temporada é assunto da retrospectiva; aqui o
-          que interessa é o que dá pra corrigir na próxima. O histórico completo continua logo
-          abaixo, abrindo o boss.
+          Cada encontro fala por si. Clique num deles pra ver sua evolução nele, semana a semana.
         </p>
       </div>
 
@@ -83,14 +95,16 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead class="border-b border-slate-800">
+              {/* Seis colunas cabiam na largura inteira da página; nesta
+                  coluna de painel elas espremiam "de pé em 15/09" em quatro
+                  linhas. Kills entra junto de Trys, e Mortes junto de "Sem
+                  você" — os pares já se liam juntos de qualquer forma. */}
               <tr class="text-left text-slate-500 text-xs">
-                <th class="px-4 py-3 font-medium">Boss</th>
-                <th class="px-4 py-3 font-medium text-right">Trys<br /><span class="text-slate-600 font-normal">temporada</span></th>
-                <th class="px-4 py-3 font-medium text-right">Kills</th>
-                <th class="px-4 py-3 font-medium text-right">DPS</th>
-                <th class="px-4 py-3 font-medium text-right">Mortes<br /><span class="text-slate-600 font-normal">temporada</span></th>
-                <th class="px-4 py-3 font-medium text-right">Sem você<br /><span class="text-slate-600 font-normal">última noite</span></th>
-                <th class="px-4 py-3" />
+                <th class="px-3 py-3 font-medium">Boss</th>
+                <th class="px-3 py-3 font-medium text-right whitespace-nowrap">Kills / trys</th>
+                <th class="px-3 py-3 font-medium text-right">DPS</th>
+                <th class="px-3 py-3 font-medium text-right whitespace-nowrap">Suas mortes</th>
+                <th class="px-2 py-3" />
               </tr>
             </thead>
 
@@ -101,58 +115,54 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
                     class="border-b border-slate-800/50 hover:bg-white/[0.02] cursor-pointer"
                     data-boss={boss.chave}
                   >
-                    <td class="px-4 py-3">
+                    <td class="px-3 py-3">
                       <span class="text-white">{boss.nome}</span>
-                      <span
-                        class={`ml-2 text-[10px] uppercase tracking-wide ${
-                          boss.dificuldade === 'Heroico' ? 'text-purple-400' : 'text-slate-500'
-                        }`}
-                      >
-                        {boss.dificuldade}
-                      </span>
-                      {/* Farm e progressão não se leem igual: num boss já morto o
-                          número mede execução, num que ainda não caiu mede aprendizado. */}
-                      <span class="ml-2 text-[10px] text-slate-600">
-                        {boss.farm ? 'farm' : 'progressão'}
+                      <span class="block mt-0.5">
+                        <span
+                          class={`text-[10px] uppercase tracking-wide ${
+                            boss.dificuldade === 'Heroico' ? 'text-purple-400' : 'text-slate-500'
+                          }`}
+                        >
+                          {boss.dificuldade}
+                        </span>
+                        {/* Farm e progressão não se leem igual: num boss já morto o
+                            número mede execução, num que ainda não caiu mede aprendizado. */}
+                        <span class="ml-2 text-[10px] text-slate-600">
+                          {boss.farm ? 'farm' : 'progressão'}
+                        </span>
                       </span>
                     </td>
-                    <td class="px-4 py-3 text-right text-slate-300 tabular-nums">{boss.tries}</td>
-                    <td class="px-4 py-3 text-right tabular-nums">
+
+                    <td class="px-3 py-3 text-right tabular-nums whitespace-nowrap">
                       <span class={boss.kills > 0 ? 'text-emerald-400' : 'text-slate-600'}>
                         {boss.kills}
                       </span>
+                      <span class="text-slate-600"> / {boss.tries}</span>
                     </td>
-                    <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+
+                    <td class="px-3 py-3 text-right text-slate-300 tabular-nums whitespace-nowrap">
                       {boss.dps === null ? '—' : formatCompact(boss.dps)}
                     </td>
-                    <td class="px-4 py-3 text-right text-slate-300 tabular-nums">{boss.deaths}</td>
-                    {/* Segundos primeiro, data embaixo: "3min12" é uma régua
-                        que qualquer um tem, e a data impede a leitura errada
-                        de achar que é a temporada inteira. */}
-                    <td class="px-4 py-3 text-right tabular-nums">
-                      {boss.ultimaNoite === null || boss.ultimaNoite.semVoce === 0 ? (
-                        <>
-                          <span class="text-emerald-400">de pé</span>
-                          {boss.ultimaNoite && (
-                            <span class="block text-[10px] text-slate-600">
-                              em {formatDate(boss.ultimaNoite.date).slice(0, 5)}
-                            </span>
-                          )}
-                        </>
-                      ) : (
-                        <>
-                          <span
-                            class={boss.ultimaNoite.share > 15 ? 'text-amber-400' : 'text-slate-300'}
-                          >
-                            {formatDuracao(boss.ultimaNoite.semVoce)}
+
+                    {/* Mortes da temporada em cima, o custo da última noite
+                        embaixo: as duas respondem a mesma pergunta, e separadas
+                        em colunas espremiam "de pé em 15/09" em quatro linhas. */}
+                    <td class="px-3 py-3 text-right tabular-nums whitespace-nowrap">
+                      <span class={boss.deaths > 0 ? 'text-slate-300' : 'text-emerald-400'}>
+                        {boss.deaths === 0 ? 'nenhuma' : boss.deaths}
+                      </span>
+
+                      {boss.ultimaNoite !== null && boss.ultimaNoite.semVoce > 0 && (
+                        <span class="block text-[10px] text-slate-600">
+                          <span class={boss.ultimaNoite.share > 15 ? 'text-amber-400' : 'text-slate-500'}>
+                            {formatDuracao(boss.ultimaNoite.semVoce)} sem você
                           </span>
-                          <span class="block text-[10px] text-slate-600">
-                            {numero(boss.ultimaNoite.share)}% da luta · {formatDate(boss.ultimaNoite.date).slice(0, 5)}
-                          </span>
-                        </>
+                          {' '}em {formatDate(boss.ultimaNoite.date).slice(0, 5)}
+                        </span>
                       )}
                     </td>
-                    <td class="px-4 py-3 text-right">
+
+                    <td class="px-2 py-3 text-right">
                       <span class="seta text-slate-600 text-[11px]" aria-hidden="true">
                         &rsaquo;
                       </span>
@@ -160,7 +170,7 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
                   </tr>
 
                   <tr class="hidden" data-detalhe={boss.chave}>
-                    <td colspan="7" class="px-4 pb-4 pt-1 bg-black/20">
+                    <td colspan="5" class="px-3 pb-4 pt-1 bg-black/20">
                       <p class="text-[11px] uppercase tracking-wide text-slate-500 mb-2">
                         Noite a noite neste boss
                       </p>
@@ -201,10 +211,6 @@ const numero = (valor: number) => String(Math.round(valor * 10) / 10).replace('.
           </table>
         </div>
 
-        <p class="text-[10px] text-slate-600 px-4 py-3 border-t border-white/5">
-          Atacar, Defender e Ajudar não aparecem aqui: são medidos na noite inteira, e recortá-los
-          por encontro exigiria refazer a conta de recarga luta a luta. Preferimos não estimar.
-        </p>
       </div>
     </section>
   )

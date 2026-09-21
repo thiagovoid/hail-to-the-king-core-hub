@@ -11,6 +11,7 @@
  * consegue — é o que transforma a lista em objetivo em vez de placar.
  */
 import { CONQUISTAS, type ConquistaGanha } from '@/engine/guild/conquistas';
+import InfoTooltip from '@/components/InfoTooltip.astro';
 import type { ConquistaAoAlcance } from '@/engine/guild/aoSeuAlcance';
 import MedalhaDeConquista from '@/components/MedalhaDeConquista.astro';
 import { formatDate } from '@/utils/format';
@@ -114,12 +115,25 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
   elegivel ? (
     <section class="mb-10">
       <div class="mb-4">
-        <h2 class="text-xl font-bold text-white">Medalhas</h2>
+        <div class="inline-flex items-center gap-2 flex-wrap">
+          <h2 class="text-xl font-bold text-white">Medalhas</h2>
+
+          <InfoTooltip label="Como funcionam as medalhas">
+            <span class="block text-[11px] text-slate-400 leading-relaxed">
+              As esmaecidas ainda não foram conquistadas — passe o mouse numa delas pra ver como se
+              consegue.
+            </span>
+
+            <span class="block text-[11px] text-slate-400 leading-relaxed mt-2">
+              O total da temporada pode passar do número de medalhas: a mesma pode ser ganha em
+              noites diferentes.
+            </span>
+          </InfoTooltip>
+        </div>
 
         <p class="text-sm text-slate-400 mt-1">
           {desbloqueadas} de {CONQUISTAS.length} desbloqueadas
-          {totalGanho > desbloqueadas && ` · ${totalGanho} no total da temporada`}. As esmaecidas
-          ainda não foram conquistadas — passe o mouse pra ver como se consegue.
+          {totalGanho > desbloqueadas && ` · ${totalGanho} no total da temporada`}.
         </p>
 
         {remeteAo && (
