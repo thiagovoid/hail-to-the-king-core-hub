@@ -147,6 +147,14 @@ const healingParts = ultimaNoite?.healing
     }
   : null;
 
+/**
+ * Quantas noites por página no histórico.
+ *
+ * Dez porque a temporada cresce: no fim do tier seriam trinta linhas
+ * fechando a página com uma parede que ninguém lê inteira.
+ */
+const POR_PAGINA = 10;
+
 const hasData = history.length > 0;
 
 const dpsHistory = history
@@ -886,69 +894,158 @@ const attendance = calculateAttendance(weeks, [
       )
     }
 
+    {/* A coluna "Semana" saiu: a data já diz quando foi, e o número da
+        semana só existia porque é assim que o arquivo é organizado — detalhe
+        nosso, não do jogador.
+
+        A paginação é de dez em dez porque a temporada cresce e a tabela
+        crescia junto: no fim do tier seriam trinta linhas fechando a página
+        com uma parede que ninguém lê inteira. A mais recente vem primeiro —
+        é a que alguém realmente quer conferir. */}
     <section>
-      <h2 class="text-xl font-bold text-white mb-4">
-        Histórico
-      </h2>
+      <h2 class="text-xl font-bold text-white mb-4">Histórico</h2>
 
       <div class="overflow-x-auto bg-slate-900/60 border border-slate-800 rounded-xl">
-        <table class="w-full text-sm">
+        <table class="w-full text-sm" data-historico>
           <thead class="border-b border-slate-800">
             <tr class="text-left text-slate-500">
-              <th class="px-4 py-3">Semana</th>
               <th class="px-4 py-3">Data</th>
-              <th class="px-4 py-3">DPS</th>
-              <th class="px-4 py-3">HPS</th>
-              <th class="px-4 py-3">Parse</th>
-              <th class="px-4 py-3">Mortes</th>
-              <th class="px-4 py-3">Erros</th>
-              <th class="px-4 py-3">Item Level</th>
+              <th class="px-4 py-3 text-right">DPS</th>
+              <th class="px-4 py-3 text-right">HPS</th>
+              <th class="px-4 py-3 text-right">Parse</th>
+              <th class="px-4 py-3 text-right">Mortes</th>
+              <th class="px-4 py-3 text-right">Erros</th>
+              <th class="px-4 py-3 text-right">Item level</th>
             </tr>
           </thead>
 
           <tbody>
-            {
-              history.map((performance) => {
-                return (
-                  <tr class="border-b border-slate-800/50 last:border-0">
-                    <td class="px-4 py-3 text-white">
-                      {performance.week}
-                    </td>
+            {[...history].reverse().map((performance, indice) => (
+              <tr
+                class:list={[
+                  'border-b border-slate-800/50 last:border-0',
+                  indice >= POR_PAGINA && 'hidden',
+                ]}
+                data-linha={indice}
+              >
+                <td class="px-4 py-3 text-slate-300 whitespace-nowrap">
+                  {formatDate(performance.date)}
+                </td>
 
-                    <td class="px-4 py-3 text-slate-400">
-                      {formatDate(performance.date)}
-                    </td>
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {formatPerformanceValue(performance.dps)}
+                </td>
 
-                    <td class="px-4 py-3 text-slate-300">
-                      {formatPerformanceValue(performance.dps)}
-                    </td>
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {formatPerformanceValue(performance.hps)}
+                </td>
 
-                    <td class="px-4 py-3 text-slate-300">
-                      {formatPerformanceValue(performance.hps)}
-                    </td>
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.parse ?? '-'}
+                </td>
 
-                    <td class="px-4 py-3 text-slate-300">
-                      {performance.parse ?? '-'}
-                    </td>
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.deaths}
+                </td>
 
-                    <td class="px-4 py-3 text-slate-300">
-                      {performance.deaths}
-                    </td>
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.mechanics?.errors ?? '-'}
+                </td>
 
-                    <td class="px-4 py-3 text-slate-300">
-                      {performance.mechanics?.errors ?? '-'}
-                    </td>
-
-                    <td class="px-4 py-3 text-slate-300">
-                      {performance.itemLevel ?? '-'}
-                    </td>
-                  </tr>
-                );
-              })
-            }
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.itemLevel ?? '-'}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+
+        {/* Só aparece quando há o que paginar. Com oito noites a barra seria
+            uma linha de "1 de 1" ocupando espaço pra não dizer nada. */}
+        {history.length > POR_PAGINA && (
+          <div
+            class="flex items-center justify-between gap-3 px-4 py-3 border-t border-white/5"
+            data-paginacao
+            data-total={history.length}
+            data-por-pagina={POR_PAGINA}
+          >
+            <button
+              type="button"
+              data-anterior
+              class="text-xs text-slate-400 hover:text-white disabled:text-slate-700 disabled:cursor-default transition-colors"
+            >
+              ‹ Anteriores
+            </button>
+
+            <span class="text-[11px] text-slate-500 tabular-nums" data-posicao />
+
+            <button
+              type="button"
+              data-proxima
+              class="text-xs text-slate-400 hover:text-white disabled:text-slate-700 disabled:cursor-default transition-colors"
+            >
+              Mais antigas ›
+            </button>
+          </div>
+        )}
       </div>
     </section>
   </div>
 </BaseLayout>
+
+<script>
+  /**
+   * Paginação do histórico.
+   *
+   * As linhas já vêm todas no HTML — a tabela tem dezenas de linhas, não
+   * milhares, e buscar página por página exigiria um endpoint pra economizar
+   * bytes que o gzip já economiza. Aqui só se esconde e se mostra.
+   *
+   * Sem JS a primeira página continua visível e o resto fica oculto: perde a
+   * navegação, não a tabela.
+   */
+  const paginacao = document.querySelector<HTMLElement>('[data-paginacao]');
+  const tabela = document.querySelector<HTMLTableElement>('[data-historico]');
+
+  if (paginacao && tabela) {
+    const linhas = [...tabela.querySelectorAll<HTMLTableRowElement>('[data-linha]')];
+    const porPagina = Number(paginacao.dataset.porPagina) || 10;
+    const paginas = Math.max(1, Math.ceil(linhas.length / porPagina));
+
+    const anterior = paginacao.querySelector<HTMLButtonElement>('[data-anterior]');
+    const proxima = paginacao.querySelector<HTMLButtonElement>('[data-proxima]');
+    const posicao = paginacao.querySelector<HTMLElement>('[data-posicao]');
+
+    let pagina = 0;
+
+    const mostrar = () => {
+      const inicio = pagina * porPagina;
+      const fim = inicio + porPagina;
+
+      for (const [indice, linha] of linhas.entries()) {
+        linha.classList.toggle('hidden', indice < inicio || indice >= fim);
+      }
+
+      if (anterior) anterior.disabled = pagina === 0;
+      if (proxima) proxima.disabled = pagina >= paginas - 1;
+
+      // "1-10 de 24" e não "página 1 de 3": diz quantas noites existem, que é
+      // o que alguém quer saber antes de decidir se vale navegar.
+      if (posicao) {
+        posicao.textContent = `${inicio + 1}–${Math.min(fim, linhas.length)} de ${linhas.length} noites`;
+      }
+    };
+
+    anterior?.addEventListener('click', () => {
+      pagina = Math.max(0, pagina - 1);
+      mostrar();
+    });
+
+    proxima?.addEventListener('click', () => {
+      pagina = Math.min(paginas - 1, pagina + 1);
+      mostrar();
+    });
+
+    mostrar();
+  }
+</script>
