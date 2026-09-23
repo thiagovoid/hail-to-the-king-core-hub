@@ -1,0 +1,189 @@
+{
+  "bestPerformanceAverage": 52.33309250981649,
+  "medianPerformanceAverage": 52.33309250981649,
+  "difficulty": 4,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Elemental",
+      "points": 136.118,
+      "possiblePoints": 1080,
+      "rank": 31298,
+      "regionRank": 6253,
+      "serverRank": 9,
+      "rankPercent": 31.940850277264325,
+      "total": 45985,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 69.1547146614911,
+      "medianPercent": 69.1547146614911,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 296710,
+      "allStars": {
+        "points": 80.47,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 9178,
+        "regionRank": 1813,
+        "serverRank": 4,
+        "rankPercent": 68.11216512040029,
+        "total": 28779
+      },
+      "spec": "Elemental",
+      "bestSpec": "Elemental",
+      "bestAmount": 182381.59145293,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 53293453,
+        "class": 9,
+        "spec": 1,
+        "per_second_amount": 182381.59145293,
+        "ilvl": 319,
+        "fight_metadata": 995876
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 35.51147035814188,
+      "medianPercent": 35.51147035814188,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 279541,
+      "allStars": {
+        "points": 55.64,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 19851,
+        "regionRank": 3996,
+        "serverRank": 4,
+        "rankPercent": 34.736149926023344,
+        "total": 30415
+      },
+      "spec": "Elemental",
+      "bestSpec": "Elemental",
+      "bestAmount": 131559.89997889,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 53311677,
+        "class": 9,
+        "spec": 1,
+        "per_second_amount": 131559.89997889,
+        "ilvl": 319,
+        "fight_metadata": 995877
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}

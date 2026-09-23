@@ -1,0 +1,284 @@
+{
+  "bestPerformanceAverage": 53.198551025335526,
+  "medianPerformanceAverage": 47.284927587557505,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Affliction",
+      "points": 437.772,
+      "possiblePoints": 1080,
+      "rank": 2469,
+      "regionRank": 1097,
+      "serverRank": 4,
+      "rankPercent": 76.07831734031211,
+      "total": 10317,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 38.43773854029578,
+      "medianPercent": 34.0030450018517,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 54.63,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 3782,
+        "regionRank": 1657,
+        "serverRank": 4,
+        "rankPercent": 38.47030105777055,
+        "total": 6145
+      },
+      "spec": "Affliction",
+      "bestSpec": "Affliction",
+      "bestAmount": 92882.506568101,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177364,
+        "class": 10,
+        "spec": 1,
+        "per_second_amount": 92882.506568101,
+        "ilvl": 312,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 41.68443722943453,
+      "medianPercent": 36.91047892665767,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 339374,
+      "allStars": {
+        "points": 54.52,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 3350,
+        "regionRank": 1471,
+        "serverRank": 5,
+        "rankPercent": 37.10798122065728,
+        "total": 5325
+      },
+      "spec": "Affliction",
+      "bestSpec": "Affliction",
+      "bestAmount": 95337.789358728,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36000358,
+        "class": 10,
+        "spec": 1,
+        "per_second_amount": 95337.789358728,
+        "ilvl": 308,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 62.1050739036435,
+      "medianPercent": 53.80701632228017,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 58.59,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 3087,
+        "regionRank": 1347,
+        "serverRank": 4,
+        "rankPercent": 46.50719362107818,
+        "total": 5769
+      },
+      "spec": "Affliction",
+      "bestSpec": "Affliction",
+      "bestAmount": 109810.97254084,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36000374,
+        "class": 10,
+        "spec": 1,
+        "per_second_amount": 109810.97254084,
+        "ilvl": 308,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 75.59309587403808,
+      "medianPercent": 59.37119017150343,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 84.71,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 1406,
+        "regionRank": 607,
+        "serverRank": 2,
+        "rankPercent": 74.53787604204422,
+        "total": 5518
+      },
+      "spec": "Affliction",
+      "bestSpec": "Affliction",
+      "bestAmount": 179873.91322787,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177453,
+        "class": 10,
+        "spec": 1,
+        "per_second_amount": 179873.91322787,
+        "ilvl": 312,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 49.5544829434699,
+      "medianPercent": 49.4831519161952,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 61.78,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 3192,
+        "regionRank": 1309,
+        "serverRank": 3,
+        "rankPercent": 49.52546662448592,
+        "total": 6322
+      },
+      "spec": "Affliction",
+      "bestSpec": "Affliction",
+      "bestAmount": 102372.61678579,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177470,
+        "class": 10,
+        "spec": 1,
+        "per_second_amount": 102372.61678579,
+        "ilvl": 312,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 68.16802868646693,
+      "medianPercent": 60.57261077441444,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 73.46,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 1623,
+        "regionRank": 714,
+        "serverRank": 4,
+        "rankPercent": 62.59225092250922,
+        "total": 4336
+      },
+      "spec": "Affliction",
+      "bestSpec": "Affliction",
+      "bestAmount": 141726.52988635,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36000447,
+        "class": 10,
+        "spec": 1,
+        "per_second_amount": 141726.52988635,
+        "ilvl": 309,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": 36.847,
+      "medianPercent": 36.847,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 419186,
+      "allStars": {
+        "points": 50.08,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 2626,
+        "regionRank": 1177,
+        "serverRank": 3,
+        "rankPercent": 36.00682593856655,
+        "total": 4102
+      },
+      "spec": "Affliction",
+      "bestSpec": "Affliction",
+      "bestAmount": 109387.13840634,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 43975852,
+        "class": 10,
+        "spec": 1,
+        "per_second_amount": 109387.13840634,
+        "ilvl": 310,
+        "fight_metadata": 995889
+      }
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}

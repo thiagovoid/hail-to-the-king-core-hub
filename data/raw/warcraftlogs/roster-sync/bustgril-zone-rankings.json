@@ -1,0 +1,284 @@
+{
+  "bestPerformanceAverage": 71.6742583288899,
+  "medianPerformanceAverage": 42.96028164131483,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Frost",
+      "points": 575.415,
+      "possiblePoints": 1080,
+      "rank": 3372,
+      "regionRank": 1139,
+      "serverRank": 5,
+      "rankPercent": 82.9842006965827,
+      "total": 19811,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 89.00065735672531,
+      "medianPercent": 43.33939080078913,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 102.01,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 1230,
+        "regionRank": 424,
+        "serverRank": 1,
+        "rankPercent": 89.32696482848459,
+        "total": 11515
+      },
+      "spec": "Frost",
+      "bestSpec": "Frost",
+      "bestAmount": 127231.49634274,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177367,
+        "class": 4,
+        "spec": 3,
+        "per_second_amount": 127231.49634274,
+        "ilvl": 314,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 68.29587399562149,
+      "medianPercent": 51.58404919253651,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 339374,
+      "allStars": {
+        "points": 78.21,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 4041,
+        "regionRank": 1303,
+        "serverRank": 4,
+        "rankPercent": 68.38315855376429,
+        "total": 12778
+      },
+      "spec": "Frost",
+      "bestSpec": "Frost",
+      "bestAmount": 104656.71795718,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177412,
+        "class": 4,
+        "spec": 3,
+        "per_second_amount": 104656.71795718,
+        "ilvl": 314,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 86.20414353460217,
+      "medianPercent": 44.27205141302329,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 99.17,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 1490,
+        "regionRank": 520,
+        "serverRank": 2,
+        "rankPercent": 86.97287839020123,
+        "total": 11430
+      },
+      "spec": "Frost",
+      "bestSpec": "Frost",
+      "bestAmount": 136511.63441775,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177429,
+        "class": 4,
+        "spec": 3,
+        "per_second_amount": 136511.63441775,
+        "ilvl": 314,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 68.6855676236913,
+      "medianPercent": 60.691089999127016,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 71.94,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 4385,
+        "regionRank": 1379,
+        "serverRank": 7,
+        "rankPercent": 63.72062231049321,
+        "total": 12084
+      },
+      "spec": "Frost",
+      "bestSpec": "Frost",
+      "bestAmount": 164583.9966806,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36025063,
+        "class": 4,
+        "spec": 3,
+        "per_second_amount": 164583.9966806,
+        "ilvl": 305,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 72.87445380271328,
+      "medianPercent": 11.965840066369013,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 84.49,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 2865,
+        "regionRank": 1009,
+        "serverRank": 3,
+        "rankPercent": 73.07511516405002,
+        "total": 10637
+      },
+      "spec": "Frost",
+      "bestSpec": "Frost",
+      "bestAmount": 102450.14928074,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177475,
+        "class": 4,
+        "spec": 3,
+        "per_second_amount": 102450.14928074,
+        "ilvl": 314,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 76.73271118547505,
+      "medianPercent": 56.23767262346474,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 87.5,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 2801,
+        "regionRank": 1029,
+        "serverRank": 5,
+        "rankPercent": 76.72485453034082,
+        "total": 12030
+      },
+      "spec": "Frost",
+      "bestSpec": "Frost",
+      "bestAmount": 173926.33410142,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177492,
+        "class": 4,
+        "spec": 3,
+        "per_second_amount": 173926.33410142,
+        "ilvl": 314,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": 39.92640080340077,
+      "medianPercent": 32.631877393894044,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 419186,
+      "allStars": {
+        "points": 52.09,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 4865,
+        "regionRank": 1622,
+        "serverRank": 8,
+        "rankPercent": 39.80942952604876,
+        "total": 8081
+      },
+      "spec": "Frost",
+      "bestSpec": "Frost",
+      "bestAmount": 106916.80304209,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 43975856,
+        "class": 4,
+        "spec": 3,
+        "per_second_amount": 106916.80304209,
+        "ilvl": 307,
+        "fight_metadata": 995889
+      }
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}

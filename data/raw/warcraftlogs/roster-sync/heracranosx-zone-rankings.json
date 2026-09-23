@@ -1,0 +1,303 @@
+{
+  "bestPerformanceAverage": 55.20949153316753,
+  "medianPerformanceAverage": 45.74505019717483,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Havoc",
+      "points": 496.685,
+      "possiblePoints": 1080,
+      "rank": 7013,
+      "regionRank": 1959,
+      "serverRank": 9,
+      "rankPercent": 70.70521390374331,
+      "total": 23936,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 54.97123490390698,
+      "medianPercent": 47.98164137712189,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 61.96,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 8190,
+        "regionRank": 2216,
+        "serverRank": 12,
+        "rankPercent": 53.55866840582998,
+        "total": 17633
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 98947.121722572,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177353,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 98947.121722572,
+        "ilvl": 318,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 67.20275859733448,
+      "medianPercent": 60.22835865673403,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 339374,
+      "allStars": {
+        "points": 75.12,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 6256,
+        "regionRank": 1804,
+        "serverRank": 9,
+        "rankPercent": 64.7605633802817,
+        "total": 17750
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 103158.94558805,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177398,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 103158.94558805,
+        "ilvl": 318,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 63.74722147593103,
+      "medianPercent": 51.69271873966345,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 64.63,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 7809,
+        "regionRank": 2146,
+        "serverRank": 10,
+        "rankPercent": 53.828868783631954,
+        "total": 16911
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 114263.76780778,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177414,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 114263.76780778,
+        "ilvl": 318,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 50.66742466092294,
+      "medianPercent": 31.86979316553952,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 57.87,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 8627,
+        "regionRank": 2293,
+        "serverRank": 12,
+        "rankPercent": 50.88538404600581,
+        "total": 17563
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 130858.74789714,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177443,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 130858.74789714,
+        "ilvl": 318,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 61.20058122824729,
+      "medianPercent": 49.01603340476764,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 71.65,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 6431,
+        "regionRank": 1830,
+        "serverRank": 9,
+        "rankPercent": 61.39529298751201,
+        "total": 16656
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 112053.84360204,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177460,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 112053.84360204,
+        "ilvl": 318,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 58.13746827530792,
+      "medianPercent": 39.42261310988242,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 67.42,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 6619,
+        "regionRank": 1871,
+        "serverRank": 9,
+        "rankPercent": 58.10066476733143,
+        "total": 15795
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 129225.96971526,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177477,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 129225.96971526,
+        "ilvl": 318,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": 30.6905,
+      "medianPercent": 30.6905,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 419186,
+      "allStars": {
+        "points": 40.55,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 9826,
+        "regionRank": 2658,
+        "serverRank": 13,
+        "rankPercent": 29.311461256205483,
+        "total": 13899
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 94573.988635117,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 43975845,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 94573.988635117,
+        "ilvl": 315,
+        "fight_metadata": 995889
+      }
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": 55.05874312368962,
+      "medianPercent": 55.05874312368962,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 418961,
+      "allStars": {
+        "points": 57.48,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 4069,
+        "regionRank": 1134,
+        "serverRank": 6,
+        "rankPercent": 50.036845983787764,
+        "total": 8142
+      },
+      "spec": "Havoc",
+      "bestSpec": "Havoc",
+      "bestAmount": 94449.535875654,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 21782003,
+        "class": 12,
+        "spec": 1,
+        "per_second_amount": 94449.535875654,
+        "ilvl": 305,
+        "fight_metadata": 995891
+      }
+    }
+  ]
+}

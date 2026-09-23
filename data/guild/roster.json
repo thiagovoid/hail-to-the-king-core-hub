@@ -665,5 +665,57 @@
         "calculatedAt": "2026-09-21T08:21:27.325Z"
       }
     }
+  },
+  {
+    "id": "perdidø",
+    "name": "Perdidø",
+    "class": "hunter",
+    "race": "Anão",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/41/266976297-avatar.jpg?alt=/wow/static/images/2d/avatar/3-0.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/stormrage/Perdid%C3%B8"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Perdid%C3%B8"
+    }
+  },
+  {
+    "id": "harrydóter",
+    "name": "Harrydóter",
+    "class": "warlock",
+    "race": "Anão",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/90/267528538-avatar.jpg?alt=/wow/static/images/2d/avatar/3-1.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/stormrage/Harryd%C3%B3ter"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Harryd%C3%B3ter"
+    }
   }
 ]

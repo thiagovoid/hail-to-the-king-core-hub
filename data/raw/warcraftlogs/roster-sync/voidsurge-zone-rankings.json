@@ -1,0 +1,284 @@
+{
+  "bestPerformanceAverage": 45.5598936770466,
+  "medianPerformanceAverage": 26.628266159078738,
+  "difficulty": 3,
+  "metric": "hps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Restoration",
+      "points": 355.092,
+      "possiblePoints": 1080,
+      "rank": 24435,
+      "regionRank": 7360,
+      "serverRank": 15,
+      "rankPercent": 53.66556680699359,
+      "total": 52734,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 77.64111667112772,
+      "medianPercent": 62.28962607905484,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 73.28,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 13403,
+        "regionRank": 4134,
+        "serverRank": 11,
+        "rankPercent": 66.62433071846594,
+        "total": 40155
+      },
+      "spec": "Restoration",
+      "bestSpec": "Restoration",
+      "bestAmount": 97498.30737633,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 16323657,
+        "class": 9,
+        "spec": 3,
+        "per_second_amount": 97498.30737633,
+        "ilvl": 287,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 65.79604250358831,
+      "medianPercent": 13.464387822831457,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 339374,
+      "allStars": {
+        "points": 68.05,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 16466,
+        "regionRank": 5262,
+        "serverRank": 12,
+        "rankPercent": 59.3436712924095,
+        "total": 40498
+      },
+      "spec": "Restoration",
+      "bestSpec": "Restoration",
+      "bestAmount": 155057.53285718,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 16323669,
+        "class": 9,
+        "spec": 3,
+        "per_second_amount": 155057.53285718,
+        "ilvl": 287,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 36.51739374468097,
+      "medianPercent": 18.066427707505248,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 37.93,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 27258,
+        "regionRank": 8141,
+        "serverRank": 19,
+        "rankPercent": 32.19989055270882,
+        "total": 40202
+      },
+      "spec": "Restoration",
+      "bestSpec": "Restoration",
+      "bestAmount": 92989.712445262,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 16323727,
+        "class": 9,
+        "spec": 3,
+        "per_second_amount": 92989.712445262,
+        "ilvl": 287,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 57.42245486628222,
+      "medianPercent": 30.473925118233254,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 56.59,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 19903,
+        "regionRank": 6383,
+        "serverRank": 15,
+        "rankPercent": 50.45309699263095,
+        "total": 40168
+      },
+      "spec": "Restoration",
+      "bestSpec": "Restoration",
+      "bestAmount": 113623.8014361,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 16323743,
+        "class": 9,
+        "spec": 3,
+        "per_second_amount": 113623.8014361,
+        "ilvl": 287,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 30.28775751528259,
+      "medianPercent": 22.858081747389086,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 39.62,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 26867,
+        "regionRank": 7837,
+        "serverRank": 17,
+        "rankPercent": 30.382731725013603,
+        "total": 38591
+      },
+      "spec": "Restoration",
+      "bestSpec": "Restoration",
+      "bestAmount": 142954.67897102,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177465,
+        "class": 9,
+        "spec": 3,
+        "per_second_amount": 142954.67897102,
+        "ilvl": 310,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 44.32693043836433,
+      "medianPercent": 32.31785463853728,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 52.57,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 20362,
+        "regionRank": 5933,
+        "serverRank": 14,
+        "rankPercent": 44.4462634034542,
+        "total": 36651
+      },
+      "spec": "Restoration",
+      "bestSpec": "Restoration",
+      "bestAmount": 162063.68756972,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177482,
+        "class": 9,
+        "spec": 3,
+        "per_second_amount": 162063.68756972,
+        "ilvl": 310,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": 6.92756,
+      "medianPercent": 6.92756,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 419186,
+      "allStars": {
+        "points": 27.06,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 27823,
+        "regionRank": 7719,
+        "serverRank": 16,
+        "rankPercent": 6.743983374673192,
+        "total": 29834
+      },
+      "spec": "Restoration",
+      "bestSpec": "Restoration",
+      "bestAmount": 85310.141560071,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 43975849,
+        "class": 9,
+        "spec": 3,
+        "per_second_amount": 85310.141560071,
+        "ilvl": 300,
+        "fight_metadata": 995889
+      }
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}

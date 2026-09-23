@@ -1,0 +1,208 @@
+{
+  "bestPerformanceAverage": 3.9123433333333337,
+  "medianPerformanceAverage": 3.9123433333333337,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Unholy",
+      "points": 76.5517,
+      "possiblePoints": 1080,
+      "rank": 36579,
+      "regionRank": 10104,
+      "serverRank": 15,
+      "rankPercent": 14.14421181109755,
+      "total": 42604,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 4.93783,
+      "medianPercent": 4.93783,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 516397,
+      "allStars": {
+        "points": 29.89,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 31313,
+        "regionRank": 8920,
+        "serverRank": 13,
+        "rankPercent": 4.235862617365507,
+        "total": 32697
+      },
+      "spec": "Unholy",
+      "bestSpec": "Unholy",
+      "bestAmount": 49200.628586146,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 3194956,
+        "class": 1,
+        "spec": 3,
+        "per_second_amount": 49200.628586146,
+        "ilvl": 290,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 2.44144,
+      "medianPercent": 2.44144,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 543374,
+      "allStars": {
+        "points": 24.12,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 32484,
+        "regionRank": 9283,
+        "serverRank": 12,
+        "rankPercent": 2.035707823149768,
+        "total": 33158
+      },
+      "spec": "Unholy",
+      "bestSpec": "Unholy",
+      "bestAmount": 38047.617294902,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 3194970,
+        "class": 1,
+        "spec": 3,
+        "per_second_amount": 38047.617294902,
+        "ilvl": 290,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 4.35776,
+      "medianPercent": 4.35776,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 436579,
+      "allStars": {
+        "points": 22.54,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 32082,
+        "regionRank": 9094,
+        "serverRank": 14,
+        "rankPercent": 2.7966307114289175,
+        "total": 33004
+      },
+      "spec": "Unholy",
+      "bestSpec": "Unholy",
+      "bestAmount": 48976.377700256,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 3194984,
+        "class": 1,
+        "spec": 3,
+        "per_second_amount": 48976.377700256,
+        "ilvl": 290,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}

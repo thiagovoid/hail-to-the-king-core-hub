@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T06:52:17.085Z",
+  "generatedAt": "2026-09-23T02:55:06.327Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -667,6 +667,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "204018": {
+      "name": "Blessing of Spellwarding",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "205021": {
       "name": "Ray of Frost",
       "cooldownMs": 60000,
@@ -762,6 +768,12 @@
       "cooldownMs": 90000,
       "charges": 1,
       "kind": "utility"
+    },
+    "265187": {
+      "name": "Summon Demonic Tyrant",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
     },
     "265946": {
       "name": "Ritual Wraps",
@@ -1111,6 +1123,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1276452": {
+      "name": "Grimoire: Imp Lord",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1277933": {
       "name": "Preparation",
       "cooldownMs": 240000,
@@ -1150,6 +1168,12 @@
     "1297761": {
       "name": "Voracious Heart of Ula'tek",
       "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "1297908": {
+      "name": "Font of Venomous Rage",
+      "cooldownMs": 240000,
       "charges": 1,
       "kind": "offensive"
     },
@@ -1262,6 +1286,8 @@
     85673,
     85948,
     96231,
+    104316,
+    105174,
     108287,
     110960,
     111400,
@@ -1274,6 +1300,7 @@
     126664,
     131347,
     132157,
+    147362,
     156322,
     162794,
     163201,
@@ -1299,6 +1326,7 @@
     195072,
     195182,
     195292,
+    196277,
     196881,
     198137,
     198793,
@@ -1315,6 +1343,7 @@
     207317,
     209693,
     210152,
+    212396,
     213243,
     213634,
     213644,
@@ -1325,6 +1354,7 @@
     234153,
     257040,
     257284,
+    264178,
     272790,
     275773,
     275779,
@@ -1349,8 +1379,11 @@
     426586,
     427453,
     431398,
+    433568,
     433895,
     434144,
+    434506,
+    434635,
     435222,
     440839,
     441424,

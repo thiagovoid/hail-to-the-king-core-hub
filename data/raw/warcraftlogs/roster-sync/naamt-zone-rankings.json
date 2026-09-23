@@ -1,0 +1,265 @@
+{
+  "bestPerformanceAverage": 8.026454006209923,
+  "medianPerformanceAverage": 8.026454006209923,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Outlaw",
+      "points": 144.318,
+      "possiblePoints": 1080,
+      "rank": 6187,
+      "regionRank": 1955,
+      "serverRank": 3,
+      "rankPercent": 27.649122807017545,
+      "total": 8550,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 7.911213137854189,
+      "medianPercent": 7.911213137854189,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 28.01,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 5955,
+        "regionRank": 1936,
+        "serverRank": 3,
+        "rankPercent": 5.416997617156474,
+        "total": 6295
+      },
+      "spec": "Outlaw",
+      "bestSpec": "Outlaw",
+      "bestAmount": 49837.310553528,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177355,
+        "class": 8,
+        "spec": 4,
+        "per_second_amount": 49837.310553528,
+        "ilvl": 282,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 8.109094027428895,
+      "medianPercent": 8.109094027428895,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 27.27,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 5910,
+        "regionRank": 1899,
+        "serverRank": 2,
+        "rankPercent": 7.71513353115727,
+        "total": 6403
+      },
+      "spec": "Outlaw",
+      "bestSpec": "Outlaw",
+      "bestAmount": 59776.164150542,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177416,
+        "class": 8,
+        "spec": 4,
+        "per_second_amount": 59776.164150542,
+        "ilvl": 284,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 4.436345307289013,
+      "medianPercent": 4.436345307289013,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 12.32,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 6332,
+        "regionRank": 2058,
+        "serverRank": 3,
+        "rankPercent": 4.191888619854722,
+        "total": 6608
+      },
+      "spec": "Outlaw",
+      "bestSpec": "Outlaw",
+      "bestAmount": 38537.840875355,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177445,
+        "class": 8,
+        "spec": 4,
+        "per_second_amount": 38537.840875355,
+        "ilvl": 284,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 9.491905288851449,
+      "medianPercent": 9.491905288851449,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 29.63,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 5445,
+        "regionRank": 1752,
+        "serverRank": 3,
+        "rankPercent": 9.206137424949967,
+        "total": 5996
+      },
+      "spec": "Outlaw",
+      "bestSpec": "Outlaw",
+      "bestAmount": 55770.08655267,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177462,
+        "class": 8,
+        "spec": 4,
+        "per_second_amount": 55770.08655267,
+        "ilvl": 284,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 4.0409735696178,
+      "medianPercent": 4.0409735696178,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 16.05,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 5594,
+        "regionRank": 1775,
+        "serverRank": 2,
+        "rankPercent": 4.032258064516129,
+        "total": 5828
+      },
+      "spec": "Outlaw",
+      "bestSpec": "Outlaw",
+      "bestAmount": 35732.717945904,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177479,
+        "class": 8,
+        "spec": 4,
+        "per_second_amount": 35732.717945904,
+        "ilvl": 284,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": 14.16919270621818,
+      "medianPercent": 14.16919270621818,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 355139,
+      "allStars": {
+        "points": 31.03,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 2331,
+        "regionRank": 858,
+        "serverRank": 1,
+        "rankPercent": 15.48784911135292,
+        "total": 2757
+      },
+      "spec": "Outlaw",
+      "bestSpec": "Outlaw",
+      "bestAmount": 60312.286175272,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36220003,
+        "class": 8,
+        "spec": 4,
+        "per_second_amount": 60312.286175272,
+        "ilvl": 269,
+        "fight_metadata": 995891
+      }
+    }
+  ]
+}

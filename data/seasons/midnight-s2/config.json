@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "Abismo Venenoso",
-    "lastUpdated": "2026-09-20T05:55:30.205Z",
+    "lastUpdated": "2026-09-23T02:55:06.452Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -349,7 +349,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 12,
+      "pullsTotal": 13,
       "pullLog": [
         {
           "reportCode": "6BcGTrAN7HaPx431",
@@ -368,6 +368,12 @@
           "date": "2026-09-15",
           "pulls": 1,
           "kill": true
+        },
+        {
+          "reportCode": "g3rQ28mdTZ4PHBkb",
+          "date": "2026-09-22",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -384,7 +390,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 12,
+      "pullsTotal": 15,
       "pullLog": [
         {
           "reportCode": "P1nLMzCrHmgDpWT2",
@@ -397,6 +403,12 @@
           "date": "2026-09-15",
           "pulls": 11,
           "kill": true
+        },
+        {
+          "reportCode": "g3rQ28mdTZ4PHBkb",
+          "date": "2026-09-22",
+          "pulls": 3,
+          "kill": true
         }
       ]
     },
@@ -404,24 +416,31 @@
       "id": "vashnik-o-maligno",
       "name": "Vashnik, o Maligno",
       "encounterID": 3455,
-      "status": "not_started",
-      "pulls": 0,
+      "status": "killed",
+      "pulls": 1,
       "bestPullPercent": 42,
-      "killDate": null,
+      "killDate": "2026-09-23T01:56:32.832Z",
       "links": {
-        "warcraftLogs": null,
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/g3rQ28mdTZ4PHBkb?fight=17",
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 0,
-      "pullLog": []
+      "pullsTotal": 1,
+      "pullLog": [
+        {
+          "reportCode": "g3rQ28mdTZ4PHBkb",
+          "date": "2026-09-22",
+          "pulls": 1,
+          "kill": true
+        }
+      ]
     },
     {
       "id": "os-exploradores-perdidos",
       "name": "Os Exploradores Perdidos",
       "encounterID": 3497,
-      "status": "not_started",
-      "pulls": 0,
+      "status": "progress",
+      "pulls": 4,
       "bestPullPercent": null,
       "killDate": null,
       "links": {
@@ -429,8 +448,15 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 0,
-      "pullLog": []
+      "pullsTotal": 4,
+      "pullLog": [
+        {
+          "reportCode": "g3rQ28mdTZ4PHBkb",
+          "date": "2026-09-22",
+          "pulls": 4,
+          "kill": false
+        }
+      ]
     },
     {
       "id": "sszorak",
@@ -498,6 +524,11 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-09-22",
+      "url": "https://www.warcraftlogs.com/reports/g3rQ28mdTZ4PHBkb",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-09-15",
       "url": "https://www.warcraftlogs.com/reports/JCvk27bDL6Zdm18j",

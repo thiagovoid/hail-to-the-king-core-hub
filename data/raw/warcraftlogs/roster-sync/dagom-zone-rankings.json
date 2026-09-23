@@ -1,0 +1,265 @@
+{
+  "bestPerformanceAverage": 17.073756213861177,
+  "medianPerformanceAverage": 14.634559952223434,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Retribution",
+      "points": 216.554,
+      "possiblePoints": 1080,
+      "rank": 45682,
+      "regionRank": 12366,
+      "serverRank": 987,
+      "rankPercent": 35.72755156597349,
+      "total": 71074,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 23.31236887640714,
+      "medianPercent": 23.31236887640714,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 43.01,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 41022,
+        "regionRank": 11092,
+        "serverRank": 901,
+        "rankPercent": 23.352454268577514,
+        "total": 53519
+      },
+      "spec": "Retribution",
+      "bestSpec": "Retribution",
+      "bestAmount": 78247.325232416,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177359,
+        "class": 6,
+        "spec": 3,
+        "per_second_amount": 78247.325232416,
+        "ilvl": 310,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 14.877331199502766,
+      "medianPercent": 14.877331199502766,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 339374,
+      "allStars": {
+        "points": 40.7,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 46266,
+        "regionRank": 12836,
+        "serverRank": 1031,
+        "rankPercent": 14.377984232150128,
+        "total": 54034
+      },
+      "spec": "Retribution",
+      "bestSpec": "Retribution",
+      "bestAmount": 70133.928939754,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177404,
+        "class": 6,
+        "spec": 3,
+        "per_second_amount": 70133.928939754,
+        "ilvl": 310,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 15.729077616539705,
+      "medianPercent": 12.153180868937813,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 38.02,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 45429,
+        "regionRank": 12438,
+        "serverRank": 1014,
+        "rankPercent": 15.317364153229565,
+        "total": 53645
+      },
+      "spec": "Retribution",
+      "bestSpec": "Retribution",
+      "bestAmount": 78732.344602736,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177420,
+        "class": 6,
+        "spec": 3,
+        "per_second_amount": 78732.344602736,
+        "ilvl": 310,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 9.965097883135005,
+      "medianPercent": 7.3360522184943395,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 19.84,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 49024,
+        "regionRank": 13555,
+        "serverRank": 1061,
+        "rankPercent": 8.772354243817109,
+        "total": 53737
+      },
+      "spec": "Retribution",
+      "bestSpec": "Retribution",
+      "bestAmount": 68721.789920526,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36025054,
+        "class": 6,
+        "spec": 3,
+        "per_second_amount": 68721.789920526,
+        "ilvl": 307,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 19.876073852013626,
+      "medianPercent": 18.53616926059979,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 41.04,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 40611,
+        "regionRank": 11261,
+        "serverRank": 916,
+        "rankPercent": 19.893480619390473,
+        "total": 50695
+      },
+      "spec": "Retribution",
+      "bestSpec": "Retribution",
+      "bestAmount": 79784.185289062,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177466,
+        "class": 6,
+        "spec": 3,
+        "per_second_amount": 79784.185289062,
+        "ilvl": 310,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 18.68258785556882,
+      "medianPercent": 11.59225728939874,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 33.94,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 39449,
+        "regionRank": 10516,
+        "serverRank": 860,
+        "rankPercent": 14.76784132402826,
+        "total": 46283
+      },
+      "spec": "Retribution",
+      "bestSpec": "Retribution",
+      "bestAmount": 91516.008804221,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36000442,
+        "class": 6,
+        "spec": 3,
+        "per_second_amount": 91516.008804221,
+        "ilvl": 307,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}

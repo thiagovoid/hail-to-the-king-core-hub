@@ -1,0 +1,284 @@
+{
+  "bestPerformanceAverage": 33.24941274204499,
+  "medianPerformanceAverage": 24.431738435519073,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Blood",
+      "points": 326.056,
+      "possiblePoints": 1080,
+      "rank": 19695,
+      "regionRank": 6093,
+      "serverRank": 6,
+      "rankPercent": 46.16183706943685,
+      "total": 36580,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 38.61368734001071,
+      "medianPercent": 27.886518628638175,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 46.37,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 18066,
+        "regionRank": 5741,
+        "serverRank": 5,
+        "rankPercent": 36.5828828196307,
+        "total": 28486
+      },
+      "spec": "Blood",
+      "bestSpec": "Blood",
+      "bestAmount": 37868.173892916,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36025011,
+        "class": 1,
+        "spec": 1,
+        "per_second_amount": 37868.173892916,
+        "ilvl": 307,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 35.52018126279717,
+      "medianPercent": 22.64234129754177,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 339374,
+      "allStars": {
+        "points": 53.16,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 18430,
+        "regionRank": 5811,
+        "serverRank": 4,
+        "rankPercent": 35.52686817800168,
+        "total": 28584
+      },
+      "spec": "Blood",
+      "bestSpec": "Blood",
+      "bestAmount": 47610.895354388,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177407,
+        "class": 1,
+        "spec": 1,
+        "per_second_amount": 47610.895354388,
+        "ilvl": 313,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 35.39474377158734,
+      "medianPercent": 25.967596788583247,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 45.66,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 18264,
+        "regionRank": 5706,
+        "serverRank": 8,
+        "rankPercent": 35.51883628146736,
+        "total": 28323
+      },
+      "spec": "Blood",
+      "bestSpec": "Blood",
+      "bestAmount": 48464.395066979,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177423,
+        "class": 1,
+        "spec": 1,
+        "per_second_amount": 48464.395066979,
+        "ilvl": 313,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 20.390151123767257,
+      "medianPercent": 17.042867400915437,
+      "lockedIn": true,
+      "totalKills": 4,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 27.48,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 23125,
+        "regionRank": 7003,
+        "serverRank": 8,
+        "rankPercent": 18.554522400676248,
+        "total": 28392
+      },
+      "spec": "Blood",
+      "bestSpec": "Blood",
+      "bestAmount": 52996.042258466,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 36025057,
+        "class": 1,
+        "spec": 1,
+        "per_second_amount": 52996.042258466,
+        "ilvl": 307,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 53.17696070359231,
+      "medianPercent": 30.3970450877998,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 63.63,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 12610,
+        "regionRank": 4174,
+        "serverRank": 3,
+        "rankPercent": 53.32247436419502,
+        "total": 27013
+      },
+      "spec": "Blood",
+      "bestSpec": "Blood",
+      "bestAmount": 51995.575861757,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177469,
+        "class": 1,
+        "spec": 1,
+        "per_second_amount": 51995.575861757,
+        "ilvl": 313,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 35.09946499256014,
+      "medianPercent": 32.53509984515508,
+      "lockedIn": true,
+      "totalKills": 3,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 51.89,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 17413,
+        "regionRank": 5361,
+        "serverRank": 3,
+        "rankPercent": 32.380582524271844,
+        "total": 25750
+      },
+      "spec": "Blood",
+      "bestSpec": "Blood",
+      "bestAmount": 74960.235273678,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177486,
+        "class": 1,
+        "spec": 1,
+        "per_second_amount": 74960.235273678,
+        "ilvl": 313,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": 14.5507,
+      "medianPercent": 14.5507,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 419186,
+      "allStars": {
+        "points": 37.86,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 18292,
+        "regionRank": 5588,
+        "serverRank": 5,
+        "rankPercent": 14.635739954263313,
+        "total": 21427
+      },
+      "spec": "Blood",
+      "bestSpec": "Blood",
+      "bestAmount": 42547.673347869,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 43975851,
+        "class": 1,
+        "spec": 1,
+        "per_second_amount": 42547.673347869,
+        "ilvl": 308,
+        "fight_metadata": 995889
+      }
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}

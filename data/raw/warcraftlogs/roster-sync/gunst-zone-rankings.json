@@ -1,0 +1,189 @@
+{
+  "bestPerformanceAverage": 19.086743262034886,
+  "medianPerformanceAverage": 19.086743262034886,
+  "difficulty": 4,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Enhancement",
+      "points": 118.241,
+      "possiblePoints": 1080,
+      "rank": 6170,
+      "regionRank": 2196,
+      "serverRank": 187,
+      "rankPercent": 22.35368156073002,
+      "total": 7945,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 14.640232753793338,
+      "medianPercent": 14.640232753793338,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 413192,
+      "allStars": {
+        "points": 60.13,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 5008,
+        "regionRank": 1774,
+        "serverRank": 162,
+        "rankPercent": 13.642635391514315,
+        "total": 5798
+      },
+      "spec": "Enhancement",
+      "bestSpec": "Enhancement",
+      "bestAmount": 96658.042750102,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 50132515,
+        "class": 9,
+        "spec": 2,
+        "per_second_amount": 96658.042750102,
+        "ilvl": 315,
+        "fight_metadata": 995875
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": 23.53325377027643,
+      "medianPercent": 23.53325377027643,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 471368,
+      "allStars": {
+        "points": 58.11,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 3743,
+        "regionRank": 1403,
+        "serverRank": 119,
+        "rankPercent": 15.108892921960072,
+        "total": 4408
+      },
+      "spec": "Enhancement",
+      "bestSpec": "Enhancement",
+      "bestAmount": 114829.30746253,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 51880131,
+        "class": 9,
+        "spec": 2,
+        "per_second_amount": 114829.30746253,
+        "ilvl": 315,
+        "fight_metadata": 995882
+      }
+    }
+  ]
+}

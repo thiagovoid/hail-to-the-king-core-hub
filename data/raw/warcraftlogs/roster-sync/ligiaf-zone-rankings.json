@@ -1,0 +1,284 @@
+{
+  "bestPerformanceAverage": 36.789830931975395,
+  "medianPerformanceAverage": 25.656265433916445,
+  "difficulty": 3,
+  "metric": "dps",
+  "partition": 1,
+  "zone": 53,
+  "size": 10,
+  "allStars": [
+    {
+      "partition": 1,
+      "spec": "Shadow",
+      "points": 385.053,
+      "possiblePoints": 1080,
+      "rank": 11785,
+      "regionRank": 3971,
+      "serverRank": 6,
+      "rankPercent": 53.646447958461174,
+      "total": 25422,
+      "rankTooltip": null
+    }
+  ],
+  "rankings": [
+    {
+      "encounter": {
+        "id": 3470,
+        "name": "Nek'zali the Soulcoiler"
+      },
+      "rankPercent": 27.018753012285607,
+      "medianPercent": 22.54713219581408,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 320869,
+      "allStars": {
+        "points": 48.07,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 14092,
+        "regionRank": 4856,
+        "serverRank": 8,
+        "rankPercent": 27.000984302958088,
+        "total": 19303
+      },
+      "spec": "Shadow",
+      "bestSpec": "Shadow",
+      "bestAmount": 83507.961192886,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177361,
+        "class": 7,
+        "spec": 3,
+        "per_second_amount": 83507.961192886,
+        "ilvl": 302,
+        "fight_metadata": 995883
+      }
+    },
+    {
+      "encounter": {
+        "id": 3445,
+        "name": "Entombed Sentinels"
+      },
+      "rankPercent": 41.38441092498211,
+      "medianPercent": 30.097451876513368,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 339374,
+      "allStars": {
+        "points": 55.28,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 11489,
+        "regionRank": 3855,
+        "serverRank": 5,
+        "rankPercent": 41.4056921350607,
+        "total": 19606
+      },
+      "spec": "Shadow",
+      "bestSpec": "Shadow",
+      "bestAmount": 103159.99457825,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177406,
+        "class": 7,
+        "spec": 3,
+        "per_second_amount": 103159.99457825,
+        "ilvl": 302,
+        "fight_metadata": 995884
+      }
+    },
+    {
+      "encounter": {
+        "id": 3455,
+        "name": "Vashnik the Malignant"
+      },
+      "rankPercent": 22.47367621436833,
+      "medianPercent": 19.641746918283637,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 282180,
+      "allStars": {
+        "points": 43.96,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 15007,
+        "regionRank": 5245,
+        "serverRank": 9,
+        "rankPercent": 22.593624264933457,
+        "total": 19386
+      },
+      "spec": "Shadow",
+      "bestSpec": "Shadow",
+      "bestAmount": 89344.41136863,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177422,
+        "class": 7,
+        "spec": 3,
+        "per_second_amount": 89344.41136863,
+        "ilvl": 302,
+        "fight_metadata": 995885
+      }
+    },
+    {
+      "encounter": {
+        "id": 3497,
+        "name": "The Lost Explorers"
+      },
+      "rankPercent": 57.69816993430054,
+      "medianPercent": 40.22221752804461,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 282948,
+      "allStars": {
+        "points": 68.91,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 8229,
+        "regionRank": 2609,
+        "serverRank": 6,
+        "rankPercent": 57.93456032719836,
+        "total": 19560
+      },
+      "spec": "Shadow",
+      "bestSpec": "Shadow",
+      "bestAmount": 180521.29013105,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177451,
+        "class": 7,
+        "spec": 3,
+        "per_second_amount": 180521.29013105,
+        "ilvl": 302,
+        "fight_metadata": 995886
+      }
+    },
+    {
+      "encounter": {
+        "id": 3420,
+        "name": "Sszorak"
+      },
+      "rankPercent": 61.340587329932596,
+      "medianPercent": 33.05046624049929,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 331590,
+      "allStars": {
+        "points": 72.2,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 7109,
+        "regionRank": 2385,
+        "serverRank": 4,
+        "rankPercent": 61.467989374966116,
+        "total": 18447
+      },
+      "spec": "Shadow",
+      "bestSpec": "Shadow",
+      "bestAmount": 104180.48493622,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177468,
+        "class": 7,
+        "spec": 3,
+        "per_second_amount": 104180.48493622,
+        "ilvl": 302,
+        "fight_metadata": 995887
+      }
+    },
+    {
+      "encounter": {
+        "id": 3421,
+        "name": "The Twin Fangs"
+      },
+      "rankPercent": 29.764919107958548,
+      "medianPercent": 16.186543278260125,
+      "lockedIn": true,
+      "totalKills": 2,
+      "fastestKill": 437448,
+      "allStars": {
+        "points": 54.06,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 12115,
+        "regionRank": 4039,
+        "serverRank": 6,
+        "rankPercent": 29.851178412183682,
+        "total": 17269
+      },
+      "spec": "Shadow",
+      "bestSpec": "Shadow",
+      "bestAmount": 117138.3318703,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 58177485,
+        "class": 7,
+        "spec": 3,
+        "per_second_amount": 117138.3318703,
+        "ilvl": 302,
+        "fight_metadata": 995888
+      }
+    },
+    {
+      "encounter": {
+        "id": 3429,
+        "name": "The Coiled Altar"
+      },
+      "rankPercent": 17.8483,
+      "medianPercent": 17.8483,
+      "lockedIn": true,
+      "totalKills": 1,
+      "fastestKill": 419186,
+      "allStars": {
+        "points": 42.57,
+        "possiblePoints": 120,
+        "partition": 1,
+        "rank": 11940,
+        "regionRank": 4033,
+        "serverRank": 5,
+        "rankPercent": 17.337118327217336,
+        "total": 14443
+      },
+      "spec": "Shadow",
+      "bestSpec": "Shadow",
+      "bestAmount": 84033.200059162,
+      "rankTooltip": null,
+      "bestRank": {
+        "rank_id": 43975850,
+        "class": 7,
+        "spec": 3,
+        "per_second_amount": 84033.200059162,
+        "ilvl": 290,
+        "fight_metadata": 995889
+      }
+    },
+    {
+      "encounter": {
+        "id": 3492,
+        "name": "Ula'tek"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    },
+    {
+      "encounter": {
+        "id": 3379,
+        "name": "Nymrissa Wavecaller"
+      },
+      "rankPercent": null,
+      "medianPercent": null,
+      "allStars": null,
+      "lockedIn": true,
+      "totalKills": 0,
+      "fastestKill": 0,
+      "bestAmount": 0,
+      "spec": null
+    }
+  ]
+}
