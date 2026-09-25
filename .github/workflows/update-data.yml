@@ -42,6 +42,11 @@ on:
 
 permissions:
   contents: write
+  # Pra chamar o deploy no fim (ver "Publicar o site"). Push feito com o
+  # GITHUB_TOKEN não dispara "on: push", e o workflow_run do deploy.yml parou
+  # de casar com este job desde a renomeação de 18/09 — mas workflow_dispatch
+  # disparado pelo GITHUB_TOKEN é a exceção documentada que funciona.
+  actions: write
 
 # Duas execuções ao mesmo tempo commitariam em cima uma da outra. Não
 # cancela a que já está rodando: ela pode estar no meio de um push.
@@ -128,6 +133,7 @@ jobs:
         run: npm run build
 
       - name: Commit generated data
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -143,4 +149,16 @@ jobs:
             # que aconteceu na coleta de 18/09.
             git pull --rebase origin master
             git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # Chama o deploy direto, em vez de esperar o workflow_run do deploy.yml.
+      # Desde 18/09, quando este workflow ganhou o nome atual, o workflow_run
+      # nunca mais disparou pra ele: os dados entravam no master e o site só
+      # publicava quando OUTRO job (preparação, metas) terminava — o log de
+      # 24/09 ficou fora do ar a noite toda com tudo verde.
+      - name: Publicar o site
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref master
