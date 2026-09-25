@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "Abismo Venenoso",
-    "lastUpdated": "2026-09-23T02:55:06.452Z",
+    "lastUpdated": "2026-09-25T02:36:35.447Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -439,22 +439,28 @@
       "id": "os-exploradores-perdidos",
       "name": "Os Exploradores Perdidos",
       "encounterID": 3497,
-      "status": "progress",
-      "pulls": 4,
+      "status": "killed",
+      "pulls": 6,
       "bestPullPercent": null,
-      "killDate": null,
+      "killDate": "2026-09-25T01:15:13.340Z",
       "links": {
-        "warcraftLogs": null,
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/8QcYvqHxF7Vhrn1K?fight=6",
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 4,
+      "pullsTotal": 6,
       "pullLog": [
         {
           "reportCode": "g3rQ28mdTZ4PHBkb",
           "date": "2026-09-22",
           "pulls": 4,
           "kill": false
+        },
+        {
+          "reportCode": "8QcYvqHxF7Vhrn1K",
+          "date": "2026-09-24",
+          "pulls": 2,
+          "kill": true
         }
       ]
     },
@@ -462,8 +468,8 @@
       "id": "sszorak",
       "name": "Sszorak",
       "encounterID": 3420,
-      "status": "not_started",
-      "pulls": 0,
+      "status": "progress",
+      "pulls": 13,
       "bestPullPercent": null,
       "killDate": null,
       "links": {
@@ -471,8 +477,15 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 0,
-      "pullLog": []
+      "pullsTotal": 13,
+      "pullLog": [
+        {
+          "reportCode": "8QcYvqHxF7Vhrn1K",
+          "date": "2026-09-24",
+          "pulls": 13,
+          "kill": false
+        }
+      ]
     },
     {
       "id": "as-presas-gemeas",
@@ -524,6 +537,11 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-09-24",
+      "url": "https://www.warcraftlogs.com/reports/8QcYvqHxF7Vhrn1K",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-09-22",
       "url": "https://www.warcraftlogs.com/reports/g3rQ28mdTZ4PHBkb",
