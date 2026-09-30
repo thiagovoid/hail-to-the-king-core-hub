@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "Abismo Venenoso",
-    "lastUpdated": "2026-09-25T02:36:35.447Z",
+    "lastUpdated": "2026-09-30T09:17:46.469Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -349,7 +349,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 13,
+      "pullsTotal": 14,
       "pullLog": [
         {
           "reportCode": "6BcGTrAN7HaPx431",
@@ -374,6 +374,12 @@
           "date": "2026-09-22",
           "pulls": 1,
           "kill": true
+        },
+        {
+          "reportCode": "HYt1q2DfP7KxrNhz",
+          "date": "2026-09-29",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -390,7 +396,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 15,
+      "pullsTotal": 16,
       "pullLog": [
         {
           "reportCode": "P1nLMzCrHmgDpWT2",
@@ -409,6 +415,12 @@
           "date": "2026-09-22",
           "pulls": 3,
           "kill": true
+        },
+        {
+          "reportCode": "HYt1q2DfP7KxrNhz",
+          "date": "2026-09-29",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -425,11 +437,17 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 1,
+      "pullsTotal": 2,
       "pullLog": [
         {
           "reportCode": "g3rQ28mdTZ4PHBkb",
           "date": "2026-09-22",
+          "pulls": 1,
+          "kill": true
+        },
+        {
+          "reportCode": "HYt1q2DfP7KxrNhz",
+          "date": "2026-09-29",
           "pulls": 1,
           "kill": true
         }
@@ -448,7 +466,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 6,
+      "pullsTotal": 7,
       "pullLog": [
         {
           "reportCode": "g3rQ28mdTZ4PHBkb",
@@ -461,6 +479,12 @@
           "date": "2026-09-24",
           "pulls": 2,
           "kill": true
+        },
+        {
+          "reportCode": "HYt1q2DfP7KxrNhz",
+          "date": "2026-09-29",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -468,22 +492,28 @@
       "id": "sszorak",
       "name": "Sszorak",
       "encounterID": 3420,
-      "status": "progress",
-      "pulls": 13,
+      "status": "killed",
+      "pulls": 15,
       "bestPullPercent": null,
-      "killDate": null,
+      "killDate": "2026-09-30T02:03:25.614Z",
       "links": {
-        "warcraftLogs": null,
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/HYt1q2DfP7KxrNhz?fight=21",
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 13,
+      "pullsTotal": 15,
       "pullLog": [
         {
           "reportCode": "8QcYvqHxF7Vhrn1K",
           "date": "2026-09-24",
           "pulls": 13,
           "kill": false
+        },
+        {
+          "reportCode": "HYt1q2DfP7KxrNhz",
+          "date": "2026-09-29",
+          "pulls": 2,
+          "kill": true
         }
       ]
     },
@@ -491,8 +521,8 @@
       "id": "as-presas-gemeas",
       "name": "As Presas Gêmeas",
       "encounterID": 3421,
-      "status": "not_started",
-      "pulls": 0,
+      "status": "progress",
+      "pulls": 5,
       "bestPullPercent": null,
       "killDate": null,
       "links": {
@@ -500,8 +530,15 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 0,
-      "pullLog": []
+      "pullsTotal": 5,
+      "pullLog": [
+        {
+          "reportCode": "HYt1q2DfP7KxrNhz",
+          "date": "2026-09-29",
+          "pulls": 5,
+          "kill": false
+        }
+      ]
     },
     {
       "id": "o-altar-espiralado",
@@ -537,6 +574,11 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-09-29",
+      "url": "https://www.warcraftlogs.com/reports/HYt1q2DfP7KxrNhz",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-09-24",
       "url": "https://www.warcraftlogs.com/reports/8QcYvqHxF7Vhrn1K",

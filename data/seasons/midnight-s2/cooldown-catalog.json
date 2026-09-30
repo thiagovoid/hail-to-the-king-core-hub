@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T02:36:35.351Z",
+  "generatedAt": "2026-09-30T09:17:46.345Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -577,6 +577,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "184364": {
+      "name": "Enraged Regeneration",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "185311": {
       "name": "Crimson Vial",
       "cooldownMs": 30000,
@@ -861,6 +867,12 @@
     },
     "384110": {
       "name": "Wrecking Throw",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "385059": {
+      "name": "Odyn's Fury",
       "cooldownMs": 45000,
       "charges": 1,
       "kind": "offensive"
@@ -1159,6 +1171,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1295132": {
+      "name": "Liquid Luster",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "1295247": {
       "name": "Concentrated Silvermoon Health Potion",
       "cooldownMs": 300000,
@@ -1271,6 +1289,7 @@
     49998,
     50842,
     51505,
+    52127,
     52174,
     53385,
     53600,
@@ -1366,6 +1385,7 @@
     275773,
     275779,
     278326,
+    280735,
     281000,
     317920,
     318038,
@@ -1378,6 +1398,9 @@
     370966,
     383269,
     383328,
+    385060,
+    385061,
+    385062,
     385899,
     391403,
     408385,
