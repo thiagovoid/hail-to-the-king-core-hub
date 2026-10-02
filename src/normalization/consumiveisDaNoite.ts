@@ -198,3 +198,63 @@ export function usoDaPedraPorAtor(
 
   return resultado;
 }
+
+/** Uma família já medida, como fica gravada na noite. */
+export interface ConsumivelDaNoite {
+  familia: FamiliaDeConsumivel;
+  rotulo: string;
+  trysComUso: number | null;
+  trys: number | null;
+  uso: number | null;
+  quais: string[];
+}
+
+/**
+ * A nota de recursos da noite: a média do que deu pra medir.
+ *
+ * Família com `uso` nulo fica de FORA da média, não entra como zero. Nulo
+ * quer dizer "não se aplica" — quem não morreu não tem o que responder sobre
+ * a pedra — e tratar isso como falha é o erro que esta dimensão inteira
+ * passou a temporada cometendo.
+ *
+ * Devolve `null` quando nada pôde ser medido: a lacuna é nossa, não da
+ * pessoa.
+ */
+export function notaDeRecursos(consumiveis: ConsumivelDaNoite[] | undefined): number | null {
+  const medidos = (consumiveis ?? [])
+    .map((c) => c.uso)
+    .filter((uso): uso is number => uso !== null);
+
+  if (medidos.length === 0) return null;
+
+  return Math.round(medidos.reduce((total, uso) => total + uso, 0) / medidos.length);
+}
+
+/**
+ * Uma linha por família, do jeito que se lê em cima do ponto do gráfico.
+ *
+ * Cada família tem a sua unidade, e forçar todas no mesmo formato mentiria:
+ * poção é frequência ("10 de 15 trys"), frasco é sim ou não, e pedra é
+ * contra MORTE — "morreu 7 vezes e não usou" conta uma história que "0%"
+ * não conta.
+ */
+export function linhasDeRecursos(consumiveis: ConsumivelDaNoite[] | undefined): string[] {
+  return (consumiveis ?? []).map((c) => {
+    if (c.uso === null) {
+      return c.familia === "pedra"
+        ? `${c.rotulo}: não morreu nenhuma vez`
+        : `${c.rotulo}: não medido`;
+    }
+
+    if (c.familia === "pedra") {
+      return `${c.rotulo}: usou em ${c.trysComUso} das ${c.trys} trys em que morreu`;
+    }
+
+    if (c.familia === "pocao") {
+      return `${c.rotulo}: ${c.uso}% — ${c.trysComUso} de ${c.trys} trys`;
+    }
+
+    const marca = c.uso >= 100 ? "sim" : "não";
+    return c.quais.length > 0 ? `${c.rotulo}: ${marca} (${c.quais.join(", ")})` : `${c.rotulo}: ${marca}`;
+  });
+}

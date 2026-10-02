@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { armaPreparada, usoDaPedraPorAtor, usoPorAtor, type CastDoLog } from "./consumiveisDaNoite";
+import {
+  armaPreparada,
+  linhasDeRecursos,
+  notaDeRecursos,
+  usoDaPedraPorAtor,
+  usoPorAtor,
+  type CastDoLog,
+} from "./consumiveisDaNoite";
 import type { FamiliaDeConsumivel } from "../providers/wowhead/familiaDoConsumivel";
 
 const POCAO = 1236616; // Light's Potential
@@ -181,5 +188,56 @@ describe("usoDaPedraPorAtor", () => {
     const uso = usoDaPedraPorAtor([], [{ targetID: 1, fight: 99 }], raide, ehPedra);
 
     expect(uso.get(1)).toBeUndefined();
+  });
+});
+
+describe("notaDeRecursos", () => {
+  const item = (familia: string, uso: number | null, extras = {}) =>
+    ({ familia, rotulo: familia, trysComUso: null, trys: null, uso, quais: [], ...extras }) as never;
+
+  it("tira a média só do que deu pra medir", () => {
+    expect(notaDeRecursos([item("pocao", 50), item("frasco", 100)])).toBe(75);
+  });
+
+  /**
+   * Nulo é "não se aplica", não falha. Quem não morreu não tem o que
+   * responder sobre a pedra, e contar isso como zero é o erro que esta
+   * dimensão passou a temporada cometendo.
+   */
+  it("não conta como zero o que não pôde ser medido", () => {
+    expect(notaDeRecursos([item("pocao", 100), item("pedra", null)])).toBe(100);
+  });
+
+  it("devolve null quando nada foi medido", () => {
+    expect(notaDeRecursos([item("pedra", null)])).toBeNull();
+    expect(notaDeRecursos(undefined)).toBeNull();
+  });
+});
+
+describe("linhasDeRecursos", () => {
+  it("dá a cada família a unidade dela", () => {
+    const linhas = linhasDeRecursos([
+      { familia: "pocao", rotulo: "Poção", trysComUso: 10, trys: 15, uso: 67, quais: [] },
+      { familia: "pedra", rotulo: "Pedra de vida", trysComUso: 0, trys: 7, uso: 0, quais: [] },
+      { familia: "oleo", rotulo: "Óleo de arma", trysComUso: null, trys: null, uso: 100, quais: ["Thalassian Phoenix Oil"] },
+      { familia: "frasco", rotulo: "Frasco", trysComUso: null, trys: null, uso: 0, quais: [] },
+    ]);
+
+    expect(linhas).toEqual([
+      "Poção: 67% — 10 de 15 trys",
+      // "morreu 7 vezes e não usou" conta uma história que "0%" não conta.
+      "Pedra de vida: usou em 0 das 7 trys em que morreu",
+      "Óleo de arma: sim (Thalassian Phoenix Oil)",
+      "Frasco: não",
+    ]);
+  });
+
+  it("diz por que não tem número, em vez de mostrar zero", () => {
+    const linhas = linhasDeRecursos([
+      { familia: "pedra", rotulo: "Pedra de vida", trysComUso: null, trys: null, uso: null, quais: [] },
+      { familia: "frasco", rotulo: "Frasco", trysComUso: null, trys: null, uso: null, quais: [] },
+    ]);
+
+    expect(linhas).toEqual(["Pedra de vida: não morreu nenhuma vez", "Frasco: não medido"]);
   });
 });

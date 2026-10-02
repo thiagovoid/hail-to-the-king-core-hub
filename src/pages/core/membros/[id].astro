@@ -10,6 +10,10 @@ import CabecalhoDoJogador from '@/components/CabecalhoDoJogador.astro';
 import PerformanceGoals from '@/components/PerformanceGoals.astro';
 import PerformanceScoreCard from '@/components/PerformanceScoreCard.astro';
 import PerformanceChart from '@/components/PerformanceChart.astro';
+import {
+  linhasDeRecursos,
+  notaDeRecursos,
+} from '@/normalization/consumiveisDaNoite';
 import ContribuicaoForaDeFuncao from '@/components/ContribuicaoForaDeFuncao.astro';
 import PainelDoTank from '@/components/PainelDoTank.astro';
 import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
@@ -235,6 +239,20 @@ const healingHistory = history
       `${performance.healing!.overheal}% caiu em quem já estava cheio`,
     ],
   }));
+
+// Recursos: as cinco famílias de consumível numa nota só.
+//
+// Uma série e não cinco porque a pergunta que se faz olhando o histórico é
+// "esse cara se prepara?", não "quantas poções ele tomou em 25/08". O
+// detalhe de cada família aparece no hover, com a unidade de cada uma:
+// poção é frequência, frasco é sim ou não, pedra é contra morte.
+const recursosHistory = history
+  .map((performance) => ({
+    date: performance.date,
+    value: notaDeRecursos(performance.consumiveis),
+    detail: linhasDeRecursos(performance.consumiveis),
+  }))
+  .filter((ponto): ponto is { date: string; value: number; detail: string[] } => ponto.value !== null);
 
 // Fora de função vira DUAS séries, não uma: dano e cura são grandezas
 // diferentes e não dividem eixo. Um tank costuma ter as duas; healer só
@@ -885,6 +903,16 @@ const attendance = calculateAttendance(weeks, [
                     label: 'Cura fora de função',
                     data: offRoleHpsHistory,
                     direction: 'higher' as const,
+                  },
+                ]
+              : []),
+            ...(recursosHistory.length > 0
+              ? [
+                  {
+                    id: 'recursos',
+                    label: 'Recursos',
+                    data: recursosHistory,
+                    direction: "higher" as const,
                   },
                 ]
               : []),
