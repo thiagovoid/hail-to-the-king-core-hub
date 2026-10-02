@@ -313,19 +313,31 @@ describe("conquistas de uma noite só", () => {
   });
 
   /**
-   * Dieta exige chegar sem frasco, sem comida e sem poção — e frasco e
-   * comida ninguém mede ainda. Enquanto o dado não existe ela não é
-   * concedida, em vez de ser concedida por engano com base na metade que
-   * existe: era o que acontecia com quem só não tinha poção.
+   * Dieta exige jejum nas TRÊS: frasco, comida e poção. Ela ficou suspensa
+   * enquanto frasco e comida vinham de um insight do Wipefest que ninguém
+   * conseguia atribuir a jogador — 49 medalhas dadas com base em dois
+   * terços de dado inexistente.
    */
-  it("não concede Dieta enquanto frasco e comida não forem medidos", () => {
+  it("exige jejum nas três famílias pra Dieta", () => {
+    const consumiveis = (frasco: number, comida: number, pocao: number) =>
+      [
+        { familia: "frasco" as const, rotulo: "Frasco", trysComUso: null, trys: null, uso: frasco, quais: [] },
+        { familia: "comida" as const, rotulo: "Comida", trysComUso: null, trys: null, uso: comida, quais: [] },
+        { familia: "pocao" as const, rotulo: "Poção", trysComUso: 0, trys: 10, uso: pocao, quais: [] },
+      ];
+
     const weeks = [
       semana("2026-09-01", [
-        { playerId: "jejum", deaths: 1, preparationMissing: ["Poção", "Flask/comida", "Pedra de vida"] },
+        { playerId: "jejum", deaths: 1, consumiveis: consumiveis(0, 0, 0) },
+        { playerId: "so-comeu", deaths: 1, consumiveis: consumiveis(0, 100, 0) },
+        { playerId: "sem-dado", deaths: 1 },
       ]),
     ];
 
-    expect(quantas(weeks, "jejum", "dieta")).toBe(0);
+    expect(quantas(weeks, "jejum", "dieta")).toBe(1);
+    expect(quantas(weeks, "so-comeu", "dieta")).toBe(0);
+    // Sem o dado não se acusa: é a regra que guia tudo nesta dimensão.
+    expect(quantas(weeks, "sem-dado", "dieta")).toBe(0);
   });
 
   /**

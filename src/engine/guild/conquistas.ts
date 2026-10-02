@@ -971,11 +971,24 @@ function vencedoresDaRun(
       })
     )
   );
-  // Dieta exige chegar sem frasco, sem comida e sem poção — e frasco e
-  // comida ninguém mede ainda (ver `consumiveisDaNoite`). Enquanto o dado
-  // não existe ela não é concedida, em vez de ser concedida por engano com
-  // base na metade que existe.
-  porConquista.set("dieta", simples([]));
+  /**
+   * Dieta volta a ser concedida: frasco e comida agora são medidos.
+   *
+   * Ela ficou suspensa enquanto os dois vinham de um insight do Wipefest
+   * que ninguém conseguia atribuir a jogador — eram 49 medalhas dadas com
+   * base em dois terços de dado inexistente. Agora as três famílias saem
+   * do nosso log, e jejum é jejum nas três.
+   */
+  porConquista.set(
+    "dieta",
+    simples(
+      cumpriram((p) => {
+        const jejum = (familia: string) =>
+          (p.consumiveis ?? []).find((c) => c.familia === familia)?.uso === 0;
+        return jejum("frasco") && jejum("comida") && jejum("pocao");
+      })
+    )
+  );
   porConquista.set(
     "relojoeiro",
     simples(cumpriram((p) => (p.attackDetail ?? []).some((item) => item.efficiency >= CORTE.relojoeiro)))

@@ -632,9 +632,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -1224,9 +1232,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -1246,7 +1262,8 @@
             "Anel",
             "Arma",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1841,9 +1858,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -2431,9 +2456,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -3017,9 +3050,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -3567,9 +3608,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -4070,9 +4119,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -4684,9 +4741,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -5226,9 +5291,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ],
@@ -5757,9 +5830,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -6325,9 +6406,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -6891,9 +6980,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -7440,9 +7537,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ],
@@ -8041,9 +8146,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -8596,9 +8709,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -9104,9 +9225,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]

@@ -46,3 +46,66 @@ describe("familiaDoConsumivel", () => {
     expect(familiaDoConsumivel(ITEM, "")).toBeUndefined();
   });
 });
+
+describe("a ordem dos padrões", () => {
+  /**
+   * O ícone do frasco contém as DUAS palavras:
+   * `inv_12_profession_alchemy_flask_sindoreipotion_black`. Testando poção
+   * primeiro, todo frasco da temporada viraria poção — e a tela diria que o
+   * core toma o dobro de poção e nunca toma frasco.
+   */
+  it("frasco não vira poção, mesmo com 'potion' no ícone", () => {
+    expect(
+      familiaDoConsumivel(ITEM, "inv_12_profession_alchemy_flask_sindoreipotion_black")
+    ).toBe("frasco");
+    expect(
+      familiaDoConsumivel(ITEM, "inv_12_profession_alchemy_flask_sindoreipotion_red--")
+    ).toBe("frasco");
+  });
+
+  /**
+   * `Hearty Well Fed` é o BUFF da comida, não o uso do item, e por isso não
+   * traz "Item Effect". Exigir a marca pra todo mundo apagaria a comida
+   * inteira — e a tela voltaria a acusar o core de algo que ele fez.
+   */
+  it("reconhece comida, que é buff e não traz 'Item Effect'", () => {
+    expect(familiaDoConsumivel(undefined, "spell_misc_food")).toBe("comida");
+    expect(familiaDoConsumivel(CLASSE, "spell_misc_food")).toBe("comida");
+  });
+});
+
+describe("quando o nome decide", () => {
+  /**
+   * `Flask of Tempered Swiftness` e `Flask of Alchemical Chaos` usam
+   * `inv_potion_green` e `inv_potion_orange` — frascos de expansão antiga
+   * com ícone genérico de poção. Pelo ícone virariam poção, e a tela diria
+   * que o core toma poção que não tomou e não toma frasco que tomou.
+   */
+  it("frasco com ícone de poção continua frasco", () => {
+    expect(familiaDoConsumivel(ITEM, "inv_potion_green", "Flask of Tempered Swiftness")).toBe("frasco");
+    expect(familiaDoConsumivel(ITEM, "inv_potion_orange", "Flask of Alchemical Chaos")).toBe("frasco");
+  });
+
+  /**
+   * O `Seriously Sharp Seashell` é trinket e usa
+   * `inv_misc_food_legion_seashelld2`. Com o padrão largo `_food` ele virava
+   * comida, e a tela dava crédito a quem não comeu.
+   */
+  it("trinket com ícone de comida não vira comida", () => {
+    expect(
+      familiaDoConsumivel(ITEM, "inv_misc_food_legion_seashelld2", "Seriously Sharp Seashell")
+    ).toBeUndefined();
+  });
+
+  it("pedra de amolar conta como óleo", () => {
+    // É o óleo do ferreiro: prepara a arma do mesmo jeito.
+    expect(
+      familiaDoConsumivel(undefined, "inv_12_profession_blacksmithing_whetstones_crimson", "Critical Ritual")
+    ).toBe("oleo");
+  });
+
+  it("poção de verdade continua poção", () => {
+    expect(familiaDoConsumivel(ITEM, "inv_potion_49", "Concentrated Silvermoon Health Potion")).toBe("pocao");
+    expect(familiaDoConsumivel(ITEM, "inv_12_profession_alchemy_lightpotion_yellow", "Light's Potential")).toBe("pocao");
+  });
+});

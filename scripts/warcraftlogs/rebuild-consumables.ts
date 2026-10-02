@@ -42,6 +42,7 @@ const ROTULOS: Record<FamiliaDeConsumivel, string> = {
   pocao: "Poção",
   pedra: "Pedra de vida",
   frasco: "Frasco",
+  comida: "Comida",
   oleo: "Óleo de arma",
 };
 
@@ -54,7 +55,17 @@ const MEDIVEIS: FamiliaDeConsumivel[] = ["pocao", "pedra"];
  * Magisters`, `Well Fed`, oito runas), mas isso é coleta nova. Enquanto
  * não vem, não se acusa — foi o defeito que esta mudança corrige.
  */
-const NAO_MEDIVEIS: FamiliaDeConsumivel[] = ["frasco"];
+/**
+ * Estado da noite, não uso por try: ou a pessoa chegou com, ou não chegou.
+ *
+ * Sai das auras arquivadas por jogador. Frasco dura uma hora e comida se
+ * come em casa — os dois já estão ativos quando o log começa, e por isso
+ * só a tabela Buffs POR ALVO os enxerga.
+ */
+const DO_BUFF: FamiliaDeConsumivel[] = ["frasco", "comida"];
+
+/** Nada fica sem medir: frasco e comida vêm das auras, óleo vem do gear. */
+const NAO_MEDIVEIS: FamiliaDeConsumivel[] = [];
 
 /**
  * Óleo sai do GEAR, não dos casts nem dos buffs.
@@ -74,6 +85,15 @@ async function main() {
     await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8")
   ) as Array<{ name: string; class: string }>;
   const classePorNome = new Map(roster.map((j) => [semAcento(j.name), j.class]));
+
+  const catalogoDeAuras = JSON.parse(
+    await readFile(path.join(ROOT, "data/seasons/midnight-s2/aura-catalog.json"), "utf-8")
+  ) as { consumiveis: Record<string, { name: string; familia: FamiliaDeConsumivel }> };
+
+  const familiaDaAura = new Map<number, FamiliaDeConsumivel>();
+  for (const [guid, dados] of Object.entries(catalogoDeAuras.consumiveis ?? {})) {
+    familiaDaAura.set(Number(guid), dados.familia);
+  }
 
   const catalogo = JSON.parse(
     await readFile(path.join(ROOT, "data/seasons/midnight-s2/cooldown-catalog.json"), "utf-8")
@@ -130,6 +150,32 @@ async function main() {
         porNomeSemAcento.set(semAcento(nome), linhas);
       }
 
+      let auras: { porJogador: Array<[number, number[]]> } | null = null;
+      try {
+        auras = JSON.parse(
+          await readFile(path.join(BRUTO, noite.reportCode + "-buffs.json"), "utf-8")
+        );
+      } catch {
+        auras = null;
+      }
+
+      /** ator -> famílias que ele tinha ativas na noite. */
+      const buffsPorAtor = new Map<number, Set<FamiliaDeConsumivel>>();
+      for (const [ator, guids] of auras?.porJogador ?? []) {
+        const familias = new Set<FamiliaDeConsumivel>();
+        for (const guid of guids) {
+          const familia = familiaDaAura.get(guid);
+          if (familia) familias.add(familia);
+        }
+        buffsPorAtor.set(ator, familias);
+      }
+
+      const atorPorNome = new Map(
+        ((log as { actorNames?: Array<[number, string]> }).actorNames ?? []).map(
+          ([idDoAtor, nomeDoAtor]) => [semAcento(nomeDoAtor), idDoAtor] as [string, number]
+        )
+      );
+
       const detalhes = (log as { aggregateTables?: { summary?: { data?: { playerDetails?: Record<string, Array<{ name?: string; combatantInfo?: { gear?: Array<{ slot?: number; id?: number; temporaryEnchant?: number; temporaryEnchantName?: string; permanentEnchant?: number; permanentEnchantName?: string }> } }>> } } } })
         .aggregateTables?.summary?.data?.playerDetails;
       const armaPorNome = new Map<string, { temEnchant: boolean; nome?: string }>();
@@ -156,6 +202,8 @@ async function main() {
         }
 
         const arma = armaPorNome.get(semAcento(id));
+        const ator = atorPorNome.get(semAcento(id));
+        const familiasAtivas = ator !== undefined ? buffsPorAtor.get(ator) : undefined;
 
         jogador.consumiveis = [
           ...medido.map((u) => ({ ...u, rotulo: ROTULOS[u.familia] })),
@@ -172,6 +220,16 @@ async function main() {
                 },
               ]
             : []),
+          // Frasco e comida: medidos quando há aura arquivada da noite, e
+          // "não medido" quando não há — nunca "não usou" por lacuna nossa.
+          ...DO_BUFF.map((familia) => ({
+            familia,
+            rotulo: ROTULOS[familia],
+            trysComUso: null,
+            trys: null,
+            uso: familiasAtivas ? (familiasAtivas.has(familia) ? 100 : 0) : null,
+            quais: [] as string[],
+          })),
           ...NAO_MEDIVEIS.map((familia) => ({
             familia,
             rotulo: ROTULOS[familia],
@@ -195,6 +253,9 @@ async function main() {
         const novas = [
           ...medido.filter((u) => u.uso < META_DE_USO).map((u) => ROTULOS[u.familia]),
           ...(arma && !arma.temEnchant ? [ROTULOS.oleo] : []),
+          ...DO_BUFF.filter((f) => familiasAtivas && !familiasAtivas.has(f)).map(
+            (f) => ROTULOS[f]
+          ),
         ];
 
         const antes = JSON.stringify(jogador.preparationMissing ?? []);

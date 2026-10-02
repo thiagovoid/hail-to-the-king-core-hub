@@ -19,7 +19,8 @@
             "Anel",
             "Colar",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -596,9 +597,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -1150,9 +1159,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -1571,7 +1588,8 @@
           "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Frasco"
           ],
           "mechanicsDetail": [
             {
@@ -1698,9 +1716,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -1722,7 +1748,8 @@
             "Arma",
             "Colar",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -2285,9 +2312,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -2817,9 +2852,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -3307,9 +3350,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -3842,9 +3893,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -4359,9 +4418,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ],
@@ -4857,9 +4924,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -5371,9 +5446,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -5396,7 +5479,8 @@
             "Colar",
             "Poção",
             "Pedra de vida",
-            "Óleo de arma"
+            "Óleo de arma",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -5918,9 +6002,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -6498,9 +6590,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -6886,9 +6986,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -6909,7 +7017,8 @@
             "Arma",
             "Colar",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -7438,9 +7547,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -7919,7 +8036,8 @@
           "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Frasco"
           ],
           "mechanicsDetail": [
             {
@@ -7988,9 +8106,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -8009,7 +8135,8 @@
             "Arma",
             "Colar",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -8516,9 +8643,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -8987,9 +9122,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -9460,9 +9603,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -9478,7 +9629,8 @@
             "Arma",
             "Colar",
             "Poção",
-            "Óleo de arma"
+            "Óleo de arma",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -9933,9 +10085,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -10445,9 +10605,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -10963,9 +11131,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -11417,9 +11593,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -11875,9 +12059,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -11899,7 +12091,8 @@
             "Colar",
             "Poção",
             "Pedra de vida",
-            "Óleo de arma"
+            "Óleo de arma",
+            "Frasco"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -12367,9 +12560,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -12882,9 +13083,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
               "quais": []
             }
           ]
@@ -12902,7 +13111,8 @@
             "Anel",
             "Colar",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Comida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -13304,9 +13514,17 @@
             {
               "familia": "frasco",
               "rotulo": "Frasco",
-              "uso": null,
               "trysComUso": null,
               "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
               "quais": []
             }
           ]
