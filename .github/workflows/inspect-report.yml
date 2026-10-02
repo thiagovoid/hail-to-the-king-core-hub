@@ -27,6 +27,7 @@ on:
           - raw-size
           - mortes
           - utilidade
+          - auras
       player:
         description: "Filtrar por jogador (opcional, casa por trecho do nome)"
         required: false
@@ -139,3 +140,13 @@ jobs:
           WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
           PROBE_REPORT: ${{ inputs.report }}
         run: npm run wcl:inspect-utilidade
+
+      # Descobre por onde vêm frasco, óleo, comida e runa. A Summary agregada
+      # devolve auras vazias nos 13 relatórios da temporada, e sem isso o core
+      # inteiro leva falta de frasco por uma lacuna nossa.
+      - name: Descobrir de onde vêm as auras de consumível
+        if: inputs.tool == 'auras'
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: npm run wcl:inspect-auras -- --report=${{ inputs.report }}
