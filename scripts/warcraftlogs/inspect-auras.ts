@@ -87,6 +87,21 @@ async function main() {
   } catch (erro) {
     console.log(`  falhou: ${(erro as Error).message}`);
   }
+
+  console.log("
+=== ROTA C — eventos de buff filtrados por habilidade ===");
+  try {
+    const arquivados = JSON.parse(
+      await (await import("node:fs/promises")).readFile(`data/raw/warcraftlogs/${code}-buffs.json`, "utf-8")
+    ) as { auras: Array<[number, string]> };
+    const ids = arquivados.auras
+      .filter(([, nome]) => /flask|well fed|rune of/i.test(nome))
+      .map(([id]) => id);
+    console.log(`  ${ids.length} habilidades de frasco/comida/runa no arquivo deste relatório.`);
+    await rotaC(code, ids, fights.at(-1)!.endTime);
+  } catch (erro) {
+    console.log(`  falhou: ${(erro as Error).message}`);
+  }
 }
 
 /** Conta auras por jogador no playerDetails de uma tabela Summary. */
@@ -145,6 +160,46 @@ function relatarBuffs(buffs: unknown) {
   console.log(`\n  TODOS os ${auras.length} buffs, em ordem:`);
   for (const a of [...auras].sort((x, y) => (x.name ?? "").localeCompare(y.name ?? "")))
     console.log(`    ${String(a.guid).padStart(8)}  ${a.name}`);
+}
+
+/**
+ * Rota C: eventos de buff filtrados por habilidade.
+ *
+ * A tabela Buffs agrega o raide inteiro — `bands` é intervalo de tempo, não
+ * jogador. Os EVENTOS trazem `targetID`, que é de quem o buff é. Uma
+ * consulta por relatório, filtrando só as habilidades que interessam.
+ */
+async function rotaC(code: string, ids: number[], fim: number) {
+  if (ids.length === 0) {
+    console.log("  nenhum id de frasco/comida/runa pra filtrar.");
+    return;
+  }
+
+  const r = await wclGraphql<{
+    reportData: { report: { events: { data: Array<{ type?: string; targetID?: number; abilityGameID?: number }> ; nextPageTimestamp?: number } } };
+  }>(
+    `query($code: String!, $fim: Float!, $filtro: String!) {
+      reportData { report(code: $code) {
+        events(dataType: Buffs, startTime: 0, endTime: $fim, filterExpression: $filtro, limit: 10000) {
+          data nextPageTimestamp
+        }
+      } }
+    }`,
+    { code, fim, filtro: `ability.id in (${ids.join(", ")})` }
+  );
+
+  const eventos = r.reportData.report.events.data ?? [];
+  const porAlvo = new Map<number, Set<number>>();
+  for (const e of eventos) {
+    if (e.targetID === undefined || e.abilityGameID === undefined) continue;
+    const s = porAlvo.get(e.targetID) ?? new Set<number>();
+    s.add(e.abilityGameID);
+    porAlvo.set(e.targetID, s);
+  }
+
+  console.log(`  ${eventos.length} eventos, ${porAlvo.size} alvos distintos${r.reportData.report.events.nextPageTimestamp ? " (HÁ MAIS PÁGINAS)" : ""}.`);
+  console.log(`  VEREDITO: ${porAlvo.size > 0 ? "FUNCIONA — dá pra dizer de quem é cada buff." : "não trouxe alvo."}`);
+  for (const [alvo, abil] of [...porAlvo].slice(0, 8)) console.log(`    ator ${alvo}: ${[...abil].join(", ")}`);
 }
 
 main().catch((erro) => {
