@@ -235,3 +235,46 @@ Duas armadilhas que já morderam:
   mais baixa por defeito de parsing.
 - **Quem esteve no boss e não errou tem que entrar na mediana como zero.**
   Contando só quem errou, a referência sai alta e a meta afrouxa pra todos.
+
+## Consumíveis vêm do nosso log, não do Wipefest
+
+Poção, pedra de vida, frasco, comida e óleo de arma saem da WarcraftLogs. O
+Wipefest ficou só com mecânicas.
+
+O motivo: os três insights de preparação dele ("Potions", "Healthstone /
+Healing Potion", "Ready Check") não enxergavam o que o core usa. Em 01/10 os
+quinze jogadores foram acusados de não usar poção e **catorze tinham usado**
+— doze deles em dois terços ou mais dos pulls. A poção mais comum do raide é
+a `Light's Potential`, que não tem "poção" no nome.
+
+Cada família sai de um lugar diferente do log, e isso não é arbitrário:
+
+| Família | Onde mora | Por quê |
+|---|---|---|
+| Poção | `castEvents` | uso dentro do pull |
+| Pedra de vida | `castEvents` × `deathEvents` | só faz sentido se estava morrendo |
+| Óleo de arma | `combatantInfo.gear.temporaryEnchant` | é encantamento, não buff |
+| Frasco | tabela Buffs **por alvo** | aplicado antes do log começar |
+| Comida | tabela Buffs **por alvo** | idem |
+
+**A armadilha do frasco e da comida.** Foram quatro rotas até achar:
+
+1. `combatantInfo.auras` da Summary volta VAZIO — agregada ou de um fight só.
+2. A tabela Buffs do raide agrega por habilidade; `bands` é intervalo de
+   TEMPO, não jogador.
+3. Os eventos trazem `targetID`, mas só existe `applybuff` do que foi
+   aplicado durante a gravação. Frasco dura uma hora e comida se come em
+   casa: já estão ativos quando o log começa. Essa rota pega runa, não pega
+   frasco.
+4. A tabela Buffs **por alvo** devolve o que estava ativo, venha de onde
+   vier. É uma consulta por jogador — ~180 pra temporada inteira.
+
+**A família sai do ÍCONE, nunca do nome.** Ícone é identificador interno da
+Blizzard, estável entre patches. Duas exceções em que o nome decide, porque
+o ícone engana: frasco de expansão antiga usa `inv_potion_green`, e o ícone
+do frasco atual contém "potion" (`alchemy_flask_sindoreipotion_black`) — com
+poção testada primeiro, todo frasco viraria poção.
+
+**O rebuild é idempotente**, e tem que continuar sendo: rodar duas vezes não
+pode duplicar pendência. Filtrando só alguns rótulos, a contagem de frasco
+inflou de 29 pra 87 sem nada ter mudado no log.

@@ -126,6 +126,26 @@ jobs:
 
           npm run wipefest:fetch-mechanics -- "${ARGS[@]}"
 
+      # As auras de cada jogador — frasco e comida. É a ÚNICA rota que as
+      # enxerga: elas são aplicadas antes do log começar e não existem nos
+      # casts nem no combatantInfo. Uma consulta por jogador do relatório
+      # novo; os já arquivados são pulados.
+      - name: Buscar auras do relatório (frasco, comida)
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: npm run wcl:fetch-buffs
+
+      # Classifica aura nova pelo ícone do Wowhead. Incremental: o que já
+      # está no catálogo não volta à rede.
+      - name: Classificar aura nova
+        run: npm run wowhead:classify-auras
+
+      # Poção, pedra, frasco, comida e óleo, medidos do nosso log. Precisa
+      # vir DEPOIS do wipefest, que reescreve o arquivo da semana.
+      - name: Recalcular consumíveis
+        run: npm run wcl:rebuild-consumables
+
       - name: Run tests
         run: npm test
 

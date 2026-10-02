@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { armaPreparada, usoPorAtor, type CastDoLog } from "./consumiveisDaNoite";
+import { armaPreparada, usoDaPedraPorAtor, usoPorAtor, type CastDoLog } from "./consumiveisDaNoite";
 import type { FamiliaDeConsumivel } from "../providers/wowhead/familiaDoConsumivel";
 
 const POCAO = 1236616; // Light's Potential
@@ -127,5 +127,59 @@ describe("armaPreparada", () => {
   it("não afirma nada sem arma", () => {
     // Sem gear da mão principal a resposta é "não sei", não "não usou".
     expect(armaPreparada(undefined, "warrior")).toBeUndefined();
+  });
+});
+
+describe("usoDaPedraPorAtor", () => {
+  const PEDRA_ID = 6262;
+  const ehPedra = (id: number) => id === PEDRA_ID;
+  const raide = new Set([1, 2, 3]);
+
+  /**
+   * Cobrar pedra em 60% das trys reprovava 151 noites-jogador, e a cobrança
+   * não fazia sentido: pedra é botão de emergência, e apertar pouco é não
+   * ter precisado. A pergunta que vale é "morreu com a pedra na mão?".
+   */
+  it("mede só as trys em que a pessoa morreu", () => {
+    const uso = usoDaPedraPorAtor(
+      [
+        { sourceID: 1, abilityGameID: PEDRA_ID, fight: 1 },
+        { sourceID: 1, abilityGameID: 999, fight: 2 },
+      ],
+      [
+        { targetID: 1, fight: 1 },
+        { targetID: 1, fight: 2 },
+      ],
+      raide,
+      ehPedra
+    );
+
+    // Morreu em duas trys e só usou numa: 50.
+    expect(uso.get(1)).toEqual({ trysComMorte: 2, trysComUso: 1, uso: 50 });
+  });
+
+  it("não julga quem não morreu", () => {
+    // Sem morte não há situação — e não se acusa quem não teve a situação.
+    const uso = usoDaPedraPorAtor([{ sourceID: 1, abilityGameID: 999, fight: 1 }], [], raide, ehPedra);
+
+    expect(uso.get(1)).toBeUndefined();
+  });
+
+  it("não credita pedra usada em outra try", () => {
+    // Usou na try 1, morreu na 2: não serviu de nada lá.
+    const uso = usoDaPedraPorAtor(
+      [{ sourceID: 1, abilityGameID: PEDRA_ID, fight: 1 }],
+      [{ targetID: 1, fight: 2 }],
+      raide,
+      ehPedra
+    );
+
+    expect(uso.get(1)).toEqual({ trysComMorte: 1, trysComUso: 0, uso: 0 });
+  });
+
+  it("ignora morte fora das lutas de raide", () => {
+    const uso = usoDaPedraPorAtor([], [{ targetID: 1, fight: 99 }], raide, ehPedra);
+
+    expect(uso.get(1)).toBeUndefined();
   });
 });

@@ -11,7 +11,7 @@
           "parse": 37,
           "simTarget": 69766,
           "itemLevel": 290,
-          "preparation": 69,
+          "preparation": 79,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -359,11 +359,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 7,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -399,7 +399,7 @@
           "parse": 21,
           "simTarget": 66361,
           "itemLevel": 292,
-          "preparation": 39,
+          "preparation": 63,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -830,11 +830,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -869,7 +869,7 @@
           "hps": 98880,
           "parse": 74,
           "simTarget": 107954,
-          "preparation": 8,
+          "preparation": 49,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1295,11 +1295,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -1335,14 +1335,14 @@
           "parse": 23,
           "simTarget": 149699,
           "itemLevel": 286,
-          "preparation": 70,
+          "preparation": 63,
           "preparationMissing": [
             "Ombreiras",
             "Peito",
             "Pernas",
             "Botas",
-            "Pedra de vida",
-            "Óleo de arma"
+            "Óleo de arma",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1695,11 +1695,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 6,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -1733,7 +1733,7 @@
           "parse": 32,
           "simTarget": 150655,
           "itemLevel": 291,
-          "preparation": 84,
+          "preparation": 82,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -2125,11 +2125,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -2165,7 +2165,7 @@
           "parse": 35,
           "simTarget": 156424,
           "itemLevel": 290,
-          "preparation": 73,
+          "preparation": 81,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -2525,11 +2525,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -2565,7 +2565,7 @@
           "parse": 39,
           "simTarget": 143526,
           "itemLevel": 293,
-          "preparation": 75,
+          "preparation": 81,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -2934,11 +2934,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 6,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -2974,7 +2974,7 @@
           "parse": 3,
           "simTarget": 126688,
           "itemLevel": 258,
-          "preparation": 8,
+          "preparation": 21,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -2985,8 +2985,8 @@
             "Arma",
             "Colar",
             "Poção",
-            "Pedra de vida",
             "Óleo de arma",
+            "Pedra de vida",
             "Frasco"
           ],
           "preparationChecks": 2,
@@ -3351,11 +3351,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -3389,7 +3389,7 @@
           "parse": 4,
           "simTarget": 93739,
           "itemLevel": 290,
-          "preparation": 69,
+          "preparation": 72,
           "preparationMissing": [
             "Botas",
             "Colar",
@@ -3778,11 +3778,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -3818,7 +3818,7 @@
           "parse": 13,
           "simTarget": 116379,
           "itemLevel": 293,
-          "preparation": 69,
+          "preparation": 81,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -4208,11 +4208,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",

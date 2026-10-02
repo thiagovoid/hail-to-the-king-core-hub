@@ -15,7 +15,12 @@ import { readFile, writeFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { armaPreparada, usoPorAtor } from "../../src/normalization/consumiveisDaNoite";
+import { combinePreparation } from "../../src/providers/wipefest/normalizeMechanics";
+import {
+  armaPreparada,
+  usoDaPedraPorAtor,
+  usoPorAtor,
+} from "../../src/normalization/consumiveisDaNoite";
 import type { FamiliaDeConsumivel } from "../../src/providers/wowhead/familiaDoConsumivel";
 import type { CooldownCatalogFile } from "../../src/providers/wowhead/cooldownCatalog";
 
@@ -46,8 +51,8 @@ const ROTULOS: Record<FamiliaDeConsumivel, string> = {
   oleo: "Óleo de arma",
 };
 
-/** O que sai dos casts: uso DENTRO do pull. */
-const MEDIVEIS: FamiliaDeConsumivel[] = ["pocao", "pedra"];
+/** O que sai dos casts por try. Pedra não entra: ela se mede contra MORTE. */
+const MEDIVEIS: FamiliaDeConsumivel[] = ["pocao"];
 /**
  * Frasco fica como "não medido" até a coleta ler a tabela Buffs.
  *
@@ -132,6 +137,16 @@ async function main() {
       const nomes = new Map(log.abilityNames as Array<[number, string]>);
       const raide = new Set((log.raidFights as Array<{ id: number }>).map((f) => f.id));
 
+      const mortes = ((log as { deathEvents?: Array<{ targetID: number; fight: number }> })
+        .deathEvents ?? []) as Array<{ targetID: number; fight: number }>;
+
+      const pedraPorAtor = usoDaPedraPorAtor(
+        (log.castEvents ?? []) as Array<{ sourceID: number; abilityGameID: number; fight: number }>,
+        mortes,
+        raide,
+        (id) => familiaPorMagia.get(id) === "pedra"
+      );
+
       const uso = usoPorAtor(
         (log.castEvents ?? []) as Array<{ sourceID: number; abilityGameID: number; fight: number }>,
         raide,
@@ -203,10 +218,21 @@ async function main() {
 
         const arma = armaPorNome.get(semAcento(id));
         const ator = atorPorNome.get(semAcento(id));
+        const pedra = ator !== undefined ? pedraPorAtor.get(ator) : undefined;
         const familiasAtivas = ator !== undefined ? buffsPorAtor.get(ator) : undefined;
 
         jogador.consumiveis = [
           ...medido.map((u) => ({ ...u, rotulo: ROTULOS[u.familia] })),
+          // Pedra: o denominador é a try em que a pessoa MORREU. Quem não
+          // morreu sai com uso nulo — não se acusa quem não teve a situação.
+          {
+            familia: "pedra" as const,
+            rotulo: ROTULOS.pedra,
+            trysComUso: pedra?.trysComUso ?? null,
+            trys: pedra?.trysComMorte ?? null,
+            uso: pedra?.uso ?? null,
+            quais: [] as string[],
+          },
           // Óleo é estado da noite, não uso por try: 100 ou 0, sem meio termo.
           ...(arma
             ? [
@@ -243,20 +269,53 @@ async function main() {
         // A lista de pendências perde o que o Wipefest dizia de poção e
         // pedra, e recebe o que o nosso log diz. Frasco sai: enquanto não se
         // mede, não se acusa.
+        // Tira TODOS os rótulos de consumível, não alguns.
+        //
+        // Filtrando só uns, o script deixava de ser idempotente: cada
+        // execução reempilhava "Frasco" e "Comida" por cima dos que já
+        // estavam, e a contagem da temporada inflou de 29 pra 87 sem que
+        // nada tivesse mudado no log. O "Flask/comida" do Wipefest também
+        // some aqui — é o rótulo velho, da fonte que saiu.
+        const rotulosDeConsumivel = new Set<string>([...Object.values(ROTULOS), "Flask/comida"]);
         const antigas = ((jogador.preparationMissing as string[]) ?? []).filter(
-          (item) =>
-            item !== "Poção" &&
-            item !== "Pedra de vida" &&
-            item !== "Flask/comida" &&
-            item !== "Óleo de arma"
+          (item) => !rotulosDeConsumivel.has(item)
         );
         const novas = [
           ...medido.filter((u) => u.uso < META_DE_USO).map((u) => ROTULOS[u.familia]),
           ...(arma && !arma.temEnchant ? [ROTULOS.oleo] : []),
+          // Pedra entra como pendência só com ZERO, não abaixo da meta.
+          //
+          // Com o corte de 60% ela reprovava 143 das 178 noites, e isso é o
+          // sintoma que estamos curando. Pedra é botão de emergência: muita
+          // morte é instantânea e nenhuma pedra salvaria. O acusável é não
+          // ter apertado NENHUMA vez tendo morrido — e isso aconteceu em 69
+          // noites, com uma mediana de 7 mortes cada.
+          ...(pedra?.uso === 0 ? [ROTULOS.pedra] : []),
           ...DO_BUFF.filter((f) => familiasAtivas && !familiasAtivas.has(f)).map(
             (f) => ROTULOS[f]
           ),
         ];
+
+        // A nota de preparação junta o equipamento com os consumíveis, e os
+        // consumíveis agora são NOSSOS. Antes essa metade vinha do Wipefest,
+        // que não enxergava o que o core usa.
+        const notas = (jogador.consumiveis as Array<{ uso: number | null }>)
+          .map((c) => c.uso)
+          .filter((u): u is number => u !== null);
+
+        const gear = (jogador.preparationGear ?? jogador.preparation) as number | undefined;
+        jogador.preparationGear = gear;
+
+        const combinada = combinePreparation(
+          { score: gear, checks: jogador.preparationChecks as number | undefined },
+          notas.length > 0
+            ? {
+                score: Math.round(notas.reduce((t, n) => t + n, 0) / notas.length),
+                itens: notas.length,
+              }
+            : undefined
+        );
+        if (combinada !== undefined) jogador.preparation = combinada;
 
         const antes = JSON.stringify(jogador.preparationMissing ?? []);
         jogador.preparationMissing = [...antigas, ...novas];

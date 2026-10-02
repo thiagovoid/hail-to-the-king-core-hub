@@ -152,42 +152,14 @@ async function main() {
       // saberia.
       existente.mechanics = { errors: resumo.errors, tries: resumo.tries };
 
-      // Consumíveis vêm do Wipefest e se juntam à preparação de gear que o
-      // fetch-performance já calculou. Era a lacuna que a WarcraftLogs não
-      // fechava: o combatantInfo dos logs do core vem sem aura nenhuma.
-      const doWipefest = consumiveis[nome];
-      if (doWipefest) {
-        /**
-         * A base é SEMPRE a nota de gear, nunca o que está gravado.
-         *
-         * `preparation` já é o resultado de uma combinação anterior, e
-         * recombiná-lo empurrava o número a cada execução: rodar este script
-         * duas vezes na mesma semana levava o voidwar de 69 pra 57 sem nada
-         * ter mudado no log. No fluxo do CI passava batido porque a coleta da
-         * WCL roda antes e regrava a nota de gear — mas `wipefest:build`
-         * roda sozinho, direto na armadilha.
-         */
-        const gear =
-          (existente.preparationGear as number | undefined) ??
-          (existente.preparation as number | undefined);
-        existente.preparationGear = gear;
-
-        const combinada = combinePreparation(
-          { score: gear, checks: existente.preparationChecks as number | undefined },
-          { score: doWipefest.score, itens: doWipefest.itens }
-        );
-        if (combinada !== undefined) existente.preparation = combinada;
-
-        // Idem: o que falta de gear já está gravado, e concatenar de novo
-        // só funciona por causa do Set. Refazer da base é mais honesto.
-        const faltandoGear = ((existente.preparationMissingGear as string[] | undefined) ??
-          (existente.preparationMissing as string[]) ??
-          []);
-        existente.preparationMissingGear = faltandoGear;
-
-        const faltando = [...faltandoGear, ...doWipefest.missing];
-        if (faltando.length > 0) existente.preparationMissing = [...new Set(faltando)];
-      }
+      // O Wipefest NÃO entra mais na preparação.
+      //
+      // Os três insights dele ("Potions", "Healthstone / Healing Potion",
+      // "Ready Check") não enxergavam o que o core usa: em 01/10 os quinze
+      // jogadores foram acusados de não usar poção e catorze tinham usado.
+      // Poção, pedra, frasco, comida e óleo saem do nosso log agora, em
+      // `wcl:rebuild-consumables`. Aqui ficam só as mecânicas, que é o que
+      // ele faz bem.
       if (resumo.byMechanic.length > 0) existente.mechanicsDetail = resumo.byMechanic;
       gravados++;
     }

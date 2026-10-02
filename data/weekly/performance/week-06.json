@@ -11,7 +11,7 @@
           "parse": 14,
           "simTarget": 69770,
           "itemLevel": 290,
-          "preparation": 75,
+          "preparation": 91,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -288,9 +288,7 @@
             "tries": 3
           },
           "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
+          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "Nek'zali, a Espiral de Almas",
@@ -336,13 +334,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 1,
               "trys": 3,
               "uso": 33,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -378,7 +374,7 @@
           "parse": 54,
           "simTarget": 84326,
           "itemLevel": 320,
-          "preparation": 76,
+          "preparation": 84,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -857,13 +853,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 6,
-              "trys": 9,
-              "uso": 67,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 4,
+              "trys": 5,
+              "uso": 80,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -898,7 +892,7 @@
           "hps": 105788,
           "parse": 44,
           "itemLevel": 314,
-          "preparation": 62,
+          "preparation": 71,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -1294,11 +1288,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 6,
+              "trys": 4,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -1334,7 +1328,7 @@
           "parse": 76,
           "simTarget": 107954,
           "itemLevel": 319,
-          "preparation": 47,
+          "preparation": 74,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
@@ -1862,13 +1856,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 5,
-              "trys": 8,
-              "uso": 63,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 4,
+              "trys": 6,
+              "uso": 67,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -1903,7 +1895,7 @@
           "hps": 230952,
           "parse": 14,
           "itemLevel": 323,
-          "preparation": 82,
+          "preparation": 81,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -2339,11 +2331,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 9,
+              "trys": 4,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -2379,12 +2371,11 @@
           "parse": 57,
           "simTarget": 150315,
           "itemLevel": 317,
-          "preparation": 71,
+          "preparation": 80,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
-            "Botas",
-            "Pedra de vida"
+            "Botas"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -2831,13 +2822,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 3,
-              "trys": 8,
-              "uso": 38,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 2,
+              "trys": 6,
+              "uso": 33,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -2873,7 +2862,7 @@
           "parse": 19,
           "simTarget": 138276,
           "itemLevel": 317,
-          "preparation": 34,
+          "preparation": 70,
           "preparationMissing": [
             "Elmo",
             "Peito",
@@ -3306,13 +3295,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 8,
-              "trys": 9,
-              "uso": 89,
-              "quais": [
-                "Demonic Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 5,
+              "trys": 5,
+              "uso": 100,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -3348,7 +3335,7 @@
           "parse": 68,
           "simTarget": 156531,
           "itemLevel": 324,
-          "preparation": 92,
+          "preparation": 93,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -3754,13 +3741,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 4,
-              "trys": 8,
-              "uso": 50,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 3,
+              "trys": 4,
+              "uso": 75,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -3789,9 +3774,7 @@
               "quais": []
             }
           ],
-          "preparationMissing": [
-            "Pedra de vida"
-          ]
+          "preparationMissing": []
         },
         {
           "playerId": "heracranosx",
@@ -3799,7 +3782,7 @@
           "parse": 61,
           "simTarget": 143592,
           "itemLevel": 323,
-          "preparation": 79,
+          "preparation": 83,
           "preparationMissing": [
             "Elmo",
             "Pedra de vida"
@@ -4257,11 +4240,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 9,
+              "trys": 5,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -4297,13 +4280,12 @@
           "parse": 43,
           "simTarget": 149309,
           "itemLevel": 323,
-          "preparation": 74,
+          "preparation": 79,
           "preparationMissing": [
             "Elmo",
             "Cintura",
             "Botas",
-            "Braçadeiras",
-            "Pedra de vida"
+            "Braçadeiras"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -4754,13 +4736,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 3,
-              "trys": 8,
-              "uso": 38,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 2,
+              "trys": 7,
+              "uso": 29,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -4796,7 +4776,7 @@
           "parse": 8,
           "simTarget": 128143,
           "itemLevel": 306,
-          "preparation": 56,
+          "preparation": 73,
           "preparationMissing": [
             "Pernas",
             "Poção",
@@ -5271,11 +5251,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 8,
+              "trys": 7,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -5309,7 +5289,7 @@
           "playerId": "xúlio",
           "parse": 61,
           "simTarget": 159866,
-          "preparation": 68,
+          "preparation": 84,
           "preparationMissing": [
             "Elmo",
             "Pernas",
@@ -5837,13 +5817,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 8,
-              "trys": 9,
-              "uso": 89,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 4,
+              "trys": 5,
+              "uso": 80,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -5879,12 +5857,11 @@
           "parse": 5,
           "simTarget": 137152,
           "itemLevel": 318,
-          "preparation": 52,
+          "preparation": 71,
           "preparationMissing": [
             "Elmo",
             "Anel",
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6357,13 +6334,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 3,
-              "trys": 8,
-              "uso": 38,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 2,
+              "trys": 6,
+              "uso": 33,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -6398,7 +6373,7 @@
           "dps": 125175,
           "parse": 56,
           "simTarget": 149973,
-          "preparation": 80,
+          "preparation": 97,
           "preparationMissing": [
             "Elmo"
           ],
@@ -6847,13 +6822,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 7,
-              "trys": 9,
-              "uso": 78,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 6,
+              "trys": 6,
+              "uso": 100,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -6889,7 +6862,7 @@
           "parse": 17,
           "simTarget": 129221,
           "itemLevel": 312,
-          "preparation": 81,
+          "preparation": 97,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -7328,13 +7301,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 7,
-              "trys": 8,
-              "uso": 88,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 4,
+              "trys": 5,
+              "uso": 80,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -7577,7 +7548,7 @@
             "errors": 1.5,
             "tries": 4
           },
-          "preparation": 84,
+          "preparation": 90,
           "preparationMissingGear": [],
           "mechanicsDetail": [
             {
@@ -7617,13 +7588,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 2,
-              "trys": 4,
+              "rotulo": "Pedra de vida",
+              "trysComUso": 1,
+              "trys": 2,
               "uso": 50,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -7652,9 +7621,8 @@
               "quais": []
             }
           ],
-          "preparationMissing": [
-            "Pedra de vida"
-          ]
+          "preparationMissing": [],
+          "preparationGear": 84
         },
         {
           "playerId": "harrydóter",
@@ -7816,7 +7784,7 @@
             "errors": 1.5,
             "tries": 4
           },
-          "preparation": 87,
+          "preparation": 95,
           "preparationMissingGear": [],
           "mechanicsDetail": [
             {
@@ -7861,13 +7829,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 3,
-              "trys": 4,
-              "uso": 75,
-              "quais": [
-                "Demonic Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 2,
+              "trys": 2,
+              "uso": 100,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -7896,7 +7862,8 @@
               "quais": []
             }
           ],
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 87
         }
       ]
     },
@@ -7910,7 +7877,7 @@
           "parse": 42,
           "simTarget": 84326,
           "itemLevel": 320,
-          "preparation": 61,
+          "preparation": 74,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -8384,8 +8351,7 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "mechanicsDetail": [
             {
@@ -8458,13 +8424,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 2,
-              "trys": 15,
-              "uso": 13,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "trys": 13,
+              "uso": 15,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -8499,7 +8463,7 @@
           "hps": 154925,
           "parse": 50,
           "itemLevel": 314,
-          "preparation": 55,
+          "preparation": 71,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -9014,11 +8978,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
               "trys": 15,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -9053,7 +9017,7 @@
           "hps": 223836,
           "parse": 16,
           "itemLevel": 324,
-          "preparation": 63,
+          "preparation": 75,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -9524,8 +9488,7 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "mechanicsDetail": [
             {
@@ -9585,13 +9548,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 3,
-              "trys": 15,
-              "uso": 20,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 2,
+              "trys": 14,
+              "uso": 14,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -9627,13 +9588,12 @@
           "parse": 40,
           "simTarget": 150315,
           "itemLevel": 321,
-          "preparation": 64,
+          "preparation": 75,
           "preparationMissing": [
             "Elmo",
             "Ombreiras",
             "Botas",
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -10059,13 +10019,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 7,
-              "trys": 15,
-              "uso": 47,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 6,
+              "trys": 13,
+              "uso": 46,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -10101,7 +10059,7 @@
           "parse": 22,
           "simTarget": 138276,
           "itemLevel": 318,
-          "preparation": 83,
+          "preparation": 94,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -10519,13 +10477,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 10,
-              "trys": 15,
-              "uso": 67,
-              "quais": [
-                "Demonic Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 9,
+              "trys": 14,
+              "uso": 64,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -10562,7 +10518,7 @@
           "parse": 42,
           "simTarget": 151622,
           "itemLevel": 323,
-          "preparation": 84,
+          "preparation": 91,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -10964,9 +10920,7 @@
             "tries": 15
           },
           "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
+          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "Sszorak",
@@ -11025,13 +10979,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 6,
-              "trys": 15,
-              "uso": 40,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "trys": 14,
+              "uso": 43,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -11067,7 +11019,7 @@
           "parse": 84,
           "simTarget": 156531,
           "itemLevel": 325,
-          "preparation": 74,
+          "preparation": 86,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -11487,9 +11439,7 @@
             "tries": 15
           },
           "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
+          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "Sszorak",
@@ -11548,13 +11498,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 3,
-              "trys": 15,
-              "uso": 20,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "trys": 14,
+              "uso": 21,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -11590,7 +11538,7 @@
           "parse": 51,
           "simTarget": 143592,
           "itemLevel": 324,
-          "preparation": 75,
+          "preparation": 87,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -11999,9 +11947,7 @@
             "tries": 15
           },
           "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
+          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "Sszorak",
@@ -12066,13 +12012,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 1,
-              "trys": 14,
-              "uso": 7,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "trys": 13,
+              "uso": 8,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -12108,7 +12052,7 @@
           "parse": 32,
           "simTarget": 149309,
           "itemLevel": 323,
-          "preparation": 49,
+          "preparation": 58,
           "preparationMissing": [
             "Elmo",
             "Cintura",
@@ -12571,11 +12515,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 15,
+              "trys": 14,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -12610,7 +12554,7 @@
           "dps": 63037,
           "parse": 8,
           "simTarget": 128143,
-          "preparation": 65,
+          "preparation": 74,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -12971,8 +12915,7 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "mechanicsDetail": [
             {
@@ -13024,13 +12967,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 2,
+              "rotulo": "Pedra de vida",
+              "trysComUso": 1,
               "trys": 14,
-              "uso": 14,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "uso": 7,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -13066,7 +13007,7 @@
           "parse": 64,
           "simTarget": 159866,
           "itemLevel": 323,
-          "preparation": 70,
+          "preparation": 82,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -13513,8 +13454,7 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Poção",
-            "Pedra de vida"
+            "Poção"
           ],
           "mechanicsDetail": [
             {
@@ -13552,13 +13492,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 6,
-              "trys": 15,
-              "uso": 40,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 5,
+              "trys": 14,
+              "uso": 36,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -13594,7 +13532,7 @@
           "parse": 19,
           "simTarget": 137152,
           "itemLevel": 318,
-          "preparation": 75,
+          "preparation": 85,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -14032,9 +13970,7 @@
             "tries": 15
           },
           "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
+          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "Sszorak",
@@ -14100,13 +14036,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 4,
-              "trys": 14,
-              "uso": 29,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 3,
+              "trys": 12,
+              "uso": 25,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -14141,7 +14075,7 @@
           "dps": 129241,
           "parse": 25,
           "simTarget": 149973,
-          "preparation": 78,
+          "preparation": 89,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -14550,9 +14484,7 @@
             "tries": 15
           },
           "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
+          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "Sszorak",
@@ -14612,13 +14544,11 @@
             },
             {
               "familia": "pedra",
-              "trysComUso": 5,
-              "trys": 15,
-              "uso": 33,
-              "quais": [
-                "Healthstone"
-              ],
-              "rotulo": "Pedra de vida"
+              "rotulo": "Pedra de vida",
+              "trysComUso": 4,
+              "trys": 14,
+              "uso": 29,
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -14654,7 +14584,7 @@
           "parse": 19,
           "simTarget": 129221,
           "itemLevel": 312,
-          "preparation": 61,
+          "preparation": 79,
           "preparationChecks": 2,
           "preparationSlots": [
             {
@@ -15094,11 +15024,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 14,
+              "trys": 13,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -15470,7 +15400,7 @@
             "errors": 0.6,
             "tries": 15
           },
-          "preparation": 58,
+          "preparation": 79,
           "preparationMissingGear": [],
           "preparationMissing": [
             "Pedra de vida"
@@ -15526,11 +15456,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 15,
+              "trys": 14,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -15558,7 +15488,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationGear": 58
         },
         {
           "playerId": "inuqqz",
@@ -15903,7 +15834,7 @@
             "errors": 0.6,
             "tries": 15
           },
-          "preparation": 13,
+          "preparation": 67,
           "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
@@ -15966,11 +15897,11 @@
             },
             {
               "familia": "pedra",
+              "rotulo": "Pedra de vida",
               "trysComUso": 0,
-              "trys": 15,
+              "trys": 13,
               "uso": 0,
-              "quais": [],
-              "rotulo": "Pedra de vida"
+              "quais": []
             },
             {
               "familia": "oleo",
@@ -15998,7 +15929,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationGear": 13
         }
       ]
     }

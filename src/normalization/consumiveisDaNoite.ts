@@ -140,3 +140,61 @@ export function armaPreparada(
 
   return { preparada: Boolean(arma.temporaryEnchant), nome: arma.temporaryEnchantName };
 }
+
+/**
+ * A pedra de vida medida contra a MORTE, não contra o número de pulls.
+ *
+ * Cobrar pedra em 60% das trys reprovava 151 noites-jogador, e a cobrança
+ * não fazia sentido: pedra é botão de emergência. Ninguém aperta numa try
+ * que correu bem, e apertar pouco não é desleixo — é não ter precisado.
+ *
+ * A pergunta que vale é a que quem coordena faz: **morreu com a pedra na
+ * mão?** Então o denominador é a try em que a pessoa MORREU, e o numerador é
+ * a try em que ela morreu tendo apertado.
+ *
+ * Quem não morreu na noite sai com `null`: não é 100 nem 0, é "não se
+ * aplica" — e não se acusa quem não teve a situação.
+ */
+export interface UsoDaPedra {
+  /** Trys em que a pessoa morreu. Zero = nada a julgar. */
+  trysComMorte: number;
+  /** Dessas, em quantas ela chegou a usar a pedra. */
+  trysComUso: number;
+  /** 0-100, ou `null` quando não morreu nenhuma vez. */
+  uso: number | null;
+}
+
+export function usoDaPedraPorAtor(
+  casts: Iterable<CastDoLog>,
+  mortes: Iterable<{ targetID: number; fight: number }>,
+  fightsDeRaide: Set<number>,
+  ehPedra: (abilityGameID: number) => boolean
+): Map<number, UsoDaPedra> {
+  const morreuEm = new Map<number, Set<number>>();
+  for (const morte of mortes) {
+    if (!fightsDeRaide.has(morte.fight)) continue;
+    const trys = morreuEm.get(morte.targetID) ?? new Set<number>();
+    trys.add(morte.fight);
+    morreuEm.set(morte.targetID, trys);
+  }
+
+  const usouEm = new Map<number, Set<number>>();
+  for (const cast of casts) {
+    if (!fightsDeRaide.has(cast.fight) || !ehPedra(cast.abilityGameID)) continue;
+    const trys = usouEm.get(cast.sourceID) ?? new Set<number>();
+    trys.add(cast.fight);
+    usouEm.set(cast.sourceID, trys);
+  }
+
+  const resultado = new Map<number, UsoDaPedra>();
+  for (const [ator, trysDeMorte] of morreuEm) {
+    const comUso = [...trysDeMorte].filter((fight) => usouEm.get(ator)?.has(fight)).length;
+    resultado.set(ator, {
+      trysComMorte: trysDeMorte.size,
+      trysComUso: comUso,
+      uso: Math.round((comUso / trysDeMorte.size) * 100),
+    });
+  }
+
+  return resultado;
+}
