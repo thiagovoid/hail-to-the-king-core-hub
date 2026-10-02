@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "Abismo Venenoso",
-    "lastUpdated": "2026-09-30T09:17:46.469Z",
+    "lastUpdated": "2026-10-02T14:25:45.523Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -522,7 +522,7 @@
       "name": "As Presas Gêmeas",
       "encounterID": 3421,
       "status": "progress",
-      "pulls": 5,
+      "pulls": 21,
       "bestPullPercent": null,
       "killDate": null,
       "links": {
@@ -530,12 +530,18 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 5,
+      "pullsTotal": 21,
       "pullLog": [
         {
           "reportCode": "HYt1q2DfP7KxrNhz",
           "date": "2026-09-29",
           "pulls": 5,
+          "kill": false
+        },
+        {
+          "reportCode": "KLXZcaTfhq1n4RCA",
+          "date": "2026-10-01",
+          "pulls": 16,
           "kill": false
         }
       ]
@@ -574,6 +580,11 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-10-01",
+      "url": "https://www.warcraftlogs.com/reports/KLXZcaTfhq1n4RCA",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-09-29",
       "url": "https://www.warcraftlogs.com/reports/HYt1q2DfP7KxrNhz",

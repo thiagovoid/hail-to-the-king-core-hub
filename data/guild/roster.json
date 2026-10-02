@@ -743,5 +743,57 @@
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Inuqqz"
     }
+  },
+  {
+    "id": "heracranosd",
+    "name": "Heracranosd",
+    "class": "demon-hunter",
+    "race": "Elfo da Noite",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/135/237882247-avatar.jpg?alt=/wow/static/images/2d/avatar/4-0.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/nemesis/Heracranosd"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Heracranosd"
+    }
+  },
+  {
+    "id": "perdidaço",
+    "name": "Perdidaço",
+    "class": "warrior",
+    "race": "Elfo da Noite",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/236/265889260-avatar.jpg?alt=/wow/static/images/2d/avatar/4-1.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/stormrage/Perdida%C3%A7o"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Perdida%C3%A7o"
+    }
   }
 ]

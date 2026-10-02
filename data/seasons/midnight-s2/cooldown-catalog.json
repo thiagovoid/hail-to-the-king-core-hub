@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T09:17:46.345Z",
+  "generatedAt": "2026-10-02T14:25:45.387Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -865,6 +865,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "384100": {
+      "name": "Berserker Shout",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "384110": {
       "name": "Wrecking Throw",
       "cooldownMs": 45000,
@@ -1017,6 +1023,12 @@
     },
     "1234768": {
       "name": "Silvermoon Health Potion",
+      "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "1235568": {
+      "name": "Light's Preservation",
       "cooldownMs": 300000,
       "charges": 1,
       "kind": "defensive"
@@ -1246,6 +1258,7 @@
     3714,
     4987,
     5308,
+    6201,
     6343,
     6552,
     6572,
