@@ -1,942 +1,1622 @@
 {
   "reportCode": "g3rQ28mdTZ4PHBkb",
-  "coletadoEm": "2026-10-02T16:22:05.572Z",
-  "auras": [
+  "coletadoEm": "2026-10-02T16:40:31.755Z",
+  "nomes": [
     [
-      23920,
-      "Spell Reflection"
+      17,
+      "Power Word: Shield"
     ],
     [
-      1235388,
-      "Bestial Wrath"
-    ],
-    [
-      1295901,
-      "Masterful Ritual"
-    ],
-    [
-      447244,
-      "Call of the Ancestors"
-    ],
-    [
-      1242171,
-      "Void Volley"
-    ],
-    [
-      435615,
-      "Thunder Blast"
-    ],
-    [
-      377066,
-      "Mental Fortitude"
-    ],
-    [
-      1214887,
-      "Cycle of Hatred"
-    ],
-    [
-      404464,
-      "Flight Style: Skyriding"
-    ],
-    [
-      407065,
-      "Rush of Light"
-    ],
-    [
-      1279437,
-      "Crushing Void"
-    ],
-    [
-      1234772,
-      "Best Served Cold"
-    ],
-    [
-      325174,
-      "Spirit Link Totem"
-    ],
-    [
-      389539,
-      "Sentinel"
-    ],
-    [
-      1241715,
-      "Might of the Void"
-    ],
-    [
-      1306161,
-      "Divine Arbiter"
-    ],
-    [
-      107574,
-      "Avatar"
-    ],
-    [
-      470077,
-      "Coalescing Water"
-    ],
-    [
-      52437,
-      "Sudden Death"
-    ],
-    [
-      378279,
-      "Gift of the Golden Val'kyr"
-    ],
-    [
-      108370,
-      "Soul Leech"
-    ],
-    [
-      431907,
-      "Sun's Avatar"
-    ],
-    [
-      108271,
-      "Astral Shift"
-    ],
-    [
-      202602,
-      "Into the Fray"
-    ],
-    [
-      156322,
-      "Eternal Flame"
-    ],
-    [
-      378457,
-      "Soaring Shield"
-    ],
-    [
-      393038,
-      "Strength in Adversity"
-    ],
-    [
-      454394,
-      "Unlimited Power"
-    ],
-    [
-      1247908,
-      "Splinterstorm"
-    ],
-    [
-      456369,
-      "Amplification Core"
-    ],
-    [
-      461531,
-      "Brainstorm"
-    ],
-    [
-      393919,
-      "Screams of the Void"
-    ],
-    [
-      79206,
-      "Spiritwalker's Grace"
-    ],
-    [
-      432607,
-      "Holy Bulwark"
-    ],
-    [
-      390978,
-      "Twist of Fate"
-    ],
-    [
-      383648,
-      "Earth Shield"
-    ],
-    [
-      260708,
-      "Sweeping Strikes"
-    ],
-    [
-      47585,
-      "Dispersion"
-    ],
-    [
-      387636,
-      "Soulburn: Healthstone"
-    ],
-    [
-      184662,
-      "Shield of Vengeance"
-    ],
-    [
-      454015,
-      "Tempest"
-    ],
-    [
-      1305846,
-      "Preternatural Antivenom"
-    ],
-    [
-      1299991,
-      "Short Circuit"
-    ],
-    [
-      448086,
-      "Bestow Light"
-    ],
-    [
-      1266686,
-      "Alnsight"
-    ],
-    [
-      463073,
-      "Sun's Avatar"
-    ],
-    [
-      427901,
-      "Deflecting Dance"
-    ],
-    [
-      194249,
-      "Voidform"
-    ],
-    [
-      378762,
-      "Ferren Marcus's Fervor"
-    ],
-    [
-      1259491,
-      "Purging Flames"
-    ],
-    [
-      1297665,
-      "Nalorakk's Rite"
-    ],
-    [
-      472325,
-      "Howl of the Pack Leader"
+      136,
+      "Mend Pet"
     ],
     [
       465,
       "Devotion Aura"
     ],
     [
-      190456,
-      "Ignore Pain"
+      498,
+      "Divine Protection"
     ],
     [
-      1281559,
-      "Hellbent Commander"
-    ],
-    [
-      391401,
-      "Mind Flay: Insanity"
-    ],
-    [
-      173184,
-      "Elemental Blast: Mastery"
-    ],
-    [
-      431944,
-      "Diabolic Ritual: Overlord"
-    ],
-    [
-      327510,
-      "Shining Light"
-    ],
-    [
-      378412,
-      "Light of the Titans"
-    ],
-    [
-      198013,
-      "Eye Beam"
-    ],
-    [
-      453407,
-      "Whirling Water"
-    ],
-    [
-      90328,
-      "Spirit Walk"
-    ],
-    [
-      205180,
-      "Summon Darkglare"
+      586,
+      "Fade"
     ],
     [
       642,
       "Divine Shield"
     ],
     [
-      32223,
-      "Crusader Aura"
-    ],
-    [
-      428362,
-      "Ragefire"
-    ],
-    [
-      264667,
-      "Primal Rage"
-    ],
-    [
-      373213,
-      "Insidious Ire"
-    ],
-    [
-      386029,
-      "Brace For Impact"
-    ],
-    [
-      387626,
-      "Soulburn"
-    ],
-    [
-      1297664,
-      "Akil'zon's Rite"
-    ],
-    [
-      10060,
-      "Power Infusion"
-    ],
-    [
-      427913,
-      "Immolation Aura"
-    ],
-    [
-      1242775,
-      "Farstrider's Step"
-    ],
-    [
-      1265808,
-      "Umbral Plume"
-    ],
-    [
-      452416,
-      "Demonsurge"
-    ],
-    [
-      472324,
-      "Howl of the Pack Leader"
-    ],
-    [
-      212800,
-      "Blur"
-    ],
-    [
-      1263768,
-      "Light's Blessing"
-    ],
-    [
-      246152,
-      "Barbed Shot"
-    ],
-    [
-      1219480,
-      "Ascendance"
-    ],
-    [
-      17,
-      "Power Word: Shield"
-    ],
-    [
-      386633,
-      "Executioner's Precision"
-    ],
-    [
-      472640,
-      "Hogstrider"
-    ],
-    [
-      1307888,
-      "Healing Rain"
-    ],
-    [
-      462568,
-      "Elemental Resistance"
-    ],
-    [
-      355634,
-      "Windveil"
-    ],
-    [
-      1297655,
-      "Jan'alai's Rite"
-    ],
-    [
-      400745,
-      "Afterimage"
-    ],
-    [
-      471881,
-      "Wyvern's Cry"
-    ],
-    [
-      1276166,
-      "Dominion of Argus"
-    ],
-    [
-      65081,
-      "Body and Soul"
-    ],
-    [
-      432815,
-      "Diabolic Ritual: Mother of Chaos"
-    ],
-    [
-      15286,
-      "Vampiric Embrace"
-    ],
-    [
-      373277,
-      "Thing from Beyond"
-    ],
-    [
-      389820,
-      "Under Red Wings"
-    ],
-    [
-      442726,
-      "Malevolence"
-    ],
-    [
-      118922,
-      "Posthaste"
-    ],
-    [
       871,
       "Shield Wall"
     ],
     [
-      1288945,
-      "Imp Lord"
-    ],
-    [
-      157348,
-      "Call Lightning"
-    ],
-    [
-      1268810,
-      "Vanguard"
-    ],
-    [
-      31850,
-      "Ardent Defender"
-    ],
-    [
-      378081,
-      "Nature's Swiftness"
-    ],
-    [
-      1252415,
-      "Crash Lightning"
-    ],
-    [
-      387804,
-      "Echoing Protection"
-    ],
-    [
-      403876,
-      "Divine Protection"
-    ],
-    [
-      433674,
-      "Light's Deliverance"
-    ],
-    [
-      447988,
-      "Light of the Martyr"
-    ],
-    [
-      223819,
-      "Divine Purpose"
-    ],
-    [
-      1295899,
-      "Critical Ritual"
-    ],
-    [
-      1250533,
-      "Freightrunner's Flask"
-    ],
-    [
-      1276720,
-      "Nature's Ally"
-    ],
-    [
-      445606,
-      "Imminent Demise"
-    ],
-    [
-      281739,
-      "Restlessness"
-    ],
-    [
-      1287978,
-      "Rune of Lynxlike Reflexes"
-    ],
-    [
-      385540,
-      "Rejuvenating Wind"
-    ],
-    [
-      108416,
-      "Dark Pact"
-    ],
-    [
-      334783,
-      "Collateral Damage"
-    ],
-    [
-      224324,
-      "Shield Slam!"
-    ],
-    [
-      457387,
-      "Wind Barrier"
-    ],
-    [
-      432794,
-      "Demonic Art: Mother of Chaos"
-    ],
-    [
-      1307910,
-      "Venomcursed Critical Strike"
-    ],
-    [
-      1263318,
-      "The Wind Awoken"
-    ],
-    [
-      1232585,
-      "Well Fed"
-    ],
-    [
-      1287774,
-      "Rune of Burning Haste"
-    ],
-    [
-      453094,
-      "Halo"
-    ],
-    [
-      1241759,
-      "Genius Insight"
-    ],
-    [
-      11426,
-      "Ice Barrier"
-    ],
-    [
-      212653,
-      "Shimmer"
-    ],
-    [
-      384451,
-      "Lightning Strikes"
-    ],
-    [
-      1269391,
-      "Master of Warfare"
-    ],
-    [
-      65116,
-      "Stoneform"
-    ],
-    [
-      264735,
-      "Survival of the Fittest"
-    ],
-    [
-      1214848,
-      "Winds of Mysterious Fortune"
-    ],
-    [
-      221885,
-      "Divine Steed"
+      974,
+      "Earth Shield"
     ],
     [
       1022,
       "Blessing of Protection"
     ],
     [
-      97463,
-      "Rallying Cry"
-    ],
-    [
-      1304485,
-      "Ancient Madness"
-    ],
-    [
-      32216,
-      "Victorious"
-    ],
-    [
-      431522,
-      "Dawnlight"
-    ],
-    [
-      61295,
-      "Riptide"
-    ],
-    [
-      59752,
-      "Will to Survive"
-    ],
-    [
-      382024,
-      "Earthliving Weapon"
-    ],
-    [
-      1308014,
-      "Rotting Voidfin"
-    ],
-    [
-      1303338,
-      "Drink"
-    ],
-    [
-      471877,
-      "Howl of the Pack Leader"
-    ],
-    [
-      1243114,
-      "Vision of N'Zoth"
-    ],
-    [
-      201846,
-      "Stormsurge"
-    ],
-    [
-      1235378,
-      "Patiently Rewarded"
-    ],
-    [
-      1265063,
-      "Bloody Frenzy"
-    ],
-    [
-      23922,
-      "Shield Slam"
-    ],
-    [
-      254474,
-      "Divine Steed"
-    ],
-    [
-      1235108,
-      "Flask of the Magisters"
-    ],
-    [
-      386730,
-      "Divine Resonance"
-    ],
-    [
-      6673,
-      "Battle Shout"
+      1044,
+      "Blessing of Freedom"
     ],
     [
       1459,
       "Arcane Intellect"
     ],
     [
-      1305230,
-      "Divine Power"
-    ],
-    [
-      1241762,
-      "Frenzied Focus"
-    ],
-    [
-      1243113,
-      "Horrific Vision"
-    ],
-    [
-      188499,
-      "Blade Dance"
-    ],
-    [
-      80353,
-      "Time Warp"
-    ],
-    [
-      32182,
-      "Heroism"
+      2645,
+      "Ghost Wolf"
     ],
     [
       5302,
       "Revenge!"
     ],
     [
-      190446,
-      "Brain Freeze"
-    ],
-    [
-      456120,
-      "Opportunist"
-    ],
-    [
-      452497,
-      "Abyssal Gaze"
-    ],
-    [
-      382022,
-      "Earthliving Weapon"
-    ],
-    [
-      262232,
-      "War Machine"
-    ],
-    [
-      383813,
-      "Sleepy Ruby Warmth"
-    ],
-    [
-      1292058,
-      "Heroic Might"
-    ],
-    [
-      1252818,
-      "Akil'zon's Cry of Victory"
-    ],
-    [
-      1297761,
-      "Voracious Heart of Ula'tek"
-    ],
-    [
-      1230335,
-      "Post-Haste"
-    ],
-    [
-      186254,
-      "Bestial Wrath"
-    ],
-    [
-      1287772,
-      "Rune of Critical Power"
-    ],
-    [
-      1254331,
-      "Echoing Roar"
-    ],
-    [
-      258920,
-      "Immolation Aura"
-    ],
-    [
-      118038,
-      "Die by the Sword"
-    ],
-    [
-      264173,
-      "Demonic Core"
-    ],
-    [
-      1244893,
-      "Beacon of the Savior"
-    ],
-    [
-      455489,
-      "Gloom Slash"
-    ],
-    [
-      86659,
-      "Guardian of Ancient Kings"
-    ],
-    [
-      1239091,
-      "Lesser Weapon"
-    ],
-    [
-      428363,
-      "Ragefire"
-    ],
-    [
-      265187,
-      "Summon Demonic Tyrant"
-    ],
-    [
-      469703,
-      "Tempered in Battle"
-    ],
-    [
-      433891,
-      "Infernal Bolt"
-    ],
-    [
-      1260269,
-      "Shard Instability"
-    ],
-    [
-      431462,
-      "Will of the Dawn"
-    ],
-    [
-      432629,
-      "Undisputed Ruling"
-    ],
-    [
-      224127,
-      "Crackling Surge"
-    ],
-    [
-      1254180,
-      "Xathuux's Last Roar"
-    ],
-    [
-      1264426,
-      "Void-Touched"
-    ],
-    [
-      431752,
-      "Will of the Dawn"
-    ],
-    [
-      373276,
-      "Idol of Yogg-Saron"
-    ],
-    [
-      1239002,
-      "Lesser Bulwark"
-    ],
-    [
-      1266619,
-      "First In, Last Out"
-    ],
-    [
-      1269042,
-      "Manifested Demonic Soul"
-    ],
-    [
-      186257,
-      "Aspect of the Cheetah"
-    ],
-    [
-      381755,
-      "Primordial Bond"
-    ],
-    [
-      453113,
-      "Power Surge"
-    ],
-    [
-      1219185,
-      "Well Fed"
-    ],
-    [
-      1247730,
-      "Thermal Void"
-    ],
-    [
-      438591,
-      "Keep Your Feet on the Ground"
-    ],
-    [
-      1267089,
-      "Stormstream Totem"
-    ],
-    [
-      118522,
-      "Elemental Blast: Critical Strike"
-    ],
-    [
-      1270731,
-      "Violent Euphoria"
-    ],
-    [
-      1252524,
-      "Blessing of the Capybara"
-    ],
-    [
-      104773,
-      "Unending Resolve"
-    ],
-    [
-      182104,
-      "Shining Light"
+      6673,
+      "Battle Shout"
     ],
     [
       6940,
       "Blessing of Sacrifice"
     ],
     [
-      431536,
-      "Shake the Heavens"
+      10060,
+      "Power Infusion"
     ],
     [
-      208086,
-      "Colossus Smash"
+      11426,
+      "Ice Barrier"
     ],
     [
-      77762,
-      "Lava Surge"
+      15286,
+      "Vampiric Embrace"
     ],
     [
-      371028,
-      "Elemental Potion of Ultimate Power"
-    ],
-    [
-      333889,
-      "Fel Domination"
-    ],
-    [
-      459731,
-      "Huntmaster's Call"
-    ],
-    [
-      121557,
-      "Angelic Feather"
-    ],
-    [
-      1282502,
-      "Dominion of Argus: Grand Warlock Alythess"
-    ],
-    [
-      208628,
-      "Exergy"
-    ],
-    [
-      54149,
-      "Infusion of Light"
-    ],
-    [
-      265946,
-      "Ritual Wraps"
-    ],
-    [
-      212641,
-      "Guardian of Ancient Kings"
-    ],
-    [
-      387178,
-      "Empyrean Legacy"
-    ],
-    [
-      1300222,
-      "Overcharge!"
+      15407,
+      "Mind Flay"
     ],
     [
       19236,
       "Desperate Prayer"
     ],
     [
+      19574,
+      "Bestial Wrath"
+    ],
+    [
+      20707,
+      "Soulstone"
+    ],
+    [
+      21562,
+      "Power Word: Fortitude"
+    ],
+    [
+      23920,
+      "Spell Reflection"
+    ],
+    [
+      23922,
+      "Shield Slam"
+    ],
+    [
+      31821,
+      "Aura Mastery"
+    ],
+    [
+      31850,
+      "Ardent Defender"
+    ],
+    [
+      31884,
+      "Avenging Wrath"
+    ],
+    [
+      32182,
+      "Heroism"
+    ],
+    [
+      32216,
+      "Victorious"
+    ],
+    [
+      32223,
+      "Crusader Aura"
+    ],
+    [
+      44544,
+      "Fingers of Frost"
+    ],
+    [
+      47585,
+      "Dispersion"
+    ],
+    [
+      52127,
+      "Water Shield"
+    ],
+    [
+      52437,
+      "Sudden Death"
+    ],
+    [
+      53390,
+      "Tidal Waves"
+    ],
+    [
+      54149,
+      "Infusion of Light"
+    ],
+    [
+      59752,
+      "Will to Survive"
+    ],
+    [
+      61295,
+      "Riptide"
+    ],
+    [
+      65081,
+      "Body and Soul"
+    ],
+    [
+      65116,
+      "Stoneform"
+    ],
+    [
+      73685,
+      "Unleash Life"
+    ],
+    [
+      77762,
+      "Lava Surge"
+    ],
+    [
+      79206,
+      "Spiritwalker's Grace"
+    ],
+    [
+      80353,
+      "Time Warp"
+    ],
+    [
+      85416,
+      "Grand Crusader"
+    ],
+    [
+      86659,
+      "Guardian of Ancient Kings"
+    ],
+    [
+      97463,
+      "Rallying Cry"
+    ],
+    [
+      104773,
+      "Unending Resolve"
+    ],
+    [
+      107574,
+      "Avatar"
+    ],
+    [
+      108271,
+      "Astral Shift"
+    ],
+    [
+      108366,
+      "Soul Leech"
+    ],
+    [
+      108416,
+      "Dark Pact"
+    ],
+    [
+      111400,
+      "Burning Rush"
+    ],
+    [
+      114051,
+      "Ascendance"
+    ],
+    [
+      114052,
+      "Ascendance"
+    ],
+    [
+      118038,
+      "Die by the Sword"
+    ],
+    [
+      118522,
+      "Elemental Blast: Critical Strike"
+    ],
+    [
+      118922,
+      "Posthaste"
+    ],
+    [
+      120644,
+      "Halo"
+    ],
+    [
+      121557,
+      "Angelic Feather"
+    ],
+    [
+      132403,
+      "Shield of the Righteous"
+    ],
+    [
+      132404,
+      "Shield Block"
+    ],
+    [
+      156322,
+      "Eternal Flame"
+    ],
+    [
+      157128,
+      "Saved by the Light"
+    ],
+    [
+      162264,
+      "Metamorphosis"
+    ],
+    [
+      173183,
+      "Elemental Blast: Haste"
+    ],
+    [
+      173184,
+      "Elemental Blast: Mastery"
+    ],
+    [
+      182104,
+      "Shining Light"
+    ],
+    [
+      184662,
+      "Shield of Vengeance"
+    ],
+    [
+      186254,
+      "Bestial Wrath"
+    ],
+    [
+      186257,
+      "Aspect of the Cheetah"
+    ],
+    [
+      186258,
+      "Aspect of the Cheetah"
+    ],
+    [
+      186265,
+      "Aspect of the Turtle"
+    ],
+    [
+      186401,
+      "Sign of the Skirmisher"
+    ],
+    [
+      188370,
+      "Consecration"
+    ],
+    [
+      188499,
+      "Blade Dance"
+    ],
+    [
+      190446,
+      "Brain Freeze"
+    ],
+    [
+      190456,
+      "Ignore Pain"
+    ],
+    [
+      191634,
+      "Stormkeeper"
+    ],
+    [
+      192106,
+      "Lightning Shield"
+    ],
+    [
+      194249,
+      "Voidform"
+    ],
+    [
+      198013,
+      "Eye Beam"
+    ],
+    [
+      198034,
+      "Divine Hammer"
+    ],
+    [
+      198103,
+      "Earth Elemental"
+    ],
+    [
+      198300,
+      "Converging Storms"
+    ],
+    [
+      199854,
+      "Tactician"
+    ],
+    [
+      200025,
+      "Beacon of Virtue"
+    ],
+    [
+      201846,
+      "Stormsurge"
+    ],
+    [
+      202164,
+      "Bounding Stride"
+    ],
+    [
+      202602,
+      "Into the Fray"
+    ],
+    [
+      204018,
+      "Blessing of Spellwarding"
+    ],
+    [
+      205180,
+      "Summon Darkglare"
+    ],
+    [
+      205473,
+      "Icicles"
+    ],
+    [
+      207400,
+      "Ancestral Vigor"
+    ],
+    [
+      208086,
+      "Colossus Smash"
+    ],
+    [
+      208628,
+      "Exergy"
+    ],
+    [
+      209388,
+      "Bulwark of Order"
+    ],
+    [
+      212641,
+      "Guardian of Ancient Kings"
+    ],
+    [
+      212653,
+      "Shimmer"
+    ],
+    [
+      212800,
+      "Blur"
+    ],
+    [
+      221883,
+      "Divine Steed"
+    ],
+    [
+      221885,
+      "Divine Steed"
+    ],
+    [
+      223819,
+      "Divine Purpose"
+    ],
+    [
+      224127,
+      "Crackling Surge"
+    ],
+    [
+      224324,
+      "Shield Slam!"
+    ],
+    [
+      232698,
+      "Shadowform"
+    ],
+    [
+      246152,
+      "Barbed Shot"
+    ],
+    [
+      254471,
+      "Divine Steed"
+    ],
+    [
+      254474,
+      "Divine Steed"
+    ],
+    [
+      256374,
+      "Entropic Embrace"
+    ],
+    [
+      258920,
+      "Immolation Aura"
+    ],
+    [
+      260708,
+      "Sweeping Strikes"
+    ],
+    [
+      260881,
+      "Spirit Wolf"
+    ],
+    [
+      262232,
+      "War Machine"
+    ],
+    [
+      263806,
+      "Wind Gust"
+    ],
+    [
+      264173,
+      "Demonic Core"
+    ],
+    [
+      264571,
+      "Nightfall"
+    ],
+    [
+      264735,
+      "Survival of the Fittest"
+    ],
+    [
+      265187,
+      "Summon Demonic Tyrant"
+    ],
+    [
+      265946,
+      "Ritual Wraps"
+    ],
+    [
+      272790,
+      "Frenzy"
+    ],
+    [
+      280375,
+      "Redoubt"
+    ],
+    [
+      281739,
+      "Restlessness"
+    ],
+    [
+      281744,
+      "Restlessness"
+    ],
+    [
+      290819,
+      "Mend Pet"
+    ],
+    [
+      327510,
+      "Shining Light"
+    ],
+    [
+      333889,
+      "Fel Domination"
+    ],
+    [
+      334783,
+      "Collateral Damage"
+    ],
+    [
+      343312,
+      "Furious Gaze"
+    ],
+    [
+      344179,
+      "Maelstrom Weapon"
+    ],
+    [
+      355634,
+      "Windveil"
+    ],
+    [
+      370965,
+      "The Hunt"
+    ],
+    [
+      371028,
+      "Elemental Potion of Ultimate Power"
+    ],
+    [
+      373213,
+      "Insidious Ire"
+    ],
+    [
+      373276,
+      "Idol of Yogg-Saron"
+    ],
+    [
+      373277,
+      "Thing from Beyond"
+    ],
+    [
+      373316,
+      "Idol of Y'Shaarj"
+    ],
+    [
+      377066,
+      "Mental Fortitude"
+    ],
+    [
+      378076,
+      "Thunderous Paws"
+    ],
+    [
+      378081,
+      "Nature's Swiftness"
+    ],
+    [
+      378279,
+      "Gift of the Golden Val'kyr"
+    ],
+    [
+      378412,
+      "Light of the Titans"
+    ],
+    [
+      378457,
+      "Soaring Shield"
+    ],
+    [
+      378762,
+      "Ferren Marcus's Fervor"
+    ],
+    [
+      379017,
+      "Faith's Armor"
+    ],
+    [
+      381755,
+      "Primordial Bond"
+    ],
+    [
+      382022,
+      "Earthliving Weapon"
+    ],
+    [
+      382024,
+      "Earthliving Weapon"
+    ],
+    [
+      382889,
+      "Flurry"
+    ],
+    [
+      383648,
+      "Earth Shield"
+    ],
+    [
+      383813,
+      "Sleepy Ruby Warmth"
+    ],
+    [
+      384451,
+      "Lightning Strikes"
+    ],
+    [
+      385391,
+      "Spell Reflection"
+    ],
+    [
+      385540,
+      "Rejuvenating Wind"
+    ],
+    [
+      385840,
+      "Thunderlord"
+    ],
+    [
+      386029,
+      "Brace For Impact"
+    ],
+    [
+      386164,
+      "Battle Stance"
+    ],
+    [
+      386208,
+      "Defensive Stance"
+    ],
+    [
+      386478,
+      "Violent Outburst"
+    ],
+    [
+      386486,
+      "Seeing Red"
+    ],
+    [
+      386628,
+      "Unhinged"
+    ],
+    [
+      386633,
+      "Executioner's Precision"
+    ],
+    [
+      386652,
+      "Bulwark of Righteous Fury"
+    ],
+    [
+      386730,
+      "Divine Resonance"
+    ],
+    [
+      387178,
+      "Empyrean Legacy"
+    ],
+    [
+      387626,
+      "Soulburn"
+    ],
+    [
+      387636,
+      "Soulburn: Healthstone"
+    ],
+    [
+      387804,
+      "Echoing Protection"
+    ],
+    [
+      389539,
+      "Sentinel"
+    ],
+    [
+      389820,
+      "Under Red Wings"
+    ],
+    [
+      389847,
+      "Felfire Haste"
+    ],
+    [
+      389890,
+      "Tactical Retreat"
+    ],
+    [
+      390192,
+      "Ragefire"
+    ],
+    [
+      390978,
+      "Twist of Fate"
+    ],
+    [
+      391092,
+      "Shattered Psyche"
+    ],
+    [
+      391215,
+      "Initiative"
+    ],
+    [
+      391228,
+      "Maddening Touch"
+    ],
+    [
+      391401,
+      "Mind Flay: Insanity"
+    ],
+    [
+      391403,
+      "Mind Flay: Insanity"
+    ],
+    [
+      392778,
+      "Wild Strikes"
+    ],
+    [
+      393038,
+      "Strength in Adversity"
+    ],
+    [
+      393108,
+      "Guardian of Ancient Kings"
+    ],
+    [
+      393919,
+      "Screams of the Void"
+    ],
+    [
+      394195,
+      "Overflowing Energy"
+    ],
+    [
+      394454,
+      "Echoing Freedom"
+    ],
+    [
+      394810,
+      "Soulburn: Drain Life"
+    ],
+    [
+      400745,
+      "Afterimage"
+    ],
+    [
+      403876,
+      "Divine Protection"
+    ],
+    [
+      404464,
+      "Flight Style: Skyriding"
+    ],
+    [
+      406064,
+      "Art of War"
+    ],
+    [
+      406086,
+      "Art of War"
+    ],
+    [
+      407065,
+      "Rush of Light"
+    ],
+    [
+      408458,
+      "Divine Purpose"
+    ],
+    [
+      410681,
+      "Overflowing Maelstrom"
+    ],
+    [
+      414658,
+      "Ice Cold"
+    ],
+    [
+      427901,
+      "Deflecting Dance"
+    ],
+    [
+      427912,
+      "Immolation Aura"
+    ],
+    [
+      427913,
+      "Immolation Aura"
+    ],
+    [
+      427914,
+      "Immolation Aura"
+    ],
+    [
+      428361,
+      "Ragefire"
+    ],
+    [
+      428362,
+      "Ragefire"
+    ],
+    [
+      428363,
+      "Ragefire"
+    ],
+    [
+      428524,
+      "Demonic Art: Overlord"
+    ],
+    [
+      431381,
+      "Dawnlight"
+    ],
+    [
+      431415,
+      "Sun Sear"
+    ],
+    [
+      431462,
+      "Will of the Dawn"
+    ],
+    [
+      431522,
+      "Dawnlight"
+    ],
+    [
+      431536,
+      "Shake the Heavens"
+    ],
+    [
+      431752,
+      "Will of the Dawn"
+    ],
+    [
+      431907,
+      "Sun's Avatar"
+    ],
+    [
+      431944,
+      "Diabolic Ritual: Overlord"
+    ],
+    [
+      432496,
+      "Holy Bulwark"
+    ],
+    [
+      432502,
+      "Sacred Weapon"
+    ],
+    [
+      432607,
+      "Holy Bulwark"
+    ],
+    [
+      432629,
+      "Undisputed Ruling"
+    ],
+    [
+      432794,
+      "Demonic Art: Mother of Chaos"
+    ],
+    [
+      432795,
+      "Demonic Art: Pit Lord"
+    ],
+    [
+      432815,
+      "Diabolic Ritual: Mother of Chaos"
+    ],
+    [
+      432816,
+      "Diabolic Ritual: Pit Lord"
+    ],
+    [
+      433550,
+      "Rite of Sanctification"
+    ],
+    [
+      433674,
+      "Light's Deliverance"
+    ],
+    [
+      433732,
+      "Light's Deliverance"
+    ],
+    [
+      433885,
+      "Ruination"
+    ],
+    [
+      433891,
+      "Infernal Bolt"
+    ],
+    [
+      434559,
+      "Infernal Vitality"
+    ],
+    [
+      435615,
+      "Thunder Blast"
+    ],
+    [
+      437121,
+      "Burst of Power"
+    ],
+    [
+      438591,
+      "Keep Your Feet on the Ground"
+    ],
+    [
+      440839,
+      "Kindness of Chi-Ji"
+    ],
+    [
+      442726,
+      "Malevolence"
+    ],
+    [
+      443454,
+      "Ancestral Swiftness"
+    ],
+    [
+      445206,
+      "Blessing of An'she"
+    ],
+    [
+      445584,
+      "Executioner"
+    ],
+    [
+      445606,
+      "Imminent Demise"
+    ],
+    [
+      446035,
+      "Bladestorm"
+    ],
+    [
+      447244,
+      "Call of the Ancestors"
+    ],
+    [
+      447988,
+      "Light of the Martyr"
+    ],
+    [
+      448086,
+      "Bestow Light"
+    ],
+    [
+      448087,
+      "Bestow Light"
+    ],
+    [
+      449793,
+      "Succulent Soul"
+    ],
+    [
+      452416,
+      "Demonsurge"
+    ],
+    [
+      452497,
+      "Abyssal Gaze"
+    ],
+    [
+      453094,
+      "Halo"
+    ],
+    [
+      453113,
+      "Power Surge"
+    ],
+    [
       453239,
       "Student of Suffering"
     ],
     [
-      1252486,
-      "Hasty Hunt"
+      453314,
+      "Enduring Torment"
+    ],
+    [
+      453406,
+      "Whirling Earth"
+    ],
+    [
+      453407,
+      "Whirling Water"
+    ],
+    [
+      453409,
+      "Whirling Air"
+    ],
+    [
+      453850,
+      "Resonant Energy"
+    ],
+    [
+      454002,
+      "Sustained Potency"
+    ],
+    [
+      454015,
+      "Tempest"
+    ],
+    [
+      454025,
+      "Electroshock"
+    ],
+    [
+      454394,
+      "Unlimited Power"
+    ],
+    [
+      455122,
+      "Permafrost Lances"
+    ],
+    [
+      456120,
+      "Opportunist"
+    ],
+    [
+      456323,
+      "Abyssal Dominion"
+    ],
+    [
+      456369,
+      "Amplification Core"
+    ],
+    [
+      457387,
+      "Wind Barrier"
+    ],
+    [
+      459731,
+      "Huntmaster's Call"
+    ],
+    [
+      460822,
+      "Divine Guidance"
+    ],
+    [
+      461499,
+      "Overflowing Light"
+    ],
+    [
+      461531,
+      "Brainstorm"
+    ],
+    [
+      461867,
+      "Sacrosanct Crusade"
+    ],
+    [
+      462568,
+      "Elemental Resistance"
     ],
     [
       462854,
       "Skyfury"
     ],
     [
-      1306870,
-      "Tattered Tortollan Scroll"
+      463073,
+      "Sun's Avatar"
+    ],
+    [
+      466772,
+      "Doom Winds"
+    ],
+    [
+      469703,
+      "Tempered in Battle"
+    ],
+    [
+      470077,
+      "Coalescing Water"
+    ],
+    [
+      470466,
+      "Stormblast"
+    ],
+    [
+      470532,
+      "Arc Discharge"
+    ],
+    [
+      471877,
+      "Howl of the Pack Leader"
+    ],
+    [
+      471878,
+      "Howl of the Pack Leader"
+    ],
+    [
+      471881,
+      "Wyvern's Cry"
+    ],
+    [
+      472324,
+      "Howl of the Pack Leader"
+    ],
+    [
+      472325,
+      "Howl of the Pack Leader"
+    ],
+    [
+      472640,
+      "Hogstrider"
+    ],
+    [
+      1214848,
+      "Winds of Mysterious Fortune"
+    ],
+    [
+      1214887,
+      "Cycle of Hatred"
+    ],
+    [
+      1219185,
+      "Well Fed"
+    ],
+    [
+      1219480,
+      "Ascendance"
+    ],
+    [
+      1222865,
+      "Glacial Spike!"
+    ],
+    [
+      1229746,
+      "Arcanoweave Insight"
+    ],
+    [
+      1232065,
+      "Food & Drink"
+    ],
+    [
+      1232585,
+      "Well Fed"
+    ],
+    [
+      1233724,
+      "Hearty Well Fed"
+    ],
+    [
+      1234189,
+      "Execution Sentence"
+    ],
+    [
+      1234772,
+      "Best Served Cold"
+    ],
+    [
+      1235108,
+      "Flask of the Magisters"
+    ],
+    [
+      1235110,
+      "Flask of the Blood Knights"
+    ],
+    [
+      1235111,
+      "Flask of the Shattered Sun"
+    ],
+    [
+      1235378,
+      "Patiently Rewarded"
+    ],
+    [
+      1235388,
+      "Bestial Wrath"
+    ],
+    [
+      1236616,
+      "Light's Potential"
+    ],
+    [
+      1236994,
+      "Potion of Recklessness"
+    ],
+    [
+      1236998,
+      "Draught of Rampant Abandon"
+    ],
+    [
+      1239002,
+      "Lesser Bulwark"
+    ],
+    [
+      1239091,
+      "Lesser Weapon"
+    ],
+    [
+      1241410,
+      "Hammer of Wrath"
+    ],
+    [
+      1241715,
+      "Might of the Void"
+    ],
+    [
+      1241759,
+      "Genius Insight"
+    ],
+    [
+      1241762,
+      "Frenzied Focus"
+    ],
+    [
+      1241866,
+      "Glistening Radiance"
+    ],
+    [
+      1242171,
+      "Void Volley"
+    ],
+    [
+      1242775,
+      "Farstrider's Step"
+    ],
+    [
+      1243113,
+      "Horrific Vision"
+    ],
+    [
+      1243114,
+      "Vision of N'Zoth"
+    ],
+    [
+      1244893,
+      "Beacon of the Savior"
+    ],
+    [
+      1245369,
+      "Beacon of the Savior"
+    ],
+    [
+      1247577,
+      "Akil'zon's Clarity"
+    ],
+    [
+      1247730,
+      "Thermal Void"
+    ],
+    [
+      1247908,
+      "Splinterstorm"
+    ],
+    [
+      1250533,
+      "Freightrunner's Flask"
+    ],
+    [
+      1250557,
+      "Void Execution Mandate"
+    ],
+    [
+      1250772,
+      "Imp Gang Boss"
+    ],
+    [
+      1252415,
+      "Crash Lightning"
+    ],
+    [
+      1252486,
+      "Hasty Hunt"
+    ],
+    [
+      1252487,
+      "Focused Hunt"
+    ],
+    [
+      1252488,
+      "Masterful Hunt"
+    ],
+    [
+      1252489,
+      "Versatile Hunt"
+    ],
+    [
+      1252524,
+      "Blessing of the Capybara"
+    ],
+    [
+      1252818,
+      "Akil'zon's Cry of Victory"
+    ],
+    [
+      1254180,
+      "Xathuux's Last Roar"
+    ],
+    [
+      1254331,
+      "Echoing Roar"
+    ],
+    [
+      1255504,
+      "Solarflare Prism"
+    ],
+    [
+      1257052,
+      "Dark Harvest"
+    ],
+    [
+      1258338,
+      "Stampede!"
+    ],
+    [
+      1258344,
+      "Stampede"
+    ],
+    [
+      1259230,
+      "Seized Power"
+    ],
+    [
+      1259491,
+      "Purging Flames"
+    ],
+    [
+      1260269,
+      "Shard Instability"
+    ],
+    [
+      1261125,
+      "Cascading Calamity"
     ],
     [
       1262830,
       "Storm Unleashed"
     ],
     [
-      1250772,
-      "Imp Gang Boss"
+      1263263,
+      "Hand of Frost"
+    ],
+    [
+      1263318,
+      "The Wind Awoken"
+    ],
+    [
+      1263357,
+      "Impending Execution"
+    ],
+    [
+      1263768,
+      "Light's Blessing"
+    ],
+    [
+      1264050,
+      "Born in Sunlight"
+    ],
+    [
+      1264404,
+      "Cosmic Siphon"
+    ],
+    [
+      1264426,
+      "Void-Touched"
+    ],
+    [
+      1265063,
+      "Bloody Frenzy"
+    ],
+    [
+      1265808,
+      "Umbral Plume"
+    ],
+    [
+      1266308,
+      "Divine Resonance"
+    ],
+    [
+      1266619,
+      "First In, Last Out"
+    ],
+    [
+      1266686,
+      "Alnsight"
+    ],
+    [
+      1266687,
+      "Alnscorned Essence"
+    ],
+    [
+      1267089,
+      "Stormstream Totem"
+    ],
+    [
+      1268810,
+      "Vanguard"
+    ],
+    [
+      1269042,
+      "Manifested Demonic Soul"
+    ],
+    [
+      1269179,
+      "Valor"
+    ],
+    [
+      1269391,
+      "Master of Warfare"
+    ],
+    [
+      1269394,
+      "Master of Warfare"
+    ],
+    [
+      1269643,
+      "Demonic Oculi"
+    ],
+    [
+      1269879,
+      "Mind's Eyes"
+    ],
+    [
+      1270731,
+      "Violent Euphoria"
+    ],
+    [
+      1271092,
+      "Eternal Hunt"
+    ],
+    [
+      1271144,
+      "Empowered Eye Beam"
+    ],
+    [
+      1271383,
+      "Masterwork: Bulwark"
+    ],
+    [
+      1271436,
+      "Masterwork: Weapon"
+    ],
+    [
+      1276166,
+      "Dominion of Argus"
+    ],
+    [
+      1276623,
+      "Singe Magic"
+    ],
+    [
+      1276720,
+      "Nature's Ally"
+    ],
+    [
+      1276767,
+      "Tyrant's Oblation"
+    ],
+    [
+      1277026,
+      "Hammer of Wrath"
+    ],
+    [
+      1277046,
+      "Adjudication"
+    ],
+    [
+      1278009,
+      "Phalanx"
+    ],
+    [
+      1279437,
+      "Crushing Void"
+    ],
+    [
+      1280172,
+      "Shadowfiend"
+    ],
+    [
+      1281559,
+      "Hellbent Commander"
+    ],
+    [
+      1282501,
+      "Dominion of Argus: Lady Sacrolash"
+    ],
+    [
+      1282502,
+      "Dominion of Argus: Grand Warlock Alythess"
+    ],
+    [
+      1284616,
+      "Well Fed"
+    ],
+    [
+      1285912,
+      "Bestial Wrath"
+    ],
+    [
+      1287425,
+      "Void-Touched Orbs"
+    ],
+    [
+      1287665,
+      "Rune of Lingering"
+    ],
+    [
+      1287771,
+      "Rune of Masterful Cunning"
+    ],
+    [
+      1287772,
+      "Rune of Critical Power"
+    ],
+    [
+      1287774,
+      "Rune of Burning Haste"
+    ],
+    [
+      1287955,
+      "Rune of Void-Tainted Shell"
+    ],
+    [
+      1287978,
+      "Rune of Lynxlike Reflexes"
+    ],
+    [
+      1288945,
+      "Imp Lord"
+    ],
+    [
+      1291894,
+      "Soulcoiler Ritual Vessel"
+    ],
+    [
+      1292058,
+      "Heroic Might"
+    ],
+    [
+      1292299,
+      "Seriously Sharp Seashell"
+    ],
+    [
+      1292300,
+      "Brittle Torga Totem"
+    ],
+    [
+      1293316,
+      "Empowering Venom"
+    ],
+    [
+      1294727,
+      "Well Fed"
+    ],
+    [
+      1295582,
+      "Focus of Ula'tek"
+    ],
+    [
+      1295898,
+      "Versatile Ritual"
+    ],
+    [
+      1295899,
+      "Critical Ritual"
+    ],
+    [
+      1295900,
+      "Hasty Ritual"
+    ],
+    [
+      1295901,
+      "Masterful Ritual"
+    ],
+    [
+      1296934,
+      "Fury of the Dead"
+    ],
+    [
+      1297655,
+      "Jan'alai's Rite"
+    ],
+    [
+      1297663,
+      "Halazzi's Rite"
+    ],
+    [
+      1297664,
+      "Akil'zon's Rite"
+    ],
+    [
+      1297665,
+      "Nalorakk's Rite"
+    ],
+    [
+      1297761,
+      "Voracious Heart of Ula'tek"
+    ],
+    [
+      1299389,
+      "Cobra Fang"
+    ],
+    [
+      1299991,
+      "Short Circuit"
+    ],
+    [
+      1300219,
+      "Flowing Elements"
+    ],
+    [
+      1300222,
+      "Overcharge!"
     ],
     [
       1300642,
@@ -947,945 +1627,955 @@
       "Winding Up"
     ],
     [
-      1264050,
-      "Born in Sunlight"
+      1303338,
+      "Drink"
     ],
     [
-      1266687,
-      "Alnscorned Essence"
+      1304485,
+      "Ancient Madness"
     ],
     [
-      186401,
-      "Sign of the Skirmisher"
-    ],
-    [
-      1258338,
-      "Stampede!"
-    ],
-    [
-      1306960,
-      "Dire Beast"
-    ],
-    [
-      280375,
-      "Redoubt"
-    ],
-    [
-      391215,
-      "Initiative"
-    ],
-    [
-      1234189,
-      "Execution Sentence"
-    ],
-    [
-      1236998,
-      "Draught of Rampant Abandon"
-    ],
-    [
-      427914,
-      "Immolation Aura"
-    ],
-    [
-      264571,
-      "Nightfall"
-    ],
-    [
-      1235110,
-      "Flask of the Blood Knights"
-    ],
-    [
-      432816,
-      "Diabolic Ritual: Pit Lord"
-    ],
-    [
-      386628,
-      "Unhinged"
-    ],
-    [
-      186258,
-      "Aspect of the Cheetah"
-    ],
-    [
-      428361,
-      "Ragefire"
-    ],
-    [
-      1233724,
-      "Hearty Well Fed"
-    ],
-    [
-      198103,
-      "Earth Elemental"
-    ],
-    [
-      455122,
-      "Permafrost Lances"
-    ],
-    [
-      290819,
-      "Mend Pet"
-    ],
-    [
-      1310248,
-      "Rapid Refreezing"
-    ],
-    [
-      111400,
-      "Burning Rush"
-    ],
-    [
-      389890,
-      "Tactical Retreat"
-    ],
-    [
-      1277026,
-      "Hammer of Wrath"
-    ],
-    [
-      434559,
-      "Infernal Vitality"
-    ],
-    [
-      392778,
-      "Wild Strikes"
-    ],
-    [
-      1282501,
-      "Dominion of Argus: Lady Sacrolash"
-    ],
-    [
-      390192,
-      "Ragefire"
-    ],
-    [
-      378076,
-      "Thunderous Paws"
-    ],
-    [
-      232698,
-      "Shadowform"
-    ],
-    [
-      1247577,
-      "Akil'zon's Clarity"
-    ],
-    [
-      1259230,
-      "Seized Power"
-    ],
-    [
-      432496,
-      "Holy Bulwark"
-    ],
-    [
-      2645,
-      "Ghost Wolf"
-    ],
-    [
-      1317581,
-      "Venomcursed Ascendance"
-    ],
-    [
-      192106,
-      "Lightning Shield"
-    ],
-    [
-      391092,
-      "Shattered Psyche"
-    ],
-    [
-      52127,
-      "Water Shield"
-    ],
-    [
-      1277046,
-      "Adjudication"
-    ],
-    [
-      454025,
-      "Electroshock"
-    ],
-    [
-      432795,
-      "Demonic Art: Pit Lord"
-    ],
-    [
-      20707,
-      "Soulstone"
-    ],
-    [
-      1307578,
-      "Soulcoil Barrier"
-    ],
-    [
-      1305773,
-      "Ward of the Uncoiled"
-    ],
-    [
-      1284616,
-      "Well Fed"
-    ],
-    [
-      1229746,
-      "Arcanoweave Insight"
-    ],
-    [
-      386652,
-      "Bulwark of Righteous Fury"
-    ],
-    [
-      428524,
-      "Demonic Art: Overlord"
-    ],
-    [
-      1287771,
-      "Rune of Masterful Cunning"
-    ],
-    [
-      1276623,
-      "Singe Magic"
-    ],
-    [
-      53390,
-      "Tidal Waves"
-    ],
-    [
-      1299389,
-      "Cobra Fang"
-    ],
-    [
-      431381,
-      "Dawnlight"
-    ],
-    [
-      1297663,
-      "Halazzi's Rite"
-    ],
-    [
-      1294727,
-      "Well Fed"
-    ],
-    [
-      1269394,
-      "Master of Warfare"
-    ],
-    [
-      1295898,
-      "Versatile Ritual"
-    ],
-    [
-      343312,
-      "Furious Gaze"
-    ],
-    [
-      391403,
-      "Mind Flay: Insanity"
-    ],
-    [
-      281744,
-      "Restlessness"
-    ],
-    [
-      443454,
-      "Ancestral Swiftness"
-    ],
-    [
-      386195,
-      "Carnivorous Stalkers"
-    ],
-    [
-      1267765,
-      "Stormstream Totem"
-    ],
-    [
-      254471,
-      "Divine Steed"
-    ],
-    [
-      1306162,
-      "Divine Arbiter"
-    ],
-    [
-      192082,
-      "Wind Rush"
-    ],
-    [
-      263806,
-      "Wind Gust"
-    ],
-    [
-      445206,
-      "Blessing of An'she"
-    ],
-    [
-      1280172,
-      "Shadowfiend"
-    ],
-    [
-      272790,
-      "Frenzy"
-    ],
-    [
-      385391,
-      "Spell Reflection"
-    ],
-    [
-      108366,
-      "Soul Leech"
-    ],
-    [
-      188370,
-      "Consecration"
-    ],
-    [
-      449793,
-      "Succulent Soul"
-    ],
-    [
-      1266308,
-      "Divine Resonance"
-    ],
-    [
-      460822,
-      "Divine Guidance"
-    ],
-    [
-      31821,
-      "Aura Mastery"
-    ],
-    [
-      386478,
-      "Violent Outburst"
-    ],
-    [
-      470532,
-      "Arc Discharge"
-    ],
-    [
-      132404,
-      "Shield Block"
-    ],
-    [
-      31884,
-      "Avenging Wrath"
-    ],
-    [
-      5672,
-      "Healing Stream"
-    ],
-    [
-      431415,
-      "Sun Sear"
-    ],
-    [
-      386164,
-      "Battle Stance"
-    ],
-    [
-      498,
-      "Divine Protection"
-    ],
-    [
-      1276788,
-      "Demonic Power"
-    ],
-    [
-      408458,
-      "Divine Purpose"
-    ],
-    [
-      1293316,
-      "Empowering Venom"
-    ],
-    [
-      1252488,
-      "Masterful Hunt"
-    ],
-    [
-      114052,
-      "Ascendance"
-    ],
-    [
-      453314,
-      "Enduring Torment"
-    ],
-    [
-      1250557,
-      "Void Execution Mandate"
-    ],
-    [
-      974,
-      "Earth Shield"
-    ],
-    [
-      453850,
-      "Resonant Energy"
-    ],
-    [
-      1271092,
-      "Eternal Hunt"
-    ],
-    [
-      1269879,
-      "Mind's Eyes"
-    ],
-    [
-      433732,
-      "Light's Deliverance"
-    ],
-    [
-      209388,
-      "Bulwark of Order"
-    ],
-    [
-      586,
-      "Fade"
-    ],
-    [
-      1236616,
-      "Light's Potential"
-    ],
-    [
-      205473,
-      "Icicles"
-    ],
-    [
-      120644,
-      "Halo"
-    ],
-    [
-      207400,
-      "Ancestral Vigor"
-    ],
-    [
-      1245369,
-      "Beacon of the Savior"
-    ],
-    [
-      453409,
-      "Whirling Air"
-    ],
-    [
-      344179,
-      "Maelstrom Weapon"
-    ],
-    [
-      199854,
-      "Tactician"
-    ],
-    [
-      157128,
-      "Saved by the Light"
-    ],
-    [
-      427912,
-      "Immolation Aura"
-    ],
-    [
-      221883,
-      "Divine Steed"
-    ],
-    [
-      453406,
-      "Whirling Earth"
-    ],
-    [
-      1307922,
-      "Venomcursed Mastery"
-    ],
-    [
-      1263263,
-      "Hand of Frost"
-    ],
-    [
-      471878,
-      "Howl of the Pack Leader"
-    ],
-    [
-      1285912,
-      "Bestial Wrath"
-    ],
-    [
-      410681,
-      "Overflowing Maelstrom"
-    ],
-    [
-      1236994,
-      "Potion of Recklessness"
-    ],
-    [
-      394195,
-      "Overflowing Energy"
-    ],
-    [
-      200025,
-      "Beacon of Virtue"
-    ],
-    [
-      204018,
-      "Blessing of Spellwarding"
-    ],
-    [
-      1271436,
-      "Masterwork: Weapon"
-    ],
-    [
-      433550,
-      "Rite of Sanctification"
-    ],
-    [
-      198300,
-      "Converging Storms"
-    ],
-    [
-      1264404,
-      "Cosmic Siphon"
-    ],
-    [
-      198034,
-      "Divine Hammer"
-    ],
-    [
-      454002,
-      "Sustained Potency"
-    ],
-    [
-      1258344,
-      "Stampede"
+      1305230,
+      "Divine Power"
     ],
     [
       1305376,
       "Devoured Strength"
     ],
     [
-      385840,
-      "Thunderlord"
-    ],
-    [
-      391228,
-      "Maddening Touch"
-    ],
-    [
-      1308013,
-      "50-Lb Midnight Salmon"
-    ],
-    [
-      433885,
-      "Ruination"
-    ],
-    [
-      15407,
-      "Mind Flay"
-    ],
-    [
-      19574,
-      "Bestial Wrath"
-    ],
-    [
-      414658,
-      "Ice Cold"
+      1305773,
+      "Ward of the Uncoiled"
     ],
     [
       1305774,
       "Unstable Empowerment"
     ],
     [
-      1295582,
-      "Focus of Ula'tek"
+      1305846,
+      "Preternatural Antivenom"
     ],
     [
-      432502,
-      "Sacred Weapon"
+      1306161,
+      "Divine Arbiter"
     ],
     [
-      1255504,
-      "Solarflare Prism"
+      1306162,
+      "Divine Arbiter"
     ],
     [
-      1292300,
-      "Brittle Torga Totem"
+      1306870,
+      "Tattered Tortollan Scroll"
     ],
     [
-      445584,
-      "Executioner"
+      1306960,
+      "Dire Beast"
     ],
     [
-      373316,
-      "Idol of Y'Shaarj"
+      1307578,
+      "Soulcoil Barrier"
     ],
     [
-      1287955,
-      "Rune of Void-Tainted Shell"
+      1307888,
+      "Healing Rain"
     ],
     [
-      386208,
-      "Defensive Stance"
+      1307910,
+      "Venomcursed Critical Strike"
     ],
     [
-      1278009,
-      "Phalanx"
-    ],
-    [
-      1241410,
-      "Hammer of Wrath"
-    ],
-    [
-      448087,
-      "Bestow Light"
-    ],
-    [
-      191634,
-      "Stormkeeper"
-    ],
-    [
-      394454,
-      "Echoing Freedom"
-    ],
-    [
-      114051,
-      "Ascendance"
-    ],
-    [
-      1261125,
-      "Cascading Calamity"
-    ],
-    [
-      1235111,
-      "Flask of the Shattered Sun"
-    ],
-    [
-      1292299,
-      "Seriously Sharp Seashell"
-    ],
-    [
-      1296934,
-      "Fury of the Dead"
-    ],
-    [
-      1295900,
-      "Hasty Ritual"
-    ],
-    [
-      370965,
-      "The Hunt"
-    ],
-    [
-      386486,
-      "Seeing Red"
-    ],
-    [
-      389847,
-      "Felfire Haste"
-    ],
-    [
-      437121,
-      "Burst of Power"
-    ],
-    [
-      1300219,
-      "Flowing Elements"
-    ],
-    [
-      461867,
-      "Sacrosanct Crusade"
-    ],
-    [
-      1280457,
-      "Mind Sear"
-    ],
-    [
-      470466,
-      "Stormblast"
-    ],
-    [
-      466772,
-      "Doom Winds"
-    ],
-    [
-      1252487,
-      "Focused Hunt"
-    ],
-    [
-      456323,
-      "Abyssal Dominion"
-    ],
-    [
-      186265,
-      "Aspect of the Turtle"
-    ],
-    [
-      256374,
-      "Entropic Embrace"
-    ],
-    [
-      1269643,
-      "Demonic Oculi"
-    ],
-    [
-      406086,
-      "Art of War"
-    ],
-    [
-      379017,
-      "Faith's Armor"
-    ],
-    [
-      1232065,
-      "Food & Drink"
-    ],
-    [
-      406064,
-      "Art of War"
-    ],
-    [
-      1301398,
-      "Drumming"
-    ],
-    [
-      202164,
-      "Bounding Stride"
-    ],
-    [
-      1288764,
-      "Spirit Walk"
-    ],
-    [
-      108446,
-      "Soul Link"
-    ],
-    [
-      44544,
-      "Fingers of Frost"
-    ],
-    [
-      1276767,
-      "Tyrant's Oblation"
-    ],
-    [
-      1222865,
-      "Glacial Spike!"
-    ],
-    [
-      1257052,
-      "Dark Harvest"
-    ],
-    [
-      1252489,
-      "Versatile Hunt"
-    ],
-    [
-      394810,
-      "Soulburn: Drain Life"
-    ],
-    [
-      1271144,
-      "Empowered Eye Beam"
-    ],
-    [
-      85416,
-      "Grand Crusader"
-    ],
-    [
-      136,
-      "Mend Pet"
-    ],
-    [
-      73685,
-      "Unleash Life"
-    ],
-    [
-      461499,
-      "Overflowing Light"
-    ],
-    [
-      393108,
-      "Guardian of Ancient Kings"
-    ],
-    [
-      1287665,
-      "Rune of Lingering"
-    ],
-    [
-      1044,
-      "Blessing of Freedom"
-    ],
-    [
-      446035,
-      "Bladestorm"
-    ],
-    [
-      1241866,
-      "Glistening Radiance"
-    ],
-    [
-      1291894,
-      "Soulcoiler Ritual Vessel"
-    ],
-    [
-      260881,
-      "Spirit Wolf"
-    ],
-    [
-      162264,
-      "Metamorphosis"
-    ],
-    [
-      61684,
-      "Dash"
-    ],
-    [
-      1292490,
-      "Disgusting Fish"
-    ],
-    [
-      173183,
-      "Elemental Blast: Haste"
-    ],
-    [
-      440839,
-      "Kindness of Chi-Ji"
-    ],
-    [
-      1271383,
-      "Masterwork: Bulwark"
-    ],
-    [
-      1269179,
-      "Valor"
-    ],
-    [
-      132403,
-      "Shield of the Righteous"
-    ],
-    [
-      382889,
-      "Flurry"
+      1307922,
+      "Venomcursed Mastery"
     ],
     [
       1308012,
       "Slick and Slimy Gralstone"
     ],
     [
-      1287425,
-      "Void-Touched Orbs"
+      1308013,
+      "50-Lb Midnight Salmon"
     ],
     [
-      1263357,
-      "Impending Execution"
+      1308014,
+      "Rotting Voidfin"
     ],
     [
-      21562,
-      "Power Word: Fortitude"
+      1310248,
+      "Rapid Refreezing"
+    ],
+    [
+      1317581,
+      "Venomcursed Ascendance"
     ]
   ],
   "porJogador": [
     [
-      1287774,
+      1,
       [
-        4,
-        6
+        465,
+        642,
+        1044,
+        31850,
+        59752,
+        85416,
+        132403,
+        182104,
+        188370,
+        209388,
+        212641,
+        221883,
+        223819,
+        265946,
+        280375,
+        327510,
+        371028,
+        378279,
+        378412,
+        378457,
+        379017,
+        386652,
+        386730,
+        389539,
+        393038,
+        393108,
+        400745,
+        432496,
+        432502,
+        432607,
+        460822,
+        469703,
+        1229746,
+        1232585,
+        1235110,
+        1239002,
+        1239091,
+        1241715,
+        1259230,
+        1268810,
+        1269179,
+        1271383,
+        1271436,
+        1277026,
+        1296934,
+        1297761,
+        1305376
       ]
     ],
     [
-      1294727,
+      2,
       [
-        9
+        1459,
+        11426,
+        44544,
+        80353,
+        190446,
+        205473,
+        212653,
+        394195,
+        414658,
+        455122,
+        461531,
+        469703,
+        1219185,
+        1222865,
+        1235108,
+        1236616,
+        1247730,
+        1247908,
+        1250533,
+        1263263,
+        1264404,
+        1296934,
+        1297655,
+        1297663,
+        1297664,
+        1297665,
+        1310248
       ]
     ],
     [
-      1287772,
+      3,
       [
-        3,
         17,
-        88,
-        141
+        586,
+        10060,
+        15286,
+        15407,
+        19236,
+        21562,
+        47585,
+        65081,
+        120644,
+        121557,
+        194249,
+        232698,
+        256374,
+        373213,
+        373276,
+        373277,
+        373316,
+        377066,
+        390978,
+        391092,
+        391228,
+        391401,
+        391403,
+        393919,
+        453094,
+        453113,
+        453850,
+        454002,
+        1229746,
+        1232065,
+        1232585,
+        1235108,
+        1236616,
+        1241759,
+        1242171,
+        1243113,
+        1243114,
+        1252486,
+        1252487,
+        1252488,
+        1252489,
+        1266686,
+        1266687,
+        1279437,
+        1280172,
+        1287665,
+        1287772,
+        1296934,
+        1303338,
+        1304485,
+        1317581
       ]
     ],
     [
-      1235111,
+      4,
       [
-        9
+        465,
+        498,
+        642,
+        1044,
+        6940,
+        31821,
+        31884,
+        54149,
+        59752,
+        156322,
+        157128,
+        186401,
+        200025,
+        223819,
+        254471,
+        387804,
+        394454,
+        400745,
+        431381,
+        431415,
+        431462,
+        431522,
+        431752,
+        431907,
+        440839,
+        447988,
+        448086,
+        448087,
+        461499,
+        463073,
+        1214848,
+        1229746,
+        1232585,
+        1235110,
+        1241410,
+        1241866,
+        1244893,
+        1245369,
+        1250533,
+        1252486,
+        1252487,
+        1252488,
+        1252489,
+        1264050,
+        1287665,
+        1287774,
+        1291894,
+        1296934,
+        1297655,
+        1297663,
+        1297664,
+        1297665,
+        1305773,
+        1307578,
+        1317581
       ]
     ],
     [
-      1235108,
+      5,
       [
-        5,
-        7,
-        10,
-        11,
-        18
+        465,
+        642,
+        1044,
+        6940,
+        31850,
+        31884,
+        85416,
+        86659,
+        132403,
+        156322,
+        182104,
+        184662,
+        188370,
+        198034,
+        204018,
+        209388,
+        223819,
+        254474,
+        280375,
+        281739,
+        281744,
+        327510,
+        378279,
+        378412,
+        378457,
+        378762,
+        379017,
+        386652,
+        386730,
+        387178,
+        389539,
+        393038,
+        393108,
+        400745,
+        403876,
+        404464,
+        406064,
+        406086,
+        407065,
+        408458,
+        431462,
+        431522,
+        431536,
+        431752,
+        431907,
+        432496,
+        432502,
+        432607,
+        432629,
+        433550,
+        433674,
+        433732,
+        445206,
+        460822,
+        461867,
+        469703,
+        1232585,
+        1234189,
+        1235108,
+        1235110,
+        1236616,
+        1239002,
+        1239091,
+        1241410,
+        1241715,
+        1252524,
+        1252818,
+        1264050,
+        1264426,
+        1266308,
+        1268810,
+        1269179,
+        1271383,
+        1271436,
+        1277026,
+        1277046,
+        1287665,
+        1287771,
+        1287955,
+        1292299,
+        1292300,
+        1296934,
+        1305230,
+        1306161,
+        1306162,
+        1306870,
+        1308012,
+        1308013,
+        1308014
       ]
     ],
     [
-      1287955,
+      6,
       [
-        5,
-        6,
-        7,
-        10,
-        88
+        871,
+        5302,
+        6673,
+        23920,
+        23922,
+        32216,
+        97463,
+        107574,
+        132404,
+        190456,
+        202164,
+        202602,
+        224324,
+        262232,
+        385391,
+        385840,
+        386029,
+        386208,
+        386478,
+        386486,
+        392778,
+        435615,
+        437121,
+        438591,
+        1232585,
+        1234772,
+        1235110,
+        1236616,
+        1241762,
+        1242775,
+        1255504,
+        1265808,
+        1278009,
+        1287665,
+        1287774,
+        1287955,
+        1294727,
+        1296934
       ]
     ],
     [
-      1287665,
+      7,
       [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        13,
-        16,
-        17,
-        18,
-        88,
-        141
+        20707,
+        104773,
+        108366,
+        108416,
+        111400,
+        205180,
+        264571,
+        333889,
+        387626,
+        394810,
+        404464,
+        442726,
+        449793,
+        1229746,
+        1232065,
+        1232585,
+        1235108,
+        1236616,
+        1257052,
+        1260269,
+        1261125,
+        1269042,
+        1287425,
+        1287665,
+        1287771,
+        1287955,
+        1292299,
+        1292300,
+        1293316,
+        1303338,
+        1305774,
+        1306870,
+        1308012,
+        1308013,
+        1308014
       ]
     ],
     [
-      1287771,
+      8,
       [
-        5,
-        7,
-        10,
-        13,
-        18
+        465,
+        498,
+        642,
+        1022,
+        31821,
+        31884,
+        54149,
+        156322,
+        157128,
+        200025,
+        221885,
+        223819,
+        387804,
+        400745,
+        431381,
+        431415,
+        431462,
+        431522,
+        431752,
+        431907,
+        447988,
+        448086,
+        448087,
+        461499,
+        463073,
+        1229746,
+        1232585,
+        1235108,
+        1236616,
+        1241410,
+        1241715,
+        1241866,
+        1242775,
+        1244893,
+        1245369,
+        1247577,
+        1252487,
+        1252488,
+        1264050,
+        1291894,
+        1296934,
+        1307578
       ]
     ],
     [
-      1250533,
+      9,
       [
-        2,
-        4,
-        17
+        162264,
+        188499,
+        198013,
+        208628,
+        212800,
+        258920,
+        343312,
+        370965,
+        389890,
+        390192,
+        391215,
+        404464,
+        427901,
+        427912,
+        427913,
+        427914,
+        428361,
+        428362,
+        428363,
+        452416,
+        452497,
+        453239,
+        453314,
+        1214887,
+        1229746,
+        1232585,
+        1235111,
+        1236616,
+        1242775,
+        1250557,
+        1263357,
+        1264426,
+        1266619,
+        1271092,
+        1271144,
+        1295898,
+        1295899,
+        1295900,
+        1295901,
+        1296934,
+        1297655,
+        1297663,
+        1297664,
+        1297665
       ]
     ],
     [
-      1235110,
+      10,
       [
-        1,
-        4
+        2645,
+        32182,
+        108271,
+        114051,
+        192106,
+        198103,
+        198300,
+        201846,
+        224127,
+        260881,
+        344179,
+        355634,
+        381755,
+        382889,
+        383648,
+        384451,
+        410681,
+        454015,
+        454025,
+        454394,
+        462854,
+        466772,
+        469703,
+        470466,
+        470532,
+        1229746,
+        1232585,
+        1235108,
+        1236994,
+        1241715,
+        1250557,
+        1252415,
+        1262830,
+        1263357,
+        1287665,
+        1287771,
+        1287955,
+        1293316,
+        1295898,
+        1295899,
+        1295900,
+        1295901,
+        1296934,
+        1297655,
+        1297663,
+        1297664,
+        1297665,
+        1299991,
+        1317581
       ]
     ],
     [
-      1232585,
+      11,
       [
-        5,
-        18
+        642,
+        1022,
+        1044,
+        6940,
+        31884,
+        32223,
+        59752,
+        156322,
+        184662,
+        221883,
+        383813,
+        387178,
+        389820,
+        403876,
+        406064,
+        406086,
+        407065,
+        408458,
+        431381,
+        431462,
+        431522,
+        431752,
+        431907,
+        445206,
+        463073,
+        469703,
+        1232065,
+        1232585,
+        1234189,
+        1235108,
+        1241410,
+        1241715,
+        1254180,
+        1254331,
+        1264050,
+        1266308,
+        1296934,
+        1303338,
+        1305230,
+        1306161,
+        1306162,
+        1307910
       ]
     ],
     [
-      1287978,
+      13,
       [
-        141
+        136,
+        19574,
+        65116,
+        118922,
+        186254,
+        186257,
+        186258,
+        186265,
+        246152,
+        264735,
+        272790,
+        290819,
+        385540,
+        459731,
+        469703,
+        471877,
+        471878,
+        471881,
+        472324,
+        472325,
+        472640,
+        1229746,
+        1233724,
+        1235111,
+        1235388,
+        1236994,
+        1236998,
+        1242775,
+        1258338,
+        1258344,
+        1264426,
+        1265063,
+        1276720,
+        1285912,
+        1287665,
+        1287771,
+        1295582,
+        1297655,
+        1297663,
+        1297664,
+        1297665,
+        1297761,
+        1299389,
+        1305376,
+        1306960,
+        1307910,
+        1307922
+      ]
+    ],
+    [
+      16,
+      [
+        6673,
+        23920,
+        32216,
+        52437,
+        59752,
+        97463,
+        107574,
+        118038,
+        199854,
+        202164,
+        208086,
+        260708,
+        262232,
+        334783,
+        385391,
+        386164,
+        386628,
+        386633,
+        392778,
+        404464,
+        445584,
+        445606,
+        446035,
+        456120,
+        469703,
+        1232065,
+        1235110,
+        1236994,
+        1264426,
+        1269391,
+        1269394,
+        1270731,
+        1284616,
+        1292058,
+        1296934,
+        1297655,
+        1297663,
+        1297664,
+        1297665,
+        1300670,
+        1303338
+      ]
+    ],
+    [
+      17,
+      [
+        162264,
+        188499,
+        198013,
+        208628,
+        212800,
+        258920,
+        343312,
+        370965,
+        389847,
+        389890,
+        390192,
+        391215,
+        427901,
+        427912,
+        427913,
+        427914,
+        428361,
+        428362,
+        428363,
+        452416,
+        452497,
+        453239,
+        453314,
+        469703,
+        1214887,
+        1229746,
+        1232065,
+        1232585,
+        1235108,
+        1235378,
+        1236994,
+        1241715,
+        1250533,
+        1263768,
+        1266619,
+        1271092,
+        1271144,
+        1287665,
+        1287772,
+        1295898,
+        1295899,
+        1295900,
+        1295901,
+        1296934,
+        1303338
+      ]
+    ],
+    [
+      18,
+      [
+        2645,
+        32182,
+        65116,
+        77762,
+        79206,
+        108271,
+        118522,
+        173183,
+        173184,
+        191634,
+        192106,
+        263806,
+        355634,
+        378076,
+        383648,
+        443454,
+        447244,
+        462854,
+        469703,
+        1219480,
+        1229746,
+        1232585,
+        1235108,
+        1236994,
+        1241715,
+        1242775,
+        1259491,
+        1287425,
+        1287665,
+        1287771,
+        1292299,
+        1292300,
+        1293316,
+        1295898,
+        1295899,
+        1295900,
+        1295901,
+        1296934,
+        1300219,
+        1300222,
+        1306870,
+        1308012,
+        1308013,
+        1308014
+      ]
+    ],
+    [
+      88,
+      [
+        974,
+        2645,
+        32182,
+        52127,
+        53390,
+        61295,
+        73685,
+        77762,
+        79206,
+        108271,
+        114052,
+        207400,
+        378076,
+        378081,
+        382022,
+        382024,
+        383648,
+        404464,
+        453406,
+        453407,
+        453409,
+        456369,
+        457387,
+        462568,
+        462854,
+        470077,
+        1232585,
+        1235111,
+        1241715,
+        1263318,
+        1267089,
+        1287425,
+        1287665,
+        1287772,
+        1287955,
+        1296934,
+        1300642,
+        1305846,
+        1307888
+      ]
+    ],
+    [
+      141,
+      [
+        20707,
+        65116,
+        104773,
+        108366,
+        108416,
+        111400,
+        264173,
+        265187,
+        387626,
+        387636,
+        428524,
+        431944,
+        432794,
+        432795,
+        432815,
+        432816,
+        433885,
+        433891,
+        434559,
+        456323,
+        1229746,
+        1233724,
+        1235111,
+        1236994,
+        1242775,
+        1250772,
+        1263768,
+        1264426,
+        1269643,
+        1269879,
+        1276166,
+        1276623,
+        1276767,
+        1281559,
+        1282501,
+        1282502,
+        1287665,
+        1287772,
+        1287978,
+        1288945,
+        1293316,
+        1295898,
+        1295899,
+        1295900,
+        1295901,
+        1297655,
+        1297663,
+        1297664,
+        1297665
       ]
     ]
   ]
