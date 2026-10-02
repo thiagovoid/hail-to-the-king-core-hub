@@ -127,8 +127,12 @@ function relatarBuffs(buffs: unknown) {
   if (alvo.length === 0) console.log("    nenhum — o que não quer dizer que não existam, só que o nome não denuncia.");
   for (const a of alvo.slice(0, 30)) console.log(`    ${String(a.guid).padStart(8)}  ${a.name}`);
 
-  console.log(`\n  (amostra geral, pra conferir que a tabela veio cheia:)`);
-  for (const a of auras.slice(0, 10)) console.log(`    ${String(a.guid).padStart(8)}  ${a.name}`);
+  // A lista inteira: o óleo de arma pode não ter "oil" no nome — a poção
+  // mais usada do core não tem "poção" no dela, e foi assim que ela escapou
+  // uma temporada inteira. 503 linhas num log de diagnóstico é barato.
+  console.log(`\n  TODOS os ${auras.length} buffs, em ordem:`);
+  for (const a of [...auras].sort((x, y) => (x.name ?? "").localeCompare(y.name ?? "")))
+    console.log(`    ${String(a.guid).padStart(8)}  ${a.name}`);
 }
 
 main().catch((erro) => {
