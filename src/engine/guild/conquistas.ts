@@ -732,7 +732,7 @@ interface Vitoria {
  * `preparationMissing` mistura os dois numa lista só, e "Museu de encantos"
  * conta acervo — poção esquecida já tem medalha própria.
  */
-const CONSUMIVEIS = new Set(["Poção", "Flask/comida", "Pedra de vida"]);
+const CONSUMIVEIS = new Set(["Poção", "Flask/comida", "Pedra de vida", "Frasco", "Óleo de arma"]);
 
 const pecasSemEncanto = (player: PlayerPerformance): string[] =>
   (player.preparationMissing ?? []).filter((item) => !CONSUMIVEIS.has(item));
@@ -929,19 +929,26 @@ function vencedoresDaRun(
     "zero-a-zero",
     simples(cumpriram((p) => p.deaths === 0 && p.mechanics?.errors === 0))
   );
+  // "Sem uma poção SEQUER" é 0%, não "abaixo da meta".
+  //
+  // A condição antiga era estar na lista de pendências, que começa em menos
+  // de 60% de uso — quem tomou poção em metade dos pulls levava medalha de
+  // não ter tomado nenhuma. O texto da medalha sempre disse 0; a conta é
+  // que não dizia.
   porConquista.set(
     "pocao-que-pocao",
-    simples(cumpriram((p) => (p.preparationMissing ?? []).includes("Poção")))
-  );
-  porConquista.set(
-    "dieta",
     simples(
       cumpriram((p) => {
-        const faltando = new Set(p.preparationMissing ?? []);
-        return [...CONSUMIVEIS].every((item) => faltando.has(item));
+        const pocao = (p.consumiveis ?? []).find((c) => c.familia === "pocao");
+        return pocao?.uso === 0;
       })
     )
   );
+  // Dieta exige chegar sem frasco, sem comida e sem poção — e frasco e
+  // comida ninguém mede ainda (ver `consumiveisDaNoite`). Enquanto o dado
+  // não existe ela não é concedida, em vez de ser concedida por engano com
+  // base na metade que existe.
+  porConquista.set("dieta", simples([]));
   porConquista.set(
     "relojoeiro",
     simples(cumpriram((p) => (p.attackDetail ?? []).some((item) => item.efficiency >= CORTE.relojoeiro)))

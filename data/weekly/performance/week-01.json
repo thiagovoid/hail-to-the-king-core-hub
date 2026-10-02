@@ -325,8 +325,8 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Pedra de vida",
-            "Poção"
+            "Poção",
+            "Pedra de vida"
           ],
           "mechanicsDetail": [
             {
@@ -343,6 +343,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
               "tries": 2
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 8,
+              "uso": 50,
+              "quais": [
+                "Light's Potential",
+                "Potent Healing Potion",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -358,7 +396,6 @@
             "Botas",
             "Colar",
             "Poção",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -769,6 +806,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 1,
+              "trys": 8,
+              "uso": 13,
+              "quais": [
+                "Potion of Zealotry"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -786,7 +859,6 @@
             "Anel",
             "Arma",
             "Colar",
-            "Flask/comida",
             "Poção",
             "Pedra de vida"
           ],
@@ -1189,6 +1261,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 3,
+              "trys": 8,
+              "uso": 38,
+              "quais": [
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -1203,7 +1311,7 @@
             "Peito",
             "Pernas",
             "Botas",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1540,6 +1648,43 @@
               "label": "Gotículas Tóxicas",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
               "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 7,
+              "trys": 8,
+              "uso": 88,
+              "quais": [
+                "Potion of Recklessness",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
             }
           ]
         },
@@ -1926,6 +2071,43 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/entombed-sentinels/entsentToxDrop?insightId=3445-T",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 6,
+              "trys": 8,
+              "uso": 75,
+              "quais": [
+                "Lightfused Mana Potion",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -2269,7 +2451,7 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Poção"
+            "Pedra de vida"
           ],
           "mechanicsDetail": [
             {
@@ -2278,6 +2460,43 @@
               "label": "Sectário Latente",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaEssRen?insightId=3470-L",
               "tries": 2
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 5,
+              "trys": 8,
+              "uso": 63,
+              "quais": [
+                "Concentrated Silvermoon Health Potion",
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
             }
           ]
         },
@@ -2641,6 +2860,43 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 7,
+              "trys": 8,
+              "uso": 88,
+              "quais": [
+                "Light's Potential",
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -2659,7 +2915,6 @@
             "Anel",
             "Arma",
             "Colar",
-            "Flask/comida",
             "Poção",
             "Pedra de vida"
           ],
@@ -3011,6 +3266,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 8,
+              "uso": 50,
+              "quais": [
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -3023,6 +3314,7 @@
           "preparationMissing": [
             "Botas",
             "Colar",
+            "Poção",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -3393,6 +3685,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouIgn?insightId=3470-A",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 8,
+              "uso": 50,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -3746,8 +4074,7 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Pedra de vida",
-            "Poção"
+            "Pedra de vida"
           ],
           "mechanicsDetail": [
             {
@@ -3777,6 +4104,42 @@
               "label": "Transferência de Alma",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/nekzali-the-soulcoiler/nekzaSouTra?insightId=3470-1",
               "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 5,
+              "trys": 8,
+              "uso": 63,
+              "quais": [
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 8,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
             }
           ]
         }

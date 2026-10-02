@@ -312,22 +312,41 @@ describe("conquistas de uma noite só", () => {
     expect(quantas(weeks, "so-consumivel", "museu-de-encantos")).toBe(0);
   });
 
-  it("exige os três consumíveis faltando pra Dieta", () => {
+  /**
+   * Dieta exige chegar sem frasco, sem comida e sem poção — e frasco e
+   * comida ninguém mede ainda. Enquanto o dado não existe ela não é
+   * concedida, em vez de ser concedida por engano com base na metade que
+   * existe: era o que acontecia com quem só não tinha poção.
+   */
+  it("não concede Dieta enquanto frasco e comida não forem medidos", () => {
     const weeks = [
       semana("2026-09-01", [
-        {
-          playerId: "jejum",
-          deaths: 1,
-          preparationMissing: ["Poção", "Flask/comida", "Pedra de vida"],
-        },
-        { playerId: "quase", deaths: 1, preparationMissing: ["Poção", "Flask/comida"] },
+        { playerId: "jejum", deaths: 1, preparationMissing: ["Poção", "Flask/comida", "Pedra de vida"] },
       ]),
     ];
 
-    expect(quantas(weeks, "jejum", "dieta")).toBe(1);
-    expect(quantas(weeks, "quase", "dieta")).toBe(0);
-    // A poção sozinha continua valendo a medalha dela.
-    expect(quantas(weeks, "quase", "pocao-que-pocao")).toBe(1);
+    expect(quantas(weeks, "jejum", "dieta")).toBe(0);
+  });
+
+  /**
+   * "Sem uma poção SEQUER" é 0% de uso, não "abaixo da meta". A condição
+   * antiga era estar na lista de pendências, que começa em menos de 60% —
+   * quem tomou poção em metade dos pulls levava a medalha de não ter tomado
+   * nenhuma.
+   */
+  it("só dá 'Poção? Que poção?' pra quem não tomou nenhuma", () => {
+    const comUso = (uso: number) => [
+      { familia: "pocao" as const, rotulo: "Poção", trysComUso: 1, trys: 10, uso, quais: [] },
+    ];
+    const weeks = [
+      semana("2026-09-01", [
+        { playerId: "seco", deaths: 1, consumiveis: comUso(0) },
+        { playerId: "metade", deaths: 1, consumiveis: comUso(50) },
+      ]),
+    ];
+
+    expect(quantas(weeks, "seco", "pocao-que-pocao")).toBe(1);
+    expect(quantas(weeks, "metade", "pocao-que-pocao")).toBe(0);
   });
 
   it("mede Polivalente contra metade da mediana dos dps", () => {
@@ -572,7 +591,9 @@ describe("corte de data da zoeira", () => {
             parse: 60,
             dps: 100,
             simTarget: 100,
-            preparationMissing: ["Poção"],
+            consumiveis: [
+              { familia: "pocao", rotulo: "Poção", trysComUso: 0, trys: 5, uso: 0, quais: [] },
+            ],
             preparationSlots: [{ slot: 7, label: "Botas", tipo: "encanto", ok: false }],
           },
         ],

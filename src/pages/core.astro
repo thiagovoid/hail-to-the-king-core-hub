@@ -70,9 +70,18 @@ const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
   dps: 'DPS',
 };
 
+/**
+ * O link do jogador sai do `id` do roster, não do nome.
+ *
+ * O nome do Apocalïpse tem trema e o id dele não: derivando o slug do nome,
+ * a home apontava pra /core/membros/apocal%C3%AFpse/ e a página mora em
+ * /core/membros/apocalipse/. Quebrava só pra ele, porque nos outros o id é
+ * o nome em minúsculas. O id é a chave da página — `[id].astro` gera a
+ * rota a partir dele — então é dele que o link tem que vir.
+ */
 const comoAtalho = (player: Player) => ({
   name: player.name,
-  slug: encodeURIComponent(player.name.toLowerCase()),
+  slug: encodeURIComponent(player.id),
   colorClass: getClassColor(player.class),
 });
 
@@ -103,9 +112,7 @@ const dpsSeries = getCorePerformanceSeries(
     ...series,
     playerName: player?.name ?? series.playerId,
     playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
+    playerSlug: player?.id ? encodeURIComponent(player.id) : undefined
   };
 });
 
@@ -122,9 +129,7 @@ const parseSeries = getCorePerformanceSeries(
     ...series,
     playerName: player?.name ?? series.playerId,
     playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
+    playerSlug: player?.id ? encodeURIComponent(player.id) : undefined
   };
 });
 
@@ -141,9 +146,7 @@ const deathsSeries = getCorePerformanceSeries(
     ...series,
     playerName: player?.name ?? series.playerId,
     playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
+    playerSlug: player?.id ? encodeURIComponent(player.id) : undefined
   };
 });
 
@@ -160,9 +163,7 @@ const mechanicsSeries = getCorePerformanceSeries(
     ...series,
     playerName: player?.name ?? series.playerId,
     playerClass: player?.class,
-    playerSlug: player?.name
-        ? encodeURIComponent(player.name.toLowerCase())
-        : undefined
+    playerSlug: player?.id ? encodeURIComponent(player.id) : undefined
   };
 });
 

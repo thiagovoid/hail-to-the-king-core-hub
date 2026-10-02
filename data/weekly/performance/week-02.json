@@ -19,7 +19,7 @@
             "Anel",
             "Colar",
             "Poção",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -563,6 +563,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 10,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 2,
+              "trys": 10,
+              "uso": 20,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -580,8 +616,7 @@
             "Botas",
             "Anel",
             "Arma",
-            "Colar",
-            "Flask/comida"
+            "Colar"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -1078,6 +1113,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/sszorak/sszrakRagCro?insightId=3420-8",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 9,
+              "trys": 10,
+              "uso": 90,
+              "quais": [
+                "Elemental Potion of Ultimate Power"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 8,
+              "trys": 10,
+              "uso": 80,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -1494,7 +1567,6 @@
           "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "mechanicsDetail": [
@@ -1589,6 +1661,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 10,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 1,
+              "trys": 10,
+              "uso": 10,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -1608,7 +1716,6 @@
             "Arma",
             "Colar",
             "Poção",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -2137,6 +2244,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 1,
+              "trys": 10,
+              "uso": 10,
+              "quais": [
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 1,
+              "trys": 10,
+              "uso": 10,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -2629,6 +2774,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 9,
+              "trys": 10,
+              "uso": 90,
+              "quais": [
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 8,
+              "trys": 10,
+              "uso": 80,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -3078,6 +3261,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 10,
+              "trys": 10,
+              "uso": 100,
+              "quais": [
+                "Potion of Recklessness",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 8,
+              "trys": 10,
+              "uso": 80,
+              "quais": [
+                "Demonic Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -3088,7 +3310,8 @@
           "itemLevel": 302,
           "preparation": 89,
           "preparationMissing": [
-            "Botas"
+            "Botas",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -3571,6 +3794,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 10,
+              "trys": 10,
+              "uso": 100,
+              "quais": [
+                "Light's Potential",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 5,
+              "trys": 10,
+              "uso": 50,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -4047,6 +4309,48 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 9,
+              "trys": 10,
+              "uso": 90,
+              "quais": [
+                "Concentrated Silvermoon Health Potion",
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 3,
+              "trys": 10,
+              "uso": 30,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Pedra de vida"
           ]
         },
         {
@@ -4502,6 +4806,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 10,
+              "trys": 10,
+              "uso": 100,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 6,
+              "trys": 10,
+              "uso": 60,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -4516,7 +4858,8 @@
             "Cintura",
             "Botas",
             "Braçadeiras",
-            "Anel"
+            "Anel",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -4974,6 +5317,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 8,
+              "trys": 10,
+              "uso": 80,
+              "quais": [
+                "Light's Potential",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 5,
+              "trys": 10,
+              "uso": 50,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -4993,7 +5375,6 @@
             "Arma",
             "Colar",
             "Poção",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -5483,6 +5864,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 5,
+              "trys": 10,
+              "uso": 50,
+              "quais": [
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 2,
+              "trys": 10,
+              "uso": 20,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -5493,7 +5912,8 @@
           "itemLevel": 295,
           "preparation": 88,
           "preparationMissing": [
-            "Botas"
+            "Botas",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6021,6 +6441,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVilFlo?insightId=3421-V",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 10,
+              "trys": 10,
+              "uso": 100,
+              "quais": [
+                "Light's Potential",
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 4,
+              "trys": 10,
+              "uso": 40,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         }
       ]
@@ -6042,9 +6501,7 @@
             "Botas",
             "Anel",
             "Colar",
-            "Poção",
-            "Flask/comida",
-            "Pedra de vida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6373,6 +6830,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 3,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 2,
+              "trys": 3,
+              "uso": 67,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -6390,8 +6883,8 @@
             "Anel",
             "Arma",
             "Colar",
-            "Flask/comida",
-            "Poção"
+            "Poção",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -6885,6 +7378,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 8,
+              "trys": 14,
+              "uso": 57,
+              "quais": [
+                "Elemental Potion of Ultimate Power"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 6,
+              "trys": 14,
+              "uso": 43,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -7361,7 +7892,6 @@
           "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "mechanicsDetail": [
@@ -7400,6 +7930,40 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
               "tries": 2
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -7415,7 +7979,6 @@
             "Anel",
             "Arma",
             "Colar",
-            "Flask/comida",
             "Poção",
             "Pedra de vida"
           ],
@@ -7893,6 +8456,40 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -7905,7 +8502,6 @@
             "Botas",
             "Anel",
             "Poção",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -8329,6 +8925,40 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -8342,7 +8972,7 @@
             "Peito",
             "Pernas",
             "Botas",
-            "Flask/comida",
+            "Poção",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -8761,6 +9391,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
               "tries": 2
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 14,
+              "uso": 29,
+              "quais": [
+                "Potion of Recklessness",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 5,
+              "trys": 14,
+              "uso": 36,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -8773,8 +9442,7 @@
             "Elmo",
             "Arma",
             "Colar",
-            "Poção",
-            "Flask/comida"
+            "Poção"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -9196,6 +9864,44 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSouSev?insightId=3429-3",
               "tries": 2
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 13,
+              "uso": 31,
+              "quais": [
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 9,
+              "trys": 13,
+              "uso": 69,
+              "quais": [
+                "Demonic Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -9207,7 +9913,8 @@
           "preparationMissing": [
             "Pernas",
             "Botas",
-            "Anel"
+            "Anel",
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -9666,6 +10373,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 13,
+              "trys": 13,
+              "uso": 100,
+              "quais": [
+                "Draught of Rampant Abandon",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 4,
+              "trys": 13,
+              "uso": 31,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -10105,8 +10851,7 @@
           "preparationMissingGear": [],
           "preparationMissing": [
             "Poção",
-            "Pedra de vida",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "mechanicsDetail": [
             {
@@ -10144,6 +10889,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-N",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 3,
+              "trys": 14,
+              "uso": 21,
+              "quais": [
+                "Concentrated Silvermoon Health Potion",
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 4,
+              "trys": 14,
+              "uso": 29,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -10157,9 +10941,7 @@
             "Ombreiras",
             "Botas",
             "Anel",
-            "Pedra de vida",
-            "Flask/comida",
-            "Poção"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -10559,6 +11341,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGloBom?insightId=3429-c",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 12,
+              "trys": 13,
+              "uso": 92,
+              "quais": [
+                "Light's Potential",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 2,
+              "trys": 13,
+              "uso": 15,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -10572,7 +11393,6 @@
             "Cintura",
             "Botas",
             "Braçadeiras",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -10977,6 +11797,45 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtSouSev?insightId=3429-3",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 12,
+              "trys": 14,
+              "uso": 86,
+              "quais": [
+                "Light's Potential",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 3,
+              "trys": 14,
+              "uso": 21,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -10994,7 +11853,6 @@
             "Anel",
             "Arma",
             "Colar",
-            "Flask/comida",
             "Poção",
             "Pedra de vida"
           ],
@@ -11433,6 +12291,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 3,
+              "trys": 14,
+              "uso": 21,
+              "quais": [
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -11443,8 +12337,7 @@
             "Pernas",
             "Anel",
             "Poção",
-            "Pedra de vida",
-            "Flask/comida"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -11911,6 +12804,42 @@
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtFaCoAl?insightId=3429-T",
               "tries": 1
             }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 14,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 3,
+              "trys": 14,
+              "uso": 21,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            }
           ]
         },
         {
@@ -11926,7 +12855,6 @@
             "Anel",
             "Colar",
             "Poção",
-            "Flask/comida",
             "Pedra de vida"
           ],
           "preparationChecks": 2,
@@ -12295,6 +13223,42 @@
               "label": "50y",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-coiled-altar/coialtGuill?insightId=3429-K",
               "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 7,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "trysComUso": 2,
+              "trys": 7,
+              "uso": 29,
+              "quais": [
+                "Healthstone"
+              ],
+              "rotulo": "Pedra de vida"
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "uso": null,
+              "trysComUso": null,
+              "trys": null,
+              "quais": []
             }
           ]
         }

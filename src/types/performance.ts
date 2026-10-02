@@ -76,6 +76,22 @@ export interface PlayerPerformance {
    * da combinação, e recombiná-lo empurrava o número a cada execução do
    * coletor de mecânicas. Ver `combinePreparation`.
    */
+  /**
+   * Uso de consumível na noite, por família, medido do NOSSO log.
+   *
+   * `uso` nulo quer dizer **não medido**, não "não usou": frasco e óleo são
+   * estado de antes do pull e não aparecem nos casts. Reprovar por falta de
+   * dado foi exatamente o defeito que esta mudança corrige.
+   */
+  consumiveis?: Array<{
+    familia: "pocao" | "pedra" | "frasco" | "oleo";
+    rotulo: string;
+    trysComUso: number | null;
+    trys: number | null;
+    uso: number | null;
+    quais: string[];
+  }>;
+
   preparationGear?: number;
   /** O que falta de equipamento, antes de somar o que o ready check pegou. */
   preparationMissingGear?: string[];
