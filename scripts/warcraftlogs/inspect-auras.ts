@@ -115,6 +115,18 @@ function relatarAuras(summary: unknown) {
 
 /** Lista as habilidades da tabela Buffs, que é onde frasco/comida/runa viveriam. */
 function relatarBuffs(buffs: unknown) {
+  // A forma crua de uma entrada, porque supor a forma já custou uma rodada:
+  // arquivei 503 buffs com a lista de jogadores vazia por achar que `bands`
+  // trazia nome de gente, e bands é intervalo de tempo.
+  const cru = (buffs as { data?: { auras?: unknown[] } })?.data?.auras;
+  if (Array.isArray(cru) && cru.length > 0) {
+    console.log("  chaves de data: " + Object.keys((buffs as { data?: object }).data ?? {}).join(", "));
+    console.log("  uma entrada inteira:");
+    console.log("    " + JSON.stringify(cru[0]).slice(0, 900));
+    const comBand = cru.find((x) => Array.isArray((x as { bands?: unknown[] }).bands));
+    if (comBand) console.log("    uma band: " + JSON.stringify((comBand as { bands: unknown[] }).bands[0]));
+  }
+
   const auras = (buffs as { data?: { auras?: Array<{ guid?: number; name?: string; totalUptime?: number; bands?: unknown[] }> } })?.data?.auras;
 
   if (!auras) {
