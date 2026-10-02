@@ -88,8 +88,7 @@ async function main() {
     console.log(`  falhou: ${(erro as Error).message}`);
   }
 
-  console.log("
-=== ROTA C — eventos de buff filtrados por habilidade ===");
+  console.log("\n=== ROTA C — eventos de buff filtrados por habilidade ===");
   try {
     const arquivados = JSON.parse(
       await (await import("node:fs/promises")).readFile(`data/raw/warcraftlogs/${code}-buffs.json`, "utf-8")
