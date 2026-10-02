@@ -101,6 +101,19 @@ async function main() {
   } catch (erro) {
     console.log(`  falhou: ${(erro as Error).message}`);
   }
+
+  console.log("\n=== ROTA D — tabela Buffs de um jogador só ===");
+  try {
+    const detalhes = (a.reportData.report.summary as { data?: { playerDetails?: Record<string, Array<{ id?: number; name?: string }>> } })?.data?.playerDetails;
+    const alguem = Object.values(detalhes ?? {}).flat()[0];
+    if (!alguem?.id) {
+      console.log("  sem jogador pra testar.");
+    } else {
+      await rotaD(code, fights.map((f) => f.id), alguem.id, alguem.name ?? "?");
+    }
+  } catch (erro) {
+    console.log(`  falhou: ${(erro as Error).message}`);
+  }
 }
 
 /** Conta auras por jogador no playerDetails de uma tabela Summary. */
@@ -199,6 +212,36 @@ async function rotaC(code: string, ids: number[], fim: number) {
   console.log(`  ${eventos.length} eventos, ${porAlvo.size} alvos distintos${r.reportData.report.events.nextPageTimestamp ? " (HÁ MAIS PÁGINAS)" : ""}.`);
   console.log(`  VEREDITO: ${porAlvo.size > 0 ? "FUNCIONA — dá pra dizer de quem é cada buff." : "não trouxe alvo."}`);
   for (const [alvo, abil] of [...porAlvo].slice(0, 8)) console.log(`    ator ${alvo}: ${[...abil].join(", ")}`);
+}
+
+/**
+ * Rota D: a tabela Buffs de UM jogador.
+ *
+ * Frasco e comida são aplicados ANTES do log começar — duram uma hora e a
+ * pessoa toma em casa. Não existe `applybuff` deles no relatório, e por
+ * isso a rota C (eventos) pega runa mas não pega frasco.
+ *
+ * Perguntando por alvo, a tabela devolve o que estava ativo, com uptime,
+ * independente de quando foi aplicado. O custo é uma consulta por jogador.
+ */
+async function rotaD(code: string, fightIDs: number[], alvo: number, nome: string) {
+  const r = await wclGraphql<{ reportData: { report: { buffs: unknown } } }>(
+    `query($code: String!, $fightIDs: [Int], $alvo: Int!) {
+      reportData { report(code: $code) {
+        buffs: table(fightIDs: $fightIDs, dataType: Buffs, targetID: $alvo)
+      } }
+    }`,
+    { code, fightIDs, alvo }
+  );
+
+  const auras =
+    (r.reportData.report.buffs as { data?: { auras?: Array<{ guid?: number; name?: string; totalUptime?: number }> } })
+      ?.data?.auras ?? [];
+
+  const interessa = auras.filter((x) => /flask|well fed|augment|rune/i.test(x.name ?? ""));
+  console.log(`  ${nome} (ator ${alvo}): ${auras.length} auras; destas, de consumível:`);
+  if (interessa.length === 0) console.log("    NENHUMA — a rota não resolve.");
+  for (const x of interessa) console.log(`    ${String(x.guid).padStart(8)}  ${x.name}`);
 }
 
 main().catch((erro) => {
