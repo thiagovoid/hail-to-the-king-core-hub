@@ -84,7 +84,7 @@ export interface PlayerPerformance {
    * dado foi exatamente o defeito que esta mudança corrige.
    */
   consumiveis?: Array<{
-    familia: "pocao" | "pedra" | "frasco" | "oleo";
+    familia: "pocao" | "pedra" | "frasco" | "comida" | "oleo";
     rotulo: string;
     trysComUso: number | null;
     trys: number | null;
