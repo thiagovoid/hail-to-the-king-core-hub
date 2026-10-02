@@ -16,7 +16,7 @@
  *   npm run wcl:fetch-buffs -- --reports=A,B # só esses
  *   npm run wcl:fetch-buffs -- --force       # refaz os que já têm
  */
-import { readFile, writeFile, readdir } from "node:fs/promises";
+import { writeFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 

@@ -1,0 +1,72 @@
+name: Buffs do relatório (frasco, comida, runa)
+
+# Sem cron: é complemento, não coleta de rotina.
+#
+# Frasco, comida e runa são estado de ANTES do pull — não existem nos casts
+# e não vêm no `combatantInfo.auras`, que volta vazio em toda forma de
+# consultar a Summary (conferido no diagnóstico de 02/10). A tabela Buffs
+# tem, e é UMA consulta por relatório: as 13 noites da temporada custam 13
+# consultas, não uma recoleta.
+#
+# Rode uma vez pra encher o passado. Depois disso a coleta semanal cuida.
+on:
+  workflow_dispatch:
+    inputs:
+      reports:
+        description: "Códigos separados por vírgula. Em branco = todos os relatórios arquivados sem buffs."
+        required: false
+        type: string
+      force:
+        description: "Refazer os que já têm buffs arquivados"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backfill-buffs
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    name: Arquivar buffs & commitar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+
+      - name: Buscar a tabela Buffs
+        env:
+          WCL_CLIENT_ID: ${{ secrets.WCL_CLIENT_ID }}
+          WCL_CLIENT_SECRET: ${{ secrets.WCL_CLIENT_SECRET }}
+        run: |
+          ARGS=()
+          if [ -n "${{ inputs.reports }}" ]; then
+            ARGS+=(--reports="${{ inputs.reports }}")
+          fi
+          if [ "${{ inputs.force }}" = "true" ]; then
+            ARGS+=(--force)
+          fi
+          npm run wcl:fetch-buffs -- "${ARGS[@]}"
+
+      - name: Commitar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A data/
+          echo "--- fora do commit:"
+          git status --short
+
+          if git diff --cached --quiet; then
+            echo "Nada para commitar."
+          else
+            git commit -m "chore(data): buffs do relatório (frasco, comida, runa)"
+            git pull --rebase --autostash origin master
+            git push
+          fi
