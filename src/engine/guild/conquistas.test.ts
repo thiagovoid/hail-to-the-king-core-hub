@@ -1143,3 +1143,35 @@ describe("as conquistas de tombo", () => {
     expect(depois.get("a")?.get("fantasma")?.vezes).toBe(1);
   });
 });
+
+describe("arma seca", () => {
+  /**
+   * Óleo de arma é encantamento temporário, não buff — sai do
+   * `temporaryEnchant` da mão principal, campo que já vinha no que
+   * coletamos e ninguém lia. Zero óleos apareceram entre os 503 buffs do
+   * relatório de 01/10 justamente por isso.
+   */
+  const comOleo = (uso: number) => [
+    { familia: "oleo" as const, rotulo: "Óleo de arma", trysComUso: null, trys: null, uso, quais: [] },
+  ];
+
+  it("dá a medalha pra quem entrou sem nada na arma", () => {
+    const weeks = [
+      semana("2026-09-01", [
+        { playerId: "seca", deaths: 1, consumiveis: comOleo(0) },
+        { playerId: "oleada", deaths: 1, consumiveis: comOleo(100) },
+      ]),
+    ];
+
+    expect(quantas(weeks, "seca", "arma-seca")).toBe(1);
+    expect(quantas(weeks, "oleada", "arma-seca")).toBe(0);
+  });
+
+  it("não dá pra quem não tem o dado", () => {
+    // Sem gear da mão principal não dá pra afirmar nada — e acusar por
+    // lacuna nossa é o defeito que esta leva de mudanças corrige.
+    const weeks = [semana("2026-09-01", [{ playerId: "sem-dado", deaths: 1 }])];
+
+    expect(quantas(weeks, "sem-dado", "arma-seca")).toBe(0);
+  });
+});

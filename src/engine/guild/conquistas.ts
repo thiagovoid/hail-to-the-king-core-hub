@@ -381,6 +381,14 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
 
   // ----- zoeira -----
   {
+    id: "arma-seca",
+    nome: "Arma seca",
+    como: "Entrar na raide com a arma sem óleo. Ela corta, mas reclama.",
+    simbolo: "armaSeca",
+    tipo: "zoeira",
+    disputada: false,
+  },
+  {
     id: "pocao-que-pocao",
     nome: "Poção? Que poção?",
     como: "Passar a noite inteira sem tomar uma poção sequer.",
@@ -929,6 +937,24 @@ function vencedoresDaRun(
     "zero-a-zero",
     simples(cumpriram((p) => p.deaths === 0 && p.mechanics?.errors === 0))
   );
+  /**
+   * Arma sem óleo — e imbue de xamã conta como óleo.
+   *
+   * Óleo de arma é encantamento temporário, não buff: sai do
+   * `temporaryEnchant` da mão principal. Flametongue e Windfury entram
+   * porque a régua é "a arma está preparada?", não "usou o item do guia" —
+   * a mesma régua que vale pra poção de qualquer qualidade.
+   */
+  porConquista.set(
+    "arma-seca",
+    simples(
+      cumpriram((p) => {
+        const oleo = (p.consumiveis ?? []).find((c) => c.familia === "oleo");
+        return oleo?.uso === 0;
+      })
+    )
+  );
+
   // "Sem uma poção SEQUER" é 0%, não "abaixo da meta".
   //
   // A condição antiga era estar na lista de pendências, que começa em menos

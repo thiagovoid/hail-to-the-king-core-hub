@@ -45,10 +45,29 @@ const ROTULOS: Record<FamiliaDeConsumivel, string> = {
   oleo: "Óleo de arma",
 };
 
-/** O que sai dos casts; frasco e óleo são estado de antes do pull. */
+/** O que sai dos casts: uso DENTRO do pull. */
 const MEDIVEIS: FamiliaDeConsumivel[] = ["pocao", "pedra"];
-/** Ficam na tela como "não medido" em vez de reprovar por falta de dado. */
-const NAO_MEDIVEIS: FamiliaDeConsumivel[] = ["frasco", "oleo"];
+/**
+ * Frasco fica como "não medido" até a coleta ler a tabela Buffs.
+ *
+ * O diagnóstico de 02/10 mostrou que ele existe lá (`Flask of the
+ * Magisters`, `Well Fed`, oito runas), mas isso é coleta nova. Enquanto
+ * não vem, não se acusa — foi o defeito que esta mudança corrige.
+ */
+const NAO_MEDIVEIS: FamiliaDeConsumivel[] = ["frasco"];
+
+/**
+ * Óleo sai do GEAR, não dos casts nem dos buffs.
+ *
+ * Óleo de arma é encantamento temporário, e a WCL entrega isso em
+ * `temporaryEnchant` no item da mão principal — campo que já vinha no que
+ * coletamos e ninguém lia. Zero óleos apareceram entre os 503 buffs do
+ * relatório justamente por isso.
+ *
+ * Xamã usa imbue próprio (Flametongue, Windfury) no lugar de óleo, e isso
+ * conta: a régua é "a arma está preparada?", não "usou o item do guia".
+ */
+const SLOT_DA_ARMA = 15;
 
 async function main() {
   const catalogo = JSON.parse(
@@ -106,6 +125,19 @@ async function main() {
         porNomeSemAcento.set(semAcento(nome), linhas);
       }
 
+      const detalhes = (log as { aggregateTables?: { summary?: { data?: { playerDetails?: Record<string, Array<{ name?: string; combatantInfo?: { gear?: Array<{ slot?: number; id?: number; temporaryEnchant?: number; temporaryEnchantName?: string }> } }>> } } } })
+        .aggregateTables?.summary?.data?.playerDetails;
+      const armaPorNome = new Map<string, { temEnchant: boolean; nome?: string }>();
+      for (const jogadorDoLog of Object.values(detalhes ?? {}).flat()) {
+        if (!jogadorDoLog.name) continue;
+        const arma = (jogadorDoLog.combatantInfo?.gear ?? []).find((g) => g.slot === SLOT_DA_ARMA && g.id);
+        if (!arma) continue;
+        armaPorNome.set(semAcento(jogadorDoLog.name), {
+          temEnchant: Boolean(arma.temporaryEnchant),
+          nome: arma.temporaryEnchantName,
+        });
+      }
+
       for (const jogador of noite.players ?? []) {
         const id = String(jogador.playerId);
         const medido = porNome.get(id) ?? porNomeSemAcento.get(semAcento(id));
@@ -115,8 +147,23 @@ async function main() {
           continue;
         }
 
+        const arma = armaPorNome.get(semAcento(id));
+
         jogador.consumiveis = [
           ...medido.map((u) => ({ ...u, rotulo: ROTULOS[u.familia] })),
+          // Óleo é estado da noite, não uso por try: 100 ou 0, sem meio termo.
+          ...(arma
+            ? [
+                {
+                  familia: "oleo" as const,
+                  rotulo: ROTULOS.oleo,
+                  trysComUso: null,
+                  trys: null,
+                  uso: arma.temEnchant ? 100 : 0,
+                  quais: arma.nome ? [arma.nome] : [],
+                },
+              ]
+            : []),
           ...NAO_MEDIVEIS.map((familia) => ({
             familia,
             rotulo: ROTULOS[familia],
@@ -131,9 +178,16 @@ async function main() {
         // pedra, e recebe o que o nosso log diz. Frasco sai: enquanto não se
         // mede, não se acusa.
         const antigas = ((jogador.preparationMissing as string[]) ?? []).filter(
-          (item) => item !== "Poção" && item !== "Pedra de vida" && item !== "Flask/comida"
+          (item) =>
+            item !== "Poção" &&
+            item !== "Pedra de vida" &&
+            item !== "Flask/comida" &&
+            item !== "Óleo de arma"
         );
-        const novas = medido.filter((u) => u.uso < META_DE_USO).map((u) => ROTULOS[u.familia]);
+        const novas = [
+          ...medido.filter((u) => u.uso < META_DE_USO).map((u) => ROTULOS[u.familia]),
+          ...(arma && !arma.temEnchant ? [ROTULOS.oleo] : []),
+        ];
 
         const antes = JSON.stringify(jogador.preparationMissing ?? []);
         jogador.preparationMissing = [...antigas, ...novas];

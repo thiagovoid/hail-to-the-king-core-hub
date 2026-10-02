@@ -140,6 +140,17 @@ const titulo = conquistada
         </>
       )}
 
+      {/* Arma seca: a lâmina com a gota cortada — óleo que não foi passado. */}
+      {conquista.simbolo === 'armaSeca' && (
+        <>
+          <path d="M30 12 H34 L35.5 34 H28.5 Z" />
+          <rect x="23" y="33" width="18" height="3.5" rx="1.5" />
+          <rect x="30" y="36.5" width="4" height="9" rx="2" />
+          <path d="M44 38 C44 34 40 30 40 30 C40 30 36 34 36 38 C36 40.2 37.8 42 40 42 C42.2 42 44 40.2 44 38 Z" opacity="0.55" />
+          <rect x="33.5" y="27.5" width="13" height="2.6" rx="1.3" transform="rotate(45 40 36)" />
+        </>
+      )}
+
       {conquista.simbolo === 'calice' && (
         <>
           <path d="M20 16 H44 C44 30 38 36 32 36 C26 36 20 30 20 16 Z" />

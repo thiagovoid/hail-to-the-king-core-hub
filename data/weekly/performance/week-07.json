@@ -16,7 +16,8 @@
             "Elmo",
             "Ombreiras",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Óleo de arma"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -527,16 +528,16 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
               "quais": []
             },
             {
-              "familia": "oleo",
-              "rotulo": "Óleo de arma",
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -1159,16 +1160,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Rite of Sanctification"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -1722,16 +1725,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Earthliving"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -2342,16 +2347,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -2937,16 +2944,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -3445,16 +3454,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -3955,16 +3966,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -4482,16 +4495,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -5065,16 +5080,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Flametongue"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -5650,16 +5667,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -6191,16 +6210,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Windfury"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -6821,16 +6842,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -7468,16 +7491,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -8033,16 +8058,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -8590,16 +8617,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -9207,16 +9236,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -9430,16 +9461,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -9920,16 +9953,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -9947,7 +9982,8 @@
             "Elmo",
             "Ombreiras",
             "Poção",
-            "Pedra de vida"
+            "Pedra de vida",
+            "Óleo de arma"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -10515,16 +10551,16 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
               "quais": []
             },
             {
-              "familia": "oleo",
-              "rotulo": "Óleo de arma",
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -11134,16 +11170,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -11619,7 +11657,8 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Pedra de vida"
+            "Pedra de vida",
+            "Óleo de arma"
           ],
           "mechanicsDetail": [
             {
@@ -11705,16 +11744,16 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
               "quais": []
             },
             {
-              "familia": "oleo",
-              "rotulo": "Óleo de arma",
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -12212,16 +12251,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -12706,16 +12747,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -13155,7 +13198,8 @@
           },
           "preparationMissingGear": [],
           "preparationMissing": [
-            "Pedra de vida"
+            "Pedra de vida",
+            "Óleo de arma"
           ],
           "mechanicsDetail": [
             {
@@ -13251,16 +13295,16 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
+              "uso": 0,
               "quais": []
             },
             {
-              "familia": "oleo",
-              "rotulo": "Óleo de arma",
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -13754,16 +13798,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Windfury"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -14341,16 +14387,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -14933,16 +14981,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -15431,16 +15481,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -16016,16 +16068,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -16287,16 +16341,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -16541,16 +16597,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -16981,16 +17039,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
@@ -17283,16 +17343,18 @@
               "rotulo": "Pedra de vida"
             },
             {
-              "familia": "frasco",
-              "rotulo": "Frasco",
-              "uso": null,
-              "trysComUso": null,
-              "trys": null,
-              "quais": []
-            },
-            {
               "familia": "oleo",
               "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
               "uso": null,
               "trysComUso": null,
               "trys": null,
