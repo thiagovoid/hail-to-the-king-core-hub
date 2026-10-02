@@ -137,7 +137,21 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/weekly/performance/week-*.json data/guild/roster.json "data/seasons/*/config.json" "data/seasons/*/cooldown-catalog.json" data/raw/warcraftlogs/
+          # Tudo que mudou sob data/, e não uma lista de caminhos.
+          #
+          # A lista enumerada deixava de fora qualquer arquivo novo que um
+          # script passasse a gerar — e o que fica de fora não é inofensivo:
+          # vira mudança não-preparada, e o `git pull --rebase` abaixo recusa
+          # rodar com elas ("cannot pull with rebase: You have unstaged
+          # changes"). Foi assim que a coleta de 02/10 morreu DEPOIS de já
+          # ter baixado o log inteiro. O .gitignore já barra data/raw/* fora
+          # do warcraftlogs, então "tudo sob data/" é o que se quer mesmo.
+          git add -A data/
+
+          # O que sobrou de fora, pra próxima falha dizer o nome do arquivo
+          # em vez de só "unstaged changes".
+          echo "--- fora do commit:"
+          git status --short
 
           if git diff --cached --quiet; then
             echo "Nada para commitar."
@@ -147,7 +161,11 @@ jobs:
             # o job rodava, o push é rejeitado e o commit de dados morre com
             # o runner — o job falha DEPOIS de já ter coletado tudo. Foi o
             # que aconteceu na coleta de 18/09.
-            git pull --rebase origin master
+            # --autostash: se ainda assim sobrar algo não-preparado, o rebase
+            # guarda e devolve em vez de abortar. O commit de dados já está
+            # feito a esta altura; perdê-lo por causa de um arquivo solto é o
+            # pior desfecho possível.
+            git pull --rebase --autostash origin master
             git push
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
