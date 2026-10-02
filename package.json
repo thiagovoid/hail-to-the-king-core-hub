@@ -32,7 +32,8 @@
     "wcl:build": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-performance.ts -- --reuse",
     "wipefest:build": "vite-node -c vitest.config.ts scripts/wipefest/fetch-mechanics.ts -- --reuse",
     "wcl:inspect-utilidade": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-utilidade.ts",
-    "roster:alts": "vite-node -c vitest.config.ts scripts/guild/link-alts.ts"
+    "roster:alts": "vite-node -c vitest.config.ts scripts/guild/link-alts.ts",
+    "wowhead:classify-consumables": "vite-node -c vitest.config.ts scripts/wowhead/classify-consumables.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

@@ -23,6 +23,8 @@
  * descarte e afundavam a média — na primeira coleta real, Hammer of Justice
  * usado uma vez na noite entrava valendo o mesmo que Avatar.
  */
+import { familiaDoConsumivel, type FamiliaDeConsumivel } from "./familiaDoConsumivel";
+
 export type TipoDeCooldown = "offensive" | "defensive" | "utility";
 
 export interface CooldownDaMagia {
@@ -33,12 +35,22 @@ export interface CooldownDaMagia {
   /** Cargas simultâneas. 1 quando o tooltip não menciona cargas. */
   charges: number;
   kind: TipoDeCooldown;
+  /**
+   * Poção, pedra, frasco ou óleo — ausente quando não é consumível.
+   *
+   * Deduzida do ícone e do "Item Effect" do tooltip, nunca do nome: a poção
+   * mais usada do core é a `Light's Potential`, que não tem "poção" no nome.
+   * Ver `familiaDoConsumivel`.
+   */
+  familia?: FamiliaDeConsumivel;
 }
 
 /** Resposta do endpoint de tooltip do Wowhead — só os campos que usamos. */
 export interface WowheadTooltip {
   name?: string;
   tooltip?: string;
+  /** Identificador interno do ícone — é dele que sai a família do consumível. */
+  icon?: string;
 }
 
 /**
@@ -168,11 +180,14 @@ export function parseSpellTooltip(spellId: number, tooltip: WowheadTooltip): Coo
 
   const name = tooltip.name?.trim() || texto.split(" ")[0];
 
+  const familia = familiaDoConsumivel(tooltip.tooltip, tooltip.icon);
+
   return {
     spellId,
     name,
     cooldownMs,
     charges: extractCharges(texto),
     kind: classifyCooldown(texto),
+    ...(familia ? { familia } : {}),
   };
 }

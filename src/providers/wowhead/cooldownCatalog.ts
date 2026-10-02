@@ -14,13 +14,24 @@
  * chegar sempre à mesma conclusão.
  */
 
+import type { FamiliaDeConsumivel } from "./familiaDoConsumivel";
 import type { CooldownDaMagia, TipoDeCooldown } from "./spellCooldown";
 import { classificacaoFinal } from "./classificacaoManual";
 
 export interface CooldownCatalogFile {
   generatedAt: string;
   /** Chave é o spellId em texto — é o que o JSON permite. */
-  cooldowns: Record<string, { name: string; cooldownMs: number; charges: number; kind: TipoDeCooldown }>;
+  cooldowns: Record<
+    string,
+    {
+      name: string;
+      cooldownMs: number;
+      charges: number;
+      kind: TipoDeCooldown;
+      /** Poção, pedra, frasco ou óleo. Ausente quando não é consumível. */
+      familia?: FamiliaDeConsumivel;
+    }
+  >;
   /** Magias já consultadas que não são cooldown. Evita reconsulta. */
   ignored: number[];
 }

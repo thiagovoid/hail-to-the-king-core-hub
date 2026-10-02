@@ -95,7 +95,8 @@
       "name": "Healthstone",
       "cooldownMs": 60000,
       "charges": 1,
-      "kind": "defensive"
+      "kind": "defensive",
+      "familia": "pedra"
     },
     "6789": {
       "name": "Mortal Coil",
@@ -833,7 +834,8 @@
       "name": "Elemental Potion of Ultimate Power",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "pocao"
     },
     "375576": {
       "name": "Divine Toll",
@@ -929,7 +931,8 @@
       "name": "Tempered Potion",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "pocao"
     },
     "432459": {
       "name": "Holy Bulwark",
@@ -989,7 +992,8 @@
       "name": "Demonic Healthstone",
       "cooldownMs": 60000,
       "charges": 1,
-      "kind": "defensive"
+      "kind": "defensive",
+      "familia": "pedra"
     },
     "456640": {
       "name": "Consuming Fire",
@@ -1025,43 +1029,50 @@
       "name": "Silvermoon Health Potion",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "defensive"
+      "kind": "defensive",
+      "familia": "pocao"
     },
     "1235568": {
       "name": "Light's Preservation",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "defensive"
+      "kind": "defensive",
+      "familia": "pocao"
     },
     "1236616": {
       "name": "Light's Potential",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "pocao"
     },
     "1236648": {
       "name": "Lightfused Mana Potion",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "pocao"
     },
     "1236994": {
       "name": "Potion of Recklessness",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "pocao"
     },
     "1236998": {
       "name": "Draught of Rampant Abandon",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "pocao"
     },
     "1238443": {
       "name": "Potion of Zealotry",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "offensive"
+      "kind": "offensive",
+      "familia": "pocao"
     },
     "1247378": {
       "name": "Putrefy",
@@ -1085,7 +1096,8 @@
       "name": "Freightrunner's Flask",
       "cooldownMs": 90000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "frasco"
     },
     "1250557": {
       "name": "Void Execution Mandate",
@@ -1121,7 +1133,8 @@
       "name": "Potent Healing Potion",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "defensive"
+      "kind": "defensive",
+      "familia": "pocao"
     },
     "1267068": {
       "name": "Stormstream Totem",
@@ -1187,13 +1200,15 @@
       "name": "Liquid Luster",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "utility"
+      "kind": "utility",
+      "familia": "pocao"
     },
     "1295247": {
       "name": "Concentrated Silvermoon Health Potion",
       "cooldownMs": 300000,
       "charges": 1,
-      "kind": "defensive"
+      "kind": "defensive",
+      "familia": "pocao"
     },
     "1297145": {
       "name": "Spirit-Rending Poison",
