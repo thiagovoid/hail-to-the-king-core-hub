@@ -398,8 +398,7 @@
             "Botas",
             "Colar",
             "Poção",
-            "Pedra de vida",
-            "Óleo de arma"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -834,8 +833,10 @@
               "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
-              "uso": 0,
-              "quais": []
+              "uso": 100,
+              "quais": [
+                "Rune of the Fallen Crusader"
+              ]
             },
             {
               "familia": "frasco",
@@ -3328,8 +3329,7 @@
             "Botas",
             "Colar",
             "Poção",
-            "Pedra de vida",
-            "Óleo de arma"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -3724,8 +3724,10 @@
               "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
-              "uso": 0,
-              "quais": []
+              "uso": 100,
+              "quais": [
+                "Rune of the Fallen Crusader"
+              ]
             },
             {
               "familia": "frasco",
@@ -4146,7 +4148,7 @@
               "trys": null,
               "uso": 100,
               "quais": [
-                "Thalassian Phoenix Oil"
+                "Rune of Razorice"
               ]
             },
             {

@@ -35,7 +35,8 @@
     "roster:alts": "vite-node -c vitest.config.ts scripts/guild/link-alts.ts",
     "wowhead:classify-consumables": "vite-node -c vitest.config.ts scripts/wowhead/classify-consumables.ts",
     "wcl:rebuild-consumables": "vite-node -c vitest.config.ts scripts/warcraftlogs/rebuild-consumables.ts",
-    "wcl:inspect-auras": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-auras.ts"
+    "wcl:inspect-auras": "vite-node -c vitest.config.ts scripts/warcraftlogs/inspect-auras.ts",
+    "wcl:fetch-buffs": "vite-node -c vitest.config.ts scripts/warcraftlogs/fetch-buffs.ts"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

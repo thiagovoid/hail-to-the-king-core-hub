@@ -26,6 +26,7 @@ import { NIVEIS, type NivelDeConteudo } from "../scores/prontidao";
 export type SimboloDeConquista =
   | "coroa"
   | "espada"
+  | "armaSeca"
   | "calice"
   | "escudo"
   | "pluma"

@@ -102,3 +102,41 @@ export function usoPorAtor(
 
   return resultado;
 }
+
+/**
+ * Classes cuja arma se prepara com encantamento PERMANENTE, não temporário.
+ *
+ * O runeforge do death knight ocupa a arma — ele não aplica óleo nem pode.
+ * Com a regra do temporário sozinha, o Blackwatch levava dez medalhas de
+ * "arma seca" com a Rune of Sanguination na mão: o mesmo erro da poção numa
+ * roupa nova, cobrar de alguém o uso de uma coisa que não serve pra ele.
+ */
+export const PREPARA_NO_PERMANENTE = new Set(["death-knight"]);
+
+/** O item da mão principal, como a WCL entrega. */
+export interface ArmaDoLog {
+  temporaryEnchant?: number;
+  temporaryEnchantName?: string;
+  permanentEnchant?: number;
+  permanentEnchantName?: string;
+}
+
+/**
+ * A arma está preparada, e com o quê.
+ *
+ * Óleo, imbue de xamã e runeforge de DK contam igual: a régua é "a arma está
+ * preparada?", não "usou o item que o guia manda" — a mesma régua que vale
+ * pra poção de qualquer qualidade.
+ */
+export function armaPreparada(
+  arma: ArmaDoLog | undefined,
+  classe: string | undefined
+): { preparada: boolean; nome?: string } | undefined {
+  if (!arma) return undefined;
+
+  if (classe !== undefined && PREPARA_NO_PERMANENTE.has(classe)) {
+    return { preparada: Boolean(arma.permanentEnchant), nome: arma.permanentEnchantName };
+  }
+
+  return { preparada: Boolean(arma.temporaryEnchant), nome: arma.temporaryEnchantName };
+}

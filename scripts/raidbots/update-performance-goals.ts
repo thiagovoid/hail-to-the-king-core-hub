@@ -73,8 +73,7 @@ async function main() {
         .map((player) => player.name)
         .join(", ")}`
     );
-    console.log("Pra simular um deles assim mesmo: --only=id1,id2
-");
+    console.log("Pra simular um deles assim mesmo: --only=id1,id2\n");
   }
 
   console.log(`Rodando Quick Sim (Raidbots) para ${targets.length} jogador(es), um de cada vez...`);

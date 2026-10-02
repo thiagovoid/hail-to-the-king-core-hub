@@ -15,7 +15,7 @@ import { readFile, writeFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { usoPorAtor } from "../../src/normalization/consumiveisDaNoite";
+import { armaPreparada, usoPorAtor } from "../../src/normalization/consumiveisDaNoite";
 import type { FamiliaDeConsumivel } from "../../src/providers/wowhead/familiaDoConsumivel";
 import type { CooldownCatalogFile } from "../../src/providers/wowhead/cooldownCatalog";
 
@@ -70,6 +70,11 @@ const NAO_MEDIVEIS: FamiliaDeConsumivel[] = ["frasco"];
 const SLOT_DA_ARMA = 15;
 
 async function main() {
+  const roster = JSON.parse(
+    await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8")
+  ) as Array<{ name: string; class: string }>;
+  const classePorNome = new Map(roster.map((j) => [semAcento(j.name), j.class]));
+
   const catalogo = JSON.parse(
     await readFile(path.join(ROOT, "data/seasons/midnight-s2/cooldown-catalog.json"), "utf-8")
   ) as CooldownCatalogFile;
@@ -125,17 +130,20 @@ async function main() {
         porNomeSemAcento.set(semAcento(nome), linhas);
       }
 
-      const detalhes = (log as { aggregateTables?: { summary?: { data?: { playerDetails?: Record<string, Array<{ name?: string; combatantInfo?: { gear?: Array<{ slot?: number; id?: number; temporaryEnchant?: number; temporaryEnchantName?: string }> } }>> } } } })
+      const detalhes = (log as { aggregateTables?: { summary?: { data?: { playerDetails?: Record<string, Array<{ name?: string; combatantInfo?: { gear?: Array<{ slot?: number; id?: number; temporaryEnchant?: number; temporaryEnchantName?: string; permanentEnchant?: number; permanentEnchantName?: string }> } }>> } } } })
         .aggregateTables?.summary?.data?.playerDetails;
       const armaPorNome = new Map<string, { temEnchant: boolean; nome?: string }>();
       for (const jogadorDoLog of Object.values(detalhes ?? {}).flat()) {
         if (!jogadorDoLog.name) continue;
         const arma = (jogadorDoLog.combatantInfo?.gear ?? []).find((g) => g.slot === SLOT_DA_ARMA && g.id);
         if (!arma) continue;
-        armaPorNome.set(semAcento(jogadorDoLog.name), {
-          temEnchant: Boolean(arma.temporaryEnchant),
-          nome: arma.temporaryEnchantName,
-        });
+        const estado = armaPreparada(arma, classePorNome.get(semAcento(jogadorDoLog.name)));
+        if (estado) {
+          armaPorNome.set(semAcento(jogadorDoLog.name), {
+            temEnchant: estado.preparada,
+            nome: estado.nome,
+          });
+        }
       }
 
       for (const jogador of noite.players ?? []) {

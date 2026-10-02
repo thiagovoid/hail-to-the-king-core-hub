@@ -20,8 +20,7 @@
             "Anel",
             "Colar",
             "Poção",
-            "Pedra de vida",
-            "Óleo de arma"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -553,8 +552,10 @@
               "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
-              "uso": 0,
-              "quais": []
+              "uso": 100,
+              "quais": [
+                "Rune of Sanguination"
+              ]
             },
             {
               "familia": "frasco",
@@ -8553,8 +8554,7 @@
             "Anel",
             "Colar",
             "Poção",
-            "Pedra de vida",
-            "Óleo de arma"
+            "Pedra de vida"
           ],
           "preparationChecks": 2,
           "preparationSlots": [
@@ -9128,8 +9128,10 @@
               "rotulo": "Óleo de arma",
               "trysComUso": null,
               "trys": null,
-              "uso": 0,
-              "quais": []
+              "uso": 100,
+              "quais": [
+                "Rune of Sanguination"
+              ]
             },
             {
               "familia": "frasco",

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { usoPorAtor, type CastDoLog } from "./consumiveisDaNoite";
+import { armaPreparada, usoPorAtor, type CastDoLog } from "./consumiveisDaNoite";
 import type { FamiliaDeConsumivel } from "../providers/wowhead/familiaDoConsumivel";
 
 const POCAO = 1236616; // Light's Potential
@@ -91,5 +91,41 @@ describe("usoPorAtor", () => {
     const pocao = uso.get(1)!.find((u) => u.familia === "pocao")!;
 
     expect(pocao).toMatchObject({ trysComUso: 0, trys: 1, uso: 0, quais: [] });
+  });
+});
+
+describe("armaPreparada", () => {
+  it("aceita óleo e imbue de xamã, que são temporários", () => {
+    expect(armaPreparada({ temporaryEnchant: 1, temporaryEnchantName: "Thalassian Phoenix Oil" }, "warrior"))
+      .toEqual({ preparada: true, nome: "Thalassian Phoenix Oil" });
+    expect(armaPreparada({ temporaryEnchant: 2, temporaryEnchantName: "Windfury" }, "shaman"))
+      .toEqual({ preparada: true, nome: "Windfury" });
+  });
+
+  /**
+   * O runeforge do DK é PERMANENTE e ocupa a arma — ele não aplica óleo nem
+   * pode. Olhando só o temporário, o Blackwatch levava dez medalhas de "arma
+   * seca" com a Rune of Sanguination na mão.
+   */
+  it("aceita o runeforge do death knight, que é permanente", () => {
+    const comRune = { permanentEnchant: 6241, permanentEnchantName: "Rune of Sanguination" };
+
+    expect(armaPreparada(comRune, "death-knight")).toEqual({
+      preparada: true,
+      nome: "Rune of Sanguination",
+    });
+    // E a mesma arma num guerreiro continua seca: pra ele o permanente é
+    // outra coisa, e o óleo é que falta.
+    expect(armaPreparada(comRune, "warrior")?.preparada).toBe(false);
+  });
+
+  it("acusa quem está sem nada", () => {
+    expect(armaPreparada({ permanentEnchantName: "Enchant Weapon - Berserker's Rage" }, "warrior")?.preparada).toBe(false);
+    expect(armaPreparada({}, "death-knight")?.preparada).toBe(false);
+  });
+
+  it("não afirma nada sem arma", () => {
+    // Sem gear da mão principal a resposta é "não sei", não "não usou".
+    expect(armaPreparada(undefined, "warrior")).toBeUndefined();
   });
 });
