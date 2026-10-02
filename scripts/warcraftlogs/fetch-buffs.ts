@@ -1,22 +1,32 @@
 /**
- * Arquiva a tabela Buffs de cada relatório — frasco, comida e runa.
+ * Arquiva as auras de cada jogador — frasco, comida e runa.
  *
- * Esses três são estado de ANTES do pull, não ação dentro dele: não existem
- * nos casts e não vêm no `combatantInfo.auras` (que volta vazio em toda
- * forma de consultar a Summary, conferido no diagnóstico de 02/10). A tabela
- * Buffs tem: 503 buffs no relatório de 01/10, com `Flask of the Magisters`,
- * `Well Fed` e oito runas.
+ * Esses três são estado de ANTES do pull. Foram quatro tentativas até achar
+ * onde a WarcraftLogs guarda isso, e vale deixar registrado pra ninguém
+ * repetir o caminho:
  *
- * Óleo NÃO sai daqui — é encantamento temporário e já vem no gear.
+ * 1. `combatantInfo.auras` da Summary volta VAZIO — nos 13 relatórios da
+ *    temporada, com gear presente em todos. Agregada ou de um fight só, dá
+ *    no mesmo: a agregação não era a causa.
+ * 2. A tabela Buffs do raide inteiro mostra que os buffs existem, mas agrega
+ *    por habilidade: `bands` é intervalo de TEMPO, não jogador.
+ * 3. Os EVENTOS trazem `targetID`, só que o log só registra `applybuff` do
+ *    que foi aplicado durante a gravação. Frasco dura uma hora e comida se
+ *    come em casa: os dois já estão ativos quando o log começa, e por isso
+ *    não têm evento. Essa rota pega runa e não pega frasco.
+ * 4. A tabela Buffs **por alvo** devolve o que estava ativo, independente de
+ *    quando foi aplicado. É esta.
  *
- * É uma consulta por relatório, o que torna o retroativo barato: as 13
- * noites da temporada custam 13 consultas, não uma recoleta.
+ * O preço é uma consulta por jogador por relatório — as 13 noites custam
+ * ~220 consultas, contra um teto de 3600 por hora.
  *
- *   npm run wcl:fetch-buffs                  # todos os relatórios sem buffs
+ * Óleo NÃO sai daqui: é encantamento temporário e já vem no gear.
+ *
+ *   npm run wcl:fetch-buffs                  # relatórios ainda sem auras
  *   npm run wcl:fetch-buffs -- --reports=A,B # só esses
  *   npm run wcl:fetch-buffs -- --force       # refaz os que já têm
  */
-import { writeFile, readdir } from "node:fs/promises";
+import { readFile, writeFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,75 +36,44 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const BRUTO = path.join(ROOT, "data/raw/warcraftlogs");
 
-/** O que interessa do que a tabela Buffs devolve. */
-const DE_CONSUMIVEL = /flask|well fed|rune of/i;
+/** Nome sem acento, pra casar jogador do roster com ator do log. */
+const semAcento = (nome: string) =>
+  nome.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 
-/**
- * De quem é cada buff.
- *
- * A tabela Buffs agrega o raide inteiro: `bands` é intervalo de TEMPO, não
- * jogador — arquivei 503 buffs com a lista de gente vazia por supor o
- * contrário. Os eventos trazem `targetID`, que é a resposta.
- *
- * Só `applybuff`: refresh e remoção geram milhares de eventos e não
- * acrescentam nada a "esta pessoa tinha isto".
- */
-async function alvosPorBuff(code: string, ids: number[], fim: number): Promise<Map<number, Set<number>>> {
-  const porBuff = new Map<number, Set<number>>();
-  if (ids.length === 0) return porBuff;
-
-  let inicio = 0;
-  let paginas = 0;
-
-  while (paginas < 20) {
-    const r = await wclGraphql<{
-      reportData: {
-        report: {
-          events: {
-            data: Array<{ targetID?: number; abilityGameID?: number }>;
-            nextPageTimestamp?: number | null;
-          };
-        };
-      };
-    }>(
-      `query($code: String!, $inicio: Float!, $fim: Float!, $filtro: String!) {
-        reportData { report(code: $code) {
-          events(dataType: Buffs, startTime: $inicio, endTime: $fim, filterExpression: $filtro, limit: 10000) {
-            data nextPageTimestamp
-          }
-        } }
-      }`,
-      {
-        code,
-        inicio,
-        fim,
-        filtro: `type = "applybuff" and ability.id in (${ids.join(", ")})`,
-      }
-    );
-
-    for (const e of r.reportData.report.events.data ?? []) {
-      if (e.targetID === undefined || e.abilityGameID === undefined) continue;
-      const alvos = porBuff.get(e.abilityGameID) ?? new Set<number>();
-      alvos.add(e.targetID);
-      porBuff.set(e.abilityGameID, alvos);
-    }
-
-    const proxima = r.reportData.report.events.nextPageTimestamp;
-    if (!proxima) break;
-    inicio = proxima;
-    paginas += 1;
-  }
-
-  return porBuff;
-}
-
-interface BuffsArquivados {
+interface AurasArquivadas {
   reportCode: string;
   coletadoEm: string;
-  /** guid -> nome, como a WCL devolve. */
-  auras: Array<[number, string]>;
-  /** Quem teve cada buff: guid -> ids de ator do relatório. */
+  /** guid -> nome, uma vez só pro arquivo não repetir texto. */
+  nomes: Array<[number, string]>;
+  /** id do ator -> guids das auras que ele teve. */
   porJogador: Array<[number, number[]]>;
+}
+
+/**
+ * As auras de UM jogador.
+ *
+ * Guarda TODAS, não só as que o nome parece consumível. Filtrar por nome na
+ * coleta foi exatamente o erro que escondeu a `Light's Potential` por uma
+ * temporada — a família se decide depois, pelo ícone do Wowhead.
+ */
+async function aurasDoJogador(
+  code: string,
+  fightIDs: number[],
+  alvo: number
+): Promise<Array<[number, string]>> {
+  const r = await wclGraphql<{ reportData: { report: { buffs: unknown } } }>(
+    `query($code: String!, $fightIDs: [Int], $alvo: Int!) {
+      reportData { report(code: $code) {
+        buffs: table(fightIDs: $fightIDs, dataType: Buffs, targetID: $alvo)
+      } }
+    }`,
+    { code, fightIDs, alvo }
+  );
+
+  const auras =
+    (r.reportData.report.buffs as { data?: { auras?: Array<{ guid?: number; name?: string }> } })?.data?.auras ?? [];
+
+  return auras.filter((a) => a.guid && a.name).map((a) => [a.guid!, a.name!] as [number, string]);
 }
 
 async function main() {
@@ -105,6 +84,11 @@ async function main() {
     })
   ) as Record<string, string | boolean>;
 
+  const roster = JSON.parse(await readFile(path.join(ROOT, "data/guild/roster.json"), "utf-8")) as Array<{
+    name: string;
+  }>;
+  const doRoster = new Set(roster.map((j) => semAcento(j.name)));
+
   const existentes = await readdir(BRUTO);
   const codigos = args.reports
     ? String(args.reports).split(",").map((c) => c.trim())
@@ -112,63 +96,56 @@ async function main() {
         .filter((f) => f.endsWith(".json") && !f.includes("-rankings") && !f.includes("-buffs"))
         .map((f) => f.replace(".json", ""));
 
-  console.log(`${codigos.length} relatório(s) a consultar.\n`);
+  console.log(`${codigos.length} relatório(s). Uma consulta por jogador do roster em cada.\n`);
+  let consultas = 0;
 
   for (const code of codigos) {
     const destino = path.join(BRUTO, `${code}-buffs.json`);
     if (!args.force && existentes.includes(`${code}-buffs.json`)) {
-      console.log(`  ${code}: já arquivado — pulando (use --force pra refazer)`);
+      console.log(`  ${code}: já arquivado — pulando (use --force)`);
       continue;
     }
 
-    const fights = await wclGraphql<{
-      reportData: { report: { fights: Array<{ id: number; endTime: number }> } };
-    }>(
-      `query($code: String!) {
-        reportData { report(code: $code) { fights(killType: Encounters) { id endTime } } }
-      }`,
-      { code }
-    );
+    // Os atores saem do arquivo bruto que já está no repositório: saber quem
+    // jogou não custa consulta nenhuma.
+    const log = JSON.parse(await readFile(path.join(BRUTO, `${code}.json`), "utf-8")) as {
+      actorNames?: Array<[number, string]>;
+      raidFights?: Array<{ id: number }>;
+    };
 
-    const ids = fights.reportData.report.fights.map((f) => f.id);
-    const fimDoRelatorio = Math.max(...fights.reportData.report.fights.map((f) => f.endTime), 0);
-    if (ids.length === 0) {
-      console.log(`  ${code}: sem lutas de boss — pulando`);
+    const fightIDs = (log.raidFights ?? []).map((f) => f.id);
+    if (fightIDs.length === 0) {
+      console.log(`  ${code}: sem lutas de raide — pulando`);
       continue;
     }
 
-    const tabela = await wclGraphql<{ reportData: { report: { buffs: unknown } } }>(
-      `query($code: String!, $fightIDs: [Int]) {
-        reportData { report(code: $code) { buffs: table(fightIDs: $fightIDs, dataType: Buffs) } }
-      }`,
-      { code, fightIDs: ids }
-    );
+    // Só quem é do core. O relatório de 25/08 tem 40 atores; perguntar por
+    // pug multiplicaria a conta sem servir pra nada.
+    const alvos = (log.actorNames ?? []).filter(([, nome]) => doRoster.has(semAcento(nome)));
 
-    const auras =
-      (tabela.reportData.report.buffs as {
-        data?: { auras?: Array<{ guid?: number; name?: string; bands?: unknown[]; totalUptime?: number }> };
-      })?.data?.auras ?? [];
+    const nomes = new Map<number, string>();
+    const porJogador: Array<[number, number[]]> = [];
 
-    const deConsumivel = auras
-      .filter((a) => a.guid && a.name && DE_CONSUMIVEL.test(a.name))
-      .map((a) => a.guid!);
+    for (const [ator, nome] of alvos) {
+      const auras = await aurasDoJogador(code, fightIDs, ator);
+      consultas += 1;
+      for (const [guid, nomeDaAura] of auras) nomes.set(guid, nomeDaAura);
+      porJogador.push([ator, auras.map(([guid]) => guid).sort((a, b) => a - b)]);
+      void nome;
+    }
 
-    const porBuff = await alvosPorBuff(code, deConsumivel, fimDoRelatorio);
-
-    const arquivo: BuffsArquivados = {
+    const arquivo: AurasArquivadas = {
       reportCode: code,
       coletadoEm: new Date().toISOString(),
-      auras: auras.filter((a) => a.guid && a.name).map((a) => [a.guid!, a.name!]),
-      porJogador: [...porBuff].map(([guid, alvos]) => [guid, [...alvos].sort((x, y) => x - y)]),
+      nomes: [...nomes].sort((a, b) => a[0] - b[0]),
+      porJogador,
     };
 
     await writeFile(destino, `${JSON.stringify(arquivo, null, 2)}\n`);
-    console.log(
-      `  ${code}: ${arquivo.auras.length} buffs, ${deConsumivel.length} de consumível, ${porBuff.size} com dono`
-    );
+    console.log(`  ${code}: ${alvos.length} jogadores, ${nomes.size} auras distintas`);
   }
 
-  console.log("\nPronto. O próximo passo é classificar a família de cada buff.");
+  console.log(`\n${consultas} consultas gastas. O próximo passo é classificar a família de cada aura.`);
 }
 
 main().catch((erro) => {
