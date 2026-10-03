@@ -1016,11 +1016,6 @@
             "errors": 2,
             "tries": 11
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Poção",
-            "Pedra de vida"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -1191,6 +1186,10 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
           ]
         },
         {
@@ -1624,11 +1623,6 @@
             "errors": 2,
             "tries": 11
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Poção",
-            "Pedra de vida"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -1764,6 +1758,10 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
           ]
         },
         {
@@ -2844,10 +2842,6 @@
             "errors": 2.3,
             "tries": 11
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -2999,12 +2993,15 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida"
           ]
         },
         {
           "playerId": "bustgril",
           "dps": 147169,
-          "parse": 54,
+          "parse": 56,
           "simTarget": 150315,
           "itemLevel": 322,
           "preparation": 80,
@@ -3890,8 +3887,6 @@
             "errors": 1.9,
             "tries": 11
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -4032,7 +4027,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationMissing": []
         },
         {
           "playerId": "kroline",
@@ -4438,8 +4434,6 @@
             "errors": 1.4,
             "tries": 11
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -4565,7 +4559,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationMissing": []
         },
         {
           "playerId": "jrxamã",
@@ -4989,7 +4984,6 @@
             "errors": 2.1,
             "tries": 11
           },
-          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -5566,7 +5560,6 @@
             "errors": 2.7,
             "tries": 11
           },
-          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -6746,10 +6739,6 @@
             "errors": 2.5,
             "tries": 11
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Poção"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -6931,6 +6920,9 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Poção"
           ]
         },
         {
@@ -7411,8 +7403,6 @@
             "errors": 2.4,
             "tries": 11
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -7586,7 +7576,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationMissing": []
         },
         {
           "playerId": "dagom",
@@ -8006,7 +7997,6 @@
             "errors": 2.2,
             "tries": 11
           },
-          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -8165,7 +8155,7 @@
         {
           "playerId": "ligiaf",
           "dps": 152797,
-          "parse": 64,
+          "parse": 65,
           "simTarget": 149973,
           "itemLevel": 317,
           "preparation": 90,
@@ -9523,8 +9513,6 @@
             "errors": 0.5,
             "tries": 2
           },
-          "preparation": 100,
-          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "Sentinelas Sepultados",
@@ -9582,8 +9570,8 @@
               "quais": []
             }
           ],
-          "preparationMissing": [],
-          "preparationGear": 97
+          "preparation": 100,
+          "preparationMissing": []
         }
       ]
     },
@@ -9967,10 +9955,6 @@
             "errors": 3,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -10080,6 +10064,9 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Pedra de vida"
           ]
         },
         {
@@ -11777,11 +11764,6 @@
             "errors": 3.6,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Óleo de arma",
-            "Pedra de vida"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -11889,6 +11871,10 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Óleo de arma",
+            "Pedra de vida"
           ]
         },
         {
@@ -12779,8 +12765,6 @@
             "errors": 3.4,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -12905,7 +12889,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationMissing": []
         },
         {
           "playerId": "jrxamã",
@@ -13337,10 +13322,6 @@
             "errors": 3.9,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Óleo de arma"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -13456,6 +13437,9 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Óleo de arma"
           ]
         },
         {
@@ -14441,8 +14425,6 @@
             "errors": 3.6,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -14561,7 +14543,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationMissing": []
         },
         {
           "playerId": "dagom",
@@ -15049,8 +15032,6 @@
             "errors": 3.6,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -15161,7 +15142,8 @@
               "uso": 100,
               "quais": []
             }
-          ]
+          ],
+          "preparationMissing": []
         },
         {
           "playerId": "ligiaf",
@@ -15553,10 +15535,6 @@
             "errors": 3.6,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Poção"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -15667,6 +15645,9 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Poção"
           ]
         },
         {
@@ -16131,10 +16112,6 @@
             "errors": 3.3,
             "tries": 16
           },
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Frasco"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -16260,6 +16237,9 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Frasco"
           ]
         },
         {
@@ -16452,9 +16432,6 @@
             "errors": 3,
             "tries": 3
           },
-          "preparation": 87,
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -16538,7 +16515,8 @@
               "quais": []
             }
           ],
-          "preparationGear": 60
+          "preparation": 87,
+          "preparationMissing": []
         },
         {
           "playerId": "harrydóter",
@@ -16709,8 +16687,6 @@
             "errors": 5,
             "tries": 2
           },
-          "preparation": 100,
-          "preparationMissingGear": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -16801,8 +16777,8 @@
               "quais": []
             }
           ],
-          "preparationMissing": [],
-          "preparationGear": 87
+          "preparation": 100,
+          "preparationMissing": []
         },
         {
           "playerId": "heracranosd",
@@ -17134,9 +17110,6 @@
             "errors": 3.5,
             "tries": 16
           },
-          "preparation": 85,
-          "preparationMissingGear": [],
-          "preparationMissing": [],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -17248,7 +17221,8 @@
               "quais": []
             }
           ],
-          "preparationGear": 52
+          "preparation": 85,
+          "preparationMissing": []
         },
         {
           "playerId": "perdidaço",
@@ -17460,11 +17434,6 @@
             "errors": 3.3,
             "tries": 4
           },
-          "preparation": 80,
-          "preparationMissingGear": [],
-          "preparationMissing": [
-            "Pedra de vida"
-          ],
           "mechanicsDetail": [
             {
               "boss": "As Presas Gêmeas",
@@ -17561,7 +17530,10 @@
               "quais": []
             }
           ],
-          "preparationGear": 45
+          "preparation": 80,
+          "preparationMissing": [
+            "Pedra de vida"
+          ]
         }
       ]
     }
