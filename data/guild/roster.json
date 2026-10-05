@@ -28,11 +28,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 69770,
+        "target": 70871,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:19:12.885Z"
+        "calculatedAt": "2026-10-05T09:46:12.596Z"
       }
     }
   },
@@ -64,11 +64,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 66387,
+        "target": 67429,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:19:21.025Z"
+        "calculatedAt": "2026-10-05T09:47:00.977Z"
       }
     }
   },
@@ -100,11 +100,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 84326,
+        "target": 151900,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:19:29.116Z"
+        "calculatedAt": "2026-10-05T09:47:19.577Z"
       }
     }
   },
@@ -224,11 +224,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 150315,
+        "target": 153750,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:19:44.454Z"
+        "calculatedAt": "2026-10-05T09:47:33.238Z"
       }
     }
   },
@@ -260,11 +260,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 138276,
+        "target": 136149,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:19:52.923Z"
+        "calculatedAt": "2026-10-05T09:47:47.077Z"
       }
     }
   },
@@ -332,11 +332,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 156531,
+        "target": 167539,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:20:10.481Z"
+        "calculatedAt": "2026-10-05T09:49:25.214Z"
       }
     }
   },
@@ -404,11 +404,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 149309,
+        "target": 153441,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:20:26.315Z"
+        "calculatedAt": "2026-10-05T09:51:30.132Z"
       }
     }
   },
@@ -440,11 +440,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 128143,
+        "target": 142002,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:20:34.351Z"
+        "calculatedAt": "2026-10-05T09:53:46.761Z"
       }
     }
   },
@@ -586,11 +586,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 137152,
+        "target": 146400,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-09-21T08:21:06.034Z"
+        "calculatedAt": "2026-10-05T09:55:46.581Z"
       }
     }
   },
@@ -690,6 +690,16 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Perdid%C3%B8"
+    },
+    "performanceGoals": {
+      "dps": {
+        "metric": "dps",
+        "target": 210149,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-10-05T09:56:54.503Z"
+      }
     }
   },
   {
@@ -768,6 +778,16 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/Heracranosd"
+    },
+    "performanceGoals": {
+      "dps": {
+        "metric": "dps",
+        "target": 143399,
+        "direction": "higher",
+        "description": "DPS alvo baseado em simulação",
+        "source": "Raidbots",
+        "calculatedAt": "2026-10-05T09:57:32.528Z"
+      }
     }
   },
   {
