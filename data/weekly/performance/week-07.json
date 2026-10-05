@@ -9,7 +9,7 @@
           "playerId": "blackwatch",
           "dps": 43719,
           "parse": 32,
-          "simTarget": 66387,
+          "simTarget": 67429,
           "itemLevel": 318,
           "preparation": 53,
           "preparationMissing": [
@@ -557,7 +557,7 @@
           "playerId": "apocalipse",
           "dps": 63562,
           "parse": 53,
-          "simTarget": 84326,
+          "simTarget": 151900,
           "itemLevel": 322,
           "preparation": 71,
           "preparationChecks": 2,
@@ -1767,7 +1767,7 @@
         {
           "playerId": "kams",
           "hps": 223284,
-          "parse": 83,
+          "parse": 82,
           "simTarget": 107954,
           "itemLevel": 320,
           "preparation": 72,
@@ -3001,8 +3001,8 @@
         {
           "playerId": "bustgril",
           "dps": 147169,
-          "parse": 56,
-          "simTarget": 150315,
+          "parse": 53,
+          "simTarget": 153750,
           "itemLevel": 322,
           "preparation": 80,
           "preparationMissing": [
@@ -3516,8 +3516,8 @@
         {
           "playerId": "hysillens",
           "dps": 131442,
-          "parse": 41,
-          "simTarget": 138276,
+          "parse": 39,
+          "simTarget": 136149,
           "itemLevel": 320,
           "preparation": 95,
           "preparationChecks": 2,
@@ -4565,8 +4565,8 @@
         {
           "playerId": "jrxamã",
           "dps": 166738,
-          "parse": 87,
-          "simTarget": 156531,
+          "parse": 86,
+          "simTarget": 167539,
           "itemLevel": 325,
           "preparation": 91,
           "preparationChecks": 2,
@@ -5746,8 +5746,8 @@
         {
           "playerId": "gunst",
           "dps": 160430,
-          "parse": 78,
-          "simTarget": 149309,
+          "parse": 77,
+          "simTarget": 153441,
           "itemLevel": 325,
           "preparation": 77,
           "preparationMissing": [
@@ -6293,7 +6293,7 @@
           "playerId": "nerlock",
           "dps": 95419,
           "parse": 19,
-          "simTarget": 128143,
+          "simTarget": 142002,
           "itemLevel": 309,
           "preparation": 80,
           "preparationChecks": 2,
@@ -7557,7 +7557,7 @@
               "trys": null,
               "uso": 100,
               "quais": [
-                "Rite of Sanctification"
+                "Thalassian Phoenix Oil"
               ]
             },
             {
@@ -7583,7 +7583,7 @@
           "playerId": "dagom",
           "dps": 113453,
           "parse": 34,
-          "simTarget": 137152,
+          "simTarget": 146400,
           "itemLevel": 321,
           "preparation": 94,
           "preparationChecks": 2,
@@ -8718,7 +8718,7 @@
         {
           "playerId": "minort",
           "dps": 80783,
-          "parse": 12,
+          "parse": 13,
           "simTarget": 129221,
           "itemLevel": 312,
           "preparation": 71,
@@ -9344,6 +9344,7 @@
           "playerId": "perdidø",
           "dps": 47162,
           "parse": 81,
+          "simTarget": 210149,
           "itemLevel": 326,
           "attack": {
             "score": 98,
@@ -9583,7 +9584,7 @@
           "playerId": "voidwar",
           "dps": 74987,
           "parse": 47,
-          "simTarget": 69770,
+          "simTarget": 70871,
           "itemLevel": 290,
           "preparation": 81,
           "preparationChecks": 2,
@@ -10072,7 +10073,7 @@
         {
           "playerId": "blackwatch",
           "dps": 77253,
-          "simTarget": 66387,
+          "simTarget": 67429,
           "itemLevel": 319,
           "preparation": 59,
           "preparationMissing": [
@@ -11881,7 +11882,7 @@
           "playerId": "bustgril",
           "dps": 174946,
           "parse": 63,
-          "simTarget": 150315,
+          "simTarget": 153750,
           "itemLevel": 323,
           "preparation": 81,
           "preparationMissing": [
@@ -12394,7 +12395,7 @@
         {
           "playerId": "hysillens",
           "dps": 169036,
-          "simTarget": 138276,
+          "simTarget": 136149,
           "itemLevel": 321,
           "preparation": 96,
           "preparationChecks": 2,
@@ -12895,7 +12896,7 @@
         {
           "playerId": "jrxamã",
           "dps": 185578,
-          "simTarget": 156531,
+          "simTarget": 167539,
           "itemLevel": 326,
           "preparation": 75,
           "preparationChecks": 2,
@@ -13445,7 +13446,7 @@
         {
           "playerId": "gunst",
           "dps": 146749,
-          "simTarget": 149309,
+          "simTarget": 153441,
           "itemLevel": 326,
           "preparation": 78,
           "preparationMissing": [
@@ -14549,7 +14550,7 @@
         {
           "playerId": "dagom",
           "dps": 129661,
-          "simTarget": 137152,
+          "simTarget": 146400,
           "itemLevel": 321,
           "preparation": 92,
           "preparationChecks": 2,
@@ -16245,6 +16246,7 @@
         {
           "playerId": "perdidø",
           "dps": 47157,
+          "simTarget": 210149,
           "attack": {
             "score": 93.4,
             "uptime": 94.1,
@@ -16783,6 +16785,7 @@
         {
           "playerId": "heracranosd",
           "dps": 176494,
+          "simTarget": 143399,
           "itemLevel": 322,
           "attack": {
             "score": 88.2,
