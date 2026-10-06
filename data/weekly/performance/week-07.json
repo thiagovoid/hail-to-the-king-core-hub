@@ -9572,7 +9572,8 @@
             }
           ],
           "preparation": 100,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 100
         }
       ]
     },
@@ -16518,7 +16519,8 @@
             }
           ],
           "preparation": 87,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 87
         },
         {
           "playerId": "harrydóter",
@@ -16780,7 +16782,8 @@
             }
           ],
           "preparation": 100,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 100
         },
         {
           "playerId": "heracranosd",
@@ -17225,7 +17228,8 @@
             }
           ],
           "preparation": 85,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 85
         },
         {
           "playerId": "perdidaço",
@@ -17536,7 +17540,8 @@
           "preparation": 80,
           "preparationMissing": [
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 80
         }
       ]
     }
