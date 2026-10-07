@@ -7,6 +7,7 @@
  * fica logo depois do nome, e como as colunas são fixas os números de
  * dimensões diferentes alinham na vertical, o que deixa comparar de relance.
  */
+import { TETO_DA_SUB_NOTA } from '@/engine/metrics';
 import type { ScoreDimension } from '@/engine/scores';
 import { formatDecimalBr } from '@/utils/format';
 import InfoTooltip from '@/components/InfoTooltip.astro';
@@ -96,6 +97,25 @@ const direcao = dimension.target.direction === 'higher' ? 'quanto maior, melhor'
  * `title`, que ninguém lê sem motivo.
  */
 const seta = dimension.target.direction === 'higher' ? '↑' : '↓';
+
+/**
+ * A barra vai até o TETO da nota, não até a meta.
+ *
+ * Enchendo a barra na meta, cumprir o mínimo parecia ter chegado ao fim do
+ * caminho — e quem passava da meta não tinha pra onde crescer na tela. A
+ * escala agora é 0 até o teto (115), com a meta marcada por um tracejado a
+ * 87% da largura: sobra barra visível depois dela, que é a folga.
+ *
+ * Serve pras duas direções sem conta especial, porque o score já normaliza
+ * o sentido: 100 é a meta cumprida venha ela de "maior melhor" ou do
+ * contrário.
+ */
+const META_NA_BARRA = (100 / TETO_DA_SUB_NOTA) * 100;
+
+const larguraDaBarra =
+  dimension.score === null
+    ? null
+    : Math.min(100, (dimension.score / TETO_DA_SUB_NOTA) * 100);
 ---
 
 <div class="linha">
@@ -140,10 +160,22 @@ const seta = dimension.target.direction === 'higher' ? '↑' : '↓';
   )}
 
   <div class="celula-barra">
-    <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-      {dimension.score !== null && (
-        <div class={`h-full rounded-full ${cor.barra}`} style={`width: ${dimension.score}%`} />
-      )}
+    <div class="relative h-1.5 bg-slate-800 rounded-full">
+      <div class="absolute inset-0 rounded-full overflow-hidden">
+        {larguraDaBarra !== null && (
+          <div class={`h-full rounded-full ${cor.barra}`} style={`width: ${larguraDaBarra}%`} />
+        )}
+      </div>
+
+      {/* A meta, tracejada. Fica POR CIMA do preenchimento pra continuar
+          legível quando a pessoa passa dela — que é justamente a hora em
+          que saber onde ela estava importa. */}
+      <span
+        class="absolute top-[-3px] bottom-[-3px] w-px border-l border-dashed border-slate-400/70"
+        style={`left: ${META_NA_BARRA}%`}
+        title={`Meta: ${formatDecimalBr(dimension.target.target)} (${direcao})`}
+        aria-hidden="true"
+      />
     </div>
   </div>
 
