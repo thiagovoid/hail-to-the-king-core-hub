@@ -60,6 +60,19 @@ const {
  * ou as 4 em que a pessoa jogou — e o número não batia com a presença
  * mostrada logo ao lado. Com os dois denominadores a dúvida não existe.
  */
+/**
+ * A classe é slug no dado e nome próprio na tela.
+ *
+ * O roster guarda "death-knight" porque é o que a WCL devolve e o que vira
+ * URL. Mostrar isso ao lado de "Blood" deixava uma metade em minúscula com
+ * hífen e a outra capitalizada — era a inconsistência de capitalização do
+ * feedback.
+ */
+const classeLegivel = player.class
+  .split('-')
+  .map((parte) => parte.charAt(0).toUpperCase() + parte.slice(1))
+  .join(' ');
+
 const deQuantasNoites = (runs: number) =>
   noitesDoCore && noitesDoCore > 0
     ? `Média das suas ${runs} noites, de ${noitesDoCore} que o core teve.`
@@ -108,7 +121,7 @@ const numeros = average
         rotulo: 'Kills',
         valor: String(average.bossesMortos),
         explica:
-          'Kills com você presente na try, contando repetição: três clears do mesmo boss contam três.',
+          'Kills da temporada com você presente na try, contando repetição: três clears do mesmo boss contam três.',
         lista: killsPorBoss.map((boss) => ({
           nome: boss.nome,
           dificuldade: boss.dificuldade,
@@ -154,7 +167,7 @@ const numeros = average
             valor: `${tendencia > 0 ? '+' : ''}${tendencia}%`,
             cor: corDaTendencia,
             explica:
-              'Subida ou queda do seu dps/hps ao longo de todas as noites. É uma reta, não dois pontos comparados: uma noite ruim isolada não derruba, várias seguidas sim. Compara você com você mesmo, nunca com o resto do core.',
+              'Compara a MÉDIA da noite com a das noites anteriores, como uma reta ao longo da temporada — não try a try nem boss a boss. Por ser reta, uma noite ruim isolada não derruba; várias seguidas sim. Compara você com você mesmo.',
             paragrafos: [
               'Subida ou queda do seu dps/hps ao longo de todas as runs.',
               'Por ser uma reta, e não dois pontos comparados, uma noite ruim isolada não derruba o número — mas várias seguidas, sim.',
@@ -186,7 +199,7 @@ const numeros = average
       <h1 class="text-3xl font-bold text-white truncate">{player.name}</h1>
 
       <p class="text-slate-400 mt-0.5 text-sm">
-        {player.class} · {player.spec}
+        {classeLegivel} · {player.spec}
         <span class="text-slate-500 capitalize"> · {player.role}</span>
       </p>
     </div>
