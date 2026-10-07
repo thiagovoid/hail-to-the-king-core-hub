@@ -73,10 +73,19 @@ const classeLegivel = player.class
   .map((parte) => parte.charAt(0).toUpperCase() + parte.slice(1))
   .join(' ');
 
-const deQuantasNoites = (runs: number) =>
-  noitesDoCore && noitesDoCore > 0
-    ? `Média das suas ${runs} noites, de ${noitesDoCore} que o core teve.`
-    : `Média das suas ${runs} noites.`;
+/**
+ * "Sua única noite", não "Média das suas 1 noites".
+ *
+ * Fora o erro de concordância, chamar de média o que é uma leitura só
+ * promete uma amostra que não existe — e quem tem uma noite registrada é
+ * justamente quem mais precisa saber que o número ainda não assentou.
+ */
+const deQuantasNoites = (runs: number) => {
+  const base = runs === 1 ? 'Sua única noite' : `Média das suas ${runs} noites`;
+  return noitesDoCore && noitesDoCore > 0
+    ? `${base}, de ${noitesDoCore} que o core teve.`
+    : `${base}.`;
+};
 
 /** Só os encontros onde o número existe — zero não ensina nada numa lista. */
 const killsPorBoss = porBoss.filter((boss) => boss.kills > 0).sort((a, b) => b.kills - a.kills);
@@ -169,9 +178,9 @@ const numeros = average
             explica:
               'Compara a MÉDIA da noite com a das noites anteriores, como uma reta ao longo da temporada — não try a try nem boss a boss. Por ser reta, uma noite ruim isolada não derruba; várias seguidas sim. Compara você com você mesmo.',
             paragrafos: [
-              'Subida ou queda do seu dps/hps ao longo de todas as runs.',
+              'Subida ou queda do seu dps/hps ao longo de todas as noites.',
               'Por ser uma reta, e não dois pontos comparados, uma noite ruim isolada não derruba o número — mas várias seguidas, sim.',
-              'Compara você com você mesmo, nunca com o resto do core. Precisa de pelo menos duas runs pra existir.',
+              'Compara você com você mesmo, nunca com o resto do core. Precisa de pelo menos duas noites pra existir.',
             ],
           }
         : null,

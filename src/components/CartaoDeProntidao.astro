@@ -160,8 +160,11 @@ function progressoDoCriterio(criterio: {
 
           {prontidao.falta.length > 0 && (
             <p class="text-[11px] text-slate-500 leading-relaxed mt-4 pt-3 border-t border-white/5">
-              Falta {prontidao.falta.length === 1 ? 'uma coisa' : `${prontidao.falta.length} coisas`}
-              : <span class="text-slate-300">{prontidao.falta.map((c) => c.rotulo).join(', ')}</span>.
+              {prontidao.falta.length === 1
+                ? 'Falta uma coisa: '
+                : `Faltam ${prontidao.falta.length} coisas: `}<span class="text-slate-300"
+                >{prontidao.falta.map((c) => c.rotulo).join(', ')}</span
+              >.
               Os níveis existem pra ninguém ser empurrado pra conteúdo que ainda não faz sentido —
               não pra separar quem presta de quem não presta.
             </p>

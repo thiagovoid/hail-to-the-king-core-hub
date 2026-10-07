@@ -68,8 +68,9 @@ const numeros =
 
         <p class="text-sm text-slate-400 mt-1">
           Última noite, comparada com a <strong class="text-slate-300">sua própria média</strong> em
-          {' '}{nights} noite(s). Não compare com outro tank: estilos de compensação de dano são
-          diferentes demais pra isso significar alguma coisa.
+          {' '}{nights}{' '}{nights === 1 ? 'noite' : 'noites'}. Não compare com outro
+          tank: estilos de compensação de dano são diferentes demais pra isso significar
+          alguma coisa.
         </p>
       </div>
 

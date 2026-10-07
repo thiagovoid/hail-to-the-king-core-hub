@@ -68,20 +68,27 @@ const menorDe = (valores: Array<number | undefined | null>): number | null => {
 const numero = (valor: number): string =>
   String(Math.round(valor * 10) / 10).replace(".", ",");
 
+/**
+ * "falta 1 ponto", "faltam 2 pontos" — e "faltam 0,5 pontos", que é plural
+ * mesmo: em português só o 1 cravado pede singular.
+ */
+const faltam = (d: number): string => (d === 1 ? "falta" : "faltam");
+const plural = (d: number, palavra: string): string => (d === 1 ? palavra : `${palavra}s`);
+
 const CRITERIOS: Criterio[] = [
   {
     id: "lenda",
     melhorDe: (noites) => maiorDe(noites.map((n) => n.parse)),
     alvo: CORTE.lenda,
     menorEMelhor: false,
-    falta: (d) => `faltam ${numero(d)} de parse`,
+    falta: (d) => `${faltam(d)} ${numero(d)} de parse`,
   },
   {
     id: "escoteiro",
     melhorDe: (noites) => maiorDe(noites.map((n) => n.preparation)),
     alvo: 100,
     menorEMelhor: false,
-    falta: (d) => `faltam ${numero(d)} pontos de preparação`,
+    falta: (d) => `${faltam(d)} ${numero(d)} ${plural(d, "ponto")} de preparação`,
   },
   {
     id: "relojoeiro",
@@ -89,14 +96,14 @@ const CRITERIOS: Criterio[] = [
       maiorDe(noites.flatMap((n) => (n.attackDetail ?? []).map((c) => c.efficiency))),
     alvo: CORTE.relojoeiro,
     menorEMelhor: false,
-    falta: (d) => `faltam ${numero(d)} pontos no seu melhor cooldown`,
+    falta: (d) => `${faltam(d)} ${numero(d)} ${plural(d, "ponto")} no seu melhor cooldown`,
   },
   {
     id: "muralha",
     melhorDe: (noites) => maiorDe(noites.map((n) => n.defense?.score)),
     alvo: CORTE.muralha,
     menorEMelhor: false,
-    falta: (d) => `faltam ${numero(d)} de Defender`,
+    falta: (d) => `${faltam(d)} ${numero(d)} de Defender`,
   },
   {
     id: "mecanicas-impecaveis",
@@ -105,7 +112,7 @@ const CRITERIOS: Criterio[] = [
     menorEMelhor: true,
     // O pior da temporada foi 3,1 erros por try.
     zero: 3.1,
-    falta: (d) => `${numero(d)} erro${d === 1 ? "" : "s"} por try a menos`,
+    falta: (d) => `${numero(d)} ${plural(d, "erro")} por try a menos`,
   },
   {
     id: "noite-limpa",
@@ -114,7 +121,7 @@ const CRITERIOS: Criterio[] = [
     menorEMelhor: true,
     // O pior da temporada foram 18 mortes numa noite.
     zero: 18,
-    falta: (d) => `${numero(d)} morte${d === 1 ? "" : "s"} a menos na sua melhor noite`,
+    falta: (d) => `${numero(d)} ${plural(d, "morte")} a menos na sua melhor noite`,
   },
   {
     id: "sem-sobra",
@@ -123,7 +130,7 @@ const CRITERIOS: Criterio[] = [
     menorEMelhor: true,
     // O pior da temporada foram 42% de cura desperdiçada.
     zero: 42,
-    falta: (d) => `${numero(d)} pontos de desperdício a menos`,
+    falta: (d) => `${numero(d)} ${plural(d, "ponto")} de desperdício a menos`,
   },
 ];
 

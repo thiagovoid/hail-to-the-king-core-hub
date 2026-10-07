@@ -101,7 +101,8 @@ function capitalize(s: string): string {
           <h2 id={`${group.role}-heading`} class="text-2xl font-bold text-[#f0a500] mb-1">
             {group.label}
           </h2>
-          <p class="text-slate-400 text-sm">{group.players.length} personagem(ns)</p>
+          <p class="text-slate-400 text-sm">{group.players.length}{' '}
+            {group.players.length === 1 ? 'personagem' : 'personagens'}</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
