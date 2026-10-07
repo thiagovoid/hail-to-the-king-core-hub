@@ -145,6 +145,19 @@ const pesoDisponivel = dimensoesComDado.reduce((soma, dimension) => soma + dimen
 const somaDosProdutos = contaDoScore.reduce((soma, linha) => soma + linha.produto, 0);
 
 /**
+ * A média pesada ANTES do teto de 100.
+ *
+ * O tooltip mostrava "10830 ÷ 100% = 100" quando a conta dá 108,3, porque
+ * `beforeSurvival` já vem limitado. A aritmética na tela não fechava, e por
+ * isso não dava pra explicar. Com o valor cru, o teto aparece como teto em
+ * vez de virar um erro de divisão.
+ */
+const mediaSemTeto =
+  pesoDisponivel > 0 ? Math.round(somaDosProdutos / pesoDisponivel) : null;
+
+const bateuNoTeto = mediaSemTeto !== null && mediaSemTeto > 100;
+
+/**
  * O desconto por tempo morto, pronto pra tela.
  *
  * Null quando não há desconto nenhum — mostrar "× 1,00" só ocuparia espaço
@@ -256,9 +269,9 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 
         <InfoTooltip label="Como o Score geral é calculado" largura="larga">
           <span class="block text-slate-200 text-[11px] leading-relaxed">
-            Cada dimensão vira uma nota de 0 a 100 — o quanto do caminho até a meta do core você
-            andou. O Score geral é a média dessas notas, com peso
-            {funcao ? ` da régua de ${funcao}` : ''}.
+            Cada dimensão vira uma nota: 100 é a meta cumprida. O Score é a média delas, e cada
+            uma pesa diferente{funcao ? ` na régua de ${funcao}` : ''} — o que vale mais puxa
+            mais.
           </span>
 
           {contaDoScore.length > 0 ? (
@@ -268,16 +281,29 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                   <span class="flex justify-between gap-3 text-[11px] text-slate-400 tabular-nums">
                     <span>{linha.label}</span>
                     <span>
-                      {linha.weight}% × {linha.score} = {linha.produto}
+                      <span class="text-slate-500">nota</span> {linha.score}
+                      <span class="text-slate-600">{' '}· vale {linha.weight}%</span>
                     </span>
                   </span>
                 ))}
               </span>
 
               <span class="flex justify-between gap-3 text-[11px] text-slate-200 font-semibold mt-1.5 pt-1.5 border-t border-white/10 tabular-nums">
-                <span>{somaDosProdutos} ÷ {pesoDisponivel}%</span>
-                <span>= {score.beforeSurvival}</span>
+                <span>Média dessas notas</span>
+                <span>
+                  {bateuNoTeto && (
+                    <span class="text-slate-500 font-normal">{mediaSemTeto} → </span>
+                  )}
+                  {score.beforeSurvival}
+                </span>
               </span>
+
+              {bateuNoTeto && (
+                <span class="block text-slate-500 text-[11px] leading-relaxed mt-1">
+                  A média passou de 100 e o Score para em 100 — acima da meta em tudo já é o
+                  teto.
+                </span>
+              )}
 
               {/* Sobreviver não é parcela, é multiplicador: a melhor
                   preparação e o melhor dps não valem nada se o raide seguiu
