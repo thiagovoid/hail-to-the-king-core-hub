@@ -30,6 +30,12 @@ interface Props {
    * que é verdade mas não é o número.
    */
   multiplicador?: string | null;
+  /**
+   * Escreve "meta" em cima do tracejado. Só na primeira linha: o tracejado
+   * cai no mesmo lugar em todas elas, então repetir o rótulo cinco vezes
+   * não informa nada e só suja a coluna.
+   */
+  rotuloDaMeta?: boolean;
 }
 
 const {
@@ -38,6 +44,7 @@ const {
   itensDetalhe = 0,
   rotuloDetalhe = '',
   multiplicador = null,
+  rotuloDaMeta = false,
 } = Astro.props;
 
 const bateuAMeta =
@@ -149,7 +156,7 @@ const larguraDaBarra =
     : Math.min(100, (dimension.score / TETO_DA_SUB_NOTA) * 100);
 ---
 
-<div class="linha">
+<div class={`linha ${rotuloDaMeta ? 'com-rotulo-da-meta' : ''}`}>
   {/* A seta abre o bloco, à ESQUERDA do nome.
 
       No fim da linha ela ficava escondida depois de cinco colunas de
@@ -230,6 +237,14 @@ const larguraDaBarra =
         title={`Meta: ${formatDecimalBr(dimension.target.target)} (${direcao})`}
         aria-hidden="true"
       />
+
+      {/* Sem isto o tracejado é um risco sem nome: dá pra ver que marca
+          alguma coisa, não dá pra saber o quê sem passar o mouse. */}
+      {rotuloDaMeta && (
+        <span class="rotulo-da-meta" style={`left: ${META_NA_BARRA}%`} aria-hidden="true">
+          meta
+        </span>
+      )}
     </div>
   </div>
 
@@ -297,6 +312,25 @@ const larguraDaBarra =
   .celula-barra {
     grid-area: barra;
     min-width: 0;
+  }
+
+  /* O rótulo fica FORA da barra, então a linha precisa ceder a altura dele
+     — senão ele invade o cabeçalho do cartão. */
+  .linha.com-rotulo-da-meta {
+    margin-top: 0.95rem;
+  }
+
+  .rotulo-da-meta {
+    position: absolute;
+    bottom: calc(100% + 5px);
+    transform: translateX(-50%);
+    font-size: 0.5625rem;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(148 163 184 / 0.8);
+    white-space: nowrap;
+    pointer-events: none;
   }
 
   .celula-progresso {

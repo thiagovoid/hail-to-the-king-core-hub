@@ -341,7 +341,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
             </>
           ) : (
             <span class="block text-slate-400 text-[11px] mt-2">
-              Nenhuma dimensão tem dado nesta run.
+              Nenhuma dimensão tem dado nesta noite.
             </span>
           )}
 
@@ -381,8 +381,11 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
 
     <div class="space-y-3">
       {
-        dimensoesVisiveis.map((dimension) => {
+        dimensoesVisiveis.map((dimension, i) => {
           const detalhe = detalheDaDimensao[dimension.key];
+          // O tracejado cai no mesmo ponto em todas as linhas; o rótulo
+          // nomeia a coluna uma vez, em cima.
+          const rotuloDaMeta = i === 0;
 
           // Quem não tem o que detalhar não vira <details>: seta sem conteúdo
           // é promessa que a interface não cumpre.
@@ -392,6 +395,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                 <ScoreDimensionRow
                   dimension={dimension}
                   multiplicador={descontoDeSobrevivencia?.fator ?? null}
+                  rotuloDaMeta={rotuloDaMeta}
                 />
               </div>
             );
@@ -412,6 +416,7 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                   itensDetalhe={detalhe.itens}
                   rotuloDetalhe={detalhe.rotulo}
                   multiplicador={descontoDeSobrevivencia?.fator ?? null}
+                  rotuloDaMeta={rotuloDaMeta}
                 />
               </summary>
 
