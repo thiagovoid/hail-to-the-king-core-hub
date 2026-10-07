@@ -33,6 +33,33 @@ const proximo = prontidao.proximo ? CORES[prontidao.proximo] : null;
 /** "1,5" em vez de "1.5" — e sem casa decimal inventada. */
 const numero = (valor: number | null) =>
   valor === null ? '—' : String(Math.round(valor * 10) / 10).replace('.', ',');
+
+/**
+ * Quanto do caminho até a exigência já foi andado, 0 a 100.
+ *
+ * Em "quanto menor melhor" a conta inverte: 1,5 contra um teto de 2,0 é
+ * folga, não 75% de atraso. Sem inverter, a barra encheria conforme a
+ * pessoa PIORA — que é o oposto do que ela comunica.
+ *
+ * Critério sem dado volta null: a barra fica vazia e neutra, porque a
+ * lacuna é da coleta e não reprova ninguém.
+ */
+function progressoDoCriterio(criterio: {
+  valor: number | null;
+  exigido: number;
+  menorEMelhor: boolean;
+  cumpre: boolean;
+}): number | null {
+  if (criterio.valor === null) return null;
+  if (criterio.cumpre) return 100;
+  if (criterio.exigido <= 0) return 100;
+
+  const bruto = criterio.menorEMelhor
+    ? (criterio.exigido / criterio.valor) * 100
+    : (criterio.valor / criterio.exigido) * 100;
+
+  return Math.max(0, Math.min(100, Math.round(bruto)));
+}
 ---
 
 <section class="mb-10">
@@ -86,29 +113,49 @@ const numero = (valor: number | null) =>
             Pra chegar em {ROTULO_DO_NIVEL[prontidao.proximo]}
           </p>
 
-          <ul class="space-y-2">
-            {prontidao.criterios.map((criterio) => (
-              <li class="flex items-baseline justify-between gap-3 text-[12px]">
-                <span class="flex items-baseline gap-2 min-w-0">
-                  <span class={criterio.cumpre ? 'text-emerald-400' : 'text-slate-600'}>
-                    {criterio.cumpre ? '✓' : '○'}
-                  </span>
-                  <span class={criterio.cumpre ? 'text-slate-500' : 'text-slate-300'}>
-                    {criterio.rotulo}
-                  </span>
-                </span>
+          <ul class="space-y-3">
+            {prontidao.criterios.map((criterio) => {
+              const progresso = progressoDoCriterio(criterio);
 
-                <span class="tabular-nums shrink-0">
-                  <span class={criterio.cumpre ? 'text-slate-500' : 'text-slate-200 font-semibold'}>
-                    {numero(criterio.valor)}
-                  </span>
-                  <span class="text-slate-600">
-                    {' '}
-                    {criterio.menorEMelhor ? 'de no máx.' : 'de'} {numero(criterio.exigido)}
-                  </span>
-                </span>
-              </li>
-            ))}
+              return (
+                <li class="text-[12px]">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <span class="flex items-baseline gap-2 min-w-0">
+                      <span class={criterio.cumpre ? 'text-emerald-400' : 'text-slate-600'}>
+                        {criterio.cumpre ? '✓' : '○'}
+                      </span>
+                      <span class={criterio.cumpre ? 'text-slate-500' : 'text-slate-300'}>
+                        {criterio.rotulo}
+                      </span>
+                    </span>
+
+                    <span class="tabular-nums shrink-0">
+                      <span class={criterio.cumpre ? 'text-slate-500' : 'text-slate-200 font-semibold'}>
+                        {numero(criterio.valor)}
+                      </span>
+                      <span class="text-slate-600">
+                        {' '}
+                        {criterio.menorEMelhor ? 'de no máx.' : 'de'} {numero(criterio.exigido)}
+                      </span>
+                    </span>
+                  </div>
+
+                  {/* A barra diz a DISTÂNCIA, que o par de números sozinho
+                      não dá de bater o olho: "1,5 de no máx. 2,0" exige
+                      fazer a conta; a barra já fez. */}
+                  <div class="h-1 rounded-full bg-slate-800 overflow-hidden mt-1.5 ml-5">
+                    {progresso !== null && (
+                      <div
+                        class={`h-full rounded-full ${
+                          criterio.cumpre ? 'bg-emerald-500/70' : 'bg-amber-500/60'
+                        }`}
+                        style={`width: ${progresso}%`}
+                      />
+                    )}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
 
           {prontidao.falta.length > 0 && (

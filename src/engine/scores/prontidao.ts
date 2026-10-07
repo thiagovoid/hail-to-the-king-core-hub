@@ -102,7 +102,7 @@ export const CRITERIO_DO_OFICIO: Record<FuncaoDaProntidao, Record<NivelDeConteud
 };
 
 export const ROTULO_DO_OFICIO: Record<FuncaoDaProntidao, string> = {
-  dps: "% do seu sim",
+  dps: "DPS",
   tank: "Defender",
   healer: "Curar",
 };
@@ -156,10 +156,18 @@ export interface MediasDoJogador {
   oficio: number | null;
 }
 
+/**
+ * Os MESMOS nomes do Score, não sinônimos.
+ *
+ * A prontidão dizia "Mecânicas por try", "Tempo morto em luta" e "% do
+ * seu sim" pros conceitos que o Score chama de Mecânicas, Sobreviver e
+ * DPS. Dois nomes pra mesma coisa fazem a pessoa procurar a diferença que
+ * não existe. A unidade aparece ao lado do número, não no nome.
+ */
 const ROTULOS: Record<ChaveDeRaide, string> = {
   parse: "Parse",
-  mechanics: "Mecânicas por try",
-  deathShare: "Tempo morto em luta",
+  mechanics: "Mecânicas",
+  deathShare: "Sobreviver",
   preparation: "Preparação",
 };
 
