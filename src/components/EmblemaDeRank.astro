@@ -81,6 +81,31 @@ const descricao = travado
  */
 const rotuloAcessivel = naRegua === 'outro' ? `Faixa ${nome}` : descricao;
 
+/** O contorno do escudo, repetido em três camadas do desenho. */
+const ESCUDO = "M48 5 L86 17 V47 C86 70 69 85 48 92 C27 85 10 70 10 47 V17 Z";
+
+/**
+ * Quanto do caminho até o próximo degrau já foi andado, 0 a 1.
+ *
+ * O emblema deixa de ser só um selo e passa a ser medidor: enche da
+ * esquerda pra direita conforme a pessoa sobe, e fica cheio ao trocar de
+ * faixa. Quem já é Rei não tem próximo degrau — fica cheio, porque está.
+ *
+ * Os degraus de referência da régua não mostram progresso: eles desenham a
+ * FAIXA, não o caminho de ninguém.
+ */
+const faixaAtual = score === null ? null : tituloDoHailScore(score);
+
+const fracao =
+  travado || naRegua === 'outro' || faixaAtual === null
+    ? null
+    : !proximo
+      ? 1
+      : Math.min(
+          1,
+          Math.max(0, (score! - faixaAtual.minimo) / (proximo.minimo - faixaAtual.minimo))
+        );
+
 const id = `emblema-${nome ?? 'travado'}`;
 ---
 
@@ -112,21 +137,42 @@ const id = `emblema-${nome ?? 'travado'}`;
         <stop offset="45%" stop-color="#ffffff" stop-opacity="0.06" />
         <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
       </linearGradient>
+
+      {fracao !== null && (
+        <clipPath id={`${id}-conquistado`}>
+          <rect x="0" y="0" width={96 * fracao} height="96" />
+        </clipPath>
+      )}
     </defs>
 
-    {/* Escudo heráldico: ombros retos, ponta arredondada. */}
-    <path
-      d="M48 5 L86 17 V47 C86 70 69 85 48 92 C27 85 10 70 10 47 V17 Z"
-      fill={`url(#${id}-metal)`}
-      stroke={metal.borda}
-      stroke-width="3"
-      stroke-linejoin="round"
-    />
+    {/* Escudo heráldico: ombros retos, ponta arredondada.
 
-    <path
-      d="M48 5 L86 17 V47 C86 70 69 85 48 92 C27 85 10 70 10 47 V17 Z"
-      fill={`url(#${id}-lustro)`}
-    />
+        Com progresso ele vira três camadas: a base apagada (o que falta), o
+        metal recortado até onde a pessoa chegou, e a borda por cima — sem
+        ela, o contorno sairia cortado no meio do escudo. */}
+    {fracao === null ? (
+      <path
+        d={ESCUDO}
+        fill={`url(#${id}-metal)`}
+        stroke={metal.borda}
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+    ) : (
+      <>
+        <path d={ESCUDO} fill={metal.escuro} opacity="0.5" />
+        <path d={ESCUDO} fill={`url(#${id}-metal)`} clip-path={`url(#${id}-conquistado)`} />
+        <path
+          d={ESCUDO}
+          fill="none"
+          stroke={metal.borda}
+          stroke-width="3"
+          stroke-linejoin="round"
+        />
+      </>
+    )}
+
+    <path d={ESCUDO} fill={`url(#${id}-lustro)`} />
 
     {/* Filete interno: separa o símbolo da borda e dá profundidade. */}
     <path
