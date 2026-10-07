@@ -150,6 +150,25 @@ const larguraDaBarra =
 ---
 
 <div class="linha">
+  {/* A seta abre o bloco, à ESQUERDA do nome.
+
+      No fim da linha ela ficava escondida depois de cinco colunas de
+      número, e a ação que ela oferece não se via. Aqui ela é a primeira
+      coisa, do jeito que lista expansível costuma ser.
+
+      O número que a acompanhava saiu: ele contava coisas diferentes em
+      cada dimensão — mecânicas distintas em uma, cooldowns em outra — e um
+      "7" sozinho não diz de quê. O rótulo, que já existia só pro leitor de
+      tela, agora é o title de quem usa o mouse. */}
+  <div class="celula-seta" title={rotuloDetalhe || undefined}>
+    {temDetalhe && (
+      <svg class="seta w-2.5 h-2.5 text-slate-500" viewBox="0 0 8 10" fill="currentColor" aria-hidden="true">
+        <path d="M0 0l8 5-8 5z" />
+      </svg>
+    )}
+    {rotuloDetalhe && <span class="sr-only">{rotuloDetalhe}</span>}
+  </div>
+
   <div class="celula-nome">
     <span class="text-slate-300 font-medium">{dimension.label}</span>
     {/* "0%" era mentira em dois casos diferentes. Sobreviver tem peso zero
@@ -218,17 +237,6 @@ const larguraDaBarra =
     {progresso?.texto ?? ''}
   </div>
 
-  <div class="celula-seta">
-    {temDetalhe && (
-      <span class="inline-flex items-center gap-1 text-slate-500">
-        <svg class="seta w-2.5 h-2.5 shrink-0" viewBox="0 0 8 10" fill="currentColor" aria-hidden="true">
-          <path d="M0 0l8 5-8 5z" />
-        </svg>
-        {itensDetalhe > 0 && <span class="text-[10px] text-slate-600">{itensDetalhe}</span>}
-        {rotuloDetalhe && <span class="sr-only">{rotuloDetalhe}</span>}
-      </span>
-    )}
-  </div>
 </div>
 
 <style>
@@ -238,18 +246,18 @@ const larguraDaBarra =
     display: grid;
     align-items: center;
     gap: 0.25rem 0.625rem;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: auto 1fr auto;
     grid-template-areas:
-      'nome      nome   seta'
-      'valor     unidade meta'
-      'barra     barra  progresso';
+      'seta  nome     nome'
+      'valor unidade  meta'
+      'barra barra    progresso';
     font-size: 0.75rem;
   }
 
   @media (min-width: 768px) {
     .linha {
-      grid-template-columns: 10.5rem 3.25rem 6.75rem 4.25rem 1fr 3.5rem 1.75rem;
-      grid-template-areas: 'nome valor unidade meta barra progresso seta';
+      grid-template-columns: 1rem 10.5rem 3.25rem 6.75rem 4.25rem 1fr 4.75rem;
+      grid-template-areas: 'seta nome valor unidade meta barra progresso';
       gap: 0 0.625rem;
     }
   }
@@ -300,6 +308,7 @@ const larguraDaBarra =
   .celula-seta {
     grid-area: seta;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: flex-start;
   }
 </style>
