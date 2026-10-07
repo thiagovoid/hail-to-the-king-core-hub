@@ -63,10 +63,17 @@ const contadores = utilidade
   ? [
       // A unidade é por item: 'battle rez recebido' não é USO — você não
       // apertou nada, alguém apertou por você.
-      { rotulo: 'Dispels', valor: utilidade.dispels, unidade: 'uso' },
-      { rotulo: 'Purges', valor: utilidade.purges, unidade: 'uso' },
-      { rotulo: 'Battle rez dados', valor: utilidade.battleRez, unidade: 'uso' },
-      { rotulo: 'Battle rez recebidos', valor: utilidade.battleRezRecebidos, unidade: 'vez' },
+      // Singular e plural escritos, não singular + 's': o plural de 'vez'
+      // é 'vezes', e a regra automática produzia '2 vezs'.
+      { rotulo: 'Dispels', valor: utilidade.dispels, um: 'uso', varios: 'usos' },
+      { rotulo: 'Purges', valor: utilidade.purges, um: 'uso', varios: 'usos' },
+      { rotulo: 'Battle rez dados', valor: utilidade.battleRez, um: 'uso', varios: 'usos' },
+      {
+        rotulo: 'Battle rez recebidos',
+        valor: utilidade.battleRezRecebidos,
+        um: 'vez',
+        varios: 'vezes',
+      },
     ].filter((item) => item.valor > 0)
   : [];
 
@@ -109,8 +116,11 @@ const temAlgo =
         {interrupcoes !== null && interrupcoes.total > 0 && (
           <div>
             <p class="text-sm text-slate-200">
-              <span class="font-semibold">{interrupcoes.total}</span> interrupç
-              {interrupcoes.total === 1 ? 'ão' : 'ões'}
+              {/* A palavra inteira numa expressão: quebrada em duas linhas,
+                  o JSX enfiava um espaço no meio dela e saía
+                  "2 interrupç ões". */}
+              <span class="font-semibold">{interrupcoes.total}</span>{' '}
+              {interrupcoes.total === 1 ? 'interrupção' : 'interrupções'}
               {interrupcoes.oportunidade !== null && (
                 <span class="text-slate-500">
                   {` de ${interrupcoes.oportunidade.oportunidades} que deu pra pegar`}
@@ -161,7 +171,7 @@ const temAlgo =
                 <li class="flex items-baseline justify-between gap-3 text-[12px]">
                   <span class="text-slate-300 min-w-0">{item.rotulo}</span>
                   <span class="text-slate-400 tabular-nums shrink-0">
-                    {item.valor} {item.unidade}{item.valor === 1 ? '' : 's'}
+                    {`${item.valor} ${item.valor === 1 ? item.um : item.varios}`}
                   </span>
                 </li>
               ))}
