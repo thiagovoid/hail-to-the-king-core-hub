@@ -59,32 +59,45 @@ const cor = bateuAMeta
  * exatamente 2: tudo que cruza a linha vira 100% e fica indistinguível.
  * Aqui quem raspou lê "na meta" e quem dobrou lê "+92%".
  */
-function progressoDaMeta() {
+/**
+ * O selo mostra a NOTA — a mesma que o Score soma.
+ *
+ * Ele mostrava a folga crua ("+92%") quando a meta era cumprida, e a nota
+ * ("115") só existia dentro do tooltip do Score geral. Dois números pra
+ * mesma dimensão, e quem tentasse conferir de onde saiu o 115 não achava
+ * em lugar nenhum da tela.
+ *
+ * A folga continua existindo, no título: ela diz QUANTO se passou da meta,
+ * que a nota comprime (ela para em 115 por mais que se passe).
+ */
+function notaDaDimensao() {
   if (dimension.value === null || dimension.score === null) return null;
 
   const { target, direction } = dimension.target;
+  const texto = `nota ${dimension.score}`;
+
   if (!bateuAMeta) {
-    // "87%" sozinho se lê como valor absoluto. "87% da meta" se lê como
-    // o que é: o quanto do caminho a pessoa andou.
-    return { texto: `${dimension.score}% da meta`, titulo: `${dimension.score}% do caminho até a meta` };
+    return { texto, titulo: `${dimension.score}% do caminho até a meta` };
   }
 
-  if (target === 0) return { texto: 'na meta', titulo: 'na meta' };
+  if (target === 0) return { texto, titulo: 'na meta' };
 
   // Em "quanto menor melhor" a folga é o quanto ficou ABAIXO da meta.
   const folga =
     direction === 'higher' ? dimension.value / target - 1 : 1 - dimension.value / target;
   const pontos = Math.round(folga * 100);
 
-  if (pontos <= 0) return { texto: 'na meta', titulo: 'exatamente na meta' };
+  if (pontos <= 0) return { texto, titulo: 'exatamente na meta' };
 
   return {
-    texto: `+${pontos}%`,
-    titulo: direction === 'higher' ? `${pontos}% acima da meta` : `${pontos}% abaixo da meta`,
+    texto,
+    titulo:
+      (direction === 'higher' ? `${pontos}% acima da meta` : `${pontos}% abaixo da meta`) +
+      ' — a nota comprime a folga e para em 115',
   };
 }
 
-const progresso = progressoDaMeta();
+const progresso = notaDaDimensao();
 
 const direcao = dimension.target.direction === 'higher' ? 'quanto maior, melhor' : 'quanto menor, melhor';
 

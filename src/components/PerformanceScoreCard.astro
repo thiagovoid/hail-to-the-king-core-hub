@@ -134,12 +134,21 @@ const dimensoesComDado = score.dimensions.filter(
     dimension.key !== 'help'
 );
 
-const contaDoScore = dimensoesComDado.map((dimension) => ({
-  label: dimension.label,
-  weight: dimension.weight,
-  score: dimension.score,
-  produto: Math.round(dimension.weight * dimension.score),
-}));
+/**
+ * A conta na MESMA ordem das linhas abaixo.
+ *
+ * O tooltip listava na ordem do motor e as linhas na ordem de peso, então
+ * conferir de onde saiu o 115 virava caça: os mesmos quatro nomes em duas
+ * sequências diferentes, a um palmo um do outro.
+ */
+const contaDoScore = [...dimensoesComDado]
+  .sort((a, b) => b.weight - a.weight)
+  .map((dimension) => ({
+    label: dimension.label,
+    weight: dimension.weight,
+    score: dimension.score,
+    produto: Math.round(dimension.weight * dimension.score),
+  }));
 
 const pesoDisponivel = dimensoesComDado.reduce((soma, dimension) => soma + dimension.weight, 0);
 const somaDosProdutos = contaDoScore.reduce((soma, linha) => soma + linha.produto, 0);
