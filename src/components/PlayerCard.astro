@@ -237,19 +237,19 @@ const linkWcl      = safeUrl(player.warcraftLogs.profileUrl);
       <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Warcraft Logs</p>
       <div class="grid grid-cols-3 gap-2">
         <div>
-          <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-0.5">Avg</p>
+          <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-0.5">Média</p>
           <p class={`text-sm font-bold tabular-nums ${parseColor(avgParse)}`}>
             {avgParse !== null ? `${avgParse}%` : '—'}
           </p>
         </div>
         <div>
-          <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-0.5">Best</p>
+          <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-0.5">Melhor</p>
           <p class={`text-sm font-bold tabular-nums ${parseColor(bestParse)}`}>
             {bestParse !== null ? `${bestParse}%` : '—'}
           </p>
         </div>
         <div>
-          <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-0.5">Pres.</p>
+          <p class="text-[9px] text-slate-400 uppercase tracking-wider mb-0.5">Presença</p>
           <p class="text-sm font-bold text-slate-200 tabular-nums">
             {attendance !== null ? `${attendance}%` : '—'}
           </p>

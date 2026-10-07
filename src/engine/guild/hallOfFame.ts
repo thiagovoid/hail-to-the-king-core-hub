@@ -89,7 +89,7 @@ function fewestDeathsEntry(weeks: WeeklyPerformance[], players: Array<{ id: stri
     key: "fewestDeaths",
     label: "Menos Mortes",
     winner: best
-      ? { playerId: best.playerId, playerName: best.playerName, value: `${best.avgDeaths.toFixed(1)} / run` }
+      ? { playerId: best.playerId, playerName: best.playerName, value: `${best.avgDeaths.toFixed(1).replace(".", ",")} por noite` }
       : null,
   };
 }
@@ -143,7 +143,7 @@ function bestAttendanceEntry(
 
   return {
     key: "bestAttendance",
-    label: "Maior Attendance",
+    label: "Maior Presença",
     winner: best
       ? { playerId: best.playerId, playerName: best.playerName, value: `${best.attendance}%` }
       : null,

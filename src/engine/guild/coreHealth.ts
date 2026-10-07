@@ -87,9 +87,9 @@ function attendanceCategory(weeks: WeeklyPerformance[], players: Array<{ id: str
 
   return {
     key: "attendance",
-    label: "Attendance",
+    label: "Presença",
     status: bandPercent(avgAttendance, { green: 80, yellow: 50 }),
-    detail: avgAttendance === null ? "Sem runs registradas ainda" : `Presença média do roster: ${avgAttendance}%`,
+    detail: avgAttendance === null ? "Sem noites registradas ainda" : `Presença média do roster: ${avgAttendance}%`,
   };
 }
 

@@ -41,11 +41,12 @@ const cards = [
     </h2>
 
     <p class="text-sm text-slate-400 mt-1">
-      Média de {average.runs} run(s) registrada(s). Item Level é o último
-      registrado, não uma média. Bosses mortos é o total de kills com
+      Média de {average.runs}{' '}
+      {average.runs === 1 ? 'noite registrada' : 'noites registradas'}. Item Level é o
+      último registrado, não uma média. Bosses mortos é o total de kills com
       você presente na try, contando repetição: três clears do mesmo boss
-      contam três. Mortes e Mecânicas são totais da temporada, não médias por run — a
-      média por try fica no Score Geral.
+      contam três. Mortes e Mecânicas são totais da temporada, não médias por
+      noite — a média por try fica no Score Geral.
     </p>
   </div>
 
