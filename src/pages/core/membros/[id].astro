@@ -4,7 +4,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 import roster from '../../../../data/guild/roster.json';
 import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
-import rulesJson from '../../../../data/guild/rules.json';
 import { performanceWeeks } from '../../../../data/weekly/performance/index';
 import CabecalhoDoJogador from '@/components/CabecalhoDoJogador.astro';
 import PerformanceGoals from '@/components/PerformanceGoals.astro';
@@ -593,12 +592,6 @@ const degrausDoDps =
       )
     : [];
 
-// Mesma fonte da página de regras — sem cópia, pra não divergirem.
-const regrasDoCore =
-  (rulesJson as Array<{ category: string; rules: string[] }>).find(
-    (categoria) => categoria.category === 'core'
-  )?.rules ?? [];
-
 const overallScore = hasData
   ? calculateOverallScore(
       ultimaNoite ?? seasonAverage,
@@ -718,7 +711,6 @@ const attendance = calculateAttendance(weeks, [
           nomeDoEncontro={Object.fromEntries(nomeDoBoss)}
           healingParts={healingParts}
           funcao={ultimaNoite?.healing ? 'healer' : player.role === 'tank' ? 'tank' : 'dps'}
-          regrasDoCore={regrasDoCore}
         />
       )
     }
