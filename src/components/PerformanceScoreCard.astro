@@ -366,6 +366,17 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
               divisor encolhe junto — ela nunca conta como zero.
             </span>
           )}
+
+          {/* As faixas da cor. A pessoa via verde ou âmbar e não sabia onde
+              estava a linha — e a cor é a primeira coisa que ela lê. */}
+          <span class="block text-[11px] mt-2 pt-2 border-t border-white/10">
+            <span class="text-slate-500">O que a cor diz:</span>{' '}
+            <span class="text-emerald-400">80+ cumpriu</span>
+            <span class="text-slate-600"> · </span>
+            <span class="text-amber-400">50 a 79 perto</span>
+            <span class="text-slate-600"> · </span>
+            <span class="text-red-400">abaixo de 50 longe</span>
+          </span>
         </InfoTooltip>
       </span>
 

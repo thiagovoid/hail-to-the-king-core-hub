@@ -61,10 +61,12 @@ const magias = helpDetail.filter((item) => item.categoria !== 'interromper');
 
 const contadores = utilidade
   ? [
-      { rotulo: 'Dispels', valor: utilidade.dispels },
-      { rotulo: 'Purges', valor: utilidade.purges },
-      { rotulo: 'Battle rez dados', valor: utilidade.battleRez },
-      { rotulo: 'Battle rez recebidos', valor: utilidade.battleRezRecebidos },
+      // A unidade é por item: 'battle rez recebido' não é USO — você não
+      // apertou nada, alguém apertou por você.
+      { rotulo: 'Dispels', valor: utilidade.dispels, unidade: 'uso' },
+      { rotulo: 'Purges', valor: utilidade.purges, unidade: 'uso' },
+      { rotulo: 'Battle rez dados', valor: utilidade.battleRez, unidade: 'uso' },
+      { rotulo: 'Battle rez recebidos', valor: utilidade.battleRezRecebidos, unidade: 'vez' },
     ].filter((item) => item.valor > 0)
   : [];
 
@@ -149,14 +151,21 @@ const temAlgo =
           </div>
         )}
 
+        {/* Mesmo formato da lista acima: nome à esquerda, quantidade com
+            unidade à direita. Antes eram dois desenhos na mesma seção — um
+            com "N usos" e outro com o número colado no nome. */}
         {contadores.length > 0 && (
-          <div class="flex flex-wrap gap-x-6 gap-y-2 pt-1">
-            {contadores.map((item) => (
-              <span class="text-[12px] text-slate-400">
-                {item.rotulo}
-                <span class="text-slate-200 font-semibold tabular-nums ml-1.5">{item.valor}</span>
-              </span>
-            ))}
+          <div class="pt-1">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+              {contadores.map((item) => (
+                <li class="flex items-baseline justify-between gap-3 text-[12px]">
+                  <span class="text-slate-300 min-w-0">{item.rotulo}</span>
+                  <span class="text-slate-400 tabular-nums shrink-0">
+                    {item.valor} {item.unidade}{item.valor === 1 ? '' : 's'}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
