@@ -402,11 +402,16 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
               {/* A linha inteira é o gatilho, não só a seta: alvo de clique
                   maior e o teclado alcança com um Tab só. */}
               <summary class="gatilho">
+                {/* O multiplicador ia só pro caminho SEM detalhe, e a linha
+                    do Sobreviver vai por aqui (ela tem detalhe de mortes).
+                    Resultado: ela dizia "multiplica" em vez de "× 0,89" em
+                    toda noite com morte registrada, que são quase todas. */}
                 <ScoreDimensionRow
                   dimension={dimension}
                   temDetalhe
                   itensDetalhe={detalhe.itens}
                   rotuloDetalhe={detalhe.rotulo}
+                  multiplicador={descontoDeSobrevivencia?.fator ?? null}
                 />
               </summary>
 

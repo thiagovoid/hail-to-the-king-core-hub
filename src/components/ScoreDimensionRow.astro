@@ -74,6 +74,24 @@ function notaDaDimensao() {
   if (dimension.value === null || dimension.score === null) return null;
 
   const { target, direction } = dimension.target;
+
+  /**
+   * Sobreviver não tem "nota" na conta — ela multiplica.
+   *
+   * Com o selo dizendo "nota 47" como todas as outras, a pessoa ia procurar
+   * o 47 na soma do tooltip e não ia achar: lá ele aparece como "×  0,89",
+   * que é outro número e vem de outra conta. O que ela precisa saber é que
+   * esta linha não entra na média.
+   */
+  if (dimension.key === 'survival') {
+    return {
+      texto: 'não soma',
+      titulo: multiplicador
+        ? `Multiplica a nota final por ${multiplicador} em vez de entrar na média`
+        : 'Multiplica a nota final em vez de entrar na média',
+    };
+  }
+
   const texto = `nota ${dimension.score}`;
 
   if (!bateuAMeta) {
