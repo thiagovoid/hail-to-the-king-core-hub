@@ -157,16 +157,30 @@ export function extractCounts(details: string | undefined): {
  * Sanguínea", não "Blood Venom", e não reconhece a própria mecânica.
  *
  * O título vem com markup do Wipefest: `Stood in {[style=icon] Peçonha
- * Sanguínea} {...} for {...} ticks`. O primeiro grupo é a habilidade.
+ * Sanguínea} {...} for {...} ticks`. A habilidade é o grupo `style="icon"`:
+ * é o único que carrega o ícone e o link do Wowhead da magia.
+ *
+ * Pegar o PRIMEIRO grupo, que era o que se fazia aqui, acerta enquanto o
+ * título abre pela habilidade — e erra em toda frase que abre por outra
+ * coisa. `{[style="boss"] The Twin Fangs'} targets took ...` virava a
+ * mecânica "The Twin Fangs'", um possessivo cortado no meio, e
+ * `Stood in {[style="boss"] Vexhaul's} {[style=icon] Enchente Torpe}`
+ * virava "Vexhaul's". Nos dois casos o jogador lia o nome do boss onde
+ * devia ler o que o acertou.
  */
 export function extractAbilityLabel(title: string | undefined): string | undefined {
   // Nem todo insight tem título: a API devolve entradas vazias, e sem esta
   // guarda o erro subia até o catch por fight do coletor — que registrava a
   // falha e seguia, deixando a coleta inteira sem rótulo em silêncio.
-  const match = title?.match(/\{\[[^\]]*\]\s*([^{}]+)\}/);
-  const nome = match?.[1]?.trim();
+  if (!title) return undefined;
+
+  const comIcone = title.match(/\{\[[^\]]*style=["']?icon["']?[^\]]*\]\s*([^{}]+)\}/);
+  // Sem grupo de ícone, o primeiro grupo é o melhor palpite que resta.
+  const primeiro = title.match(/\{\[[^\]]*\]\s*([^{}]+)\}/);
+  const nome = (comIcone?.[1] ?? primeiro?.[1])?.trim();
+
   // Números vêm do mesmo markup ({[style="info"] 12}); só interessa quando o
-  // primeiro grupo é mesmo o nome da habilidade.
+  // grupo é mesmo o nome da habilidade.
   return nome && nome.length > 2 && !/^[\d.,/%]+$/.test(nome) ? nome : undefined;
 }
 

@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { buildFightMechanics, extractCounts, limparMarkup, type WipefestApiFight } from "./insights";
+import {
+  buildFightMechanics,
+  extractAbilityLabel,
+  extractCounts,
+  limparMarkup,
+  type WipefestApiFight,
+} from "./insights";
 
 /**
  * Recorte do `details` real do insight "Hit by Peçonha Viva" (report
@@ -160,5 +166,57 @@ describe("buildFightMechanics", () => {
 
     expect(semErro).toHaveLength(1);
     expect(semErro[0].errors).toEqual([]);
+  });
+});
+
+/**
+ * Títulos reais do report 83A2nJ4NHBFCD9xW (Abismo Venenoso, Midnight S2),
+ * com as URLs encurtadas. O que importa em cada um é por onde a frase abre.
+ */
+describe("extractAbilityLabel", () => {
+  const icone = (spell: number, nome: string) =>
+    `{[image="URL" url="http://wowhead.com/spell=${spell}" style="icon"] ${nome}}`;
+
+  it("pega a habilidade quando a frase abre por ela", () => {
+    expect(
+      extractAbilityLabel(
+        `Fell into the ${icone(1297338, "Peçonha Mortífera")} {[style="nature"] Peçonha Mortífera}, taking {[style="danger"] 2m} avoidable damage.`
+      )
+    ).toBe("Peçonha Mortífera");
+  });
+
+  it("não rotula a mecânica com o nome do boss quando a frase abre por ele", () => {
+    expect(
+      extractAbilityLabel(
+        `{[style="boss"] The Twin Fangs'} targets took {[style="danger"] 2.2m} damage from ${icone(1295115, "Seta Coagulada")} {[style="shadow"] Seta Coagulada}, caused by not being in melee range.`
+      )
+    ).toBe("Seta Coagulada");
+  });
+
+  it("pula o possessivo do boss no meio da frase", () => {
+    expect(
+      extractAbilityLabel(
+        `Stood in {[style="boss"] Vexhaul's} ${icone(1294605, "Enchente Torpe")} {[style="nature"] Enchente Torpe} frontal {[style="info"] 22} times.`
+      )
+    ).toBe("Enchente Torpe");
+  });
+
+  it("pula o número quando a frase abre por uma contagem", () => {
+    expect(
+      extractAbilityLabel(
+        `Used {[style="info"] 11} ${icone(1236616, "Potencial da Luz")} Combat or Mana Potions.`
+      )
+    ).toBe("Potencial da Luz");
+  });
+
+  it("devolve undefined em título sem markup e em título ausente", () => {
+    expect(extractAbilityLabel("Hit by Peçonha Viva 43 times.")).toBeUndefined();
+    expect(extractAbilityLabel(undefined)).toBeUndefined();
+  });
+
+  it("sem grupo de ícone, cai no primeiro grupo", () => {
+    expect(extractAbilityLabel(`Stood in {[style="nature"] Sangue Solidificado} for 3s.`)).toBe(
+      "Sangue Solidificado"
+    );
   });
 });
