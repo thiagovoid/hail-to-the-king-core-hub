@@ -63,7 +63,9 @@ function progressoDaMeta() {
 
   const { target, direction } = dimension.target;
   if (!bateuAMeta) {
-    return { texto: `${dimension.score}%`, titulo: `${dimension.score}% do caminho até a meta` };
+    // "87%" sozinho se lê como valor absoluto. "87% da meta" se lê como
+    // o que é: o quanto do caminho a pessoa andou.
+    return { texto: `${dimension.score}% da meta`, titulo: `${dimension.score}% do caminho até a meta` };
   }
 
   if (target === 0) return { texto: 'na meta', titulo: 'na meta' };
@@ -84,6 +86,16 @@ function progressoDaMeta() {
 const progresso = progressoDaMeta();
 
 const direcao = dimension.target.direction === 'higher' ? 'quanto maior, melhor' : 'quanto menor, melhor';
+
+/**
+ * A seta ao lado da unidade.
+ *
+ * A tela mistura métricas onde maior é melhor (uptime, cura) com outras
+ * onde menor é melhor (erros por try, tempo morto). Quem se acostuma a ler
+ * "número maior = melhor" tropeça na próxima linha. A direção estava só no
+ * `title`, que ninguém lê sem motivo.
+ */
+const seta = dimension.target.direction === 'higher' ? '↑' : '↓';
 ---
 
 <div class="linha">
@@ -118,7 +130,9 @@ const direcao = dimension.target.direction === 'higher' ? 'quanto maior, melhor'
   {dimension.value !== null ? (
     <>
       <div class={`celula-valor ${cor.texto}`}>{formatDecimalBr(dimension.value)}</div>
-      <div class="celula-unidade">{dimension.unit}</div>
+      <div class="celula-unidade">
+        {dimension.unit} <span class="text-slate-600" title={direcao}>{seta}</span>
+      </div>
       <div class="celula-meta">meta {formatDecimalBr(dimension.target.target)}</div>
     </>
   ) : (

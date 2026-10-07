@@ -20,7 +20,14 @@ interface Props {
   direcao?: 'cima' | 'baixo';
 }
 
-const { label, alinhamento = 'esquerda', largura = 'padrao', direcao = 'cima' } = Astro.props;
+/**
+ * Abre pra BAIXO por padrão.
+ *
+ * Abrindo pra cima, o tooltip de um indicador que já está no topo da tela
+ * sai do viewport e obriga a pessoa a rolar pra ler — foi o primeiro item
+ * do feedback. Quem precisa do contrário pede `direcao="cima"`.
+ */
+const { label, alinhamento = 'esquerda', largura = 'padrao', direcao = 'baixo' } = Astro.props;
 ---
 
 <span class="relative group inline-flex align-middle">

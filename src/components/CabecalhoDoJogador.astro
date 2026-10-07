@@ -27,6 +27,8 @@ interface Props {
   /** A nota que a medalha reflete. Null quando não há noite medida. */
   score: number | null;
   average: PlayerSeasonAverage | null;
+  /** Quantas noites o core teve na temporada. Denominador da presença. */
+  noitesDoCore?: number | null;
   /** Em quantas das noites do core esta pessoa apareceu, 0-100. */
   presenca: number | null;
   /** Subida ou queda do dps/hps ao longo das noites, em %. */
@@ -41,7 +43,27 @@ interface Props {
   porBoss?: Array<{ nome: string; dificuldade: string; kills: number; deaths: number }>;
 }
 
-const { player, score, average, presenca, tendencia, porBoss = [] } = Astro.props;
+const {
+  player,
+  score,
+  average,
+  presenca,
+  tendencia,
+  noitesDoCore = null,
+  porBoss = [],
+} = Astro.props;
+
+/**
+ * A média sai de QUANTAS noites, e de quantas havia.
+ *
+ * "Média das 4 noites registradas" não dizia se eram as 4 noites do core
+ * ou as 4 em que a pessoa jogou — e o número não batia com a presença
+ * mostrada logo ao lado. Com os dois denominadores a dúvida não existe.
+ */
+const deQuantasNoites = (runs: number) =>
+  noitesDoCore && noitesDoCore > 0
+    ? `Média das suas ${runs} noites, de ${noitesDoCore} que o core teve.`
+    : `Média das suas ${runs} noites.`;
 
 /** Só os encontros onde o número existe — zero não ensina nada numa lista. */
 const killsPorBoss = porBoss.filter((boss) => boss.kills > 0).sort((a, b) => b.kills - a.kills);
@@ -72,14 +94,14 @@ const numeros = average
         ? {
             rotulo: 'DPS médio',
             valor: formatPerformanceValue(average.dps),
-            explica: `Média das ${average.runs} noites registradas.`,
+            explica: deQuantasNoites(average.runs),
           }
         : null,
       average.hps !== undefined
         ? {
             rotulo: 'HPS médio',
             valor: formatPerformanceValue(average.hps),
-            explica: `Média das ${average.runs} noites registradas.`,
+            explica: deQuantasNoites(average.runs),
           }
         : null,
       {

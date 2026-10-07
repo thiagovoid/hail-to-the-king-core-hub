@@ -211,74 +211,56 @@ const DIMENSION_META: Record<
   parse: {
     label: "Parse",
     unit: "percentil",
-    description:
-      "Percentil do seu dano (ou cura) comparado com jogadores da mesma spec no mesmo boss e dificuldade. 60 significa que você ficou acima de 60% deles.",
-    source:
-      "Warcraft Logs. Só existe para boss morto — wipe não recebe ranking, então esse número olha os bosses que caíram na noite.",
+    description: "Seu percentil contra jogadores da mesma spec no mesmo boss. 60 quer dizer que você ficou acima de 60% deles.",
+    source: "Warcraft Logs. Só existe para boss morto.",
   },
   mechanics: {
     label: "Mecânicas",
     unit: "erros por try",
-    description:
-      "Média de mecânicas DISTINTAS em que você tomou dano por try. Errar a mesma cinco vezes na mesma try conta uma. A meta não é fixa: é a MEDIANA do grupo no mesmo boss na mesma noite, com uma margem — o que interessa é o desvio em relação a quem encarou a mesma luta, não um número que vale igual em noite de progressão e em noite de farm.",
-    source:
-      "Wipefest, todas as trys da noite (kill ou wipe). Atenção ao que ele mede de verdade: 1029 dos 1032 registros da temporada são literalmente \"Damage from X\" — é dano tomado, não erro julgado. Tem mecânica em que tomar dano é o jogo (soak que larga poça no pé, chão que você PRECISA pisar pra limpar), e é por isso que a régua é o grupo: imposto que cai em todo mundo se dissolve sozinho.",
+    description: "Em quantas mecânicas diferentes você tomou dano, por try. Errar a mesma cinco vezes conta uma.",
+    source: "Wipefest. A meta é a mediana do grupo no mesmo boss, naquela noite.",
   },
   attack: {
     label: "Atacar",
     unit: "% de execução",
-    description:
-      "Quanto da luta você passou atacando (uptime) e quanto do tempo seus cooldowns ofensivos ficaram em recarga. Cooldown guardado é dano que não aconteceu: a régua é tempo em recarga, não quantidade de usos.",
-    source:
-      "Warcraft Logs (tempo ativo e cada cast da noite) + Wowhead (recarga e cargas de cada magia). Cooldown que quase não representa dano seu — um gap closer, por exemplo — fica de fora da conta.",
+    description: "Quanto da luta você passou atacando, somado a quanto seus cooldowns ofensivos ficaram em recarga.",
+    source: "Warcraft Logs e Wowhead. Cooldown guardado é dano que não aconteceu.",
   },
   defense: {
     label: "Defender",
     unit: "% de execução",
-    description:
-      "Quanto do tempo seus cooldowns defensivos ficaram em recarga. Dano recebido e mitigação aparecem ao lado como contexto, mas não entram na nota: a mitigação ficou entre 38% e 48% pro raide inteiro, com os tanks por último — ela mede armadura e buff, não decisão.",
-    source:
-      "Warcraft Logs (eventos de cast e dano recebido) + Wowhead (recarga de cada magia).",
+    description: "Quanto do tempo de luta seus defensivos passaram em recarga. No tank, a média disso com a mitigação.",
+    source: "Warcraft Logs e Wowhead.",
   },
   healing: {
     label: "Curar",
     unit: "% de execução",
-    description:
-      "Quanto do dano que o raide tomou passou pelas suas mãos, medido contra o quinhão que caberia a você, mais o quanto da sua cura NÃO caiu em quem já estava cheio. Curar mais não é curar melhor: quem cura muito costuma estar num raide que apanhou muito.",
-    source:
-      "Warcraft Logs (cura efetiva, overheal e dano recebido pelo raide). Só existe pra quem a WCL registrou curando na noite — não pro que está escrito no roster.",
+    description: "Duas metades: o quinhão do dano do raide que você cobriu, e quanto da sua cura não foi pro ralo.",
+    source: "Warcraft Logs. O quinhão compara com a média dos healers da noite — numa noite boa do time, a mesma cura vale menos.",
   },
   survival: {
     label: "Sobreviver",
     unit: "% da noite morto",
-    description:
-      "Quanto do tempo de luta da noite você passou morto ENQUANTO o raide ainda lutava. Não é contagem de mortes: morrer três segundos antes do wipe custa três segundos, morrer no começo de uma luta de oito minutos custa oito minutos. Progressão de trezentas trys com call de wipe no fim sai perto de zero — resiliência não é punida, desperdício é.",
-    source:
-      "Warcraft Logs (eventos de morte, com a try em que aconteceram). Morte em try que virou kill aparece à parte: o boss caiu sem você.",
+    description: "Quanto do tempo de luta você passou morto enquanto o raide ainda lutava.",
+    source: "Warcraft Logs. Não é contagem de mortes: morrer no fim de uma try custa pouco.",
   },
   help: {
     label: "Ajudar",
     unit: "% do que a magia dá",
-    description:
-      "O que você fez pelo GRUPO: interromper, controlar adds, acelerar o raide, socorrer e levantar quem caiu. Cada magia é medida contra o melhor aproveitamento já visto DELA nesta temporada — um Kick de 15s nunca ficaria em recarga a luta inteira, e cobrar isso mediria o kit em vez da pessoa. Quem não tem utilidade de grupo não é medido por ela.",
-    source:
-      "Warcraft Logs (cada cast da noite) + Wowhead (recarga de cada magia), sobre uma lista curada de utilidade de grupo. Defensivo e cooldown de dano ficam de fora: já contam em Defender e Atacar.",
+    description: "Quanto você usou do que a sua spec oferece ao grupo: interrupção, dispel, battle rez.",
+    source: "Warcraft Logs e Wowhead.",
   },
   deliver: {
     label: "DPS",
     unit: "% do seu sim",
-    description:
-      "Quanto do SEU potencial você entregou: o dano da noite contra a simulação que o Raidbots fez do seu personagem, com o seu equipamento e os seus talentos. Não é comparação com ninguém — é você contra o teto do seu próprio boneco.",
-    source:
-      "Warcraft Logs (dano da noite) + Raidbots (simulação semanal por jogador). A meta de sim fica guardada na noite, porque ela sobe conforme a pessoa se equipa: comparar o dano de agosto com o sim de setembro diria que alguém piorou quando melhorou.",
+    description: "Quanto do seu próprio sim do Raidbots você entregou. A régua é você, não o core.",
+    source: "Warcraft Logs e Raidbots. O sim é recalculado conforme você se equipa.",
   },
   preparation: {
     label: "Preparação",
     unit: "% pronto",
-    description:
-      "Encantos e gemas do equipamento, mais os consumíveis da noite (flask, comida, poção, pedra de vida). Vale a presença, não o item exato: encanto ou gema fora do BIS conta igual.",
-    source:
-      "Warcraft Logs (gear do log) + Wowhead (quantos encantos e gemas a sua spec espera) + Wipefest (o que o ready check flagrou faltando).",
+    description: "Encanto, gema e consumível: quanto do dever de casa antes da raide você cumpriu.",
+    source: "Warcraft Logs e Wowhead. A régua é ter, não ter o melhor possível.",
   },
 };
 

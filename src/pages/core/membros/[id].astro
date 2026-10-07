@@ -61,6 +61,10 @@ const { player } = Astro.props;
 
 const weeks = performanceWeeks;
 
+// Denominador da presença e da média: quantas noites o core teve. Sem ele,
+// "média das 4 noites" não dizia se eram as 4 do core ou as 4 da pessoa.
+const noitesDoCore = weeks.reduce((total, semana) => total + semana.runs.length, 0);
+
 const history = getPlayerHistory(
   weeks,
   player.id
@@ -640,11 +644,18 @@ const attendance = calculateAttendance(weeks, [
   description={`Evolução de performance de ${player.name} no Core Nemesis.`}
 >
   <div class="max-w-7xl mx-auto px-4 py-8">
+    {/* Volta pra ONDE a pessoa veio, não pra um lugar fixo.
+
+        Quem clica num jogador no gráfico da dashboard era devolvido pra
+        lista de membros, que não é de onde saiu. O destino é decidido no
+        cliente porque a página é estática: o mesmo HTML serve a quem chegou
+        da dashboard, da lista e de um link direto. */}
     <a
       href="/core/membros/"
+      data-voltar
       class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-8"
     >
-      ← Voltar para membros
+      ← <span data-voltar-texto>Voltar para membros</span>
     </a>
 
     {/* Identidade, medalha e os números da temporada numa faixa só.
@@ -655,6 +666,7 @@ const attendance = calculateAttendance(weeks, [
       score={overallScore?.overall ?? null}
       average={hasData ? seasonAverage : null}
       presenca={hasData ? attendance : null}
+      noitesDoCore={noitesDoCore}
       tendencia={hasData ? trend : null}
       porBoss={bossABoss.map((boss) => ({
         nome: boss.nome,
@@ -1082,5 +1094,44 @@ const attendance = calculateAttendance(weeks, [
     });
 
     mostrar();
+  }
+</script>
+
+<script>
+  /**
+   * O "Voltar" leva pra onde a pessoa veio.
+   *
+   * Quem clicava num jogador no gráfico da dashboard era devolvido pra lista
+   * de membros — que não é de onde saiu, e dá a sensação de ter perdido o
+   * lugar. Como a página é estática, o mesmo HTML serve a quem chegou da
+   * dashboard, da lista e de um link direto; quem decide é o referrer.
+   *
+   * Só aceita origem do MESMO site: referrer de fora viraria um link de
+   * volta pra fora, o que é pior que o destino fixo.
+   */
+  const link = document.querySelector<HTMLAnchorElement>('[data-voltar]');
+  const texto = link?.querySelector<HTMLElement>('[data-voltar-texto]');
+
+  if (link && texto && document.referrer) {
+    try {
+      const de = new URL(document.referrer);
+
+      if (de.origin === window.location.origin && de.pathname !== window.location.pathname) {
+        const destinos: Array<{ casa: RegExp; href: string; rotulo: string }> = [
+          { casa: /^\/core\/membros\/?$/, href: '/core/membros/', rotulo: 'Voltar para membros' },
+          { casa: /^\/core\/?$/, href: '/core/', rotulo: 'Voltar para a dashboard' },
+          { casa: /^\/hall-da-fama\/?$/, href: '/hall-da-fama/', rotulo: 'Voltar para o hall da fama' },
+          { casa: /^\/core\//, href: de.pathname, rotulo: 'Voltar' },
+        ];
+
+        const destino = destinos.find((d) => d.casa.test(de.pathname));
+        if (destino) {
+          link.href = destino.href;
+          texto.textContent = destino.rotulo;
+        }
+      }
+    } catch {
+      // Referrer inválido: fica o destino padrão, que nunca está errado.
+    }
   }
 </script>
