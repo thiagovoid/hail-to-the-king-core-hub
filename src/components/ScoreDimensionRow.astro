@@ -170,8 +170,12 @@ const larguraDaBarra =
       {/* A meta, tracejada. Fica POR CIMA do preenchimento pra continuar
           legível quando a pessoa passa dela — que é justamente a hora em
           que saber onde ela estava importa. */}
+      {/* 2px e mais contraste: a 1px numa barra de 6px de altura o
+          tracejado sumia, e a meta é a referência que dá sentido ao resto
+          do desenho. Sobra pra fora da barra em cima e embaixo pra não se
+          confundir com o preenchimento. */}
       <span
-        class="absolute top-[-3px] bottom-[-3px] w-px border-l border-dashed border-slate-400/70"
+        class="absolute top-[-4px] bottom-[-4px] w-0 border-l-2 border-dashed border-slate-300/85"
         style={`left: ${META_NA_BARRA}%`}
         title={`Meta: ${formatDecimalBr(dimension.target.target)} (${direcao})`}
         aria-hidden="true"
