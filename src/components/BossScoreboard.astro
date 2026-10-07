@@ -20,8 +20,33 @@ const { scores, roster } = Astro.props;
 
 const rosterById = new Map(roster.map((player) => [player.id, player]));
 
+/**
+ * O que o Wipefest pontua e o core não usa mais.
+ *
+ * Poção, flask/comida e pedra de vida saíram porque ele não enxerga o que o
+ * core usa: no log de 01/10 ele acusou os quinze jogadores de não usar
+ * poção e catorze tinham usado. Os cinco consumíveis passaram a sair do
+ * nosso próprio log (`wcl:rebuild-consumables`) e aparecem na Preparação da
+ * página do jogador.
+ *
+ * Continuavam aqui porque este placar é um recorte à parte, fora do modelo
+ * unificado — e continuavam acusando: "Potions 0" ao lado de quem tinha
+ * tomado poção a noite inteira.
+ */
+const FORA_DO_PLACAR = new Set([
+  'Ready Check (Flask, Gear, etc.)',
+  'Potions',
+  'Healthstone / Healing Potion',
+]);
+
 const rows = scores
-  .map((entry) => ({ entry, player: rosterById.get(entry.playerId) }))
+  .map((entry): { entry: BossPlayerScore; player: Player | undefined } => ({
+    entry: {
+      ...entry,
+      mechanics: entry.mechanics?.filter((stat) => !FORA_DO_PLACAR.has(stat.mechanic)),
+    },
+    player: rosterById.get(entry.playerId),
+  }))
   .filter((row): row is { entry: BossPlayerScore; player: Player } => row.player !== undefined)
   .sort((a, b) => b.entry.score - a.entry.score);
 
