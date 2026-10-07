@@ -19,7 +19,7 @@
  */
 import { formatPerformanceValue } from '@/engine/metrics';
 import type { PlayerSeasonAverage } from '@/engine/metrics';
-import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
+import ReguaDeRanks from '@/components/ReguaDeRanks.astro';
 import InfoTooltip from '@/components/InfoTooltip.astro';
 
 interface Props {
@@ -204,8 +204,13 @@ const numeros = average
       </p>
     </div>
 
+    {/* A escada inteira, não só o degrau atual.
+
+        O emblema sozinho dizia em que faixa a pessoa está e não ONDE isso
+        fica na escada: "Nobre" não diz se falta muito pro topo nem quantos
+        degraus já ficaram pra trás. */}
     <div class="ml-auto shrink-0">
-      <EmblemaDeRank score={score} />
+      <ReguaDeRanks score={score} />
     </div>
   </div>
 

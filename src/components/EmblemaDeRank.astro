@@ -15,9 +15,17 @@ interface Props {
   score: number | null;
   /** Lado do quadrado, em px. O padrão casa com o avatar da página. */
   size?: number;
+  /**
+   * O papel do emblema quando ele está numa régua de faixas.
+   *
+   * `atual` ganha brilho; `outro` fica atenuado e sem tooltip — cinco
+   * tooltips lado a lado disputando o mouse não ajudam ninguém, e a régua
+   * tem um só, dela inteira.
+   */
+  naRegua?: "atual" | "outro" | null;
 }
 
-const { score, size = 96 } = Astro.props;
+const { score, size = 96, naRegua = null } = Astro.props;
 
 const titulo = score === null ? null : tituloDoHailScore(score);
 const nome = titulo?.nome ?? null;
@@ -63,6 +71,16 @@ const descricao = travado
           : ` Faltam ${falta} pontos pra ${proximo.nome}.`
     }`;
 
+/**
+ * O que o leitor de tela ouve.
+ *
+ * Na régua, os degraus que não são o atual descrevem a FAIXA, não o
+ * jogador: com a descrição cheia, um leitor de tela anunciava cinco
+ * progressos diferentes na mesma pessoa — "você está aprendendo o tier,
+ * faltam 40 pontos" colado em quem já é Regente.
+ */
+const rotuloAcessivel = naRegua === 'outro' ? `Faixa ${nome}` : descricao;
+
 const id = `emblema-${nome ?? 'travado'}`;
 ---
 
@@ -72,8 +90,14 @@ const id = `emblema-${nome ?? 'travado'}`;
     width={size}
     height={size}
     role="img"
-    aria-label={descricao}
-    class={travado ? 'opacity-40' : ''}
+    aria-label={rotuloAcessivel}
+    class={[
+      travado ? 'opacity-40' : '',
+      naRegua === 'outro' ? 'opacity-35 saturate-50' : '',
+    ]
+      .filter(Boolean)
+      .join(' ')}
+    style={naRegua === 'atual' ? `filter: drop-shadow(0 0 8px ${metal.borda}66)` : undefined}
   >
     <defs>
       <linearGradient id={`${id}-metal`} x1="0" y1="0" x2="0" y2="1">
@@ -178,11 +202,14 @@ const id = `emblema-${nome ?? 'travado'}`;
     )}
   </svg>
 
-  {/* O emblema sozinho não diz o que é nem como se sobe de faixa. */}
+  {/* O emblema sozinho não diz o que é nem como se sobe de faixa. Na régua
+      quem fala é ela, não cada degrau. */}
+  {naRegua !== "outro" && (
   <span
     role="tooltip"
     class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-2 z-20 w-56 rounded-lg border border-white/10 bg-[#141b2d] p-3 text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity shadow-xl"
   >
     <span class="block text-slate-200 text-[11px] leading-relaxed">{descricao}</span>
   </span>
+  )}
 </div>

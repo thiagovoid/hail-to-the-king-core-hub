@@ -1,0 +1,84 @@
+---
+/**
+ * A escada inteira, com a faixa atual em destaque.
+ *
+ * O emblema sozinho dizia em que faixa a pessoa está, mas não ONDE isso fica
+ * na escada — "Nobre" não diz se falta muito ou pouco pro topo, nem quantos
+ * degraus já ficaram pra trás. Ver os cinco de uma vez responde as duas.
+ *
+ * O atual é 22% maior e ganha brilho; os outros ficam visíveis e atenuados.
+ * Não escondo os que vêm depois: a escada inteira é a informação, e um
+ * degrau oculto viraria surpresa em vez de objetivo.
+ */
+import EmblemaDeRank from '@/components/EmblemaDeRank.astro';
+import { tituloDoHailScore, TITULOS_DO_HAIL_SCORE } from '@/engine/team/hailScore';
+
+interface Props {
+  /** Score Geral do jogador. Null não desenha régua nenhuma. */
+  score: number | null;
+  /** Lado do emblema padrão, em px. O atual cresce a partir daqui. */
+  size?: number;
+}
+
+const { score, size = 44 } = Astro.props;
+
+const atual = score === null ? null : tituloDoHailScore(score).nome;
+
+/** O item 5 do feedback pede entre 120% e 125%. */
+const TAMANHO_DO_ATUAL = 1.22;
+
+const proximo =
+  score === null ? undefined : TITULOS_DO_HAIL_SCORE.find((faixa) => faixa.minimo > score);
+
+const falta = proximo && score !== null ? proximo.minimo - score : null;
+
+/**
+ * A frase da régua, uma só.
+ *
+ * Quem já é Rei não tem próximo degrau e merece outra frase — "faltam -3
+ * pontos pra undefined" seria o que sairia de uma conta sem este caso.
+ */
+const legenda =
+  score === null
+    ? null
+    : falta === null || !proximo
+      ? 'Você está no topo da escada.'
+      : falta === 1
+        ? `Falta 1 ponto no Score pra ${proximo.nome}.`
+        : `Faltam ${falta} pontos no Score pra ${proximo.nome}.`;
+---
+
+{
+  atual !== null && (
+    <div class="flex flex-col gap-2">
+      <ol class="flex items-end gap-1.5 sm:gap-2.5" aria-label="Escada de faixas do Hail Score">
+        {TITULOS_DO_HAIL_SCORE.map((faixa) => {
+          const ehAtual = faixa.nome === atual;
+
+          return (
+            <li class="flex flex-col items-center gap-1">
+              {/* O score do próprio degrau, não o do jogador: é o emblema
+                  daquela faixa que tem que aparecer, não cinco cópias da
+                  faixa atual. */}
+              <EmblemaDeRank
+                score={ehAtual ? score : faixa.minimo}
+                size={ehAtual ? Math.round(size * TAMANHO_DO_ATUAL) : size}
+                naRegua={ehAtual ? 'atual' : 'outro'}
+              />
+
+              <span
+                class={`text-[10px] leading-none whitespace-nowrap ${
+                  ehAtual ? 'text-slate-200 font-semibold' : 'text-slate-600'
+                }`}
+              >
+                {faixa.nome}
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+
+      {legenda && <p class="text-[11px] text-slate-500">{legenda}</p>}
+    </div>
+  )
+}
