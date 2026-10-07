@@ -61,8 +61,18 @@ export interface FocoDoCoach {
 export interface RecomendacaoDoCoach {
   /** Regras 1 e 6: sempre abre por aqui quando existe algo. */
   positivo: PontoPositivo | null;
-  /** Regras 2, 3 e 4. Null quando não há nada abaixo da meta. */
+  /** Regras 2, 3 e 4. Null quando não há o que apontar com nome próprio. */
   foco: FocoDoCoach | null;
+  /**
+   * O que ficou abaixo da meta, mesmo sem causa com nome próprio.
+   *
+   * Existe porque `foco` nulo tinha DOIS significados e a tela lia os dois
+   * como "está tudo certo": ou nada estava abaixo da meta, ou algo estava e
+   * o coach não sabia explicar. Em 32 das 179 noites da temporada o cartão
+   * dizia "Nada abaixo da meta do core" com dimensão abaixo dela — numa
+   * delas, Entregar em 17.
+   */
+  abaixoDaMeta: string[];
   /** Nenhuma dimensão tem dado — a lacuna é nossa, e a tela diz isso. */
   semDados: boolean;
 }
@@ -74,6 +84,15 @@ export interface RecomendacaoDoCoach {
  * "está bom?" fariam o cartão elogiar o que o card acusa.
  */
 const FORTE = 80;
+
+/**
+ * A meta cumprida.
+ *
+ * O score já é valor ÷ meta × 100, então 100 É a meta. `FORTE` não serve
+ * pra isso: usá-lo pra decidir se "há algo abaixo da meta" escondia tudo
+ * entre 80 e 99 e fazia o cartão elogiar quem estava devendo.
+ */
+const META = 100;
 
 /** Abaixo disto a variação é ruído de uma noite, não avanço. */
 const AVANCO_MINIMO = 4;
@@ -370,8 +389,15 @@ export function buildCoachRecommendation(
   const score = calculateOverallScore(noite, targets, funcaoDoRoster);
 
   if (score.overall === null) {
-    return { positivo: null, foco: null, semDados: true };
+    return { positivo: null, foco: null, abaixoDaMeta: [], semDados: true };
   }
+
+  // O que a tela precisa pra não elogiar quem está abaixo da meta, venha
+  // ou não um conselho com nome próprio depois.
+  const abaixoDaMeta = score.dimensions
+    .filter((d) => d.weight > 0 && d.score !== null && d.score < META)
+    .sort((a, b) => (a.score ?? 0) - (b.score ?? 0))
+    .map((d) => d.label);
 
   const positivo =
     (anterior
@@ -392,6 +418,7 @@ export function buildCoachRecommendation(
     return {
       positivo,
       semDados: false,
+      abaixoDaMeta,
       foco: {
         dimensao: dimensao.key,
         rotulo: dimensao.label,
@@ -401,5 +428,5 @@ export function buildCoachRecommendation(
     };
   }
 
-  return { positivo, foco: null, semDados: false };
+  return { positivo, foco: null, abaixoDaMeta, semDados: false };
 }

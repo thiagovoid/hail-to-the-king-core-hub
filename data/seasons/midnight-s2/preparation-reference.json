@@ -2,7 +2,7 @@
   "updatedAt": "2026-09-17T17:09:43.694Z",
   "source": "wowhead",
   "specs": {
-    "warrior|protecao": {
+    "warrior|protection": {
       "wowClass": "warrior",
       "spec": "Proteção",
       "role": "tank",
@@ -124,7 +124,7 @@
         }
       ]
     },
-    "death-knight|sangue": {
+    "death-knight|blood": {
       "wowClass": "death-knight",
       "spec": "Sangue",
       "role": "tank",
@@ -364,7 +364,7 @@
         }
       ]
     },
-    "shaman|restauracao": {
+    "shaman|restoration": {
       "wowClass": "shaman",
       "spec": "Restauração",
       "role": "healer",
@@ -496,7 +496,7 @@
         }
       ]
     },
-    "paladin|santo": {
+    "paladin|holy": {
       "wowClass": "paladin",
       "spec": "Santo",
       "role": "healer",
@@ -639,7 +639,7 @@
         }
       ]
     },
-    "mage|geada": {
+    "mage|frost": {
       "wowClass": "mage",
       "spec": "Geada",
       "role": "dps",
@@ -793,7 +793,7 @@
         }
       ]
     },
-    "warlock|aflicao": {
+    "warlock|affliction": {
       "wowClass": "warlock",
       "spec": "Aflição",
       "role": "dps",
@@ -921,13 +921,13 @@
         }
       ]
     },
-    "priest|sombra": {
+    "priest|shadow": {
       "wowClass": "priest",
-      "spec": "Sombra",
+      "spec": "Shadow",
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/priest/shadow/enchants-gems-pve-dps",
       "players": [
-        "Kroline"
+        "Ligiaf"
       ],
       "enchants": [
         {
@@ -1178,13 +1178,13 @@
         }
       ]
     },
-    "demon-hunter|devastacao": {
+    "demon-hunter|havoc": {
       "wowClass": "demon-hunter",
-      "spec": "Devastação",
+      "spec": "Havoc",
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/demon-hunter/havoc/enchants-gems-pve-dps",
       "players": [
-        "Heracranosx"
+        "Minort"
       ],
       "enchants": [
         {
@@ -1296,7 +1296,7 @@
         }
       ]
     },
-    "shaman|aperfeicoamento": {
+    "shaman|enhancement": {
       "wowClass": "shaman",
       "spec": "Aperfeiçoamento",
       "role": "dps",
@@ -1440,7 +1440,7 @@
         }
       ]
     },
-    "warrior|bracos": {
+    "warrior|arms": {
       "wowClass": "warrior",
       "spec": "Braços",
       "role": "dps",
@@ -1929,248 +1929,6 @@
             {
               "itemId": 255846,
               "name": "Harandar Celebration"
-            }
-          ]
-        }
-      ]
-    },
-    "priest|shadow": {
-      "wowClass": "priest",
-      "spec": "Shadow",
-      "role": "dps",
-      "url": "https://www.wowhead.com/guide/classes/priest/shadow/enchants-gems-pve-dps",
-      "players": [
-        "Ligiaf"
-      ],
-      "enchants": [
-        {
-          "slot": "Weapon",
-          "itemId": 244031,
-          "name": "Enchant Weapon - Arcane Mastery"
-        },
-        {
-          "slot": "Helm",
-          "itemId": 244007,
-          "name": "Enchant Helm - Empowered Rune of Avoidance"
-        },
-        {
-          "slot": "Chest",
-          "itemId": 243977,
-          "name": "Enchant Chest - Mark of the Worldsoul"
-        },
-        {
-          "slot": "Shoulders",
-          "itemId": 243963,
-          "name": "Enchant Shoulders - Akil'zon's Swiftness"
-        },
-        {
-          "slot": "Legs",
-          "itemId": 240133,
-          "name": "Sunfire Silk Spellthread"
-        },
-        {
-          "slot": "Boots",
-          "itemId": 243953,
-          "name": "Enchant Boots - Lynx's Dexterity"
-        },
-        {
-          "slot": "Ring",
-          "itemId": 243957,
-          "name": "Enchant Ring - Eyes of the Eagle"
-        }
-      ],
-      "gems": [
-        {
-          "slot": "Diamond",
-          "itemId": 240983,
-          "name": "Indecipherable Eversong Diamond"
-        },
-        {
-          "slot": "Other Gems",
-          "itemId": 240906,
-          "name": "Flawless Quick Garnet"
-        },
-        {
-          "slot": "Gems",
-          "itemId": 240892,
-          "name": "Flawless Masterful Peridot"
-        },
-        {
-          "slot": "Gems",
-          "itemId": 240898,
-          "name": "Flawless Deadly Amethyst"
-        }
-      ],
-      "consumables": [
-        {
-          "type": "Flask",
-          "items": [
-            {
-              "itemId": 241322,
-              "name": "Flask of the Magisters"
-            }
-          ]
-        },
-        {
-          "type": "Combat Potion",
-          "items": [
-            {
-              "itemId": 241288,
-              "name": "Potion of Recklessness"
-            }
-          ]
-        },
-        {
-          "type": "Health Potion",
-          "items": [
-            {
-              "itemId": 271884,
-              "name": "Concentrated Silvermoon Health Potion"
-            }
-          ]
-        },
-        {
-          "type": "Weapon Buff",
-          "items": [
-            {
-              "itemId": 243734,
-              "name": "Thalassian Phoenix Oil"
-            }
-          ]
-        },
-        {
-          "type": "Augment Rune",
-          "items": [
-            {
-              "itemId": 259085,
-              "name": "Void-Touched Augment Rune"
-            }
-          ]
-        },
-        {
-          "type": "Food",
-          "items": [
-            {
-              "itemId": 242273,
-              "name": "Blooming Feast"
-            }
-          ]
-        }
-      ]
-    },
-    "demon-hunter|havoc": {
-      "wowClass": "demon-hunter",
-      "spec": "Havoc",
-      "role": "dps",
-      "url": "https://www.wowhead.com/guide/classes/demon-hunter/havoc/enchants-gems-pve-dps",
-      "players": [
-        "Minort"
-      ],
-      "enchants": [
-        {
-          "slot": "Weapon",
-          "itemId": 273072,
-          "name": "Enchant Weapon - Rite of the Hash'ey"
-        },
-        {
-          "slot": "Helm",
-          "itemId": 244007,
-          "name": "Enchant Helm - Empowered Rune of Avoidance"
-        },
-        {
-          "slot": "Shoulder",
-          "itemId": 243991,
-          "name": "Enchant Shoulders - Amirdrassil's Grace"
-        },
-        {
-          "slot": "Chest",
-          "itemId": 243977,
-          "name": "Enchant Chest - Mark of the Worldsoul"
-        },
-        {
-          "slot": "Legs",
-          "itemId": 244641,
-          "name": "Forest Hunter's Armor Kit"
-        },
-        {
-          "slot": "Boots",
-          "itemId": 243953,
-          "name": "Enchant Boots - Lynx's Dexterity"
-        },
-        {
-          "slot": "Ring",
-          "itemId": 243957,
-          "name": "Enchant Ring - Eyes of the Eagle"
-        }
-      ],
-      "gems": [
-        {
-          "slot": "Eversong Diamond",
-          "itemId": 240983,
-          "name": "Indecipherable Eversong Diamond"
-        },
-        {
-          "slot": "Other Gems",
-          "itemId": 240908,
-          "name": "Flawless Masterful Garnet"
-        }
-      ],
-      "consumables": [
-        {
-          "type": "Flask",
-          "items": [
-            {
-              "itemId": 241326,
-              "name": "Flask of the Shattered Sun"
-            }
-          ]
-        },
-        {
-          "type": "Combat Potion",
-          "items": [
-            {
-              "itemId": 241288,
-              "name": "Potion of Recklessness"
-            }
-          ]
-        },
-        {
-          "type": "Health Potion",
-          "items": [
-            {
-              "itemId": 271884,
-              "name": "Concentrated Silvermoon Health Potion"
-            }
-          ]
-        },
-        {
-          "type": "Weapon Buffs",
-          "items": [
-            {
-              "itemId": 243734,
-              "name": "Thalassian Phoenix Oil"
-            }
-          ]
-        },
-        {
-          "type": "Augment Rune",
-          "items": [
-            {
-              "itemId": 259085,
-              "name": "Void-Touched Augment Rune"
-            }
-          ]
-        },
-        {
-          "type": "Food",
-          "items": [
-            {
-              "itemId": 242275,
-              "name": "Royal Roast"
-            },
-            {
-              "itemId": 242747,
-              "name": "Hearty Royal Roast"
             }
           ]
         }

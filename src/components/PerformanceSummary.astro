@@ -28,7 +28,7 @@ const cards = [
   // número ao lado de "Bosses mortos" e "Mortes" tem que ser da mesma
   // natureza. A média por try continua no Score Geral e no objetivo.
   average.mechanics !== undefined
-    ? { label: 'Erros mecânicos', value: String(average.errosMecanicosNaSeason) }
+    ? { label: 'Mecânicas', value: String(average.errosMecanicosNaSeason) }
     : null,
   average.itemLevel !== undefined ? { label: 'Item Level', value: String(average.itemLevel) } : null,
 ].filter((card) => card !== null);
@@ -44,7 +44,7 @@ const cards = [
       Média de {average.runs} run(s) registrada(s). Item Level é o último
       registrado, não uma média. Bosses mortos é o total de kills com
       você presente na try, contando repetição: três clears do mesmo boss
-      contam três. Mortes e Erros mecânicos são totais da temporada, não médias por run — a
+      contam três. Mortes e Mecânicas são totais da temporada, não médias por run — a
       média por try fica no Score Geral.
     </p>
   </div>

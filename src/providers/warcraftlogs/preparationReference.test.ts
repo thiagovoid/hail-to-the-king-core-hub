@@ -29,9 +29,23 @@ function entry(overrides: Partial<PreparationReferenceEntry> = {}): PreparationR
 }
 
 describe("specKey", () => {
-  it("normaliza acento e caixa, pra spec em PT casar com a chave gravada", () => {
-    expect(specKey("Warrior", "Proteção")).toBe("warrior|protecao");
-    expect(specKey("warrior", "protecao")).toBe("warrior|protecao");
+  /**
+   * A chave não depende da GRAFIA da spec.
+   *
+   * O roster tinha "Proteção" e "Protection", "Sombra" e "Shadow" — duas
+   * grafias da mesma coisa gerando duas chaves. O arquivo de referência
+   * chegou a ter DUAS entradas pro mesmo priest, uma por grafia.
+   */
+  it("dá a mesma chave pra spec em PT e em EN", () => {
+    expect(specKey("Warrior", "Proteção")).toBe("warrior|protection");
+    expect(specKey("warrior", "Protection")).toBe("warrior|protection");
+    expect(specKey("Priest", "Sombra")).toBe(specKey("priest", "Shadow"));
+    expect(specKey("demon-hunter", "Devastação")).toBe(specKey("demon-hunter", "Havoc"));
+  });
+
+  it("ainda normaliza acento e caixa do que não está no mapa", () => {
+    // Spec nova que o mapa não conhece não pode virar chave vazia.
+    expect(specKey("Warrior", "Spec Inventada")).toBe("warrior|spec inventada");
   });
 });
 

@@ -11,6 +11,7 @@
  * consumíveis mais abaixo.
  */
 
+import { resolveSpecSlug } from "../wowhead/specSlug";
 import type { PreparationChecklist } from "./preparation";
 
 export interface WowheadItemRef {
@@ -44,8 +45,21 @@ export function normalizeKeyPart(value: string): string {
     .trim();
 }
 
+/**
+ * A chave não depende da GRAFIA da spec.
+ *
+ * O roster tinha "Proteção" e "Protection", "Sombra" e "Shadow" — duas
+ * grafias da mesma coisa gerando duas chaves, e a referência do guia só
+ * existe numa delas. Canonizando pelo mapa que o specSlug já mantém, o
+ * idioma do cadastro deixa de importar.
+ */
+function canonizarSpec(spec: string): string {
+  const limpo = normalizeKeyPart(spec);
+  return resolveSpecSlug("", spec) ?? limpo;
+}
+
 export function specKey(wowClass: string, spec: string): string {
-  return `${normalizeKeyPart(wowClass)}|${normalizeKeyPart(spec)}`;
+  return `${normalizeKeyPart(wowClass)}|${canonizarSpec(spec)}`;
 }
 
 /** Tipo de consumível no guia → chave da checagem. */

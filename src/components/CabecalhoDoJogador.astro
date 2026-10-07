@@ -70,20 +70,20 @@ const numeros = average
   ? [
       average.dps !== undefined
         ? {
-            rotulo: 'DPS',
+            rotulo: 'DPS médio',
             valor: formatPerformanceValue(average.dps),
             explica: `Média das ${average.runs} noites registradas.`,
           }
         : null,
       average.hps !== undefined
         ? {
-            rotulo: 'HPS',
+            rotulo: 'HPS médio',
             valor: formatPerformanceValue(average.hps),
             explica: `Média das ${average.runs} noites registradas.`,
           }
         : null,
       {
-        rotulo: 'Bosses',
+        rotulo: 'Kills',
         valor: String(average.bossesMortos),
         explica:
           'Kills com você presente na try, contando repetição: três clears do mesmo boss contam três.',
@@ -107,7 +107,7 @@ const numeros = average
       },
       average.mechanics !== undefined
         ? {
-            rotulo: 'Erros mec.',
+            rotulo: 'Mecânicas',
             valor: String(average.errosMecanicosNaSeason),
             explica: 'Total da temporada. A média por try é o que entra no Score.',
           }

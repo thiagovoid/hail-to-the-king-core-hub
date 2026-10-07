@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { recomendacao } = Astro.props;
-const { positivo, foco, semDados } = recomendacao;
+const { positivo, foco, semDados, abaixoDaMeta } = recomendacao;
 ---
 
 <section class="mb-10">
@@ -54,7 +54,25 @@ const { positivo, foco, semDados } = recomendacao;
           </div>
         )}
 
-        {foco === null ? (
+        {/* Três estados, não dois.
+
+            "Sem foco" tinha DOIS significados e a tela lia os dois como
+            elogio: ou nada estava abaixo da meta, ou algo estava e o coach
+            não sabia explicar. Em 32 das 179 noites o cartão dizia "nada
+            abaixo da meta" com dimensão abaixo dela — numa delas, Entregar
+            em 17. Agora o silêncio do coach não vira aprovação. */}
+        {foco === null && abaixoDaMeta.length > 0 ? (
+          <div class="p-5">
+            <p class="text-sm text-slate-300 leading-relaxed">
+              <span class="text-slate-400">Abaixo da meta nesta noite:</span>{' '}
+              {abaixoDaMeta.join(', ')}.
+            </p>
+            <p class="text-xs text-slate-500 leading-relaxed mt-2">
+              Não dá pra apontar uma causa com nome próprio aqui — o detalhe que explicaria
+              não foi coletado nesta noite. O gráfico acima mostra a evolução de cada uma.
+            </p>
+          </div>
+        ) : foco === null ? (
           <div class="p-5">
             <p class="text-sm text-slate-300 leading-relaxed">
               Nada abaixo da meta do core nesta noite. Daqui pra frente a régua é você contra você —

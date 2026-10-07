@@ -205,7 +205,7 @@ describe("quando não há o que dizer", () => {
   it("assume a lacuna em vez de cobrar o jogador", () => {
     const vazia: NoiteDoCoach = { playerId: "a", deaths: 0 };
 
-    expect(coach(vazia)).toEqual({ positivo: null, foco: null, semDados: true });
+    expect(coach(vazia)).toEqual({ positivo: null, foco: null, abaixoDaMeta: [], semDados: true });
   });
 
   it("não aponta foco nenhum quando tudo está forte", () => {
@@ -235,5 +235,60 @@ describe("nunca compara com outro jogador", () => {
     expect(buildCoachRecommendation(NOITE, undefined, TARGETS, "dps")).toEqual(
       buildCoachRecommendation({ ...NOITE }, undefined, TARGETS, "dps")
     );
+  });
+});
+
+describe("o que está abaixo da meta", () => {
+  /**
+   * O defeito: `foco` nulo tinha DOIS significados e a tela lia os dois como
+   * elogio — ou nada estava abaixo da meta, ou algo estava e o coach não
+   * sabia explicar. Em 32 das 179 noites da temporada o cartão dizia "Nada
+   * abaixo da meta do core" com dimensão abaixo dela. Numa delas, Entregar
+   * em 17.
+   */
+  it("lista o que está abaixo da meta mesmo sem causa com nome próprio", () => {
+    // DPS (ex-"Entregar") não tem como virar conselho: não existe detalhe coletado que
+    // explique "por que seu dps ficou abaixo do sim".
+    const noite = {
+      playerId: "a",
+      dps: 10,
+      simTarget: 100,
+      mechanics: { errors: 0, tries: 10 },
+    } as never;
+
+    const r = buildCoachRecommendation(noite, undefined, TARGETS, "dps");
+
+    expect(r.foco).toBeNull();
+    expect(r.abaixoDaMeta).toContain("DPS");
+  });
+
+  /**
+   * O corte de "fraca" é 80, mas a META é 100 — o score já é
+   * valor ÷ meta × 100. Tudo entre 80 e 99 está devendo e ficava invisível.
+   */
+  it("conta como abaixo da meta o que está entre 80 e 99", () => {
+    const noite = {
+      playerId: "a",
+      dps: 70,
+      simTarget: 100,
+      mechanics: { errors: 0, tries: 10 },
+    } as never;
+
+    const r = buildCoachRecommendation(noite, undefined, TARGETS, "dps");
+    const entregar = r.abaixoDaMeta.includes("DPS");
+
+    // 70 de um sim de 100, contra meta de 75%: score 93 — devendo.
+    expect(entregar).toBe(true);
+  });
+
+  it("fica em silêncio de verdade quando nada está abaixo da meta", () => {
+    const noite = {
+      playerId: "a",
+      dps: 200,
+      simTarget: 100,
+      mechanics: { errors: 0, tries: 10 },
+    } as never;
+
+    expect(buildCoachRecommendation(noite, undefined, TARGETS, "dps").abaixoDaMeta).toEqual([]);
   });
 });

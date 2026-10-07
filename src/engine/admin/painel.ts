@@ -143,8 +143,8 @@ const COLUNAS = [
   },
   {
     chave: "deliver",
-    rotulo: "Entr",
-    titulo: "Entregar",
+    rotulo: "DPS",
+    titulo: "DPS",
     explica: (alvo: never) => [
       oQueE(
         "Quanto do <strong>seu próprio sim</strong> do Raidbots você entregou. A régua é você, não o core — o sim é recalculado conforme você se equipa."

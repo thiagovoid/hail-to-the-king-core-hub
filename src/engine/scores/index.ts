@@ -265,7 +265,7 @@ const DIMENSION_META: Record<
       "Warcraft Logs (cada cast da noite) + Wowhead (recarga de cada magia), sobre uma lista curada de utilidade de grupo. Defensivo e cooldown de dano ficam de fora: já contam em Defender e Atacar.",
   },
   deliver: {
-    label: "Entregar",
+    label: "DPS",
     unit: "% do seu sim",
     description:
       "Quanto do SEU potencial você entregou: o dano da noite contra a simulação que o Raidbots fez do seu personagem, com o seu equipamento e os seus talentos. Não é comparação com ninguém — é você contra o teto do seu próprio boneco.",
