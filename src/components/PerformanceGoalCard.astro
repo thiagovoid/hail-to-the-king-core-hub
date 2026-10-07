@@ -3,6 +3,7 @@
 import type { PerformanceGoal } from '@/types/goals';
 import { calculateGoalProgress } from '@/engine/metrics';
 import { formatPerformanceValue } from '@/engine/metrics';
+import { formatDecimalBr } from '@/utils/format';
 
 interface Props {
   label: string;
@@ -29,7 +30,9 @@ const formatValue = (value: number) => {
     return formatPerformanceValue(value);
   }
 
-  return String(value);
+  // Vírgula decimal, como o resto da página: aqui saía "3.5" ao lado de
+  // "1,9" na mesma ficha.
+  return formatDecimalBr(value);
 };
 ---
 

@@ -112,6 +112,26 @@ function unidade(valor: number, unit: string): string {
   return Math.round(valor * 10) === 10 ? unit.replace("erros", "erro") : unit;
 }
 
+/**
+ * "95,6% do seu sim", não "95,6 % do seu sim".
+ *
+ * A unidade é escrita como frase ("% do seu sim", "erros por try") porque é
+ * assim que ela aparece sozinha embaixo do número no cartão. Dentro de uma
+ * frase do coach, porém, o "%" é sufixo do número, não palavra à parte: cola.
+ */
+function comUnidade(valor: number, unit: string): string {
+  const texto = unidade(valor, unit);
+  return texto.startsWith("%") ? `${numero(valor)}${texto}` : `${numero(valor)} ${texto}`;
+}
+
+/**
+ * Só o símbolo, pra repetir a régua sem repetir a frase inteira.
+ *
+ * "em 95,6% do seu sim — a meta do core é 75%" fecha; sem o símbolo o segundo
+ * número sai pelado e parece estar em outra escala.
+ */
+const simbolo = (unit: string): string => (unit.startsWith("%") ? "%" : "");
+
 function dimensaoDe(
   score: OverallPerformanceScore,
   chave: ScoreDimensionKey
@@ -221,9 +241,9 @@ function acharAvanco(
   return {
     tipo: "avanco",
     dimensao: dimensao.key,
-    texto: `${dimensao.label} ${subiu ? "subiu" : "caiu"} de ${numero(anterior)} para ${numero(
-      dimensao.value as number
-    )} ${unidade(dimensao.value as number, dimensao.unit)} desde a noite anterior.`,
+    texto: `${dimensao.label} ${subiu ? "subiu" : "caiu"} de ${numero(
+      anterior
+    )} para ${comUnidade(dimensao.value as number, dimensao.unit)} desde a noite anterior.`,
   };
 }
 
@@ -252,9 +272,10 @@ function acharDestaque(score: OverallPerformanceScore): PontoPositivo | null {
   return {
     tipo: "destaque",
     dimensao: melhor.key,
-    texto: `${melhor.label} em ${numero(melhor.value)} ${unidade(melhor.value, melhor.unit)} — a meta do core é ${numero(
-      melhor.target.target
-    )}.`,
+    texto: `${melhor.label} em ${comUnidade(
+      melhor.value,
+      melhor.unit
+    )} — a meta do core é ${numero(melhor.target.target)}${simbolo(melhor.unit)}.`,
   };
 }
 

@@ -287,7 +287,7 @@ describe("conquistas de uma noite só", () => {
     expect(quantas(weeks, "esqueceu-um", "guardando-pro-inverno")).toBe(0);
     expect(quantas(weeks, "esqueceu-um", "cooldown-de-estimacao")).toBe(1);
     expect(detalheDe(weeks, "esqueceu-um", "cooldown-de-estimacao")).toBe(
-      "Imposicao das Maos, 0.6% da noite"
+      "Imposicao das Maos, 0,6% da noite"
     );
   });
 
@@ -404,7 +404,7 @@ describe("conquistas de uma noite só", () => {
     ];
 
     expect(quantas(weeks, "economico", "sem-sobra")).toBe(1);
-    expect(detalheDe(weeks, "economico", "sem-sobra")).toBe("19.8% de desperdício");
+    expect(detalheDe(weeks, "economico", "sem-sobra")).toBe("19,8% de desperdício");
     expect(quantas(weeks, "esbanjador", "sem-sobra")).toBe(0);
   });
 });

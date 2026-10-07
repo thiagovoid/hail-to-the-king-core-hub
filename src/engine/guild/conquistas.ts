@@ -22,6 +22,7 @@ import type { PerformanceRun, PlayerPerformance, WeeklyPerformance } from "../..
 import type { CorePerformanceTargets } from "../../types/index";
 import { calculateOverallScore, funcaoEfetiva, type FuncaoDoJogador } from "../scores";
 import { NIVEIS, type NivelDeConteudo } from "../scores/prontidao";
+import { formatDecimalBr } from "../../utils/format";
 
 export type SimboloDeConquista =
   | "coroa"
@@ -1071,7 +1072,7 @@ function vencedoresDaRun(
     "sem-sobra",
     comDetalhe((p) =>
       p.healing !== undefined && p.healing.overheal < CORTE.semSobra
-        ? `${p.healing.overheal}% de desperdício`
+        ? `${formatDecimalBr(p.healing.overheal)}% de desperdício`
         : null
     )
   );
@@ -1121,7 +1122,7 @@ function vencedoresDaRun(
     "guardando-pro-inverno",
     comDetalhe((p) =>
       p.defense?.score != null && p.defense.score < 8
-        ? `kit defensivo em ${p.defense.score}% da noite`
+        ? `kit defensivo em ${formatDecimalBr(p.defense.score)}% da noite`
         : null
     )
   );
@@ -1137,7 +1138,7 @@ function vencedoresDaRun(
       if ((p.defense?.score ?? 0) < 25) return null;
       const parado = [...(p.defenseDetail ?? [])].sort((a, b) => a.efficiency - b.efficiency)[0];
       return parado && parado.efficiency < 5
-        ? `${parado.name}, ${parado.efficiency}% da noite`
+        ? `${parado.name}, ${formatDecimalBr(parado.efficiency)}% da noite`
         : null;
     })
   );
