@@ -128,7 +128,7 @@ export function calculateMetricValue(totalAmount: number, aggregateDurationMs: n
 const RACE_TRANSLATIONS: Record<string, string> = {
   Human: "Humano",
   Dwarf: "Anão",
-  "Night Elf": "Elfo da Noite",
+  "Night Elf": "Elfo Noturno",
   Gnome: "Gnomo",
   Draenei: "Draenei",
   Worgen: "Worgen",
