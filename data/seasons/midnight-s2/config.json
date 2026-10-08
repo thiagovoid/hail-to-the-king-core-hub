@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "Abismo Venenoso",
-    "lastUpdated": "2026-10-02T14:25:45.523Z",
+    "lastUpdated": "2026-10-08T16:43:41.930Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -349,7 +349,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 14,
+      "pullsTotal": 15,
       "pullLog": [
         {
           "reportCode": "6BcGTrAN7HaPx431",
@@ -380,6 +380,12 @@
           "date": "2026-09-29",
           "pulls": 1,
           "kill": true
+        },
+        {
+          "reportCode": "7RbwxFCL1nGMDA8m",
+          "date": "2026-10-07",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -396,7 +402,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 16,
+      "pullsTotal": 17,
       "pullLog": [
         {
           "reportCode": "P1nLMzCrHmgDpWT2",
@@ -421,6 +427,12 @@
           "date": "2026-09-29",
           "pulls": 1,
           "kill": true
+        },
+        {
+          "reportCode": "7RbwxFCL1nGMDA8m",
+          "date": "2026-10-07",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -437,7 +449,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 2,
+      "pullsTotal": 3,
       "pullLog": [
         {
           "reportCode": "g3rQ28mdTZ4PHBkb",
@@ -448,6 +460,12 @@
         {
           "reportCode": "HYt1q2DfP7KxrNhz",
           "date": "2026-09-29",
+          "pulls": 1,
+          "kill": true
+        },
+        {
+          "reportCode": "7RbwxFCL1nGMDA8m",
+          "date": "2026-10-07",
           "pulls": 1,
           "kill": true
         }
@@ -466,7 +484,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 7,
+      "pullsTotal": 8,
       "pullLog": [
         {
           "reportCode": "g3rQ28mdTZ4PHBkb",
@@ -485,6 +503,12 @@
           "date": "2026-09-29",
           "pulls": 1,
           "kill": true
+        },
+        {
+          "reportCode": "7RbwxFCL1nGMDA8m",
+          "date": "2026-10-07",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -501,7 +525,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 15,
+      "pullsTotal": 16,
       "pullLog": [
         {
           "reportCode": "8QcYvqHxF7Vhrn1K",
@@ -514,6 +538,12 @@
           "date": "2026-09-29",
           "pulls": 2,
           "kill": true
+        },
+        {
+          "reportCode": "7RbwxFCL1nGMDA8m",
+          "date": "2026-10-07",
+          "pulls": 1,
+          "kill": true
         }
       ]
     },
@@ -522,7 +552,7 @@
       "name": "As Presas Gêmeas",
       "encounterID": 3421,
       "status": "progress",
-      "pulls": 21,
+      "pulls": 22,
       "bestPullPercent": null,
       "killDate": null,
       "links": {
@@ -530,7 +560,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 21,
+      "pullsTotal": 22,
       "pullLog": [
         {
           "reportCode": "HYt1q2DfP7KxrNhz",
@@ -542,6 +572,12 @@
           "reportCode": "KLXZcaTfhq1n4RCA",
           "date": "2026-10-01",
           "pulls": 16,
+          "kill": false
+        },
+        {
+          "reportCode": "7RbwxFCL1nGMDA8m",
+          "date": "2026-10-07",
+          "pulls": 1,
           "kill": false
         }
       ]
@@ -580,6 +616,11 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-10-07",
+      "url": "https://www.warcraftlogs.com/reports/7RbwxFCL1nGMDA8m",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-10-01",
       "url": "https://www.warcraftlogs.com/reports/KLXZcaTfhq1n4RCA",

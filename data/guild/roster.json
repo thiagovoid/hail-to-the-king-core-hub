@@ -815,5 +815,57 @@
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Perdida%C3%A7o"
     }
+  },
+  {
+    "id": "jokertinha",
+    "name": "Jokertinha",
+    "class": "warrior",
+    "race": "Anão",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/48/203548720-avatar.jpg?alt=/wow/static/images/2d/avatar/3-0.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/azralon/Jokertinha"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Jokertinha"
+    }
+  },
+  {
+    "id": "rhoregor",
+    "name": "Rhoregor",
+    "class": "warlock",
+    "race": "Humano",
+    "spec": "",
+    "heroSpec": null,
+    "role": "dps",
+    "type": "alt",
+    "status": "trial",
+    "discord": null,
+    "avatar": "https://render.worldofwarcraft.com/us/character/azralon/218/197678298-avatar.jpg?alt=/wow/static/images/2d/avatar/1-1.jpg",
+    "raiderIo": {
+      "io": null,
+      "bestDungeon": null,
+      "highestKey": null,
+      "realmRank": null,
+      "profileUrl": "https://raider.io/characters/us/azralon/Rhoregor"
+    },
+    "warcraftLogs": {
+      "avgParse": null,
+      "bestParse": null,
+      "attendance": null,
+      "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Rhoregor"
+    }
   }
 ]
