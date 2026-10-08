@@ -486,14 +486,17 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     frequência: em quantas trys ela foi errada. O denominador
                     responde "de quantas?" sem a pessoa procurar. */}
                 {dimension.key === 'mechanics' && mecanicasFecham && (
-                  <p class="text-[11px] text-slate-500 leading-relaxed mb-1">
-                    <span class="text-slate-400">
-                      Os {formatDecimalBr(valorDeMecanicas!)} erros por try
-                    </span>
-                    {` são ${somaDasMecanicas} ÷ ${nightTries} trys. Dentro de uma mesma try, a mecânica que te pega cinco vezes conta uma.`}
-                    {mechanicsDetail.length > MAX_NA_LISTA &&
-                      ` Abaixo, as ${MAX_NA_LISTA} que mais pegaram.`}
-                  </p>
+                  <div class="nota">
+                    <span class="nota-icone" aria-hidden="true">i</span>
+                    <p class="nota-texto">
+                      <span class="text-slate-300">
+                        Os {formatDecimalBr(valorDeMecanicas!)} erros por try
+                      </span>
+                      {` são ${somaDasMecanicas} ÷ ${nightTries} trys. Dentro de uma mesma try, a mecânica que te pega cinco vezes conta uma.`}
+                      {mechanicsDetail.length > MAX_NA_LISTA &&
+                        ` Abaixo, as ${MAX_NA_LISTA} que mais pegaram.`}
+                    </p>
+                  </div>
                 )}
 
                 {dimension.key === 'mechanics' && mechanicsDetail.length > 0 && (
@@ -540,8 +543,10 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     uma atrás da outra: dá pra ter uptime cheio sem nunca
                     gastar o cooldown grande. */}
                 {dimension.key === 'attack' && attackParts !== null && (
-                  <p class="text-[11px] text-slate-500 leading-relaxed">
-                    <span class="text-slate-400">Uptime {formatDecimalBr(attackParts.uptime)}%</span>
+                  <div class="nota">
+                    <span class="nota-icone" aria-hidden="true">i</span>
+                    <p class="nota-texto">
+                    <span class="text-slate-300">Uptime {formatDecimalBr(attackParts.uptime)}%</span>
                     {attackParts.cooldowns !== null ? (
                       <>
                         {' · cooldowns '}
@@ -559,7 +564,8 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     ) : (
                       ' · sem cooldown ofensivo medido na noite, então a execução é o uptime sozinho'
                     )}
-                  </p>
+                    </p>
+                  </div>
                 )}
 
                 {/* Contexto, não nota: a mitigação ficou entre 38% e 48% pro
@@ -568,16 +574,48 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     frequência: quem cobre mais costuma desperdiçar mais.
                     Mostrar só o resultado esconderia justamente isso. */}
                 {dimension.key === 'healing' && healingParts !== null && (
-                  <p class="text-[11px] text-slate-500 leading-relaxed">
-                    <span class="text-slate-400">
-                      Cobriu {formatDecimalBr(healingParts.coverage)}% do dano que o raide tomou
-                    </span>
-                    {' · '}
-                    {formatDecimalBr(healingParts.share)}% do quinhão, que é essa cobertura
-                    comparada com a média dos healers da noite
-                    {' · '}
-                    {formatDecimalBr(healingParts.overheal)}% da cura caiu em quem já estava cheio
-                  </p>
+                  <div class="nota">
+                    <span class="nota-icone" aria-hidden="true">i</span>
+                    <p class="nota-texto">
+                      <span class="text-slate-300">
+                        Cobriu {formatDecimalBr(healingParts.coverage)}% do dano que o raide tomou
+                      </span>
+                      {' · '}
+                      {formatDecimalBr(healingParts.share)}% do quinhão, que é essa cobertura
+                      comparada com a média dos healers da noite
+                      {' · '}
+                      {formatDecimalBr(healingParts.overheal)}% da cura caiu em quem já estava cheio
+                    </p>
+                  </div>
+                )}
+
+                {dimension.key === 'defense' && (defenderComMitigacao || defenderSoCooldowns) && (
+                  <div class="nota">
+                    <span class="nota-icone" aria-hidden="true">i</span>
+                    <p class="nota-texto">
+                      <span class="text-slate-300">
+                        Os {formatDecimalBr(valorDeDefender!)}% de execução
+                      </span>
+                      {defenderComMitigacao ? (
+                        <>
+                          {' são a média de duas metades: a recarga '}
+                          {defenseDetail.length === 1
+                            ? 'do seu único defensivo'
+                            : `dos seus ${defenseDetail.length} defensivos`}
+                          {` (${formatDecimalBr(mediaDosDefensivos!)}) e a sua mitigação contra a meta de ${MITIGACAO_DO_TANQUE}% do core (${formatDecimalBr(notaDaMitigacao!)}).`}
+                        </>
+                      ) : (
+                        <>
+                          {' são a média da recarga '}
+                          {defenseDetail.length === 1
+                            ? 'do único defensivo que você usou.'
+                            : `dos ${defenseDetail.length} defensivos que você usou.`}
+                        </>
+                      )}
+                      {defenseDetail.length > MAX_NA_LISTA &&
+                        ` Abaixo, os ${MAX_NA_LISTA} piores aproveitados.`}
+                    </p>
+                  </div>
                 )}
 
                 {dimension.key === 'defense' && defenseContext !== null && (
@@ -641,32 +679,6 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                       </li>
                     ))}
                   </ul>
-                )}
-
-                {dimension.key === 'defense' && (defenderComMitigacao || defenderSoCooldowns) && (
-                  <p class="text-[11px] text-slate-500 leading-relaxed mt-1">
-                    <span class="text-slate-400">
-                      Os {formatDecimalBr(valorDeDefender!)}% de execução
-                    </span>
-                    {defenderComMitigacao ? (
-                      <>
-                        {' são a média de duas metades: a recarga '}
-                        {defenseDetail.length === 1
-                          ? 'do seu único defensivo'
-                          : `dos seus ${defenseDetail.length} defensivos`}
-                        {` (${formatDecimalBr(mediaDosDefensivos!)}) e a sua mitigação contra a meta de ${MITIGACAO_DO_TANQUE}% do core (${formatDecimalBr(notaDaMitigacao!)}).`}
-                      </>
-                    ) : (
-                      <>
-                        {' são a média da recarga '}
-                        {defenseDetail.length === 1
-                          ? 'do único defensivo que você usou.'
-                          : `dos ${defenseDetail.length} defensivos que você usou.`}
-                      </>
-                    )}
-                    {defenseDetail.length > MAX_NA_LISTA &&
-                      ` Abaixo, os ${MAX_NA_LISTA} piores aproveitados.`}
-                  </p>
                 )}
 
                 {(dimension.key === 'attack' || dimension.key === 'defense') && (
@@ -738,5 +750,44 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
     border-left: 1px solid rgb(30 41 59);
     margin-left: 0.25rem;
     margin-top: 0.375rem;
+  }
+
+  /* A explicação de onde o número vem, separada do número em si.
+     Corrido, os dois tinham o mesmo peso e a conta se perdia no meio da
+     lista de mecânicas. Aqui ela abre o bloco, emoldurada, e o dado vem
+     embaixo. */
+  .nota {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4375rem;
+    padding: 0.4375rem 0.5625rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgb(148 163 184 / 0.12);
+    border-left: 2px solid rgb(240 165 0 / 0.5);
+    border-radius: 0.375rem;
+    background: rgb(148 163 184 / 0.05);
+  }
+
+  /* O mesmo "i" redondo do tooltip: quem já aprendeu que ali mora
+     explicação reconhece sem ler. */
+  .nota-icone {
+    flex: none;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-top: 0.125rem;
+    border: 1px solid rgb(240 165 0 / 0.55);
+    border-radius: 9999px;
+    color: #f0a500;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    line-height: 0.75rem;
+    text-align: center;
+  }
+
+  .nota-texto {
+    margin: 0;
+    font-size: 0.6875rem;
+    line-height: 1.55;
+    color: rgb(148 163 184);
   }
 </style>
