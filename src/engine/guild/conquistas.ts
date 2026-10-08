@@ -401,7 +401,7 @@ export const CONQUISTAS: DefinicaoDeConquista[] = [
   {
     id: "dieta",
     nome: "Dieta",
-    como: "Chegar sem flask, sem comida e sem poção. Jejum de raide.",
+    como: "Chegar sem frasco, sem comida e sem poção. Jejum de raide.",
     simbolo: "maca",
     tipo: "zoeira",
     disputada: false,
