@@ -1,5 +1,5 @@
 ---
-import type { OverallPerformanceScore } from '@/engine/scores';
+import { MITIGACAO_DO_TANQUE, type OverallPerformanceScore } from '@/engine/scores';
 import { formatDecimalBr, formatDuracao, formatThousands } from '@/utils/format';
 import ScoreDimensionRow from '@/components/ScoreDimensionRow.astro';
 import InfoTooltip from '@/components/InfoTooltip.astro';
@@ -93,6 +93,61 @@ const {
   healingParts = null,
   funcao = null,
 } = Astro.props;
+
+/**
+ * Quantos cooldowns a lista mostra.
+ *
+ * Ela vem do pior aproveitado pro melhor, então os primeiros são o que
+ * treinar — despejar os sete de um Blood DK empurraria o resto da ficha pra
+ * baixo sem dizer mais nada. O corte mora aqui, e não na página, porque a
+ * frase acima da lista precisa do tamanho REAL pra dizer de quantos
+ * cooldowns a nota é média.
+ */
+const MAX_NA_LISTA = 3;
+
+/** Uma casa decimal — a mesma régua com que os números da noite foram gravados. */
+const umaCasa = (valor: number) => Math.round(valor * 10) / 10;
+
+/**
+ * As contas por trás de cada número, conferidas contra o próprio número.
+ *
+ * Cada frase abaixo só aparece se a conta FECHAR com o valor que está na
+ * linha. É proteção contra o erro de explicar uma fórmula que o código não
+ * usa: a nota de Defender, por exemplo, é só a recarga dos cooldowns pra
+ * quase todo mundo e vira média com a mitigação quando o jogador é tank —
+ * ler só um dos dois arquivos leva a descrever a metade errada.
+ */
+const mediaDosDefensivos =
+  defenseDetail.length > 0
+    ? umaCasa(defenseDetail.reduce((soma, d) => soma + d.efficiency, 0) / defenseDetail.length)
+    : null;
+
+const notaDaMitigacao =
+  defenseContext !== null
+    ? umaCasa(Math.min(100, (defenseContext.mitigation / MITIGACAO_DO_TANQUE) * 100))
+    : null;
+
+const valorDeDefender = score.dimensions.find((d) => d.key === 'defense')?.value ?? null;
+
+const fecha = (a: number | null, b: number | null) =>
+  a !== null && b !== null && Math.abs(a - b) < 0.06;
+
+/** Tank: a nota é a média da recarga com a mitigação. */
+const defenderComMitigacao =
+  mediaDosDefensivos !== null &&
+  notaDaMitigacao !== null &&
+  fecha(valorDeDefender, umaCasa((mediaDosDefensivos + notaDaMitigacao) / 2));
+
+/** Todo o resto: a nota É a média da recarga, e nada mais. */
+const defenderSoCooldowns = !defenderComMitigacao && fecha(valorDeDefender, mediaDosDefensivos);
+
+const somaDasMecanicas = mechanicsDetail.reduce((soma, m) => soma + m.tries, 0);
+const valorDeMecanicas = score.dimensions.find((d) => d.key === 'mechanics')?.value ?? null;
+const mecanicasFecham =
+  nightTries !== null &&
+  nightTries > 0 &&
+  mechanicsDetail.length > 0 &&
+  fecha(valorDeMecanicas, umaCasa(somaDasMecanicas / nightTries));
 
 const scoreTextColor = (value: number) =>
   value >= 80 ? 'text-emerald-400' : value >= 50 ? 'text-amber-400' : 'text-red-400';
@@ -430,9 +485,20 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                 {/* "x11" fazia o número parecer quantidade da habilidade. É
                     frequência: em quantas trys ela foi errada. O denominador
                     responde "de quantas?" sem a pessoa procurar. */}
+                {dimension.key === 'mechanics' && mecanicasFecham && (
+                  <p class="text-[11px] text-slate-500 leading-relaxed mb-1">
+                    <span class="text-slate-400">
+                      Os {formatDecimalBr(valorDeMecanicas!)} erros por try
+                    </span>
+                    {` são ${somaDasMecanicas} ÷ ${nightTries} trys. Dentro de uma mesma try, a mecânica que te pega cinco vezes conta uma.`}
+                    {mechanicsDetail.length > MAX_NA_LISTA &&
+                      ` Abaixo, as ${MAX_NA_LISTA} que mais pegaram.`}
+                  </p>
+                )}
+
                 {dimension.key === 'mechanics' && mechanicsDetail.length > 0 && (
                   <ul class="space-y-1">
-                    {mechanicsDetail.map((item) => (
+                    {mechanicsDetail.slice(0, MAX_NA_LISTA).map((item) => (
                       <li class="text-[11px] text-slate-500 leading-relaxed">
                         <span class="text-slate-400">
                           {item.label ?? item.mechanic.replace('Damage from ', '')}
@@ -476,10 +542,23 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                 {dimension.key === 'attack' && attackParts !== null && (
                   <p class="text-[11px] text-slate-500 leading-relaxed">
                     <span class="text-slate-400">Uptime {formatDecimalBr(attackParts.uptime)}%</span>
-                    {' · '}
-                    {attackParts.cooldowns !== null
-                      ? `cooldowns ${formatDecimalBr(attackParts.cooldowns)}% do tempo em recarga`
-                      : 'sem cooldown ofensivo medido na noite'}
+                    {attackParts.cooldowns !== null ? (
+                      <>
+                        {' · cooldowns '}
+                        {formatDecimalBr(attackParts.cooldowns)}% do tempo em recarga
+                        {attackDetail.length > 0 && ' (a média dos seus cooldowns ofensivos)'}
+                        {/* Sem repetir o número da linha: o score é calculado
+                            antes do arredondamento e as duas metades depois,
+                            então em 39 noites da temporada a soma das metades
+                            exibidas dá 0,1 a mais ou a menos que ele. Convidar
+                            a conta e não fechar é pior que não convidar. */}
+                        <span class="text-slate-400">
+                          {' · os % de execução são a média dessas duas'}
+                        </span>
+                      </>
+                    ) : (
+                      ' · sem cooldown ofensivo medido na noite, então a execução é o uptime sozinho'
+                    )}
                   </p>
                 )}
 
@@ -511,7 +590,11 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                     {defenseContext.selfSustain !== undefined && (
                       <> &middot; {formatDecimalBr(defenseContext.selfSustain)}% reposto pela sua própria cura</>
                     )}
-                    <span class="text-slate-600"> &middot; contexto, não entra na nota</span>
+                    <span class="text-slate-600">
+                      {defenderComMitigacao
+                        ? ' · a mitigação entra na nota; o dano recebido é contexto'
+                        : ' · contexto, não entra na nota'}
+                    </span>
                   </p>
                 )}
 
@@ -560,9 +643,37 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                   </ul>
                 )}
 
+                {dimension.key === 'defense' && (defenderComMitigacao || defenderSoCooldowns) && (
+                  <p class="text-[11px] text-slate-500 leading-relaxed mt-1">
+                    <span class="text-slate-400">
+                      Os {formatDecimalBr(valorDeDefender!)}% de execução
+                    </span>
+                    {defenderComMitigacao ? (
+                      <>
+                        {' são a média de duas metades: a recarga '}
+                        {defenseDetail.length === 1
+                          ? 'do seu único defensivo'
+                          : `dos seus ${defenseDetail.length} defensivos`}
+                        {` (${formatDecimalBr(mediaDosDefensivos!)}) e a sua mitigação contra a meta de ${MITIGACAO_DO_TANQUE}% do core (${formatDecimalBr(notaDaMitigacao!)}).`}
+                      </>
+                    ) : (
+                      <>
+                        {' são a média da recarga '}
+                        {defenseDetail.length === 1
+                          ? 'do único defensivo que você usou.'
+                          : `dos ${defenseDetail.length} defensivos que você usou.`}
+                      </>
+                    )}
+                    {defenseDetail.length > MAX_NA_LISTA &&
+                      ` Abaixo, os ${MAX_NA_LISTA} piores aproveitados.`}
+                  </p>
+                )}
+
                 {(dimension.key === 'attack' || dimension.key === 'defense') && (
                   <ul class="space-y-0.5 mt-1">
-                    {(dimension.key === 'attack' ? attackDetail : defenseDetail).map((item) => (
+                    {(dimension.key === 'attack' ? attackDetail : defenseDetail)
+                      .slice(0, MAX_NA_LISTA)
+                      .map((item) => (
                       <li class="text-[11px] text-slate-500 leading-relaxed">
                         <span class="text-slate-400">{item.name}</span>{' '}
                         {formatDecimalBr(item.efficiency)}% do tempo em recarga

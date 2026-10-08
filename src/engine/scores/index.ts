@@ -229,7 +229,8 @@ const DIMENSION_META: Record<
   defense: {
     label: "Defender",
     unit: "% de execução",
-    description: "Quanto do tempo de luta seus defensivos passaram em recarga. No tank, a média disso com a mitigação.",
+    description:
+      "A média de quanto cada cooldown defensivo seu passou em recarga. No tank, essa média entra junto com a mitigação, medida contra a meta do core.",
     source: "Warcraft Logs e Wowhead.",
   },
   healing: {
@@ -341,8 +342,12 @@ function valorDeDefender(
   const mitigacao = performance.defense?.mitigation;
   if (mitigacao === undefined) return cooldowns;
 
-  const notaDaMitigacao = Math.min(100, (mitigacao / MITIGACAO_DO_TANQUE) * 100);
-  if (cooldowns === null) return Math.round(notaDaMitigacao * 10) / 10;
+  // Arredondada ANTES da média, não depois: a ficha mostra as duas metades
+  // já arredondadas, e quem somar as duas tem que chegar no número que está
+  // na linha. Apocalipse em 29/09 tinha 42,7 e 99,8 na tela e 71,2 no total,
+  // porque a média saía dos 99,7619 que ninguém via.
+  const notaDaMitigacao = Math.round(Math.min(100, (mitigacao / MITIGACAO_DO_TANQUE) * 100) * 10) / 10;
+  if (cooldowns === null) return notaDaMitigacao;
 
   return Math.round(((cooldowns + notaDaMitigacao) / 2) * 10) / 10;
 }

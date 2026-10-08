@@ -81,20 +81,20 @@ const ultimaNoite = history.at(-1);
 
 // Detalhe da MESMA noite que o Score Geral mede. Antes isto somava a
 // temporada inteira, e aparecia erro de boss que nem foi jogado na semana.
-const mechanicsDetail = [...(ultimaNoite?.mechanicsDetail ?? [])]
-  .sort((a, b) => b.tries - a.tries)
-  .slice(0, 3);
+const mechanicsDetail = [...(ultimaNoite?.mechanicsDetail ?? [])].sort(
+  (a, b) => b.tries - a.tries
+);
 
 const preparationMissing = ultimaNoite?.preparationMissing ?? [];
 
 // Mesma noite do Score Geral. Os três piores: a lista inteira vira parede de
 // texto e o que importa é o que treinar primeiro.
-const attackDetail = (ultimaNoite?.attackDetail ?? []).slice(0, 3);
+const attackDetail = ultimaNoite?.attackDetail ?? [];
 const attackParts = ultimaNoite?.attack
   ? { uptime: ultimaNoite.attack.uptime, cooldowns: ultimaNoite.attack.cooldowns }
   : null;
 
-const defenseDetail = (ultimaNoite?.defenseDetail ?? []).slice(0, 3);
+const defenseDetail = ultimaNoite?.defenseDetail ?? [];
 const defenseContext = ultimaNoite?.defense
   ? {
       mitigation: ultimaNoite.defense.mitigation,
