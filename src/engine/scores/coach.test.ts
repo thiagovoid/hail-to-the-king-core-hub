@@ -33,7 +33,9 @@ const NOITE: NoiteDoCoach = {
     },
     { boss: "Vashnik", mechanic: "Damage from Tidal Crash", tries: 3 },
   ],
-  attack: { score: 97.8, uptime: 96, cooldowns: 99 },
+  // As duas metades têm que fechar no score: a nota de Atacar é a média
+  // delas, já arredondadas (ver valorDeAtacar).
+  attack: { score: 97.8, uptime: 96.6, cooldowns: 99 },
   attackDetail: [
     { spellId: 1, name: "Stormkeeper", casts: 12, efficiency: 47 },
     { spellId: 2, name: "Ascendance", casts: 4, efficiency: 88 },

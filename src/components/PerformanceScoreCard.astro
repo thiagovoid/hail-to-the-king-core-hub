@@ -127,6 +127,7 @@ const notaDaMitigacao =
     ? umaCasa(Math.min(100, (defenseContext.mitigation / MITIGACAO_DO_TANQUE) * 100))
     : null;
 
+const valorDeAtacar = score.dimensions.find((d) => d.key === 'attack')?.value ?? null;
 const valorDeDefender = score.dimensions.find((d) => d.key === 'defense')?.value ?? null;
 
 const fecha = (a: number | null, b: number | null) =>
@@ -546,24 +547,30 @@ const detalheDaDimensao: Partial<Record<string, { rotulo: string; itens: number 
                   <div class="nota">
                     <span class="nota-icone" aria-hidden="true">i</span>
                     <p class="nota-texto">
-                    <span class="text-slate-300">Uptime {formatDecimalBr(attackParts.uptime)}%</span>
-                    {attackParts.cooldowns !== null ? (
-                      <>
-                        {' · cooldowns '}
-                        {formatDecimalBr(attackParts.cooldowns)}% do tempo em recarga
-                        {attackDetail.length > 0 && ' (a média dos seus cooldowns ofensivos)'}
-                        {/* Sem repetir o número da linha: o score é calculado
-                            antes do arredondamento e as duas metades depois,
-                            então em 39 noites da temporada a soma das metades
-                            exibidas dá 0,1 a mais ou a menos que ele. Convidar
-                            a conta e não fechar é pior que não convidar. */}
-                        <span class="text-slate-400">
-                          {' · os % de execução são a média dessas duas'}
-                        </span>
-                      </>
-                    ) : (
-                      ' · sem cooldown ofensivo medido na noite, então a execução é o uptime sozinho'
-                    )}
+                      {attackParts.cooldowns !== null && valorDeAtacar !== null ? (
+                        <>
+                          <span class="text-slate-300">
+                            Os {formatDecimalBr(valorDeAtacar)}% de execução
+                          </span>
+                          {' são a média de duas metades: o seu uptime ('}
+                          {formatDecimalBr(attackParts.uptime)}
+                          {') e a recarga '}
+                          {attackDetail.length === 1
+                            ? 'do seu único cooldown ofensivo ('
+                            : `dos seus ${attackDetail.length} cooldowns ofensivos (`}
+                          {formatDecimalBr(attackParts.cooldowns)}
+                          {').'}
+                          {attackDetail.length > MAX_NA_LISTA &&
+                            ` Abaixo, os ${MAX_NA_LISTA} piores aproveitados.`}
+                        </>
+                      ) : (
+                        <>
+                          <span class="text-slate-300">
+                            Uptime {formatDecimalBr(attackParts.uptime)}%
+                          </span>
+                          {' · sem cooldown ofensivo medido na noite, então a execução é o uptime sozinho.'}
+                        </>
+                      )}
                     </p>
                   </div>
                 )}

@@ -332,6 +332,26 @@ function percentualDoSim(performance: PlayerPerformance): number | null {
   return Math.round((dano / sim) * 1000) / 10;
 }
 
+/**
+ * A média das duas metades JÁ ARREDONDADAS, não o `score` gravado.
+ *
+ * `buildAttack` tira a média antes de arredondar e grava as metades
+ * arredondadas depois. O resultado é uma ficha onde 90,8 e 91,8 convivem com
+ * um total de 91,2: em 39 das 179 noites da temporada a soma do que está na
+ * tela dá 0,1 de diferença do que está na linha.
+ *
+ * Refazendo a média aqui, a partir do que a tela mostra, quem conferir chega
+ * no mesmo número — e dá pra escrever a conta por extenso sem medo. Mesma
+ * ideia de `valorDeDefender` logo abaixo.
+ */
+function valorDeAtacar(performance: PlayerPerformance): number | null {
+  const atacar = performance.attack;
+  if (!atacar) return null;
+  if (atacar.cooldowns === null) return atacar.uptime;
+
+  return Math.round(((atacar.uptime + atacar.cooldowns) / 2) * 10) / 10;
+}
+
 function valorDeDefender(
   performance: PlayerPerformance,
   funcao: FuncaoDoJogador
@@ -403,8 +423,8 @@ export function calculateOverallScore(
       ...DIMENSION_META.attack,
       weight: pesos.attack,
       target: alvo("attack"),
-      value: performance.attack?.score ?? null,
-      score: progress(performance.attack?.score, alvo("attack")),
+      value: valorDeAtacar(performance),
+      score: progress(valorDeAtacar(performance) ?? undefined, alvo("attack")),
     },
     {
       key: "defense",
