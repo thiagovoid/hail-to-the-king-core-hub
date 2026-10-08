@@ -763,7 +763,7 @@
     "heroSpec": null,
     "role": "dps",
     "type": "alt",
-    "status": "trial",
+    "status": "member",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/135/237882247-avatar.jpg?alt=/wow/static/images/2d/avatar/4-0.jpg",
     "raiderIo": {
@@ -788,7 +788,8 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-05T09:57:32.528Z"
       }
-    }
+    },
+    "pertenceA": "heracranosx"
   },
   {
     "id": "perdidaço",
@@ -824,7 +825,7 @@
     "spec": "",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
+    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/azralon/48/203548720-avatar.jpg?alt=/wow/static/images/2d/avatar/3-0.jpg",
@@ -840,7 +841,8 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Jokertinha"
-    }
+    },
+    "pertenceA": null
   },
   {
     "id": "rhoregor",
@@ -850,7 +852,7 @@
     "spec": "",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
+    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/azralon/218/197678298-avatar.jpg?alt=/wow/static/images/2d/avatar/1-1.jpg",
@@ -866,6 +868,7 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Rhoregor"
-    }
+    },
+    "pertenceA": null
   }
 ]
