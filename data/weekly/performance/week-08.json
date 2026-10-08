@@ -7575,13 +7575,12 @@
           "preparation": 67,
           "preparationMissing": [
             "Óleo de arma"
-          ],
-          "preparationGear": 67
+          ]
         },
         {
           "playerId": "rhoregor",
           "dps": 134321,
-          "parse": 36,
+          "parse": 37,
           "itemLevel": 325,
           "attack": {
             "score": 86.6,
@@ -7940,8 +7939,7 @@
             }
           ],
           "preparation": 100,
-          "preparationMissing": [],
-          "preparationGear": 100
+          "preparationMissing": []
         }
       ]
     }
