@@ -9,7 +9,7 @@
           "playerId": "blackwatch",
           "dps": 57712,
           "parse": 47,
-          "simTarget": 67429,
+          "simTarget": 71262,
           "itemLevel": 321,
           "preparation": 73,
           "preparationMissing": [
@@ -386,8 +386,8 @@
           ],
           "deaths": 2,
           "mechanics": {
-            "errors": 2,
-            "tries": 6
+            "errors": 1.8,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -452,27 +452,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Sanguine Storm",
-              "label": "Tempestade Sanguínea",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanSanSto?insightId=3421-9",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -524,7 +503,7 @@
           "playerId": "apocalipse",
           "dps": 56677,
           "parse": 25,
-          "simTarget": 151900,
+          "simTarget": 93528,
           "itemLevel": 324,
           "preparation": 79,
           "preparationChecks": 2,
@@ -928,8 +907,8 @@
           ],
           "deaths": 2,
           "mechanics": {
-            "errors": 2.8,
-            "tries": 6
+            "errors": 2.4,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -1013,41 +992,6 @@
               "mechanic": "Damage from Plague Froth",
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-2",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Clotted Bolt / Concentrated Spittle",
-              "label": "Cusparada Concentrada",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCloBol?insightId=3421-B",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Sanguine Storm",
-              "label": "Tempestade Sanguínea",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanSanSto?insightId=3421-9",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
               "tries": 1
             }
           ],
@@ -1493,8 +1437,8 @@
           ],
           "deaths": 4,
           "mechanics": {
-            "errors": 2.7,
-            "tries": 6
+            "errors": 2.4,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -1579,34 +1523,6 @@
               "mechanic": "Damage from Plague Froth",
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Corrosive Spit",
-              "label": "Cuspe Corrosivo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVenEme?insightId=3421-C",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
               "tries": 1
             }
           ],
@@ -2072,8 +1988,8 @@
           ],
           "deaths": 2,
           "mechanics": {
-            "errors": 1.8,
-            "tries": 6
+            "errors": 2.2,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -2560,8 +2476,8 @@
           ],
           "deaths": 1,
           "mechanics": {
-            "errors": 2.2,
-            "tries": 6
+            "errors": 2,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -2633,27 +2549,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -2711,7 +2606,7 @@
           "playerId": "bustgril",
           "dps": 140848,
           "parse": 46,
-          "simTarget": 153750,
+          "simTarget": 161978,
           "preparation": 80,
           "preparationMissing": [
             "Elmo",
@@ -3063,8 +2958,8 @@
           ],
           "deaths": 3,
           "mechanics": {
-            "errors": 1.5,
-            "tries": 6
+            "errors": 1.2,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -3107,27 +3002,6 @@
               "mechanic": "Damage from Plague Froth",
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
               "tries": 1
             }
           ],
@@ -3182,7 +3056,7 @@
           "playerId": "hysillens",
           "dps": 141682,
           "parse": 40,
-          "simTarget": 136149,
+          "simTarget": 144590,
           "itemLevel": 321,
           "preparation": 100,
           "preparationChecks": 2,
@@ -3501,8 +3375,8 @@
           ],
           "deaths": 2,
           "mechanics": {
-            "errors": 1.8,
-            "tries": 6
+            "errors": 2,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -3574,13 +3448,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -3636,7 +3503,7 @@
           "playerId": "jrxamã",
           "dps": 168041,
           "parse": 90,
-          "simTarget": 167539,
+          "simTarget": 169180,
           "itemLevel": 327,
           "preparation": 86,
           "preparationChecks": 2,
@@ -3983,8 +3850,8 @@
           ],
           "deaths": 1,
           "mechanics": {
-            "errors": 1.8,
-            "tries": 6
+            "errors": 1.6,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -4042,27 +3909,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -4118,7 +3964,7 @@
           "playerId": "nerlock",
           "dps": 83421,
           "parse": 28,
-          "simTarget": 142002,
+          "simTarget": 142539,
           "itemLevel": 311,
           "preparation": 81,
           "preparationChecks": 2,
@@ -4463,7 +4309,7 @@
           "deaths": 3,
           "mechanics": {
             "errors": 2.2,
-            "tries": 6
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -4542,20 +4388,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -4612,7 +4444,7 @@
           "playerId": "xúlio",
           "dps": 142583,
           "parse": 52,
-          "simTarget": 159866,
+          "simTarget": 101966,
           "itemLevel": 326,
           "preparation": 100,
           "preparationChecks": 2,
@@ -5000,8 +4832,8 @@
           ],
           "deaths": 3,
           "mechanics": {
-            "errors": 2.5,
-            "tries": 6
+            "errors": 2.4,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -5087,27 +4919,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -5163,7 +4974,7 @@
           "playerId": "dagom",
           "dps": 113446,
           "parse": 31,
-          "simTarget": 146400,
+          "simTarget": 151341,
           "itemLevel": 322,
           "preparation": 96,
           "preparationChecks": 2,
@@ -5556,8 +5367,8 @@
           ],
           "deaths": 4,
           "mechanics": {
-            "errors": 1.8,
-            "tries": 6
+            "errors": 2.2,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -5691,7 +5502,7 @@
           "playerId": "ligiaf",
           "dps": 144856,
           "parse": 55,
-          "simTarget": 149973,
+          "simTarget": 162300,
           "itemLevel": 319,
           "preparation": 100,
           "preparationChecks": 2,
@@ -6011,8 +5822,8 @@
           ],
           "deaths": 1,
           "mechanics": {
-            "errors": 2,
-            "tries": 6
+            "errors": 1.8,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -6077,27 +5888,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Deluge",
-              "label": "Dilúvio Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-Y",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -6154,7 +5944,7 @@
           "playerId": "minort",
           "dps": 78160,
           "parse": 27,
-          "simTarget": 129221,
+          "simTarget": 138921,
           "itemLevel": 315,
           "preparation": 86,
           "preparationChecks": 2,
@@ -6611,7 +6401,7 @@
           "playerId": "heracranosd",
           "dps": 157236,
           "parse": 66,
-          "simTarget": 143399,
+          "simTarget": 175218,
           "itemLevel": 326,
           "preparation": 98,
           "preparationMissing": [
@@ -6971,8 +6761,8 @@
           ],
           "deaths": 2,
           "mechanics": {
-            "errors": 2.5,
-            "tries": 6
+            "errors": 2,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -7044,40 +6834,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Deadly Venom",
-              "label": "Peçonha Mortífera",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Debuffs of Stir the Depths",
-              "label": "Mexer nas Profundezas",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanStiDep?insightId=3421-3",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -7132,6 +6888,7 @@
           "playerId": "jokertinha",
           "dps": 77451,
           "parse": 17,
+          "simTarget": 170760,
           "attack": {
             "score": 88.2,
             "uptime": 88,
@@ -7403,8 +7160,8 @@
           ],
           "deaths": 4,
           "mechanics": {
-            "errors": 2.8,
-            "tries": 6
+            "errors": 2.6,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -7497,34 +7254,6 @@
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
               "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Corrosive Spit",
-              "label": "Cuspe Corrosivo",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanVenEme?insightId=3421-C",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Caustic Globule",
-              "label": "Glóbulo Cáustico",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCauDel?insightId=3421-W",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
-              "tries": 1
             }
           ],
           "consumiveis": [
@@ -7581,6 +7310,7 @@
           "playerId": "rhoregor",
           "dps": 134321,
           "parse": 35,
+          "simTarget": 160127,
           "itemLevel": 325,
           "attack": {
             "score": 86.6,
@@ -7830,8 +7560,8 @@
           ],
           "deaths": 3,
           "mechanics": {
-            "errors": 1.3,
-            "tries": 6
+            "errors": 1.2,
+            "tries": 5
           },
           "mechanicsDetail": [
             {
@@ -7874,20 +7604,6 @@
               "mechanic": "Damage from Plague Froth",
               "label": "Espuma Pestilenta",
               "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/vashnik-the-malignant/vasnikPlaFro?insightId=3455-I",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Congelead Gore",
-              "label": "Sangue Solidificado",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-G",
-              "tries": 1
-            },
-            {
-              "boss": "As Presas Gêmeas",
-              "mechanic": "Damage from Coiling Ichor",
-              "label": "Icor Coleante",
-              "tipEmbedUrl": "https://www.mythictrap.com/en/embed-ability/venomous-abyss/the-twin-fangs/twifanCoiIch?insightId=3421-7",
               "tries": 1
             }
           ],
