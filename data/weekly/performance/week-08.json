@@ -7576,7 +7576,8 @@
           "preparation": 67,
           "preparationMissing": [
             "Óleo de arma"
-          ]
+          ],
+          "preparationGear": 67
         },
         {
           "playerId": "rhoregor",
@@ -7941,7 +7942,8 @@
             }
           ],
           "preparation": 100,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 100
         }
       ]
     }
