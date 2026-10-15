@@ -51,9 +51,39 @@ interface Props {
    * páginas individuais.
    */
   rosterGroups?: RosterGroup[];
+  /**
+   * As raides da temporada, pro filtro. Com uma só, o filtro não aparece.
+   */
+  raides?: Array<{ slug: string; nome: string }>;
+  /**
+   * Data da noite -> slug da raide em que ela aconteceu.
+   *
+   * O filtro é POR NOITE, não por métrica. Enquanto uma noite inteira é de
+   * uma raide só, o agregado dela já é o da raide, e dps e parse continuam
+   * exatos — coisa que fatiar métrica por métrica não conseguiria, porque
+   * os dois vêm da tabela agregada da WCL e não da soma dos bosses.
+   *
+   * Noite que encosta nas duas não entra no mapa e some das visões por
+   * raide, em vez de entrar inteira nas duas.
+   */
+  raidePorNoite?: Record<string, string>;
 }
 
-const { metrics, rosterGroups = [] } = Astro.props;
+const { metrics, rosterGroups = [], raides = [], raidePorNoite = {} } = Astro.props;
+
+/** Com uma raide, filtrar por raide é escolher entre uma opção só. */
+const mostrarFiltroDeRaide = raides.length > 1;
+
+/** Noites que tocaram duas raides: ficam de fora de qualquer recorte. */
+const noitesMistas = [
+  ...new Set(
+    metrics.flatMap((metric) =>
+      metric.series.flatMap((series) =>
+        series.data.map((ponto) => ponto.date).filter((data) => !(data in raidePorNoite))
+      )
+    )
+  ),
+].sort();
 
 const width = 800;
 const height = 320;
@@ -320,6 +350,33 @@ const serializedMetrics = metrics.map((metric) => ({
       }
     </div>
 
+    {
+      mostrarFiltroDeRaide && (
+        <div id="core-performance-raide" class="flex flex-wrap items-center gap-1.5">
+          <span class="text-[11px] uppercase tracking-wide text-slate-600 mr-1">Raide</span>
+
+          <button
+            type="button"
+            data-raide="todas"
+            class="px-2.5 py-1 rounded-md text-xs transition-colors bg-slate-700 text-white"
+          >
+            Todas
+          </button>
+
+          {raides.map((raide) => (
+            <button
+              type="button"
+              data-raide={raide.slug}
+              class="px-2.5 py-1 rounded-md text-xs transition-colors text-slate-400 hover:text-white hover:bg-slate-800"
+              title={`Só as noites em ${raide.nome}`}
+            >
+              {raide.nome}
+            </button>
+          ))}
+        </div>
+      )
+    }
+
     <div id="core-performance-modo" class="flex items-center gap-1.5">
       <span class="text-[11px] uppercase tracking-wide text-slate-600 mr-1">Ver como</span>
 
@@ -341,6 +398,17 @@ const serializedMetrics = metrics.map((metric) => ({
       </button>
     </div>
   </div>
+
+  {
+    mostrarFiltroDeRaide && noitesMistas.length > 0 && (
+      <p class="text-[11px] text-slate-500 mb-4">
+        {noitesMistas.length === 1
+          ? 'Uma noite tocou as duas raides e some quando você escolhe uma: o número dela é dos dois tiers juntos.'
+          : noitesMistas.length +
+            ' noites tocaram as duas raides e somem quando você escolhe uma: o número delas é dos dois tiers juntos.'}
+      </p>
+    )
+  }
 
   {
     rosterGroups.length > 0 && (
@@ -620,6 +688,11 @@ const serializedMetrics = metrics.map((metric) => ({
   }
 
   <script type="application/json" id="core-performance-data" set:html={JSON.stringify(serializedMetrics)} />
+  <script
+    type="application/json"
+    id="core-performance-raides"
+    set:html={JSON.stringify(raidePorNoite)}
+  />
 </section>
 
 <script>
@@ -751,6 +824,28 @@ const serializedMetrics = metrics.map((metric) => ({
       series: metric.series.map((series) => ({
         ...series,
         data: series.data.filter((point) => point.date.slice(0, 7) === mes),
+      })),
+    };
+  }
+
+  /**
+   * Recorta as séries às noites de UMA raide.
+   *
+   * Noite fora do mapa cai fora: ou tocou as duas raides, ou não tem boss
+   * cadastrado. Nos dois casos ela não é "daquela raide", e deixá-la entrar
+   * faria o recorte dizer algo que o dado não sustenta.
+   */
+  function filtrarPorRaide(
+    metric: SerializedMetric,
+    raide: string
+  ): SerializedMetric {
+    if (raide === 'todas') return metric;
+
+    return {
+      ...metric,
+      series: metric.series.map((series) => ({
+        ...series,
+        data: series.data.filter((point) => raidePorNoite[point.date] === raide),
       })),
     };
   }
@@ -1077,13 +1172,20 @@ const serializedMetrics = metrics.map((metric) => ({
     : [];
 
   const container = document.querySelector('#core-performance-tabs');
+  const raidesScript = document.querySelector('#core-performance-raides');
+  const raidePorNoite: Record<string, string> = raidesScript?.textContent
+    ? JSON.parse(raidesScript.textContent)
+    : {};
+
   const barraDeMeses = document.querySelector('#core-performance-meses');
+  const barraDeRaide = document.querySelector('#core-performance-raide');
   const barraDeModo = document.querySelector('#core-performance-modo');
 
   // Estado da VISUALIZAÇÃO. Nada aqui entra em cálculo: a tendência da
   // legenda e a meta seguem lendo a série completa.
   let metricaAtiva = metricsData[0]?.id ?? '';
   let mesAtivo = 'todos';
+  let raideAtiva = 'todas';
 
   /**
    * O modo que a pessoa escolheu — não necessariamente o que está na tela.
@@ -1124,7 +1226,8 @@ const serializedMetrics = metrics.map((metric) => ({
 
     // A série COMPLETA vai junto: buildMetricMarkup usa o recorte pra
     // desenhar e o completo pra calcular tendência.
-    alvo.innerHTML = buildMetricMarkup(filtrarPorMes(metric, mesAtivo), modoAtivo, metric);
+    const recorte = filtrarPorRaide(filtrarPorMes(metric, mesAtivo), raideAtiva);
+    alvo.innerHTML = buildMetricMarkup(recorte, modoAtivo, metric);
 
     document.querySelectorAll('[data-metric-chart]').forEach((el) => {
       el.classList.toggle('hidden', el.getAttribute('data-metric-chart') !== metricaAtiva);
@@ -1152,6 +1255,18 @@ const serializedMetrics = metrics.map((metric) => ({
       botao.addEventListener('click', () => {
         mesAtivo = botao.getAttribute('data-mes') ?? 'todos';
         marcarAtivo(botoesDeMes, botao);
+        renderizar();
+      });
+    });
+  }
+
+  if (barraDeRaide) {
+    const botoesDeRaide = barraDeRaide.querySelectorAll('[data-raide]');
+
+    botoesDeRaide.forEach((botao) => {
+      botao.addEventListener('click', () => {
+        raideAtiva = botao.getAttribute('data-raide') ?? 'todas';
+        marcarAtivo(botoesDeRaide, botao);
         renderizar();
       });
     });

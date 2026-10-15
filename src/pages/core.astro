@@ -21,6 +21,7 @@ import seasonJson from '../../data/seasons/midnight-s2/config.json';
 import rosterJson from '../../data/guild/roster.json';
 import { getLatestWeeklyHighlights } from '../../data/weekly/highlights/index';
 import { performanceWeeks } from '../../data/weekly/performance/index';
+import { mapaDeRaides, raideDaNoite } from '@/engine/guild/porRaide';
 
 const config = seasonJson.config as SiteConfig;
 const bossesNormal = seasonJson.bossesNormal as Boss[];
@@ -88,6 +89,26 @@ const comoAtalho = (player: Player) => ({
 // Alt vira grupo próprio, embaixo do dps: misturado dentro da função ele
 // aparecia como se fosse mais um dps do core, quando é o segundo
 // personagem de alguém que já está numa das linhas acima.
+/**
+ * De que raide foi cada noite.
+ *
+ * O filtro do gráfico é por NOITE: enquanto a noite inteira é de uma raide
+ * só, o agregado dela já é o da raide, e dps e parse continuam exatos.
+ * Noite que encostou nas duas fica de fora do mapa — e some dos recortes.
+ */
+const mapaDasRaides = mapaDeRaides([
+  ...(seasonJson.bossesNormal as Boss[]),
+  ...(seasonJson.bossesHeroic as Boss[]),
+]);
+
+const raidePorNoite: Record<string, string> = {};
+for (const semana of performanceWeeks) {
+  for (const noite of semana.runs ?? []) {
+    const qual = raideDaNoite(noite.players ?? [], mapaDasRaides);
+    if (qual.tipo === 'uma') raidePorNoite[noite.date] = qual.raide;
+  }
+}
+
 const rosterGroups = [
   ...ROLE_ORDER.map((role) => ({
     label: ROLE_LABEL[role],
@@ -306,6 +327,8 @@ const avgIoSubtitle = bestKey
 
     <CorePerformanceChart
       rosterGroups={rosterGroups}
+      raides={seasonJson.config.raids}
+      raidePorNoite={raidePorNoite}
       metrics={[
         {
           id: 'hail-score',
