@@ -25,19 +25,52 @@ const { config, bossesNormal, bossesHeroic, recentLogs = [] } = Astro.props;
 
 const lastUpdated = formatDate(config.lastUpdated);
 
-const progressionNormal = computeProgression(bossesNormal);
-const progressPercentNormal = progressionNormal.total > 0 ? progressionNormal.percent : 0;
-const progressLabelNormal =
-  progressionNormal.total > 0
-    ? `${progressionNormal.killed}/${progressionNormal.total} Normal`
-    : '—';
+/**
+ * Uma raide por bloco, do tier mais antigo pro mais novo.
+ *
+ * A temporada passou a ter duas raides abertas ao mesmo tempo, progredindo
+ * em paralelo. Somar as duas numa barra só esconderia exatamente o que se
+ * quer ver: que uma está no farm e a outra começou ontem.
+ *
+ * Dificuldade sem boss cadastrado não vira barra vazia. Semana de abertura
+ * de tier costuma ter só Normal liberada, e uma barra "0/8 Heroica" ali
+ * seria um zero que não significa nada.
+ */
+const DIFICULDADES = [
+  { nome: 'Normal', cor: 'bg-[#22c55e]', texto: 'text-[#22c55e]', de: bossesNormal },
+  { nome: 'Heroica', cor: 'bg-[#a855f7]', texto: 'text-[#a855f7]', de: bossesHeroic },
+] as const;
 
-const progressionHeroic = computeProgression(bossesHeroic);
-const progressPercentHeroic = progressionHeroic.total > 0 ? progressionHeroic.percent : 0;
-const progressLabelHeroic =
-  progressionHeroic.total > 0
-    ? `${progressionHeroic.killed}/${progressionHeroic.total} Heroica`
-    : '—';
+const blocosDeRaide = config.raids
+  .map((raide) => {
+    const barras = DIFICULDADES.map((dificuldade) => {
+      const bosses = dificuldade.de.filter((boss) => boss.raid === raide.slug);
+      const progressao = computeProgression(bosses);
+      return {
+        nome: dificuldade.nome,
+        cor: dificuldade.cor,
+        texto: dificuldade.texto,
+        total: progressao.total,
+        percent: progressao.total > 0 ? progressao.percent : 0,
+        rotulo: `${progressao.killed}/${progressao.total} ${dificuldade.nome}`,
+      };
+    }).filter((barra) => barra.total > 0);
+
+    return {
+      raide,
+      barras,
+      // Os nomes saem da lista mais completa da raide, não de uma
+      // dificuldade fixa: tier novo pode ter Heroica antes de Normal no
+      // cadastro, e a tira de nomes não pode sumir por causa disso.
+      bosses: DIFICULDADES.map((d) => d.de.filter((b) => b.raid === raide.slug)).sort(
+        (a, b) => b.length - a.length
+      )[0],
+    };
+  })
+  .filter((bloco) => bloco.barras.length > 0);
+
+/** Com uma raide só, o nome dela já está no badge do topo. */
+const mostrarNomeDaRaide = blocosDeRaide.length > 1;
 
 function formatLogDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00');
@@ -72,7 +105,7 @@ function formatLogDate(dateStr: string): string {
         🌙 {config.currentSeason}
       </span>
       <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold uppercase tracking-wider">
-        🏰 {config.currentRaid}
+        🏰 {config.raids.length > 1 ? `${config.raids.length} raides` : config.currentRaid}
       </span>
     </div>
 
@@ -90,36 +123,45 @@ function formatLogDate(dateStr: string): string {
       </p>
     </div>
 
-    <!-- Progression — barras compactas com label ao lado + nomes dos bosses abaixo -->
-    <div class="max-w-2xl mx-auto mb-10">
-
-      <!-- Normal: barra + label inline -->
-      <div class="flex items-center gap-3 mb-3">
-        <div class="flex-1 progress-bar" role="progressbar" aria-valuenow={progressPercentNormal} aria-valuemin={0} aria-valuemax={100} aria-label={`${progressLabelNormal} — ${progressPercentNormal}%`}>
-          <div class="progress-bar-fill bg-[#22c55e]" style={`width: ${progressPercentNormal}%`} />
-        </div>
-        <span class="text-[#22c55e] text-xs font-bold tabular-nums whitespace-nowrap">{progressLabelNormal}</span>
-      </div>
-
-      <!-- Heroica: barra + label inline -->
-      <div class="flex items-center gap-3 mb-4">
-        <div class="flex-1 progress-bar" role="progressbar" aria-valuenow={progressPercentHeroic} aria-valuemin={0} aria-valuemax={100} aria-label={`${progressLabelHeroic} — ${progressPercentHeroic}%`}>
-          <div class="progress-bar-fill bg-[#a855f7]" style={`width: ${progressPercentHeroic}%`} />
-        </div>
-        <span class="text-[#a855f7] text-xs font-bold tabular-nums whitespace-nowrap">{progressLabelHeroic}</span>
-      </div>
-
-      <!-- Boss names — exibidos uma única vez abaixo das barras -->
-      {bossesNormal.length > 0 && bossesNormal.length <= 8 && (
-        <div class="flex items-center gap-1.5" aria-hidden="true">
-          {bossesNormal.map((boss) => (
-            <p class="flex-1 text-center text-[9px] font-medium truncate text-slate-400">
-              {boss.name.split(',')[0].split(' ').slice(0, 2).join(' ')}
+    <!-- Progressão — um bloco por raide: barras por dificuldade + os nomes dos bosses -->
+    <div class="max-w-2xl mx-auto mb-10 space-y-7">
+      {blocosDeRaide.map((bloco) => (
+        <div>
+          {mostrarNomeDaRaide && (
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-500 mb-2">
+              {bloco.raide.nome}
             </p>
-          ))}
-        </div>
-      )}
+          )}
 
+          {bloco.barras.map((barra) => (
+            <div class="flex items-center gap-3 mb-3">
+              <div
+                class="flex-1 progress-bar"
+                role="progressbar"
+                aria-valuenow={barra.percent}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`${bloco.raide.nome} — ${barra.rotulo}, ${barra.percent}%`}
+              >
+                <div class={`progress-bar-fill ${barra.cor}`} style={`width: ${barra.percent}%`} />
+              </div>
+              <span class={`${barra.texto} text-xs font-bold tabular-nums whitespace-nowrap`}>
+                {barra.rotulo}
+              </span>
+            </div>
+          ))}
+
+          {bloco.bosses.length > 0 && bloco.bosses.length <= 8 && (
+            <div class="flex items-center gap-1.5 mt-1" aria-hidden="true">
+              {bloco.bosses.map((boss) => (
+                <p class="flex-1 text-center text-[9px] font-medium truncate text-slate-400">
+                  {boss.name.split(',')[0].split(' ').slice(0, 2).join(' ')}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
 
     <!-- Recent Logs Quick Access -->

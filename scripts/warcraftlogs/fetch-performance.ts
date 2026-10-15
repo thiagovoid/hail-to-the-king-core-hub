@@ -474,6 +474,9 @@ async function main() {
     }
 
     const meta = await wcl.fetchReportMeta(code);
+    // Código informado na mão merece MAIS barulho que um descoberto, não
+    // menos: alguém digitou esse código esperando que ele entrasse.
+    if (meta) relatarZonasDesconhecidas([meta], zonasDeRaide);
     if (meta?.zone?.id !== undefined && zonasDeRaide.has(meta.zone.id)) extraReports.push(meta);
   }
 
