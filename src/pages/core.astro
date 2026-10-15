@@ -333,7 +333,7 @@ const avgIoSubtitle = bestKey
         {
           id: 'hail-score',
           label: 'Hail Score',
-          direction: 'higher',
+          direction: 'higher' as const,
           series: [
             {
               playerId: 'core',
@@ -347,25 +347,25 @@ const avgIoSubtitle = bestKey
         {
           id: 'dps',
           label: 'DPS',
-          direction: 'higher',
+          direction: 'higher' as const,
           series: dpsSeries,
         },
         {
           id: 'parse',
           label: 'Parse',
-          direction: 'higher',
+          direction: 'higher' as const,
           series: parseSeries,
         },
         {
           id: 'deaths',
           label: 'Mortes',
-          direction: 'lower',
+          direction: 'lower' as const,
           series: deathsSeries,
         },
         {
           id: 'mechanics',
           label: 'Mecânicas',
-          direction: 'lower',
+          direction: 'lower' as const,
           series: mechanicsSeries,
         },
       ].filter((metric) => !HIDDEN_CHART_METRICS.has(metric.id))}

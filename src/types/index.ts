@@ -82,6 +82,8 @@ export type ToolCategory =
  * Identificadores das categorias de regras da guilda.
  */
 export type RuleCategoryId =
+  /** Regras do core: métricas, badges e zoeira. Vieram depois das outras. */
+  | "core"
   | "behavior"
   | "raid"
   | "attendance"
