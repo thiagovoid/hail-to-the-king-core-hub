@@ -32,10 +32,24 @@ export interface ContagemDeCastInimigo {
   casts: number;
 }
 
+/**
+ * Conjunto vazio devolve tudo; com zonas, só as pedidas.
+ *
+ * Report sem zona é descartado nos dois casos: é log de masmorra ou de
+ * treino de boneco, que não tem raide nenhuma por trás.
+ */
+export function filtrarPorZona(
+  reports: WclReportRef[],
+  zonaIds: ReadonlySet<number>
+): WclReportRef[] {
+  if (zonaIds.size === 0) return reports.filter((report) => report.zone?.id !== undefined);
+  return reports.filter((report) => report.zone?.id !== undefined && zonaIds.has(report.zone.id));
+}
+
 export interface WclReportRef {
   code: string;
   startTime: number;
-  zone?: { id: number } | null;
+  zone?: { id: number; name?: string } | null;
   owner?: { id: number } | null;
 }
 
@@ -194,32 +208,43 @@ export class WarcraftLogsProvider
     return data.worldData.zone.encounters;
   }
 
-  async fetchGuildReports(guildId: number, startTime: number, endTime: number, zoneID: number): Promise<WclReportRef[]> {
+  /**
+   * `zonaIds` vazio devolve TODAS as zonas.
+   *
+   * É o que permite descobrir uma raide nova: em vez de perguntar "tem log
+   * da zona 53?", pergunta "tem log?" e olha o que voltou. Sem isso, o
+   * primeiro log de um tier novo é descartado em silêncio e ninguém fica
+   * sabendo que ele existiu.
+   */
+  async fetchGuildReports(guildId: number, startTime: number, endTime: number, zonaIds: ReadonlySet<number>): Promise<WclReportRef[]> {
     const data = await wclGraphql<{ reportData: { reports: { data: WclReportRef[] } } }>(
       `query($guildID: Int!, $startTime: Float, $endTime: Float) {
         reportData {
           reports(guildID: $guildID, startTime: $startTime, endTime: $endTime) {
-            data { code startTime zone { id } }
+            data { code startTime zone { id name } }
           }
         }
       }`,
       { guildID: guildId, startTime, endTime }
     );
-    return data.reportData.reports.data.filter((report) => report.zone?.id === zoneID);
+    return filtrarPorZona(data.reportData.reports.data, zonaIds);
   }
 
-  async fetchUserReports(userID: number, startTime: number, endTime: number, zoneID: number): Promise<WclReportRef[]> {
+  /** Mesma regra do `fetchGuildReports`: conjunto vazio = todas as zonas. */
+  async fetchUserReports(userID: number, startTime: number, endTime: number, zonaIds: ReadonlySet<number>): Promise<WclReportRef[]> {
+    // O zoneID sai da query de propósito. Filtrar no servidor devolveria só
+    // o que já se conhece, e é justamente o desconhecido que interessa aqui.
     const data = await wclGraphql<{ reportData: { reports: { data: WclReportRef[] } } }>(
-      `query($userID: Int!, $startTime: Float, $endTime: Float, $zoneID: Int) {
+      `query($userID: Int!, $startTime: Float, $endTime: Float) {
         reportData {
-          reports(userID: $userID, startTime: $startTime, endTime: $endTime, zoneID: $zoneID) {
-            data { code startTime zone { id } }
+          reports(userID: $userID, startTime: $startTime, endTime: $endTime) {
+            data { code startTime zone { id name } }
           }
         }
       }`,
-      { userID, startTime, endTime, zoneID }
+      { userID, startTime, endTime }
     );
-    return data.reportData.reports.data;
+    return filtrarPorZona(data.reportData.reports.data, zonaIds);
   }
 
   async fetchReportMeta(code: string): Promise<WclReportRef | null> {
@@ -251,7 +276,7 @@ export class WarcraftLogsProvider
         characterData {
           character(name: $name, serverSlug: $serverSlug, serverRegion: $serverRegion) {
             recentReports(limit: 20) {
-              data { code startTime zone { id } owner { id } }
+              data { code startTime zone { id name } owner { id } }
             }
           }
         }

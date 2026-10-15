@@ -223,8 +223,23 @@ export interface SiteConfig {
   realm: string;
   /** Temporada atual do WoW, ex: "The War Within Season 2". */
   currentSeason: string;
-  /** Nome da raid ativa no momento, ex: "Nerub-ar Palace". */
+  /**
+   * Nome da raide mais recente, ex: "Nerub-ar Palace".
+   *
+   * Sobrevive a `raids` porque é o que aparece no cabeçalho e nas
+   * metadescrições quando só cabe UM nome. Com mais de uma raide aberta, é
+   * a última de `raids`.
+   */
   currentRaid: string;
+  /**
+   * As raides da temporada, na ordem em que abriram.
+   *
+   * Raide existe como entidade porque a temporada passou a ter mais de uma
+   * ao mesmo tempo, e as duas progridem em paralelo. O `zoneId` é a chave
+   * da WarcraftLogs: é por ele que a coleta sabe que um log pertence ao
+   * core, e é por ele que um tier novo deixa de ser descartado em silêncio.
+   */
+  raids: RaidDaTemporada[];
   /** Data da última atualização manual dos dados, formato ISO 8601. */
   lastUpdated: string;
   /**
@@ -297,9 +312,28 @@ export interface BossPullLogEntry {
 /**
  * Representa um boss da raid com status de progressão e links externos.
  */
+/** Uma raide da temporada: o nome que se lê e o id que a WCL entende. */
+export interface RaidDaTemporada {
+  /** kebab-case, usado como chave em `Boss.raid` e como filtro na URL. */
+  slug: string;
+  /** Nome como aparece na tela, ex: "Abismo Venenoso". */
+  nome: string;
+  /** `zone.id` da WarcraftLogs. */
+  zoneId: number;
+}
+
 export interface Boss {
   /** Identificador único do boss em kebab-case, ex: "ulgrax-the-devourer". */
   id: string;
+  /**
+   * `slug` da raide a que este boss pertence.
+   *
+   * Os bosses continuam em duas listas planas por DIFICULDADE porque é
+   * assim que quase todo consumidor os quer — somados na temporada. Quem
+   * precisa separar por raide agrupa por este campo, em vez de navegar uma
+   * estrutura aninhada que só interessa a duas telas.
+   */
+  raid: string;
   /** Nome completo do boss exibido na interface. */
   name: string;
   /**

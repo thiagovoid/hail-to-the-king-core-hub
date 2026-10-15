@@ -83,8 +83,45 @@ const GUILD_NAME = "Hail to the King";
 const GUILD_SERVER_SLUG = "nemesis";
 const GUILD_SERVER_REGION = "US";
 
-// Raid da season atual (Midnight S2). Atualizar a cada novo tier de raid.
-const RAID_ZONE_ID = 53; // The Venomous Abyss / Abismo Venenoso
+/**
+ * Toda zona que um log precisa ter pra entrar na coleta.
+ *
+ * Era uma constante com o id da raide da temporada, e o filtro descartava
+ * o resto. Quando um tier novo abriu, a primeira noite dele foi jogada fora
+ * em silêncio — o log existia na WCL e simplesmente não chegava aqui.
+ *
+ * Agora sai de `config.raids`, e o que NÃO está lá é relatado em vez de
+ * sumir: é assim que se descobre o `zoneId` de uma raide nova sem ter que
+ * ir caçar na mão.
+ */
+function zonasDaTemporada(season: SeasonConfigFile): Set<number> {
+  return new Set((season.config.raids ?? []).map((raide) => raide.zoneId));
+}
+
+/** O que apareceu e não está cadastrado — candidato a raide nova. */
+function relatarZonasDesconhecidas(
+  reports: Array<{ code: string; zone?: { id: number; name?: string } | null }>,
+  conhecidas: ReadonlySet<number>
+): void {
+  const novas = new Map<number, { nome: string; codes: string[] }>();
+
+  for (const report of reports) {
+    const id = report.zone?.id;
+    if (id === undefined || conhecidas.has(id)) continue;
+    if (!novas.has(id)) novas.set(id, { nome: report.zone?.name ?? "(sem nome)", codes: [] });
+    novas.get(id)!.codes.push(report.code);
+  }
+
+  if (novas.size === 0) return;
+
+  console.log("");
+  console.log("⚠ Log de zona que NÃO está em config.raids — provavelmente raide nova:");
+  for (const [id, { nome, codes }] of novas) {
+    console.log(`  zoneId ${id} — "${nome}" (${codes.length} log: ${codes.slice(0, 3).join(", ")})`);
+  }
+  console.log("  Pra passar a coletar, acrescente a zona em config.raids da temporada.");
+  console.log("");
+}
 const SEASON_SLUG = "midnight-s2";
 
 const wcl = new WarcraftLogsProvider();
@@ -357,6 +394,19 @@ async function main() {
 
   const seasonPath = path.join(ROOT, "data/seasons", SEASON_SLUG, "config.json");
   const season: SeasonConfigFile = JSON.parse(await readFile(seasonPath, "utf-8"));
+  const zonasDeRaide = zonasDaTemporada(season);
+
+  if (zonasDeRaide.size === 0) {
+    throw new Error(
+      "config.raids está vazio na temporada — sem zona, toda coleta sai vazia e em silêncio."
+    );
+  }
+
+  console.log(
+    `Raides da temporada: ${season.config.raids
+      .map((r) => `${r.nome} (zona ${r.zoneId})`)
+      .join(", ")}.`
+  );
 
   const endTime = end ?? Date.now();
   const startTime = start ?? endTime - days * 24 * 60 * 60 * 1000;
@@ -372,17 +422,15 @@ async function main() {
    * sem isso, `--reuse` ia à rede antes mesmo de chegar no bruto das noites,
    * e a promessa de recalcular sem rede não se cumpria.
    */
-  const CHAVE_DOS_ENCONTROS = `_zona/${RAID_ZONE_ID}-encontros`;
-  const encontrosArquivados = reuse
-    ? await loadRaw<number[]>(wcl.name, CHAVE_DOS_ENCONTROS)
-    : null;
-
-  const validEncounterIds = encontrosArquivados
-    ? new Set(encontrosArquivados)
-    : await wcl.fetchRaidEncounterIds(RAID_ZONE_ID);
-
-  if (!encontrosArquivados) {
-    await saveRaw(wcl.name, CHAVE_DOS_ENCONTROS, [...validEncounterIds]);
+  // Uma zona de cada vez, com arquivo por zona: acrescentar uma raide nova
+  // não invalida o que já está em disco das antigas.
+  const validEncounterIds = new Set<number>();
+  for (const zonaId of zonasDeRaide) {
+    const chave = `_zona/${zonaId}-encontros`;
+    const arquivados = reuse ? await loadRaw<number[]>(wcl.name, chave) : null;
+    const encontros = arquivados ? new Set(arquivados) : await wcl.fetchRaidEncounterIds(zonaId);
+    if (!arquivados) await saveRaw(wcl.name, chave, [...encontros]);
+    for (const id of encontros) validEncounterIds.add(id);
   }
 
   /**
@@ -401,7 +449,7 @@ async function main() {
     : 0;
 
   const guildReports = includeGuildReports && !pulaDescoberta
-    ? await wcl.fetchGuildReports(guildId, startTime, endTime, RAID_ZONE_ID)
+    ? await wcl.fetchGuildReports(guildId, startTime, endTime, zonasDeRaide)
     : [];
 
   const extraReports: WclReportRef[] = [];
@@ -415,7 +463,7 @@ async function main() {
       // Sem o epoch do relatório a noite inteira iria pro dia errado do
       // histórico — melhor perguntar à WCL do que datar errado em silêncio.
       if (bruto?.reportStartTime) {
-        extraReports.push({ code, startTime: bruto.reportStartTime, zone: { id: RAID_ZONE_ID } });
+        extraReports.push({ code, startTime: bruto.reportStartTime, zone: { id: [...zonasDeRaide][0] } });
         continue;
       }
       if (bruto) {
@@ -426,13 +474,15 @@ async function main() {
     }
 
     const meta = await wcl.fetchReportMeta(code);
-    if (meta?.zone?.id === RAID_ZONE_ID) extraReports.push(meta);
+    if (meta?.zone?.id !== undefined && zonasDeRaide.has(meta.zone.id)) extraReports.push(meta);
   }
 
   const uploaderUserIds = pulaDescoberta ? [] : getUploaderUserIds();
   const uploaderReports: WclReportRef[] = [];
   for (const userID of uploaderUserIds) {
-    uploaderReports.push(...(await wcl.fetchUserReports(userID, startTime, endTime, RAID_ZONE_ID)));
+    const doUsuario = await wcl.fetchUserReports(userID, startTime, endTime, new Set<number>());
+    relatarZonasDesconhecidas(doUsuario, zonasDeRaide);
+    uploaderReports.push(...doUsuario.filter((r) => r.zone && zonasDeRaide.has(r.zone.id)));
   }
 
   const reportsByCode = new Map<string, WclReportRef>();
@@ -453,7 +503,7 @@ async function main() {
       const playerReports = await wcl.fetchCharacterRecentReports(profile);
 
       for (const report of playerReports) {
-        if (report.zone?.id !== RAID_ZONE_ID) continue;
+        if (report.zone?.id === undefined || !zonasDeRaide.has(report.zone.id)) continue;
         if (report.startTime < startTime || report.startTime > endTime) continue;
         if (reportsByCode.has(report.code)) continue;
         if (trustedDiscovered.some((r) => r.code === report.code)) continue;

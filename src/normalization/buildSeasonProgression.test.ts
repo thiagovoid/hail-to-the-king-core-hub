@@ -8,6 +8,7 @@ import type { Boss } from "../types/index";
 function boss(overrides: Partial<Boss>): Boss {
   return {
     id: "boss",
+    raid: "raide",
     name: "Boss",
     encounterID: 100,
     status: "not_started",
@@ -27,6 +28,7 @@ function season(overrides: Partial<SeasonConfigFile> = {}): SeasonConfigFile {
       realm: "Nemesis",
       currentSeason: "Midnight Season 2",
       currentRaid: "Abismo Venenoso",
+      raids: [{ slug: "abismo-venenoso", nome: "Abismo Venenoso", zoneId: 53 }],
       lastUpdated: "2026-08-29T17:24:00.000Z",
       raidWeekAnchor: "2026-08-18",
       performanceTargets: {

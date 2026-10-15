@@ -69,7 +69,14 @@
       "date": "2026-09-01",
       "time": "21:30",
       "objective": "Início da progressão Heroica"
-    }
+    },
+    "raids": [
+      {
+        "slug": "abismo-venenoso",
+        "nome": "Abismo Venenoso",
+        "zoneId": 53
+      }
+    ]
   },
   "bossesNormal": [
     {
@@ -105,7 +112,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "sentinelas-sepultados",
@@ -140,7 +148,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "vashnik-o-maligno",
@@ -175,7 +184,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "os-exploradores-perdidos",
@@ -204,7 +214,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "sszorak",
@@ -233,7 +244,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "as-presas-gemeas",
@@ -262,7 +274,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "o-altar-espiralado",
@@ -303,7 +316,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "ulatek",
@@ -332,7 +346,8 @@
           "pulls": 4,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     }
   ],
   "bossesHeroic": [
@@ -387,7 +402,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "sentinelas-sepultados",
@@ -434,7 +450,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "vashnik-o-maligno",
@@ -469,7 +486,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "os-exploradores-perdidos",
@@ -510,7 +528,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "sszorak",
@@ -545,7 +564,8 @@
           "pulls": 1,
           "kill": true
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "as-presas-gemeas",
@@ -580,7 +600,8 @@
           "pulls": 1,
           "kill": false
         }
-      ]
+      ],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "o-altar-espiralado",
@@ -596,7 +617,8 @@
         "video": null
       },
       "pullsTotal": 0,
-      "pullLog": []
+      "pullLog": [],
+      "raid": "abismo-venenoso"
     },
     {
       "id": "ulatek",
@@ -612,7 +634,8 @@
         "video": null
       },
       "pullsTotal": 0,
-      "pullLog": []
+      "pullLog": [],
+      "raid": "abismo-venenoso"
     }
   ],
   "recentLogs": [

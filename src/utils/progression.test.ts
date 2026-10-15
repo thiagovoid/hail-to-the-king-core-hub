@@ -21,6 +21,7 @@ const bossStatusArb = fc.oneof(
 /** Gera um Boss mínimo com campos requeridos por computeProgression */
 const bossArb: fc.Arbitrary<Boss> = fc.record({
   id: fc.string({ minLength: 1, maxLength: 20 }),
+  raid: fc.constant("raide"),
   name: fc.string({ minLength: 1, maxLength: 40 }),
   encounterID: fc.nat(),
   status: bossStatusArb,

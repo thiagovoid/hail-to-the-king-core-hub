@@ -20,6 +20,7 @@ const TARGETS: CorePerformanceTargets = {
 function boss(overrides: Partial<Boss>): Boss {
   return {
     id: "boss",
+    raid: "raide",
     name: "Boss",
     encounterID: 1,
     status: "not_started",
