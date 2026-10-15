@@ -259,8 +259,15 @@ export interface SiteConfig {
   performanceTargets: CorePerformanceTargets;
   /** Informações sobre a próxima sessão de raid agendada. */
   nextRaid: {
-    /** Data da próxima raid, formato ISO 8601 (ex: "2025-07-16"). */
-    date: string;
+    /**
+     * EXCEÇÃO à regra, em ISO 8601 — a quarta que às vezes acontece.
+     *
+     * Null é o normal: a próxima noite sai de terça-e-quinta, calculada no
+     * build. Este campo existiu como a data oficial e virou exatamente o
+     * problema que um campo assim vira — ficou parado em 01/09 até meados
+     * de outubro. Data passada aqui é ignorada.
+     */
+    date: string | null;
     /** Horário de início da raid, formato "HH:MM" (ex: "20:00"). */
     time: string;
     /** Objetivo principal da sessão, ex: "Progressão no último boss". */

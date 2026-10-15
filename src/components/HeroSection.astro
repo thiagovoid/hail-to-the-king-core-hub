@@ -7,6 +7,7 @@
 import type { SiteConfig, Boss } from '@/types/index';
 import { formatDate } from '@/utils/format';
 import { computeProgression } from '@/utils/progression';
+import { diaDaSemanaPorExtenso, proximaNoiteDeRaide } from '@/engine/guild/proximaRaide';
 
 interface RecentLog {
   date: string;
@@ -24,6 +25,15 @@ interface Props {
 const { config, bossesNormal, bossesHeroic, recentLogs = [] } = Astro.props;
 
 const lastUpdated = formatDate(config.lastUpdated);
+
+/**
+ * A próxima noite sai da regra — terça e quinta —, não de um campo escrito
+ * à mão que ninguém lembra de atualizar. `config.nextRaid.date` segue
+ * valendo como EXCEÇÃO (a quarta que às vezes acontece): data futura ali
+ * vence o cálculo, data passada é ignorada.
+ */
+const proximaRaide = proximaNoiteDeRaide(new Date(), config.nextRaid?.date);
+const diaDaProximaRaide = diaDaSemanaPorExtenso(proximaRaide);
 
 /**
  * Uma raide por bloco, do tier mais antigo pro mais novo.
@@ -195,7 +205,11 @@ function formatLogDate(dateStr: string): string {
       {config.nextRaid && (
         <div class="flex items-center gap-2 text-sm">
           <span class="text-slate-400">Próxima Raid:</span>
-          <span class="text-slate-200 font-semibold">{formatDate(config.nextRaid.date)}</span>
+          {/* O dia por extenso faz a data se explicar: quem conhece a regra
+              confere de relance que a conta bate. */}
+          <span class="text-slate-200 font-semibold">
+            {diaDaProximaRaide}, {formatDate(proximaRaide)}
+          </span>
           <span class="text-slate-200 mx-1" aria-hidden="true">·</span>
           <span class="text-slate-200 font-semibold">{config.nextRaid.time}</span>
         </div>
