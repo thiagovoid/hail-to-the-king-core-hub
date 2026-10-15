@@ -52,9 +52,19 @@ interface Series {
 
 interface Props {
   series: Series[];
+  /** As raides da temporada. Com uma só, o filtro não aparece. */
+  raides?: Array<{ slug: string; nome: string }>;
+  /**
+   * Data da noite -> slug da raide. Mesmo mapa do gráfico do core, e pela
+   * mesma razão: enquanto a noite inteira é de uma raide, o número dela já
+   * é o da raide e nada precisa ser recalculado.
+   */
+  raidePorNoite?: Record<string, string>;
 }
 
-const { series } = Astro.props;
+const { series, raides = [], raidePorNoite = {} } = Astro.props;
+
+const mostrarFiltroDeRaide = raides.length > 1;
 
 const width = 800;
 const height = 320;
@@ -249,6 +259,12 @@ const charts = series.map((item) => {
   <!-- Mesmo controle da home. Recorta o desenho, não o cálculo: a escala
        vertical, a linha de META e o selo de meta atingida continuam olhando
        o período completo. -->
+  <script
+    type="application/json"
+    id="performance-chart-raides"
+    set:html={JSON.stringify(raidePorNoite)}
+  />
+
   <div
     id="performance-chart-meses"
     class="flex flex-wrap items-center gap-1.5 mb-5 pb-4 border-b border-slate-800"
@@ -275,6 +291,36 @@ const charts = series.map((item) => {
       ))
     }
   </div>
+
+  {
+    mostrarFiltroDeRaide && (
+      <div
+        id="performance-chart-raide"
+        class="flex flex-wrap items-center gap-1.5 mb-5 pb-4 border-b border-slate-800"
+      >
+        <span class="text-[11px] uppercase tracking-wide text-slate-600 mr-1">Raide</span>
+
+        <button
+          type="button"
+          data-raide="todas"
+          class="px-2.5 py-1 rounded-md text-xs transition-colors bg-slate-700 text-white"
+        >
+          Todas
+        </button>
+
+        {raides.map((raide) => (
+          <button
+            type="button"
+            data-raide={raide.slug}
+            class="px-2.5 py-1 rounded-md text-xs transition-colors text-slate-400 hover:text-white hover:bg-slate-800"
+            title={`Só as suas noites em ${raide.nome}`}
+          >
+            {raide.nome}
+          </button>
+        ))}
+      </div>
+    )
+  }
 
   {
     charts.map((chart, index) => {
@@ -621,14 +667,34 @@ const charts = series.map((item) => {
     return margemEsquerda + (indice / (total - 1)) * larguraDoGrafico;
   }
 
-  function aplicarPeriodo(mes: string) {
+  const raidesScript = document.querySelector('#performance-chart-raides');
+  const raidePorNoite: Record<string, string> = raidesScript?.textContent
+    ? JSON.parse(raidesScript.textContent)
+    : {};
+
+  let mesAtivo = 'todos';
+  let raideAtiva = 'todas';
+
+  /**
+   * Mês e raide no mesmo passe.
+   *
+   * Eram dois recortes sobre a mesma coleção de pontos, e aplicar um de
+   * cada vez faria o segundo reposicionar a partir do que o primeiro já
+   * tinha escondido. Um predicado só, uma passada só.
+   */
+  function aplicarFiltros() {
     document.querySelectorAll('[data-chart]').forEach((grafico) => {
       const pontos = [...grafico.querySelectorAll('[data-ponto]')] as SVGGElement[];
       if (pontos.length === 0) return;
 
-      const visiveis = pontos.filter(
-        (ponto) => mes === 'todos' || (ponto.getAttribute('data-date') ?? '').slice(0, 7) === mes
-      );
+      const visiveis = pontos.filter((ponto) => {
+        const data = ponto.getAttribute('data-date') ?? '';
+        const noMes = mesAtivo === 'todos' || data.slice(0, 7) === mesAtivo;
+        // Noite fora do mapa tocou as duas raides ou não tem boss
+        // cadastrado: não é "daquela raide", e some do recorte.
+        const naRaide = raideAtiva === 'todas' || raidePorNoite[data] === raideAtiva;
+        return noMes && naRaide;
+      });
 
       const coordenadas: string[] = [];
 
@@ -652,14 +718,21 @@ const charts = series.map((item) => {
     });
   }
 
-  const barraDeMeses = document.querySelector('#performance-chart-meses');
+  /** Marca o botão clicado e redesenha. */
+  function ligarBarra(
+    seletor: string,
+    atributo: string,
+    aoEscolher: (valor: string) => void
+  ) {
+    const barra = document.querySelector(seletor);
+    if (!barra) return;
 
-  if (barraDeMeses) {
-    const botoes = barraDeMeses.querySelectorAll('[data-mes]');
+    const botoes = barra.querySelectorAll(`[${atributo}]`);
 
     botoes.forEach((botao) => {
       botao.addEventListener('click', () => {
-        aplicarPeriodo(botao.getAttribute('data-mes') ?? 'todos');
+        aoEscolher(botao.getAttribute(atributo) ?? '');
+        aplicarFiltros();
 
         botoes.forEach((item) => {
           const ativo = item === botao;
@@ -670,4 +743,12 @@ const charts = series.map((item) => {
       });
     });
   }
+
+  ligarBarra('#performance-chart-meses', 'data-mes', (valor) => {
+    mesAtivo = valor || 'todos';
+  });
+
+  ligarBarra('#performance-chart-raide', 'data-raide', (valor) => {
+    raideAtiva = valor || 'todas';
+  });
 </script>

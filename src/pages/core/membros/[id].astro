@@ -18,6 +18,7 @@ import PainelDoTank from '@/components/PainelDoTank.astro';
 import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
 import { contarConquistas } from '@/engine/guild/conquistas';
 import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
+import { mapaDeRaides, raideDaNoite } from '@/engine/guild/porRaide';
 import { aoSeuAlcance } from '@/engine/guild/aoSeuAlcance';
 import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
 import PortaoDePreparacao from '@/components/PortaoDePreparacao.astro';
@@ -44,7 +45,7 @@ import { buildCoachRecommendation } from '@/engine/scores/coach';
 import CoachCard from '@/components/CoachCard.astro';
 import OQueVoceFezPeloGrupo from '@/components/OQueVoceFezPeloGrupo.astro';
 import { formatDate } from '@/utils/format';
-import type { CorePerformanceTargets, Player } from '@/types/index';
+import type { Boss, CorePerformanceTargets, Player } from '@/types/index';
 
 /**
  * O JSON importado vem com o tipo inferido entrada a entrada, e cada
@@ -73,6 +74,26 @@ export function getStaticPaths() {
 const { player } = Astro.props;
 
 const weeks = performanceWeeks;
+
+/**
+ * De que raide foi cada noite — mesmo mapa do gráfico do core.
+ *
+ * O gráfico daqui filtra os mesmos pontos por noite, então ele recorta
+ * pela mesma regra: noite inteira numa raide é daquela raide, e noite que
+ * encostou nas duas some do recorte em vez de entrar nos dois.
+ */
+const mapaDasRaides = mapaDeRaides([
+  ...(seasonJson.bossesNormal as Boss[]),
+  ...(seasonJson.bossesHeroic as Boss[]),
+]);
+
+const raidePorNoite: Record<string, string> = {};
+for (const semana of performanceWeeks) {
+  for (const noite of semana.runs ?? []) {
+    const qual = raideDaNoite(noite.players ?? [], mapaDasRaides);
+    if (qual.tipo === 'uma') raidePorNoite[noite.date] = qual.raide;
+  }
+}
 
 // Denominador da presença e da média: quantas noites o core teve. Sem ele,
 // "média das 4 noites" não dizia se eram as 4 do core ou as 4 da pessoa.
@@ -824,6 +845,8 @@ const attendance = calculateAttendance(weeks, [
     />
 
 <PerformanceChart
+  raides={seasonJson.config.raids}
+  raidePorNoite={raidePorNoite}
           series={[
             // A nota da pessoa abre o gráfico: é a leitura de cima, e as
             // outras abas explicam ela. Fica fora do ordenarPorFuncao de
