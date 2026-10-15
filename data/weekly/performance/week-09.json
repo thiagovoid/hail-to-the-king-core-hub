@@ -1,4 +1,6287 @@
 {
   "week": 9,
-  "runs": []
+  "runs": [
+    {
+      "date": "2026-10-14",
+      "reportCode": "aZ9R1byCVMYcgdKQ",
+      "players": [
+        {
+          "playerId": "blackwatch",
+          "dps": 38373,
+          "parse": 50,
+          "simTarget": 67429,
+          "itemLevel": 323,
+          "preparation": 57,
+          "preparationMissing": [
+            "Botas",
+            "Poção",
+            "Frasco"
+          ],
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 93,
+          "preparationMissingGear": [
+            "Botas"
+          ],
+          "attack": {
+            "score": 86.2,
+            "uptime": 92.2,
+            "cooldowns": 80.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 46585,
+              "name": "Raise Dead",
+              "casts": 16,
+              "efficiency": 71.9
+            },
+            {
+              "spellId": 43265,
+              "name": "Death and Decay",
+              "casts": 160,
+              "efficiency": 88.4
+            }
+          ],
+          "defense": {
+            "score": 58.2,
+            "mitigation": 36.8,
+            "dtps": 123094,
+            "selfSustain": 50
+          },
+          "defenseDetail": [
+            {
+              "spellId": 49039,
+              "name": "Lichborne",
+              "casts": 2,
+              "efficiency": 5.9
+            },
+            {
+              "spellId": 51052,
+              "name": "Anti-Magic Zone",
+              "casts": 6,
+              "efficiency": 30.5
+            },
+            {
+              "spellId": 48265,
+              "name": "Death's Advance",
+              "casts": 42,
+              "efficiency": 55.8
+            },
+            {
+              "spellId": 48792,
+              "name": "Icebound Fortitude",
+              "casts": 16,
+              "efficiency": 58.7
+            },
+            {
+              "spellId": 48707,
+              "name": "Anti-Magic Shell",
+              "casts": 35,
+              "efficiency": 83
+            },
+            {
+              "spellId": 55233,
+              "name": "Vampiric Blood",
+              "casts": 36,
+              "efficiency": 83.9
+            },
+            {
+              "spellId": 49028,
+              "name": "Dancing Rune Weapon",
+              "casts": 24,
+              "efficiency": 89.9
+            }
+          ],
+          "help": {
+            "score": 11.2,
+            "abilities": 2,
+            "casts": 13
+          },
+          "helpDetail": [
+            {
+              "spellId": 47528,
+              "name": "Mind Freeze",
+              "casts": 5,
+              "efficiency": 3.3,
+              "categoria": "interromper"
+            },
+            {
+              "spellId": 61999,
+              "name": "Raise Ally",
+              "casts": 8,
+              "efficiency": 19,
+              "categoria": "levantar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "dps": 38373,
+            "hps": 62360
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 35981,
+              "deaths": 12,
+              "deathCost": {
+                "seconds": 197,
+                "share": 10.5
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 59142,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 197,
+            "share": 9.4,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 143,
+              "afterSeconds": 76,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 73,
+              "fightSeconds": 135,
+              "afterSeconds": 62,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 81,
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Death's Advance",
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 261,
+              "fightSeconds": 273,
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Lichborne"
+              ],
+              "ability": "Voidscar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 69,
+              "fightSeconds": 83,
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 63,
+              "fightSeconds": 71,
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Lichborne"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 376,
+              "fightSeconds": 384,
+              "afterSeconds": 8,
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 137,
+              "fightSeconds": 138,
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 176,
+              "fightSeconds": 176,
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Lichborne"
+              ],
+              "ability": "Venom Roar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 157,
+              "fightSeconds": 158,
+              "afterSeconds": 0,
+              "ability": "Nightfall"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 180,
+              "fightSeconds": 180,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Icebound Fortitude",
+                "Lichborne"
+              ],
+              "ability": "Eclipse Fragment"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 63,
+              "fightSeconds": 63,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ],
+              "ability": "Dark Frenzy"
+            }
+          ],
+          "trashShare": 6.3,
+          "specs": [
+            {
+              "spec": "Blood",
+              "role": "tank"
+            }
+          ],
+          "utility": {
+            "interrupts": 3,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 8,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 3,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 9,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 1587255,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Icebound Fortitude",
+                "Lichborne"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 66,
+              "ability": "Dark Devastation",
+              "amount": 1390020,
+              "fatiaDaVida": 67,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ]
+            },
+            {
+              "fight": 6,
+              "atSecond": 66,
+              "ability": "Dark Devastation",
+              "amount": 1092593,
+              "fatiaDaVida": 53,
+              "defensivosProntos": [
+                "Anti-Magic Zone",
+                "Lichborne"
+              ]
+            }
+          ],
+          "deaths": 12,
+          "mechanics": {
+            "errors": 1.3,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Voidscar",
+              "label": "Chaga do Caos",
+              "tries": 7
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 2
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 13,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 2,
+              "trys": 12,
+              "uso": 17,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Rune of Sanguination"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ]
+        },
+        {
+          "playerId": "voidsurge",
+          "hps": 128702,
+          "parse": 61,
+          "itemLevel": 318,
+          "preparation": 71,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 95.3,
+            "uptime": 95.3,
+            "cooldowns": null
+          },
+          "attackDetail": [],
+          "defense": {
+            "score": 45.2,
+            "mitigation": 45,
+            "dtps": 60660,
+            "selfSustain": 45.3
+          },
+          "defenseDetail": [
+            {
+              "spellId": 98008,
+              "name": "Spirit Link Totem",
+              "casts": 3,
+              "efficiency": 18.2
+            },
+            {
+              "spellId": 1291894,
+              "name": "Soulcoiler Ritual Vessel",
+              "casts": 5,
+              "efficiency": 26.8
+            },
+            {
+              "spellId": 108271,
+              "name": "Astral Shift",
+              "casts": 8,
+              "efficiency": 27
+            },
+            {
+              "spellId": 1267068,
+              "name": "Stormstream Totem",
+              "casts": 38,
+              "efficiency": 43.6
+            },
+            {
+              "spellId": 114052,
+              "name": "Ascendance",
+              "casts": 15,
+              "efficiency": 72.9
+            },
+            {
+              "spellId": 5394,
+              "name": "Healing Stream Totem",
+              "casts": 103,
+              "efficiency": 82.8
+            }
+          ],
+          "help": {
+            "score": 14.6,
+            "abilities": 2,
+            "casts": 7
+          },
+          "helpDetail": [
+            {
+              "spellId": 192077,
+              "name": "Wind Rush Totem",
+              "casts": 3,
+              "efficiency": 10.1,
+              "categoria": "acelerar"
+            },
+            {
+              "spellId": 32182,
+              "name": "Heroism",
+              "casts": 4,
+              "efficiency": 19,
+              "categoria": "acelerar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "healing": {
+            "score": 75.3,
+            "coverage": 17.4,
+            "share": 76.8,
+            "overheal": 26.3
+          },
+          "offRole": {
+            "dps": 5309
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 4712,
+              "deaths": 15,
+              "deathCost": {
+                "seconds": 345,
+                "share": 18.3
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 10488,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 345,
+            "share": 16.4,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 297,
+              "fightSeconds": 384,
+              "afterSeconds": 87,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel"
+              ],
+              "ability": "Eclipse Fragment"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 312,
+              "fightSeconds": 384,
+              "afterSeconds": 72,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Stormstream Totem"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 82,
+              "fightSeconds": 135,
+              "afterSeconds": 53,
+              "readyDefensives": [
+                "Astral Shift",
+                "Stormstream Totem"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 81,
+              "afterSeconds": 44,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 65,
+              "fightSeconds": 83,
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 81,
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Spirit Link Totem"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 145,
+              "fightSeconds": 158,
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Spirit Link Totem"
+              ],
+              "ability": "Voidweave"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 128,
+              "fightSeconds": 138,
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ],
+              "ability": "Twisted Appendage"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 170,
+              "fightSeconds": 180,
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Healing Stream Totem",
+                "Soulcoiler Ritual Vessel",
+                "Spirit Link Totem"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 63,
+              "fightSeconds": 71,
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Spirit Link Totem"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 268,
+              "fightSeconds": 273,
+              "afterSeconds": 5,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Spirit Link Totem"
+              ],
+              "ability": "Nightfall"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 172,
+              "fightSeconds": 176,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 63,
+              "afterSeconds": 3,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 382,
+              "fightSeconds": 384,
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ],
+              "ability": "Nightfall"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 142,
+              "fightSeconds": 143,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Stormstream Totem"
+              ],
+              "ability": "Voidweave"
+            }
+          ],
+          "trashShare": 1,
+          "specs": [
+            {
+              "spec": "Restoration",
+              "role": "healer"
+            }
+          ],
+          "utility": {
+            "interrupts": 10,
+            "dispels": 24,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 10,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 889498,
+              "fatiaDaVida": 97,
+              "defensivosProntos": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ]
+            },
+            {
+              "fight": 10,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 746225,
+              "fatiaDaVida": 74,
+              "defensivosProntos": [
+                "Soulcoiler Ritual Vessel",
+                "Astral Shift",
+                "Stormstream Totem",
+                "Spirit Link Totem"
+              ]
+            },
+            {
+              "fight": 18,
+              "atSecond": 312,
+              "ability": "Extinguish",
+              "amount": 703217,
+              "fatiaDaVida": 81,
+              "defensivosProntos": [
+                "Soulcoiler Ritual Vessel",
+                "Stormstream Totem"
+              ]
+            }
+          ],
+          "deaths": 15,
+          "mechanics": {
+            "errors": 1.2,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Voidscar",
+              "label": "Chaga do Caos",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 13,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 12,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Earthliving"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
+          ]
+        },
+        {
+          "playerId": "kams",
+          "hps": 115896,
+          "parse": 88,
+          "simTarget": 107954,
+          "itemLevel": 323,
+          "preparation": 72,
+          "preparationMissing": [
+            "Peito",
+            "Botas",
+            "Poção"
+          ],
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 88,
+          "preparationMissingGear": [
+            "Peito",
+            "Botas"
+          ],
+          "attack": {
+            "score": 83.3,
+            "uptime": 89.4,
+            "cooldowns": 77.1
+          },
+          "attackDetail": [
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 27,
+              "efficiency": 71.3
+            },
+            {
+              "spellId": 31884,
+              "name": "Avenging Wrath",
+              "casts": 13,
+              "efficiency": 82.9
+            }
+          ],
+          "defense": {
+            "score": 27.1,
+            "mitigation": 44.9,
+            "dtps": 50621,
+            "selfSustain": 39.9
+          },
+          "defenseDetail": [
+            {
+              "spellId": 642,
+              "name": "Divine Shield",
+              "casts": 2,
+              "efficiency": 17.1
+            },
+            {
+              "spellId": 633,
+              "name": "Lay on Hands",
+              "casts": 3,
+              "efficiency": 19.4
+            },
+            {
+              "spellId": 498,
+              "name": "Divine Protection",
+              "casts": 6,
+              "efficiency": 21.6
+            },
+            {
+              "spellId": 1291894,
+              "name": "Soulcoiler Ritual Vessel",
+              "casts": 3,
+              "efficiency": 22.1
+            },
+            {
+              "spellId": 6940,
+              "name": "Blessing of Sacrifice",
+              "casts": 6,
+              "efficiency": 32.7
+            },
+            {
+              "spellId": 31821,
+              "name": "Aura Mastery",
+              "casts": 7,
+              "efficiency": 49.8
+            }
+          ],
+          "help": {
+            "score": 9.2,
+            "abilities": 1,
+            "casts": 3
+          },
+          "helpDetail": [
+            {
+              "spellId": 391054,
+              "name": "Intercession",
+              "casts": 3,
+              "efficiency": 9.2,
+              "categoria": "levantar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "healing": {
+            "score": 80,
+            "coverage": 22.2,
+            "share": 97.9,
+            "overheal": 38
+          },
+          "offRole": {
+            "dps": 9742
+          },
+          "tries": {
+            "present": 9,
+            "total": 13,
+            "lateStart": true,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 8,
+              "killed": false,
+              "flawless": false,
+              "dps": 8455,
+              "deaths": 9,
+              "deathCost": {
+                "seconds": 437,
+                "share": 34.3
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 17275,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 437,
+            "share": 20.8,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 2,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 273,
+              "afterSeconds": 236,
+              "readyDefensives": [
+                "Divine Protection",
+                "Aura Mastery",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 175,
+              "fightSeconds": 273,
+              "afterSeconds": 98,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel",
+                "Divine Shield"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 146,
+              "fightSeconds": 180,
+              "afterSeconds": 34,
+              "readyDefensives": [
+                "Lay on Hands",
+                "Divine Shield"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 364,
+              "fightSeconds": 384,
+              "afterSeconds": 20,
+              "readyDefensives": [
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 65,
+              "fightSeconds": 83,
+              "afterSeconds": 18,
+              "readyDefensives": [
+                "Divine Protection",
+                "Aura Mastery",
+                "Soulcoiler Ritual Vessel",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 71,
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
+              "ability": "Suffocating Darkness"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 71,
+              "fightSeconds": 81,
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Aura Mastery",
+                "Soulcoiler Ritual Vessel",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 130,
+              "fightSeconds": 135,
+              "afterSeconds": 5,
+              "readyDefensives": [
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel",
+                "Divine Shield"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 63,
+              "afterSeconds": 3,
+              "readyDefensives": [
+                "Divine Protection",
+                "Aura Mastery",
+                "Soulcoiler Ritual Vessel"
+              ],
+              "ability": "Dark Frenzy"
+            }
+          ],
+          "trashShare": 1,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            }
+          ],
+          "utility": {
+            "interrupts": 43,
+            "dispels": 10,
+            "purges": 0,
+            "battleRez": 3,
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 103,
+              "cobertosPeloRaide": 34,
+              "seus": 2,
+              "pessoasQueInterromperam": 10
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 854400,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Aura Mastery",
+                "Blessing of Sacrifice",
+                "Divine Shield"
+              ]
+            },
+            {
+              "fight": 18,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 847599,
+              "fatiaDaVida": 90,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Lay on Hands",
+                "Soulcoiler Ritual Vessel",
+                "Divine Shield"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 175,
+              "ability": "Dark Devastation",
+              "amount": 741624,
+              "fatiaDaVida": 91,
+              "defensivosProntos": [
+                "Soulcoiler Ritual Vessel",
+                "Divine Shield"
+              ]
+            }
+          ],
+          "deaths": 9,
+          "mechanics": {
+            "errors": 0.9,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 1,
+              "trys": 9,
+              "uso": 11,
+              "quais": [
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 1,
+              "trys": 8,
+              "uso": 13,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ]
+        },
+        {
+          "playerId": "cowsadeer",
+          "hps": 209895,
+          "parse": 57,
+          "itemLevel": 326,
+          "preparation": 79,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 78,
+            "uptime": 91.1,
+            "cooldowns": 65
+          },
+          "attackDetail": [
+            {
+              "spellId": 31884,
+              "name": "Avenging Wrath",
+              "casts": 12,
+              "efficiency": 42.7
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 43,
+              "efficiency": 87.2
+            }
+          ],
+          "defense": {
+            "score": 50.6,
+            "mitigation": 44.5,
+            "dtps": 57789,
+            "selfSustain": 53.2
+          },
+          "defenseDetail": [
+            {
+              "spellId": 498,
+              "name": "Divine Protection",
+              "casts": 17,
+              "efficiency": 39.4
+            },
+            {
+              "spellId": 633,
+              "name": "Lay on Hands",
+              "casts": 7,
+              "efficiency": 39.6
+            },
+            {
+              "spellId": 642,
+              "name": "Divine Shield",
+              "casts": 9,
+              "efficiency": 42.7
+            },
+            {
+              "spellId": 1291894,
+              "name": "Soulcoiler Ritual Vessel",
+              "casts": 14,
+              "efficiency": 46.7
+            },
+            {
+              "spellId": 31821,
+              "name": "Aura Mastery",
+              "casts": 16,
+              "efficiency": 84.5
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "healing": {
+            "score": 96.6,
+            "coverage": 28.4,
+            "share": 125.3,
+            "overheal": 32.2
+          },
+          "offRole": {
+            "dps": 4145
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 3609,
+              "deaths": 12,
+              "deathCost": {
+                "seconds": 213,
+                "share": 11.3
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 8792,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 213,
+            "share": 10.1,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 83,
+              "afterSeconds": 46,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 92,
+              "fightSeconds": 135,
+              "afterSeconds": 43,
+              "readyDefensives": [
+                "Divine Protection"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 146,
+              "fightSeconds": 180,
+              "afterSeconds": 34,
+              "readyDefensives": [
+                "Divine Shield"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 245,
+              "fightSeconds": 273,
+              "afterSeconds": 28,
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 143,
+              "fightSeconds": 158,
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel",
+                "Lay on Hands"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 129,
+              "fightSeconds": 143,
+              "afterSeconds": 13,
+              "readyDefensives": [
+                "Lay on Hands"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 70,
+              "fightSeconds": 81,
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Divine Shield",
+                "Divine Protection"
+              ],
+              "ability": "Venom Roar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 373,
+              "fightSeconds": 384,
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Soulcoiler Ritual Vessel"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 130,
+              "fightSeconds": 138,
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 59,
+              "fightSeconds": 63,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Divine Shield"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 176,
+              "fightSeconds": 176,
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Divine Protection"
+              ],
+              "ability": "Venom Roar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 71,
+              "fightSeconds": 71,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Divine Protection"
+              ],
+              "ability": "Melee"
+            }
+          ],
+          "trashShare": 1.1,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            }
+          ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 78,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 0,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 5,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 859799,
+              "fatiaDaVida": 88,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Divine Protection",
+                "Soulcoiler Ritual Vessel",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 16,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 845396,
+              "fatiaDaVida": 95,
+              "defensivosProntos": [
+                "Soulcoiler Ritual Vessel"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 723117,
+              "fatiaDaVida": 81,
+              "defensivosProntos": [
+                "Divine Shield"
+              ]
+            }
+          ],
+          "deaths": 12,
+          "mechanics": {
+            "errors": 0.7,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Voidscar",
+              "label": "Chaga do Caos",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 7,
+              "trys": 13,
+              "uso": 54,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 12,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
+          ]
+        },
+        {
+          "playerId": "bustgril",
+          "dps": 69182,
+          "simTarget": 153750,
+          "itemLevel": 325,
+          "preparation": 72,
+          "preparationMissing": [
+            "Elmo",
+            "Ombreiras",
+            "Poção"
+          ],
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 88,
+          "preparationMissingGear": [
+            "Elmo",
+            "Ombreiras"
+          ],
+          "attack": {
+            "score": 76.2,
+            "uptime": 71.1,
+            "cooldowns": 81.3
+          },
+          "attackDetail": [
+            {
+              "spellId": 84714,
+              "name": "Frozen Orb",
+              "casts": 27,
+              "efficiency": 78.1
+            },
+            {
+              "spellId": 205021,
+              "name": "Ray of Frost",
+              "casts": 32,
+              "efficiency": 78.6
+            },
+            {
+              "spellId": 44614,
+              "name": "Flurry",
+              "casts": 97,
+              "efficiency": 87.2
+            }
+          ],
+          "defense": {
+            "score": 22.9,
+            "mitigation": 44.4,
+            "dtps": 49217,
+            "selfSustain": 8.5
+          },
+          "defenseDetail": [
+            {
+              "spellId": 11426,
+              "name": "Ice Barrier",
+              "casts": 14,
+              "efficiency": 22.7
+            },
+            {
+              "spellId": 414658,
+              "name": "Ice Cold",
+              "casts": 6,
+              "efficiency": 23.1
+            }
+          ],
+          "offRole": {
+            "hps": 4180
+          },
+          "tries": {
+            "present": 11,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": true,
+            "idle": 1,
+            "topDamageDead": 2
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 11,
+              "killed": false,
+              "flawless": false,
+              "dps": 96867,
+              "deaths": 11,
+              "deathCost": {
+                "seconds": 346,
+                "share": 23
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 346,
+            "share": 16.4,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 3,
+            "efeitoDomino": 0,
+            "speedrun": 1,
+            "fantasma": 2
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 23,
+              "fightSeconds": 138,
+              "afterSeconds": 116,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 83,
+              "fightSeconds": 143,
+              "afterSeconds": 60,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold"
+              ],
+              "ability": "Eclipse Fragment"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 81,
+              "afterSeconds": 44,
+              "readyDefensives": [
+                "Ice Cold"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 146,
+              "fightSeconds": 180,
+              "afterSeconds": 34,
+              "readyDefensives": [
+                "Ice Cold"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 36,
+              "fightSeconds": 63,
+              "afterSeconds": 28,
+              "readyDefensives": [
+                "Ice Barrier",
+                "Ice Cold"
+              ],
+              "ability": "Venom Roar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 247,
+              "fightSeconds": 273,
+              "afterSeconds": 26,
+              "ability": "Voidweave"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 143,
+              "fightSeconds": 158,
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Ice Barrier"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 71,
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Ice Barrier"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 126,
+              "fightSeconds": 135,
+              "afterSeconds": 10,
+              "ability": "Voidweave"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 175,
+              "fightSeconds": 176,
+              "afterSeconds": 1,
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 82,
+              "fightSeconds": 83,
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Ice Barrier"
+              ],
+              "ability": "Overwhelming Fear"
+            }
+          ],
+          "trashShare": 8.1,
+          "specs": [
+            {
+              "spec": "Frost",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 3,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 65,
+              "cobertosPeloRaide": 30,
+              "seus": 3,
+              "pessoasQueInterromperam": 8
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 13,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 812161,
+              "fatiaDaVida": 96,
+              "defensivosProntos": [
+                "Ice Barrier",
+                "Ice Cold"
+              ]
+            },
+            {
+              "fight": 16,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 794502,
+              "fatiaDaVida": 86,
+              "defensivosProntos": [
+                "Ice Barrier"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 724837,
+              "fatiaDaVida": 86,
+              "defensivosProntos": []
+            }
+          ],
+          "deaths": 11,
+          "mechanics": {
+            "errors": 1,
+            "tries": 11
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 5
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 2,
+              "trys": 11,
+              "uso": 18,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 1,
+              "trys": 11,
+              "uso": 9,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ]
+        },
+        {
+          "playerId": "hysillens",
+          "dps": 83498,
+          "parse": 38,
+          "simTarget": 136149,
+          "itemLevel": 325,
+          "preparation": 87,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 67,
+            "uptime": 98.4,
+            "cooldowns": 35.7
+          },
+          "attackDetail": [
+            {
+              "spellId": 1297908,
+              "name": "Font of Venomous Rage",
+              "casts": 5,
+              "efficiency": 28.3
+            },
+            {
+              "spellId": 205180,
+              "name": "Summon Darkglare",
+              "casts": 6,
+              "efficiency": 29.4
+            },
+            {
+              "spellId": 1257052,
+              "name": "Dark Harvest",
+              "casts": 20,
+              "efficiency": 49.3
+            }
+          ],
+          "defense": {
+            "score": 18.1,
+            "mitigation": 40.2,
+            "dtps": 51447,
+            "selfSustain": 22.8
+          },
+          "defenseDetail": [
+            {
+              "spellId": 104773,
+              "name": "Unending Resolve",
+              "casts": 5,
+              "efficiency": 18.1
+            }
+          ],
+          "help": {
+            "score": 12.7,
+            "abilities": 1,
+            "casts": 2
+          },
+          "helpDetail": [
+            {
+              "spellId": 20707,
+              "name": "Soulstone",
+              "casts": 2,
+              "efficiency": 12.7,
+              "categoria": "levantar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 14712
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 78799,
+              "deaths": 12,
+              "deathCost": {
+                "seconds": 438,
+                "share": 23.2
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 124290,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 438,
+            "share": 20.8,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 2,
+            "fantasma": 3
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 19,
+              "fightSeconds": 158,
+              "afterSeconds": 139,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 23,
+              "fightSeconds": 138,
+              "afterSeconds": 116,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 76,
+              "fightSeconds": 176,
+              "afterSeconds": 101,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Blood of the Old Ones"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 364,
+              "fightSeconds": 384,
+              "afterSeconds": 20,
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 65,
+              "fightSeconds": 81,
+              "afterSeconds": 16,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 128,
+              "fightSeconds": 143,
+              "afterSeconds": 14,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 63,
+              "fightSeconds": 71,
+              "afterSeconds": 8,
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 128,
+              "fightSeconds": 135,
+              "afterSeconds": 7,
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 267,
+              "fightSeconds": 273,
+              "afterSeconds": 6,
+              "ability": "Overwhelming Fear"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 78,
+              "fightSeconds": 83,
+              "afterSeconds": 5,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Mindsting"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 63,
+              "afterSeconds": 3,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 178,
+              "fightSeconds": 180,
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Unending Resolve"
+              ],
+              "ability": "Mindsting"
+            }
+          ],
+          "trashShare": 7.4,
+          "specs": [
+            {
+              "spec": "Affliction",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 2,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 0,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 841752,
+              "fatiaDaVida": 80,
+              "defensivosProntos": [
+                "Unending Resolve"
+              ]
+            },
+            {
+              "fight": 18,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 834754,
+              "fatiaDaVida": 79,
+              "defensivosProntos": [
+                "Unending Resolve"
+              ]
+            },
+            {
+              "fight": 18,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 714403,
+              "fatiaDaVida": 75,
+              "defensivosProntos": [
+                "Unending Resolve"
+              ]
+            }
+          ],
+          "deaths": 12,
+          "mechanics": {
+            "errors": 0.3,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 7,
+              "trys": 13,
+              "uso": 54,
+              "quais": [
+                "Light's Potential",
+                "Potent Healing Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 7,
+              "trys": 12,
+              "uso": 58,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Poção"
+          ]
+        },
+        {
+          "playerId": "jrxamã",
+          "dps": 89697,
+          "parse": 70,
+          "simTarget": 167539,
+          "itemLevel": 328,
+          "preparation": 74,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 84.6,
+            "uptime": 98.5,
+            "cooldowns": 70.7
+          },
+          "attackDetail": [
+            {
+              "spellId": 443454,
+              "name": "Ancestral Swiftness",
+              "casts": 33,
+              "efficiency": 59.8
+            },
+            {
+              "spellId": 191634,
+              "name": "Stormkeeper",
+              "casts": 23,
+              "efficiency": 66.4
+            },
+            {
+              "spellId": 114050,
+              "name": "Ascendance",
+              "casts": 12,
+              "efficiency": 85.9
+            }
+          ],
+          "defense": {
+            "score": 14.4,
+            "mitigation": 45.8,
+            "dtps": 55307,
+            "selfSustain": 14.4
+          },
+          "defenseDetail": [
+            {
+              "spellId": 5394,
+              "name": "Healing Stream Totem",
+              "casts": 3,
+              "efficiency": 6
+            },
+            {
+              "spellId": 108271,
+              "name": "Astral Shift",
+              "casts": 6,
+              "efficiency": 22.8
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 8312
+          },
+          "tries": {
+            "present": 9,
+            "total": 13,
+            "lateStart": true,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 8,
+              "killed": false,
+              "flawless": false,
+              "dps": 122429,
+              "deaths": 8,
+              "deathCost": {
+                "seconds": 62,
+                "share": 4.9
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 151964,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 62,
+            "share": 3,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 246,
+              "fightSeconds": 273,
+              "afterSeconds": 27,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ],
+              "ability": "Voidweave"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 62,
+              "fightSeconds": 71,
+              "afterSeconds": 9,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 74,
+              "fightSeconds": 81,
+              "afterSeconds": 7,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 378,
+              "fightSeconds": 384,
+              "afterSeconds": 6,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ],
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 176,
+              "fightSeconds": 180,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Healing Stream Totem"
+              ],
+              "ability": "Mindsting"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 131,
+              "fightSeconds": 135,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 63,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem"
+              ],
+              "ability": "Mindsting"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 82,
+              "fightSeconds": 83,
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Astral Shift",
+                "Healing Stream Totem"
+              ],
+              "ability": "Overwhelming Fear"
+            }
+          ],
+          "trashShare": 2.7,
+          "specs": [
+            {
+              "spec": "Elemental",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 5,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 103,
+              "cobertosPeloRaide": 34,
+              "seus": 5,
+              "pessoasQueInterromperam": 10
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 10,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 928111,
+              "fatiaDaVida": 85,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healing Stream Totem"
+              ]
+            },
+            {
+              "fight": 18,
+              "atSecond": 255,
+              "ability": "Extinguish",
+              "amount": 818073,
+              "fatiaDaVida": 75,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healing Stream Totem"
+              ]
+            },
+            {
+              "fight": 17,
+              "atSecond": 35,
+              "ability": "Venom Roar",
+              "amount": 368744,
+              "fatiaDaVida": 37,
+              "defensivosProntos": [
+                "Astral Shift",
+                "Healing Stream Totem"
+              ]
+            }
+          ],
+          "deaths": 8,
+          "mechanics": {
+            "errors": 0.7,
+            "tries": 9
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 7,
+              "trys": 9,
+              "uso": 78,
+              "quais": [
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 3,
+              "trys": 8,
+              "uso": 38,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Flametongue"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Comida"
+          ]
+        },
+        {
+          "playerId": "heracranosx",
+          "dps": 133866,
+          "parse": 78,
+          "simTarget": 143592,
+          "itemLevel": 327,
+          "preparation": 89,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 83,
+            "uptime": 92.1,
+            "cooldowns": 74
+          },
+          "attackDetail": [
+            {
+              "spellId": 452497,
+              "name": "Abyssal Gaze",
+              "casts": 20,
+              "efficiency": 27.6
+            },
+            {
+              "spellId": 258920,
+              "name": "Immolation Aura",
+              "casts": 81,
+              "efficiency": 76
+            },
+            {
+              "spellId": 1297761,
+              "name": "Voracious Heart of Ula'tek",
+              "casts": 21,
+              "efficiency": 77.5
+            },
+            {
+              "spellId": 198013,
+              "name": "Eye Beam",
+              "casts": 68,
+              "efficiency": 81.2
+            },
+            {
+              "spellId": 258860,
+              "name": "Essence Break",
+              "casts": 54,
+              "efficiency": 86.7
+            },
+            {
+              "spellId": 370965,
+              "name": "The Hunt",
+              "casts": 32,
+              "efficiency": 94.9
+            }
+          ],
+          "defense": {
+            "score": 51.5,
+            "mitigation": 43,
+            "dtps": 45753,
+            "selfSustain": 37.8
+          },
+          "defenseDetail": [
+            {
+              "spellId": 196718,
+              "name": "Darkness",
+              "casts": 10,
+              "efficiency": 38.4
+            },
+            {
+              "spellId": 198589,
+              "name": "Blur",
+              "casts": 33,
+              "efficiency": 64.5
+            }
+          ],
+          "help": {
+            "score": 0.7,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 183752,
+              "name": "Disrupt",
+              "casts": 1,
+              "efficiency": 0.7,
+              "categoria": "interromper"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 18136
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 7
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 130569,
+              "deaths": 11,
+              "deathCost": {
+                "seconds": 234,
+                "share": 12.4
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 162492,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 234,
+            "share": 11.1,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 100,
+              "fightSeconds": 158,
+              "afterSeconds": 57,
+              "readyDefensives": [
+                "Darkness"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 82,
+              "fightSeconds": 138,
+              "afterSeconds": 56,
+              "ability": "Suffocating Darkness"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 100,
+              "fightSeconds": 135,
+              "afterSeconds": 35,
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 246,
+              "fightSeconds": 273,
+              "afterSeconds": 27,
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 364,
+              "fightSeconds": 384,
+              "afterSeconds": 20,
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 81,
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Darkness"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 128,
+              "fightSeconds": 143,
+              "afterSeconds": 14,
+              "ability": "Voidweave"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 59,
+              "fightSeconds": 63,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Blur",
+                "Darkness"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 178,
+              "fightSeconds": 180,
+              "afterSeconds": 3,
+              "ability": "Twisted Appendage"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 70,
+              "fightSeconds": 71,
+              "afterSeconds": 2,
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 175,
+              "fightSeconds": 176,
+              "afterSeconds": 1,
+              "ability": "Dark Devastation"
+            }
+          ],
+          "trashShare": 14.4,
+          "specs": [
+            {
+              "spec": "Havoc",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 10,
+            "dispels": 1,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 10,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 175,
+              "ability": "Dark Devastation",
+              "amount": 518383,
+              "fatiaDaVida": 57,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 9,
+              "atSecond": 175,
+              "ability": "Dark Devastation",
+              "amount": 464360,
+              "fatiaDaVida": 46,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 15,
+              "atSecond": 50,
+              "ability": "Venom Roar",
+              "amount": 402484,
+              "fatiaDaVida": 44,
+              "defensivosProntos": [
+                "Blur"
+              ]
+            }
+          ],
+          "deaths": 11,
+          "mechanics": {
+            "errors": 1.3,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Voidscar",
+              "label": "Chaga do Caos",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 13,
+              "trys": 13,
+              "uso": 100,
+              "quais": [
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 2,
+              "trys": 11,
+              "uso": 18,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": []
+        },
+        {
+          "playerId": "gunst",
+          "dps": 102396,
+          "parse": 32,
+          "simTarget": 153441,
+          "itemLevel": 326,
+          "preparation": 82,
+          "preparationMissing": [
+            "Elmo",
+            "Cintura",
+            "Botas",
+            "Braçadeiras"
+          ],
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 5,
+              "label": "Cintura",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 8,
+              "label": "Braçadeiras",
+              "tipo": "encanto",
+              "ok": false
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 16,
+              "label": "Mão secundária",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 82,
+          "preparationMissingGear": [
+            "Elmo",
+            "Cintura",
+            "Botas",
+            "Braçadeiras"
+          ],
+          "attack": {
+            "score": 91.9,
+            "uptime": 89.6,
+            "cooldowns": 94.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 114051,
+              "name": "Ascendance",
+              "casts": 19,
+              "efficiency": 94.2
+            }
+          ],
+          "defense": {
+            "score": 43.2,
+            "mitigation": 46.8,
+            "dtps": 54853,
+            "selfSustain": 15.7
+          },
+          "defenseDetail": [
+            {
+              "spellId": 108271,
+              "name": "Astral Shift",
+              "casts": 13,
+              "efficiency": 43.2
+            }
+          ],
+          "help": {
+            "score": 1.1,
+            "abilities": 1,
+            "casts": 2
+          },
+          "helpDetail": [
+            {
+              "spellId": 57994,
+              "name": "Wind Shear",
+              "casts": 2,
+              "efficiency": 1.1,
+              "categoria": "interromper"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 8637
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 2
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 99744,
+              "deaths": 13,
+              "deathCost": {
+                "seconds": 343,
+                "share": 18.2
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 125420,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 1,
+                "share": 0.7
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 344,
+            "share": 16.4,
+            "inKills": 1
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 175,
+              "fightSeconds": 273,
+              "afterSeconds": 98,
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 135,
+              "afterSeconds": 69,
+              "readyDefensives": [
+                "Astral Shift"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 100,
+              "fightSeconds": 158,
+              "afterSeconds": 57,
+              "ability": "Blood of the Old Ones"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 99,
+              "fightSeconds": 135,
+              "afterSeconds": 36,
+              "ability": "Blood of the Old Ones"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 361,
+              "fightSeconds": 384,
+              "afterSeconds": 23,
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 64,
+              "fightSeconds": 81,
+              "afterSeconds": 17,
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 61,
+              "fightSeconds": 71,
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Astral Shift"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 73,
+              "fightSeconds": 83,
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Astral Shift"
+              ],
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 135,
+              "fightSeconds": 143,
+              "afterSeconds": 7,
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 131,
+              "fightSeconds": 138,
+              "afterSeconds": 7,
+              "ability": "Voidweave"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 63,
+              "afterSeconds": 3,
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 174,
+              "fightSeconds": 176,
+              "afterSeconds": 2,
+              "ability": "Suffocating Darkness"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 178,
+              "fightSeconds": 180,
+              "afterSeconds": 2,
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "atSecond": 216,
+              "fightSeconds": 217,
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Astral Shift"
+              ],
+              "ability": "Nullify"
+            }
+          ],
+          "trashShare": 17.1,
+          "specs": [
+            {
+              "spec": "Enhancement",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 3,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 3,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 22,
+              "atSecond": 216,
+              "ability": "Nullify",
+              "amount": 1067088,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Astral Shift"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 898780,
+              "fatiaDaVida": 84,
+              "defensivosProntos": [
+                "Astral Shift"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 175,
+              "ability": "Dark Devastation",
+              "amount": 846410,
+              "fatiaDaVida": 79,
+              "defensivosProntos": []
+            }
+          ],
+          "deaths": 14,
+          "mechanics": {
+            "errors": 1.4,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Voidscar",
+              "label": "Chaga do Caos",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullify",
+              "label": "Nullify",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 10,
+              "trys": 13,
+              "uso": 77,
+              "quais": [
+                "Potion of Recklessness",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 4,
+              "trys": 13,
+              "uso": 31,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Windfury"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ]
+        },
+        {
+          "playerId": "nerlock",
+          "dps": 49860,
+          "parse": 38,
+          "simTarget": 142002,
+          "itemLevel": 314,
+          "preparation": 75,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 83.1,
+            "uptime": 78.2,
+            "cooldowns": 87.9
+          },
+          "attackDetail": [
+            {
+              "spellId": 446035,
+              "name": "Bladestorm",
+              "casts": 32,
+              "efficiency": 87.5
+            },
+            {
+              "spellId": 107574,
+              "name": "Avatar",
+              "casts": 25,
+              "efficiency": 88.3
+            }
+          ],
+          "defense": {
+            "score": 7.3,
+            "mitigation": 45.6,
+            "dtps": 42714,
+            "selfSustain": 14.1
+          },
+          "defenseDetail": [
+            {
+              "spellId": 118038,
+              "name": "Die by the Sword",
+              "casts": 2,
+              "efficiency": 4
+            },
+            {
+              "spellId": 18499,
+              "name": "Berserker Rage",
+              "casts": 3,
+              "efficiency": 8.4
+            },
+            {
+              "spellId": 97462,
+              "name": "Rallying Cry",
+              "casts": 2,
+              "efficiency": 9.6
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 6017
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 44578,
+              "deaths": 12,
+              "deathCost": {
+                "seconds": 553,
+                "share": 29.3
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 95717,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 2,
+                "share": 0.8
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 555,
+            "share": 26.4,
+            "inKills": 1
+          },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 1,
+            "fantasma": 3
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 23,
+              "fightSeconds": 138,
+              "afterSeconds": 115,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 176,
+              "afterSeconds": 110,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 49,
+              "fightSeconds": 158,
+              "afterSeconds": 109,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Overwhelming Fear"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 175,
+              "fightSeconds": 273,
+              "afterSeconds": 98,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Die by the Sword"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 46,
+              "fightSeconds": 83,
+              "afterSeconds": 36,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 353,
+              "fightSeconds": 384,
+              "afterSeconds": 31,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 81,
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 130,
+              "fightSeconds": 143,
+              "afterSeconds": 12,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Die by the Sword"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 71,
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 127,
+              "fightSeconds": 135,
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 176,
+              "fightSeconds": 180,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 59,
+              "fightSeconds": 63,
+              "afterSeconds": 4,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Suffocating Darkness"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "atSecond": 215,
+              "fightSeconds": 217,
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ],
+              "ability": "Nullify"
+            }
+          ],
+          "trashShare": 7.3,
+          "specs": [
+            {
+              "spec": "Arms",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 21,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 1,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 22,
+              "atSecond": 215,
+              "ability": "Nullify",
+              "amount": 883574,
+              "fatiaDaVida": 98,
+              "defensivosProntos": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 175,
+              "ability": "Dark Devastation",
+              "amount": 863044,
+              "fatiaDaVida": 96,
+              "defensivosProntos": [
+                "Berserker Rage",
+                "Die by the Sword"
+              ]
+            },
+            {
+              "fight": 16,
+              "atSecond": 46,
+              "ability": "Dark Devastation",
+              "amount": 833804,
+              "fatiaDaVida": 93,
+              "defensivosProntos": [
+                "Berserker Rage",
+                "Rallying Cry",
+                "Die by the Sword"
+              ]
+            }
+          ],
+          "deaths": 13,
+          "mechanics": {
+            "errors": 0.7,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullify",
+              "label": "Nullify",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 2,
+              "trys": 13,
+              "uso": 15,
+              "quais": [
+                "Concentrated Silvermoon Health Potion",
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 1,
+              "trys": 13,
+              "uso": 8,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Poção"
+          ]
+        },
+        {
+          "playerId": "xúlio",
+          "dps": 53122,
+          "parse": 42,
+          "simTarget": 159866,
+          "itemLevel": 327,
+          "preparation": 80,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 70.7,
+            "uptime": 95.6,
+            "cooldowns": 45.8
+          },
+          "attackDetail": [
+            {
+              "spellId": 432472,
+              "name": "Sacred Weapon",
+              "casts": 10,
+              "efficiency": 25.6
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 27,
+              "efficiency": 66
+            }
+          ],
+          "defense": {
+            "score": 44.9,
+            "mitigation": 41.2,
+            "dtps": 93775,
+            "selfSustain": 44.5
+          },
+          "defenseDetail": [
+            {
+              "spellId": 642,
+              "name": "Divine Shield",
+              "casts": 3,
+              "efficiency": 15.9
+            },
+            {
+              "spellId": 86659,
+              "name": "Guardian of Ancient Kings",
+              "casts": 9,
+              "efficiency": 24.4
+            },
+            {
+              "spellId": 432459,
+              "name": "Holy Bulwark",
+              "casts": 13,
+              "efficiency": 32
+            },
+            {
+              "spellId": 31850,
+              "name": "Ardent Defender",
+              "casts": 19,
+              "efficiency": 55.8
+            },
+            {
+              "spellId": 389539,
+              "name": "Sentinel",
+              "casts": 32,
+              "efficiency": 96.5
+            }
+          ],
+          "help": {
+            "score": 0.8,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 853,
+              "name": "Hammer of Justice",
+              "casts": 1,
+              "efficiency": 0.8,
+              "categoria": "controlar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "dps": 53122,
+            "hps": 53895
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 52371,
+              "deaths": 16,
+              "deathCost": {
+                "seconds": 364,
+                "share": 19.3
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 59644,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 7,
+                "share": 3.3
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 371,
+            "share": 17.6,
+            "inKills": 1
+          },
+          "deathSignature": {
+            "primeiroACair": 3,
+            "efeitoDomino": 1,
+            "speedrun": 0,
+            "fantasma": 4
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 46,
+              "fightSeconds": 158,
+              "afterSeconds": 111,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 135,
+              "afterSeconds": 98,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 83,
+              "afterSeconds": 46,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 81,
+              "afterSeconds": 44,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 364,
+              "fightSeconds": 384,
+              "afterSeconds": 20,
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 129,
+              "fightSeconds": 143,
+              "afterSeconds": 14,
+              "readyDefensives": [
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Venom Roar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 173,
+              "fightSeconds": 180,
+              "afterSeconds": 7,
+              "readyDefensives": [
+                "Divine Shield"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "atSecond": 210,
+              "fightSeconds": 217,
+              "afterSeconds": 7,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Negation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 171,
+              "fightSeconds": 176,
+              "afterSeconds": 5,
+              "readyDefensives": [
+                "Holy Bulwark"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 269,
+              "fightSeconds": 273,
+              "afterSeconds": 5,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Divine Shield"
+              ],
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 154,
+              "fightSeconds": 158,
+              "afterSeconds": 3,
+              "readyDefensives": [
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Nightfall"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 135,
+              "fightSeconds": 138,
+              "afterSeconds": 3,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 68,
+              "fightSeconds": 71,
+              "afterSeconds": 3,
+              "ability": "Voidscar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 81,
+              "fightSeconds": 83,
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 61,
+              "fightSeconds": 63,
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Melee"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 81,
+              "fightSeconds": 81,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 135,
+              "fightSeconds": 135,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Divine Shield"
+              ],
+              "ability": "Dark Devastation"
+            }
+          ],
+          "trashShare": 8.4,
+          "specs": [
+            {
+              "spec": "Protection",
+              "role": "tank"
+            }
+          ],
+          "utility": {
+            "interrupts": 43,
+            "dispels": 20,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 5,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 17,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 22,
+              "atSecond": 210,
+              "ability": "Negation",
+              "amount": 1719514,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ]
+            },
+            {
+              "fight": 18,
+              "atSecond": 364,
+              "ability": "Extinguish",
+              "amount": 1498772,
+              "fatiaDaVida": 100,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 15,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 1362520,
+              "fatiaDaVida": 100,
+              "defensivosProntos": [
+                "Ardent Defender",
+                "Holy Bulwark",
+                "Divine Shield",
+                "Guardian of Ancient Kings"
+              ]
+            }
+          ],
+          "deaths": 17,
+          "mechanics": {
+            "errors": 1.4,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 9
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Voidscar",
+              "label": "Chaga do Caos",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 3
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 1,
+              "trys": 13,
+              "uso": 8,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 7,
+              "trys": 13,
+              "uso": 54,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Rite of Sanctification"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Poção"
+          ]
+        },
+        {
+          "playerId": "dagom",
+          "dps": 80120,
+          "parse": 39,
+          "simTarget": 146400,
+          "itemLevel": 323,
+          "preparation": 87,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 73.9,
+            "uptime": 84.2,
+            "cooldowns": 63.6
+          },
+          "attackDetail": [
+            {
+              "spellId": 31884,
+              "name": "Avenging Wrath",
+              "casts": 19,
+              "efficiency": 53.8
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 23,
+              "efficiency": 58.2
+            },
+            {
+              "spellId": 255937,
+              "name": "Wake of Ashes",
+              "casts": 48,
+              "efficiency": 64.5
+            },
+            {
+              "spellId": 343527,
+              "name": "Execution Sentence",
+              "casts": 29,
+              "efficiency": 77.8
+            }
+          ],
+          "defense": {
+            "score": 19.5,
+            "mitigation": 46,
+            "dtps": 53834,
+            "selfSustain": 25.3
+          },
+          "defenseDetail": [
+            {
+              "spellId": 633,
+              "name": "Lay on Hands",
+              "casts": 1,
+              "efficiency": 3.8
+            },
+            {
+              "spellId": 1022,
+              "name": "Blessing of Protection",
+              "casts": 3,
+              "efficiency": 18
+            },
+            {
+              "spellId": 6940,
+              "name": "Blessing of Sacrifice",
+              "casts": 7,
+              "efficiency": 24
+            },
+            {
+              "spellId": 403876,
+              "name": "Divine Protection",
+              "casts": 10,
+              "efficiency": 25.8
+            },
+            {
+              "spellId": 642,
+              "name": "Divine Shield",
+              "casts": 6,
+              "efficiency": 26
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 16587
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 75614,
+              "deaths": 13,
+              "deathCost": {
+                "seconds": 442,
+                "share": 23.4
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 119241,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 442,
+            "share": 21,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 3,
+            "efeitoDomino": 1,
+            "speedrun": 0,
+            "fantasma": 3
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 180,
+              "afterSeconds": 114,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Blessing of Protection"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 296,
+              "fightSeconds": 384,
+              "afterSeconds": 89,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Overwhelming Fear"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 73,
+              "fightSeconds": 158,
+              "afterSeconds": 85,
+              "readyDefensives": [
+                "Divine Shield",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 143,
+              "afterSeconds": 76,
+              "readyDefensives": [
+                "Divine Shield",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 94,
+              "fightSeconds": 135,
+              "afterSeconds": 41,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 81,
+              "afterSeconds": 15,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Blessing of Sacrifice",
+                "Lay on Hands"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 61,
+              "fightSeconds": 71,
+              "afterSeconds": 10,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Lay on Hands"
+              ],
+              "ability": "Dark Frenzy"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 130,
+              "fightSeconds": 138,
+              "afterSeconds": 8,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Digestive Juices"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 61,
+              "fightSeconds": 63,
+              "afterSeconds": 2,
+              "readyDefensives": [
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Mindsting"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 175,
+              "fightSeconds": 176,
+              "afterSeconds": 1,
+              "readyDefensives": [
+                "Divine Protection",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 273,
+              "fightSeconds": 273,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Sacrifice"
+              ],
+              "ability": "Venom Roar"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 82,
+              "fightSeconds": 83,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Suffocating Darkness"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 384,
+              "fightSeconds": 384,
+              "afterSeconds": 0,
+              "readyDefensives": [
+                "Divine Protection",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Nightfall"
+            }
+          ],
+          "trashShare": 15.4,
+          "specs": [
+            {
+              "spec": "Retribution",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 5,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 5,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 6,
+              "atSecond": 66,
+              "ability": "Dark Devastation",
+              "amount": 918162,
+              "fatiaDaVida": 92,
+              "defensivosProntos": [
+                "Divine Shield",
+                "Blessing of Sacrifice",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 13,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 872655,
+              "fatiaDaVida": 96,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Lay on Hands"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 66,
+              "ability": "Dark Devastation",
+              "amount": 863352,
+              "fatiaDaVida": 95,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Blessing of Sacrifice",
+                "Blessing of Protection"
+              ]
+            }
+          ],
+          "deaths": 13,
+          "mechanics": {
+            "errors": 1.7,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 6
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Voidscar",
+              "label": "Chaga do Caos",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 4
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Venom Roar",
+              "label": "Rugido Peçonhento",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 8,
+              "trys": 13,
+              "uso": 62,
+              "quais": [
+                "Concentrated Silvermoon Health Potion",
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 6,
+              "trys": 12,
+              "uso": 50,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": []
+        },
+        {
+          "playerId": "ligiaf",
+          "dps": 93837,
+          "parse": 49,
+          "simTarget": 149973,
+          "itemLevel": 321,
+          "preparation": 79,
+          "preparationChecks": 2,
+          "preparationSlots": [
+            {
+              "slot": 0,
+              "label": "Elmo",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 2,
+              "label": "Ombreiras",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 4,
+              "label": "Peito",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 6,
+              "label": "Pernas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 7,
+              "label": "Botas",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 15,
+              "label": "Arma",
+              "tipo": "encanto",
+              "ok": true
+            },
+            {
+              "slot": 1,
+              "label": "Colar",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 10,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            },
+            {
+              "slot": 11,
+              "label": "Anel",
+              "tipo": "gema",
+              "ok": true
+            }
+          ],
+          "preparationGear": 100,
+          "attack": {
+            "score": 77.9,
+            "uptime": 83.5,
+            "cooldowns": 72.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 15286,
+              "name": "Vampiric Embrace",
+              "casts": 13,
+              "efficiency": 60
+            },
+            {
+              "spellId": 120644,
+              "name": "Halo",
+              "casts": 26,
+              "efficiency": 69
+            },
+            {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 16,
+              "efficiency": 75.2
+            },
+            {
+              "spellId": 228260,
+              "name": "Voidform",
+              "casts": 18,
+              "efficiency": 85.3
+            }
+          ],
+          "defense": {
+            "score": 45.9,
+            "mitigation": 45.3,
+            "dtps": 44233,
+            "selfSustain": 26.1
+          },
+          "defenseDetail": [
+            {
+              "spellId": 47585,
+              "name": "Dispersion",
+              "casts": 9,
+              "efficiency": 38.9
+            },
+            {
+              "spellId": 19236,
+              "name": "Desperate Prayer",
+              "casts": 14,
+              "efficiency": 52.9
+            }
+          ],
+          "help": {
+            "score": 75.2,
+            "abilities": 1,
+            "casts": 16
+          },
+          "helpDetail": [
+            {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 16,
+              "efficiency": 75.2,
+              "categoria": "acelerar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3513,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 17880
+          },
+          "tries": {
+            "present": 13,
+            "total": 13,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "tries": 12,
+              "killed": false,
+              "flawless": false,
+              "dps": 88735,
+              "deaths": 14,
+              "deathCost": {
+                "seconds": 761,
+                "share": 40.3
+              }
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 138132,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 761,
+            "share": 36.2,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 3,
+            "efeitoDomino": 0,
+            "speedrun": 1,
+            "fantasma": 5
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 19,
+              "fightSeconds": 138,
+              "afterSeconds": 119,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion"
+              ],
+              "ability": "Voidweave"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 66,
+              "fightSeconds": 176,
+              "afterSeconds": 110,
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 37,
+              "fightSeconds": 143,
+              "afterSeconds": 106,
+              "readyDefensives": [
+                "Dispersion"
+              ],
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 46,
+              "fightSeconds": 143,
+              "afterSeconds": 96,
+              "readyDefensives": [
+                "Dispersion"
+              ],
+              "ability": "Dark Devastation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 73,
+              "fightSeconds": 158,
+              "afterSeconds": 84,
+              "ability": "Blood of the Old Ones"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 203,
+              "fightSeconds": 273,
+              "afterSeconds": 70,
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 88,
+              "fightSeconds": 135,
+              "afterSeconds": 47,
+              "readyDefensives": [
+                "Dispersion"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 146,
+              "fightSeconds": 180,
+              "afterSeconds": 34,
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 146,
+              "fightSeconds": 176,
+              "afterSeconds": 30,
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 63,
+              "fightSeconds": 83,
+              "afterSeconds": 20,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion"
+              ],
+              "ability": "Suffocation"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 364,
+              "fightSeconds": 384,
+              "afterSeconds": 20,
+              "ability": "Extinguish"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 71,
+              "afterSeconds": 11,
+              "ability": "Suffocating Darkness"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 72,
+              "fightSeconds": 81,
+              "afterSeconds": 9,
+              "readyDefensives": [
+                "Desperate Prayer",
+                "Dispersion"
+              ],
+              "ability": "Suffocating Darkness"
+            },
+            {
+              "encounterID": 3513,
+              "difficulty": 4,
+              "atSecond": 60,
+              "fightSeconds": 63,
+              "afterSeconds": 3,
+              "ability": "Dark Frenzy"
+            }
+          ],
+          "trashShare": 9.7,
+          "specs": [
+            {
+              "spec": "Shadow",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 2,
+            "interrupcoes": {
+              "oportunidades": 168,
+              "cobertosPeloRaide": 64,
+              "seus": 2,
+              "pessoasQueInterromperam": 13
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 18,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 942703,
+              "fatiaDaVida": 95,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 9,
+              "atSecond": 146,
+              "ability": "Extinguish",
+              "amount": 898920,
+              "fatiaDaVida": 100,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 5,
+              "atSecond": 37,
+              "ability": "Extinguish",
+              "amount": 877494,
+              "fatiaDaVida": 89,
+              "defensivosProntos": [
+                "Dispersion"
+              ]
+            }
+          ],
+          "deaths": 14,
+          "mechanics": {
+            "errors": 1.3,
+            "tries": 13
+          },
+          "mechanicsDetail": [
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Extinguish",
+              "label": "Extinguir",
+              "tries": 8
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Debuffs of Suffocation",
+              "label": "Sufocação",
+              "tries": 5
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Dark Devastation",
+              "label": "Devastação Sombria",
+              "tries": 2
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Twisted Appendage",
+              "label": "Apêndice Retorcido",
+              "tries": 1
+            },
+            {
+              "boss": "Kith'ix",
+              "mechanic": "Damage from Nullshards",
+              "label": "Estilhaços Nulos",
+              "tries": 1
+            }
+          ],
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 13,
+              "uso": 31,
+              "quais": [
+                "Light's Potential",
+                "Silvermoon Health Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 3,
+              "trys": 12,
+              "uso": 25,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparationMissing": [
+            "Poção"
+          ]
+        }
+      ]
+    }
+  ]
 }
