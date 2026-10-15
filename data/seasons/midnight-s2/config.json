@@ -4,8 +4,8 @@
     "guild": "Hail to the King",
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
-    "currentRaid": "Abismo Venenoso",
-    "lastUpdated": "2026-10-15T19:18:02.537Z",
+    "currentRaid": "A Libertação de Kith'ix",
+    "lastUpdated": "2026-10-15T20:34:00.125Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -74,6 +74,11 @@
       {
         "slug": "abismo-venenoso",
         "nome": "Abismo Venenoso",
+        "zoneId": 53
+      },
+      {
+        "slug": "libertacao-de-kithix",
+        "nome": "A Libertação de Kith'ix",
         "zoneId": 53
       }
     ]
@@ -348,6 +353,30 @@
         }
       ],
       "raid": "abismo-venenoso"
+    },
+    {
+      "id": "kithix",
+      "name": "Kith'ix",
+      "encounterID": 3513,
+      "status": "killed",
+      "pulls": 1,
+      "bestPullPercent": null,
+      "killDate": "2026-10-15T02:24:41.910Z",
+      "links": {
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/aZ9R1byCVMYcgdKQ?fight=22",
+        "wipefest": null,
+        "video": null
+      },
+      "pullsTotal": 1,
+      "pullLog": [
+        {
+          "reportCode": "aZ9R1byCVMYcgdKQ",
+          "date": "2026-10-14",
+          "pulls": 1,
+          "kill": true
+        }
+      ],
+      "raid": "libertacao-de-kithix"
     }
   ],
   "bossesHeroic": [
@@ -636,6 +665,30 @@
       "pullsTotal": 0,
       "pullLog": [],
       "raid": "abismo-venenoso"
+    },
+    {
+      "id": "kithix",
+      "name": "Kith'ix",
+      "encounterID": 3513,
+      "status": "progress",
+      "pulls": 12,
+      "bestPullPercent": null,
+      "killDate": null,
+      "links": {
+        "warcraftLogs": null,
+        "wipefest": null,
+        "video": null
+      },
+      "pullsTotal": 12,
+      "pullLog": [
+        {
+          "reportCode": "aZ9R1byCVMYcgdKQ",
+          "date": "2026-10-14",
+          "pulls": 12,
+          "kill": false
+        }
+      ],
+      "raid": "libertacao-de-kithix"
     }
   ],
   "recentLogs": [

@@ -21,23 +21,56 @@ const bossesNormal = seasonJson.bossesNormal as Boss[];
 const bossesHeroic = seasonJson.bossesHeroic as Boss[];
 const roster = rosterJson as Player[];
 
-const progressionNormal = computeProgression(bossesNormal);
-const progressionHeroic = computeProgression(bossesHeroic);
+/**
+ * Uma seção por raide, e dentro dela uma por dificuldade.
+ *
+ * Com duas raides abertas, somar tudo numa contagem só dava "9/9 Normal" —
+ * oito bosses do Abismo mais o Kith'ix, num denominador que não corresponde
+ * a raide nenhuma. Pior: a página inteira se dizia da raide mais recente,
+ * com os bosses da antiga embaixo.
+ */
+const DIFICULDADES = [
+  {
+    chave: 'normal' as const,
+    nome: 'Normal',
+    cor: 'text-[#22c55e]',
+    de: bossesNormal,
+  },
+  {
+    chave: 'heroic' as const,
+    nome: 'Heroica',
+    cor: 'text-[#a855f7]',
+    de: bossesHeroic,
+  },
+];
 
-const normalSummary = progressionNormal.total > 0
-  ? `${progressionNormal.killed}/${progressionNormal.total} Normal`
-  : '—';
+const secoesPorRaide = config.raids
+  .map((raide) => ({
+    raide,
+    blocos: DIFICULDADES.map((dificuldade) => {
+      const bosses = dificuldade.de.filter((boss) => boss.raid === raide.slug);
+      const progressao = computeProgression(bosses);
+      return {
+        ...dificuldade,
+        bosses,
+        contagem: `${progressao.killed}/${progressao.total}`,
+        resumo: `${progressao.killed}/${progressao.total} ${dificuldade.nome}`,
+      };
+    }).filter((bloco) => bloco.bosses.length > 0),
+  }))
+  .filter((secao) => secao.blocos.length > 0);
 
-const heroicSummary = progressionHeroic.total > 0
-  ? `${progressionHeroic.killed}/${progressionHeroic.total} Heroica`
-  : '—';
+/** Pra metadescrição, que só tem uma linha: a soma, dita como soma. */
+const resumoGeral = secoesPorRaide
+  .map((secao) => `${secao.raide.nome} ${secao.blocos.map((b) => b.resumo).join(' e ')}`)
+  .join('; ');
 
 const lastUpdated = formatDate(config.lastUpdated);
 ---
 
 <BaseLayout
   title="Progressão"
-  description={`Progressão do Core Nemesis — ${config.currentRaid}. ${normalSummary} | ${heroicSummary}.`}
+  description={`Progressão do Core Nemesis — ${resumoGeral}.`}
 >
   <!-- Page header -->
   <section
@@ -50,23 +83,23 @@ const lastUpdated = formatDate(config.lastUpdated);
         <div>
           <!-- Raid name -->
           <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
-            Progressão — {config.currentRaid}
+            Progressão — {config.currentSeason}
           </p>
           <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-3">
-            {config.currentRaid}
+            {secoesPorRaide.length === 1 ? secoesPorRaide[0].raide.nome : 'Temporada'}
           </h1>
           <!-- Progression summary badges -->
           <div class="flex flex-wrap items-center gap-3">
-            <span
-              class="inline-flex items-center px-3 py-1 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e] text-sm font-semibold"
-            >
-              ⚔ {normalSummary}
-            </span>
-            <span
-              class="inline-flex items-center px-3 py-1 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/30 text-[#a855f7] text-sm font-semibold"
-            >
-              ⚔ {heroicSummary}
-            </span>
+            {/* Um badge por raide. Somadas, as duas davam "9/9 Normal" —
+                um denominador que não é de raide nenhuma. */}
+            {secoesPorRaide.map((secao) => (
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm font-semibold">
+                <span class="text-slate-300">{secao.raide.nome}</span>
+                {secao.blocos.map((bloco) => (
+                  <span class={bloco.cor}>{bloco.resumo}</span>
+                ))}
+              </span>
+            ))}
             <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] text-sm font-medium">
               🌙 {config.currentSeason}
             </span>
@@ -87,33 +120,34 @@ const lastUpdated = formatDate(config.lastUpdated);
 
   <!-- Normal Boss list -->
   <section
-    aria-label="Bosses em dificuldade Normal"
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
+    aria-label="Bosses por raide"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12"
   >
-    <h2 class="text-[#22c55e] text-xs font-semibold uppercase tracking-widest mb-6">
-      Normal — {normalSummary}
-    </h2>
+    {secoesPorRaide.map((secao) => (
+      <div>
+        <h2 class="text-xl font-bold text-white mb-6">{secao.raide.nome}</h2>
 
-    <div class="flex flex-col gap-2">
-      {bossesNormal.map((boss, i) => (
-        <BossCard boss={boss} index={i} scores={getBossScores(SEASON_SLUG, 'normal', boss.id)} roster={roster} />
-      ))}
-    </div>
-  </section>
+        <div class="space-y-10">
+          {secao.blocos.map((bloco) => (
+            <div>
+              <h3 class={`${bloco.cor} text-xs font-semibold uppercase tracking-widest mb-6`}>
+                {bloco.nome} — {bloco.contagem}
+              </h3>
 
-  <!-- Heroic Boss list -->
-  <section
-    aria-label="Bosses em dificuldade Heroica"
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
-  >
-    <h2 class="text-[#a855f7] text-xs font-semibold uppercase tracking-widest mb-6">
-      Heroica — {heroicSummary}
-    </h2>
-
-    <div class="flex flex-col gap-2">
-      {bossesHeroic.map((boss, i) => (
-        <BossCard boss={boss} index={i} scores={getBossScores(SEASON_SLUG, 'heroic', boss.id)} roster={roster} />
-      ))}
-    </div>
+              <div class="flex flex-col gap-2">
+                {bloco.bosses.map((boss, i) => (
+                  <BossCard
+                    boss={boss}
+                    index={i}
+                    scores={getBossScores(SEASON_SLUG, bloco.chave, boss.id)}
+                    roster={roster}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
   </section>
 </BaseLayout>
