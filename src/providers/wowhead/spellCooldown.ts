@@ -149,9 +149,21 @@ export function extractCooldownMs(texto: string): number | undefined {
   return Math.round(valor * fator);
 }
 
-/** "2 Charges" -> 2. Sem menção a cargas, a habilidade tem uma só. */
+/**
+ * "2 Charges" -> 2. Sem menção a cargas, a habilidade tem uma só.
+ *
+ * O singular saiu do padrão de propósito. "Charge" também é VERBO, e o
+ * tooltip do Stormkeeper abre com "Requires level 50 Charge yourself with
+ * lightning" — a regex antiga lia "50 Charge" ali e dava cinquenta cargas a
+ * uma habilidade de uma. Isso entrava na conta de recarga do Atacar do
+ * único Elemental do core, em treze noites.
+ *
+ * O "Requires level N" sai antes por garantia: é dali que vem o número
+ * grudado no verbo, e nenhum tooltip declara carga nessa frase.
+ */
 export function extractCharges(texto: string): number {
-  const match = texto.match(/(\d+)\s*Charges?/i);
+  const semNivel = texto.replace(/Requires level \d+/gi, " ");
+  const match = semNivel.match(/(\d+)\s+Charges\b/i);
   if (!match) return 1;
   const valor = Number(match[1]);
   return Number.isFinite(valor) && valor > 0 ? valor : 1;

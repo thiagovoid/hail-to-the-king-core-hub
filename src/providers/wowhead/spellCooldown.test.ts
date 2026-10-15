@@ -65,6 +65,17 @@ describe("extractCharges", () => {
     expect(extractCharges("1.5 min cooldown")).toBe(1);
   });
 
+  it("não confunde o VERBO charge com carga", () => {
+    // Tooltip real do Stormkeeper (191634). A regex antiga lia "50 Charge"
+    // do "level 50" seguido do verbo, e dava 50 cargas a uma magia de uma.
+    const stormkeeper =
+      "Stormkeeper Talent 1.5 sec cast 1 min cooldown Requires Shaman " +
+      "Requires level 50 Charge yourself with lightning, causing your next " +
+      "2 Lightning Bolts to be instant cast.";
+
+    expect(extractCharges(stormkeeper)).toBe(1);
+  });
+
   it("lê a quantidade declarada", () => {
     expect(extractCharges("30 sec cooldown 2 Charges")).toBe(2);
   });
