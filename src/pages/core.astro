@@ -97,6 +97,12 @@ const rosterGroups = [
     label: 'Alts',
     players: players.filter((player) => player.type === 'alt').map(comoAtalho),
   },
+  // Suplente não tinha grupo nenhum e sumia do seletor: quem vem uma noite
+  // ou outra não é alt de ninguém, e ficava fora das quatro listas.
+  {
+    label: 'Suplentes',
+    players: players.filter((player) => player.type === 'replace').map(comoAtalho),
+  },
 ].filter((grupo) => grupo.players.length > 0);
 
 const dpsSeries = getCorePerformanceSeries(

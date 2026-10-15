@@ -28,11 +28,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 71203,
+        "target": 70871,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:57:24.901Z"
+        "calculatedAt": "2026-10-05T09:46:12.596Z"
       }
     }
   },
@@ -64,11 +64,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 71262,
+        "target": 67429,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:58:11.982Z"
+        "calculatedAt": "2026-10-05T09:47:00.977Z"
       }
     }
   },
@@ -100,11 +100,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 93528,
+        "target": 151900,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:58:37.460Z"
+        "calculatedAt": "2026-10-05T09:47:19.577Z"
       }
     }
   },
@@ -224,11 +224,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 161978,
+        "target": 153750,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:59:01.905Z"
+        "calculatedAt": "2026-10-05T09:47:33.238Z"
       }
     }
   },
@@ -260,11 +260,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 144590,
+        "target": 136149,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:59:11.900Z"
+        "calculatedAt": "2026-10-05T09:47:47.077Z"
       }
     }
   },
@@ -276,7 +276,7 @@
     "spec": "Shadow",
     "heroSpec": "Tececaos",
     "role": "dps",
-    "type": "main",
+    "type": "replace",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/90/267395674-avatar.jpg?alt=/wow/static/images/2d/avatar/29-1.jpg",
@@ -296,13 +296,14 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 172333,
+        "target": 151622,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:59:19.902Z"
+        "calculatedAt": "2026-09-21T08:20:02.735Z"
       }
-    }
+    },
+    "pertenceA": null
   },
   {
     "id": "jrxamã",
@@ -332,11 +333,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 169180,
+        "target": 167539,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:59:28.353Z"
+        "calculatedAt": "2026-10-05T09:49:25.214Z"
       }
     }
   },
@@ -368,11 +369,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 163325,
+        "target": 143592,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:59:35.782Z"
+        "calculatedAt": "2026-09-21T08:20:18.261Z"
       }
     }
   },
@@ -404,11 +405,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 160326,
+        "target": 153441,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T09:59:51.344Z"
+        "calculatedAt": "2026-10-05T09:51:30.132Z"
       }
     }
   },
@@ -440,11 +441,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 142539,
+        "target": 142002,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:00:12.324Z"
+        "calculatedAt": "2026-10-05T09:53:46.761Z"
       }
     }
   },
@@ -477,11 +478,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 97049,
+        "target": 93766,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:00:31.243Z"
+        "calculatedAt": "2026-09-21T08:20:42.517Z"
       }
     }
   },
@@ -514,11 +515,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 120791,
+        "target": 116405,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:00:45.145Z"
+        "calculatedAt": "2026-09-21T08:20:50.610Z"
       }
     }
   },
@@ -550,11 +551,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 101966,
+        "target": 159866,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:00:53.091Z"
+        "calculatedAt": "2026-09-21T08:20:58.553Z"
       }
     }
   },
@@ -586,11 +587,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 151341,
+        "target": 146400,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:01:01.054Z"
+        "calculatedAt": "2026-10-05T09:55:46.581Z"
       }
     }
   },
@@ -622,11 +623,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 162300,
+        "target": 149973,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:01:15.011Z"
+        "calculatedAt": "2026-09-21T08:21:19.485Z"
       }
     }
   },
@@ -658,11 +659,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 138921,
+        "target": 129221,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:01:28.447Z"
+        "calculatedAt": "2026-09-21T08:21:27.325Z"
       }
     }
   },
@@ -674,7 +675,7 @@
     "spec": "Beast Mastery",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
+    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/41/266976297-avatar.jpg?alt=/wow/static/images/2d/avatar/3-0.jpg",
@@ -694,13 +695,14 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 203456,
+        "target": 210149,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:01:47.555Z"
+        "calculatedAt": "2026-10-05T09:56:54.503Z"
       }
-    }
+    },
+    "pertenceA": null
   },
   {
     "id": "harrydóter",
@@ -710,7 +712,7 @@
     "spec": "Demonology",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
+    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/90/267528538-avatar.jpg?alt=/wow/static/images/2d/avatar/3-1.jpg",
@@ -727,16 +729,7 @@
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Harryd%C3%B3ter"
     },
-    "performanceGoals": {
-      "dps": {
-        "metric": "dps",
-        "target": 170285,
-        "direction": "higher",
-        "description": "DPS alvo baseado em simulação",
-        "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:02:01.097Z"
-      }
-    }
+    "pertenceA": null
   },
   {
     "id": "inuqqz",
@@ -746,7 +739,7 @@
     "spec": "Discipline",
     "heroSpec": null,
     "role": "healer",
-    "type": "alt",
+    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/233/267724777-avatar.jpg?alt=/wow/static/images/2d/avatar/6-0.jpg",
@@ -762,7 +755,8 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Inuqqz"
-    }
+    },
+    "pertenceA": null
   },
   {
     "id": "heracranosd",
@@ -792,11 +786,11 @@
     "performanceGoals": {
       "dps": {
         "metric": "dps",
-        "target": 175218,
+        "target": 143399,
         "direction": "higher",
         "description": "DPS alvo baseado em simulação",
         "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:02:08.947Z"
+        "calculatedAt": "2026-10-05T09:57:32.528Z"
       }
     },
     "pertenceA": "heracranosx"
@@ -809,7 +803,7 @@
     "spec": "Arms",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
+    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/236/265889260-avatar.jpg?alt=/wow/static/images/2d/avatar/4-1.jpg",
@@ -826,16 +820,7 @@
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Perdida%C3%A7o"
     },
-    "performanceGoals": {
-      "dps": {
-        "metric": "dps",
-        "target": 175236,
-        "direction": "higher",
-        "description": "DPS alvo baseado em simulação",
-        "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:02:39.934Z"
-      }
-    }
+    "pertenceA": null
   },
   {
     "id": "jokertinha",
@@ -862,17 +847,7 @@
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Jokertinha"
     },
-    "pertenceA": null,
-    "performanceGoals": {
-      "dps": {
-        "metric": "dps",
-        "target": 170760,
-        "direction": "higher",
-        "description": "DPS alvo baseado em simulação",
-        "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:05:39.575Z"
-      }
-    }
+    "pertenceA": null
   },
   {
     "id": "rhoregor",
@@ -899,16 +874,6 @@
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Rhoregor"
     },
-    "pertenceA": null,
-    "performanceGoals": {
-      "dps": {
-        "metric": "dps",
-        "target": 160127,
-        "direction": "higher",
-        "description": "DPS alvo baseado em simulação",
-        "source": "Raidbots",
-        "calculatedAt": "2026-10-12T10:07:16.620Z"
-      }
-    }
+    "pertenceA": null
   }
 ]
