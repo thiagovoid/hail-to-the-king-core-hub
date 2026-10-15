@@ -230,7 +230,7 @@ describe("updateBossProgression", () => {
 });
 
 describe("updateRecentLogs", () => {
-  it("adds a new report as a recentLogs entry using the season's currentRaid as title", () => {
+  it("sem fight reconhecido, cai na raide corrente", () => {
     const s = season({ recentLogs: [] });
     const changed = updateRecentLogs(s, [{ report: report({ code: "NEW1", startTime: Date.parse("2026-09-09T00:00:00.000Z")}) }]);
 
@@ -261,5 +261,58 @@ describe("updateRecentLogs", () => {
       "https://www.warcraftlogs.com/reports/NEW1",
       "https://www.warcraftlogs.com/reports/OLD1",
     ]);
+  });
+});
+
+describe("updateRecentLogs — título pela raide da noite", () => {
+  /**
+   * O título vinha de `config.currentRaid`, carimbado na hora da coleta.
+   * Com duas raides abertas isso erra nos dois sentidos: a noite do tier
+   * novo coletada antes da troca sai com o nome do antigo, e toda noite de
+   * farm no antigo, depois da troca, sai com o nome do novo.
+   */
+  const comDuasRaides = () => {
+    const s = season({ recentLogs: [] });
+    s.config.raids = [
+      { slug: "raide", nome: "Abismo Venenoso", zoneId: 53 },
+      { slug: "nova", nome: "A Libertação de Kith'ix", zoneId: 53 },
+    ];
+    s.config.currentRaid = "A Libertação de Kith'ix";
+    s.bossesNormal = [boss({ encounterID: 100, raid: "raide" })];
+    s.bossesHeroic = [boss({ encounterID: 900, raid: "nova" })];
+    return s;
+  };
+
+  it("noite de farm no tier antigo não leva o nome do tier novo", () => {
+    const s = comDuasRaides();
+
+    updateRecentLogs(s, [
+      { report: report({ code: "FARM" }), raidFights: [{ encounterID: 100 }] },
+    ]);
+
+    expect(s.recentLogs[0].title).toBe("Abismo Venenoso");
+  });
+
+  it("noite do tier novo leva o nome dele", () => {
+    const s = comDuasRaides();
+
+    updateRecentLogs(s, [
+      { report: report({ code: "NOVO" }), raidFights: [{ encounterID: 900 }] },
+    ]);
+
+    expect(s.recentLogs[0].title).toBe("A Libertação de Kith'ix");
+  });
+
+  it("noite que encosta nas duas traz as duas, que é o que ela foi", () => {
+    const s = comDuasRaides();
+
+    updateRecentLogs(s, [
+      {
+        report: report({ code: "MISTA" }),
+        raidFights: [{ encounterID: 100 }, { encounterID: 900 }],
+      },
+    ]);
+
+    expect(s.recentLogs[0].title).toBe("Abismo Venenoso + A Libertação de Kith'ix");
   });
 });

@@ -142,9 +142,45 @@ export function ehFarm(boss: Boss, data: string): boolean {
 }
 
 /** Adiciona ao "menu" da home (recentLogs) um report novo processado nessa execução, se ainda não estiver lá. */
+/**
+ * De que raide foi a noite, pelo nome que se lê.
+ *
+ * O título saía de `config.currentRaid`, carimbado no momento da coleta.
+ * Com uma raide por temporada dava certo por acidente. Com duas, erra nos
+ * dois sentidos: a noite do Kith'ix foi coletada enquanto `currentRaid`
+ * ainda era o Abismo e saiu com o nome errado — e, agora que `currentRaid`
+ * é a Libertação, toda noite de farm no Abismo sairia como Libertação.
+ *
+ * Os fights da noite sabem a resposta. Quando a noite toca as duas, o
+ * título traz as duas: é o que ela foi.
+ */
+function raideDoRelatorio(
+  season: SeasonConfigFile,
+  fights: Array<{ encounterID: number }>
+): string {
+  const porEncontro = new Map<number, string>();
+  for (const boss of [...season.bossesNormal, ...season.bossesHeroic]) {
+    porEncontro.set(boss.encounterID, boss.raid);
+  }
+
+  const slugs = new Set<string>();
+  for (const fight of fights) {
+    const slug = porEncontro.get(fight.encounterID);
+    if (slug !== undefined) slugs.add(slug);
+  }
+
+  const nomes = (season.config.raids ?? [])
+    .filter((raide) => slugs.has(raide.slug))
+    .map((raide) => raide.nome);
+
+  // Sem fight reconhecido não há o que afirmar: fica a raide corrente, que
+  // é o palpite que já se usava antes.
+  return nomes.length > 0 ? nomes.join(" + ") : season.config.currentRaid;
+}
+
 export function updateRecentLogs(
   season: SeasonConfigFile,
-  reportContexts: Array<{ report: WclReportRef }>
+  reportContexts: Array<{ report: WclReportRef; raidFights?: Array<{ encounterID: number }> }>
 ): boolean {
   const byUrl = new Map(season.recentLogs.map((entry) => [entry.url, entry]));
   let changed = false;
@@ -152,7 +188,11 @@ export function updateRecentLogs(
   for (const ctx of reportContexts) {
     const url = `https://www.warcraftlogs.com/reports/${ctx.report.code}`;
     if (byUrl.has(url)) continue;
-    byUrl.set(url, { date: toBrazilDateString(ctx.report.startTime), url, title: season.config.currentRaid });
+    byUrl.set(url, {
+      date: toBrazilDateString(ctx.report.startTime),
+      url,
+      title: raideDoRelatorio(season, ctx.raidFights ?? []),
+    });
     changed = true;
   }
 
