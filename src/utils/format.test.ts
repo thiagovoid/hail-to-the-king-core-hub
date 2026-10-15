@@ -98,6 +98,18 @@ describe('formatDate', () => {
     expect(formatDate('2025-01-07T18:00:00Z')).toBe('07/01/2025');
   });
 
+  it('lê o timestamp no fuso do core, não em UTC', () => {
+    // Kill do Kith'ix: 23:24 de 14/10 em Brasília, 02:24 de 15/10 em UTC.
+    // Ler o pedaço da frente dava 15/10 — a noite de raide seguinte.
+    expect(formatDate('2026-10-15T02:24:41.910Z')).toBe('14/10/2026');
+  });
+
+  it('data pura continua literal, sem deslocar pra trás', () => {
+    // Sem hora não há fuso a converter: "2026-10-14" é o dia da noite,
+    // e tratá-lo como UTC o jogaria pro dia 13.
+    expect(formatDate('2026-10-14')).toBe('14/10/2026');
+  });
+
   it('pads day and month with leading zeros', () => {
     expect(formatDate('2024-01-05')).toBe('05/01/2024');
   });

@@ -30,13 +30,34 @@ export function formatValue(v: unknown): string {
   return str;
 }
 
+/** O core raida no horário de Brasília. */
+const FUSO_DO_CORE = "America/Sao_Paulo";
+
 /**
  * Converte uma data ISO 8601 para o formato DD/MM/YYYY.
  * Retorna "—" para null ou data inválida.
+ *
+ * Timestamp e data pura são coisas diferentes aqui. "2026-10-14" já é o dia
+ * da noite de raide e se lê literal. "2026-10-15T02:24:41Z" é UTC, e ler o
+ * pedaço da frente dele dava o dia SEGUINTE ao do kill: a raide começa
+ * 21:30 em Brasília, então tudo que morre depois das 21h já virou o dia em
+ * UTC. As catorze datas de kill da temporada estavam um dia à frente — as
+ * catorze, porque a raide sempre atravessa a meia-noite de lá.
  */
 export function formatDate(iso: string | null): string {
   if (iso === null || iso === undefined) {
     return "—";
+  }
+
+  if (iso.includes("T")) {
+    const quando = new Date(iso);
+    if (Number.isNaN(quando.getTime())) return "—";
+    return quando.toLocaleDateString("pt-BR", {
+      timeZone: FUSO_DO_CORE,
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
   }
 
   // Parse manual para evitar problemas de timezone com new Date(string)
