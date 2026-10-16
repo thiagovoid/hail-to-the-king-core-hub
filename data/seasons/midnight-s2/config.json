@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "A Libertação de Kith'ix",
-    "lastUpdated": "2026-10-15T20:34:00.125Z",
+    "lastUpdated": "2026-10-16T03:50:15.828Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -600,16 +600,16 @@
       "id": "as-presas-gemeas",
       "name": "As Presas Gêmeas",
       "encounterID": 3421,
-      "status": "progress",
-      "pulls": 22,
+      "status": "killed",
+      "pulls": 34,
       "bestPullPercent": null,
-      "killDate": null,
+      "killDate": "2026-10-16T02:30:08.079Z",
       "links": {
-        "warcraftLogs": null,
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/8BnvqLPV17tkRrKY?fight=17",
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 22,
+      "pullsTotal": 34,
       "pullLog": [
         {
           "reportCode": "HYt1q2DfP7KxrNhz",
@@ -628,6 +628,12 @@
           "date": "2026-10-07",
           "pulls": 1,
           "kill": false
+        },
+        {
+          "reportCode": "8BnvqLPV17tkRrKY",
+          "date": "2026-10-15",
+          "pulls": 12,
+          "kill": true
         }
       ],
       "raid": "abismo-venenoso"
@@ -692,6 +698,11 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-10-15",
+      "url": "https://www.warcraftlogs.com/reports/8BnvqLPV17tkRrKY",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-10-14",
       "url": "https://www.warcraftlogs.com/reports/aZ9R1byCVMYcgdKQ",

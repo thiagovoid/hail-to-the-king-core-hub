@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T16:43:41.834Z",
+  "generatedAt": "2026-10-16T03:50:15.754Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -873,6 +873,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "383926": {
+      "name": "Bound by Fire and Blaze",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "384100": {
       "name": "Berserker Shout",
       "cooldownMs": 60000,
@@ -896,6 +902,12 @@
       "cooldownMs": 45000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "386071": {
+      "name": "Disrupting Shout",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
     },
     "389539": {
       "name": "Sentinel",
@@ -1080,6 +1092,12 @@
       "kind": "offensive",
       "familia": "pocao"
     },
+    "1244088": {
+      "name": "Interpose",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "1247378": {
       "name": "Putrefy",
       "cooldownMs": 30000,
@@ -1189,6 +1207,12 @@
       "cooldownMs": 120000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "1293311": {
+      "name": "Coiled Fangstone",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
     },
     "1293316": {
       "name": "Empowering Venom",
@@ -1392,6 +1416,7 @@
     196277,
     196881,
     198137,
+    198590,
     198793,
     199786,
     200025,
@@ -1478,6 +1503,7 @@
     1241413,
     1242173,
     1242174,
+    1244091,
     1248829,
     1253593,
     1259790,
