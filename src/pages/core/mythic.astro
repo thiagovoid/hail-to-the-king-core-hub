@@ -15,6 +15,7 @@ import { formatDate } from '@/utils/format';
 
 import rosterData from '../../../data/guild/roster.json';
 import { getLatestWeeklyHighlights } from '../../../data/weekly/highlights/index';
+import seasonJson from '../../../data/seasons/midnight-s2/config.json';
 
 const players = rosterData as Player[];
 const stats = computeMythicStats(players);
@@ -27,7 +28,7 @@ const weekDate = formatDate(weekHighlights?.date ?? null);
 
 <BaseLayout
   title="Mythic+"
-  description="Ranking de IO, estatísticas e top keys de Mythic+ do Core Nemesis."
+  description={`Ranking de IO, estatísticas e top keys de Mythic+ do ${seasonJson.config.coreName}.`}
 >
 
   <!-- Page header -->

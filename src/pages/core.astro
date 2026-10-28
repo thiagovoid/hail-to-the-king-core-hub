@@ -229,8 +229,8 @@ const avgIoSubtitle = bestKey
 ---
 
 <BaseLayout
-  title="Core Nemesis"
-  description="Dashboard do Core Nemesis — progressão, membros e destaques da semana."
+  title={seasonJson.config.coreName}
+  description={`Dashboard do ${seasonJson.config.coreName} — progressão, membros e destaques da semana.`}
 >
 
   <HeroSection config={config} bossesNormal={bossesNormal} bossesHeroic={bossesHeroic} recentLogs={recentLogs} />

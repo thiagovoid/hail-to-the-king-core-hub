@@ -9,6 +9,8 @@
  * Hall da Fama entrarem.
  */
 
+import seasonData from '../../data/seasons/midnight-s2/config.json';
+
 const currentPath = Astro.url.pathname;
 
 interface NavLink {
@@ -43,7 +45,7 @@ const groups: NavGroup[] = [
     ],
   },
   {
-    label: 'Core Nemesis',
+    label: seasonData.config.coreName,
     icon: '⚔',
     items: [
       { label: 'Dashboard', href: '/core/', icon: '📊' },

@@ -9,6 +9,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import PlayerCard from '@/components/PlayerCard.astro';
 import type { Player, WowClass } from '@/types/index';
 import rosterData from '../../../../data/guild/roster.json';
+import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
 
 const players = rosterData as Player[];
 
@@ -40,7 +41,7 @@ function capitalize(s: string): string {
 
 <BaseLayout
   title="Membros"
-  description="Conheça o roster do Core Nemesis: tanks, healers, DPS, status e estatísticas."
+  description={`Conheça o roster do ${seasonJson.config.coreName}: tanks, healers, DPS, status e estatísticas.`}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
