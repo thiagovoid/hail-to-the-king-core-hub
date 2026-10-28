@@ -17427,7 +17427,8 @@
           "preparationMissing": [
             "Poção",
             "Óleo de arma"
-          ]
+          ],
+          "preparationGear": 43
         },
         {
           "playerId": "sixx",
@@ -17871,7 +17872,8 @@
           "preparation": 78,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 78
         },
         {
           "playerId": "nãoseicurar",
@@ -18283,7 +18285,8 @@
           "preparation": 63,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 63
         }
       ]
     }

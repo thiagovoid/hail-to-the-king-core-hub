@@ -124,7 +124,7 @@ const SINAIS_DEFENSIVOS = [
   naMesmaFrase("taking", "less\\s+damage", 30),
 ];
 
-function limparHtml(html: string): string {
+export function limparHtml(html: string): string {
   return html
     .replace(/<[^>]*>/g, " ")
     .replace(/&nbsp;/g, " ")

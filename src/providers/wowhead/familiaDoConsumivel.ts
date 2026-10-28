@@ -17,7 +17,25 @@
  */
 
 /** As famílias que o Portão de Preparação rastreia separadamente. */
+import { extractCooldownMs, limparHtml } from "./spellCooldown";
+
 export type FamiliaDeConsumivel = "pocao" | "pedra" | "frasco" | "comida" | "oleo";
+
+/**
+ * Recarga acima disto não é consumível de combate — é brinquedo.
+ *
+ * Toda poção da temporada tem 300s: são oito, todas iguais. O
+ * `Aracnoshape` tem 3600s e o tooltip diz "Morph into a giant spider" —
+ * brinquedo cosmético que passou por poção porque o ícone é
+ * `inv_alchemy_70_potion2` e contém a palavra, e porque "Item Effect"
+ * estava lá como em qualquer item.
+ *
+ * O teto é generoso de propósito: o dobro da recarga real da poção ainda
+ * cabe embaixo dele, e uma hora não chega perto. Não é lista de item — é a
+ * mesma ideia do `ehConsumivel`, que já usa tempo de recarga pra separar
+ * consumível de trinket com nome parecido.
+ */
+const RECARGA_DEMAIS_MS = 600_000;
 
 /**
  * O tooltip diz que a magia vem de um item?
@@ -94,6 +112,11 @@ export function familiaDoConsumivel(
   if (!achado) return undefined;
 
   if (achado.exigeItemEffect && !EFEITO_DE_ITEM.test(tooltipHtml ?? "")) return undefined;
+
+  // Depois do ícone, não antes: comida e óleo não declaram recarga nenhuma,
+  // e cortar por tempo primeiro os derrubaria junto.
+  const recarga = extractCooldownMs(limparHtml(tooltipHtml ?? ""));
+  if (recarga !== undefined && recarga > RECARGA_DEMAIS_MS) return undefined;
 
   return achado.familia;
 }

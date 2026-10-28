@@ -109,3 +109,32 @@ describe("quando o nome decide", () => {
     expect(familiaDoConsumivel(ITEM, "inv_12_profession_alchemy_lightpotion_yellow", "Light's Potential")).toBe("pocao");
   });
 });
+
+describe("recarga longa demais pra ser consumível", () => {
+  /**
+   * Caso real: o `Aracnoshape` (462934) entrou como poção na coleta de
+   * 28/10. Ícone `inv_alchemy_70_potion2` — contém "potion" —, "Item
+   * Effect" presente como em qualquer item, e o efeito é "Morph into a
+   * giant spider". Brinquedo.
+   */
+  it("brinquedo com ícone de poção e uma hora de recarga não é poção", () => {
+    const aracnoshape =
+      "<b>Aracnoshape</b><br>Item Effect<br>Instant<br>1 hour cooldown<br>" +
+      "Morph into a giant spider.";
+
+    expect(familiaDoConsumivel(aracnoshape, "inv_alchemy_70_potion2")).toBeUndefined();
+  });
+
+  it("poção de verdade, com os 300s da temporada, continua poção", () => {
+    const pocao =
+      "<b>Light's Potential</b><br>Item Effect<br>Instant<br>5 min cooldown<br>" +
+      "Increases your primary stat.";
+
+    expect(familiaDoConsumivel(pocao, "inv_alchemy_70_potion2")).toBe("pocao");
+  });
+
+  it("comida e óleo não declaram recarga, e não podem cair pela regra do tempo", () => {
+    expect(familiaDoConsumivel("<b>Well Fed</b>", "spell_misc_food_1")).toBe("comida");
+    expect(familiaDoConsumivel("<b>Critical Ritual</b>", "inv_weaponoil_shadow")).toBe("oleo");
+  });
+});
