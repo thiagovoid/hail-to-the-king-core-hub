@@ -219,7 +219,6 @@ export interface CorePerformanceTargets {
  */
 export interface SiteConfig {
   /** Nome do core de raid, ex: "Core Nemesis". */
-  coreName: string;
   /** Nome da guilda no jogo. */
   guild: string;
   /** Realm (servidor) do personagem principal. */

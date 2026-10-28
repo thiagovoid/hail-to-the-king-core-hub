@@ -11,6 +11,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import type { RuleCategory } from '@/types/index';
 import rulesData from '../../data/guild/rules.json';
 import seasonJson from '../../data/seasons/midnight-s2/config.json';
+import { corePrincipal } from '@/engine/guild/cores';
 
 const allCategories = rulesData as RuleCategory[];
 
@@ -38,7 +39,7 @@ const categoryIcons: Record<string, string> = {
 
 <BaseLayout
   title="Regras"
-  description={`Regras do ${seasonJson.config.coreName} organizadas por categoria.`}
+  description={`Regras do ${corePrincipal().nome} organizadas por categoria.`}
 >
 
   <!-- Page header — Req 10.1 -->

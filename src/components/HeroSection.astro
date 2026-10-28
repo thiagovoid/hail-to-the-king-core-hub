@@ -16,13 +16,15 @@ interface RecentLog {
 }
 
 interface Props {
+  /** O nome do core desta página. Não vem da config: ela é da temporada. */
+  core: string;
   config: SiteConfig;
   bossesNormal: Boss[];
   bossesHeroic: Boss[];
   recentLogs?: RecentLog[];
 }
 
-const { config, bossesNormal, bossesHeroic, recentLogs = [] } = Astro.props;
+const { core, config, bossesNormal, bossesHeroic, recentLogs = [] } = Astro.props;
 
 const lastUpdated = formatDate(config.lastUpdated);
 
@@ -122,7 +124,7 @@ function formatLogDate(dateStr: string): string {
     <!-- Core name & guild -->
     <div class="text-center mb-10">
       <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-wide drop-shadow-[0_0_30px_rgba(240,165,0,0.3)]">
-        <span class="text-[#f0a500]">{config.coreName}</span>
+        <span class="text-[#f0a500]">{core}</span>
       </h1>
       <p class="text-slate-300 text-sm sm:text-base font-medium">
         <span class="text-slate-400">Guilda</span>

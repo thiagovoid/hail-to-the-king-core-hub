@@ -23,7 +23,6 @@ function boss(overrides: Partial<Boss>): Boss {
 function season(overrides: Partial<SeasonConfigFile> = {}): SeasonConfigFile {
   return {
     config: {
-      coreName: "Core Nemesis",
       guild: "Hail to the King",
       realm: "Nemesis",
       currentSeason: "Midnight Season 2",

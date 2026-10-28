@@ -16,7 +16,7 @@ import rosterJson from '../../../../data/guild/roster.json';
 
 const SEASON_SLUG = 'midnight-s2';
 
-import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
+import { coresDeRaide } from '@/engine/guild/cores';
 
 /**
  * Uma página por core de raide.
@@ -29,7 +29,19 @@ export function getStaticPaths() {
   return coresDeRaide().map((core) => ({ params: { core: core.slug }, props: { core } }));
 }
 
-const { core } = Astro.props;
+/**
+ * DÍVIDA: esta é a única página de core que NÃO recorta por core.
+ *
+ * Progressão de boss mora em `config.bossesNormal/bossesHeroic`, com
+ * `pullLog` e `pullsTotal` por boss — e isso é da temporada, não do core.
+ * Com um core só dá no mesmo; no dia em que o Ômega entrar, a página dele
+ * vai mostrar as pulls do Nemesis.
+ *
+ * Arrumar é mover a progressão pra dentro do core, e aí o coletor precisa
+ * saber de que core é cada pull. Fica pra quando houver dado do segundo
+ * core — inventar a estrutura antes disso é adivinhar o formato.
+ */
+const { core: coreAtual } = Astro.props;
 
 const config = seasonJson.config as SiteConfig;
 const bossesNormal = seasonJson.bossesNormal as Boss[];
@@ -85,7 +97,7 @@ const lastUpdated = formatDate(config.lastUpdated);
 
 <BaseLayout
   title="Progressão"
-  description={`Progressão do ${config.coreName} — ${resumoGeral}.`}
+  description={`Progressão do ${coreAtual.nome} — ${resumoGeral}.`}
 >
   <!-- Page header -->
   <section
