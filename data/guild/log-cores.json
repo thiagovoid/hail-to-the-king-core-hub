@@ -14,13 +14,13 @@
   "logs": [
     {
       "code": "pNVygbkr2wjA13JM",
-      "core": null,
-      "motivo": "Guild run de outubro/2026 — evento da guilda em que todo mundo joga com um personagem diferente. Não é noite do Core Nemesis, e vai ganhar core próprio."
+      "core": "guild-run",
+      "motivo": "Guild run de 23/10/2026 — evento da guilda em que todo mundo joga com um personagem diferente. Primeiro dos dois arquivos da noite: o WoW parte o log quando alguém desloga no meio."
     },
     {
       "code": "QzdpHPYRja8GnANk",
-      "core": null,
-      "motivo": "Guild run de 23/10/2026 — dezoito personagens, NENHUM do Core Nemesis. Detectado pela sobreposição zero com o roster, não pelo código informado."
+      "core": "guild-run",
+      "motivo": "Guild run de 23/10/2026 — segunda metade da mesma noite. Mesmo startTime do pNVygbkr2wjA13JM, e sobreposição zero com o roster do Nemesis."
     }
   ]
 }

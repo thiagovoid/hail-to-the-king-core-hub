@@ -11441,6 +11441,3260 @@
       "core": "nemesis"
     },
     {
+      "date": "2026-10-23",
+      "reportCode": "QzdpHPYRja8GnANk",
+      "core": "guild-run",
+      "players": [
+        {
+          "playerId": "strohmonk",
+          "dps": 15068,
+          "parse": 17,
+          "itemLevel": 288,
+          "attack": {
+            "score": 75.2,
+            "uptime": 90.9,
+            "cooldowns": 59.5
+          },
+          "attackDetail": [
+            {
+              "spellId": 322109,
+              "name": "Touch of Death",
+              "casts": 3,
+              "efficiency": 59.5
+            }
+          ],
+          "defense": {
+            "score": 90.3,
+            "mitigation": 45.4,
+            "dtps": 97991,
+            "selfSustain": 48.1
+          },
+          "defenseDetail": [
+            {
+              "spellId": 1241059,
+              "name": "Celestial Infusion",
+              "casts": 8,
+              "efficiency": 90.3
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "dps": 35804,
+            "hps": 54388
+          },
+          "tries": {
+            "present": 2,
+            "total": 5,
+            "lateStart": true,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 39288,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 0.7,
+          "specs": [
+            {
+              "spec": "Brewmaster",
+              "role": "tank"
+            }
+          ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 16,
+              "cobertosPeloRaide": 13,
+              "seus": 1,
+              "pessoasQueInterromperam": 8
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 15,
+              "atSecond": 325,
+              "ability": "Empowering Slam",
+              "amount": 345945,
+              "fatiaDaVida": 39,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 15,
+              "atSecond": 106,
+              "ability": "Empowering Slam",
+              "amount": 321756,
+              "fatiaDaVida": 37,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 15,
+              "atSecond": 303,
+              "ability": "Empowering Slam",
+              "amount": 318468,
+              "fatiaDaVida": 36,
+              "defensivosProntos": []
+            }
+          ],
+          "deaths": 0
+        },
+        {
+          "playerId": "kairá",
+          "dps": 29105,
+          "parse": 6,
+          "itemLevel": 297,
+          "attack": {
+            "score": 58.4,
+            "uptime": 91.3,
+            "cooldowns": 25.5
+          },
+          "attackDetail": [
+            {
+              "spellId": 432472,
+              "name": "Sacred Weapon",
+              "casts": 2,
+              "efficiency": 7.4
+            },
+            {
+              "spellId": 1293311,
+              "name": "Coiled Fangstone",
+              "casts": 4,
+              "efficiency": 19.5
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 10,
+              "efficiency": 49.5
+            }
+          ],
+          "defense": {
+            "score": 37.3,
+            "mitigation": 46.1,
+            "dtps": 64360,
+            "selfSustain": 36.6
+          },
+          "defenseDetail": [
+            {
+              "spellId": 642,
+              "name": "Divine Shield",
+              "casts": 1,
+              "efficiency": 6
+            },
+            {
+              "spellId": 86659,
+              "name": "Guardian of Ancient Kings",
+              "casts": 4,
+              "efficiency": 12.1
+            },
+            {
+              "spellId": 432459,
+              "name": "Holy Bulwark",
+              "casts": 3,
+              "efficiency": 17.2
+            },
+            {
+              "spellId": 1022,
+              "name": "Blessing of Protection",
+              "casts": 1,
+              "efficiency": 22.8
+            },
+            {
+              "spellId": 31850,
+              "name": "Ardent Defender",
+              "casts": 11,
+              "efficiency": 75
+            },
+            {
+              "spellId": 389539,
+              "name": "Sentinel",
+              "casts": 13,
+              "efficiency": 90.4
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "dps": 29105,
+            "hps": 35874
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 28254,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": false,
+              "dps": 31176,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 24,
+                "share": 3.9
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "dps": 4938,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 11,
+                "share": 27.1
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 35,
+            "share": 3.3,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 64,
+              "fightSeconds": 88,
+              "afterSeconds": 24,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Blessing of Protection",
+                "Guardian of Ancient Kings",
+                "Divine Shield",
+                "Holy Bulwark"
+              ],
+              "ability": "Empowering Slam"
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "atSecond": 28,
+              "fightSeconds": 39,
+              "afterSeconds": 11,
+              "readyDefensives": [
+                "Ardent Defender",
+                "Sentinel",
+                "Blessing of Protection",
+                "Guardian of Ancient Kings",
+                "Divine Shield",
+                "Holy Bulwark"
+              ],
+              "ability": "Deadly Venom"
+            }
+          ],
+          "trashShare": 6.1,
+          "specs": [
+            {
+              "spec": "Protection",
+              "role": "tank"
+            }
+          ],
+          "utility": {
+            "interrupts": 15,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 192,
+              "cobertosPeloRaide": 54,
+              "seus": 15,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 5,
+              "atSecond": 217,
+              "ability": "Hungering Pyre",
+              "amount": 509593,
+              "fatiaDaVida": 49,
+              "defensivosProntos": [
+                "Guardian of Ancient Kings",
+                "Divine Shield",
+                "Holy Bulwark"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 64,
+              "ability": "Bloodvenom Injection",
+              "amount": 462280,
+              "fatiaDaVida": 46,
+              "defensivosProntos": [
+                "Blessing of Protection",
+                "Guardian of Ancient Kings",
+                "Divine Shield",
+                "Holy Bulwark"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 8,
+              "ability": "Empowering Slam",
+              "amount": 445948,
+              "fatiaDaVida": 44,
+              "defensivosProntos": [
+                "Ardent Defender",
+                "Sentinel",
+                "Blessing of Protection",
+                "Guardian of Ancient Kings",
+                "Divine Shield",
+                "Holy Bulwark"
+              ]
+            }
+          ],
+          "deaths": 2
+        },
+        {
+          "playerId": "blackbarrel",
+          "dps": 9931,
+          "parse": 0,
+          "itemLevel": 247,
+          "attack": {
+            "score": 76.9,
+            "uptime": 85,
+            "cooldowns": 68.8
+          },
+          "attackDetail": [
+            {
+              "spellId": 322109,
+              "name": "Touch of Death",
+              "casts": 2,
+              "efficiency": 33.6
+            },
+            {
+              "spellId": 325153,
+              "name": "Exploding Keg",
+              "casts": 9,
+              "efficiency": 81.2
+            },
+            {
+              "spellId": 132578,
+              "name": "Invoke Niuzao, the Black Ox",
+              "casts": 5,
+              "efficiency": 91.7
+            }
+          ],
+          "defense": {
+            "score": 36.9,
+            "mitigation": 45.1,
+            "dtps": 48249,
+            "selfSustain": 25.6
+          },
+          "defenseDetail": [
+            {
+              "spellId": 1241059,
+              "name": "Celestial Infusion",
+              "casts": 1,
+              "efficiency": 14.8
+            },
+            {
+              "spellId": 1309441,
+              "name": "Lightbearer's Shield Fragment",
+              "casts": 4,
+              "efficiency": 46.1
+            },
+            {
+              "spellId": 1294330,
+              "name": "Spirit Ward",
+              "casts": 3,
+              "efficiency": 49.9
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "dps": 17148,
+            "hps": 15726
+          },
+          "tries": {
+            "present": 3,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": true,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 16932,
+              "deaths": 3,
+              "deathCost": {
+                "seconds": 406,
+                "share": 103.7
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 2,
+              "killed": false,
+              "flawless": false,
+              "dps": 17540,
+              "deaths": 2,
+              "deathCost": {
+                "seconds": 78,
+                "share": 36.2
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 484,
+            "share": 46.2,
+            "inKills": 3
+          },
+          "deathSignature": {
+            "primeiroACair": 4,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 2
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "atSecond": 112,
+              "fightSeconds": 391,
+              "afterSeconds": 280,
+              "readyDefensives": [
+                "Celestial Infusion"
+              ],
+              "ability": "Soulcoil Rite"
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "atSecond": 288,
+              "fightSeconds": 391,
+              "afterSeconds": 104,
+              "readyDefensives": [
+                "Spirit Ward",
+                "Lightbearer's Shield Fragment",
+                "Celestial Infusion"
+              ],
+              "ability": "Latent Cultist"
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 31,
+              "fightSeconds": 88,
+              "afterSeconds": 56,
+              "readyDefensives": [
+                "Spirit Ward",
+                "Lightbearer's Shield Fragment",
+                "Celestial Infusion"
+              ],
+              "ability": "Mark of Blood"
+            },
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "atSecond": 369,
+              "fightSeconds": 391,
+              "afterSeconds": 22,
+              "readyDefensives": [
+                "Celestial Infusion"
+              ],
+              "ability": "Soulcoil Rite"
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 106,
+              "fightSeconds": 127,
+              "afterSeconds": 21,
+              "ability": "Empowering Slam"
+            }
+          ],
+          "trashShare": 1.9,
+          "specs": [
+            {
+              "spec": "Brewmaster",
+              "role": "tank"
+            }
+          ],
+          "utility": {
+            "interrupts": 3,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 3,
+            "interrupcoes": {
+              "oportunidades": 176,
+              "cobertosPeloRaide": 41,
+              "seus": 3,
+              "pessoasQueInterromperam": 11
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 30,
+              "ability": "Bloodvenom Injection",
+              "amount": 370106,
+              "fatiaDaVida": 59,
+              "defensivosProntos": [
+                "Spirit Ward",
+                "Lightbearer's Shield Fragment",
+                "Celestial Infusion"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 106,
+              "ability": "Empowering Slam",
+              "amount": 364064,
+              "fatiaDaVida": 58,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 14,
+              "atSecond": 61,
+              "ability": "Empowering Slam",
+              "amount": 363066,
+              "fatiaDaVida": 56,
+              "defensivosProntos": [
+                "Lightbearer's Shield Fragment"
+              ]
+            }
+          ],
+          "deaths": 5
+        },
+        {
+          "playerId": "beowolff",
+          "dps": 79587,
+          "parse": 26,
+          "itemLevel": 303,
+          "attack": {
+            "score": 90.6,
+            "uptime": 89,
+            "cooldowns": 92.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 107574,
+              "name": "Avatar",
+              "casts": 13,
+              "efficiency": 91.2
+            },
+            {
+              "spellId": 446035,
+              "name": "Bladestorm",
+              "casts": 25,
+              "efficiency": 93.2
+            }
+          ],
+          "defense": {
+            "score": 6.9,
+            "mitigation": 49.4,
+            "dtps": 29916,
+            "selfSustain": 30.1
+          },
+          "defenseDetail": [
+            {
+              "spellId": 97462,
+              "name": "Rallying Cry",
+              "casts": 1,
+              "efficiency": 2.2
+            },
+            {
+              "spellId": 118038,
+              "name": "Die by the Sword",
+              "casts": 1,
+              "efficiency": 11.5
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 9543
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 86018,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": false,
+              "dps": 80548,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 52,
+                "share": 8.4
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 52,
+            "share": 4.9,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 36,
+              "fightSeconds": 88,
+              "afterSeconds": 52,
+              "readyDefensives": [
+                "Die by the Sword",
+                "Rallying Cry"
+              ],
+              "ability": "Melee"
+            }
+          ],
+          "trashShare": 5.2,
+          "specs": [
+            {
+              "spec": "Arms",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 192,
+              "cobertosPeloRaide": 54,
+              "seus": 1,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 15,
+              "atSecond": 26,
+              "ability": "Unstable Miasma",
+              "amount": 432688,
+              "fatiaDaVida": 60,
+              "defensivosProntos": [
+                "Die by the Sword",
+                "Rallying Cry"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 36,
+              "ability": "Melee",
+              "amount": 397022,
+              "fatiaDaVida": 55,
+              "defensivosProntos": [
+                "Die by the Sword",
+                "Rallying Cry"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 153,
+              "ability": "Soul Transfer",
+              "amount": 312339,
+              "fatiaDaVida": 43,
+              "defensivosProntos": [
+                "Die by the Sword",
+                "Rallying Cry"
+              ]
+            }
+          ],
+          "deaths": 1
+        },
+        {
+          "playerId": "ülleh",
+          "dps": 43275,
+          "parse": 2,
+          "itemLevel": 281,
+          "attack": {
+            "score": 80,
+            "uptime": 97.3,
+            "cooldowns": 62.8
+          },
+          "attackDetail": [
+            {
+              "spellId": 109248,
+              "name": "Binding Shot",
+              "casts": 7,
+              "efficiency": 27
+            },
+            {
+              "spellId": 19574,
+              "name": "Bestial Wrath",
+              "casts": 34,
+              "efficiency": 98.5
+            }
+          ],
+          "defense": {
+            "score": 22,
+            "mitigation": 49.9,
+            "dtps": 28966,
+            "selfSustain": 5
+          },
+          "defenseDetail": [
+            {
+              "spellId": 186265,
+              "name": "Aspect of the Turtle",
+              "casts": 1,
+              "efficiency": 17.2
+            },
+            {
+              "spellId": 109304,
+              "name": "Exhilaration",
+              "casts": 4,
+              "efficiency": 26.7
+            }
+          ],
+          "help": {
+            "score": 29.7,
+            "abilities": 1,
+            "casts": 6
+          },
+          "helpDetail": [
+            {
+              "spellId": 19577,
+              "name": "Intimidation",
+              "casts": 6,
+              "efficiency": 29.7,
+              "categoria": "controlar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 1602
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 47461,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": false,
+              "dps": 42569,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 6,
+                "share": 1
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "dps": 12486,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 6,
+            "share": 0.6,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 81,
+              "fightSeconds": 88,
+              "afterSeconds": 6,
+              "readyDefensives": [
+                "Exhilaration",
+                "Aspect of the Turtle"
+              ],
+              "ability": "Unstable Miasma"
+            }
+          ],
+          "trashShare": 4.3,
+          "specs": [
+            {
+              "spec": "BeastMastery",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 8,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 192,
+              "cobertosPeloRaide": 54,
+              "seus": 8,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 81,
+              "ability": "Unstable Miasma",
+              "amount": 402696,
+              "fatiaDaVida": 63,
+              "defensivosProntos": [
+                "Exhilaration",
+                "Aspect of the Turtle"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 79,
+              "ability": "Unstable Miasma",
+              "amount": 262576,
+              "fatiaDaVida": 42,
+              "defensivosProntos": [
+                "Aspect of the Turtle"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 120,
+              "ability": "Unstable Miasma",
+              "amount": 243725,
+              "fatiaDaVida": 39,
+              "defensivosProntos": [
+                "Aspect of the Turtle"
+              ]
+            }
+          ],
+          "deaths": 1
+        },
+        {
+          "playerId": "adagom",
+          "dps": 82650,
+          "parse": 15,
+          "itemLevel": 286,
+          "attack": {
+            "score": 73.1,
+            "uptime": 96.2,
+            "cooldowns": 49.9
+          },
+          "attackDetail": [
+            {
+              "spellId": 109248,
+              "name": "Binding Shot",
+              "casts": 2,
+              "efficiency": 8.6
+            },
+            {
+              "spellId": 19574,
+              "name": "Bestial Wrath",
+              "casts": 29,
+              "efficiency": 91.3
+            }
+          ],
+          "defense": {
+            "score": 18.9,
+            "mitigation": 49.3,
+            "dtps": 25982,
+            "selfSustain": 10.7
+          },
+          "defenseDetail": [
+            {
+              "spellId": 186265,
+              "name": "Aspect of the Turtle",
+              "casts": 1,
+              "efficiency": 0.6
+            },
+            {
+              "spellId": 109304,
+              "name": "Exhilaration",
+              "casts": 5,
+              "efficiency": 37.1
+            }
+          ],
+          "help": {
+            "score": 2.3,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 19577,
+              "name": "Intimidation",
+              "casts": 1,
+              "efficiency": 2.3,
+              "categoria": "controlar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 3675
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 92298,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 80074,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "dps": 26676,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 5.6,
+          "specs": [
+            {
+              "spec": "BeastMastery",
+              "role": "dps"
+            },
+            {
+              "spec": "Marksmanship",
+              "role": "dps"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 26,
+              "ability": "Unstable Miasma",
+              "amount": 289429,
+              "fatiaDaVida": 47,
+              "defensivosProntos": [
+                "Exhilaration",
+                "Aspect of the Turtle"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 27,
+              "ability": "Unstable Miasma",
+              "amount": 251558,
+              "fatiaDaVida": 41,
+              "defensivosProntos": [
+                "Exhilaration",
+                "Aspect of the Turtle"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 182,
+              "ability": "Unstable Miasma",
+              "amount": 217072,
+              "fatiaDaVida": 35,
+              "defensivosProntos": [
+                "Exhilaration",
+                "Aspect of the Turtle"
+              ]
+            }
+          ],
+          "deaths": 0
+        },
+        {
+          "playerId": "lydruid",
+          "parse": 61,
+          "itemLevel": 274,
+          "defense": {
+            "score": 35.1,
+            "mitigation": 48.3,
+            "dtps": 29731,
+            "selfSustain": 45.6
+          },
+          "defenseDetail": [
+            {
+              "spellId": 22842,
+              "name": "Frenzied Regeneration",
+              "casts": 2,
+              "efficiency": 6.9
+            },
+            {
+              "spellId": 740,
+              "name": "Tranquility",
+              "casts": 2,
+              "efficiency": 18.5
+            },
+            {
+              "spellId": 132158,
+              "name": "Nature's Swiftness",
+              "casts": 6,
+              "efficiency": 28.3
+            },
+            {
+              "spellId": 102342,
+              "name": "Ironbark",
+              "casts": 6,
+              "efficiency": 39.1
+            },
+            {
+              "spellId": 22812,
+              "name": "Barkskin",
+              "casts": 17,
+              "efficiency": 82.6
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "healing": {
+            "score": 60.7,
+            "coverage": 13.6,
+            "share": 56.9,
+            "overheal": 35.5
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 57630,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": false,
+              "dps": 4484,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 48,
+                "share": 7.8
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 48,
+            "share": 4.6,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 1,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 79,
+              "fightSeconds": 127,
+              "afterSeconds": 48,
+              "readyDefensives": [
+                "Frenzied Regeneration",
+                "Tranquility",
+                "Nature's Swiftness"
+              ],
+              "ability": "Contaminate"
+            }
+          ],
+          "trashShare": 3.3,
+          "specs": [
+            {
+              "spec": "Restoration",
+              "role": "healer"
+            },
+            {
+              "spec": "Balance",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 8,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 1,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 50,
+              "seus": 0,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 79,
+              "ability": "Unstable Miasma",
+              "amount": 288901,
+              "fatiaDaVida": 56,
+              "defensivosProntos": [
+                "Frenzied Regeneration",
+                "Tranquility",
+                "Nature's Swiftness"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 120,
+              "ability": "Unstable Miasma",
+              "amount": 260394,
+              "fatiaDaVida": 41,
+              "defensivosProntos": [
+                "Frenzied Regeneration",
+                "Tranquility"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 321,
+              "ability": "Unstable Miasma",
+              "amount": 260115,
+              "fatiaDaVida": 50,
+              "defensivosProntos": [
+                "Frenzied Regeneration"
+              ]
+            }
+          ],
+          "deaths": 1
+        },
+        {
+          "playerId": "moosgard",
+          "dps": 71224,
+          "parse": 10,
+          "itemLevel": 283,
+          "attack": {
+            "score": 81.9,
+            "uptime": 95.1,
+            "cooldowns": 68.7
+          },
+          "attackDetail": [
+            {
+              "spellId": 109248,
+              "name": "Binding Shot",
+              "casts": 4,
+              "efficiency": 17.2
+            },
+            {
+              "spellId": 1297908,
+              "name": "Font of Venomous Rage",
+              "casts": 6,
+              "efficiency": 93.6
+            },
+            {
+              "spellId": 19574,
+              "name": "Bestial Wrath",
+              "casts": 31,
+              "efficiency": 95.4
+            }
+          ],
+          "defense": {
+            "score": 29,
+            "mitigation": 49.2,
+            "dtps": 25934,
+            "selfSustain": 8.4
+          },
+          "defenseDetail": [
+            {
+              "spellId": 186265,
+              "name": "Aspect of the Turtle",
+              "casts": 1,
+              "efficiency": 1.3
+            },
+            {
+              "spellId": 109304,
+              "name": "Exhilaration",
+              "casts": 8,
+              "efficiency": 56.6
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 2974
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 72374,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 7,
+                "share": 1.9
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": false,
+              "dps": 74984,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 2,
+                "share": 0.3
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "dps": 346,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 9,
+            "share": 0.9,
+            "inKills": 1
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "atSecond": 384,
+              "fightSeconds": 391,
+              "afterSeconds": 7,
+              "readyDefensives": [
+                "Aspect of the Turtle"
+              ],
+              "ability": "Possession Barrage"
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 86,
+              "fightSeconds": 88,
+              "afterSeconds": 2,
+              "ability": "Bloodvenom Injection"
+            }
+          ],
+          "trashShare": 5.3,
+          "specs": [
+            {
+              "spec": "BeastMastery",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 185,
+              "cobertosPeloRaide": 53,
+              "seus": 1,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 83,
+              "ability": "Melee",
+              "amount": 308244,
+              "fatiaDaVida": 49,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 12,
+              "atSecond": 26,
+              "ability": "Unstable Miasma",
+              "amount": 284634,
+              "fatiaDaVida": 46,
+              "defensivosProntos": [
+                "Exhilaration",
+                "Aspect of the Turtle"
+              ]
+            }
+          ],
+          "deaths": 2
+        },
+        {
+          "playerId": "blackrocks",
+          "dps": 30669,
+          "parse": 15,
+          "attack": {
+            "score": 90.9,
+            "uptime": 92.6,
+            "cooldowns": 89.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 114051,
+              "name": "Ascendance",
+              "casts": 4,
+              "efficiency": 89.2
+            }
+          ],
+          "defense": {
+            "score": 27.2,
+            "mitigation": 49.2,
+            "dtps": 35005,
+            "selfSustain": 11.4
+          },
+          "defenseDetail": [
+            {
+              "spellId": 108271,
+              "name": "Astral Shift",
+              "casts": 1,
+              "efficiency": 27.2
+            }
+          ],
+          "help": {
+            "score": 2.7,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 57994,
+              "name": "Wind Shear",
+              "casts": 1,
+              "efficiency": 2.7,
+              "categoria": "interromper"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 3996
+          },
+          "tries": {
+            "present": 2,
+            "total": 5,
+            "lateStart": true,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 79698,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "dps": 2762,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 2.2,
+          "specs": [
+            {
+              "spec": "Enhancement",
+              "role": "dps"
+            }
+          ],
+          "deaths": 0
+        },
+        {
+          "playerId": "heraa",
+          "dps": 92023,
+          "parse": 45,
+          "itemLevel": 293,
+          "attack": {
+            "score": 68.5,
+            "uptime": 88,
+            "cooldowns": 48.9
+          },
+          "attackDetail": [
+            {
+              "spellId": 322109,
+              "name": "Touch of Death",
+              "casts": 3,
+              "efficiency": 25.3
+            },
+            {
+              "spellId": 152175,
+              "name": "Whirling Dragon Punch",
+              "casts": 24,
+              "efficiency": 72.5
+            }
+          ],
+          "defense": {
+            "score": 49.8,
+            "mitigation": 46,
+            "dtps": 31457,
+            "selfSustain": 17.7
+          },
+          "defenseDetail": [
+            {
+              "spellId": 122470,
+              "name": "Touch of Karma",
+              "casts": 8,
+              "efficiency": 49.8
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 5569
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 84892,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 102376,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 8.8,
+          "specs": [
+            {
+              "spec": "Windwalker",
+              "role": "dps"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 5,
+              "atSecond": 153,
+              "ability": "Soul Transfer",
+              "amount": 287815,
+              "fatiaDaVida": 44,
+              "defensivosProntos": [
+                "Touch of Karma"
+              ]
+            },
+            {
+              "fight": 5,
+              "atSecond": 206,
+              "ability": "Soul Transfer",
+              "amount": 263576,
+              "fatiaDaVida": 41,
+              "defensivosProntos": []
+            },
+            {
+              "fight": 15,
+              "atSecond": 321,
+              "ability": "Unstable Miasma",
+              "amount": 237237,
+              "fatiaDaVida": 37,
+              "defensivosProntos": [
+                "Touch of Karma"
+              ]
+            }
+          ],
+          "deaths": 0
+        },
+        {
+          "playerId": "bolsafamília",
+          "dps": 58739,
+          "parse": 19,
+          "itemLevel": 302,
+          "attack": {
+            "score": 90.7,
+            "uptime": 93.9,
+            "cooldowns": 87.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 395152,
+              "name": "Ebon Might",
+              "casts": 30,
+              "efficiency": 82.6
+            },
+            {
+              "spellId": 396286,
+              "name": "Upheaval",
+              "casts": 121,
+              "efficiency": 88.2
+            },
+            {
+              "spellId": 403631,
+              "name": "Breath of Eons",
+              "casts": 9,
+              "efficiency": 88.7
+            },
+            {
+              "spellId": 357208,
+              "name": "Fire Breath",
+              "casts": 119,
+              "efficiency": 90.2
+            }
+          ],
+          "defense": {
+            "score": 19.6,
+            "mitigation": 49.6,
+            "dtps": 30801,
+            "selfSustain": 5.6
+          },
+          "defenseDetail": [
+            {
+              "spellId": 355913,
+              "name": "Emerald Blossom",
+              "casts": 2,
+              "efficiency": 5.6
+            },
+            {
+              "spellId": 374227,
+              "name": "Zephyr",
+              "casts": 4,
+              "efficiency": 33.5
+            }
+          ],
+          "help": {
+            "score": 30.4,
+            "abilities": 1,
+            "casts": 10
+          },
+          "helpDetail": [
+            {
+              "spellId": 351338,
+              "name": "Quell",
+              "casts": 10,
+              "efficiency": 30.4,
+              "categoria": "interromper"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 3558
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 56841,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 63665,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 4,
+          "specs": [
+            {
+              "spec": "Augmentation",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 3,
+            "dispels": 3,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 148,
+              "cobertosPeloRaide": 45,
+              "seus": 3,
+              "pessoasQueInterromperam": 14
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 5,
+              "atSecond": 217,
+              "ability": "Hungering Pyre",
+              "amount": 580872,
+              "fatiaDaVida": 82,
+              "defensivosProntos": [
+                "Zephyr",
+                "Emerald Blossom"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 27,
+              "ability": "Unstable Miasma",
+              "amount": 263301,
+              "fatiaDaVida": 37,
+              "defensivosProntos": [
+                "Zephyr",
+                "Emerald Blossom"
+              ]
+            }
+          ],
+          "deaths": 0
+        },
+        {
+          "playerId": "sixx",
+          "dps": 149988,
+          "parse": 90,
+          "itemLevel": 328,
+          "attack": {
+            "score": 91.3,
+            "uptime": 99,
+            "cooldowns": 83.6
+          },
+          "attackDetail": [
+            {
+              "spellId": 1276452,
+              "name": "Grimoire: Imp Lord",
+              "casts": 7,
+              "efficiency": 79.6
+            },
+            {
+              "spellId": 265187,
+              "name": "Summon Demonic Tyrant",
+              "casts": 15,
+              "efficiency": 87.6
+            }
+          ],
+          "defense": {
+            "score": 23.3,
+            "mitigation": 40.9,
+            "dtps": 36621,
+            "selfSustain": 29.6
+          },
+          "defenseDetail": [
+            {
+              "spellId": 6789,
+              "name": "Mortal Coil",
+              "casts": 6,
+              "efficiency": 22.8
+            },
+            {
+              "spellId": 104773,
+              "name": "Unending Resolve",
+              "casts": 2,
+              "efficiency": 23.8
+            }
+          ],
+          "help": {
+            "score": 34.8,
+            "abilities": 1,
+            "casts": 4
+          },
+          "helpDetail": [
+            {
+              "spellId": 20707,
+              "name": "Soulstone",
+              "casts": 4,
+              "efficiency": 34.8,
+              "categoria": "levantar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 14153
+          },
+          "tries": {
+            "present": 4,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": true,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 157988,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 154414,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 23.1,
+          "specs": [
+            {
+              "spec": "Demonology",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 4,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 192,
+              "cobertosPeloRaide": 54,
+              "seus": 0,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "deaths": 0
+        },
+        {
+          "playerId": "zzarlüxyon",
+          "dps": 42992,
+          "parse": 17,
+          "itemLevel": 299,
+          "attack": {
+            "score": 77.7,
+            "uptime": 85.1,
+            "cooldowns": 70.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 321507,
+              "name": "Touch of the Magi",
+              "casts": 10,
+              "efficiency": 67.4
+            },
+            {
+              "spellId": 365350,
+              "name": "Arcane Surge",
+              "casts": 6,
+              "efficiency": 73.3
+            }
+          ],
+          "defense": {
+            "score": 40.2,
+            "mitigation": 45.4,
+            "dtps": 26311,
+            "selfSustain": 18
+          },
+          "defenseDetail": [
+            {
+              "spellId": 235450,
+              "name": "Prismatic Barrier",
+              "casts": 10,
+              "efficiency": 40.2
+            }
+          ],
+          "help": {
+            "score": 75.9,
+            "abilities": 1,
+            "casts": 3
+          },
+          "helpDetail": [
+            {
+              "spellId": 80353,
+              "name": "Time Warp",
+              "casts": 3,
+              "efficiency": 75.9,
+              "categoria": "acelerar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 4742
+          },
+          "tries": {
+            "present": 4,
+            "total": 5,
+            "lateStart": true,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": false,
+              "dps": 72992,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 53,
+                "share": 8.6
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 53,
+            "share": 5.1,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 1
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "atSecond": 35,
+              "fightSeconds": 88,
+              "afterSeconds": 53,
+              "readyDefensives": [
+                "Prismatic Barrier"
+              ],
+              "ability": "Melee"
+            }
+          ],
+          "trashShare": 3.7,
+          "specs": [
+            {
+              "spec": "Arcane",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 1,
+            "dispels": 0,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 69,
+              "cobertosPeloRaide": 27,
+              "seus": 1,
+              "pessoasQueInterromperam": 11
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 33,
+              "ability": "Melee",
+              "amount": 321804,
+              "fatiaDaVida": 51,
+              "defensivosProntos": [
+                "Prismatic Barrier"
+              ]
+            }
+          ],
+          "deaths": 1
+        },
+        {
+          "playerId": "suísa",
+          "dps": 67788,
+          "parse": 18,
+          "itemLevel": 287,
+          "attack": {
+            "score": 78,
+            "uptime": 96.9,
+            "cooldowns": 59.1
+          },
+          "attackDetail": [
+            {
+              "spellId": 57934,
+              "name": "Tricks of the Trade",
+              "casts": 2,
+              "efficiency": 5.7
+            },
+            {
+              "spellId": 385627,
+              "name": "Kingsbane",
+              "casts": 15,
+              "efficiency": 82
+            },
+            {
+              "spellId": 360194,
+              "name": "Deathmark",
+              "casts": 9,
+              "efficiency": 89.6
+            }
+          ],
+          "defense": {
+            "score": 32.5,
+            "mitigation": 47.2,
+            "dtps": 30637,
+            "selfSustain": 28.4
+          },
+          "defenseDetail": [
+            {
+              "spellId": 5277,
+              "name": "Evasion",
+              "casts": 1,
+              "efficiency": 5.9
+            },
+            {
+              "spellId": 185311,
+              "name": "Crimson Vial",
+              "casts": 16,
+              "efficiency": 40.2
+            },
+            {
+              "spellId": 31224,
+              "name": "Cloak of Shadows",
+              "casts": 7,
+              "efficiency": 51.5
+            }
+          ],
+          "help": {
+            "score": 1.4,
+            "abilities": 1,
+            "casts": 1
+          },
+          "helpDetail": [
+            {
+              "spellId": 1766,
+              "name": "Kick",
+              "casts": 1,
+              "efficiency": 1.4,
+              "categoria": "interromper"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 8697
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 73244,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 7,
+                "share": 1.9
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 66840,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "dps": 28097,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 7,
+            "share": 0.7,
+            "inKills": 1
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "atSecond": 384,
+              "fightSeconds": 391,
+              "afterSeconds": 7,
+              "ability": "Possession Barrage"
+            }
+          ],
+          "trashShare": 6.4,
+          "specs": [
+            {
+              "spec": "Assassination",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 6,
+            "dispels": 0,
+            "purges": 1,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 192,
+              "cobertosPeloRaide": 54,
+              "seus": 6,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 12,
+              "atSecond": 67,
+              "ability": "Melee",
+              "amount": 304064,
+              "fatiaDaVida": 52,
+              "defensivosProntos": [
+                "Cloak of Shadows",
+                "Crimson Vial",
+                "Evasion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 70,
+              "ability": "Melee",
+              "amount": 302978,
+              "fatiaDaVida": 53,
+              "defensivosProntos": [
+                "Crimson Vial",
+                "Evasion"
+              ]
+            },
+            {
+              "fight": 12,
+              "atSecond": 65,
+              "ability": "Melee",
+              "amount": 302494,
+              "fatiaDaVida": 52,
+              "defensivosProntos": [
+                "Cloak of Shadows",
+                "Crimson Vial",
+                "Evasion"
+              ]
+            }
+          ],
+          "deaths": 1
+        },
+        {
+          "playerId": "karolini",
+          "dps": 96268,
+          "parse": 36,
+          "itemLevel": 307,
+          "attack": {
+            "score": 84.7,
+            "uptime": 93.3,
+            "cooldowns": 76.1
+          },
+          "attackDetail": [
+            {
+              "spellId": 1293311,
+              "name": "Coiled Fangstone",
+              "casts": 8,
+              "efficiency": 40.9
+            },
+            {
+              "spellId": 255937,
+              "name": "Wake of Ashes",
+              "casts": 27,
+              "efficiency": 74.8
+            },
+            {
+              "spellId": 375576,
+              "name": "Divine Toll",
+              "casts": 15,
+              "efficiency": 78.9
+            },
+            {
+              "spellId": 343527,
+              "name": "Execution Sentence",
+              "casts": 17,
+              "efficiency": 90.9
+            },
+            {
+              "spellId": 31884,
+              "name": "Avenging Wrath",
+              "casts": 16,
+              "efficiency": 95.1
+            }
+          ],
+          "defense": {
+            "score": 24.2,
+            "mitigation": 48.2,
+            "dtps": 28738,
+            "selfSustain": 17.5
+          },
+          "defenseDetail": [
+            {
+              "spellId": 1022,
+              "name": "Blessing of Protection",
+              "casts": 3,
+              "efficiency": 10.9
+            },
+            {
+              "spellId": 633,
+              "name": "Lay on Hands",
+              "casts": 1,
+              "efficiency": 11.8
+            },
+            {
+              "spellId": 403876,
+              "name": "Divine Protection",
+              "casts": 5,
+              "efficiency": 27.4
+            },
+            {
+              "spellId": 642,
+              "name": "Divine Shield",
+              "casts": 4,
+              "efficiency": 46.7
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 7835
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 102627,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 7,
+                "share": 1.9
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 98331,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 7,
+            "share": 0.7,
+            "inKills": 1
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "atSecond": 384,
+              "fightSeconds": 391,
+              "afterSeconds": 7,
+              "readyDefensives": [
+                "Divine Protection",
+                "Lay on Hands"
+              ],
+              "ability": "Possession Barrage"
+            }
+          ],
+          "trashShare": 13.3,
+          "specs": [
+            {
+              "spec": "Retribution",
+              "role": "dps"
+            }
+          ],
+          "utility": {
+            "interrupts": 4,
+            "dispels": 1,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 183,
+              "cobertosPeloRaide": 50,
+              "seus": 4,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 79,
+              "ability": "Unstable Miasma",
+              "amount": 270287,
+              "fatiaDaVida": 36,
+              "defensivosProntos": [
+                "Divine Protection",
+                "Divine Shield",
+                "Blessing of Protection",
+                "Lay on Hands"
+              ]
+            }
+          ],
+          "deaths": 1
+        },
+        {
+          "playerId": "grumwall",
+          "dps": 35936,
+          "parse": 9,
+          "itemLevel": 288,
+          "attack": {
+            "score": 92.1,
+            "uptime": 96.8,
+            "cooldowns": 87.3
+          },
+          "attackDetail": [
+            {
+              "spellId": 446035,
+              "name": "Bladestorm",
+              "casts": 12,
+              "efficiency": 79.4
+            },
+            {
+              "spellId": 107574,
+              "name": "Avatar",
+              "casts": 8,
+              "efficiency": 95.2
+            }
+          ],
+          "defense": {
+            "score": 29.7,
+            "mitigation": 49.3,
+            "dtps": 28028,
+            "selfSustain": 23
+          },
+          "defenseDetail": [
+            {
+              "spellId": 118038,
+              "name": "Die by the Sword",
+              "casts": 2,
+              "efficiency": 29.7
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            }
+          ],
+          "offRole": {
+            "hps": 6436
+          },
+          "tries": {
+            "present": 3,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": true,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 62667,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 2,
+              "killed": false,
+              "flawless": false,
+              "dps": 60924,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 5,
+          "specs": [
+            {
+              "spec": "Arms",
+              "role": "dps"
+            }
+          ],
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 79,
+              "ability": "Unstable Miasma",
+              "amount": 263606,
+              "fatiaDaVida": 41,
+              "defensivosProntos": [
+                "Die by the Sword"
+              ]
+            },
+            {
+              "fight": 14,
+              "atSecond": 120,
+              "ability": "Unstable Miasma",
+              "amount": 249832,
+              "fatiaDaVida": 39,
+              "defensivosProntos": [
+                "Die by the Sword"
+              ]
+            }
+          ],
+          "deaths": 0
+        },
+        {
+          "playerId": "jubiheal",
+          "hps": 81922,
+          "parse": 18,
+          "itemLevel": 280,
+          "attack": {
+            "score": 92,
+            "uptime": 98.7,
+            "cooldowns": 85.2
+          },
+          "attackDetail": [
+            {
+              "spellId": 1237885,
+              "name": "Thorn Bloom",
+              "casts": 7,
+              "efficiency": 85.2
+            }
+          ],
+          "defense": {
+            "score": 39.3,
+            "mitigation": 48.8,
+            "dtps": 30386,
+            "selfSustain": 47
+          },
+          "defenseDetail": [
+            {
+              "spellId": 108271,
+              "name": "Astral Shift",
+              "casts": 1,
+              "efficiency": 11.5
+            },
+            {
+              "spellId": 1267068,
+              "name": "Stormstream Totem",
+              "casts": 7,
+              "efficiency": 18.8
+            },
+            {
+              "spellId": 1254624,
+              "name": "Radiant Blessing",
+              "casts": 5,
+              "efficiency": 46.5
+            },
+            {
+              "spellId": 114052,
+              "name": "Ascendance",
+              "casts": 5,
+              "efficiency": 49.4
+            },
+            {
+              "spellId": 98008,
+              "name": "Spirit Link Totem",
+              "casts": 4,
+              "efficiency": 54.3
+            },
+            {
+              "spellId": 5394,
+              "name": "Healing Stream Totem",
+              "casts": 31,
+              "efficiency": 55.5
+            }
+          ],
+          "help": {
+            "score": 76.3,
+            "abilities": 1,
+            "casts": 4
+          },
+          "helpDetail": [
+            {
+              "spellId": 32182,
+              "name": "Heroism",
+              "casts": 4,
+              "efficiency": 76.3,
+              "categoria": "acelerar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "healing": {
+            "score": 68.5,
+            "coverage": 15.3,
+            "share": 64,
+            "overheal": 27
+          },
+          "offRole": {
+            "dps": 957
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": false,
+              "dps": 832,
+              "deaths": 1,
+              "deathCost": {
+                "seconds": 7,
+                "share": 1.9
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 1053,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "dps": 712,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 7,
+            "share": 0.7,
+            "inKills": 1
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "atSecond": 384,
+              "fightSeconds": 391,
+              "afterSeconds": 7,
+              "readyDefensives": [
+                "Stormstream Totem",
+                "Healing Stream Totem",
+                "Astral Shift"
+              ],
+              "ability": "Possession Barrage"
+            }
+          ],
+          "trashShare": 0.1,
+          "specs": [
+            {
+              "spec": "Restoration",
+              "role": "healer"
+            }
+          ],
+          "utility": {
+            "interrupts": 2,
+            "dispels": 8,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 192,
+              "cobertosPeloRaide": 54,
+              "seus": 2,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "pancadas": [
+            {
+              "fight": 14,
+              "atSecond": 120,
+              "ability": "Unstable Miasma",
+              "amount": 251541,
+              "fatiaDaVida": 42,
+              "defensivosProntos": [
+                "Spirit Link Totem",
+                "Stormstream Totem",
+                "Astral Shift"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 123,
+              "ability": "Unstable Miasma",
+              "amount": 251541,
+              "fatiaDaVida": 42,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Astral Shift"
+              ]
+            },
+            {
+              "fight": 15,
+              "atSecond": 321,
+              "ability": "Unstable Miasma",
+              "amount": 251541,
+              "fatiaDaVida": 42,
+              "defensivosProntos": [
+                "Stormstream Totem",
+                "Ascendance"
+              ]
+            }
+          ],
+          "deaths": 1
+        },
+        {
+          "playerId": "benedicctx",
+          "hps": 229232,
+          "parse": 73,
+          "itemLevel": 316,
+          "attack": {
+            "score": 83.1,
+            "uptime": 97.8,
+            "cooldowns": 68.4
+          },
+          "attackDetail": [
+            {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 16,
+              "efficiency": 68.4
+            }
+          ],
+          "defense": {
+            "score": 45.7,
+            "mitigation": 48.5,
+            "dtps": 26203,
+            "selfSustain": 93.8
+          },
+          "defenseDetail": [
+            {
+              "spellId": 47788,
+              "name": "Guardian Spirit",
+              "casts": 3,
+              "efficiency": 24.7
+            },
+            {
+              "spellId": 19236,
+              "name": "Desperate Prayer",
+              "casts": 3,
+              "efficiency": 25.8
+            },
+            {
+              "spellId": 1291894,
+              "name": "Soulcoiler Ritual Vessel",
+              "casts": 3,
+              "efficiency": 34.4
+            },
+            {
+              "spellId": 64843,
+              "name": "Divine Hymn",
+              "casts": 4,
+              "efficiency": 52.1
+            },
+            {
+              "spellId": 2050,
+              "name": "Holy Word: Serenity",
+              "casts": 93,
+              "efficiency": 91.7
+            }
+          ],
+          "help": {
+            "score": 29.7,
+            "abilities": 3,
+            "casts": 19
+          },
+          "helpDetail": [
+            {
+              "spellId": 73325,
+              "name": "Leap of Faith",
+              "casts": 1,
+              "efficiency": 8.6,
+              "categoria": "socorrer"
+            },
+            {
+              "spellId": 32375,
+              "name": "Mass Dispel",
+              "casts": 2,
+              "efficiency": 12,
+              "categoria": "socorrer"
+            },
+            {
+              "spellId": 10060,
+              "name": "Power Infusion",
+              "casts": 16,
+              "efficiency": 68.4,
+              "categoria": "acelerar"
+            }
+          ],
+          "bossKills": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3
+            }
+          ],
+          "healing": {
+            "score": 99.6,
+            "coverage": 42.8,
+            "share": 179.1,
+            "overheal": 30.8
+          },
+          "offRole": {
+            "dps": 7200
+          },
+          "tries": {
+            "present": 5,
+            "total": 5,
+            "lateStart": false,
+            "earlyExit": false,
+            "idle": 0,
+            "topDamageDead": 0
+          },
+          "bossTries": [
+            {
+              "encounterID": 3470,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": true,
+              "flawless": true,
+              "dps": 8743,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3445,
+              "difficulty": 3,
+              "tries": 3,
+              "killed": true,
+              "flawless": true,
+              "dps": 6677,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            },
+            {
+              "encounterID": 3455,
+              "difficulty": 3,
+              "tries": 1,
+              "killed": false,
+              "flawless": false,
+              "deaths": 0,
+              "deathCost": {
+                "seconds": 0,
+                "share": 0
+              }
+            }
+          ],
+          "deathCost": {
+            "seconds": 0,
+            "share": 0,
+            "inKills": 0
+          },
+          "deathSignature": {
+            "primeiroACair": 0,
+            "efeitoDomino": 0,
+            "speedrun": 0,
+            "fantasma": 0
+          },
+          "deathDetail": [],
+          "trashShare": 0.9,
+          "specs": [
+            {
+              "spec": "Holy",
+              "role": "healer"
+            }
+          ],
+          "utility": {
+            "interrupts": 0,
+            "dispels": 19,
+            "purges": 0,
+            "battleRez": 0,
+            "battleRezRecebidos": 0,
+            "interrupcoes": {
+              "oportunidades": 192,
+              "cobertosPeloRaide": 54,
+              "seus": 0,
+              "pessoasQueInterromperam": 15
+            }
+          },
+          "deaths": 0
+        }
+      ]
+    },
+    {
       "date": "2026-10-27",
       "reportCode": "yknaMQh4L3WmcX82",
       "players": [

@@ -615,14 +615,21 @@ async function main() {
   }
 
   const weekPadded = String(week).padStart(2, "0");
-  await saveRaw("warcraftlogs", `_discovery/week-${weekPadded}`, {
-    window: { startTime, endTime },
-    guildReports,
-    uploaderReports,
-    extraReports,
-    trustedDiscovered,
-    untrustedDiscovered,
-  });
+
+  // Só grava o arquivo da descoberta quando a descoberta ACONTECEU. Rodar
+  // com --reports pula a busca, e gravar assim apagava a lista de reports
+  // que a semana tinha achado de verdade — deixando no lugar só o código
+  // informado à mão, como se a semana tivesse um log só.
+  if (!pulaDescoberta) {
+    await saveRaw("warcraftlogs", `_discovery/week-${weekPadded}`, {
+      window: { startTime, endTime },
+      guildReports,
+      uploaderReports,
+      extraReports,
+      trustedDiscovered,
+      untrustedDiscovered,
+    });
+  }
 
   // Pass 1: fights + tables de cada report, via DataCollector (arquiva em
   // data/raw/warcraftlogs/<code>.json). Falha num report não derruba o resto.
@@ -772,7 +779,7 @@ async function main() {
   // depois das tabelas. E antes do rascunho, porque rascunhar primeiro
   // tornaria a conta circular — personagem desconhecido viraria roster e a
   // sobreposição daria 100% sozinha.
-  const { cores: coresParaRotear, corte } = await lerCoresParaRotear(roster);
+  const { cores: coresParaRotear, corte, comRoster } = await lerCoresParaRotear(roster);
   const corePorReport = new Map<string, string>();
   const aceitos: ReportContext[] = [];
 
@@ -803,15 +810,21 @@ async function main() {
   reportContexts.length = 0;
   reportContexts.push(...aceitos);
 
-  // O rascunho só olha quem jogou em log ACEITO: foi um log recusado que
-  // encheu o roster de dezesseis personagens de guild run.
-  const nomesAceitos = new Set<string>();
+  // O rascunho só olha quem jogou em log de CORE.
+  //
+  // Log recusado nunca rascunhou — foi um deles que encheu o roster de
+  // dezesseis personagens de guild run. Log de EVENTO é aceito, e mesmo
+  // assim não rascunha: o elenco de um guild run muda toda edição e é
+  // personagem de uma noite só. Quem jogou fica registrado na própria
+  // noite, que é o que "registro próprio, separado do roster" quer dizer.
+  const nomesDeCore = new Set<string>();
   for (const ctx of aceitos) {
-    for (const nome of personagensPorReport.get(ctx.report.code) ?? []) nomesAceitos.add(nome);
+    const core = corePorReport.get(ctx.report.code);
+    if (core === undefined || !comRoster.has(core)) continue;
+    for (const nome of personagensPorReport.get(ctx.report.code) ?? []) nomesDeCore.add(nome);
   }
-  for (const nome of [...seenCharacters.keys()]) {
-    if (!nomesAceitos.has(nome.toLowerCase())) seenCharacters.delete(nome);
-  }
+  /** Visto em log de core: só esses viram rascunho de roster. */
+  const vistoEmCore = (nome: string) => nomesDeCore.has(nome.toLowerCase());
 
   // Jogadores que apareceram numa run mas não estão no roster.json ainda
   // ganham um rascunho de cadastro.
@@ -823,11 +836,14 @@ async function main() {
   const excluidos = await loadRosterExclusions();
   const newCharacters = [...seenCharacters.values()].filter(
     (character) =>
+      vistoEmCore(character.name) &&
       !knownWclNames.has(character.name.toLowerCase()) &&
       !excluidos.has(character.name.toLowerCase())
   );
 
-  const ignorados = [...seenCharacters.values()].filter((c) => excluidos.has(c.name.toLowerCase()));
+  const ignorados = [...seenCharacters.values()].filter(
+    (c) => vistoEmCore(c.name) && excluidos.has(c.name.toLowerCase())
+  );
   if (ignorados.length > 0) {
     console.log(`Ignorados por roster-exclusions.json: ${ignorados.map((c) => c.name).join(", ")}`);
   }
@@ -860,6 +876,42 @@ async function main() {
     profile: parseWclProfile(player.warcraftLogs.profileUrl),
   }));
 
+  /**
+   * Quem um relatório PODE conter.
+   *
+   * Em log de core é o roster, e quem não está nele é pug ou visitante que
+   * entrou por engano — o recorte é a defesa. Em log de EVENTO é o elenco
+   * do próprio log: guild run é personagem de uma noite só, não existe
+   * roster pra conferir, e medir pelo roster do Nemesis deixava dezesseis
+   * dos dezoito participantes de fora da própria noite deles.
+   *
+   * O id é o nome em minúsculas, sem desambiguação: no evento o nome É a
+   * identidade, e não há roster onde colidir.
+   */
+  const vistoPorNome = new Map(
+    [...seenCharacters.values()].map((c) => [c.name.toLowerCase(), c])
+  );
+
+  const perfisPorReport = new Map<string, typeof rosterProfiles>();
+  for (const ctx of reportContexts) {
+    const core = corePorReport.get(ctx.report.code);
+    if (core !== undefined && comRoster.has(core)) continue;
+
+    perfisPorReport.set(
+      ctx.report.code,
+      [...(personagensPorReport.get(ctx.report.code) ?? [])]
+        .map((nome) => vistoPorNome.get(nome))
+        .filter((c): c is NonNullable<typeof c> => c !== undefined)
+        .map((c) => ({
+          id: c.name.toLowerCase(),
+          role: c.role,
+          profile: { region: c.region, realm: c.server, name: c.name },
+        }))
+    );
+  }
+
+  const perfisDoReport = (code: string) => perfisPorReport.get(code) ?? rosterProfiles;
+
   // Pass 2: rankings (parse), agora com effectiveRoster já completo.
   const rankingOutcomes = await collector.run(
     ...reportContexts.map((ctx) => ({
@@ -868,7 +920,7 @@ async function main() {
         reportCode: ctx.report.code,
         aggregateFightIds: ctx.aggregateFightIds,
         killedEncounterIds: ctx.killedEncounterIds,
-        players: rosterProfiles.map(({ profile, role }) => ({
+        players: perfisDoReport(ctx.report.code).map(({ profile, role }) => ({
           profile,
           metric: (role === "healer" ? "hps" : "dps") as "dps" | "hps",
         })),
@@ -1019,7 +1071,9 @@ async function main() {
       for (const uso of usos) {
         const nome = atores.get(uso.sourceID);
         if (!nome) continue;
-        const perfil = rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome));
+        const perfil = perfisDoReport(ctx.report.code).find((jogador) =>
+          sameCharacterName(jogador.profile.name, nome)
+        );
         if (perfil) porJogador.set(perfil.id, uso);
       }
 
@@ -1032,7 +1086,7 @@ async function main() {
         : await wcl.fetchDamageTaken(ctx.report.code, ctx.aggregateFightIds);
       for (const entrada of danoRecebido) {
         if (!entrada.name) continue;
-        const perfil = rosterProfiles.find((jogador) =>
+        const perfil = perfisDoReport(ctx.report.code).find((jogador) =>
           sameCharacterName(jogador.profile.name, entrada.name!)
         );
         if (!perfil) continue;
@@ -1068,7 +1122,9 @@ async function main() {
       for (const [sourceID, mortos] of killsPorAtor) {
         const nome = atores.get(sourceID);
         if (!nome) continue;
-        const perfil = rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome));
+        const perfil = perfisDoReport(ctx.report.code).find((jogador) =>
+          sameCharacterName(jogador.profile.name, nome)
+        );
         if (perfil) killsPorJogador.set(perfil.id, mortos);
       }
       bossKillsPorReport.set(ctx.report.code, killsPorJogador);
@@ -1082,7 +1138,9 @@ async function main() {
       const doRoster = (actorId: number): string | undefined => {
         const nome = atores.get(actorId);
         if (!nome) return undefined;
-        return rosterProfiles.find((jogador) => sameCharacterName(jogador.profile.name, nome))?.id;
+        return perfisDoReport(ctx.report.code).find((jogador) =>
+          sameCharacterName(jogador.profile.name, nome)
+        )?.id;
       };
 
       /**
@@ -1226,7 +1284,7 @@ async function main() {
       // do playerDetails volta vazio nos reports reais.
       const specsPorJogador = new Map<string, NonNullable<PlayerPerformance["specs"]>>();
       for (const membro of ctx.fullTables.summary.data.composition ?? []) {
-        const perfil = rosterProfiles.find((jogador) =>
+        const perfil = perfisDoReport(ctx.report.code).find((jogador) =>
           sameCharacterName(jogador.profile.name, membro.name)
         );
         if (!perfil) continue;
@@ -1331,7 +1389,7 @@ async function main() {
       fullTables: ctx.fullTables,
       rankings,
       parseByPlayer: parsePorReport.get(ctx.report.code),
-      players: rosterProfiles,
+      players: perfisDoReport(ctx.report.code),
       resolvePreparationChecklist,
       cooldownsByPlayer: cooldownsPorReport.get(ctx.report.code),
       damageTakenByPlayer: danoRecebidoPorReport.get(ctx.report.code),
@@ -1433,8 +1491,18 @@ async function main() {
   // cada report SUBSTITUI a própria entrada, reprocessar é inofensivo — e é
   // o que permite corrigir a história quando um log é recoletado, em vez de
   // congelar o primeiro número que entrou.
-  const progressionChanges = updateBossProgression(season, reportContexts);
-  const recentLogsChanged = updateRecentLogs(season, reportContexts);
+  //
+  // Noite de EVENTO fica de fora das duas: o guild run matou três bosses do
+  // Abismo numa noite de zoeira, e isso entrou como progressão do Core
+  // Nemesis — `pullsTotal` de três bosses subiu e o pullLog ganhou linha
+  // com o código do evento. Progressão é do core que está progredindo.
+  const deCore = reportContexts.filter((ctx) => {
+    const core = corePorReport.get(ctx.report.code);
+    return core !== undefined && comRoster.has(core);
+  });
+
+  const progressionChanges = updateBossProgression(season, deCore);
+  const recentLogsChanged = updateRecentLogs(season, deCore);
 
   if (progressionChanges.length > 0 || recentLogsChanged) {
     season.config.lastUpdated = new Date().toISOString();
