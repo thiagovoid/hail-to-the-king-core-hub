@@ -5,7 +5,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "A Libertação de Kith'ix",
-    "lastUpdated": "2026-10-16T03:50:15.828Z",
+    "lastUpdated": "2026-10-28T02:57:26.093Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -97,7 +97,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 5,
+      "pullsTotal": 6,
       "pullLog": [
         {
           "reportCode": "PvxcbTGDVjMgzqLX",
@@ -114,6 +114,12 @@
         {
           "reportCode": "83A2nJ4NHBFCD9xW",
           "date": "2026-09-01",
+          "pulls": 1,
+          "kill": true
+        },
+        {
+          "reportCode": "QzdpHPYRja8GnANk",
+          "date": "2026-10-23",
           "pulls": 1,
           "kill": true
         }
@@ -133,7 +139,7 @@
         "wipefest": "https://www.wipefest.gg/report/PvxcbTGDVjMgzqLX/fight/15?gameVersion=warcraft-live",
         "video": null
       },
-      "pullsTotal": 5,
+      "pullsTotal": 8,
       "pullLog": [
         {
           "reportCode": "PvxcbTGDVjMgzqLX",
@@ -152,6 +158,12 @@
           "date": "2026-09-01",
           "pulls": 1,
           "kill": true
+        },
+        {
+          "reportCode": "QzdpHPYRja8GnANk",
+          "date": "2026-10-23",
+          "pulls": 3,
+          "kill": true
         }
       ],
       "raid": "abismo-venenoso"
@@ -169,7 +181,7 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 4,
+      "pullsTotal": 5,
       "pullLog": [
         {
           "reportCode": "PvxcbTGDVjMgzqLX",
@@ -188,6 +200,12 @@
           "date": "2026-09-01",
           "pulls": 1,
           "kill": true
+        },
+        {
+          "reportCode": "QzdpHPYRja8GnANk",
+          "date": "2026-10-23",
+          "pulls": 1,
+          "kill": false
         }
       ],
       "raid": "abismo-venenoso"
@@ -367,11 +385,17 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 1,
+      "pullsTotal": 2,
       "pullLog": [
         {
           "reportCode": "aZ9R1byCVMYcgdKQ",
           "date": "2026-10-14",
+          "pulls": 1,
+          "kill": true
+        },
+        {
+          "reportCode": "ALXHRD2NwCyMrGV8",
+          "date": "2026-10-20",
           "pulls": 1,
           "kill": true
         }
@@ -642,25 +666,44 @@
       "id": "o-altar-espiralado",
       "name": "O Altar Espiralado",
       "encounterID": 3429,
-      "status": "not_started",
-      "pulls": 0,
+      "status": "killed",
+      "pulls": 26,
       "bestPullPercent": null,
-      "killDate": null,
+      "killDate": "2026-10-28T01:26:36.834Z",
       "links": {
-        "warcraftLogs": null,
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/yknaMQh4L3WmcX82?fight=7",
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 0,
-      "pullLog": [],
+      "pullsTotal": 26,
+      "pullLog": [
+        {
+          "reportCode": "ALXHRD2NwCyMrGV8",
+          "date": "2026-10-20",
+          "pulls": 10,
+          "kill": false
+        },
+        {
+          "reportCode": "YZbX4fRxWGhmpy9A",
+          "date": "2026-10-22",
+          "pulls": 11,
+          "kill": false
+        },
+        {
+          "reportCode": "yknaMQh4L3WmcX82",
+          "date": "2026-10-27",
+          "pulls": 5,
+          "kill": true
+        }
+      ],
       "raid": "abismo-venenoso"
     },
     {
       "id": "ulatek",
       "name": "Ula'tek",
       "encounterID": 3492,
-      "status": "not_started",
-      "pulls": 0,
+      "status": "progress",
+      "pulls": 10,
       "bestPullPercent": null,
       "killDate": null,
       "links": {
@@ -668,8 +711,15 @@
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 0,
-      "pullLog": [],
+      "pullsTotal": 10,
+      "pullLog": [
+        {
+          "reportCode": "yknaMQh4L3WmcX82",
+          "date": "2026-10-27",
+          "pulls": 10,
+          "kill": false
+        }
+      ],
       "raid": "abismo-venenoso"
     },
     {
@@ -698,6 +748,26 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-10-27",
+      "url": "https://www.warcraftlogs.com/reports/yknaMQh4L3WmcX82",
+      "title": "Abismo Venenoso"
+    },
+    {
+      "date": "2026-10-23",
+      "url": "https://www.warcraftlogs.com/reports/QzdpHPYRja8GnANk",
+      "title": "Abismo Venenoso"
+    },
+    {
+      "date": "2026-10-22",
+      "url": "https://www.warcraftlogs.com/reports/YZbX4fRxWGhmpy9A",
+      "title": "Abismo Venenoso"
+    },
+    {
+      "date": "2026-10-20",
+      "url": "https://www.warcraftlogs.com/reports/ALXHRD2NwCyMrGV8",
+      "title": "Abismo Venenoso + A Libertação de Kith'ix"
+    },
     {
       "date": "2026-10-15",
       "url": "https://www.warcraftlogs.com/reports/8BnvqLPV17tkRrKY",

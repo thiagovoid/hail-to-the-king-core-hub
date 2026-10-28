@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T03:50:15.754Z",
+  "generatedAt": "2026-10-28T02:57:25.986Z",
   "cooldowns": {
     "498": {
       "name": "Divine Protection",
@@ -22,6 +22,12 @@
     "642": {
       "name": "Divine Shield",
       "cooldownMs": 300000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "740": {
+      "name": "Tranquility",
+      "cooldownMs": 180000,
       "charges": 1,
       "kind": "defensive"
     },
@@ -52,6 +58,12 @@
     "1719": {
       "name": "Recklessness",
       "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "1850": {
+      "name": "Dash",
+      "cooldownMs": 120000,
       "charges": 1,
       "kind": "utility"
     },
@@ -90,6 +102,12 @@
       "cooldownMs": 30000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "5938": {
+      "name": "Shiv",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
     },
     "6262": {
       "name": "Healthstone",
@@ -200,6 +218,18 @@
       "charges": 1,
       "kind": "utility"
     },
+    "22812": {
+      "name": "Barkskin",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "22842": {
+      "name": "Frenzied Regeneration",
+      "cooldownMs": 36000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "29893": {
       "name": "Create Soulwell",
       "cooldownMs": 120000,
@@ -211,6 +241,12 @@
       "cooldownMs": 60000,
       "charges": 1,
       "kind": "utility"
+    },
+    "31224": {
+      "name": "Cloak of Shadows",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "31661": {
       "name": "Dragon's Breath",
@@ -253,6 +289,12 @@
       "cooldownMs": 180000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "36554": {
+      "name": "Shadowstep",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
     },
     "42650": {
       "name": "Army of the Dead",
@@ -386,6 +428,18 @@
       "charges": 1,
       "kind": "utility"
     },
+    "57934": {
+      "name": "Tricks of the Trade",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "58875": {
+      "name": "Spirit Walk",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "58984": {
       "name": "Shadowmeld",
       "cooldownMs": 120000,
@@ -470,11 +524,41 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "101545": {
+      "name": "Flying Serpent Kick",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "102342": {
+      "name": "Ironbark",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "102560": {
+      "name": "Incarnation: Chosen of Elune",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "102793": {
+      "name": "Ursol's Vortex",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "104773": {
       "name": "Unending Resolve",
       "cooldownMs": 180000,
       "charges": 1,
       "kind": "defensive"
+    },
+    "106898": {
+      "name": "Stampeding Roar",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
     },
     "107570": {
       "name": "Storm Bolt",
@@ -548,9 +632,33 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "115203": {
+      "name": "Fortifying Brew",
+      "cooldownMs": 360000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "115399": {
+      "name": "Black Ox Brew",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "115750": {
       "name": "Blinding Light",
       "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "116841": {
+      "name": "Tiger's Lust",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "116844": {
+      "name": "Ring of Peace",
+      "cooldownMs": 45000,
       "charges": 1,
       "kind": "utility"
     },
@@ -560,9 +668,45 @@
       "charges": 1,
       "kind": "defensive"
     },
+    "119381": {
+      "name": "Leg Sweep",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "120644": {
       "name": "Halo",
       "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "122470": {
+      "name": "Touch of Karma",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "123986": {
+      "name": "Chi Burst",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "132158": {
+      "name": "Nature's Swiftness",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "132578": {
+      "name": "Invoke Niuzao, the Black Ox",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "152175": {
+      "name": "Whirling Dragon Punch",
+      "cooldownMs": 35000,
       "charges": 1,
       "kind": "offensive"
     },
@@ -680,6 +824,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "202770": {
+      "name": "Fury of Elune",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "204018": {
       "name": "Blessing of Spellwarding",
       "cooldownMs": 300000,
@@ -710,6 +860,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "212431": {
+      "name": "Explosive Shot",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "212552": {
       "name": "Wraith Walk",
       "cooldownMs": 60000,
@@ -739,6 +895,18 @@
       "cooldownMs": 120000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "235450": {
+      "name": "Prismatic Barrier",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "252216": {
+      "name": "Tiger Dash",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "utility"
     },
     "255937": {
       "name": "Wake of Ashes",
@@ -812,6 +980,24 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "321507": {
+      "name": "Touch of the Magi",
+      "cooldownMs": 45000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "322109": {
+      "name": "Touch of Death",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "325153": {
+      "name": "Exploding Keg",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "333889": {
       "name": "Fel Domination",
       "cooldownMs": 180000,
@@ -830,6 +1016,54 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "355913": {
+      "name": "Emerald Blossom",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "357208": {
+      "name": "Fire Breath",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "358267": {
+      "name": "Hover",
+      "cooldownMs": 35000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "358385": {
+      "name": "Landslide",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "360194": {
+      "name": "Deathmark",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "363916": {
+      "name": "Obsidian Scales",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "365350": {
+      "name": "Arcane Surge",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "370553": {
+      "name": "Tip the Scales",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
     "370965": {
       "name": "The Hunt",
       "cooldownMs": 90000,
@@ -842,6 +1076,24 @@
       "charges": 1,
       "kind": "utility",
       "familia": "pocao"
+    },
+    "374227": {
+      "name": "Zephyr",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "374251": {
+      "name": "Cauterizing Flame",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "defensive"
+    },
+    "374968": {
+      "name": "Time Spiral",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
     },
     "375576": {
       "name": "Divine Toll",
@@ -897,6 +1149,12 @@
       "charges": 1,
       "kind": "offensive"
     },
+    "385627": {
+      "name": "Kingsbane",
+      "cooldownMs": 60000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "385952": {
       "name": "Shield Charge",
       "cooldownMs": 45000,
@@ -920,6 +1178,30 @@
       "cooldownMs": 600000,
       "charges": 1,
       "kind": "utility"
+    },
+    "391528": {
+      "name": "Convoke the Spirits",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
+    },
+    "395152": {
+      "name": "Ebon Might",
+      "cooldownMs": 30000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "396286": {
+      "name": "Upheaval",
+      "cooldownMs": 40000,
+      "charges": 1,
+      "kind": "offensive"
+    },
+    "403631": {
+      "name": "Breath of Eons",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "offensive"
     },
     "403876": {
       "name": "Divine Protection",
@@ -1085,12 +1367,24 @@
       "kind": "utility",
       "familia": "pocao"
     },
+    "1237885": {
+      "name": "Thorn Bloom",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "offensive"
+    },
     "1238443": {
       "name": "Potion of Zealotry",
       "cooldownMs": 300000,
       "charges": 1,
       "kind": "offensive",
       "familia": "pocao"
+    },
+    "1241059": {
+      "name": "Celestial Infusion",
+      "cooldownMs": 90000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "1244088": {
       "name": "Interpose",
@@ -1102,6 +1396,12 @@
       "name": "Putrefy",
       "cooldownMs": 30000,
       "charges": 1,
+      "kind": "utility"
+    },
+    "1249625": {
+      "name": "Zenith",
+      "cooldownMs": 90000,
+      "charges": 2,
       "kind": "utility"
     },
     "1249658": {
@@ -1134,6 +1434,12 @@
       "cooldownMs": 90000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "1254624": {
+      "name": "Radiant Blessing",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
     },
     "1257052": {
       "name": "Dark Harvest",
@@ -1226,6 +1532,12 @@
       "charges": 1,
       "kind": "utility"
     },
+    "1294330": {
+      "name": "Spirit Ward",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "defensive"
+    },
     "1295132": {
       "name": "Liquid Luster",
       "cooldownMs": 300000,
@@ -1239,6 +1551,12 @@
       "charges": 1,
       "kind": "defensive",
       "familia": "pocao"
+    },
+    "1295275": {
+      "name": "The King's Unyielding Wind",
+      "cooldownMs": 120000,
+      "charges": 1,
+      "kind": "utility"
     },
     "1297145": {
       "name": "Spirit-Rending Poison",
@@ -1263,6 +1581,12 @@
       "cooldownMs": 180000,
       "charges": 1,
       "kind": "offensive"
+    },
+    "1309441": {
+      "name": "Lightbearer's Shield Fragment",
+      "cooldownMs": 180000,
+      "charges": 1,
+      "kind": "defensive"
     }
   },
   "ignored": [
@@ -1270,12 +1594,14 @@
     100,
     116,
     120,
+    136,
     172,
     355,
     370,
     453,
     465,
     527,
+    528,
     585,
     589,
     686,
@@ -1283,18 +1609,26 @@
     691,
     697,
     702,
+    703,
+    768,
     772,
+    774,
     781,
     845,
+    883,
     974,
     980,
     1044,
     1064,
+    1329,
     1459,
     1464,
+    1543,
     1706,
+    1714,
     1715,
     1766,
+    1943,
     1966,
     2061,
     2098,
@@ -1303,7 +1637,10 @@
     2645,
     3714,
     4987,
+    5143,
+    5176,
     5308,
+    5487,
     6201,
     6343,
     6552,
@@ -1313,10 +1650,15 @@
     8004,
     8092,
     8676,
+    8921,
+    8936,
+    9484,
     12294,
     14914,
     15407,
     17364,
+    18562,
+    19434,
     19750,
     20271,
     20473,
@@ -1325,22 +1667,30 @@
     23920,
     23922,
     24275,
+    24858,
     26573,
     27243,
+    27576,
+    30146,
     30449,
+    30451,
     30455,
     31935,
     32223,
     32379,
+    32645,
     33076,
     33757,
+    33763,
     34026,
     34914,
+    44425,
     47528,
     47540,
     47541,
     48018,
     48181,
+    48438,
     49020,
     49143,
     49184,
@@ -1348,52 +1698,77 @@
     49998,
     50842,
     51505,
+    51723,
     52127,
     52174,
     53385,
     53600,
     55090,
     56222,
+    56641,
     57755,
     57994,
     60103,
     61295,
+    61391,
     62124,
     64844,
     73685,
     77130,
     77472,
     77575,
+    78674,
     82326,
     83245,
     85222,
     85288,
     85673,
     85948,
+    88423,
+    93402,
     96231,
+    100780,
+    100784,
+    101546,
+    101643,
     104316,
     105174,
+    107428,
     108287,
+    109132,
     110960,
     111400,
     111771,
+    113656,
+    115181,
     115356,
+    115546,
     117014,
+    119582,
     119905,
     119910,
+    121253,
     121536,
+    124503,
+    124506,
     126664,
     131347,
     132157,
+    132411,
     147362,
     153595,
+    153626,
+    155777,
     156322,
+    157982,
     162794,
     163201,
     183752,
     184367,
     184575,
     185123,
+    185358,
+    185565,
     185763,
     186263,
     187874,
@@ -1404,10 +1779,13 @@
     190356,
     190411,
     190456,
+    190984,
+    191034,
     192063,
     192106,
     193315,
     193455,
+    194153,
     194509,
     194913,
     195072,
@@ -1426,6 +1804,7 @@
     202168,
     204019,
     204079,
+    205523,
     206930,
     207230,
     207317,
@@ -1436,11 +1815,13 @@
     213634,
     213644,
     217200,
+    218164,
     228537,
     232698,
     232893,
     234153,
     257040,
+    257044,
     257284,
     264178,
     272790,
@@ -1451,12 +1832,22 @@
     281000,
     317920,
     318038,
+    322101,
+    322729,
+    334275,
     335096,
     335097,
     335467,
     341263,
     342247,
     343294,
+    351338,
+    358733,
+    360995,
+    361195,
+    361509,
+    364342,
+    365585,
     366222,
     370966,
     383269,
@@ -1465,14 +1856,19 @@
     385061,
     385062,
     385899,
+    386164,
+    386208,
     391403,
+    395160,
     408385,
+    409311,
     415091,
     415388,
     426586,
     427453,
     431044,
     431398,
+    431443,
     433568,
     433895,
     434144,
@@ -1489,33 +1885,41 @@
     450215,
     450983,
     452201,
+    452538,
     454351,
     457481,
     458128,
     461867,
     462620,
     462854,
+    467307,
     469270,
     470057,
     470411,
     1227280,
+    1234969,
     1236942,
     1241413,
     1242173,
     1242174,
     1244091,
+    1247227,
     1248829,
     1253593,
     1259790,
     1261153,
     1262763,
+    1263438,
     1263768,
     1264359,
     1264426,
     1265384,
     1269383,
+    1272696,
     1295735,
+    1295924,
     1296535,
-    1308188
+    1308188,
+    1309526
   ]
 }
