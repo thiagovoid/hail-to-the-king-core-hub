@@ -98,6 +98,37 @@ function zonasDaTemporada(season: SeasonConfigFile): Set<number> {
   return new Set((season.config.raids ?? []).map((raide) => raide.zoneId));
 }
 
+interface LogExcluido {
+  code: string;
+  motivo: string;
+}
+
+/**
+ * Logs que não são do core, e por isso não entram na conta dele.
+ *
+ * Nem toda noite de raide da guilda é noite do core: no guild run todo
+ * mundo joga com um personagem diferente, de propósito. Processar isso
+ * como core estraga duas coisas de uma vez — mistura os números da
+ * temporada com uma noite que não é dela, e enche o roster de rascunhos de
+ * personagens que ninguém joga.
+ *
+ * É remendo, e assumido como tal: a solução é o core virar entidade e cada
+ * log ser roteado pro core dele, em vez de descartado.
+ */
+async function lerLogsExcluidos(): Promise<LogExcluido[]> {
+  const caminho = path.join(ROOT, "data/guild/log-exclusions.json");
+  try {
+    const conteudo = JSON.parse(await readFile(caminho, "utf-8")) as {
+      reports?: LogExcluido[];
+    };
+    return conteudo.reports ?? [];
+  } catch {
+    // Arquivo ausente é lista vazia: o coletor não deve parar por causa de
+    // um remendo que talvez nem exista mais.
+    return [];
+  }
+}
+
 /** O que apareceu e não está cadastrado — candidato a raide nova. */
 function relatarZonasDesconhecidas(
   reports: Array<{ code: string; zone?: { id: number; name?: string } | null }>,
@@ -525,7 +556,17 @@ async function main() {
     reportsByCode.set(report.code, report);
   }
 
-  const reports = [...reportsByCode.values()];
+  // O descarte é RUIDOSO de propósito. Log sumindo em silêncio foi
+  // exatamente o que fez a primeira noite de um tier novo se perder.
+  const logsExcluidos = await lerLogsExcluidos();
+  const porCodigo = new Map(logsExcluidos.map((item) => [item.code, item.motivo]));
+  const reports = [...reportsByCode.values()].filter((report) => {
+    const motivo = porCodigo.get(report.code);
+    if (motivo === undefined) return true;
+    console.log(`Log ${report.code} fora da conta do core: ${motivo}`);
+    return false;
+  });
+
   if (!includeGuildReports) {
     console.log("Busca por guild desligada (padrão) — usando só a conta de upload conhecida. Ver --include-guild-reports.");
   }

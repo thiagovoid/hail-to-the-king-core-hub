@@ -1,0 +1,19 @@
+{
+  "_comentario": [
+    "Logs que a coleta do Core Nemesis NÃO deve processar.",
+    "",
+    "Existe porque nem toda noite de raide da guilda é noite do core. O guild",
+    "run é o caso: todo mundo joga com um personagem diferente, de propósito.",
+    "Processar isso como se fosse o core faz duas estragações ao mesmo tempo —",
+    "mistura os números da temporada com uma noite que não é dela, e enche o",
+    "roster de rascunhos de personagens que ninguém joga.",
+    "",
+    "É um remendo honesto, não a solução. A solução é o core virar entidade e",
+    "cada log ser roteado pro core dele, em vez de descartado. Enquanto isso",
+    "não existe, excluir protege o dado.",
+    "",
+    "O motivo é obrigatório por convenção: daqui a seis meses ninguém lembra",
+    "por que um código está nesta lista."
+  ],
+  "reports": []
+}
