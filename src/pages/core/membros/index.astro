@@ -57,10 +57,16 @@ function capitalize(s: string): string {
     <!-- Page header -->
     <header class="mb-8">
       <h1 class="text-3xl font-bold text-slate-100 mb-2">Membros</h1>
+      {/* Os números são recontados pelo filtro: sem isso o cabeçalho dizia
+          "29 membros" com três cards na tela. */}
       <p class="text-slate-400 text-sm">
-        {players.length} membros · {groups.find((g) => g.role === 'tank')?.players.length ?? 0} tanks ·{' '}
-        {groups.find((g) => g.role === 'healer')?.players.length ?? 0} healers ·{' '}
-        {groups.find((g) => g.role === 'dps')?.players.length ?? 0} DPS
+        <span data-conta="total">{players.length}</span>{' '}
+        <span data-rotulo="total">{players.length === 1 ? 'membro' : 'membros'}</span> ·{' '}
+        <span data-conta="tank">{groups.find((g) => g.role === 'tank')?.players.length ?? 0}</span>{' '}
+        tanks ·{' '}
+        <span data-conta="healer">{groups.find((g) => g.role === 'healer')?.players.length ?? 0}</span>{' '}
+        healers ·{' '}
+        <span data-conta="dps">{groups.find((g) => g.role === 'dps')?.players.length ?? 0}</span> DPS
       </p>
     </header>
 
@@ -126,8 +132,12 @@ function capitalize(s: string): string {
           <h2 id={`${group.role}-heading`} class="text-2xl font-bold text-[#f0a500] mb-1">
             {group.label}
           </h2>
-          <p class="text-slate-400 text-sm">{group.players.length}{' '}
-            {group.players.length === 1 ? 'personagem' : 'personagens'}</p>
+          <p class="text-slate-400 text-sm">
+            <span data-conta-grupo={group.role}>{group.players.length}</span>{' '}
+            <span data-rotulo-grupo={group.role}>
+              {group.players.length === 1 ? 'personagem' : 'personagens'}
+            </span>
+          </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -153,6 +163,35 @@ function capitalize(s: string): string {
   const emptyHint = document.getElementById('filter-empty-hint');
   const coreSelect = document.getElementById('filter-core') as HTMLSelectElement | null;
 
+  /**
+   * Os números do cabeçalho e de cada grupo, depois do filtro.
+   *
+   * Grupo que ficou sem ninguém some inteiro: um título "Tanks" sobre
+   * "0 personagens" e nenhum card é pior que não mostrar o grupo.
+   */
+  function atualizarContagens(porRole: Map<string, number>, total: number) {
+    const escreve = (el: Element | null, valor: number) => {
+      if (el) el.textContent = String(valor);
+    };
+
+    escreve(document.querySelector('[data-conta="total"]'), total);
+    const rotuloTotal = document.querySelector('[data-rotulo="total"]');
+    if (rotuloTotal) rotuloTotal.textContent = total === 1 ? 'membro' : 'membros';
+
+    for (const role of ['tank', 'healer', 'dps']) {
+      const quantos = porRole.get(role) ?? 0;
+
+      escreve(document.querySelector(`[data-conta="${role}"]`), quantos);
+      escreve(document.querySelector(`[data-conta-grupo="${role}"]`), quantos);
+
+      const rotulo = document.querySelector(`[data-rotulo-grupo="${role}"]`);
+      if (rotulo) rotulo.textContent = quantos === 1 ? 'personagem' : 'personagens';
+
+      const secao = document.querySelector<HTMLElement>(`[data-role-section="${role}"]`);
+      if (secao) secao.style.display = quantos === 0 ? 'none' : '';
+    }
+  }
+
   function applyFilters() {
     const status = statusSelect?.value ?? '';
     const wowClass = classSelect?.value ?? '';
@@ -177,6 +216,7 @@ function capitalize(s: string): string {
     };
 
     let visibleCount = 0;
+    const porRole = new Map<string, number>();
 
     // Esconde via style inline, não pelo atributo `hidden`: o card tem a
     // classe `flex` do Tailwind, que empata em especificidade com a regra
@@ -190,7 +230,13 @@ function capitalize(s: string): string {
 
       card.style.display = matches ? '' : 'none';
       if (matches) visibleCount++;
+      if (matches) {
+        const role = card.dataset.role ?? '';
+        porRole.set(role, (porRole.get(role) ?? 0) + 1);
+      }
     });
+
+    atualizarContagens(porRole, visibleCount);
 
     // Esconde o cabeçalho de uma seção de role inteira quando o filtro zera
     // todos os cards dela, em vez de deixar um título "Tanks" sobre nada.
