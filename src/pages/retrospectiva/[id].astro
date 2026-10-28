@@ -9,7 +9,7 @@
  */
 
 import roster from '../../../data/guild/roster.json';
-import { coresDe, corePrincipal, type ParticipacaoEmCores } from '@/engine/guild/cores';
+import { coresDe, corePrincipal } from '@/engine/guild/cores';
 import { mapearPessoas, type PersonagemDoRoster } from '@/engine/guild/pessoas';
 
 export function getStaticPaths() {
@@ -19,7 +19,7 @@ export function getStaticPaths() {
 
   return roster
     .filter((jogador) => (pessoas.get(jogador.id) ?? jogador.id) === jogador.id)
-    .filter((jogador) => coresDe(jogador as unknown as { cores?: ParticipacaoEmCores }).length > 0)
+    .filter((jogador) => coresDe(jogador).length > 0)
     .map((jogador) => ({ params: { id: jogador.id } }));
 }
 
@@ -29,13 +29,8 @@ const player = roster.find((jogador) => jogador.id === id);
 /**
  * O primeiro core em que ela joga, não o principal: quem só joga no Ômega
  * tinha o link curto apontando pra um core que não é o dela.
- *
- * O `unknown` é por causa do import de JSON, que infere `type: string` onde
- * `ParticipacaoEmCores` quer a união dos papéis.
  */
-const destino =
-  coresDe((player ?? {}) as unknown as { cores?: ParticipacaoEmCores })[0] ??
-  corePrincipal().slug;
+const destino = coresDe(player ?? {})[0] ?? corePrincipal().slug;
 
 return Astro.redirect(`/core/${destino}/retrospectiva/${id}/`);
 ---

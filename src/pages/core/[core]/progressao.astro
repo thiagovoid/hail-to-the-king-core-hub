@@ -16,7 +16,8 @@ import rosterJson from '../../../../data/guild/roster.json';
 
 const SEASON_SLUG = 'midnight-s2';
 
-import { coresDeRaide } from '@/engine/guild/cores';
+import { coresDeRaide, semanasDoCore } from '@/engine/guild/cores';
+import { performanceWeeks } from '../../../../data/weekly/performance/index';
 
 /**
  * Uma página por core de raide.
@@ -40,6 +41,9 @@ export function getStaticPaths() {
  * Arrumar é mover a progressão pra dentro do core, e aí o coletor precisa
  * saber de que core é cada pull. Fica pra quando houver dado do segundo
  * core — inventar a estrutura antes disso é adivinhar o formato.
+ *
+ * O que dá pra fazer agora é não MENTIR: core sem noite nenhuma não tem
+ * progressão pra mostrar, e a página diz isso em vez de exibir a do outro.
  */
 const { core: coreAtual } = Astro.props;
 
@@ -47,6 +51,11 @@ const config = seasonJson.config as SiteConfig;
 const bossesNormal = seasonJson.bossesNormal as Boss[];
 const bossesHeroic = seasonJson.bossesHeroic as Boss[];
 const roster = rosterJson as Player[];
+
+/** O core já raidou? Sem noite, não há progressão deste core pra mostrar. */
+const temNoites = semanasDoCore(performanceWeeks, coreAtual.slug).some(
+  (semana) => (semana.runs ?? []).length > 0
+);
 
 /**
  * Uma seção por raide, e dentro dela uma por dificuldade.
@@ -113,13 +122,17 @@ const lastUpdated = formatDate(config.lastUpdated);
             Progressão — {config.currentSeason}
           </p>
           <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-3">
-            {secoesPorRaide.length === 1 ? secoesPorRaide[0].raide.nome : 'Temporada'}
+            {!temNoites
+              ? coreAtual.nome
+              : secoesPorRaide.length === 1
+                ? secoesPorRaide[0].raide.nome
+                : 'Temporada'}
           </h1>
           <!-- Progression summary badges -->
           <div class="flex flex-wrap items-center gap-3">
             {/* Um badge por raide. Somadas, as duas davam "9/9 Normal" —
                 um denominador que não é de raide nenhuma. */}
-            {secoesPorRaide.map((secao) => (
+            {temNoites && secoesPorRaide.map((secao) => (
               <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm font-semibold">
                 <span class="text-slate-300">{secao.raide.nome}</span>
                 {secao.blocos.map((bloco) => (
@@ -150,7 +163,17 @@ const lastUpdated = formatDate(config.lastUpdated);
     aria-label="Bosses por raide"
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12"
   >
-    {secoesPorRaide.map((secao) => (
+    {!temNoites && (
+      <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-xl font-bold text-white">Sem progressão registrada</h2>
+        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          O {coreAtual.nome} ainda não tem noite nenhuma coletada nesta temporada. A progressão
+          boss a boss aparece aqui quando o primeiro log do core entrar.
+        </p>
+      </div>
+    )}
+
+    {temNoites && secoesPorRaide.map((secao) => (
       <div>
         <h2 class="text-xl font-bold text-white mb-6">{secao.raide.nome}</h2>
 

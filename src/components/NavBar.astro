@@ -9,10 +9,7 @@
  * Hall da Fama entrarem.
  */
 
-import { corePrincipal } from '@/engine/guild/cores';
-
-const coreDoMenu = corePrincipal();
-const slugDoCore = coreDoMenu.slug;
+import { coresDeRaide } from '@/engine/guild/cores';
 
 const currentPath = Astro.url.pathname;
 
@@ -25,6 +22,12 @@ interface NavLink {
 }
 
 interface NavGroup {
+  /**
+   * Identificador do dropdown. Vem do slug do core, não do rótulo: dois
+   * cores com nome parecido dariam a mesma chave, e acento no rótulo
+   * virava acento em atributo e em seletor.
+   */
+  slug: string;
   label: string;
   icon: string;
   items: NavLink[];
@@ -36,6 +39,7 @@ const flatItemsStart: NavLink[] = [
 
 const groups: NavGroup[] = [
   {
+    slug: 'guilda',
     label: 'Guilda',
     icon: '🏰',
     items: [
@@ -45,28 +49,31 @@ const groups: NavGroup[] = [
       { label: 'História', href: '/historia/', icon: '📜', hidden: true },
     ],
   },
-  {
-    label: coreDoMenu.nome,
+  // Um grupo por core de raide, e não um seletor de core: cada core tem as
+  // mesmas páginas, e um dropdown que já existe navega melhor que um
+  // combo que troca o significado dos links ao lado. Com um core só o menu
+  // fica idêntico ao que era.
+  ...coresDeRaide().map((core) => ({
+    slug: core.slug,
+    label: core.nome,
     icon: '⚔',
     items: [
-      // O menu aponta pro core principal. Com mais de um, aqui entra o
-      // seletor — e aí o href deixa de ser fixo.
-      { label: 'Dashboard', href: `/core/${slugDoCore}/`, icon: '📊' },
-      { label: 'Progressão', href: `/core/${slugDoCore}/progressao/`, icon: '🗡' },
-      { label: 'Membros', href: `/core/${slugDoCore}/membros/`, icon: '👥' },
-      { label: 'Mythic+', href: `/core/${slugDoCore}/mythic/`, icon: '🗝' },
+      { label: 'Dashboard', href: `/core/${core.slug}/`, icon: '📊' },
+      { label: 'Progressão', href: `/core/${core.slug}/progressao/`, icon: '🗡' },
+      { label: 'Membros', href: `/core/${core.slug}/membros/`, icon: '👥' },
+      { label: 'Mythic+', href: `/core/${core.slug}/mythic/`, icon: '🗝' },
       // Chronicle e Hall da Fama saíram do grupo da Guilda: os dois são
       // feitos de performance de core, e com dois cores um recorde "da
       // guilda" seria a mistura de dois elencos diferentes.
-      { label: 'Chronicle', href: `/core/${slugDoCore}/chronicle/`, icon: '📖', hidden: true },
+      { label: 'Chronicle', href: `/core/${core.slug}/chronicle/`, icon: '📖', hidden: true },
       {
         label: 'Hall da Fama',
-        href: `/core/${slugDoCore}/hall-da-fama/`,
+        href: `/core/${core.slug}/hall-da-fama/`,
         icon: '🏆',
         hidden: true,
       },
     ],
-  },
+  })),
 ];
 
 const flatItemsEnd: NavLink[] = [
@@ -142,7 +149,7 @@ function isGroupActive(group: NavGroup): boolean {
 
           {visibleGroups.map((group) => {
             const active = isGroupActive(group);
-            const slug = group.label.toLowerCase().replace(/\s+/g, '-');
+            const slug = group.slug;
             return (
               <div class="relative">
                 <button

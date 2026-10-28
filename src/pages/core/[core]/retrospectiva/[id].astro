@@ -18,12 +18,7 @@ import { buildRetrospectiva } from '@/engine/admin/retrospectiva';
 import { slideParaSvg } from '@/engine/admin/slideSvg';
 import { mapearPessoas, type PersonagemDoRoster } from '@/engine/guild/pessoas';
 import { getPlayerHistory } from '@/engine/metrics';
-import {
-  coresDeRaide,
-  estaNoCore,
-  semanasDoCore,
-  type ParticipacaoEmCores,
-} from '@/engine/guild/cores';
+import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
 
 /**
  * O import de JSON infere `type: string`, e `PersonagemDoRoster` quer a união
@@ -34,12 +29,7 @@ export function getStaticPaths() {
   // Uma retrospectiva por core: o "2º do core" dos slides de comparação
   // precisa saber de que core. Quem joga em dois tem uma de cada.
   return coresDeRaide().flatMap((core) => {
-    // O `unknown` é do import de JSON, que infere `type: string` onde
-    // `ParticipacaoEmCores` quer a união. Filtrar pelo roster cru em vez de
-    // por `jogadoresDoCore` mantém `name` e `role`, que os slides usam.
-    const doCore = roster.filter((jogador) =>
-      estaNoCore(jogador as unknown as { cores?: ParticipacaoEmCores }, core.slug)
-    );
+    const doCore = jogadoresDoCore(roster, core.slug);
     const pessoas = mapearPessoas(doCore as unknown as PersonagemDoRoster[]);
 
     // Uma página por PESSOA, não por personagem: a temporada do Voidsurge
@@ -67,9 +57,7 @@ const { core: coreAtual, jogador, personagens } = Astro.props;
  * "main" | "alt" | "replace". O arquivo respeita a união; é o inferidor que
  * não sabe disso. Um cast só, aqui, em vez de espalhar pelas chamadas.
  */
-const elenco = roster.filter((jogador) =>
-  estaNoCore(jogador as unknown as { cores?: ParticipacaoEmCores }, coreAtual.slug)
-) as unknown as PersonagemDoRoster[];
+const elenco = jogadoresDoCore(roster, coreAtual.slug) as unknown as PersonagemDoRoster[];
 const semanas = semanasDoCore(performanceWeeks, coreAtual.slug);
 
 const nomeDoBoss = new Map<number, string>(

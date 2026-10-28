@@ -23,22 +23,39 @@ import { cifrar } from '@/engine/admin/cofre';
 import { buildVisaoMacro } from '@/engine/admin/visaoMacro';
 import { montarPainel } from '@/engine/admin/painel';
 import { montarPainelDeAlts } from '@/engine/admin/painelDeAlts';
+import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
 
+// As metas vêm do arquivo da temporada, não escritas à mão no tooltip: é pra
+// calibrar que ele existe, e um número fixo mentiria no dia seguinte.
+const metas = seasonJson.config.performanceTargets as never;
 
-const linhas = buildVisaoMacro(
-  performanceWeeks,
-  roster,
-  seasonJson.config.performanceTargets as never
-);
-
+/**
+ * Uma seção por core.
+ *
+ * A tela antiga somava a temporada inteira numa tabela só, e isso dava no
+ * mesmo enquanto havia um core. Com dois, a média e o ranking sairiam da
+ * mistura de dois elencos — e é exatamente a comparação lado a lado que
+ * faz esta tela existir.
+ */
+// O `h1` saiu do painel e veio pra cá: ele é da TELA, e cada core entra
+// como seção dentro dela.
 const html =
-  montarPainel({
-    linhas,
-    roster,
-    // As metas vêm do arquivo da temporada, não escritas à mão no tooltip: é
-    // pra calibrar que ele existe, e um número fixo mentiria no dia seguinte.
-    metas: seasonJson.config.performanceTargets as never,
-  }) + montarPainelDeAlts(roster as never);
+  '<h1 class="text-3xl font-bold text-white mb-8">Administração</h1>' +
+  coresDeRaide()
+    .map((core) => {
+      const doCore = jogadoresDoCore(roster, core.slug);
+
+      return montarPainel({
+        core: core.nome,
+        linhas: buildVisaoMacro(semanasDoCore(performanceWeeks, core.slug), doCore, metas),
+        roster: doCore,
+        metas,
+      });
+    })
+    .join('') +
+  // O painel de alts fica fora: vínculo é da PESSOA, não do core, e um alt
+  // pode estar num core diferente do main.
+  montarPainelDeAlts(roster as never);
 
 const senha = import.meta.env.ADMIN_PASSWORD ?? process.env.ADMIN_PASSWORD;
 const modoAberto = import.meta.env.DEV;

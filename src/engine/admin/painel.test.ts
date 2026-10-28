@@ -36,9 +36,32 @@ const metas = {
 const AGORA = new Date("2026-09-21T12:00:00.000Z");
 
 const painel = (l: LinhaDoMacro = linha) =>
-  montarPainel({ linhas: [l], roster: [{ id: "nerlock", name: "Nerlock" }], metas, agora: AGORA });
+  montarPainel({
+    core: "Core Nemesis",
+    linhas: [l],
+    roster: [{ id: "nerlock", name: "Nerlock" }],
+    metas,
+    agora: AGORA,
+  });
 
 describe("montarPainel", () => {
+  it("a seção é de um core, e diz qual", () => {
+    // Com dois cores a tela empilha uma seção por core; sem o nome, duas
+    // tabelas iguais lado a lado não diriam de quem é cada uma.
+    expect(painel()).toContain("Core Nemesis");
+
+    const omega = montarPainel({
+      core: "Core Ômega",
+      linhas: [linha],
+      roster: [{ id: "nerlock", name: "Nerlock" }],
+      metas,
+      agora: AGORA,
+    });
+
+    expect(omega).toContain("Core Ômega");
+    expect(omega).not.toContain("Core Nemesis");
+  });
+
   describe("coluna do sim", () => {
     it("conta os dias desde o cálculo do sim", () => {
       expect(painel()).toContain(">5d<");
@@ -148,6 +171,7 @@ describe("montarPainel", () => {
     expect(html).toContain("dps 75% · healer 75% · tank 57%");
 
     const comOutraMeta = montarPainel({
+      core: "Core Nemesis",
       linhas: [linha],
       roster: [{ id: "nerlock", name: "Nerlock" }],
       metas: { ...metas, healing: { target: 77 } },

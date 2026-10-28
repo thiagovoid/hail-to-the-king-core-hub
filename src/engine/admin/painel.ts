@@ -359,7 +359,17 @@ function tabelaDoMacro(
 </section>`;
 }
 
+/**
+ * A tabela de um core.
+ *
+ * É por core e não da temporada inteira porque as linhas comparam gente
+ * lado a lado: média, presença e nota de dois elencos diferentes na mesma
+ * tabela produziriam um ranking de ninguém. O `<h1>` da tela mora na
+ * página; aqui cada core entra como seção.
+ */
 export function montarPainel(dados: {
+  /** O nome do core desta seção. */
+  core: string;
   linhas: LinhaDoMacro[];
   roster: Array<{ id: string; name: string }>;
   /** As metas da temporada, pra fórmula do tooltip não desatualizar. */
@@ -369,7 +379,7 @@ export function montarPainel(dados: {
 }): string {
   return `<div class="space-y-2">
   <header class="mb-8">
-    <h1 class="text-3xl font-bold text-white">Administração</h1>
+    <h2 class="text-2xl font-bold text-white">${dados.core}</h2>
     <p class="text-sm text-slate-400 mt-1">
       ${dados.linhas.length} pessoas com dado na temporada.
       Esta tela compara gente lado a lado, que é justamente o que as regras do core proíbem na

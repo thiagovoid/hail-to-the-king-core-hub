@@ -52,29 +52,40 @@ export function coresDeRaide(): Core[] {
   return CORES.filter((core) => core.formato === "core");
 }
 
-interface ComParticipacao {
-  cores?: ParticipacaoEmCores;
+/**
+ * Lê o mapa de participação de uma entrada de roster.
+ *
+ * O cast mora AQUI, numa linha só, e não na assinatura de cada função:
+ * quase tudo que chega nestas funções é o import do roster.json, e o
+ * TypeScript infere pra `cores` um tipo por entrada — `{nemesis}` numa,
+ * `{nemesis, omega}` noutra, `{omega}` na terceira. Essa união não casa
+ * com tipo declarado nenhum, e exigir um na assinatura empurrava um
+ * `as unknown as` pra cada chamador — o que desliga a checagem inteira em
+ * vez de só a da forma de `cores`.
+ *
+ * Quem garante a união dos papéis é `Player.cores`, onde ela está
+ * declarada, e o arquivo de dados.
+ */
+function participacao(personagem: object): Record<string, { type: string }> {
+  return (personagem as { cores?: Record<string, { type: string }> }).cores ?? {};
 }
 
 /** O papel do personagem naquele core, ou undefined se ele não está nele. */
-export function papelNoCore(
-  personagem: ComParticipacao,
-  slug: string
-): PapelNoCore | undefined {
-  return personagem.cores?.[slug]?.type;
+export function papelNoCore(personagem: object, slug: string): PapelNoCore | undefined {
+  return participacao(personagem)[slug]?.type as PapelNoCore | undefined;
 }
 
-export function estaNoCore(personagem: ComParticipacao, slug: string): boolean {
+export function estaNoCore(personagem: object, slug: string): boolean {
   return papelNoCore(personagem, slug) !== undefined;
 }
 
 /** Os slugs dos cores em que o personagem joga, na ordem de `CORES`. */
-export function coresDe(personagem: ComParticipacao): string[] {
+export function coresDe(personagem: object): string[] {
   return CORES.filter((core) => estaNoCore(personagem, core.slug)).map((core) => core.slug);
 }
 
 /** Os nomes, pra quando a tela precisa mostrar e não filtrar. */
-export function nomesDosCoresDe(personagem: ComParticipacao): string[] {
+export function nomesDosCoresDe(personagem: object): string[] {
   return coresDe(personagem).map((slug) => coreDoSlug(slug)?.nome ?? slug);
 }
 
@@ -94,7 +105,7 @@ export function semanasDoCore<T extends { runs?: Array<{ core?: string }> }>(
   }));
 }
 
-/** Os personagens que jogam num core. */
-export function jogadoresDoCore<T extends ComParticipacao>(jogadores: T[], slug: string): T[] {
+/** Os personagens que jogam num core, no tipo em que entraram. */
+export function jogadoresDoCore<T extends object>(jogadores: T[], slug: string): T[] {
   return jogadores.filter((jogador) => estaNoCore(jogador, slug));
 }

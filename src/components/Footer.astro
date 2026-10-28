@@ -5,9 +5,19 @@
 
 import seasonData from '../../data/seasons/midnight-s2/config.json';
 import { formatDate } from '@/utils/format';
-import { corePrincipal } from '@/engine/guild/cores';
+import { coreDoSlug } from '@/engine/guild/cores';
 
 const lastUpdated = formatDate(seasonData.config.lastUpdated);
+
+/**
+ * O core da página, quando a página é de um core.
+ *
+ * Sai da URL porque o rodapé é global e não recebe props. Antes ele dizia
+ * sempre o core principal, e isso virou mentira na página do segundo: em
+ * página de guilda ele agora mostra só a temporada.
+ */
+const slugDaUrl = Astro.url.pathname.match(/^\/core\/([^/]+)/)?.[1];
+const coreDaPagina = slugDaUrl ? coreDoSlug(slugDaUrl) : undefined;
 ---
 
 <footer role="contentinfo" class="bg-[#0a0d14] border-t border-white/5 mt-auto">
@@ -22,7 +32,9 @@ const lastUpdated = formatDate(seasonData.config.lastUpdated);
         <span class="text-[#f0a500] text-lg" aria-hidden="true">⚔</span>
         <div>
           <p class="font-display font-bold text-[#f0a500] text-sm tracking-wide">Hail to the King</p>
-          <p class="text-slate-400 text-xs mt-0.5">{corePrincipal().nome} · {seasonData.config.currentSeason}</p>
+          <p class="text-slate-400 text-xs mt-0.5">
+            {coreDaPagina ? `${coreDaPagina.nome} · ` : ''}{seasonData.config.currentSeason}
+          </p>
         </div>
       </div>
 
