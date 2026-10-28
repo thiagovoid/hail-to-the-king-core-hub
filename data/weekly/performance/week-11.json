@@ -5889,6 +5889,7 @@
     {
       "date": "2026-10-22",
       "reportCode": "YZbX4fRxWGhmpy9A",
+      "core": "nemesis",
       "players": [
         {
           "playerId": "voidwar",
@@ -14717,6 +14718,7 @@
     {
       "date": "2026-10-27",
       "reportCode": "yknaMQh4L3WmcX82",
+      "core": "nemesis",
       "players": [
         {
           "playerId": "blackwatch",
@@ -15264,7 +15266,7 @@
         {
           "playerId": "apocalipse",
           "dps": 64924,
-          "parse": 20,
+          "parse": 21,
           "simTarget": 94475,
           "itemLevel": 326,
           "preparation": 75,
@@ -17488,7 +17490,7 @@
         {
           "playerId": "heracranosx",
           "dps": 209813,
-          "parse": 74,
+          "parse": 73,
           "simTarget": 203488,
           "itemLevel": 333,
           "preparation": 86,
@@ -19151,7 +19153,7 @@
         {
           "playerId": "dagom",
           "dps": 96859,
-          "parse": 20,
+          "parse": 21,
           "simTarget": 153483,
           "preparation": 86,
           "preparationChecks": 2,
@@ -19730,7 +19732,7 @@
         {
           "playerId": "ligiaf",
           "dps": 135704,
-          "parse": 38,
+          "parse": 37,
           "simTarget": 164300,
           "itemLevel": 322,
           "preparation": 91,
@@ -20703,8 +20705,7 @@
           "preparationMissing": [
             "Poção",
             "Óleo de arma"
-          ],
-          "preparationGear": 43
+          ]
         },
         {
           "playerId": "sixx",
@@ -21148,8 +21149,7 @@
           "preparation": 78,
           "preparationMissing": [
             "Poção"
-          ],
-          "preparationGear": 78
+          ]
         },
         {
           "playerId": "nãoseicurar",
@@ -21561,8 +21561,7 @@
           "preparation": 63,
           "preparationMissing": [
             "Poção"
-          ],
-          "preparationGear": 63
+          ]
         }
       ],
       "core": "nemesis"
