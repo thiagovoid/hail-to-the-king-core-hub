@@ -75,6 +75,11 @@ import {
   updateRecentLogs,
   type SeasonConfigFile,
 } from "../../src/normalization/buildSeasonProgression";
+import {
+  decidirCore,
+  explicarDecisao,
+  type CoreParaRotear,
+} from "../../src/engine/guild/roteamentoDeLog";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -98,8 +103,9 @@ function zonasDaTemporada(season: SeasonConfigFile): Set<number> {
   return new Set((season.config.raids ?? []).map((raide) => raide.zoneId));
 }
 
-interface LogExcluido {
+interface LogDeclarado {
   code: string;
+  core: string | null;
   motivo: string;
 }
 
@@ -115,18 +121,47 @@ interface LogExcluido {
  * É remendo, e assumido como tal: a solução é o core virar entidade e cada
  * log ser roteado pro core dele, em vez de descartado.
  */
-async function lerLogsExcluidos(): Promise<LogExcluido[]> {
-  const caminho = path.join(ROOT, "data/guild/log-exclusions.json");
+async function lerDeclaracoes(): Promise<Map<string, { core: string | null; motivo: string }>> {
+  const caminho = path.join(ROOT, "data/guild/log-cores.json");
   try {
-    const conteudo = JSON.parse(await readFile(caminho, "utf-8")) as {
-      reports?: LogExcluido[];
-    };
-    return conteudo.reports ?? [];
+    const conteudo = JSON.parse(await readFile(caminho, "utf-8")) as { logs?: LogDeclarado[] };
+    return new Map(
+      (conteudo.logs ?? []).map((log) => [log.code, { core: log.core, motivo: log.motivo }])
+    );
   } catch {
-    // Arquivo ausente é lista vazia: o coletor não deve parar por causa de
-    // um remendo que talvez nem exista mais.
-    return [];
+    // Arquivo ausente é lista vazia: a declaração é a exceção, não a regra.
+    return new Map();
   }
+}
+
+/** Os cores da guilda, com o roster de cada um em nome de personagem. */
+async function lerCoresParaRotear(roster: RosterPlayer[]): Promise<{
+  cores: CoreParaRotear[];
+  corte: number;
+  comRoster: Set<string>;
+}> {
+  const caminho = path.join(ROOT, "data/guild/cores.json");
+  const conteudo = JSON.parse(await readFile(caminho, "utf-8")) as {
+    cores: Array<{ slug: string; formato: "core" | "evento" }>;
+    roteamento?: { corteDeSobreposicao?: number };
+  };
+
+  const cores: CoreParaRotear[] = conteudo.cores.map((core) => ({
+    slug: core.slug,
+    formato: core.formato,
+    roster: new Set(
+      roster
+        .filter((player) => (player as { cores?: Record<string, unknown> }).cores?.[core.slug])
+        .map((player) => parseWclProfile(player.warcraftLogs.profileUrl).name.toLowerCase())
+        .filter(Boolean)
+    ),
+  }));
+
+  return {
+    cores,
+    corte: conteudo.roteamento?.corteDeSobreposicao ?? 0.5,
+    comRoster: new Set(cores.filter((c) => c.formato === "core").map((c) => c.slug)),
+  };
 }
 
 /** O que apareceu e não está cadastrado — candidato a raide nova. */
@@ -556,14 +591,13 @@ async function main() {
     reportsByCode.set(report.code, report);
   }
 
-  // O descarte é RUIDOSO de propósito. Log sumindo em silêncio foi
-  // exatamente o que fez a primeira noite de um tier novo se perder.
-  const logsExcluidos = await lerLogsExcluidos();
-  const porCodigo = new Map(logsExcluidos.map((item) => [item.code, item.motivo]));
+  // O log declarado FORA sai antes de gastar consulta com ele. O resto da
+  // decisão precisa saber quem jogou, e só dá pra saber depois das tabelas.
+  const declaracoes = await lerDeclaracoes();
   const reports = [...reportsByCode.values()].filter((report) => {
-    const motivo = porCodigo.get(report.code);
-    if (motivo === undefined) return true;
-    console.log(`Log ${report.code} fora da conta do core: ${motivo}`);
+    const declarado = declaracoes.get(report.code);
+    if (declarado === undefined || declarado.core !== null) return true;
+    console.log(`Log ${report.code} fora de todos os cores: ${declarado.motivo}`);
     return false;
   });
 
@@ -658,6 +692,9 @@ async function main() {
   }
 
   const reportContexts: ReportContext[] = [];
+  /** Quem jogou em cada log, pra medir sobreposição ANTES de rascunhar. */
+  const personagensPorReport = new Map<string, Set<string>>();
+
   const seenCharacters = new Map<
     string,
     { name: string; class: string; spec: string; role: "tank" | "healer" | "dps"; server: string; region: string }
@@ -682,8 +719,12 @@ async function main() {
       ["healer", playerDetails.healers],
     ];
 
+    const doReport = new Set<string>();
+    personagensPorReport.set(reports[index].code, doReport);
+
     for (const [role, list] of roleBuckets) {
       for (const member of list ?? []) {
+        doReport.add(member.name.toLowerCase());
         if (!seenCharacters.has(member.name)) {
           seenCharacters.set(member.name, {
             name: member.name,
@@ -723,6 +764,53 @@ async function main() {
       abilityNames: tables.abilityNames ?? [],
       trashFights: tables.trashFights ?? [],
     });
+  }
+
+  // ----- A que core pertence cada log -----
+  //
+  // Aqui, e não antes: a decisão depende de QUEM jogou, e isso só se sabe
+  // depois das tabelas. E antes do rascunho, porque rascunhar primeiro
+  // tornaria a conta circular — personagem desconhecido viraria roster e a
+  // sobreposição daria 100% sozinha.
+  const { cores: coresParaRotear, corte } = await lerCoresParaRotear(roster);
+  const corePorReport = new Map<string, string>();
+  const aceitos: ReportContext[] = [];
+
+  for (const ctx of reportContexts) {
+    const personagens = personagensPorReport.get(ctx.report.code) ?? new Set<string>();
+    const decisao = decidirCore(ctx.report.code, personagens, coresParaRotear, declaracoes, corte);
+
+    console.log(`  ${explicarDecisao(ctx.report.code, decisao)}`);
+
+    const core =
+      decisao.tipo === "declarado"
+        ? decisao.core
+        : decisao.tipo === "sobreposicao"
+          ? decisao.core
+          : null;
+
+    if (core === null) continue;
+
+    corePorReport.set(ctx.report.code, core);
+    aceitos.push(ctx);
+  }
+
+  const recusados = reportContexts.length - aceitos.length;
+  if (recusados > 0) {
+    console.log(`${recusados} log(s) ficaram de fora. Nenhum número deles entrou.`);
+  }
+
+  reportContexts.length = 0;
+  reportContexts.push(...aceitos);
+
+  // O rascunho só olha quem jogou em log ACEITO: foi um log recusado que
+  // encheu o roster de dezesseis personagens de guild run.
+  const nomesAceitos = new Set<string>();
+  for (const ctx of aceitos) {
+    for (const nome of personagensPorReport.get(ctx.report.code) ?? []) nomesAceitos.add(nome);
+  }
+  for (const nome of [...seenCharacters.keys()]) {
+    if (!nomesAceitos.has(nome.toLowerCase())) seenCharacters.delete(nome);
   }
 
   // Jogadores que apareceram numa run mas não estão no roster.json ainda
@@ -789,7 +877,10 @@ async function main() {
     }))
   );
 
-  const runsByReportCode = new Map<string, { date: string; reportCode: string; players: PlayerPerformance[] }>();
+  const runsByReportCode = new Map<
+    string,
+    { date: string; reportCode: string; core?: string; players: PlayerPerformance[] }
+  >();
 
   // ----- "Atacar corretamente": cooldowns ofensivos -----
   //
@@ -1267,6 +1358,7 @@ async function main() {
     runsByReportCode.set(ctx.report.code, {
       date: toBrazilDateString(ctx.report.startTime),
       reportCode: ctx.report.code,
+      core: corePorReport.get(ctx.report.code),
       players,
     });
   }

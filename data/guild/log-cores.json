@@ -1,0 +1,26 @@
+{
+  "_comentario": [
+    "A que core pertence um log, quando a sobreposição com o roster não resolve.",
+    "",
+    "`core: null` tira o log de todos os cores — é o que a exclusão fazia antes.",
+    "`core: \"<slug>\"` força o log pra um core.",
+    "",
+    "Serve pros dois casos que a heurística não cobre: o core novo que ainda não",
+    "tem roster (ver cores.json), e o evento sem roster nenhum, como o guild run.",
+    "",
+    "O motivo é obrigatório por convenção: daqui a seis meses ninguém lembra por",
+    "que um código está aqui."
+  ],
+  "logs": [
+    {
+      "code": "pNVygbkr2wjA13JM",
+      "core": null,
+      "motivo": "Guild run de outubro/2026 — evento da guilda em que todo mundo joga com um personagem diferente. Não é noite do Core Nemesis, e vai ganhar core próprio."
+    },
+    {
+      "code": "QzdpHPYRja8GnANk",
+      "core": null,
+      "motivo": "Guild run de 23/10/2026 — dezoito personagens, NENHUM do Core Nemesis. Detectado pela sobreposição zero com o roster, não pelo código informado."
+    }
+  ]
+}

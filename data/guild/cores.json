@@ -14,14 +14,28 @@
     "o segmento [core]. Sai quando a rota ganhar.",
     "",
     "Core de `formato: evento` NÃO tem roster: quem participou sai do próprio",
-    "log, e nada é rascunhado em roster.json."
+    "log, e nada é rascunhado em roster.json.",
+    "",
+    "`uploaders` são os userIDs da WarcraftLogs de quem sobe os logs daquele",
+    "core. É número público, visível na URL do perfil — não é token, e não há",
+    "segredo a guardar: a API é consultada com a credencial do próprio app.",
+    "",
+    "ARRANQUE: a sobreposição precisa de um roster pra comparar, e core novo não",
+    "tem. O primeiro log de um core novo é DECLARADO em log-cores.json; depois o",
+    "roster existe e a sobreposição assume sozinha."
   ],
   "cores": [
     {
       "slug": "nemesis",
       "nome": "Core Nemesis",
       "formato": "core",
-      "principal": true
+      "principal": true,
+      "uploaders": [
+        922357
+      ]
     }
-  ]
+  ],
+  "roteamento": {
+    "corteDeSobreposicao": 0.5
+  }
 }

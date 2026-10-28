@@ -493,6 +493,14 @@ export interface PerformanceRun {
   reportCode?: string;
 
   /**
+   * Slug do core a que esta noite pertence.
+   *
+   * Ausente nas noites coletadas antes de existir mais de um core — elas
+   * são todas do core principal, e tratá-las como tal é o certo.
+   */
+  core?: string;
+
+  /**
    * Performance data for each player present in this run.
    */
   players: PlayerPerformance[];
