@@ -11,9 +11,12 @@
  * script recusa, o trabalho de quem coordena iria pro lixo no último passo.
  */
 import { mapearPessoas, type PersonagemDoRoster } from "../guild/pessoas";
+import type { ParticipacaoEmCores } from "../guild/cores";
 
 export interface PersonagemParaVincular extends PersonagemDoRoster {
   name: string;
+  /** O papel por core, pra tela mostrar e o vínculo preservar suplente. */
+  cores?: ParticipacaoEmCores;
 }
 
 /**
@@ -53,7 +56,26 @@ const nomeDe = (roster: PersonagemParaVincular[], id: string | null | undefined)
  * banco e vira alt de alguém continua sendo o do banco; deixando de ser alt,
  * volta pro banco em vez de ser promovido a main.
  */
-export function aplicarVinculos<T extends PersonagemDoRoster>(
+/**
+ * O papel em CADA core, preservando quem é suplente.
+ *
+ * O vínculo é da pessoa e vale em todo lugar, mas o papel é por core — e
+ * `replace` sobrevive aos dois sentidos pelo mesmo motivo de sempre: quem
+ * está no banco e vira alt de alguém continua sendo o do banco, e deixando
+ * de ser alt volta pro banco em vez de ser promovido a titular.
+ */
+function comPapel(
+  cores: ParticipacaoEmCores | undefined,
+  quandoNaoEhSuplente: "main" | "alt"
+): ParticipacaoEmCores {
+  const saida: ParticipacaoEmCores = {};
+  for (const [slug, papel] of Object.entries(cores ?? {})) {
+    saida[slug] = { type: papel.type === "replace" ? "replace" : quandoNaoEhSuplente };
+  }
+  return saida;
+}
+
+export function aplicarVinculos<T extends PersonagemDoRoster & { cores?: ParticipacaoEmCores }>(
   roster: T[],
   vinculos: Vinculos
 ): T[] {
@@ -65,14 +87,14 @@ export function aplicarVinculos<T extends PersonagemDoRoster>(
     if (main === null) {
       return {
         ...personagem,
-        type: personagem.type === "replace" ? "replace" : "main",
+        cores: comPapel(personagem.cores, "main"),
         pertenceA: null,
       };
     }
 
     return {
       ...personagem,
-      type: personagem.type === "replace" ? ("replace" as const) : ("alt" as const),
+      cores: comPapel(personagem.cores, "alt"),
       pertenceA: main,
     };
   });

@@ -3,11 +3,11 @@ import { describe, expect, it } from "vitest";
 import { aplicarVinculos, mudancasDe, validarVinculos, type PersonagemParaVincular } from "./vinculos";
 
 const roster: PersonagemParaVincular[] = [
-  { id: "voidsurge", name: "Voidsurge", type: "main" },
-  { id: "voidwar", name: "Voidwar", type: "alt", pertenceA: "voidsurge" },
-  { id: "nerlock", name: "Nerlock", type: "main" },
-  { id: "metallica", name: "Metallicä", type: "main" },
-  { id: "banco", name: "Banco", type: "replace" },
+  { id: "voidsurge", name: "Voidsurge", cores: { nemesis: { type: "main" } } },
+  { id: "voidwar", name: "Voidwar", cores: { nemesis: { type: "alt" } }, pertenceA: "voidsurge" },
+  { id: "nerlock", name: "Nerlock", cores: { nemesis: { type: "main" } } },
+  { id: "metallica", name: "Metallicä", cores: { nemesis: { type: "main" } } },
+  { id: "banco", name: "Banco", cores: { nemesis: { type: "replace" } } },
 ];
 
 describe("aplicarVinculos", () => {
@@ -20,7 +20,7 @@ describe("aplicarVinculos", () => {
     expect(depois.find((p) => p.id === "metallica")).toEqual({
       id: "metallica",
       name: "Metallicä",
-      type: "alt",
+      cores: { nemesis: { type: "alt" } },
       pertenceA: "nerlock",
       warcraftLogs: { avgParse: 80 },
     });
@@ -32,7 +32,7 @@ describe("aplicarVinculos", () => {
     const depois = aplicarVinculos(roster, { voidwar: null });
     const voidwar = depois.find((p) => p.id === "voidwar")!;
 
-    expect(voidwar.type).toBe("main");
+    expect(voidwar.cores?.nemesis.type).toBe("main");
     expect(voidwar.pertenceA).toBeNull();
   });
 
@@ -42,7 +42,7 @@ describe("aplicarVinculos", () => {
     const comBancoAlt = aplicarVinculos(roster, { banco: "nerlock" });
     const depois = aplicarVinculos(comBancoAlt, { banco: null });
 
-    expect(depois.find((p) => p.id === "banco")!.type).toBe("replace");
+    expect(depois.find((p) => p.id === "banco")!.cores?.nemesis.type).toBe("replace");
   });
 });
 

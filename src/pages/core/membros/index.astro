@@ -10,6 +10,9 @@ import PlayerCard from '@/components/PlayerCard.astro';
 import type { Player, WowClass } from '@/types/index';
 import rosterData from '../../../../data/guild/roster.json';
 import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
+import { CORES, corePrincipal, papelNoCore, type PapelNoCore } from '@/engine/guild/cores';
+
+const coreAtual = corePrincipal();
 
 const players = rosterData as Player[];
 
@@ -22,14 +25,20 @@ const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
 
 // Mains antes de alts dentro de cada role; o sort é estável, então a ordem
 // do roster.json é preservada dentro de cada grupo.
-const TYPE_ORDER: Record<Player['type'], number> = { main: 0, alt: 1, replace: 2 };
+const TYPE_ORDER: Record<PapelNoCore, number> = { main: 0, alt: 1, replace: 2 };
+
+/** Quem não está no core vai pro fim, em vez de quebrar a ordenação. */
+const ordemDoPapel = (player: Player) => {
+  const papel = papelNoCore(player, coreAtual.slug);
+  return papel ? TYPE_ORDER[papel] : 99;
+};
 
 const groups = ROLE_ORDER.map((role) => ({
   role,
   label: ROLE_LABEL[role],
   players: players
     .filter((p) => p.role === role)
-    .sort((a, b) => TYPE_ORDER[a.type] - TYPE_ORDER[b.type]),
+    .sort((a, b) => ordemDoPapel(a) - ordemDoPapel(b)),
 }));
 
 const classesInRoster = [...new Set(players.map((p) => p.class))].sort() as WowClass[];
@@ -58,6 +67,21 @@ function capitalize(s: string): string {
     <!-- Filtros -->
     {players.length > 0 && (
       <div class="flex flex-wrap gap-3 mb-10 pb-6 border-b border-slate-700/50">
+        {CORES.length > 1 && (
+          <label class="flex items-center gap-2 text-sm text-slate-400">
+            Core
+            <select
+              id="filter-core"
+              class="bg-[#141b2d] border border-white/10 rounded-lg px-3 py-1.5 text-slate-200 text-sm"
+            >
+              <option value="">Todos</option>
+              {CORES.map((core) => (
+                <option value={core.slug}>{core.nome}</option>
+              ))}
+            </select>
+          </label>
+        )}
+
         <label class="flex items-center gap-2 text-sm text-slate-400">
           Status
           <select id="filter-status" class="bg-[#141b2d] border border-white/10 rounded-lg px-3 py-1.5 text-slate-200 text-sm">
@@ -127,11 +151,30 @@ function capitalize(s: string): string {
   const classSelect = document.getElementById('filter-class') as HTMLSelectElement | null;
   const typeSelect = document.getElementById('filter-type') as HTMLSelectElement | null;
   const emptyHint = document.getElementById('filter-empty-hint');
+  const coreSelect = document.getElementById('filter-core') as HTMLSelectElement | null;
 
   function applyFilters() {
     const status = statusSelect?.value ?? '';
     const wowClass = classSelect?.value ?? '';
     const type = typeSelect?.value ?? '';
+    const core = coreSelect?.value ?? '';
+
+    /**
+     * Core e Tipo não são filtros independentes: "titular" sem core quer
+     * dizer titular em ALGUM core, e com core escolhido quer dizer titular
+     * NAQUELE. Cruzar os dois como se fossem soltos escondia quem só joga
+     * no core não-principal.
+     */
+    const papelCombina = (card: HTMLElement, core: string, type: string) => {
+      const pares = (card.dataset.papeis ?? '')
+        .split(',')
+        .filter(Boolean)
+        .map((par) => par.split(':') as [string, string]);
+
+      const noCore = core ? pares.filter(([slug]) => slug === core) : pares;
+      if (noCore.length === 0) return false;
+      return !type || noCore.some(([, papel]) => papel === type);
+    };
 
     let visibleCount = 0;
 
@@ -143,7 +186,7 @@ function capitalize(s: string): string {
       const matches =
         (!status || card.dataset.status === status) &&
         (!wowClass || card.dataset.class === wowClass) &&
-        (!type || card.dataset.type === type);
+        papelCombina(card, core, type);
 
       card.style.display = matches ? '' : 'none';
       if (matches) visibleCount++;
@@ -164,4 +207,5 @@ function capitalize(s: string): string {
   statusSelect?.addEventListener('change', applyFilters);
   classSelect?.addEventListener('change', applyFilters);
   typeSelect?.addEventListener('change', applyFilters);
+  coreSelect?.addEventListener('change', applyFilters);
 </script>

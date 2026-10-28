@@ -1,5 +1,6 @@
 
 import type { GoalDirection, PlayerPerformanceGoals } from "./goals";
+import type { ParticipacaoEmCores } from "../engine/guild/cores";
 
 /**
  * Tipos TypeScript centrais do Core Hub — Core Nemesis
@@ -426,14 +427,20 @@ export interface Player {
   /** Papel do personagem no grupo: tank, healer ou dps. */
   role: "tank" | "healer" | "dps";
   /**
-   * O papel do PERSONAGEM na estrutura do core.
+   * Em que cores o personagem joga, e com que papel em cada um.
    *
-   * - `main`: o personagem principal de alguém.
+   * - `main`: o personagem principal de alguém naquele core.
    * - `alt`: outro personagem da MESMA pessoa (ver `pertenceA`).
-   * - `replace`: quem fica no banco e entra quando falta gente. Ninguém é
-   *   replace hoje; o tipo existe pro dia em que for.
+   * - `replace`: suplente — entra quando falta gente.
+   *
+   * Era um `type` só no personagem, e não dava conta: o papel é por core
+   * na vida real. Alguém é titular num e suplente noutro, e um campo só
+   * tinha que escolher uma das duas verdades.
+   *
+   * Chave ausente quer dizer que ele não joga naquele core. Objeto vazio
+   * quer dizer que não joga em nenhum — personagem do roster que saiu.
    */
-  type: "main" | "alt" | "replace";
+  cores: ParticipacaoEmCores;
   /**
    * `id` do personagem principal, quando este é um alt.
    *

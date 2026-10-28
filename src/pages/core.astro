@@ -35,6 +35,9 @@ import { buildCoreRanking, calculateCoreAverages } from '@/engine/team';
 import { calculateCoreHealth } from '@/engine/guild/coreHealth';
 import { serieDoHailScore } from '@/engine/team/hailScore';
 import HailScoreCard from '@/components/HailScoreCard.astro';
+import { corePrincipal, papelNoCore } from '@/engine/guild/cores';
+
+const coreAtual = corePrincipal();
 
 const coreAverages = calculateCoreAverages(performanceWeeks);
 const targets = config.performanceTargets;
@@ -112,17 +115,21 @@ for (const semana of performanceWeeks) {
 const rosterGroups = [
   ...ROLE_ORDER.map((role) => ({
     label: ROLE_LABEL[role],
-    players: players.filter((player) => player.role === role && player.type === 'main').map(comoAtalho),
+    players: players
+      .filter((player) => player.role === role && papelNoCore(player, coreAtual.slug) === 'main')
+      .map(comoAtalho),
   })),
   {
     label: 'Alts',
-    players: players.filter((player) => player.type === 'alt').map(comoAtalho),
+    players: players.filter((player) => papelNoCore(player, coreAtual.slug) === 'alt').map(comoAtalho),
   },
   // Suplente não tinha grupo nenhum e sumia do seletor: quem vem uma noite
   // ou outra não é alt de ninguém, e ficava fora das quatro listas.
   {
     label: 'Suplentes',
-    players: players.filter((player) => player.type === 'replace').map(comoAtalho),
+    players: players
+      .filter((player) => papelNoCore(player, coreAtual.slug) === 'replace')
+      .map(comoAtalho),
   },
 ].filter((grupo) => grupo.players.length > 0);
 
@@ -295,7 +302,7 @@ const avgIoSubtitle = bestKey
 
       <SummaryCard
           title="Membros"
-          value={players.filter((p) => p.type === 'main').length}
+          value={players.filter((p) => papelNoCore(p, coreAtual.slug) === 'main').length}
           subtitle={`${players.length} total com alts`}
           icon="👥"
           href={`${base}/core/membros/`}

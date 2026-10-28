@@ -8,6 +8,9 @@ import type { Player, WowClass } from '@/types/index';
 import { getClassColor } from '@/utils/roster';
 import { formatValue } from '@/utils/format';
 import { safeUrl } from '@/utils/progression';
+import { CORES, corePrincipal, coresDe, nomesDosCoresDe, papelNoCore } from '@/engine/guild/cores';
+
+const coreAtual = corePrincipal();
 
 interface Props {
   player: Player;
@@ -88,7 +91,28 @@ const attendance = player.warcraftLogs.attendance;
 
 const discord  = formatValue(player.discord);
 const initials = player.name.slice(0, 2).toUpperCase();
-const isMain   = player.type === 'main';
+const papel = papelNoCore(player, coreAtual.slug);
+
+/**
+ * Os cores do personagem, só quando há mais de um na guilda.
+ *
+ * Com um core só, dizer "Core Nemesis" em cada card é repetir o cabeçalho
+ * da página 29 vezes.
+ */
+const coresDoCard = CORES.length > 1 ? nomesDosCoresDe(player) : [];
+
+/**
+ * "nemesis:main,omega:replace" — o par core/papel, pro filtro.
+ *
+ * O papel é POR CORE, então o filtro precisa dos dois juntos. Cruzar o
+ * papel do core principal com um core qualquer escondia quem só joga no
+ * outro: quem é titular só no Ômega não tem papel no Nemesis, e sumia de
+ * "Ômega + titular".
+ */
+const papeisPorCore = coresDe(player)
+  .map((slug) => `${slug}:${papelNoCore(player, slug)}`)
+  .join(',');
+const isMain   = papel === 'main';
 // Três tipos agora: main, alt (outro personagem da mesma pessoa) e replace
 // (quem entra quando falta gente). Ninguém é replace hoje.
 const TIPO_LABEL = { main: 'MAIN', alt: 'ALT', replace: 'RESERVA' } as const;
@@ -107,7 +131,8 @@ const linkWcl      = safeUrl(player.warcraftLogs.profileUrl);
   data-role={player.role}
   data-status={player.status}
   data-class={player.class}
-  data-type={player.type}
+  data-type={papel}
+  data-papeis={papeisPorCore}
 >
   <a
     href={`/core/membros/${player.id}/`}
@@ -171,9 +196,15 @@ const linkWcl      = safeUrl(player.warcraftLogs.profileUrl);
               ? 'bg-[#f0a500]/10 border-[#f0a500]/30 text-[#f0a500]'
               : 'bg-white/5 border-white/10 text-slate-400'
           }`} aria-hidden="true">
-            {TIPO_LABEL[player.type]}
+            {papel ? TIPO_LABEL[papel] : ''}
           </span>
         </div>
+
+        {coresDoCard.length > 0 && (
+          <p class="text-[9px] text-slate-500 truncate mb-0.5">
+            {coresDoCard.join(' · ')}
+          </p>
+        )}
         <!-- Fix color-contrast: use slate-400 (6.1:1 on #0a0d14) instead of slate-500 (4.4:1) -->
         <p class="text-slate-400 text-[10px] ">
           {raceName} · {className} · {player.spec}

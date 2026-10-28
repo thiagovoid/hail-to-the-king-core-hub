@@ -16,7 +16,6 @@
 
 export interface PersonagemDoRoster {
   id: string;
-  type: "main" | "alt" | "replace";
   /** `id` do main, quando este personagem é alt de alguém. */
   pertenceA?: string | null;
 }

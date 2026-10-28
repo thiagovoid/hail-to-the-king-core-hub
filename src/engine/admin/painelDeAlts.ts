@@ -17,6 +17,7 @@
  */
 import { esc } from "./html";
 import type { PersonagemParaVincular } from "./vinculos";
+import { corePrincipal, papelNoCore } from "../guild/cores";
 
 /** Só o que a tela precisa — o resto do roster não tem por que ir junto. */
 interface PersonagemDaTela {
@@ -40,7 +41,7 @@ export function montarPainelDeAlts(roster: PersonagemParaVincular[]): string {
     .map((p) => ({
       id: p.id,
       name: p.name,
-      type: p.type,
+      type: papelNoCore(p, corePrincipal().slug) ?? "main",
       pertenceA: p.pertenceA ?? null,
     }));
 
@@ -78,7 +79,7 @@ export function montarPainelDeAlts(roster: PersonagemParaVincular[]): string {
     </p>
   </div>
 
-  <div data-alts class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+  <div data-alts data-core="${esc(corePrincipal().slug)}" class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
     <div class="overflow-x-auto">
       <table class="w-full text-sm">
         <thead>

@@ -7,7 +7,6 @@
     "spec": "Protection",
     "heroSpec": "Thane da Montanha",
     "role": "tank",
-    "type": "alt",
     "pertenceA": "voidsurge",
     "status": "member",
     "discord": "",
@@ -34,6 +33,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:14:21.573Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "alt"
+      }
     }
   },
   {
@@ -44,7 +48,6 @@
     "spec": "Blood",
     "heroSpec": "San'layn",
     "role": "tank",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/96/104357728-avatar.jpg",
@@ -70,6 +73,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:14:29.756Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -80,7 +88,6 @@
     "spec": "Protection",
     "heroSpec": "Luminífice",
     "role": "tank",
-    "type": "main",
     "status": "member",
     "discord": "voidwar#0001",
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/173/236993453-avatar.jpg",
@@ -106,6 +113,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:14:38.299Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -116,7 +128,6 @@
     "spec": "Restoration",
     "heroSpec": "Totêmico",
     "role": "healer",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/156/91120284-avatar.jpg",
@@ -132,6 +143,11 @@
       "bestParse": 30,
       "attendance": 88,
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/voidsurge"
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -142,7 +158,6 @@
     "spec": "Holy",
     "heroSpec": "Arauto do Sol",
     "role": "healer",
-    "type": "main",
     "status": "member",
     "discord": "lunaris#0004",
     "avatar": "https://render.worldofwarcraft.com/us/character/tol-barad/80/233763408-avatar.jpg",
@@ -168,6 +183,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-09-02T01:13:25.971Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -178,7 +198,6 @@
     "spec": "Holy",
     "heroSpec": "Arauto do Sol",
     "role": "healer",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/tichondrius/193/247098561-avatar.jpg?alt=/wow/static/images/2d/avatar/6-0.jpg",
@@ -194,6 +213,11 @@
       "bestParse": 81,
       "attendance": 75,
       "profileUrl": "https://www.warcraftlogs.com/character/us/tichondrius/Cowsadeer"
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -204,7 +228,6 @@
     "spec": "Frost",
     "heroSpec": "Lançafeitiços",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/214/237534422-avatar.jpg?alt=/wow/static/images/2d/avatar/1-1.jpg",
@@ -230,6 +253,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:14:46.189Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -240,7 +268,6 @@
     "spec": "Affliction",
     "heroSpec": "Ceifalmas",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/93/237282397-avatar.jpg?alt=/wow/static/images/2d/avatar/1-1.jpg",
@@ -266,6 +293,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:14:57.556Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -276,7 +308,6 @@
     "spec": "Shadow",
     "heroSpec": "Tececaos",
     "role": "dps",
-    "type": "replace",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/90/267395674-avatar.jpg?alt=/wow/static/images/2d/avatar/29-1.jpg",
@@ -303,7 +334,12 @@
         "calculatedAt": "2026-10-26T08:15:06.169Z"
       }
     },
-    "pertenceA": null
+    "pertenceA": null,
+    "cores": {
+      "nemesis": {
+        "type": "replace"
+      }
+    }
   },
   {
     "id": "jrxamã",
@@ -313,7 +349,6 @@
     "spec": "Elemental",
     "heroSpec": "Clarividente",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/165/182238629-avatar.jpg?alt=/wow/static/images/2d/avatar/3-0.jpg",
@@ -339,6 +374,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:15:14.062Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -349,7 +389,6 @@
     "spec": "Havoc",
     "heroSpec": "Marcado por Vileza",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/9/207699977-avatar.jpg?alt=/wow/static/images/2d/avatar/4-0.jpg",
@@ -375,6 +414,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:15:21.934Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -385,7 +429,6 @@
     "spec": "Enhancement",
     "heroSpec": "Traztormenta",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/217/257525977-avatar.jpg?alt=/wow/static/images/2d/avatar/86-0.jpg",
@@ -411,6 +454,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:15:30.109Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -421,7 +469,6 @@
     "spec": "Arms",
     "heroSpec": "Matador",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/216/91112920-avatar.jpg?alt=/wow/static/images/2d/avatar/1-0.jpg",
@@ -447,6 +494,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:15:38.434Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -457,7 +509,6 @@
     "spec": "Unholy",
     "heroSpec": "",
     "role": "dps",
-    "type": "alt",
     "pertenceA": "gunst",
     "status": "member",
     "discord": "",
@@ -484,6 +535,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:15:46.811Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "alt"
+      }
     }
   },
   {
@@ -494,7 +550,6 @@
     "spec": "Frost",
     "heroSpec": "",
     "role": "dps",
-    "type": "alt",
     "pertenceA": "xúlio",
     "status": "member",
     "discord": "",
@@ -521,6 +576,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:15:55.416Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "alt"
+      }
     }
   },
   {
@@ -531,7 +591,6 @@
     "spec": "Retribution",
     "heroSpec": "",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/azralon/18/196891922-avatar.jpg?alt=/wow/static/images/2d/avatar/1-0.jpg",
@@ -557,6 +616,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:16:03.922Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -567,7 +631,6 @@
     "spec": "Retribution",
     "heroSpec": "",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/254/267219454-avatar.jpg?alt=/wow/static/images/2d/avatar/1-0.jpg",
@@ -593,6 +656,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:16:11.821Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -603,7 +671,6 @@
     "spec": "Shadow",
     "heroSpec": "",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/182/91118518-avatar.jpg?alt=/wow/static/images/2d/avatar/29-1.jpg",
@@ -629,6 +696,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:16:19.724Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -639,7 +711,6 @@
     "spec": "Havoc",
     "heroSpec": "",
     "role": "dps",
-    "type": "main",
     "status": "member",
     "discord": "",
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/83/181207891-avatar.jpg?alt=/wow/static/images/2d/avatar/4-0.jpg",
@@ -665,6 +736,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:16:27.691Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "main"
+      }
     }
   },
   {
@@ -675,7 +751,6 @@
     "spec": "Beast Mastery",
     "heroSpec": null,
     "role": "dps",
-    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/41/266976297-avatar.jpg?alt=/wow/static/images/2d/avatar/3-0.jpg",
@@ -702,7 +777,12 @@
         "calculatedAt": "2026-10-26T08:16:36.772Z"
       }
     },
-    "pertenceA": null
+    "pertenceA": null,
+    "cores": {
+      "nemesis": {
+        "type": "replace"
+      }
+    }
   },
   {
     "id": "harrydóter",
@@ -712,7 +792,6 @@
     "spec": "Demonology",
     "heroSpec": null,
     "role": "dps",
-    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/90/267528538-avatar.jpg?alt=/wow/static/images/2d/avatar/3-1.jpg",
@@ -739,7 +818,12 @@
         "calculatedAt": "2026-10-26T08:16:44.934Z"
       }
     },
-    "pertenceA": null
+    "pertenceA": null,
+    "cores": {
+      "nemesis": {
+        "type": "replace"
+      }
+    }
   },
   {
     "id": "inuqqz",
@@ -749,7 +833,6 @@
     "spec": "Discipline",
     "heroSpec": null,
     "role": "healer",
-    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/233/267724777-avatar.jpg?alt=/wow/static/images/2d/avatar/6-0.jpg",
@@ -766,7 +849,12 @@
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/stormrage/Inuqqz"
     },
-    "pertenceA": null
+    "pertenceA": null,
+    "cores": {
+      "nemesis": {
+        "type": "replace"
+      }
+    }
   },
   {
     "id": "heracranosd",
@@ -776,7 +864,6 @@
     "spec": "Havoc",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
     "status": "member",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/135/237882247-avatar.jpg?alt=/wow/static/images/2d/avatar/4-0.jpg",
@@ -803,7 +890,12 @@
         "calculatedAt": "2026-10-26T08:16:52.787Z"
       }
     },
-    "pertenceA": "heracranosx"
+    "pertenceA": "heracranosx",
+    "cores": {
+      "nemesis": {
+        "type": "alt"
+      }
+    }
   },
   {
     "id": "perdidaço",
@@ -813,7 +905,6 @@
     "spec": "Arms",
     "heroSpec": null,
     "role": "dps",
-    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/stormrage/236/265889260-avatar.jpg?alt=/wow/static/images/2d/avatar/4-1.jpg",
@@ -840,7 +931,12 @@
         "calculatedAt": "2026-10-26T08:17:00.907Z"
       }
     },
-    "pertenceA": null
+    "pertenceA": null,
+    "cores": {
+      "nemesis": {
+        "type": "replace"
+      }
+    }
   },
   {
     "id": "jokertinha",
@@ -850,7 +946,6 @@
     "spec": "",
     "heroSpec": null,
     "role": "dps",
-    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/azralon/48/203548720-avatar.jpg?alt=/wow/static/images/2d/avatar/3-0.jpg",
@@ -877,6 +972,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:17:09.440Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "replace"
+      }
     }
   },
   {
@@ -887,7 +987,6 @@
     "spec": "",
     "heroSpec": null,
     "role": "dps",
-    "type": "replace",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/azralon/218/197678298-avatar.jpg?alt=/wow/static/images/2d/avatar/1-1.jpg",
@@ -914,6 +1013,11 @@
         "source": "Raidbots",
         "calculatedAt": "2026-10-26T08:17:22.789Z"
       }
+    },
+    "cores": {
+      "nemesis": {
+        "type": "replace"
+      }
     }
   },
   {
@@ -924,7 +1028,6 @@
     "spec": "",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/azralon/254/199627518-avatar.jpg?alt=/wow/static/images/2d/avatar/70-0.jpg",
@@ -940,6 +1043,11 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/azralon/Bolsafam%C3%ADlia"
+    },
+    "cores": {
+      "nemesis": {
+        "type": "alt"
+      }
     }
   },
   {
@@ -950,7 +1058,6 @@
     "spec": "",
     "heroSpec": null,
     "role": "dps",
-    "type": "alt",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/tol-barad/153/202815897-avatar.jpg?alt=/wow/static/images/2d/avatar/29-1.jpg",
@@ -966,6 +1073,11 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/tolbarad/Sixx"
+    },
+    "cores": {
+      "nemesis": {
+        "type": "alt"
+      }
     }
   },
   {
@@ -976,7 +1088,6 @@
     "spec": "",
     "heroSpec": null,
     "role": "healer",
-    "type": "alt",
     "status": "trial",
     "discord": null,
     "avatar": "https://render.worldofwarcraft.com/us/character/nemesis/137/238057353-avatar.jpg?alt=/wow/static/images/2d/avatar/29-1.jpg",
@@ -992,6 +1103,11 @@
       "bestParse": null,
       "attendance": null,
       "profileUrl": "https://www.warcraftlogs.com/character/us/nemesis/N%C3%A3oseicurar"
+    },
+    "cores": {
+      "nemesis": {
+        "type": "alt"
+      }
     }
   }
 ]

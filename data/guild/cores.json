@@ -1,0 +1,27 @@
+{
+  "_comentario": [
+    "Os cores da guilda: grupos de raide com roster e análise próprios.",
+    "",
+    "Mora em data/guild e não na temporada porque core é agrupamento de GENTE,",
+    "e temporada é conceito do jogo. O mesmo core atravessa temporadas; a mesma",
+    "temporada é jogada por cores diferentes.",
+    "",
+    "`formato` escolhe o tipo de página:",
+    "  core   — dashboard completo, progressão, score, medalhas da temporada",
+    "  evento — noite avulsa, elenco rotativo, medalhas da noite e zoeira",
+    "",
+    "`principal` é o core que as páginas mostram enquanto a rota ainda não tem",
+    "o segmento [core]. Sai quando a rota ganhar.",
+    "",
+    "Core de `formato: evento` NÃO tem roster: quem participou sai do próprio",
+    "log, e nada é rascunhado em roster.json."
+  ],
+  "cores": [
+    {
+      "slug": "nemesis",
+      "nome": "Core Nemesis",
+      "formato": "core",
+      "principal": true
+    }
+  ]
+}

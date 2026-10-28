@@ -3,10 +3,10 @@ import { describe, expect, it } from "vitest";
 import { alterEgosDe, mapearPessoas, personagensPorPessoa, type PersonagemDoRoster } from "./pessoas";
 
 const ROSTER: PersonagemDoRoster[] = [
-  { id: "gunst", type: "main" },
-  { id: "metallica", type: "alt", pertenceA: "gunst" },
-  { id: "kroline", type: "main" },
-  { id: "banco", type: "replace" },
+  { id: "gunst" },
+  { id: "metallica", pertenceA: "gunst" },
+  { id: "kroline" },
+  { id: "banco" },
 ];
 
 describe("mapearPessoas", () => {
@@ -21,9 +21,9 @@ describe("mapearPessoas", () => {
 
   it("sobe a corrente até o main quando o alt aponta pra outro alt", () => {
     const pessoas = mapearPessoas([
-      { id: "raiz", type: "main" },
-      { id: "meio", type: "alt", pertenceA: "raiz" },
-      { id: "ponta", type: "alt", pertenceA: "meio" },
+      { id: "raiz" },
+      { id: "meio", pertenceA: "raiz" },
+      { id: "ponta", pertenceA: "meio" },
     ]);
 
     expect(pessoas.get("ponta")).toBe("raiz");
@@ -33,23 +33,23 @@ describe("mapearPessoas", () => {
   // da mesma pessoa — na dúvida, cada um por si.
   it("trata alt sem vínculo como pessoa própria", () => {
     const pessoas = mapearPessoas([
-      { id: "gunst", type: "main" },
-      { id: "solto", type: "alt" },
+      { id: "gunst" },
+      { id: "solto" },
     ]);
 
     expect(pessoas.get("solto")).toBe("solto");
   });
 
   it("não trava com vínculo apontando pra quem não existe", () => {
-    const pessoas = mapearPessoas([{ id: "orfao", type: "alt", pertenceA: "fantasma" }]);
+    const pessoas = mapearPessoas([{ id: "orfao", pertenceA: "fantasma" }]);
     expect(pessoas.get("orfao")).toBe("orfao");
   });
 
   // Um ciclo no roster derrubaria o build inteiro se o laço não tivesse teto.
   it("não trava com dois personagens apontando um pro outro", () => {
     const pessoas = mapearPessoas([
-      { id: "a", type: "alt", pertenceA: "b" },
-      { id: "b", type: "alt", pertenceA: "a" },
+      { id: "a", pertenceA: "b" },
+      { id: "b", pertenceA: "a" },
     ]);
 
     expect(pessoas.size).toBe(2);

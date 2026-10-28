@@ -24,6 +24,7 @@ import { buildVisaoMacro } from '@/engine/admin/visaoMacro';
 import { montarPainel } from '@/engine/admin/painel';
 import { montarPainelDeAlts } from '@/engine/admin/painelDeAlts';
 
+
 const linhas = buildVisaoMacro(
   performanceWeeks,
   roster,
@@ -137,12 +138,17 @@ const cofre = senha && !modoAberto ? await cifrar(senha, html) : null;
 
     // O roster remontado dos próprios selects: o vínculo de origem é a opção
     // que veio `selected`, que o DOM guarda mesmo depois de escolherem outra.
+    // O core vem do DOM: este <script> roda no cliente e não enxerga o
+    // frontmatter, onde o helper vive.
+    const coreDaTela = area.dataset.core ?? '';
+
     const roster: PersonagemParaVincular[] = selects.map((select) => {
       const original = [...select.options].find((opcao) => opcao.defaultSelected);
       return {
         id: select.dataset.vinculo!,
         name: select.dataset.nome!,
-        type: (select.dataset.tipo ?? 'main') as PersonagemParaVincular['type'],
+        // O papel é por core; a tela de alts trabalha no core principal.
+        cores: { [coreDaTela]: { type: (select.dataset.tipo ?? 'main') as 'main' | 'alt' | 'replace' } },
         pertenceA: original?.value || null,
       };
     });
