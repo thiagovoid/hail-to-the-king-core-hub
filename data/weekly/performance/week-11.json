@@ -11013,18 +11013,14 @@
         {
           "playerId": "ligiaf",
           "simTarget": 164300,
-          "preparation": 87,
-          "preparationMissing": [
-            "Elmo",
-            "Poção"
-          ],
+          "preparation": 89,
           "preparationChecks": 2,
           "preparationSlots": [
             {
               "slot": 0,
               "label": "Elmo",
               "tipo": "encanto",
-              "ok": false
+              "ok": true
             },
             {
               "slot": 2,
@@ -11087,10 +11083,7 @@
               "ok": true
             }
           ],
-          "preparationGear": 94,
-          "preparationMissingGear": [
-            "Elmo"
-          ],
+          "preparationGear": 100,
           "defense": {
             "score": 48.5,
             "mitigation": 45.2,
@@ -11438,6 +11431,9 @@
               "uso": 100,
               "quais": []
             }
+          ],
+          "preparationMissing": [
+            "Poção"
           ]
         }
       ]
