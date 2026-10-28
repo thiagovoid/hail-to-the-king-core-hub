@@ -3,9 +3,11 @@ import type { CoreRankingEntry } from '@/engine/team';
 
 interface Props {
   ranking: CoreRankingEntry[];
+  /** O slug do core desta tabela, pros links das fichas. */
+  core: string;
 }
 
-const { ranking } = Astro.props;
+const { ranking, core } = Astro.props;
 
 const scored = ranking.filter((entry) => entry.overall !== null);
 
@@ -49,7 +51,7 @@ const scoreColor = (value: number) =>
               <tr class="hover:bg-[#1a2030]/60 transition-colors">
                 <td class="px-4 py-3 text-slate-400 tabular-nums font-medium">{index + 1}</td>
                 <td class="px-4 py-3 text-slate-200 font-medium">
-                  <a href={`/core/membros/${entry.playerId}/`} class="hover:text-[#f0a500] transition-colors">
+                  <a href={`/core/${core}/membros/${entry.playerId}/`} class="hover:text-[#f0a500] transition-colors">
                     {entry.playerName}
                   </a>
                 </td>

@@ -54,9 +54,12 @@ interface Props {
    * e esconder as trancadas seria fingir que não existe um degrau ali.
    */
   aoAlcance?: ConquistaAoAlcance[];
+  /** O slug do core desta ficha, pro link do main cair no core certo. */
+  core: string;
 }
 
 const {
+  core,
   ganhas = new Map<string, ConquistaGanha>(),
   elegivel = true,
   remeteAo = undefined,
@@ -139,7 +142,7 @@ const totalGanho = medalhas.reduce((soma, item) => soma + (item.ganha?.vezes ?? 
         {remeteAo && (
           <p class="text-[11px] text-slate-500 mt-1.5">
             Estas medalhas são do jogador, não do personagem: são as mesmas da ficha do{' '}
-            <a href={`/core/membros/${remeteAo.id}/`} class="text-[#f0a500] hover:underline">
+            <a href={`/core/${core}/membros/${remeteAo.id}/`} class="text-[#f0a500] hover:underline">
               {remeteAo.nome}
             </a>
             . Trocar de cadeira pra compor o raide não é falta.

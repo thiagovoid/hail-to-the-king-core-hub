@@ -330,7 +330,7 @@ const avgIoSubtitle = bestKey
           value={players.filter((p) => papelNoCore(p, coreAtual.slug) === 'main').length}
           subtitle={`${players.length} total com alts`}
           icon="👥"
-          href={`${base}/core/membros/`}
+          href={`${base}/core/${coreAtual.slug}/membros/`}
           accent="default"
         />
 
@@ -405,7 +405,7 @@ const avgIoSubtitle = bestKey
     />
 
     {/* <div class="mt-14">
-      <CoreRankingTable ranking={coreRanking} />
+      <CoreRankingTable ranking={coreRanking} core={coreAtual.slug} />
     </div> */}
   </section>
 

@@ -151,7 +151,7 @@ function capitalize(s: string): string {
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {group.players.map((player) => (
-            <PlayerCard player={player} />
+            <PlayerCard player={player} core={coreAtual.slug} />
           ))}
         </div>
       </section>

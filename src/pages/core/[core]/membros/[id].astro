@@ -842,6 +842,7 @@ const attendance = calculateAttendance(weeks, [
     {
       history.length > 0 && (
             <ConquistasDoJogador
+      core={coreAtual.slug}
       ganhas={conquistasDoJogador}
       elegivel={player.status === 'member' || player.status === 'veteran'}
       remeteAo={mainDoJogador ? { id: mainDoJogador.id, nome: mainDoJogador.name } : undefined}

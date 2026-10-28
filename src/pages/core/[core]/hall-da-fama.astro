@@ -75,7 +75,7 @@ const ICON: Record<string, string> = {
           {entry.winner ? (
             <>
               <a
-                href={`/core/membros/${entry.winner.playerId}/`}
+                href={`/core/${coreAtual.slug}/membros/${entry.winner.playerId}/`}
                 class="block text-2xl font-bold text-white hover:text-[#f0a500] transition-colors"
               >
                 {entry.winner.playerName}

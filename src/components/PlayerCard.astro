@@ -8,15 +8,21 @@ import type { Player, WowClass } from '@/types/index';
 import { getClassColor } from '@/utils/roster';
 import { formatValue } from '@/utils/format';
 import { safeUrl } from '@/utils/progression';
-import { CORES, corePrincipal, coresDe, nomesDosCoresDe, papelNoCore } from '@/engine/guild/cores';
-
-const coreAtual = corePrincipal();
+import { CORES, coresDe, nomesDosCoresDe, papelNoCore } from '@/engine/guild/cores';
 
 interface Props {
   player: Player;
+  /**
+   * O slug do core desta lista.
+   *
+   * Era `corePrincipal()` lido aqui dentro, de quando a rota ainda não
+   * dizia o core: no roster do Ômega o cartão mostrava o papel que a
+   * pessoa tem no Nemesis.
+   */
+  core: string;
 }
 
-const { player } = Astro.props;
+const { player, core: slugDoCore } = Astro.props;
 
 function capitalize(s: string): string {
   return s.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
@@ -91,7 +97,7 @@ const attendance = player.warcraftLogs.attendance;
 
 const discord  = formatValue(player.discord);
 const initials = player.name.slice(0, 2).toUpperCase();
-const papel = papelNoCore(player, coreAtual.slug);
+const papel = papelNoCore(player, slugDoCore);
 
 /**
  * Os cores do personagem, só quando há mais de um na guilda.
@@ -135,7 +141,7 @@ const linkWcl      = safeUrl(player.warcraftLogs.profileUrl);
   data-papeis={papeisPorCore}
 >
   <a
-    href={`/core/membros/${player.id}/`}
+    href={`/core/${slugDoCore}/membros/${player.id}/`}
     class="flex flex-col flex-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] focus-visible:ring-inset"
   >
   <!-- Header strip with class color accent -->
