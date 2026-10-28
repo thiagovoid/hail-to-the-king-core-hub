@@ -9,14 +9,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import PlayerCard from '@/components/PlayerCard.astro';
 import type { Player, WowClass } from '@/types/index';
 import rosterData from '../../../../../data/guild/roster.json';
-import seasonJson from '../../../../../data/seasons/midnight-s2/config.json';
-import {
-  CORES,
-  coresDeRaide,
-  jogadoresDoCore,
-  papelNoCore,
-  type PapelNoCore,
-} from '@/engine/guild/cores';
+import { coresDeRaide, jogadoresDoCore, papelNoCore, type PapelNoCore } from '@/engine/guild/cores';
 
 /** Uma página de roster por core de raide. */
 export function getStaticPaths() {
@@ -25,7 +18,7 @@ export function getStaticPaths() {
 
 const { core: coreAtual } = Astro.props;
 
-const players = rosterData as Player[];
+const players = jogadoresDoCore(rosterData as Player[], coreAtual.slug);
 
 const ROLE_ORDER = ['tank', 'healer', 'dps'] as const;
 const ROLE_LABEL: Record<(typeof ROLE_ORDER)[number], string> = {
@@ -83,17 +76,22 @@ function capitalize(s: string): string {
 
     <!-- Filtros -->
     {players.length > 0 && (
-      <div class="flex flex-wrap gap-3 mb-10 pb-6 border-b border-slate-700/50">
-        {CORES.length > 1 && (
+      <div
+        id="filtros"
+        data-core={coreAtual.slug}
+        class="flex flex-wrap gap-3 mb-10 pb-6 border-b border-slate-700/50"
+      >
+        {coresDeRaide().length > 1 && (
           <label class="flex items-center gap-2 text-sm text-slate-400">
             Core
             <select
-              id="filter-core"
+              id="seletor-de-core"
               class="bg-[#141b2d] border border-white/10 rounded-lg px-3 py-1.5 text-slate-200 text-sm"
             >
-              <option value="">Todos</option>
-              {CORES.map((core) => (
-                <option value={core.slug}>{core.nome}</option>
+              {coresDeRaide().map((core) => (
+                <option value={core.slug} selected={core.slug === coreAtual.slug}>
+                  {core.nome}
+                </option>
               ))}
             </select>
           </label>
@@ -172,7 +170,11 @@ function capitalize(s: string): string {
   const classSelect = document.getElementById('filter-class') as HTMLSelectElement | null;
   const typeSelect = document.getElementById('filter-type') as HTMLSelectElement | null;
   const emptyHint = document.getElementById('filter-empty-hint');
-  const coreSelect = document.getElementById('filter-core') as HTMLSelectElement | null;
+  const coreSelect = document.getElementById('seletor-de-core') as HTMLSelectElement | null;
+
+  // De que core é esta página. "Titular" quer dizer titular NESTE core, e
+  // o card de quem joga em dois guarda o papel de cada um.
+  const filtros = document.getElementById('filtros');
 
   /**
    * Os números do cabeçalho e de cada grupo, depois do filtro.
@@ -207,7 +209,7 @@ function capitalize(s: string): string {
     const status = statusSelect?.value ?? '';
     const wowClass = classSelect?.value ?? '';
     const type = typeSelect?.value ?? '';
-    const core = coreSelect?.value ?? '';
+    const core = filtros?.dataset.core ?? '';
 
     /**
      * Core e Tipo não são filtros independentes: "titular" sem core quer
@@ -264,5 +266,9 @@ function capitalize(s: string): string {
   statusSelect?.addEventListener('change', applyFilters);
   classSelect?.addEventListener('change', applyFilters);
   typeSelect?.addEventListener('change', applyFilters);
-  coreSelect?.addEventListener('change', applyFilters);
+  // Trocar de core é navegar, não filtrar: o roster do outro core é outra
+  // página, com outras contagens e outro gráfico.
+  coreSelect?.addEventListener('change', () => {
+    if (coreSelect.value) window.location.pathname = `/core/${coreSelect.value}/membros/`;
+  });
 </script>

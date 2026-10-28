@@ -1,6 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
+import coresJson from './data/guild/cores.json';
+
+/** Pra onde as URLs de um core só apontam. */
+const principal = (coresJson.cores.find((core) => core.principal) ?? coresJson.cores[0]).slug;
+
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
@@ -17,9 +22,11 @@ export default defineConfig({
    * Apontam pro core principal, que é o que essas URLs sempre significaram.
    */
   redirects: {
-    '/core': '/core/nemesis',
-    '/core/membros': '/core/nemesis/membros',
-    '/core/mythic': '/core/nemesis/mythic',
-    '/core/progressao': '/core/nemesis/progressao',
+    '/core': `/core/${principal}`,
+    '/core/membros': `/core/${principal}/membros`,
+    '/core/mythic': `/core/${principal}/mythic`,
+    '/core/progressao': `/core/${principal}/progressao`,
+    '/chronicle': `/core/${principal}/chronicle`,
+    '/hall-da-fama': `/core/${principal}/hall-da-fama`,
   },
 });

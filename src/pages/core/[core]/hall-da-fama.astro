@@ -8,20 +8,32 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import type { Boss, Player, SiteConfig } from '@/types/index';
 import { buildHallOfFame } from '@/engine/guild/hallOfFame';
 
-import seasonJson from '../../data/seasons/midnight-s2/config.json';
-import rosterJson from '../../data/guild/roster.json';
-import { performanceWeeks } from '../../data/weekly/performance/index';
+import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
+import rosterJson from '../../../../data/guild/roster.json';
+import { performanceWeeks } from '../../../../data/weekly/performance/index';
+import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
+
+/**
+ * Uma página por core de raide: ela é feita de performance de core, e com
+ * dois cores juntos ela misturaria dois elencos num só recorde.
+ */
+export function getStaticPaths() {
+  return coresDeRaide().map((core) => ({ params: { core: core.slug }, props: { core } }));
+}
+
+const { core: coreAtual } = Astro.props;
 
 const config = seasonJson.config as SiteConfig;
 const bossesNormal = seasonJson.bossesNormal as Boss[];
 const bossesHeroic = seasonJson.bossesHeroic as Boss[];
-const players = rosterJson as Player[];
+const players = jogadoresDoCore(rosterJson as Player[], coreAtual.slug);
+const semanas = semanasDoCore(performanceWeeks, coreAtual.slug);
 
 const targets = config.performanceTargets;
 
 const hallOfFame = buildHallOfFame(
   config.currentSeason,
-  performanceWeeks,
+  semanas,
   bossesNormal,
   bossesHeroic,
   players,

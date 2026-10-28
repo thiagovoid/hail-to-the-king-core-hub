@@ -13,6 +13,7 @@ import type { GuildAbout, TimelineEntry } from '@/types/index';
 
 import aboutJson from '../../data/guild/about.json';
 import timelineJson from '../../data/guild/timeline.json';
+import { corePrincipal } from '@/engine/guild/cores';
 
 const about = aboutJson as GuildAbout;
 const timeline = timelineJson as TimelineEntry[];
@@ -54,13 +55,13 @@ const timeline = timelineJson as TimelineEntry[];
 
       <div class="flex flex-wrap gap-4 mt-4">
         <a
-          href="/chronicle/"
+          href={`/core/${corePrincipal().slug}/chronicle/`}
           class="inline-flex items-center gap-2 text-sm text-[#f0a500] hover:text-[#fbbf24] transition-colors font-semibold"
         >
           📖 Ver o capítulo da temporada atual no Chronicle →
         </a>
         <a
-          href="/hall-da-fama/"
+          href={`/core/${corePrincipal().slug}/hall-da-fama/`}
           class="inline-flex items-center gap-2 text-sm text-[#f0a500] hover:text-[#fbbf24] transition-colors font-semibold"
         >
           🏆 Ver o Hall da Fama →

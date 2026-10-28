@@ -1,0 +1,1177 @@
+
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+import roster from '../../../../../data/guild/roster.json';
+import seasonJson from '../../../../../data/seasons/midnight-s2/config.json';
+import { performanceWeeks } from '../../../../../data/weekly/performance/index';
+import CabecalhoDoJogador from '@/components/CabecalhoDoJogador.astro';
+import PerformanceGoals from '@/components/PerformanceGoals.astro';
+import PerformanceScoreCard from '@/components/PerformanceScoreCard.astro';
+import PerformanceChart from '@/components/PerformanceChart.astro';
+import {
+  linhasDeRecursos,
+  notaDeRecursos,
+} from '@/normalization/consumiveisDaNoite';
+import ContribuicaoForaDeFuncao from '@/components/ContribuicaoForaDeFuncao.astro';
+import PainelDoTank from '@/components/PainelDoTank.astro';
+import ConquistasDoJogador from '@/components/ConquistasDoJogador.astro';
+import { contarConquistas } from '@/engine/guild/conquistas';
+import { alterEgosDe, mapearPessoas } from '@/engine/guild/pessoas';
+import { mapaDeRaides, raideDaNoite } from '@/engine/guild/porRaide';
+import { aoSeuAlcance } from '@/engine/guild/aoSeuAlcance';
+import CartaoDeProntidao from '@/components/CartaoDeProntidao.astro';
+import PortaoDePreparacao from '@/components/PortaoDePreparacao.astro';
+import AtoDaPagina from '@/components/AtoDaPagina.astro';
+import BossABoss from '@/components/BossABoss.astro';
+import {
+  degrausDaMetrica,
+  EXIGENCIA,
+  CRITERIO_DO_OFICIO,
+} from '@/engine/scores/prontidao';
+import { prontidaoDoRoster } from '@/engine/guild/prontidaoDoRoster';
+
+import {
+  buildPlayerSeasonAverage,
+  calculateAttendance,
+  calculateTrend,
+  formatPerformanceValue,
+  getPlayerHistory,
+} from '@/engine/metrics';
+import { formatCompact } from '@/utils/format';
+import { calculateOverallScore } from '@/engine/scores';
+import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
+import { TITULOS_DO_HAIL_SCORE } from '@/engine/team/hailScore';
+import { buildCoachRecommendation } from '@/engine/scores/coach';
+import CoachCard from '@/components/CoachCard.astro';
+import OQueVoceFezPeloGrupo from '@/components/OQueVoceFezPeloGrupo.astro';
+import { formatDate } from '@/utils/format';
+import type { Boss, CorePerformanceTargets, Player } from '@/types/index';
+
+/**
+ * O JSON importado vem com o tipo inferido entrada a entrada, e cada
+ * personagem tem um recorte de campos diferente — quem não tem meta de
+ * sim não tem `performanceGoals.dps`, e aí a união perde `parse`, `hps`
+ * e `deaths`. Amarrar no tipo declarado aqui, uma vez, resolve as onze
+ * reclamações que isso gerava espalhadas pelo arquivo.
+ */
+const metasDoCore = seasonJson.config.performanceTargets as CorePerformanceTargets;
+
+export function getStaticPaths() {
+  // O cast vai aqui dentro, e não no `jogadores` lá de cima: o Astro iça
+  // esta função pra fora do escopo do frontmatter, onde ela enxerga os
+  // imports mas nenhuma const do módulo.
+  // Um par (core, personagem) por core em que ele joga. Quem joga em dois
+  // tem duas fichas: presença, média e medalhas são do core, não da pessoa.
+  return coresDeRaide().flatMap((core) =>
+    jogadoresDoCore(roster as Player[], core.slug).map((player) => ({
+      params: {
+        core: core.slug,
+        id: player.id,
+      },
+      props: {
+        core,
+        player,
+      },
+    }))
+  );
+}
+
+const { core: coreAtual, player } = Astro.props;
+
+const jogadores = jogadoresDoCore(roster as Player[], coreAtual.slug);
+const weeks = semanasDoCore(performanceWeeks, coreAtual.slug);
+
+/**
+ * De que raide foi cada noite — mesmo mapa do gráfico do core.
+ *
+ * O gráfico daqui filtra os mesmos pontos por noite, então ele recorta
+ * pela mesma regra: noite inteira numa raide é daquela raide, e noite que
+ * encostou nas duas some do recorte em vez de entrar nos dois.
+ */
+const mapaDasRaides = mapaDeRaides([
+  ...(seasonJson.bossesNormal as Boss[]),
+  ...(seasonJson.bossesHeroic as Boss[]),
+]);
+
+const raidePorNoite: Record<string, string> = {};
+for (const semana of weeks) {
+  for (const noite of semana.runs ?? []) {
+    const qual = raideDaNoite(noite.players ?? [], mapaDasRaides);
+    if (qual.tipo === 'uma') raidePorNoite[noite.date] = qual.raide;
+  }
+}
+
+// Denominador da presença e da média: quantas noites o core teve. Sem ele,
+// "média das 4 noites" não dizia se eram as 4 do core ou as 4 da pessoa.
+const noitesDoCore = weeks.reduce((total, semana) => total + semana.runs.length, 0);
+
+const history = getPlayerHistory(
+  weeks,
+  player.id
+);
+
+// Média da temporada: base do resumo e das metas individuais (a meta de dps
+// compara contra a média de todos os registros — decisão registrada).
+const seasonAverage = buildPlayerSeasonAverage(player.id, history);
+
+// O Score Geral, porém, mede a ÚLTIMA NOITE, não a temporada: é a foto de
+// como a pessoa está agora. Misturar as duas coisas fazia aparecer erro de
+// boss que nem foi jogado na semana, e uma noite ruim ficava diluída em oito.
+// O histórico é o que o gráfico mostra.
+const ultimaNoite = history.at(-1);
+
+// Detalhe da MESMA noite que o Score Geral mede. Antes isto somava a
+// temporada inteira, e aparecia erro de boss que nem foi jogado na semana.
+const mechanicsDetail = [...(ultimaNoite?.mechanicsDetail ?? [])].sort(
+  (a, b) => b.tries - a.tries
+);
+
+const preparationMissing = ultimaNoite?.preparationMissing ?? [];
+
+// Mesma noite do Score Geral. Os três piores: a lista inteira vira parede de
+// texto e o que importa é o que treinar primeiro.
+const attackDetail = ultimaNoite?.attackDetail ?? [];
+const attackParts = ultimaNoite?.attack
+  ? { uptime: ultimaNoite.attack.uptime, cooldowns: ultimaNoite.attack.cooldowns }
+  : null;
+
+const defenseDetail = ultimaNoite?.defenseDetail ?? [];
+const defenseContext = ultimaNoite?.defense
+  ? {
+      mitigation: ultimaNoite.defense.mitigation,
+      dtps: ultimaNoite.defense.dtps,
+      selfSustain: ultimaNoite.defense.selfSustain,
+    }
+  : null;
+
+/** Média das noites em que o número existe — a régua é a pessoa, não o core. */
+const mediaDe = <T,>(valores: Array<T | undefined>): number | undefined => {
+  const definidos = valores.filter((valor): valor is T => valor !== undefined).map(Number);
+  if (definidos.length === 0) return undefined;
+  return Math.round(definidos.reduce((soma, valor) => soma + valor, 0) / definidos.length);
+};
+
+const foraDeFuncaoAtual = ultimaNoite?.offRole ?? null;
+const foraDeFuncaoMedia = {
+  dps: mediaDe(history.map((run) => run.offRole?.dps)),
+  hps: mediaDe(history.map((run) => run.offRole?.hps)),
+};
+const noitesForaDeFuncao = history.filter((run) => run.offRole !== undefined).length;
+
+// O painel só aparece pra quem a WCL registrou tankando — o cadastro pode
+// estar desatualizado, e quem trocou de função no meio da season veria um
+// painel que não é dela.
+const eTank = player.role === 'tank';
+const tankAtual = eTank && ultimaNoite?.defense ? ultimaNoite.defense : null;
+const tankMedia = {
+  dtps: mediaDe(history.map((run) => run.defense?.dtps)),
+  mitigation: mediaDe(history.map((run) => run.defense?.mitigation)),
+  selfSustain: mediaDe(history.map((run) => run.defense?.selfSustain)),
+};
+const noitesComoTank = history.filter((run) => run.defense !== undefined).length;
+
+/** O que explica a nota de Ajudar: magia a magia, mais as interrupções. */
+const helpDetail = ultimaNoite?.helpDetail ?? [];
+/**
+ * "Por try" saiu porque era a régua quebrada: cada try valia uma
+ * oportunidade, existisse alvo ou não, e sete dos dez encontros da temporada
+ * não têm uma única magia interrompível. O denominador agora é o que de fato
+ * deu pra interromper nas trys em que a pessoa estava.
+ */
+const interrupcoes = ultimaNoite?.utility
+  ? {
+      total: ultimaNoite.utility.interrupts,
+      oportunidade: ultimaNoite.utility.interrupcoes ?? null,
+    }
+  : null;
+
+/** As mortes da noite, da mais cara pra mais barata. */
+const deathDetail = (ultimaNoite?.deathDetail ?? []).slice(0, 5);
+
+const healingParts = ultimaNoite?.healing
+  ? {
+      coverage: ultimaNoite.healing.coverage,
+      share: ultimaNoite.healing.share,
+      overheal: ultimaNoite.healing.overheal,
+    }
+  : null;
+
+/**
+ * Quantas noites por página no histórico.
+ *
+ * Dez porque a temporada cresce: no fim do tier seriam trinta linhas
+ * fechando a página com uma parede que ninguém lê inteira.
+ */
+const POR_PAGINA = 10;
+
+const hasData = history.length > 0;
+
+const dpsHistory = history
+  .filter((performance) => performance.dps !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.dps!,
+  }));
+
+const parseHistory = history
+  .filter((performance) => performance.parse !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.parse!,
+  }));
+
+const mechanicsHistory = history
+  .filter((performance) => performance.mechanics?.errors !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.mechanics!.errors,
+    // O que explicou aquele ponto, pra não se perder quando chegar log novo.
+    detail: [...(performance.mechanicsDetail ?? [])]
+      .sort((a, b) => b.tries - a.tries)
+      .slice(0, 4)
+      .map((item) =>
+        `${item.label ?? item.mechanic.replace('Damage from ', '')} — ${item.tries} de ${performance.mechanics?.tries ?? '?'} trys`
+      ),
+  }));
+
+const attackHistory = history
+  .filter((performance) => performance.attack !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.attack!.score,
+    detail: [
+      `Uptime — ${performance.attack!.uptime}%`,
+      performance.attack!.cooldowns !== null
+        ? `Cooldowns — ${performance.attack!.cooldowns}% do tempo em recarga`
+        : 'Cooldowns — sem cooldown ofensivo medido',
+      ...(performance.attackDetail ?? [])
+        .slice(0, 3)
+        .map((item) => `${item.name} — ${item.efficiency}% (${item.casts} uso${item.casts === 1 ? '' : 's'})`),
+    ],
+  }));
+
+const defenseHistory = history
+  .filter((performance) => performance.defense?.score != null)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.defense!.score!,
+    detail: [
+      `${formatCompact(performance.defense!.dtps)} de dano recebido por segundo`,
+      `${performance.defense!.mitigation}% mitigado`,
+      // Pro tank é o número que descreve o estilo de sustentação, e é o que
+      // dá sentido a seguir a linha ao longo do tempo.
+      ...(performance.defense!.selfSustain !== undefined
+        ? [`${performance.defense!.selfSustain}% reposto pela sua própria cura`]
+        : []),
+      ...(performance.defenseDetail ?? [])
+        .slice(0, 3)
+        .map((item) => `${item.name} — ${item.efficiency}% (${item.casts} uso${item.casts === 1 ? '' : 's'})`),
+    ],
+  }));
+
+// Curar e HPS convivem de propósito: HPS é volume, Curar é quanto do dano
+// do raide você cobriu e quanto da sua cura não foi pro ralo. Duas noites
+// com o mesmo HPS podem ter notas de Curar bem diferentes.
+const healingHistory = history
+  .filter((performance) => performance.healing !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.healing!.score,
+    detail: [
+      `Cobriu ${performance.healing!.coverage}% do dano do raide`,
+      `${performance.healing!.share}% do quinhão — a cobertura dividida pela média dos healers daquela noite`,
+      `${performance.healing!.overheal}% caiu em quem já estava cheio`,
+    ],
+  }));
+
+// Recursos: as cinco famílias de consumível numa nota só.
+//
+// Uma série e não cinco porque a pergunta que se faz olhando o histórico é
+// "esse cara se prepara?", não "quantas poções ele tomou em 25/08". O
+// detalhe de cada família aparece no hover, com a unidade de cada uma:
+// poção é frequência, frasco é sim ou não, pedra é contra morte.
+const recursosHistory = history
+  .map((performance) => ({
+    date: performance.date,
+    value: notaDeRecursos(performance.consumiveis),
+    detail: linhasDeRecursos(performance.consumiveis),
+  }))
+  .filter((ponto): ponto is { date: string; value: number; detail: string[] } => ponto.value !== null);
+
+// Fora de função vira DUAS séries, não uma: dano e cura são grandezas
+// diferentes e não dividem eixo. Um tank costuma ter as duas; healer só
+// dano; dps só cura.
+const offRoleDpsHistory = history
+  .filter((performance) => performance.offRole?.dps !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.offRole!.dps!,
+  }));
+
+const offRoleHpsHistory = history
+  .filter((performance) => performance.offRole?.hps !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.offRole!.hps!,
+  }));
+
+const deathsHistory = history
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.deaths,
+  }));
+
+const hpsHistory = history
+  .filter((performance) => performance.hps !== undefined)
+  .map((performance) => ({
+    date: performance.date,
+    value: performance.hps!,
+  }));
+
+// Healers têm hps, o resto tem dps — nunca os dois juntos, então só um
+// dos dois entra no gráfico principal (o outro ficaria sempre vazio).
+const primaryMetricSeries = player.role === 'healer'
+  ? {
+      id: 'hps',
+      label: 'HPS',
+      data: hpsHistory,
+      target: player.performanceGoals?.hps?.target,
+      current: seasonAverage.hps ?? null,
+      direction: 'higher' as const,
+    }
+  : {
+      id: 'dps',
+      label: 'DPS',
+      data: dpsHistory,
+      target: player.performanceGoals?.dps?.target,
+      current: seasonAverage.dps ?? null,
+      direction: 'higher' as const,
+    };
+
+// Escondidas por hora (mesmo critério do dashboard do core): só a métrica
+// principal (dps/hps) fica no gráfico. Basta tirar daqui pra voltarem.
+// Mortes virou indicador de temporada, ao lado de Bosses mortos. Parse
+// voltou: sete das oito noites têm percentil pra 100% dos presentes.
+const HIDDEN_CHART_SERIES = new Set(['deaths']);
+
+/**
+ * Põe o ofício da pessoa na frente.
+ *
+ * Pro tank, "como você segurou" é a leitura principal — o dps dele existe e
+ * importa, mas não é por ele que se avalia um tank. Healer já entra com
+ * Curar primeiro e dps com DPS, então só a defesa precisa ser promovida.
+ */
+/**
+ * A NOTA DA PESSOA, noite a noite.
+ *
+ * É a mesma conta do card "Score geral" logo acima — inclusive os pesos por
+ * função, então o tanque é medido por Defender e o healer por Curar —, só
+ * que ao longo da temporada em vez de só na última noite. A nota do CORE
+ * mora no dashboard; aqui é a dela.
+ *
+ * Cada ponto carrega o que o puxou: passar o mouse mostra as três dimensões
+ * mais fracas daquela noite, com o número de cada uma. Sem isso, a linha
+ * sobe e desce sem dizer por quê.
+ */
+const scoreHistory = history
+  .map((noite) => ({
+    noite,
+    score: calculateOverallScore(noite, metasDoCore, player.role),
+  }))
+  .filter((item) => item.score.overall !== null)
+  .map(({ noite, score }) => ({
+    date: noite.date,
+    value: score.overall!,
+    detail: [
+      ...score.dimensions
+        .filter((dimensao) => dimensao.score !== null && dimensao.value !== null)
+        .sort((a, b) => a.score! - b.score!)
+        .slice(0, 3)
+        // Vírgula decimal: "1,8 erros por try" é como o resto da ficha fala.
+        .map(
+          (dimensao) =>
+            `${dimensao.label} — ${String(dimensao.value).replace('.', ',')} ${dimensao.unit}`
+        ),
+      // O multiplicador de sobrevivência só aparece quando ele mordeu: nas
+      // noites em que a pessoa ficou dentro da meta, dizer "x1,00" é ruído.
+      ...(score.survivalFactor !== null && score.survivalFactor < 1
+        ? [`Tempo morto levou a nota de ${score.beforeSurvival} pra ${score.overall}`]
+        : []),
+    ],
+  }));
+
+const scoreAtual = scoreHistory.at(-1)?.value ?? null;
+
+// A meta do gráfico é o PRÓXIMO título, o mesmo que o emblema de rank já
+// anuncia ali em cima ("Faltam 4 pontos pra Nobre"). Duas telas com metas
+// diferentes pra mesma nota seriam dois sistemas.
+const proximoTitulo =
+  scoreAtual === null
+    ? undefined
+    : TITULOS_DO_HAIL_SCORE.find((faixa) => faixa.minimo > scoreAtual);
+
+function ordenarPorFuncao<T extends { id: string }>(series: T[]): T[] {
+  if (player.role !== 'tank') return series;
+
+  const defesa = series.filter((item) => item.id === 'defense');
+  return [...defesa, ...series.filter((item) => item.id !== 'defense')];
+}
+
+// Recontado do histórico inteiro a cada build: assim uma recoleta que
+// corrige uma noite antiga corrige o placar junto.
+const nomeDoBoss = new Map(
+  [...seasonJson.bossesNormal, ...seasonJson.bossesHeroic].map((boss) => [
+    boss.encounterID,
+    boss.name,
+  ])
+);
+
+/**
+ * Medalha é da PESSOA, não do personagem: quem foi de alt numa noite pra
+ * compor o raide continua com a temporada inteira. A ficha do alt remete
+ * pra do main em vez de ter estante própria — ver `pessoas.ts`.
+ */
+const pessoas = mapearPessoas(jogadores);
+const pessoaDoJogador = pessoas.get(player.id) ?? player.id;
+const eAlt = pessoaDoJogador !== player.id;
+const mainDoJogador = eAlt ? roster.find((jogador) => jogador.id === pessoaDoJogador) : undefined;
+const outrosPersonagens = alterEgosDe(jogadores, player.id)
+  .map((id) => roster.find((jogador) => jogador.id === id))
+  .filter((jogador): jogador is (typeof roster)[number] => jogador !== undefined);
+
+/**
+ * A prontidão de todo mundo, não só deste jogador: as medalhas de
+ * "Pronto pro ..." são apuradas pela mesma função que apura o resto, e ela
+ * precisa saber o nível de cada personagem que apareceu na temporada.
+ */
+const prontidaoPorPersonagem = prontidaoDoRoster(roster, weeks);
+const prontidaoDoPersonagem = prontidaoPorPersonagem.get(player.id) ?? null;
+
+const conquistasDoJogador = contarConquistas(
+  weeks,
+  metasDoCore,
+  {
+    funcaoDe: (playerId) => jogadores.find((jogador) => jogador.id === playerId)?.role,
+    nomeDoBoss: (encounterID) => nomeDoBoss.get(encounterID),
+    pessoaDe: (playerId) => pessoas.get(playerId) ?? playerId,
+    zoeiraDesde: seasonJson.config.zoeiraDesde,
+    prontidaoDe: (playerId) => prontidaoPorPersonagem.get(playerId)?.prontidao.nivel ?? null,
+  }
+).get(pessoaDoJogador);
+
+/**
+ * As três medalhas mais perto de cair. Entram EM CIMA da parede, sem tirar
+ * nada dela — a mesma lista, lida pra frente.
+ *
+ * Usa o histórico da PESSOA (main + alts), pela mesma razão das conquistas:
+ * quem trocou de cadeira pra compor o raide não recomeça do zero.
+ */
+const aoAlcanceDoJogador = aoSeuAlcance(
+  jogadores
+    .filter((jogador) => (pessoas.get(jogador.id) ?? jogador.id) === pessoaDoJogador)
+    .flatMap((jogador) => getPlayerHistory(weeks, jogador.id)),
+  new Set(conquistasDoJogador?.keys() ?? [])
+);
+
+/**
+ * A temporada do jogador aberta boss a boss.
+ *
+ * A chave é encounterID + dificuldade: o mesmo encontro no Normal e no
+ * Heroico são duas lutas diferentes, e somá-las daria uma média que não
+ * descreve nenhuma das duas.
+ */
+const nomeDoEncontro = new Map<number, string>(
+  [...seasonJson.bossesNormal, ...seasonJson.bossesHeroic].map((boss) => [
+    boss.encounterID,
+    boss.name,
+  ])
+);
+
+/**
+ * A posição de cada encontro na raide. Ordenar por trys parecia útil — "onde
+ * a temporada foi gasta" — mas embaralha a lista a cada semana e obriga a
+ * procurar o boss. A ordem da instância é a que o jogador já tem na cabeça.
+ */
+const ordemDaRaide = new Map<number, number>(
+  seasonJson.bossesNormal.map((boss, indice) => [boss.encounterID, indice])
+);
+
+/** Em que noite cada boss caiu pela primeira vez, por dificuldade. */
+const primeiroKill = new Map<string, string>();
+for (const [lista, dificuldade] of [
+  [seasonJson.bossesNormal, 3],
+  [seasonJson.bossesHeroic, 4],
+] as const) {
+  for (const boss of lista) {
+    const kill = (boss.pullLog ?? []).find((entrada) => entrada.kill);
+    if (kill) primeiroKill.set(`${boss.encounterID}:${dificuldade}`, kill.date);
+  }
+}
+
+const porBoss = new Map<
+  string,
+  {
+    chave: string;
+    nome: string;
+    dificuldade: string;
+    tries: number;
+    kills: number;
+    dano: number[];
+    deaths: number;
+    noites: Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number; semVoce: number }>;
+  }
+>();
+
+for (const noite of history) {
+  for (const boss of noite.bossTries ?? []) {
+    const dificuldade = boss.difficulty ?? 0;
+    const chave = `${boss.encounterID}:${dificuldade}`;
+
+    const atual = porBoss.get(chave) ?? {
+      chave,
+      nome: nomeDoEncontro.get(boss.encounterID) ?? `Encontro ${boss.encounterID}`,
+      dificuldade: dificuldade === 4 ? 'Heroico' : dificuldade === 3 ? 'Normal' : '—',
+      tries: 0,
+      kills: 0,
+      dano: [] as number[],
+      deaths: 0,
+      noites: [] as Array<{ date: string; tries: number; killed: boolean; dps?: number; deaths: number; share: number; semVoce: number }>,
+    };
+
+    atual.tries += boss.tries;
+    if (boss.killed) atual.kills += 1;
+    if (boss.dps !== undefined) atual.dano.push(boss.dps);
+    atual.deaths += boss.deaths ?? 0;
+
+    atual.noites.push({
+      date: noite.date,
+      tries: boss.tries,
+      killed: boss.killed,
+      dps: boss.dps,
+      deaths: boss.deaths ?? 0,
+      share: boss.deathCost?.share ?? 0,
+      semVoce: boss.deathCost?.seconds ?? 0,
+    });
+
+    porBoss.set(chave, atual);
+  }
+}
+
+const mediaDeLista = (v: number[]) =>
+  v.length === 0 ? null : Math.round((v.reduce((s, x) => s + x, 0) / v.length) * 10) / 10;
+
+const bossABoss = [...porBoss.values()]
+  .map((boss) => {
+    const noites = [...boss.noites].sort((a, b) => a.date.localeCompare(b.date));
+    const ultima = noites.at(-1);
+
+    return {
+      chave: boss.chave,
+      encounterID: Number(boss.chave.split(':')[0]),
+      dificuldade: boss.dificuldade,
+      nome: boss.nome,
+      tries: boss.tries,
+      kills: boss.kills,
+      dps: mediaDeLista(boss.dano),
+      deaths: boss.deaths,
+      /**
+       * O tempo morto da ÚLTIMA noite, não o somado da temporada.
+       *
+       * O acumulado só cresce: uma noite impecável mal o move, o que faz dele
+       * um número insensível justamente ao comportamento que ele deveria
+       * provocar. Pior, carrega pra sempre semanas de progressão e de lag,
+       * cobrando hoje por uma luta que ninguém sabia jogar em agosto.
+       * O somado da temporada é leitura de retrospectiva, não de diagnóstico.
+       */
+      ultimaNoite: ultima
+        ? { date: ultima.date, deaths: ultima.deaths, semVoce: ultima.semVoce, share: ultima.share }
+        : null,
+      // Já tinha caído antes da ÚLTIMA noite em que a pessoa o enfrentou: é o
+      // que separa a luta que se está aprendendo da que já se domina.
+      farm: (() => {
+        const quando = primeiroKill.get(boss.chave);
+        return quando !== undefined && quando < (ultima?.date ?? '');
+      })(),
+      noites,
+    };
+  })
+  // A ordem da instância, e o Heroico antes do Normal do mesmo encontro:
+  // é a dificuldade em que o core raida hoje.
+  .sort(
+    (a, b) =>
+      (ordemDaRaide.get(a.encounterID) ?? 99) - (ordemDaRaide.get(b.encounterID) ?? 99) ||
+      a.dificuldade.localeCompare(b.dificuldade)
+  );
+
+
+const prontidao = prontidaoDoPersonagem?.prontidao ?? null;
+const funcaoDaProntidao = prontidaoDoPersonagem?.funcao ?? 'dps';
+
+/**
+ * As linhas de nível do gráfico: o piso que a pessoa segura e o degrau
+ * seguinte. Cada métrica lê a régua que é dela — parse e mecânicas saem da
+ * EXIGENCIA, e o dps é uma fração do PRÓPRIO sim, não um número fixo.
+ */
+const simDeDps = player.performanceGoals?.dps?.target ?? null;
+
+const degrausDoParse = prontidao
+  ? degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].parse)
+  : [];
+const degrausDeMecanicas = prontidao
+  ? degrausDaMetrica(prontidao, (nivel) => EXIGENCIA[nivel].mechanics)
+  : [];
+const degrausDoOficio = prontidao
+  ? degrausDaMetrica(prontidao, (nivel) => CRITERIO_DO_OFICIO[funcaoDaProntidao][nivel])
+  : [];
+
+// Sem sim medido não há fração pra desenhar — e uma linha inventada aqui
+// seria uma meta que ninguém combinou.
+const degrausDoDps =
+  prontidao && funcaoDaProntidao === 'dps' && simDeDps
+    ? degrausDaMetrica(prontidao, (nivel) =>
+        Math.round((CRITERIO_DO_OFICIO.dps[nivel] / 100) * simDeDps)
+      )
+    : [];
+
+const overallScore = hasData
+  ? calculateOverallScore(
+      ultimaNoite ?? seasonAverage,
+      metasDoCore,
+      player.role
+    )
+  : undefined;
+
+// O coach lê a noite INTEIRA, não só a nota: é do detalhe dela que sai o
+// nome próprio da coisa a treinar. A penúltima entra pra ele poder abrir
+// pelo que melhorou — sem ela, sobra só o ponto forte.
+const coachRecommendation = ultimaNoite
+  ? buildCoachRecommendation(
+      ultimaNoite,
+      history.at(-2),
+      metasDoCore,
+      player.role
+    )
+  : undefined;
+
+// Tendência olha pra métrica principal do jogador (dps ou hps, mesmo
+// critério de primaryMetricSeries acima) ao longo do histórico.
+const trend = calculateTrend(
+  primaryMetricSeries.data.map((point) => point.value)
+);
+
+/**
+ * Presença da PESSOA, não do personagem.
+ *
+ * Contava só este personagem, e isso contrariava a regra escrita do core:
+ * quem pegou o alt porque faltava dps aparecia com 88% ou 75%, como se
+ * tivesse faltado à noite que jogou. Três pessoas do roster estavam assim.
+ */
+const attendance = calculateAttendance(weeks, [
+  player.id,
+  ...outrosPersonagens.map((jogador) => jogador.id),
+]);
+
+---
+
+<BaseLayout
+  title={`${player.name} — Performance`}
+  description={`Evolução de performance de ${player.name} no ${seasonJson.config.coreName}.`}
+>
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    {/* Volta pra ONDE a pessoa veio, não pra um lugar fixo.
+
+        Quem clica num jogador no gráfico da dashboard era devolvido pra
+        lista de membros, que não é de onde saiu. O destino é decidido no
+        cliente porque a página é estática: o mesmo HTML serve a quem chegou
+        da dashboard, da lista e de um link direto. */}
+    <a
+      href={`/core/${coreAtual.slug}/membros/`}
+      data-voltar
+      class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-8"
+    >
+      ← <span data-voltar-texto>Voltar para membros</span>
+    </a>
+
+    {/* Identidade, medalha e os números da temporada numa faixa só.
+        Antes eram duas coisas: um header e uma seção inteira de cartões, e
+        o jogador rolava uma tela de contexto antes de chegar na nota. */}
+    <CabecalhoDoJogador
+      player={player}
+      score={overallScore?.overall ?? null}
+      average={hasData ? seasonAverage : null}
+      presenca={hasData ? attendance : null}
+      noitesDoCore={noitesDoCore}
+      tendencia={hasData ? trend : null}
+      porBoss={bossABoss.map((boss) => ({
+        nome: boss.nome,
+        dificuldade: boss.dificuldade,
+        kills: boss.kills,
+        deaths: boss.deaths,
+      }))}
+    />
+
+    {!hasData && (
+      <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
+        <h2 class="text-xl font-bold text-white">Sem dados de performance</h2>
+
+        <p class="text-slate-400 mt-2">
+          Ainda não existem dados registrados para este jogador.
+        </p>
+      </section>
+    )}
+
+    {/**
+     * O Score abre a página, e NADA se interpõe entre o jogador e ele — nem
+     * título de ato, nem faixa de resumo.
+     *
+     * Uma versão anterior pôs o coach e um cabeçalho na frente, e a nota caiu
+     * pra quinta posição. Era o erro que criticamos nos outros sites feito ao
+     * contrário: em vez de dado sem caminho, caminho sem o dado que a pessoa
+     * veio ver. O Score é o centro; o coach explica o que fazer com ele e o
+     * resto da página existe pra sustentá-lo.
+     *
+     * A faixa "Performance na temporada" desceu junto, e isso conserta uma
+     * incoerência que já existia: ela é da season inteira, o Score é da
+     * última noite, e ela estava aparecendo primeiro. O primeiro número da
+     * página não era o que a pessoa veio ver.
+     */}
+    {
+      hasData && overallScore && (
+        <PerformanceScoreCard
+          score={overallScore}
+          nightDate={ultimaNoite?.date ?? null}
+          nightTries={ultimaNoite?.mechanics?.tries ?? null}
+          preparationMissing={preparationMissing}
+          mechanicsDetail={mechanicsDetail}
+          attackDetail={attackDetail}
+          attackParts={attackParts}
+          defenseDetail={defenseDetail}
+          defenseContext={defenseContext}
+          pancadas={ultimaNoite?.pancadas ?? []}
+          deathDetail={deathDetail}
+          nomeDoEncontro={Object.fromEntries(nomeDoBoss)}
+          healingParts={healingParts}
+          funcao={ultimaNoite?.healing ? 'healer' : player.role === 'tank' ? 'tank' : 'dps'}
+        />
+      )
+    }
+
+    {/* Logo abaixo da nota: o que fazer com ela. Uma coisa de cada vez,
+        medida na própria noite da pessoa, sem comparar com ninguém. */}
+    {hasData && coachRecommendation && <CoachCard recomendacao={coachRecommendation} />}
+
+    {hasData && (
+      <OQueVoceFezPeloGrupo
+        helpDetail={helpDetail}
+        interrupcoes={interrupcoes}
+        utilidade={ultimaNoite?.utility ?? null}
+      />
+    )}
+
+    {hasData && (
+      <AtoDaPagina
+        numero={2}
+        titulo="O que sustenta a nota"
+        comoLer="À esquerda, a mesma noite que a nota mede e o que muda ela antes da próxima terça. À direita, a temporada inteira."
+      />
+    )}
+
+    {/**
+     * Daqui pra baixo a ficha vira painel, não lista.
+     *
+     * Em coluna única cada seção ocupava a tela inteira e a pessoa rolava
+     * quinze vezes pra ter a visão do conjunto — que é justamente o que um
+     * painel existe pra dar de relance. Duas colunas separam as duas
+     * perguntas que sobram: o que dá pra mudar já (esquerda) e como foi a
+     * temporada (direita).
+     *
+     * Empilha em uma coluna abaixo de lg, onde duas colunas viram duas
+     * colunas estreitas e ilegíveis.
+     */}
+    <div class="grid lg:grid-cols-2 gap-x-8 items-start">
+      <div>
+    {/* Sobe pro topo da coluna: é da MESMA noite que o Score mede, e lá
+        embaixo ficava solta, depois de dois blocos de temporada. */}
+    <ContribuicaoForaDeFuncao
+      atual={foraDeFuncaoAtual}
+      media={foraDeFuncaoMedia}
+      nights={noitesForaDeFuncao}
+    />
+
+    {
+      hasData && (
+        <PerformanceGoals
+          goals={player.performanceGoals}
+          current={{
+            ...seasonAverage,
+            mechanics: ultimaNoite?.mechanics,
+            attack: ultimaNoite?.attack,
+            defense: ultimaNoite?.defense,
+            healing: ultimaNoite?.healing,
+          }}
+          coreMechanicsTarget={metasDoCore.mechanics.target}
+          coreAttackTarget={metasDoCore.attack.target}
+          coreDefenseTarget={metasDoCore.defense.target}
+          coreHealingTarget={metasDoCore.healing.target}
+        />
+      )
+    }
+
+    {hasData && (
+      <PortaoDePreparacao
+        slots={ultimaNoite?.preparationSlots}
+        faltando={preparationMissing}
+        nightDate={ultimaNoite?.date ?? null}
+      />
+    )}
+
+    {hasData && prontidao && (
+      <CartaoDeProntidao prontidao={prontidao} noites={history.length} />
+    )}
+      </div>
+
+      <div>
+    {hasData && <BossABoss bosses={bossABoss} />}
+
+    <PainelDoTank atual={tankAtual} media={tankMedia} nights={noitesComoTank} />
+
+      </div>
+    </div>
+
+    {
+      history.length > 0 && (
+            <ConquistasDoJogador
+      ganhas={conquistasDoJogador}
+      elegivel={player.status === 'member' || player.status === 'veteran'}
+      remeteAo={mainDoJogador ? { id: mainDoJogador.id, nome: mainDoJogador.name } : undefined}
+      tambemJoga={outrosPersonagens.map((jogador) => jogador.name)}
+      nomeDoPersonagem={Object.fromEntries(roster.map((jogador) => [jogador.id, jogador.name]))}
+      zoeiraDesde={seasonJson.config.zoeiraDesde}
+      aoAlcance={aoAlcanceDoJogador}
+    />
+
+<PerformanceChart
+  raides={seasonJson.config.raids}
+  raidePorNoite={raidePorNoite}
+          series={[
+            // A nota da pessoa abre o gráfico: é a leitura de cima, e as
+            // outras abas explicam ela. Fica fora do ordenarPorFuncao de
+            // propósito — pro tanque, Defender vem logo depois, não antes.
+            ...(scoreHistory.length > 0
+              ? [
+                  {
+                    id: 'score',
+                    label: 'Score geral',
+                    data: scoreHistory,
+                    target: proximoTitulo?.minimo,
+                    current: scoreAtual,
+                    direction: 'higher' as const,
+                  },
+                ]
+              : []),
+            ...ordenarPorFuncao([
+            // Curar na frente quando existe: pro healer é o ofício, e o
+            // volume (HPS) logo atrás explica o número.
+            ...(healingHistory.length > 0
+              ? [
+                  {
+                    id: 'healing',
+                    label: 'Curar',
+                    data: healingHistory,
+                    target: metasDoCore.healing.target,
+                    current: ultimaNoite?.healing?.score ?? null,
+                    direction: 'higher' as const,
+                    // Curar só é o OFÍCIO de quem curou a temporada. Pro dps
+                    // que cura de vez em quando, a régua de healer seria uma
+                    // cobrança por um trabalho que não é o dele.
+                    degraus: funcaoDaProntidao === 'healer' ? degrausDoOficio : [],
+                  },
+                ]
+              : []),
+            // O degrau de dps é uma FRAÇÃO do próprio sim: a linha do mítico
+            // do jrxamã não é a do dagom, porque o potencial não é o mesmo.
+            { ...primaryMetricSeries, degraus: degrausDoDps },
+            {
+              id: 'parse',
+              label: 'Parse',
+              data: parseHistory,
+              target: player.performanceGoals?.parse?.target,
+              direction: 'higher' as const,
+              degraus: degrausDoParse,
+            },
+            {
+              id: 'mechanics',
+              label: 'Mecânicas',
+              data: mechanicsHistory,
+              // A meta de mecânicas é do core, igual pra todo mundo — a
+              // individual saiu do roster quando só o objetivo de dps ficou.
+              target: metasDoCore.mechanics.target,
+              current: ultimaNoite?.mechanics?.errors ?? null,
+              direction: 'lower' as const,
+              degraus: degrausDeMecanicas,
+            },
+            {
+              id: 'attack',
+              label: 'Atacar',
+              data: attackHistory,
+              // Meta do core, igual pra todo mundo — não existe objetivo
+              // individual de execução ofensiva no roster.
+              target: metasDoCore.attack.target,
+              current: ultimaNoite?.attack?.score ?? null,
+              direction: 'higher' as const,
+            },
+            {
+              id: 'defense',
+              label: 'Defender',
+              data: defenseHistory,
+              target: metasDoCore.defense.target,
+              current: ultimaNoite?.defense?.score ?? null,
+              direction: 'higher' as const,
+              // Mesma regra de Curar: Defender é a régua de quem tanka.
+              degraus: funcaoDaProntidao === 'tank' ? degrausDoOficio : [],
+            },
+            ...(offRoleDpsHistory.length > 0
+              ? [
+                  {
+                    id: 'off-role-dps',
+                    label: 'Dano fora de função',
+                    data: offRoleDpsHistory,
+                    // Sem meta de propósito: é contribuição extra, não
+                    // obrigação — uma linha de META aqui viraria cobrança
+                    // por algo que não é o ofício da pessoa.
+                    direction: 'higher' as const,
+                  },
+                ]
+              : []),
+            ...(offRoleHpsHistory.length > 0
+              ? [
+                  {
+                    id: 'off-role-hps',
+                    label: 'Cura fora de função',
+                    data: offRoleHpsHistory,
+                    direction: 'higher' as const,
+                  },
+                ]
+              : []),
+            ...(recursosHistory.length > 0
+              ? [
+                  {
+                    id: 'recursos',
+                    label: 'Recursos',
+                    data: recursosHistory,
+                    direction: "higher" as const,
+                  },
+                ]
+              : []),
+            {
+              id: 'deaths',
+              label: 'Mortes',
+              data: deathsHistory,
+              target: player.performanceGoals?.deaths?.target,
+              direction: 'lower' as const,
+            },
+            ].filter((item) => !HIDDEN_CHART_SERIES.has(item.id))),
+          ]}
+        />
+      )
+    }
+
+    {/* A coluna "Semana" saiu: a data já diz quando foi, e o número da
+        semana só existia porque é assim que o arquivo é organizado — detalhe
+        nosso, não do jogador.
+
+        A paginação é de dez em dez porque a temporada cresce e a tabela
+        crescia junto: no fim do tier seriam trinta linhas fechando a página
+        com uma parede que ninguém lê inteira. A mais recente vem primeiro —
+        é a que alguém realmente quer conferir. */}
+    <section>
+      <h2 class="text-xl font-bold text-white mb-4">Histórico</h2>
+
+      <div class="overflow-x-auto bg-slate-900/60 border border-slate-800 rounded-xl">
+        <table class="w-full text-sm" data-historico>
+          <thead class="border-b border-slate-800">
+            <tr class="text-left text-slate-500">
+              <th class="px-4 py-3">Data</th>
+              <th class="px-4 py-3 text-right">DPS</th>
+              <th class="px-4 py-3 text-right">HPS</th>
+              <th class="px-4 py-3 text-right">Parse</th>
+              <th class="px-4 py-3 text-right">Mortes</th>
+              <th class="px-4 py-3 text-right">Erros</th>
+              <th class="px-4 py-3 text-right">Item level</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {[...history].reverse().map((performance, indice) => (
+              <tr
+                class:list={[
+                  'border-b border-slate-800/50 last:border-0',
+                  indice >= POR_PAGINA && 'hidden',
+                ]}
+                data-linha={indice}
+              >
+                <td class="px-4 py-3 text-slate-300 whitespace-nowrap">
+                  {formatDate(performance.date)}
+                </td>
+
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {formatPerformanceValue(performance.dps)}
+                </td>
+
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {formatPerformanceValue(performance.hps)}
+                </td>
+
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.parse ?? '-'}
+                </td>
+
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.deaths}
+                </td>
+
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.mechanics?.errors ?? '-'}
+                </td>
+
+                <td class="px-4 py-3 text-right text-slate-300 tabular-nums">
+                  {performance.itemLevel ?? '-'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Só aparece quando há o que paginar. Com oito noites a barra seria
+            uma linha de "1 de 1" ocupando espaço pra não dizer nada. */}
+        {history.length > POR_PAGINA && (
+          <div
+            class="flex items-center justify-between gap-3 px-4 py-3 border-t border-white/5"
+            data-paginacao
+            data-total={history.length}
+            data-por-pagina={POR_PAGINA}
+          >
+            <button
+              type="button"
+              data-anterior
+              class="text-xs text-slate-400 hover:text-white disabled:text-slate-700 disabled:cursor-default transition-colors"
+            >
+              ‹ Anteriores
+            </button>
+
+            <span class="text-[11px] text-slate-500 tabular-nums" data-posicao />
+
+            <button
+              type="button"
+              data-proxima
+              class="text-xs text-slate-400 hover:text-white disabled:text-slate-700 disabled:cursor-default transition-colors"
+            >
+              Mais antigas ›
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  /**
+   * Paginação do histórico.
+   *
+   * As linhas já vêm todas no HTML — a tabela tem dezenas de linhas, não
+   * milhares, e buscar página por página exigiria um endpoint pra economizar
+   * bytes que o gzip já economiza. Aqui só se esconde e se mostra.
+   *
+   * Sem JS a primeira página continua visível e o resto fica oculto: perde a
+   * navegação, não a tabela.
+   */
+  const paginacao = document.querySelector<HTMLElement>('[data-paginacao]');
+  const tabela = document.querySelector<HTMLTableElement>('[data-historico]');
+
+  if (paginacao && tabela) {
+    const linhas = [...tabela.querySelectorAll<HTMLTableRowElement>('[data-linha]')];
+    const porPagina = Number(paginacao.dataset.porPagina) || 10;
+    const paginas = Math.max(1, Math.ceil(linhas.length / porPagina));
+
+    const anterior = paginacao.querySelector<HTMLButtonElement>('[data-anterior]');
+    const proxima = paginacao.querySelector<HTMLButtonElement>('[data-proxima]');
+    const posicao = paginacao.querySelector<HTMLElement>('[data-posicao]');
+
+    let pagina = 0;
+
+    const mostrar = () => {
+      const inicio = pagina * porPagina;
+      const fim = inicio + porPagina;
+
+      for (const [indice, linha] of linhas.entries()) {
+        linha.classList.toggle('hidden', indice < inicio || indice >= fim);
+      }
+
+      if (anterior) anterior.disabled = pagina === 0;
+      if (proxima) proxima.disabled = pagina >= paginas - 1;
+
+      // "1-10 de 24" e não "página 1 de 3": diz quantas noites existem, que é
+      // o que alguém quer saber antes de decidir se vale navegar.
+      if (posicao) {
+        posicao.textContent = `${inicio + 1}–${Math.min(fim, linhas.length)} de ${linhas.length} noites`;
+      }
+    };
+
+    anterior?.addEventListener('click', () => {
+      pagina = Math.max(0, pagina - 1);
+      mostrar();
+    });
+
+    proxima?.addEventListener('click', () => {
+      pagina = Math.min(paginas - 1, pagina + 1);
+      mostrar();
+    });
+
+    mostrar();
+  }
+</script>
+
+<script>
+  /**
+   * O "Voltar" leva pra onde a pessoa veio.
+   *
+   * Quem clicava num jogador no gráfico da dashboard era devolvido pra lista
+   * de membros — que não é de onde saiu, e dá a sensação de ter perdido o
+   * lugar. Como a página é estática, o mesmo HTML serve a quem chegou da
+   * dashboard, da lista e de um link direto; quem decide é o referrer.
+   *
+   * Só aceita origem do MESMO site: referrer de fora viraria um link de
+   * volta pra fora, o que é pior que o destino fixo.
+   */
+  const link = document.querySelector<HTMLAnchorElement>('[data-voltar]');
+  const texto = link?.querySelector<HTMLElement>('[data-voltar-texto]');
+
+  if (link && texto && document.referrer) {
+    try {
+      const de = new URL(document.referrer);
+
+      if (de.origin === window.location.origin && de.pathname !== window.location.pathname) {
+        const destinos: Array<{ casa: RegExp; href: string; rotulo: string }> = [
+          { casa: /^\/core\/[^/]+\/membros\/?$/, href: de.pathname, rotulo: 'Voltar para membros' },
+          { casa: /^\/core\/[^/]+\/?$/, href: de.pathname, rotulo: 'Voltar para a dashboard' },
+          {
+            casa: /^\/core\/[^/]+\/hall-da-fama\/?$/,
+            href: de.pathname,
+            rotulo: 'Voltar para o hall da fama',
+          },
+          { casa: /^\/core\//, href: de.pathname, rotulo: 'Voltar' },
+        ];
+
+        const destino = destinos.find((d) => d.casa.test(de.pathname));
+        if (destino) {
+          link.href = destino.href;
+          texto.textContent = destino.rotulo;
+        }
+      }
+    } catch {
+      // Referrer inválido: fica o destino padrão, que nunca está errado.
+    }
+  }
+</script>

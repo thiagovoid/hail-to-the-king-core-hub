@@ -39,12 +39,10 @@ const groups: NavGroup[] = [
     label: 'Guilda',
     icon: '🏰',
     items: [
-      // Escondidos até o site estar apresentável — as páginas seguem no ar
-      // e continuam sendo geradas no build; é só tirar o hidden pra voltarem.
-      // Com os três ocultos o grupo inteiro some do menu (ver visibleGroups).
+      // Escondido até o site estar apresentável — a página segue no ar e
+      // continua sendo gerada no build; é só tirar o hidden pra voltar.
+      // Com ele oculto o grupo inteiro some do menu (ver visibleGroups).
       { label: 'História', href: '/historia/', icon: '📜', hidden: true },
-      { label: 'Chronicle', href: '/chronicle/', icon: '📖', hidden: true },
-      { label: 'Hall da Fama', href: '/hall-da-fama/', icon: '🏆', hidden: true },
     ],
   },
   {
@@ -57,6 +55,16 @@ const groups: NavGroup[] = [
       { label: 'Progressão', href: `/core/${slugDoCore}/progressao/`, icon: '🗡' },
       { label: 'Membros', href: `/core/${slugDoCore}/membros/`, icon: '👥' },
       { label: 'Mythic+', href: `/core/${slugDoCore}/mythic/`, icon: '🗝' },
+      // Chronicle e Hall da Fama saíram do grupo da Guilda: os dois são
+      // feitos de performance de core, e com dois cores um recorde "da
+      // guilda" seria a mistura de dois elencos diferentes.
+      { label: 'Chronicle', href: `/core/${slugDoCore}/chronicle/`, icon: '📖', hidden: true },
+      {
+        label: 'Hall da Fama',
+        href: `/core/${slugDoCore}/hall-da-fama/`,
+        icon: '🏆',
+        hidden: true,
+      },
     ],
   },
 ];

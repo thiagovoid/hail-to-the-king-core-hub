@@ -67,9 +67,11 @@ interface Props {
    * raide, em vez de entrar inteira nas duas.
    */
   raidePorNoite?: Record<string, string>;
+  /** O core desta página. Os links de jogador apontam pro roster dele. */
+  core: string;
 }
 
-const { metrics, rosterGroups = [], raides = [], raidePorNoite = {} } = Astro.props;
+const { metrics, rosterGroups = [], raides = [], raidePorNoite = {}, core } = Astro.props;
 
 /** Com uma raide, filtrar por raide é escolher entre uma opção só. */
 const mostrarFiltroDeRaide = raides.length > 1;
@@ -286,6 +288,7 @@ const serializedMetrics = metrics.map((metric) => ({
 ---
 
 <section
+  data-core={core}
   class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 mt-8"
 >
   <div
@@ -424,7 +427,7 @@ const serializedMetrics = metrics.map((metric) => ({
 
               {grupo.players.map((jogador) => (
                 <a
-                  href={`/core/membros/${jogador.slug}/`}
+                  href={`/core/${core}/membros/${jogador.slug}/`}
                   class={`text-xs hover:underline transition-opacity hover:opacity-80 ${jogador.colorClass}`}
                 >
                   {jogador.name}
@@ -650,7 +653,7 @@ const serializedMetrics = metrics.map((metric) => ({
                       {
                         playerSeries.playerSlug ? (
                           <a
-                            href={`/core/membros/${playerSeries.playerSlug}/`}
+                            href={`/core/${core}/membros/${playerSeries.playerSlug}/`}
                             class="text-slate-300 hover:text-white hover:underline transition-colors"
                           >
                             {playerSeries.playerName}
@@ -696,6 +699,9 @@ const serializedMetrics = metrics.map((metric) => ({
 </section>
 
 <script>
+  /** O core desta página, pros links que o script monta em runtime. */
+  const coreDaPagina = document.querySelector<HTMLElement>('section[data-core]')?.dataset.core ?? '';
+
   interface DataPoint {
     date: string;
     value: number;
@@ -1134,7 +1140,7 @@ const serializedMetrics = metrics.map((metric) => ({
         : '';
 
       const nameHtml = playerSeries.playerSlug
-        ? `<a href="/core/membros/${playerSeries.playerSlug}/" class="text-slate-300 hover:text-white hover:underline transition-colors">${nameEscaped}</a>`
+        ? `<a href="/core/${coreDaPagina}/membros/${playerSeries.playerSlug}/" class="text-slate-300 hover:text-white hover:underline transition-colors">${nameEscaped}</a>`
         : `<span class="text-slate-300">${nameEscaped}</span>`;
 
       if (metric.series.length > 1)
