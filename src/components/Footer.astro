@@ -16,7 +16,7 @@ const lastUpdated = formatDate(seasonData.config.lastUpdated);
  * sempre o core principal, e isso virou mentira na página do segundo: em
  * página de guilda ele agora mostra só a temporada.
  */
-const slugDaUrl = Astro.url.pathname.match(/^\/core\/([^/]+)/)?.[1];
+const slugDaUrl = Astro.url.pathname.match(/^\/(?:core|evento)\/([^/]+)/)?.[1];
 const coreDaPagina = slugDaUrl ? coreDoSlug(slugDaUrl) : undefined;
 ---
 

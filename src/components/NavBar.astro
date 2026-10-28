@@ -9,7 +9,10 @@
  * Hall da Fama entrarem.
  */
 
-import { coresDeRaide } from '@/engine/guild/cores';
+import { CORES, coresDeRaide } from '@/engine/guild/cores';
+
+/** Os cores de `formato: evento` — página de outro tipo, em /evento. */
+const eventos = CORES.filter((core) => core.formato === 'evento');
 
 const currentPath = Astro.url.pathname;
 
@@ -47,6 +50,13 @@ const groups: NavGroup[] = [
       // continua sendo gerada no build; é só tirar o hidden pra voltar.
       // Com ele oculto o grupo inteiro some do menu (ver visibleGroups).
       { label: 'História', href: '/historia/', icon: '📜', hidden: true },
+      // Evento é da GUILDA, não de um core: o elenco do guild run sai de
+      // todo lado, e ele nem sempre é sobre fazer raide.
+      ...eventos.map((evento) => ({
+        label: evento.nome,
+        href: `/evento/${evento.slug}/`,
+        icon: '🎲',
+      })),
     ],
   },
   // Um grupo por core de raide, e não um seletor de core: cada core tem as

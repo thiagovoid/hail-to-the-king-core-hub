@@ -1,0 +1,146 @@
+---
+/**
+ * [evento].astro — A página de um core de `formato: evento`.
+ *
+ * Fica fora de `/core/[core]/` porque não é o mesmo tipo de página: um
+ * evento não tem progressão, score de temporada nem média — o elenco muda
+ * toda edição e o personagem é de uma noite só. O que ele tem é noite, e o
+ * que se quer de uma noite de guild run é quem foi o maior de cada coisa,
+ * incluindo as coisas que ninguém quer ser o maior.
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CORES, semanasDoCore } from '@/engine/guild/cores';
+import { noitesDoCore } from '@/engine/guild/noites';
+import { medalhasDaNoite, type JogadorDaNoite } from '@/engine/guild/medalhasDaNoite';
+import { formatDate } from '@/utils/format';
+
+import { performanceWeeks } from '../../../data/weekly/performance/index';
+
+export function getStaticPaths() {
+  return CORES.filter((core) => core.formato === 'evento').map((core) => ({
+    params: { evento: core.slug },
+    props: { core },
+  }));
+}
+
+const { core } = Astro.props;
+
+const noites = noitesDoCore(semanasDoCore(performanceWeeks, core.slug)).map((noite) => {
+  const medalhas = medalhasDaNoite(noite.jogadores as JogadorDaNoite[]);
+
+  /** O nome como a pessoa escreve. O `playerId` é ele em minúsculas. */
+  const elenco = new Map<string, string>();
+  for (const semana of semanasDoCore(performanceWeeks, core.slug)) {
+    for (const run of semana.runs ?? []) {
+      if (run.date !== noite.date) continue;
+      for (const [id, nome] of Object.entries(run.elenco ?? {})) elenco.set(id, nome);
+    }
+  }
+
+  return {
+    ...noite,
+    nomeDe: (id: string) => elenco.get(id) ?? id,
+    merito: medalhas.filter((medalha) => medalha.tom === 'merito'),
+    zoeira: medalhas.filter((medalha) => medalha.tom === 'zoeira'),
+  };
+});
+
+const totalDeNoites = noites.length;
+---
+
+<BaseLayout
+  title={core.nome}
+  description={`As noites de ${core.nome} — quem foi o maior de cada coisa, e o que deu errado.`}
+>
+  <section class="bg-[#0a0d14] border-b border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+      <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-2">
+        Evento da guilda
+      </p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[#f0a500] tracking-tight mb-4">
+        {core.nome}
+      </h1>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto leading-relaxed">
+        Noite avulsa, elenco rotativo, personagem de uma noite só. Não entra na progressão nem
+        no score da temporada — aqui o placar é da noite.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
+    {totalDeNoites === 0 && (
+      <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-xl font-bold text-white">Nenhuma noite coletada</h2>
+        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          As noites aparecem aqui quando o log de uma delas entrar na coleta.
+        </p>
+      </div>
+    )}
+
+    {noites.map((noite) => (
+      <section>
+        <header class="flex flex-wrap items-baseline justify-between gap-3 mb-6 pb-3 border-b border-slate-800">
+          <h2 class="text-xl font-bold text-white">{formatDate(noite.date)}</h2>
+
+          <p class="text-xs text-slate-500">
+            {noite.jogadores.length} personagens
+            {noite.reportCodes.length > 1 && (
+              <span>
+                {' · '}
+                {noite.reportCodes.length} arquivos de log (o WoW parte quando alguém desloga)
+              </span>
+            )}
+            {noite.reportCodes.map((code) => (
+              <>
+                {' · '}
+                <a
+                  href={`https://www.warcraftlogs.com/reports/${code}`}
+                  class="text-slate-400 hover:text-[#f0a500] underline transition-colors"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  log
+                </a>
+              </>
+            ))}
+          </p>
+        </header>
+
+        {noite.merito.length === 0 && noite.zoeira.length === 0 && (
+          <p class="text-sm text-slate-500">
+            Esta noite não tem dado suficiente pra premiar ninguém.
+          </p>
+        )}
+
+        {[
+          { chave: 'merito', rotulo: 'Destaques', medalhas: noite.merito, cor: 'text-[#f0a500]' },
+          { chave: 'zoeira', rotulo: 'Zoeira', medalhas: noite.zoeira, cor: 'text-slate-400' },
+        ]
+          .filter((grupo) => grupo.medalhas.length > 0)
+          .map((grupo) => (
+            <div class="mb-8 last:mb-0">
+              <h3 class={`${grupo.cor} text-xs font-semibold uppercase tracking-widest mb-4`}>
+                {grupo.rotulo}
+              </h3>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {grupo.medalhas.map((medalha) => (
+                  <article class="bg-[#141b2d] border border-white/7 rounded-xl p-5">
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">
+                      <span aria-hidden="true">{medalha.icone}</span> {medalha.titulo}
+                    </p>
+
+                    <p class="text-xl font-bold text-white leading-tight">
+                      {medalha.ganhadores.map((id) => noite.nomeDe(id)).join(', ')}
+                    </p>
+                    <p class="text-[#f0a500] text-sm font-semibold mt-1">{medalha.valor}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+      </section>
+    ))}
+  </div>
+</BaseLayout>

@@ -931,7 +931,21 @@ async function main() {
 
   const runsByReportCode = new Map<
     string,
-    { date: string; reportCode: string; core?: string; players: PlayerPerformance[] }
+    {
+      date: string;
+      reportCode: string;
+      core?: string;
+      /**
+       * id -> nome de quem jogou, só em noite de EVENTO.
+       *
+       * Em core o nome vem do roster.json. Num evento não há roster, e o
+       * `playerId` é o nome em minúsculas — publicar "blackbarrel" onde a
+       * pessoa se chama "Blackbarrel" é perder o dado na ida. A noite é o
+       * registro do evento, então o nome mora nela.
+       */
+      elenco?: Record<string, string>;
+      players: PlayerPerformance[];
+    }
   >();
 
   // ----- "Atacar corretamente": cooldowns ofensivos -----
@@ -1413,10 +1427,15 @@ async function main() {
       buildPlayerPerformance({ playerId, deaths, warcraftLogs })
     );
 
+    const perfis = perfisPorReport.get(ctx.report.code);
+
     runsByReportCode.set(ctx.report.code, {
       date: toBrazilDateString(ctx.report.startTime),
       reportCode: ctx.report.code,
       core: corePorReport.get(ctx.report.code),
+      elenco: perfis
+        ? Object.fromEntries(perfis.map(({ id, profile }) => [id, profile.name]))
+        : undefined,
       players,
     });
   }

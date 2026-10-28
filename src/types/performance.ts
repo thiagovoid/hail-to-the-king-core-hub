@@ -501,6 +501,16 @@ export interface PerformanceRun {
   core?: string;
 
   /**
+   * `playerId` -> nome do personagem, só em noite de core de EVENTO.
+   *
+   * Em core o nome vem do roster.json. Num evento não existe roster: o
+   * `playerId` é o nome em minúsculas, e publicar "blackbarrel" onde a
+   * pessoa se chama "Blackbarrel" é perder o dado na ida. A noite é o
+   * registro do evento, então o nome mora nela.
+   */
+  elenco?: Record<string, string>;
+
+  /**
    * Performance data for each player present in this run.
    */
   players: PlayerPerformance[];
