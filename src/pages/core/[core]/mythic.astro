@@ -13,11 +13,26 @@ import type { Player } from '@/types/index';
 import { computeMythicStats } from '@/utils/roster';
 import { formatDate } from '@/utils/format';
 
-import rosterData from '../../../data/guild/roster.json';
-import { getLatestWeeklyHighlights } from '../../../data/weekly/highlights/index';
-import seasonJson from '../../../data/seasons/midnight-s2/config.json';
+import rosterData from '../../../../data/guild/roster.json';
+import { getLatestWeeklyHighlights } from '../../../../data/weekly/highlights/index';
+import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
 
-const players = rosterData as Player[];
+import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
+
+/**
+ * Uma página por core de raide.
+ *
+ * Evento não entra: ele tem página de outro formato, e nada do que esta
+ * mostra — progressão, score, média de temporada — faz sentido pra um
+ * elenco que muda toda edição.
+ */
+export function getStaticPaths() {
+  return coresDeRaide().map((core) => ({ params: { core: core.slug }, props: { core } }));
+}
+
+const { core } = Astro.props;
+
+const players = jogadoresDoCore(rosterData as Player[], core.slug);
 const stats = computeMythicStats(players);
 
 const weekHighlights = getLatestWeeklyHighlights();
@@ -28,7 +43,7 @@ const weekDate = formatDate(weekHighlights?.date ?? null);
 
 <BaseLayout
   title="Mythic+"
-  description={`Ranking de IO, estatísticas e top keys de Mythic+ do ${seasonJson.config.coreName}.`}
+  description={`Ranking de IO, estatísticas e top keys de Mythic+ do ${core.nome}.`}
 >
 
   <!-- Page header -->

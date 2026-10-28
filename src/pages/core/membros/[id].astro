@@ -40,6 +40,7 @@ import {
 } from '@/engine/metrics';
 import { formatCompact } from '@/utils/format';
 import { calculateOverallScore } from '@/engine/scores';
+import { corePrincipal } from '@/engine/guild/cores';
 import { TITULOS_DO_HAIL_SCORE } from '@/engine/team/hailScore';
 import { buildCoachRecommendation } from '@/engine/scores/coach';
 import CoachCard from '@/components/CoachCard.astro';
@@ -679,7 +680,7 @@ const attendance = calculateAttendance(weeks, [
         cliente porque a página é estática: o mesmo HTML serve a quem chegou
         da dashboard, da lista e de um link direto. */}
     <a
-      href="/core/membros/"
+      href={`/core/${corePrincipal().slug}/membros/`}
       data-voltar
       class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-8"
     >
@@ -1147,8 +1148,8 @@ const attendance = calculateAttendance(weeks, [
 
       if (de.origin === window.location.origin && de.pathname !== window.location.pathname) {
         const destinos: Array<{ casa: RegExp; href: string; rotulo: string }> = [
-          { casa: /^\/core\/membros\/?$/, href: '/core/membros/', rotulo: 'Voltar para membros' },
-          { casa: /^\/core\/?$/, href: '/core/', rotulo: 'Voltar para a dashboard' },
+          { casa: /^\/core\/[^/]+\/membros\/?$/, href: de.pathname, rotulo: 'Voltar para membros' },
+          { casa: /^\/core\/[^/]+\/?$/, href: de.pathname, rotulo: 'Voltar para a dashboard' },
           { casa: /^\/hall-da-fama\/?$/, href: '/hall-da-fama/', rotulo: 'Voltar para o hall da fama' },
           { casa: /^\/core\//, href: de.pathname, rotulo: 'Voltar' },
         ];

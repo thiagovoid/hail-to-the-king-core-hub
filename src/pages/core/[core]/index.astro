@@ -17,17 +17,16 @@ import { computeProgression } from '@/utils/progression';
 import { computeMythicStats, getClassColor } from '@/utils/roster';
 import { formatThousands } from '@/utils/format';
 
-import seasonJson from '../../data/seasons/midnight-s2/config.json';
-import rosterJson from '../../data/guild/roster.json';
-import { getLatestWeeklyHighlights } from '../../data/weekly/highlights/index';
-import { performanceWeeks } from '../../data/weekly/performance/index';
+import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
+import rosterJson from '../../../../data/guild/roster.json';
+import { getLatestWeeklyHighlights } from '../../../../data/weekly/highlights/index';
+import { performanceWeeks } from '../../../../data/weekly/performance/index';
 import { mapaDeRaides, raideDaNoite } from '@/engine/guild/porRaide';
 
 const config = seasonJson.config as SiteConfig;
 const bossesNormal = seasonJson.bossesNormal as Boss[];
 const bossesHeroic = seasonJson.bossesHeroic as Boss[];
 const recentLogs = seasonJson.recentLogs ?? [];
-const players = rosterJson as Player[];
 const weeklyHighlights = getLatestWeeklyHighlights();
 
 import { getCorePerformanceSeries } from '@/engine/metrics';
@@ -35,21 +34,41 @@ import { buildCoreRanking, calculateCoreAverages } from '@/engine/team';
 import { calculateCoreHealth } from '@/engine/guild/coreHealth';
 import { serieDoHailScore } from '@/engine/team/hailScore';
 import HailScoreCard from '@/components/HailScoreCard.astro';
-import { corePrincipal, papelNoCore } from '@/engine/guild/cores';
+import {
+  coresDeRaide,
+  jogadoresDoCore,
+  papelNoCore,
+  semanasDoCore,
+} from '@/engine/guild/cores';
 
-const coreAtual = corePrincipal();
+/** Um dashboard por core de raide. */
+export function getStaticPaths() {
+  return coresDeRaide().map((c) => ({ params: { core: c.slug }, props: { core: c } }));
+}
 
-const coreAverages = calculateCoreAverages(performanceWeeks);
+const { core: coreAtual } = Astro.props;
+
+/**
+ * Só o que é deste core.
+ *
+ * Jogador de outro core não entra no seletor nem na contagem, e noite de
+ * outro core não entra em média nenhuma — é o que faz "presença" querer
+ * dizer presença NAQUELE core, como foi decidido.
+ */
+const players = jogadoresDoCore(rosterJson as Player[], coreAtual.slug);
+const semanas = semanasDoCore(performanceWeeks, coreAtual.slug);
+
+const coreAverages = calculateCoreAverages(semanas);
 const targets = config.performanceTargets;
-const coreRanking = buildCoreRanking(performanceWeeks, players, targets);
-const coreHealth = calculateCoreHealth(performanceWeeks, players, targets, bossesNormal, bossesHeroic);
+const coreRanking = buildCoreRanking(semanas, players, targets);
+const coreHealth = calculateCoreHealth(semanas, players, targets, bossesNormal, bossesHeroic);
 
 // A COMP: pra qual conteúdo o GRUPO tem gente e nível. Desligada aqui —
 // ver o comentário no corpo da página. Reativar é descomentar as duas
 // partes, sem mexer no motor.
 // const pessoasDoCore = mapearPessoas(rosterJson as never);
 // const comps = avaliarComps(
-//   pessoasNaComp(prontidaoDoRoster(rosterJson as never, performanceWeeks), (id) =>
+//   pessoasNaComp(prontidaoDoRoster(rosterJson as never, semanas), (id) =>
 //     pessoasDoCore.get(id) ?? id
 //   )
 // );
@@ -59,7 +78,7 @@ const coreHealth = calculateCoreHealth(performanceWeeks, players, targets, bosse
 const funcaoDoJogador = (playerId: string) =>
   players.find((jogador) => jogador.id === playerId)?.role;
 
-const hailScore = serieDoHailScore(performanceWeeks, targets, funcaoDoJogador);
+const hailScore = serieDoHailScore(semanas, targets, funcaoDoJogador);
 const hailScoreAtual = hailScore.at(-1)?.value ?? null;
 const hailScoreAnterior = hailScore.at(-2)?.value ?? null;
 const hailScoreData = hailScore.at(-1)?.date ?? null;
@@ -105,7 +124,7 @@ const mapaDasRaides = mapaDeRaides([
 ]);
 
 const raidePorNoite: Record<string, string> = {};
-for (const semana of performanceWeeks) {
+for (const semana of semanas) {
   for (const noite of semana.runs ?? []) {
     const qual = raideDaNoite(noite.players ?? [], mapaDasRaides);
     if (qual.tipo === 'uma') raidePorNoite[noite.date] = qual.raide;
@@ -134,7 +153,7 @@ const rosterGroups = [
 ].filter((grupo) => grupo.players.length > 0);
 
 const dpsSeries = getCorePerformanceSeries(
-  performanceWeeks,
+  semanas,
   players,
   'dps'
 ).map((series) => {
@@ -151,7 +170,7 @@ const dpsSeries = getCorePerformanceSeries(
 });
 
 const parseSeries = getCorePerformanceSeries(
-  performanceWeeks,
+  semanas,
   players,
   'parse'
 ).map((series) => {
@@ -168,7 +187,7 @@ const parseSeries = getCorePerformanceSeries(
 });
 
 const deathsSeries = getCorePerformanceSeries(
-  performanceWeeks,
+  semanas,
   players,
   'deaths'
 ).map((series) => {
@@ -185,7 +204,7 @@ const deathsSeries = getCorePerformanceSeries(
 });
 
 const mechanicsSeries = getCorePerformanceSeries(
-  performanceWeeks,
+  semanas,
   players,
   'mechanics'
 ).map((series) => {

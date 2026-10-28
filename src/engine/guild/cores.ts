@@ -77,3 +77,24 @@ export function coresDe(personagem: ComParticipacao): string[] {
 export function nomesDosCoresDe(personagem: ComParticipacao): string[] {
   return coresDe(personagem).map((slug) => coreDoSlug(slug)?.nome ?? slug);
 }
+
+/**
+ * As semanas, com só as noites de um core.
+ *
+ * Semana sem noite daquele core continua na lista, vazia: tirar a semana
+ * inteira mudaria a numeração que o resto do site usa pra contar.
+ */
+export function semanasDoCore<T extends { runs?: Array<{ core?: string }> }>(
+  semanas: T[],
+  slug: string
+): T[] {
+  return semanas.map((semana) => ({
+    ...semana,
+    runs: (semana.runs ?? []).filter((run) => run.core === slug),
+  }));
+}
+
+/** Os personagens que jogam num core. */
+export function jogadoresDoCore<T extends ComParticipacao>(jogadores: T[], slug: string): T[] {
+  return jogadores.filter((jogador) => estaNoCore(jogador, slug));
+}

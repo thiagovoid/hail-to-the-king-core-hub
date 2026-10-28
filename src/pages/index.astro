@@ -12,6 +12,7 @@ import type { GuildAbout } from '@/types/index';
 
 import aboutJson from '../../data/guild/about.json';
 import seasonJson from '../../data/seasons/midnight-s2/config.json';
+import { corePrincipal } from '@/engine/guild/cores';
 
 const about = aboutJson as GuildAbout;
 ---
@@ -42,7 +43,7 @@ const about = aboutJson as GuildAbout;
 
       <div class="flex flex-wrap items-center justify-center gap-3">
         <a
-          href="/core/"
+          href={`/core/${corePrincipal().slug}/`}
           class="inline-flex items-center px-5 py-2.5 rounded-lg bg-[#f0a500] text-[#0a0d14] font-bold text-sm hover:bg-[#fbbf24] transition-colors"
         >
           ⚔ Ver o {seasonJson.config.coreName}
@@ -79,7 +80,7 @@ const about = aboutJson as GuildAbout;
         </p>
       </div>
       <a
-        href="/core/"
+        href={`/core/${corePrincipal().slug}/`}
         class="shrink-0 inline-flex items-center px-5 py-2.5 rounded-lg bg-[#f0a500]/10 border border-[#f0a500]/30 text-[#f0a500] font-bold text-sm hover:bg-[#f0a500]/20 transition-colors"
       >
         Ver dashboard →

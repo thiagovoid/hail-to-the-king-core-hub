@@ -9,7 +9,10 @@
  * Hall da Fama entrarem.
  */
 
-import seasonData from '../../data/seasons/midnight-s2/config.json';
+import { corePrincipal } from '@/engine/guild/cores';
+
+const coreDoMenu = corePrincipal();
+const slugDoCore = coreDoMenu.slug;
 
 const currentPath = Astro.url.pathname;
 
@@ -45,13 +48,15 @@ const groups: NavGroup[] = [
     ],
   },
   {
-    label: seasonData.config.coreName,
+    label: coreDoMenu.nome,
     icon: '⚔',
     items: [
-      { label: 'Dashboard', href: '/core/', icon: '📊' },
-      { label: 'Progressão', href: '/core/progressao/', icon: '🗡' },
-      { label: 'Membros', href: '/core/membros/', icon: '👥' },
-      { label: 'Mythic+', href: '/core/mythic/', icon: '🗝' },
+      // O menu aponta pro core principal. Com mais de um, aqui entra o
+      // seletor — e aí o href deixa de ser fixo.
+      { label: 'Dashboard', href: `/core/${slugDoCore}/`, icon: '📊' },
+      { label: 'Progressão', href: `/core/${slugDoCore}/progressao/`, icon: '🗡' },
+      { label: 'Membros', href: `/core/${slugDoCore}/membros/`, icon: '👥' },
+      { label: 'Mythic+', href: `/core/${slugDoCore}/mythic/`, icon: '🗝' },
     ],
   },
 ];

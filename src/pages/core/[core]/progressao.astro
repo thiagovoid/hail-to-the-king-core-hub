@@ -11,10 +11,25 @@ import { computeProgression } from '@/utils/progression';
 import { formatDate } from '@/utils/format';
 import { getBossScores } from '@/utils/bossInsights';
 
-import seasonJson from '../../../data/seasons/midnight-s2/config.json';
-import rosterJson from '../../../data/guild/roster.json';
+import seasonJson from '../../../../data/seasons/midnight-s2/config.json';
+import rosterJson from '../../../../data/guild/roster.json';
 
 const SEASON_SLUG = 'midnight-s2';
+
+import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
+
+/**
+ * Uma página por core de raide.
+ *
+ * Evento não entra: ele tem página de outro formato, e nada do que esta
+ * mostra — progressão, score, média de temporada — faz sentido pra um
+ * elenco que muda toda edição.
+ */
+export function getStaticPaths() {
+  return coresDeRaide().map((core) => ({ params: { core: core.slug }, props: { core } }));
+}
+
+const { core } = Astro.props;
 
 const config = seasonJson.config as SiteConfig;
 const bossesNormal = seasonJson.bossesNormal as Boss[];

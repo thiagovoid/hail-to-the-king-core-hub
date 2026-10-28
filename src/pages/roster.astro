@@ -2,5 +2,7 @@
 /**
  * roster.astro — Redirect para a nova página de Membros
  */
-return Astro.redirect('/core/membros/');
+import { corePrincipal } from '@/engine/guild/cores';
+
+return Astro.redirect(`/core/${corePrincipal().slug}/membros/`);
 ---
