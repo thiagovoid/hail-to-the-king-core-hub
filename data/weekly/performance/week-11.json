@@ -11648,7 +11648,8 @@
             "Poção",
             "Óleo de arma",
             "Frasco"
-          ]
+          ],
+          "preparationGear": 25
         },
         {
           "playerId": "kairá",
@@ -11942,7 +11943,8 @@
             "Óleo de arma",
             "Pedra de vida",
             "Frasco"
-          ]
+          ],
+          "preparationGear": 20
         },
         {
           "playerId": "blackbarrel",
@@ -12215,7 +12217,8 @@
             "Poção",
             "Óleo de arma",
             "Frasco"
-          ]
+          ],
+          "preparationGear": 27
         },
         {
           "playerId": "beowolff",
@@ -12453,7 +12456,8 @@
           "preparationMissing": [
             "Poção",
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 68
         },
         {
           "playerId": "ülleh",
@@ -12701,7 +12705,8 @@
             "Poção",
             "Óleo de arma",
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 40
         },
         {
           "playerId": "adagom",
@@ -12930,7 +12935,8 @@
             }
           ],
           "preparation": 90,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 90
         },
         {
           "playerId": "lydruid",
@@ -13172,7 +13178,8 @@
           "preparationMissing": [
             "Poção",
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 60
         },
         {
           "playerId": "moosgard",
@@ -13408,7 +13415,8 @@
             "Óleo de arma",
             "Pedra de vida",
             "Frasco"
-          ]
+          ],
+          "preparationGear": 20
         },
         {
           "playerId": "blackrocks",
@@ -13568,7 +13576,8 @@
           "preparationMissing": [
             "Poção",
             "Frasco"
-          ]
+          ],
+          "preparationGear": 50
         },
         {
           "playerId": "heraa",
@@ -13766,7 +13775,8 @@
             }
           ],
           "preparation": 95,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 95
         },
         {
           "playerId": "bolsafamília",
@@ -14002,7 +14012,8 @@
           "preparationMissing": [
             "Poção",
             "Óleo de arma"
-          ]
+          ],
+          "preparationGear": 50
         },
         {
           "playerId": "sixx",
@@ -14191,7 +14202,8 @@
           "preparation": 75,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 75
         },
         {
           "playerId": "zzarlüxyon",
@@ -14395,7 +14407,8 @@
             "Poção",
             "Óleo de arma",
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 45
         },
         {
           "playerId": "suísa",
@@ -14656,7 +14669,8 @@
           "preparationMissing": [
             "Poção",
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 60
         },
         {
           "playerId": "karolini",
@@ -14903,7 +14917,8 @@
           "preparation": 76,
           "preparationMissing": [
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 76
         },
         {
           "playerId": "grumwall",
@@ -15077,7 +15092,8 @@
           "preparation": 75,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 75
         },
         {
           "playerId": "jubiheal",
@@ -15356,7 +15372,8 @@
           "preparationMissing": [
             "Poção",
             "Frasco"
-          ]
+          ],
+          "preparationGear": 68
         },
         {
           "playerId": "benedicctx",
@@ -15591,7 +15608,8 @@
           "preparation": 85,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 85
         }
       ]
     },
