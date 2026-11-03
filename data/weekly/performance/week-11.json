@@ -11438,8 +11438,7 @@
             "Poção"
           ]
         }
-      ],
-      "core": "nemesis"
+      ]
     },
     {
       "date": "2026-10-23",
@@ -11601,7 +11600,55 @@
               "defensivosProntos": []
             }
           ],
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 2,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 25,
+          "preparationMissing": [
+            "Poção",
+            "Óleo de arma",
+            "Frasco"
+          ]
         },
         {
           "playerId": "kairá",
@@ -11846,7 +11893,56 @@
               ]
             }
           ],
-          "deaths": 2
+          "deaths": 2,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 5,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 2,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 20,
+          "preparationMissing": [
+            "Poção",
+            "Óleo de arma",
+            "Pedra de vida",
+            "Frasco"
+          ]
         },
         {
           "playerId": "blackbarrel",
@@ -12071,7 +12167,55 @@
               ]
             }
           ],
-          "deaths": 5
+          "deaths": 5,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 3,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 1,
+              "trys": 3,
+              "uso": 33,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 27,
+          "preparationMissing": [
+            "Poção",
+            "Óleo de arma",
+            "Frasco"
+          ]
         },
         {
           "playerId": "beowolff",
@@ -12258,7 +12402,58 @@
               ]
             }
           ],
-          "deaths": 1
+          "deaths": 1,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 2,
+              "trys": 5,
+              "uso": 40,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 1,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 68,
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
+          ]
         },
         {
           "playerId": "ülleh",
@@ -12458,7 +12653,55 @@
               ]
             }
           ],
-          "deaths": 1
+          "deaths": 1,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 5,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 1,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 40,
+          "preparationMissing": [
+            "Poção",
+            "Óleo de arma",
+            "Pedra de vida"
+          ]
         },
         {
           "playerId": "adagom",
@@ -12638,7 +12881,56 @@
               ]
             }
           ],
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 3,
+              "trys": 5,
+              "uso": 60,
+              "quais": [
+                "Concentrated Silvermoon Health Potion",
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 90,
+          "preparationMissing": []
         },
         {
           "playerId": "lydruid",
@@ -12831,7 +13123,56 @@
               ]
             }
           ],
-          "deaths": 1
+          "deaths": 1,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 5,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 1,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 60,
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
+          ]
         },
         {
           "playerId": "moosgard",
@@ -13018,7 +13359,56 @@
               ]
             }
           ],
-          "deaths": 2
+          "deaths": 2,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 5,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 2,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 20,
+          "preparationMissing": [
+            "Poção",
+            "Óleo de arma",
+            "Pedra de vida",
+            "Frasco"
+          ]
         },
         {
           "playerId": "blackrocks",
@@ -13129,7 +13519,56 @@
               "role": "dps"
             }
           ],
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 2,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Windfury"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 50,
+          "preparationMissing": [
+            "Poção",
+            "Frasco"
+          ]
         },
         {
           "playerId": "heraa",
@@ -13279,7 +13718,55 @@
               ]
             }
           ],
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 5,
+              "uso": 80,
+              "quais": [
+                "Potion of Recklessness"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 95,
+          "preparationMissing": []
         },
         {
           "playerId": "bolsafamília",
@@ -13468,7 +13955,54 @@
               ]
             }
           ],
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 5,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 50,
+          "preparationMissing": [
+            "Poção",
+            "Óleo de arma"
+          ]
         },
         {
           "playerId": "sixx",
@@ -13609,7 +14143,55 @@
               "pessoasQueInterromperam": 15
             }
           },
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 4,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 75,
+          "preparationMissing": [
+            "Poção"
+          ]
         },
         {
           "playerId": "zzarlüxyon",
@@ -13763,7 +14345,57 @@
               ]
             }
           ],
-          "deaths": 1
+          "deaths": 1,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 1,
+              "trys": 4,
+              "uso": 25,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 1,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 45,
+          "preparationMissing": [
+            "Poção",
+            "Óleo de arma",
+            "Pedra de vida"
+          ]
         },
         {
           "playerId": "suísa",
@@ -13975,7 +14607,56 @@
               ]
             }
           ],
-          "deaths": 1
+          "deaths": 1,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 5,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 1,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 60,
+          "preparationMissing": [
+            "Poção",
+            "Pedra de vida"
+          ]
         },
         {
           "playerId": "karolini",
@@ -14172,7 +14853,57 @@
               ]
             }
           ],
-          "deaths": 1
+          "deaths": 1,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 4,
+              "trys": 5,
+              "uso": 80,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 0,
+              "trys": 1,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 76,
+          "preparationMissing": [
+            "Pedra de vida"
+          ]
         },
         {
           "playerId": "grumwall",
@@ -14298,7 +15029,55 @@
               ]
             }
           ],
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 0,
+              "trys": 3,
+              "uso": 0,
+              "quais": [],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 75,
+          "preparationMissing": [
+            "Poção"
+          ]
         },
         {
           "playerId": "jubiheal",
@@ -14526,7 +15305,58 @@
               ]
             }
           ],
-          "deaths": 1
+          "deaths": 1,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 2,
+              "trys": 5,
+              "uso": 40,
+              "quais": [
+                "Lightfused Mana Potion"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": 1,
+              "trys": 1,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Earthliving"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 0,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 68,
+          "preparationMissing": [
+            "Poção",
+            "Frasco"
+          ]
         },
         {
           "playerId": "benedicctx",
@@ -14711,7 +15541,57 @@
               "pessoasQueInterromperam": 15
             }
           },
-          "deaths": 0
+          "deaths": 0,
+          "consumiveis": [
+            {
+              "familia": "pocao",
+              "trysComUso": 2,
+              "trys": 5,
+              "uso": 40,
+              "quais": [
+                "Light's Potential"
+              ],
+              "rotulo": "Poção"
+            },
+            {
+              "familia": "pedra",
+              "rotulo": "Pedra de vida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": null,
+              "quais": []
+            },
+            {
+              "familia": "oleo",
+              "rotulo": "Óleo de arma",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": [
+                "Thalassian Phoenix Oil"
+              ]
+            },
+            {
+              "familia": "frasco",
+              "rotulo": "Frasco",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            },
+            {
+              "familia": "comida",
+              "rotulo": "Comida",
+              "trysComUso": null,
+              "trys": null,
+              "uso": 100,
+              "quais": []
+            }
+          ],
+          "preparation": 85,
+          "preparationMissing": [
+            "Poção"
+          ]
         }
       ]
     },
@@ -20705,7 +21585,8 @@
           "preparationMissing": [
             "Poção",
             "Óleo de arma"
-          ]
+          ],
+          "preparationGear": 43
         },
         {
           "playerId": "sixx",
@@ -21149,7 +22030,8 @@
           "preparation": 78,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 78
         },
         {
           "playerId": "nãoseicurar",
@@ -21561,10 +22443,10 @@
           "preparation": 63,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 63
         }
-      ],
-      "core": "nemesis"
+      ]
     }
   ]
 }
