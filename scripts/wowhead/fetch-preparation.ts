@@ -6,6 +6,7 @@ import { DataCollector } from "../../src/services/DataCollector";
 import { WowheadProvider } from "../../src/providers/wowhead/WowheadProvider";
 import { parsePreparationGuide, type WowheadPreparationGuide } from "../../src/providers/wowhead/normalize";
 import { buildGuideUrl, type Role } from "../../src/providers/wowhead/specSlug";
+import { specKey } from "../../src/providers/warcraftlogs/preparationReference";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -37,12 +38,6 @@ export interface PreparationReference {
   source: "wowhead";
   /** Chave: "<classe>|<spec normalizada>" — a mesma que o cálculo usa pra achar a recomendação. */
   specs: Record<string, PreparationReferenceEntry>;
-}
-
-function specKey(wowClass: string, spec: string): string {
-  const normalize = (value: string) =>
-    value.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
-  return `${normalize(wowClass)}|${normalize(spec)}`;
 }
 
 function parseArgs() {
