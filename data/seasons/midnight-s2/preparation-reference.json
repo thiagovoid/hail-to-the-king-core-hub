@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-17T17:09:43.694Z",
+  "updatedAt": "2026-11-04T16:42:48.732Z",
   "source": "wowhead",
   "specs": {
     "warrior|protection": {
       "wowClass": "warrior",
-      "spec": "Proteção",
+      "spec": "Protection",
       "role": "tank",
       "url": "https://www.wowhead.com/guide/classes/warrior/protection/enchants-gems-pve-tank",
       "players": [
@@ -126,7 +126,7 @@
     },
     "death-knight|blood": {
       "wowClass": "death-knight",
-      "spec": "Sangue",
+      "spec": "Blood",
       "role": "tank",
       "url": "https://www.wowhead.com/guide/classes/death-knight/blood/enchants-gems-pve-tank",
       "players": [
@@ -366,7 +366,7 @@
     },
     "shaman|restoration": {
       "wowClass": "shaman",
-      "spec": "Restauração",
+      "spec": "Restoration",
       "role": "healer",
       "url": "https://www.wowhead.com/guide/classes/shaman/restoration/enchants-gems-pve-healer",
       "players": [
@@ -498,7 +498,7 @@
     },
     "paladin|holy": {
       "wowClass": "paladin",
-      "spec": "Santo",
+      "spec": "Holy",
       "role": "healer",
       "url": "https://www.wowhead.com/guide/classes/paladin/holy/enchants-gems-pve-healer",
       "players": [
@@ -641,7 +641,7 @@
     },
     "mage|frost": {
       "wowClass": "mage",
-      "spec": "Geada",
+      "spec": "Frost",
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/mage/frost/enchants-gems-pve-dps",
       "players": [
@@ -795,7 +795,7 @@
     },
     "warlock|affliction": {
       "wowClass": "warlock",
-      "spec": "Aflição",
+      "spec": "Affliction",
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/warlock/affliction/enchants-gems-pve-dps",
       "players": [
@@ -927,6 +927,7 @@
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/priest/shadow/enchants-gems-pve-dps",
       "players": [
+        "Kroline",
         "Ligiaf"
       ],
       "enchants": [
@@ -1184,7 +1185,9 @@
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/demon-hunter/havoc/enchants-gems-pve-dps",
       "players": [
-        "Minort"
+        "Heracranosx",
+        "Minort",
+        "Heracranosd"
       ],
       "enchants": [
         {
@@ -1298,7 +1301,7 @@
     },
     "shaman|enhancement": {
       "wowClass": "shaman",
-      "spec": "Aperfeiçoamento",
+      "spec": "Enhancement",
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/shaman/enhancement/enchants-gems-pve-dps",
       "players": [
@@ -1402,8 +1405,8 @@
           "type": "Combat Potion",
           "items": [
             {
-              "itemId": 271887,
-              "name": "Liquid Luster"
+              "itemId": 241288,
+              "name": "Potion of Recklessness"
             }
           ]
         },
@@ -1442,11 +1445,12 @@
     },
     "warrior|arms": {
       "wowClass": "warrior",
-      "spec": "Braços",
+      "spec": "Arms",
       "role": "dps",
       "url": "https://www.wowhead.com/guide/classes/warrior/arms/enchants-gems-pve-dps",
       "players": [
-        "Nerlock"
+        "Nerlock",
+        "Perdidaço"
       ],
       "enchants": [
         {
@@ -1926,6 +1930,394 @@
               "itemId": 242275,
               "name": "Royal Roast"
             },
+            {
+              "itemId": 255846,
+              "name": "Harandar Celebration"
+            }
+          ]
+        }
+      ]
+    },
+    "hunter|beast-mastery": {
+      "wowClass": "hunter",
+      "spec": "Beast Mastery",
+      "role": "dps",
+      "url": "https://www.wowhead.com/guide/classes/hunter/beast-mastery/enchants-gems-pve-dps",
+      "players": [
+        "Perdidø"
+      ],
+      "enchants": [
+        {
+          "slot": "Weapon",
+          "itemId": 273072,
+          "name": "Enchant Weapon - Rite of the Hash'ey"
+        },
+        {
+          "slot": "Head",
+          "itemId": 244007,
+          "name": "Enchant Helm - Empowered Rune of Avoidance"
+        },
+        {
+          "slot": "Shoulders",
+          "itemId": 243991,
+          "name": "Enchant Shoulders - Amirdrassil's Grace"
+        },
+        {
+          "slot": "Chest",
+          "itemId": 243977,
+          "name": "Enchant Chest - Mark of the Worldsoul"
+        },
+        {
+          "slot": "Legs",
+          "itemId": 244641,
+          "name": "Forest Hunter's Armor Kit"
+        },
+        {
+          "slot": "Boots",
+          "itemId": 243953,
+          "name": "Enchant Boots - Lynx's Dexterity"
+        },
+        {
+          "slot": "Rings",
+          "itemId": 243957,
+          "name": "Enchant Ring - Eyes of the Eagle"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Gems",
+          "itemId": 240967,
+          "name": "Powerful Eversong Diamond"
+        },
+        {
+          "slot": "Gems",
+          "itemId": 240898,
+          "name": "Flawless Deadly Amethyst"
+        },
+        {
+          "slot": "Gems",
+          "itemId": 240918,
+          "name": "Flawless Masterful Lapis"
+        },
+        {
+          "slot": "Gems",
+          "itemId": 240892,
+          "name": "Flawless Masterful Peridot"
+        },
+        {
+          "slot": "Gems",
+          "itemId": 240908,
+          "name": "Flawless Masterful Garnet"
+        },
+        {
+          "slot": "Gems",
+          "itemId": 240900,
+          "name": "Flawless Quick Amethyst"
+        }
+      ],
+      "consumables": [
+        {
+          "type": "Flask",
+          "items": [
+            {
+              "itemId": 241322,
+              "name": "Flask of the Magisters"
+            }
+          ]
+        },
+        {
+          "type": "Combat Potion",
+          "items": [
+            {
+              "itemId": 241308,
+              "name": "Light's Potential"
+            },
+            {
+              "itemId": 241288,
+              "name": "Potion of Recklessness"
+            },
+            {
+              "itemId": 271887,
+              "name": "Liquid Luster"
+            }
+          ]
+        },
+        {
+          "type": "Health Potion",
+          "items": [
+            {
+              "itemId": 271884,
+              "name": "Concentrated Silvermoon Health Potion"
+            }
+          ]
+        },
+        {
+          "type": "Augment Rune",
+          "items": [
+            {
+              "itemId": 259085,
+              "name": "Void-Touched Augment Rune"
+            }
+          ]
+        },
+        {
+          "type": "Weapon Buff",
+          "items": [
+            {
+              "itemId": 243734,
+              "name": "Thalassian Phoenix Oil"
+            }
+          ]
+        },
+        {
+          "type": "Food",
+          "items": [
+            {
+              "itemId": 255846,
+              "name": "Harandar Celebration"
+            },
+            {
+              "itemId": 242275,
+              "name": "Royal Roast"
+            }
+          ]
+        }
+      ]
+    },
+    "warlock|demonology": {
+      "wowClass": "warlock",
+      "spec": "Demonology",
+      "role": "dps",
+      "url": "https://www.wowhead.com/guide/classes/warlock/demonology/enchants-gems-pve-dps",
+      "players": [
+        "Harrydóter"
+      ],
+      "enchants": [
+        {
+          "slot": "Weapon",
+          "itemId": 243971,
+          "name": "Enchant Weapon - Jan'alai's Precision"
+        },
+        {
+          "slot": "Helm",
+          "itemId": 244007,
+          "name": "Enchant Helm - Empowered Rune of Avoidance"
+        },
+        {
+          "slot": "Chest",
+          "itemId": 243977,
+          "name": "Enchant Chest - Mark of the Worldsoul"
+        },
+        {
+          "slot": "Shoulders",
+          "itemId": 243961,
+          "name": "Enchant Shoulders - Flight of the Eagle"
+        },
+        {
+          "slot": "Legs",
+          "itemId": 240133,
+          "name": "Sunfire Silk Spellthread"
+        },
+        {
+          "slot": "Boots",
+          "itemId": 243953,
+          "name": "Enchant Boots - Lynx's Dexterity"
+        },
+        {
+          "slot": "Ring",
+          "itemId": 244015,
+          "name": "Enchant Ring - Silvermoon's Alacrity"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Diamond",
+          "itemId": 240983,
+          "name": "Indecipherable Eversong Diamond"
+        },
+        {
+          "slot": "Other Gems",
+          "itemId": 240906,
+          "name": "Flawless Quick Garnet"
+        },
+        {
+          "slot": "Gems",
+          "itemId": 240892,
+          "name": "Flawless Masterful Peridot"
+        },
+        {
+          "slot": "Gems",
+          "itemId": 240898,
+          "name": "Flawless Deadly Amethyst"
+        }
+      ],
+      "consumables": [
+        {
+          "type": "Flask",
+          "items": [
+            {
+              "itemId": 241326,
+              "name": "Flask of the Shattered Sun"
+            }
+          ]
+        },
+        {
+          "type": "Combat Potion",
+          "items": [
+            {
+              "itemId": 241308,
+              "name": "Light's Potential"
+            }
+          ]
+        },
+        {
+          "type": "Health Potion",
+          "items": [
+            {
+              "itemId": 271884,
+              "name": "Concentrated Silvermoon Health Potion"
+            }
+          ]
+        },
+        {
+          "type": "Weapon Buff",
+          "items": [
+            {
+              "itemId": 243734,
+              "name": "Thalassian Phoenix Oil"
+            }
+          ]
+        },
+        {
+          "type": "Augment Rune",
+          "items": [
+            {
+              "itemId": 259085,
+              "name": "Void-Touched Augment Rune"
+            }
+          ]
+        },
+        {
+          "type": "Food",
+          "items": [
+            {
+              "itemId": 242275,
+              "name": "Royal Roast"
+            }
+          ]
+        }
+      ]
+    },
+    "priest|discipline": {
+      "wowClass": "priest",
+      "spec": "Discipline",
+      "role": "healer",
+      "url": "https://www.wowhead.com/guide/classes/priest/discipline/enchants-gems-pve-healer",
+      "players": [
+        "Inuqqz"
+      ],
+      "enchants": [
+        {
+          "slot": "Weapon",
+          "itemId": 243973,
+          "name": "Enchant Weapon - Berserker's Rage"
+        },
+        {
+          "slot": "Shoulders",
+          "itemId": 244021,
+          "name": "Enchant Shoulders - Silvermoon's Mending"
+        },
+        {
+          "slot": "Chest",
+          "itemId": 243977,
+          "name": "Enchant Chest - Mark of the Worldsoul"
+        },
+        {
+          "slot": "Helm",
+          "itemId": 243951,
+          "name": "Enchant Helm - Empowered Hex of Leeching"
+        },
+        {
+          "slot": "Legs",
+          "itemId": 240133,
+          "name": "Sunfire Silk Spellthread"
+        },
+        {
+          "slot": "Boots",
+          "itemId": 243983,
+          "name": "Enchant Boots - Shaladrassil's Roots"
+        },
+        {
+          "slot": "Ring",
+          "itemId": 244015,
+          "name": "Enchant Ring - Silvermoon's Alacrity"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Diamond",
+          "itemId": 240983,
+          "name": "Indecipherable Eversong Diamond"
+        },
+        {
+          "slot": "Other Gems",
+          "itemId": 240890,
+          "name": "Flawless Deadly Peridot"
+        }
+      ],
+      "consumables": [
+        {
+          "type": "Flask",
+          "items": [
+            {
+              "itemId": 241324,
+              "name": "Flask of the Blood Knights"
+            }
+          ]
+        },
+        {
+          "type": "Combat Potion",
+          "items": [
+            {
+              "itemId": 241288,
+              "name": "Potion of Recklessness"
+            },
+            {
+              "itemId": 241308,
+              "name": "Light's Potential"
+            }
+          ]
+        },
+        {
+          "type": "Health Potion",
+          "items": [
+            {
+              "itemId": 271884,
+              "name": "Concentrated Silvermoon Health Potion"
+            }
+          ]
+        },
+        {
+          "type": "Weapon Buff",
+          "items": [
+            {
+              "itemId": 243734,
+              "name": "Thalassian Phoenix Oil"
+            }
+          ]
+        },
+        {
+          "type": "Augment Rune",
+          "items": [
+            {
+              "itemId": 259085,
+              "name": "Void-Touched Augment Rune"
+            }
+          ]
+        },
+        {
+          "type": "Food",
+          "items": [
             {
               "itemId": 255846,
               "name": "Harandar Celebration"
