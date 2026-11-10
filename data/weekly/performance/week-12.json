@@ -5371,7 +5371,8 @@
           "preparation": 78,
           "preparationMissing": [
             "Poção"
-          ]
+          ],
+          "preparationGear": 78
         },
         {
           "playerId": "nãoseicurar",
@@ -5708,7 +5709,8 @@
           "preparation": 72,
           "preparationMissing": [
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 72
         },
         {
           "playerId": "ellerïa",
@@ -6113,7 +6115,8 @@
           "preparationMissing": [
             "Frasco",
             "Comida"
-          ]
+          ],
+          "preparationGear": 42
         }
       ]
     }
