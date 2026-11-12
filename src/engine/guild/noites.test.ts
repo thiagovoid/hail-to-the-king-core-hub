@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { noitesDoCore, semanasPorNoite } from "./noites";
+import { noitesDoCore, porNoite, semanasPorNoite } from "./noites";
 
 describe("noitesDoCore", () => {
   it("um relatório por data vira uma noite", () => {
@@ -157,5 +157,45 @@ describe("semanasPorNoite", () => {
     expect(semanas[0].runs?.[0]).toMatchObject({ reportCode: "X", reportCodes: ["X"] });
     expect(semanas).toHaveLength(2);
     expect(semanas[1].runs).toEqual([]);
+  });
+});
+
+describe("porNoite", () => {
+  it("dois personagens da mesma pessoa na mesma data são uma noite", () => {
+    // 15/09: o Voidsurge trocou pro Voidwar no meio da raide. Contar
+    // entradas dava 22 noites na temporada dele onde houve 20.
+    const noites = porNoite([
+      { date: "2026-09-15", playerId: "voidwar" },
+      { date: "2026-09-15", playerId: "voidsurge" },
+      { date: "2026-09-22", playerId: "voidsurge" },
+    ]);
+
+    expect(noites).toHaveLength(2);
+    expect(noites[0].map((e) => e.playerId)).toEqual(["voidwar", "voidsurge"]);
+  });
+
+  it("não funde as entradas: a noite é um grupo", () => {
+    // Fundir seria errado — o tanque e o healer não formam ninguém. Quem
+    // consome soma os contadores e escolhe entre as taxas.
+    const noites = porNoite([
+      { date: "2026-09-15", playerId: "voidwar", deaths: 9 },
+      { date: "2026-09-15", playerId: "voidsurge", deaths: 2 },
+    ]);
+
+    expect(noites[0]).toHaveLength(2);
+    expect(noites[0].reduce((total, e) => total + e.deaths, 0)).toBe(11);
+  });
+
+  it("um personagem por noite passa reto, na ordem que chegou", () => {
+    const noites = porNoite([
+      { date: "2026-08-18", playerId: "a" },
+      { date: "2026-10-20", playerId: "a" },
+    ]);
+
+    expect(noites.map((n) => n[0].date)).toEqual(["2026-08-18", "2026-10-20"]);
+  });
+
+  it("histórico vazio não tem noite", () => {
+    expect(porNoite([])).toEqual([]);
   });
 });

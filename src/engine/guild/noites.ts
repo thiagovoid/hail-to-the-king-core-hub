@@ -200,3 +200,34 @@ export function semanasPorNoite<T extends { week: number; runs?: RunDaNoite[] }>
       .sort((a, b) => a.date.localeCompare(b.date)),
   }));
 }
+
+/**
+ * O histórico de uma PESSOA agrupado por noite.
+ *
+ * `getPlayerHistory` devolve uma entrada por PERSONAGEM, e a temporada de
+ * uma pessoa é a soma dos personagens dela (ver `pessoas.ts`). Quem levou
+ * dois na MESMA noite aparece duas vezes na mesma data: o Voidsurge trocou
+ * pro Voidwar no meio de 15/09 e de 22/09, e contar entradas dava 22 noites
+ * onde houve 20.
+ *
+ * Só AGRUPA — não funde, de propósito. Somar contadores entre as duas
+ * entradas é certo e quem consome já faz isso (as 9 trys do Voidwar com as
+ * 3 do Voidsurge fecham exatamente as 12 de 15/09). Fundir num jogador só,
+ * como `semanasPorNoite` faz com as duas metades de um log partido, aqui
+ * seria errado: são personagens de funções diferentes, e o dps do tanque
+ * com o hps do healer não formam ninguém. O que a noite tem é um grupo.
+ *
+ * A ordem das noites é a ordem em que elas aparecem na entrada — quem passa
+ * o histórico ordenado por data recebe as noites na mesma ordem.
+ */
+export function porNoite<T extends { date: string }>(historico: T[]): T[][] {
+  const porData = new Map<string, T[]>();
+
+  for (const entrada of historico) {
+    const lista = porData.get(entrada.date);
+    if (lista) lista.push(entrada);
+    else porData.set(entrada.date, [entrada]);
+  }
+
+  return [...porData.values()];
+}

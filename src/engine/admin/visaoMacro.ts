@@ -14,6 +14,7 @@ import type { PlayerPerformance, WeeklyPerformance } from "../../types/performan
 import type { CorePerformanceTargets } from "../../types/index";
 import { calculateOverallScore, funcaoEfetiva, type FuncaoDoJogador } from "../scores";
 import { calculateAttendance, getPlayerHistory } from "../metrics";
+import { porNoite } from "../guild/noites";
 
 export interface LinhaDoMacro {
   id: string;
@@ -112,17 +113,42 @@ export function buildVisaoMacro(
 
     const ultima = historico.at(-1)!;
     const papel = jogador.role as FuncaoDoJogador;
-    const nota = (noite: PlayerPerformance) => calculateOverallScore(noite, targets, papel);
+    /**
+     * Cada noite pela régua do PERSONAGEM que a jogou, não da pessoa: quem
+     * tanka num alt e cura no main tinha as noites do alt medidas como
+     * healer. Ver `buildRetrospectiva`.
+     */
+    const nota = (noite: PlayerPerformance) =>
+      calculateOverallScore(
+        noite,
+        targets,
+        (porId.get(noite.playerId)?.role as FuncaoDoJogador) ?? papel
+      );
 
     const score = nota(ultima);
-    const medias = historico.map((noite) => nota(noite).overall).filter((v): v is number => v !== null);
+    /**
+     * Uma nota por NOITE, não por entrada: duas entradas na mesma data são
+     * uma noite com troca de personagem, e vale a maior. Ver `porNoite`.
+     */
+    const noites = porNoite(historico);
+    const medias = noites
+      .map((entradas) => {
+        const comNota = entradas
+          .map((noite) => nota(noite).overall)
+          .filter((v): v is number => v !== null);
+        return comNota.length === 0 ? null : Math.max(...comNota);
+      })
+      .filter((v): v is number => v !== null);
 
     linhas.push({
       id: jogador.id,
       nome: jogador.name,
-      funcao: funcaoEfetiva(ultima, papel),
+      // A função da ÚLTIMA noite, pelo personagem que a jogou: a linha
+      // mostra o Score dessa noite, e rotulá-la com a função da pessoa
+      // dizia "healer" numa noite tankada.
+      funcao: funcaoEfetiva(ultima, (porId.get(ultima.playerId)?.role as FuncaoDoJogador) ?? papel),
       alts: personagens.filter((id) => id !== jogador.id),
-      noites: historico.length,
+      noites: noites.length,
       presenca: calculateAttendance(weeks, personagens),
       ultimaNoite: ultima.date,
       personagemDaUltimaNoite: ultima.playerId,

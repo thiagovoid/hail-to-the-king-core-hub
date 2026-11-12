@@ -22,6 +22,7 @@ import type { PlayerPerformance, WeeklyPerformance } from "../../types/performan
 import type { CorePerformanceTargets } from "../../types/index";
 import { calculateOverallScore, type FuncaoDoJogador } from "../scores";
 import { getPlayerHistory } from "../metrics";
+import { porNoite } from "../guild/noites";
 
 export interface Slide {
   /** Identifica o desenho. Cada um tem layout próprio no renderizador. */
@@ -85,7 +86,16 @@ export function buildRetrospectiva(
   playerId: string,
   personagens: string[],
   nome: string,
-  funcao: FuncaoDoJogador,
+  /**
+   * A função de CADA personagem da pessoa, no roster.
+   *
+   * Um mapa e não uma função só porque o Score de uma noite é do
+   * personagem, não da pessoa: o Voidwar é tanque e o Voidsurge é healer, e
+   * medir a noite de tanque com a régua de healer dava 100 numa noite que
+   * valia 99 e 31 numa que valia 46. Personagem fora do mapa cai em "dps",
+   * que é o que `funcaoEfetiva` já fazia.
+   */
+  funcaoDoPersonagem: Map<string, FuncaoDoJogador>,
   weeks: WeeklyPerformance[],
   targets: CorePerformanceTargets,
   nomeDoBoss: Map<number, string>,
@@ -99,6 +109,12 @@ export function buildRetrospectiva(
 
   if (historico.length === 0) return null;
 
+  /**
+   * As noites, que não são as entradas: quem levou dois personagens na
+   * mesma raide tem duas entradas numa noite só. Ver `porNoite`.
+   */
+  const noites = porNoite(historico);
+
   const soma = (campo: (noite: PlayerPerformance) => number | undefined) =>
     historico.reduce((total, noite) => total + (campo(noite) ?? 0), 0);
 
@@ -108,7 +124,7 @@ export function buildRetrospectiva(
     tipo: "abertura",
     chapeu: temporada,
     destaque: nome,
-    rodape: `${historico.length} ${plural(historico.length, "noite de raide", "noites de raide")}`,
+    rodape: `${noites.length} ${plural(noites.length, "noite de raide", "noites de raide")}`,
   });
 
   // ---- Volume: o esforço bruto, que é o que ninguém lembra de somar ----
@@ -250,10 +266,25 @@ export function buildRetrospectiva(
   }
 
   // ---- A melhor noite ----
-  const notas = historico.map((noite) => ({
-    date: noite.date,
-    nota: calculateOverallScore(noite, targets, funcao).overall,
-  }));
+  /**
+   * Uma nota por NOITE, cada personagem medido pela régua dele.
+   *
+   * Na noite de dois personagens vale a maior das duas — mesma regra que
+   * `semanasPorNoite` usa pras metades de um log partido, e pela mesma
+   * razão: Score é percentil, não contador, e somar daria um número que
+   * ninguém fez. A maior é um número real, que a pessoa pôs no placar.
+   */
+  const notaDa = (noite: PlayerPerformance) =>
+    calculateOverallScore(noite, targets, funcaoDoPersonagem.get(noite.playerId) ?? "dps")
+      .overall;
+
+  const notas = noites.map((entradas) => {
+    const comNota = entradas.map(notaDa).filter((n): n is number => n !== null);
+    return {
+      date: entradas[0].date,
+      nota: comNota.length === 0 ? null : Math.max(...comNota),
+    };
+  });
   const melhor = maiorPor(
     notas.filter((n): n is { date: string; nota: number } => n.nota !== null),
     (n) => n.nota

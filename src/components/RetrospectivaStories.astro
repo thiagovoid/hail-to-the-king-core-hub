@@ -70,11 +70,20 @@ for (const outro of elenco) {
   coreInteiro.set(dono, atual);
 }
 
+/**
+ * A função de cada personagem do core, pro Score de cada noite sair com a
+ * régua certa. Quem joga de tanque num alt e cura no main tinha as noites
+ * do alt medidas como healer.
+ */
+const funcaoDoPersonagem = new Map(
+  roster.map((personagem) => [personagem.id, personagem.role as never])
+);
+
 const retro = buildRetrospectiva(
   jogador.id,
   personagens,
   jogador.name,
-  jogador.role as never,
+  funcaoDoPersonagem,
   semanas,
   seasonJson.config.performanceTargets as never,
   nomeDoBoss,
