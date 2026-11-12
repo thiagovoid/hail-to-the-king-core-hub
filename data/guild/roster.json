@@ -186,9 +186,10 @@
     },
     "cores": {
       "nemesis": {
-        "type": "main"
+        "type": "alt"
       }
-    }
+    },
+    "pertenceA": "sixx"
   },
   {
     "id": "cowsadeer",
@@ -296,9 +297,10 @@
     },
     "cores": {
       "nemesis": {
-        "type": "main"
+        "type": "alt"
       }
-    }
+    },
+    "pertenceA": "nãoseicurar"
   },
   {
     "id": "kroline",
@@ -1086,7 +1088,7 @@
     },
     "cores": {
       "nemesis": {
-        "type": "alt"
+        "type": "main"
       }
     },
     "performanceGoals": {
@@ -1126,7 +1128,7 @@
     },
     "cores": {
       "nemesis": {
-        "type": "alt"
+        "type": "main"
       }
     }
   },
