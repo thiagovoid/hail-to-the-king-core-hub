@@ -150,7 +150,9 @@ export function noitesDoCore<T extends { runs?: RunDaNoite[] }>(semanas: T[]): A
  * e aí a noite ficaria partida de novo. A run fica na menor semana em que
  * apareceu.
  */
-export function semanasPorNoite<T extends { week: number; runs?: RunDaNoite[] }>(semanas: T[]): T[] {
+export function semanasPorNoite<T extends { week: number; runs?: RunDaNoite[] }>(
+  semanas: T[]
+): Array<T & { runs: RunDaNoite[] }> {
   /** data -> run juntada, e a semana onde ela vai ficar. */
   const porData = new Map<string, { semana: number; run: RunDaNoite }>();
 

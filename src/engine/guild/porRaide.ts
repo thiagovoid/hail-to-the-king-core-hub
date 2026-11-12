@@ -154,3 +154,27 @@ export function raideDaNoite(
   if (vistas.size === 1) return { tipo: "uma", raide: [...vistas][0] };
   return { tipo: "mista", raides: [...vistas].sort() };
 }
+
+/**
+ * As semanas com só as noites de uma raide.
+ *
+ * Recorta por NOITE, pela mesma regra do filtro do gráfico: noite inteira
+ * numa raide é daquela raide, e noite que encostou nas duas some em vez de
+ * entrar nas duas. É o que mantém dps e parse exatos — eles vêm da tabela
+ * agregada da WCL, não da soma dos bosses, então fatiar por boss dentro da
+ * noite daria média de média.
+ *
+ * Semana sem noite daquela raide continua na lista, vazia, pelo mesmo
+ * motivo de `semanasDoCore`: a numeração é usada pra contar.
+ */
+export function semanasDaRaide<
+  T extends { runs?: Array<{ players?: PersonagemDaNoite[] }> },
+>(semanas: T[], slug: string, mapa: MapaDeRaides): T[] {
+  return semanas.map((semana) => ({
+    ...semana,
+    runs: (semana.runs ?? []).filter((noite) => {
+      const qual = raideDaNoite(noite.players ?? [], mapa);
+      return qual.tipo === "uma" && qual.raide === slug;
+    }),
+  }));
+}

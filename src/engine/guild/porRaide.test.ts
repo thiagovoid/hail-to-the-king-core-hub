@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { fatiarNoite, mapaDeRaides, raideDaNoite } from "./porRaide";
+import { fatiarNoite, mapaDeRaides, raideDaNoite, semanasDaRaide } from "./porRaide";
 
 const BOSSES = [
   { encounterID: 3470, name: "Nek'zali, a Espiral de Almas", raid: "abismo" },
@@ -121,5 +121,41 @@ describe("raideDaNoite", () => {
   it("noite sem boss cadastrado não chuta uma raide", () => {
     expect(raideDaNoite(noite([[3379]]), MAPA)).toEqual({ tipo: "sem-dado" });
     expect(raideDaNoite([], MAPA)).toEqual({ tipo: "sem-dado" });
+  });
+});
+
+describe("semanasDaRaide", () => {
+  const mapa = mapaDeRaides([
+    { encounterID: 3470, name: "Nek'zali", raid: "abismo" },
+    { encounterID: 3492, name: "Ula'tek", raid: "abismo" },
+    { encounterID: 3513, name: "Kith'ix", raid: "kithix" },
+  ]);
+
+  const noite = (encounterIDs: number[]) => ({
+    players: [{ bossTries: encounterIDs.map((id) => ({ encounterID: id, tries: 1 })) }],
+  });
+
+  it("fica só com as noites da raide pedida", () => {
+    const [semana] = semanasDaRaide(
+      [{ runs: [noite([3470]), noite([3513]), noite([3492])] }],
+      "abismo",
+      mapa
+    );
+
+    expect(semana.runs).toHaveLength(2);
+  });
+
+  it("noite que encostou nas duas some, em vez de entrar nas duas", () => {
+    const mista = [{ runs: [noite([3492, 3513])] }];
+
+    expect(semanasDaRaide(mista, "abismo", mapa)[0].runs).toEqual([]);
+    expect(semanasDaRaide(mista, "kithix", mapa)[0].runs).toEqual([]);
+  });
+
+  it("semana sem noite da raide continua na lista, vazia", () => {
+    const semanas = semanasDaRaide([{ runs: [noite([3513])] }, { runs: [] }], "abismo", mapa);
+
+    expect(semanas).toHaveLength(2);
+    expect(semanas[0].runs).toEqual([]);
   });
 });

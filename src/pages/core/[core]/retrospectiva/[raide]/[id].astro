@@ -1,0 +1,71 @@
+---
+/**
+ * A retrospectiva de UMA RAIDE, e não da temporada.
+ *
+ * Mesmos slides, outro recorte: só as noites daquela raide. Existe porque
+ * uma temporada com duas raides abertas conta duas histórias diferentes, e
+ * fechar um tier é o momento de olhar pra ele sozinho.
+ *
+ * O ranking do "2º do core" sai do MESMO recorte — senão o total viria das
+ * noites da raide e a posição das noites todas, duas réguas no mesmo slide.
+ */
+import RetrospectivaStories from '@/components/RetrospectivaStories.astro';
+
+import roster from '../../../../../../data/guild/roster.json';
+import seasonJson from '../../../../../../data/seasons/midnight-s2/config.json';
+import { performanceWeeks } from '../../../../../../data/weekly/performance/index';
+import { mapearPessoas, type PersonagemDoRoster } from '@/engine/guild/pessoas';
+import { coresDeRaide, jogadoresDoCore, semanasDoCore } from '@/engine/guild/cores';
+import { mapaDeRaides, semanasDaRaide } from '@/engine/guild/porRaide';
+import type { Boss } from '@/types/index';
+
+export function getStaticPaths() {
+  const mapa = mapaDeRaides([
+    ...(seasonJson.bossesNormal as Boss[]),
+    ...(seasonJson.bossesHeroic as Boss[]),
+  ]);
+
+  return coresDeRaide().flatMap((core) => {
+    const doCore = jogadoresDoCore(roster, core.slug);
+    const pessoas = mapearPessoas(doCore as unknown as PersonagemDoRoster[]);
+    const doCoreSemanas = semanasDoCore(performanceWeeks, core.slug);
+
+    return (seasonJson.config.raids ?? []).flatMap((raide) => {
+      const semanas = semanasDaRaide(doCoreSemanas, raide.slug, mapa);
+
+      // Raide sem noite nenhuma daquele core não ganha página: seria um
+      // card de lembranças de uma raide que o core não jogou.
+      if (!semanas.some((semana) => (semana.runs ?? []).length > 0)) return [];
+
+      return doCore
+        .filter((jogador) => (pessoas.get(jogador.id) ?? jogador.id) === jogador.id)
+        .map((jogador) => ({
+          params: { core: core.slug, raide: raide.slug, id: jogador.id },
+          props: {
+            core,
+            raide,
+            jogador,
+            personagens: doCore
+              .filter((outro) => (pessoas.get(outro.id) ?? outro.id) === jogador.id)
+              .map((outro) => outro.id),
+          },
+        }));
+    });
+  });
+}
+
+const { core: coreAtual, raide, jogador, personagens } = Astro.props;
+
+const mapa = mapaDeRaides([
+  ...(seasonJson.bossesNormal as Boss[]),
+  ...(seasonJson.bossesHeroic as Boss[]),
+]);
+---
+
+<RetrospectivaStories
+  coreAtual={coreAtual}
+  jogador={jogador}
+  personagens={personagens}
+  semanas={semanasDaRaide(semanasDoCore(performanceWeeks, coreAtual.slug), raide.slug, mapa)}
+  titulo={raide.nome}
+/>
