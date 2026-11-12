@@ -12,6 +12,10 @@
  */
 
 import coresJson from "../../../data/guild/cores.json";
+import { semanasPorNoite, type RunDaNoite } from "./noites";
+
+/** O que `semanasDoCore` precisa enxergar numa run. */
+type PerformanceRunDoCore = RunDaNoite;
 
 export type FormatoDeCore = "core" | "evento";
 
@@ -90,19 +94,27 @@ export function nomesDosCoresDe(personagem: object): string[] {
 }
 
 /**
- * As semanas, com só as noites de um core.
+ * As semanas de um core, com UMA run por noite.
+ *
+ * Faz duas coisas de propósito, e é o único caminho das páginas até os
+ * dados: filtrar por core e juntar a noite partida. Separar as duas deixava
+ * sete chamadores com a obrigação de lembrar da segunda — e esquecer uma
+ * não dá erro, dá presença errada em silêncio, que foi o que aconteceu com
+ * a noite de 10/11.
  *
  * Semana sem noite daquele core continua na lista, vazia: tirar a semana
  * inteira mudaria a numeração que o resto do site usa pra contar.
  */
-export function semanasDoCore<T extends { runs?: Array<{ core?: string }> }>(
+export function semanasDoCore<T extends { week: number; runs?: PerformanceRunDoCore[] }>(
   semanas: T[],
   slug: string
 ): T[] {
-  return semanas.map((semana) => ({
-    ...semana,
-    runs: (semana.runs ?? []).filter((run) => run.core === slug),
-  }));
+  return semanasPorNoite(
+    semanas.map((semana) => ({
+      ...semana,
+      runs: (semana.runs ?? []).filter((run) => run.core === slug),
+    }))
+  );
 }
 
 /** Os personagens que jogam num core, no tipo em que entraram. */

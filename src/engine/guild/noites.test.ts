@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { noitesDoCore } from "./noites";
+import { noitesDoCore, semanasPorNoite } from "./noites";
 
 describe("noitesDoCore", () => {
   it("um relatório por data vira uma noite", () => {
@@ -101,5 +101,61 @@ describe("noitesDoCore", () => {
 
   it("semana sem run some em vez de virar noite vazia", () => {
     expect(noitesDoCore([{ runs: [] }, { runs: undefined }])).toEqual([]);
+  });
+});
+
+describe("semanasPorNoite", () => {
+  it("duas runs da mesma data viram uma, somando os contadores", () => {
+    // O caso real de 10/11: mesmo startTime, mesmos doze jogadores.
+    const [semana] = semanasPorNoite([
+      {
+        week: 13,
+        runs: [
+          { date: "2026-11-10", reportCode: "HzNt", players: [{ playerId: "gunst", deaths: 2 }] },
+          { date: "2026-11-10", reportCode: "vHDn", players: [{ playerId: "gunst", deaths: 1 }] },
+        ],
+      },
+    ]);
+
+    expect(semana.runs).toHaveLength(1);
+    expect(semana.runs?.[0].reportCodes).toEqual(["HzNt", "vHDn"]);
+    expect((semana.runs?.[0].players?.[0] as unknown as Record<string, number>).deaths).toBe(3);
+  });
+
+  it("o reportCode continua sendo o primeiro, pros links que já existem", () => {
+    const [semana] = semanasPorNoite([
+      {
+        week: 13,
+        runs: [
+          { date: "2026-11-10", reportCode: "HzNt", players: [] },
+          { date: "2026-11-10", reportCode: "vHDn", players: [] },
+        ],
+      },
+    ]);
+
+    expect(semana.runs?.[0].reportCode).toBe("HzNt");
+  });
+
+  it("noite partida entre duas semanas vai pra menor delas", () => {
+    // Acontece quando as duas metades são coletadas com --week diferente.
+    const semanas = semanasPorNoite([
+      { week: 13, runs: [{ date: "2026-11-10", reportCode: "A", players: [{ playerId: "k" }] }] },
+      { week: 14, runs: [{ date: "2026-11-10", reportCode: "B", players: [{ playerId: "k" }] }] },
+    ]);
+
+    expect(semanas[0].runs).toHaveLength(1);
+    expect(semanas[0].runs?.[0].reportCodes).toEqual(["A", "B"]);
+    expect(semanas[1].runs).toEqual([]);
+  });
+
+  it("noite inteira passa reta, e a semana vazia continua na lista", () => {
+    const semanas = semanasPorNoite([
+      { week: 1, runs: [{ date: "2026-08-18", reportCode: "X", players: [{ playerId: "k" }] }] },
+      { week: 2, runs: [] },
+    ]);
+
+    expect(semanas[0].runs?.[0]).toMatchObject({ reportCode: "X", reportCodes: ["X"] });
+    expect(semanas).toHaveLength(2);
+    expect(semanas[1].runs).toEqual([]);
   });
 });

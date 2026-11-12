@@ -25,6 +25,8 @@ export interface JogadorDaRun {
 export interface RunDaNoite {
   date: string;
   reportCode?: string;
+  /** Todos os arquivos de log da noite. Mais de um = noite partida. */
+  reportCodes?: string[];
   core?: string;
   players?: JogadorDaRun[];
 }
@@ -132,4 +134,67 @@ export function noitesDoCore<T extends { runs?: RunDaNoite[] }>(semanas: T[]): A
   }
 
   return [...porData.values()].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+/**
+ * As mesmas semanas, com UMA run por noite.
+ *
+ * É a forma que as páginas de core consomem: tudo nelas — presença, média,
+ * histórico, gráfico — passa por `getAllRuns`, que devolve uma entrada por
+ * RUN. Com a noite partida em dois arquivos, cada consumidor contava duas
+ * noites onde houve uma, e ninguém precisava saber disso individualmente.
+ * Juntando aqui, todos passam a estar certos de uma vez.
+ *
+ * A junção é por DATA e atravessa semana: dois arquivos da mesma noite
+ * normalmente caem na mesma `week-NN`, mas `--week` na mão pode separá-los,
+ * e aí a noite ficaria partida de novo. A run fica na menor semana em que
+ * apareceu.
+ */
+export function semanasPorNoite<T extends { week: number; runs?: RunDaNoite[] }>(semanas: T[]): T[] {
+  /** data -> run juntada, e a semana onde ela vai ficar. */
+  const porData = new Map<string, { semana: number; run: RunDaNoite }>();
+
+  for (const semana of [...semanas].sort((a, b) => a.week - b.week)) {
+    for (const run of semana.runs ?? []) {
+      const anterior = porData.get(run.date);
+
+      if (!anterior) {
+        porData.set(run.date, {
+          semana: semana.week,
+          run: { ...run, reportCodes: run.reportCode ? [run.reportCode] : [] },
+        });
+        continue;
+      }
+
+      const jogadores = [...(anterior.run.players ?? [])];
+      for (const jogador of run.players ?? []) {
+        const i = jogadores.findIndex((outro) => outro.playerId === jogador.playerId);
+        if (i === -1) jogadores.push(jogador);
+        else jogadores[i] = juntar(jogadores[i], jogador);
+      }
+
+      anterior.run = {
+        ...anterior.run,
+        players: jogadores,
+        // `reportCode` continua sendo o primeiro: é o que o histórico do
+        // jogador carrega e o que os links existentes esperam. A lista
+        // completa vai em `reportCodes`, pra tela poder dizer que a noite
+        // veio partida.
+        reportCodes: [
+          ...(anterior.run.reportCodes ?? []),
+          ...(run.reportCode && !(anterior.run.reportCodes ?? []).includes(run.reportCode)
+            ? [run.reportCode]
+            : []),
+        ],
+      };
+    }
+  }
+
+  return semanas.map((semana) => ({
+    ...semana,
+    runs: [...porData.values()]
+      .filter((entrada) => entrada.semana === semana.week)
+      .map((entrada) => entrada.run)
+      .sort((a, b) => a.date.localeCompare(b.date)),
+  }));
 }

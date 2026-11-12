@@ -493,6 +493,16 @@ export interface PerformanceRun {
   reportCode?: string;
 
   /**
+   * Todos os arquivos de log da noite, quando ela veio partida.
+   *
+   * O WoW grava um arquivo novo quando alguém desloga no meio da sessão.
+   * O coletor guarda uma run por ARQUIVO, fiel à fonte; quem junta por
+   * noite é `semanasPorNoite`, e é ele que preenche isto. Mais de um
+   * código quer dizer que a noite foi partida.
+   */
+  reportCodes?: string[];
+
+  /**
    * Slug do core a que esta noite pertence.
    *
    * Ausente nas noites coletadas antes de existir mais de um core — elas
