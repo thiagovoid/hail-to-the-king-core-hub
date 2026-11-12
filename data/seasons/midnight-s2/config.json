@@ -4,7 +4,7 @@
     "realm": "Nemesis",
     "currentSeason": "Midnight Season 2",
     "currentRaid": "A Libertação de Kith'ix",
-    "lastUpdated": "2026-11-06T10:20:46.999Z",
+    "lastUpdated": "2026-11-12T21:35:20.715Z",
     "raidWeekAnchor": "2026-08-18",
     "zoeiraDesde": "2026-09-22",
     "performanceTargets": {
@@ -683,16 +683,16 @@
       "id": "ulatek",
       "name": "Ula'tek",
       "encounterID": 3492,
-      "status": "progress",
-      "pulls": 23,
+      "status": "killed",
+      "pulls": 29,
       "bestPullPercent": null,
-      "killDate": null,
+      "killDate": "2026-11-11T01:45:56.866Z",
       "links": {
-        "warcraftLogs": null,
+        "warcraftLogs": "https://www.warcraftlogs.com/reports/HzNt9AgQxqkXc3D7?fight=6",
         "wipefest": null,
         "video": null
       },
-      "pullsTotal": 23,
+      "pullsTotal": 30,
       "pullLog": [
         {
           "reportCode": "yknaMQh4L3WmcX82",
@@ -704,6 +704,18 @@
           "reportCode": "f2qaxHVcGv49M3CJ",
           "date": "2026-11-05",
           "pulls": 13,
+          "kill": false
+        },
+        {
+          "reportCode": "HzNt9AgQxqkXc3D7",
+          "date": "2026-11-10",
+          "pulls": 6,
+          "kill": true
+        },
+        {
+          "reportCode": "vHDnLkr8zF4q6TMm",
+          "date": "2026-11-10",
+          "pulls": 1,
           "kill": false
         }
       ],
@@ -735,6 +747,16 @@
     }
   ],
   "recentLogs": [
+    {
+      "date": "2026-11-10",
+      "url": "https://www.warcraftlogs.com/reports/HzNt9AgQxqkXc3D7",
+      "title": "Abismo Venenoso"
+    },
+    {
+      "date": "2026-11-10",
+      "url": "https://www.warcraftlogs.com/reports/vHDnLkr8zF4q6TMm",
+      "title": "Abismo Venenoso"
+    },
     {
       "date": "2026-11-05",
       "url": "https://www.warcraftlogs.com/reports/f2qaxHVcGv49M3CJ",
