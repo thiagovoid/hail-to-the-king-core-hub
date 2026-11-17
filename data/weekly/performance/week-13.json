@@ -3864,7 +3864,8 @@
             }
           ],
           "preparation": 83,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 83
         },
         {
           "playerId": "nãoseicurar",
@@ -4169,7 +4170,8 @@
           "preparationMissing": [
             "Poção",
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 60
         },
         {
           "playerId": "ellerïa",
@@ -4474,7 +4476,8 @@
           "preparationMissing": [
             "Frasco",
             "Comida"
-          ]
+          ],
+          "preparationGear": 45
         }
       ]
     },
@@ -7374,7 +7377,8 @@
             }
           ],
           "preparation": 100,
-          "preparationMissing": []
+          "preparationMissing": [],
+          "preparationGear": 100
         },
         {
           "playerId": "nãoseicurar",
@@ -7588,7 +7592,8 @@
           "preparationMissing": [
             "Poção",
             "Pedra de vida"
-          ]
+          ],
+          "preparationGear": 60
         },
         {
           "playerId": "ellerïa",
@@ -7811,7 +7816,8 @@
           "preparationMissing": [
             "Frasco",
             "Comida"
-          ]
+          ],
+          "preparationGear": 50
         }
       ]
     }
